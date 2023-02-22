@@ -1,0 +1,81 @@
+html::-webkit-scrollbar {
+    display: none;
+}
+
+@media (width: 1500px) and (height: 1800px) {
+    .success {
+        background-color: rgba(23, 23, 23, 90%);
+        border-radius: 5px;
+        box-shadow: 0rem 0rem 0.1rem 0.05rem #000000;
+        border-left: 0.125rem solid #20bb44;
+        font-size: 0.5vh;
+    }
+
+    .primary {
+        background-color: rgba(23, 23, 23, 90%);
+        border-radius: 5px;
+        box-shadow: 0rem 0rem 0.1rem 0.05rem #000000;
+        border-left: 2.5px solid #1c75d2;
+        font-size: 0.5vh;
+    }
+
+    .error {
+        background-color: rgba(23, 23, 23, 90%);
+        border-radius: 5px;
+        box-shadow: 0rem 0rem 0.1rem 0.05rem #000000;
+        border-left: 3px solid #c10114;
+        font-size: 0.5vh;
+    }
+
+    .police {
+        background-color: rgba(23, 23, 23, 90%);
+        border-radius: 5px;
+        box-shadow: 0rem 0rem 0.1rem 0.05rem #000000;
+        border-left: 2.5px solid #2197f2;
+        font-size: 0.5vh;
+    }
+
+    .ambulance {
+        background-color: rgba(23, 23, 23, 90%);
+        border-radius: 5px;
+        box-shadow: 0rem 0rem 0.1rem 0.05rem #000000;
+        border-left: 2.5px solid #f44236;
+        font-size: 0.5vh;
+    }
+
+}
+
+.success {
+    background-color: rgba(23, 23, 23, 90%);
+    border-radius: 5px;
+    box-shadow: 0rem 0rem 0.1rem 0.05rem #000000;
+    border-left: 0.125rem solid #20bb44;
+}
+
+.primary {
+    background-color: rgba(23, 23, 23, 90%);
+    border-radius: 5px;
+    box-shadow: 0rem 0rem 0.1rem 0.05rem #000000;
+    border-left: 2.5px solid #1c75d2;
+}
+
+.error {
+    background-color: rgba(23, 23, 23, 90%);
+    border-radius: 5px;
+    box-shadow: 0rem 0rem 0.1rem 0.05rem #000000;
+    border-left: 2.5px solid #f44236;
+}
+
+.police {
+    background-color: rgba(23, 23, 23, 90%);
+    border-radius: 5px;
+    box-shadow: 0rem 0rem 0.1rem 0.05rem #000000;
+    border-left: 2.5px solid #2197f2;
+}
+
+.ambulance {
+    background-color: rgba(23, 23, 23, 90%);
+    border-radius: 5px;
+    box-shadow: 0rem 0rem 0.1rem 0.05rem #000000;
+    border-left: 2.5px solid #f44236;
+}
