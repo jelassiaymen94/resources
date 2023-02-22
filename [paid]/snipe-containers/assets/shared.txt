@@ -1,0 +1,11 @@
+	["small_container"]						 = {["name"] = "small_container", 						["label"] = "Small Container", 			["weight"] = 0, 		["type"] = "item", 		["image"] = "small_container.png", 					["unique"] = true, 	["useable"] = true, 	["shouldClose"] = true,	   		["combinable"] = nil,   ["description"] = "Small Container"},
+	["medium_container"]						 = {["name"] = "medium_container", 						["label"] = "Medium Container", 	["weight"] = 0, 		["type"] = "item", 		["image"] = "medium_container.png", 					["unique"] = false, 	["useable"] = true, 	["shouldClose"] = true,	   		["combinable"] = nil,   ["description"] = "Medium Container"},
+	["large_container"]						 = {["name"] = "large_container", 						["label"] = "Large Container", 				["weight"] = 0, 		["type"] = "item", 		["image"] = "large_container.png", 				["unique"] = false, 	["useable"] = true, 	["shouldClose"] = true,	   		["combinable"] = nil,   ["description"] = "Large Container"},
+	["keypad"]						 = {["name"] = "keypad", 						["label"] = "KeyPad", 				["weight"] = 0, 		["type"] = "item", 		["image"] = "keypad.png", 				["unique"] = false, 	["useable"] = false, 	["shouldClose"] = true,	   		["combinable"] = nil,   ["description"] = "Lock the containers"},
+
+    --change the weights to your liking
+
+
+
+
+If somebody can create an image for keypad, make sure to drop it in my dm's, I will add it so everyone can use it
