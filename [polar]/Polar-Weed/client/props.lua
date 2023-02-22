@@ -1,0 +1,131 @@
+local QBCore = exports[Config.Core]:GetCoreObject()
+
+
+
+
+CreateThread(function()
+
+    if Config.Debug then print('Props Started') end
+
+   
+        props()
+
+        Wait(100)
+
+        props2()
+
+        Wait(100)
+
+        props3()
+
+end)
+
+
+
+
+
+function props()
+    if Config.UseProps then
+        if Config.Debug then print('Props 1 Enabled') end
+
+    
+    Wait(50)
+   
+    local prop =  CreateObject(GetHashKey("ex_prop_crate_money_sc"),vector3(1044.85, -3198.84, -39.16), false, false, false) 
+        
+    local prop =  CreateObject(GetHashKey("h4_prop_h4_weed_stack_01a"),vector3(1040.54, -3207.79, -38.32), false, false, false) 
+
+
+    local prop =  CreateObject(GetHashKey("hei_prop_heist_weed_pallet"),vector3(1044.86, -3192.68, -38.91), false, false, false) 
+    local prop =  CreateObject(GetHashKey("hei_prop_heist_weed_pallet"),vector3(1043.2, -3192.76, -38.91), false, false, false) 
+    local prop =  CreateObject(GetHashKey("hei_prop_heist_weed_pallet_02"), vector3(1041.4, -3192.61, -38.91), false, false, false) 
+    local prop =  CreateObject(GetHashKey("bkr_prop_weed_bigbag_open_01a"), vector3(1043.09, -3192.82, -38.15), false, false, false) 
+    local prop =  CreateObject(GetHashKey("bkr_prop_weed_bucket_01a"), vector3(1041.62, -3192.47, -37.39), false, false, false) 
+    local prop =  CreateObject(GetHashKey("hei_prop_heist_weed_pallet"),vector3(1042.59, -3206.06, -38.85), false, false, false) 
+
+    local prop =  CreateObject(GetHashKey("bkr_prop_weed_dry_02b"), vector3(1040.29, -3193.57, -39.17), false, false, false) 
+    local prop =  CreateObject(GetHashKey("bkr_prop_weed_dry_02a"),vector3(1041.35, -3192.85, -37.4), false, false, false) 
+    local prop =  CreateObject(GetHashKey("h4_prop_h4_weed_dry_01a"),vector3(1045.38, -3195.36, -38.37), false, false, false) 
+    local prop =  CreateObject(GetHashKey("sf_prop_sf_bag_weed_01a"),vector3(1045.36, -3194.39, -38.37), false, false, false) 
+    local prop =  CreateObject(GetHashKey("bkr_prop_weed_dry_02a"),vector3(1045.15, -3194.19, -38.37), false, false, false) 
+   
+
+
+        Wait(50)
+        FreezeEntityPosition(prop, true)
+        
+else
+        
+    if Config.Debug then print('Props 1 not Enabled') end
+
+end
+end
+
+function props2()
+    if Config.UseProps then
+        if Config.Debug then print('Props 2 Enabled') end
+
+    Wait(50)
+
+
+    local prop =  CreateObject(GetHashKey("v_ret_gc_lamp"),vector3(1045.63, -3194.3, -38.37), false, false, false) 
+    local prop =  CreateObject(GetHashKey("p_weed_bottle_s"),vector3(1045.66, -3195.5, -38.37), false, false, false) 
+    local prop =  CreateObject(GetHashKey("bkr_prop_scales_01a"),vector3(1045.56, -3194.91, -38.37), false, false, false) 
+    local prop =  CreateObject(GetHashKey("prop_notepad_02"),vector3(1045.06, -3195.4, -38.36), false, false, false) 
+   
+    local prop =  CreateObject(GetHashKey("bkr_prop_weed_01_small_01b"),vector3(1045.6, -3196.0, -39.16), false, false, false) 
+    local prop =  CreateObject(GetHashKey("bkr_prop_weed_table_01b"),vector3(1041.1, -3207.85, -39.16), false, false, false) 
+   
+    local prop =  CreateObject(GetHashKey("prop_weed_tub_01"),vector3(1036.91, -3202.82, -38.28), false, false, false) 
+    local prop =  CreateObject(GetHashKey("bkr_prop_weed_01_small_01c"),vector3(1035.77, -3202.94, -38.28), false, false, false) 
+    local prop =  CreateObject(GetHashKey("bkr_prop_weed_bag_pile_01a"),vector3(1036.17, -3203.27, -38.3), false, false, false) 
+    local prop =  CreateObject(GetHashKey("bkr_prop_weed_dry_01a"),vector3(1035.53, -3203.25, -38.3), false, false, false) 
+   
+        -- water bottles
+    local prop =  CreateObject(GetHashKey("bkr_prop_weed_spray_01a"),vector3(1040.94, -3208.15, -38.33), false, false, false) 
+    local prop =  CreateObject(GetHashKey("bkr_prop_weed_spray_01a"),vector3(1038.59, -3205.02, -38.3), false, false, false) 
+    local prop =  CreateObject(GetHashKey("bkr_prop_weed_spray_01a"),vector3(1033.95, -3206.8, -38.3), false, false, false) 
+    local prop =  CreateObject(GetHashKey("bkr_prop_weed_spray_01a"),vector3(1034.61, -3202.73, -38.3), false, false, false) 
+    local prop =  CreateObject(GetHashKey("bkr_prop_weed_spray_01a"),vector3(1037.26, -3203.38, -38.3), false, false, false) 
+    local prop =  CreateObject(GetHashKey("bkr_prop_weed_spray_01a"),vector3(1043.6, -3192.98, -38.17), false, false, false) 
+   
+    local prop =  CreateObject(GetHashKey("prop_weed_tub_01"),vector3(1037.78, -3208.06, -39.17), false, false, false) 
+    local prop =  CreateObject(GetHashKey("bkr_prop_weed_bucket_01a"), vector3(1039.52, -3207.81, -39.15), false, false, false) 
+    local prop =  CreateObject(GetHashKey("bkr_prop_weed_bucket_01a"), vector3(1030.65, -3205.54, -39.2), false, false, false) 
+   
+    local prop =  CreateObject(GetHashKey("bkr_prop_scales_01b"), vector3(1041.61, -3207.6, -38.32), false, false, false) 
+    local prop =  CreateObject(GetHashKey("bkr_prop_weed_plantpot_stack_01b"), vector3(1041.95, -3208.13, -38.32), false, false, false) 
+    local prop =  CreateObject(GetHashKey("bkr_prop_weed_med_01a"), vector3(1037.93, -3202.9, -41.67), false, false, false) 
+   
+
+    Wait(50)
+    FreezeEntityPosition(prop, true)
+    
+else
+    
+if Config.Debug then print('Props 2 not Enabled') end
+
+end
+end
+
+
+function props3()
+    if Config.UseProps then
+        if Config.Debug then print('Props 3 Enabled') end
+
+    Wait(50)
+
+    local prop =  CreateObject(GetHashKey("bkr_prop_weed_bigbag_03a"), vector3(1038.33, -3206.74, -38.3), false, false, false) 
+    local prop =  CreateObject(GetHashKey("bkr_prop_fertiliser_pallet_02a"), vector3(vector3(1039.9, -3197.45, -39.17)), false, false, false) 
+    local prop =  CreateObject(GetHashKey("bkr_prop_weed_bag_pile_01a"),vector3(1041.23, -3207.8, -38.34), false, false, false) 
+    local prop =  CreateObject(GetHashKey("bkr_prop_weed_bucket_01a"), vector3(1032.94, -3202.75, -38.3), false, false, false) 
+   
+    Wait(50)
+    FreezeEntityPosition(prop, true)
+    
+else
+    
+if Config.Debug then print('Props 3 not Enabled') end
+
+end
+end

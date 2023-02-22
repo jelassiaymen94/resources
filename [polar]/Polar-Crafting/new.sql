@@ -1,0 +1,11 @@
+CREATE TABLE `polar-crafting` (
+	`id` INT(11) NOT NULL AUTO_INCREMENT,
+	`name` LONGTEXT NULL DEFAULT NULL COLLATE 'utf8mb4_general_ci',
+	`exp` VARCHAR(100) NOT NULL COLLATE 'utf8mb4_general_ci',
+	PRIMARY KEY (`id`) USING BTREE
+)
+COLLATE='utf8mb4_general_ci'
+ENGINE=InnoDB
+ROW_FORMAT=DYNAMIC
+AUTO_INCREMENT=41
+;
