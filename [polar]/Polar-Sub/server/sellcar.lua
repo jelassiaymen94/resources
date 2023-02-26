@@ -25,40 +25,52 @@ RegisterNetEvent('Polar-Sub:Server:Sell', function(money, vehicle, plate)
 
         if car == GetHashKey('r32') then
             model = 'r32'
-            amount = 1000000
+            amount = 875000
         elseif car == GetHashKey('gtr') then
             model = 'gtr'
-            amount = 700000
+            amount = 525000
         elseif car == GetHashKey('rmodgt63') then
             model = 'rmodgt63'
-            amount = 500000
+            amount = 875000
         elseif car == GetHashKey('rr14') then
             model = 'rr14'
-            amount = 100000
+            amount = 315000
         elseif car == GetHashKey('adder') then
-            model = 'adder'
-            amount = 5000
+            model = 'mgt'
+            amount = 291200
         elseif car == GetHashKey('adder') then
-            model = 'adder'
-            amount = 5000
+            model = 'subwrx'
+            amount = 273700
         elseif car == GetHashKey('adder') then
-            model = 'adder'
-            amount = 5000
+            model = 'evo9'
+            amount = 233100
         elseif car == GetHashKey('adder') then
-            model = 'adder'
-            amount = 5000
+            model = 'lc100'
+            amount = 192500
         elseif car == GetHashKey('adder') then
-            model = 'adder'
-            amount = 5000
+            model = '488misha'
+            amount = 525000
         elseif car == GetHashKey('adder') then
-            model = 'adder'
-            amount = 5000
+            model = 'fnfrx7'
+            amount = 385000
         elseif car == GetHashKey('adder') then
-            model = 'adder'
-            amount = 5000
+            model = 'bt62r'
+            amount = 1190000
         elseif car == GetHashKey('adder') then
-            model = 'adder'
-            amount = 5000
+            model = 'r8h'
+            amount = 770000
+        elseif car == GetHashKey('audirs6tk') then
+            model = 'r8h'
+            amount = 350000
+        elseif car == GetHashKey('m4') then
+            model = 'm4'
+            amount = 525000
+        elseif car == GetHashKey('trhawk') then
+            model = 'trhawk'
+            amount = 280000
+        elseif car == GetHashKey('s15rb') then
+            model = 's15rb'
+            amount = 396200
             
         end
     

@@ -129,44 +129,6 @@ function targets()
             distance = 1.5
         })
 
-
-end
-    
-AddEventHandler('onResourceStart', function(resource)
-    if resource == GetCurrentResourceName() then
-        Wait(100)
-        targets()
-    end
-end)
-RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function()
-    Wait(100)
-    targets()
-    
-end)
-CreateThread(function()
-   
-        exports['qb-target']:AddBoxZone("enterlab", Config.LabLocation, 0.3, 0.3, {
-            name = "enterlab",
-            heading = 0,
-                debugPoly = false,
-                minZ =  35.32- 1,
-                maxZ =  37.32 + 1,
-            }, {
-                options = {
-                    {
-                        type = "client",
-                        event = "Polar-Meth:client:enter",
-                        icon = "fa-solid fa-bolt",
-                        label = "Enter",
-                    }
-                },
-                distance = 1.5
-            })
-
-        
-        
-   
-    
         exports['qb-target']:AddBoxZone("exitlab", Config.InsideLabLocation, 0.15, 0.15, {
             name = "exitlab",
             heading = 0,
@@ -184,9 +146,18 @@ CreateThread(function()
                 },
                 distance = 1.5
             })
-
-
-   
+end
+    
+AddEventHandler('onResourceStart', function(resource)
+    if resource == GetCurrentResourceName() then
+        Wait(100)
+        targets()
+    end
+end)
+RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function()
+    Wait(100)
+    targets()
+    
 end)
 
 ----------------------
@@ -503,7 +474,16 @@ if not bag then
                 endanimation()
                 givestuff()
                 end, function()
-                
+                    mix = false
+    temp = false
+    temp1 = false
+    temp2 = false
+    temp3 = false
+    temp4 = false
+    smash = false
+    bag = false
+    cooldown = false
+    percents = false
                     endanimation()
                 QBCore.Functions.Notify('Canceled', red)
                 if Config.Debug then print('canceled') end
@@ -593,6 +573,16 @@ if not bag then
 	DeleteEntity(scoop)
     Wait(150)
                 givestuff()
+                mix = false
+                temp = false
+                temp1 = false
+                temp2 = false
+                temp3 = false
+                temp4 = false
+                smash = false
+                bag = false
+                cooldown = false
+                percents = false
             end
 
 

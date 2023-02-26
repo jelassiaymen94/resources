@@ -33,29 +33,27 @@ RegisterNetEvent('Polar-Sub:Client:Transfer', function(data)
         print(removeitemamount4)
     end
     pp = math.random(1,100)
-    if pp < 25 then
+    if pp < 50 then
+        emote = 'argue1'
+    elseif pp < 101 then
         emote = 'argue2'
-    elseif pp < 50 then
-        emote = 'argue3'
-    elseif pp < 75 then
-        emote = 'argue4'
-    else
-        emote = 'argue5'
     end
     Wait(5)
     if hasamount then
-    exports["Polar-Emotes"]:EmoteCommandStart(emote, 1)
-    QBCore.Functions.Progressbar("hi", "Argueing Over "  .. removeitemamount4 .. " " .. QBCore.Shared.Items[removeitem4].label .. " " , 15000, false, true, 
+        TriggerEvent('animations:client:EmoteCommandStart', {emote})
+   -- exports["Polar-Emotes"]:EmoteCommandStart(emote, 1)
+    QBCore.Functions.Progressbar("hi", "Arguing Over "  .. removeitemamount4 .. " " .. QBCore.Shared.Items[removeitem4].label .. " " , 15000, false, true, 
     {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = false, },
     {}, {}, {}, 
     function() -- Done
 
         TriggerServerEvent('Polar-Sub:Server:Trada', item4, amount4, removeitem4, removeitemamount4)
-        exports["Polar-Emotes"]:EmoteCancel(emote)
-
+       -- exports["Polar-Emotes"]:EmoteCancel(emote)
+TriggerEvent('animations:client:EmoteCommandStart', {"c"})
 
     end, function()
-        exports["Polar-Emotes"]:EmoteCancel(emote)
+      --  exports["Polar-Emotes"]:EmoteCancel(emote)
+      TriggerEvent('animations:client:EmoteCommandStart', {"c"})
         -- cancel notification
         QBCore.Functions.Notify('Canceled', 'error')
 
@@ -136,13 +134,13 @@ function trada(item, amount, removeitem, removeitemamount)
         { 
             header = 'Material Trader',
             icon = 'fa-solid fa-recycle',
-            txt = " <img src=nui://"..Config.img..QBCore.Shared.Items[item].image.. " width=45px onerror='this.onerror=null; this.remove();'>"..QBCore.Shared.Items[item].label .. " Trader",
+            txt = " "..QBCore.Shared.Items[item].label .. " Trader",
             isMenuHeader = true
         },
         {   
             --icon = 'fa-solid fa-recycle',
             header = "<img src=nui://"..Config.img..QBCore.Shared.Items[item].image.." " .. amount .. " width=45px onerror='this.onerror=null; this.remove();'>"..QBCore.Shared.Items[item].label,
-            txt = "Required: <img src=nui://"..Config.img..QBCore.Shared.Items[removeitem].image.." " .. removeitemamount .. " width=45px onerror='this.onerror=null; this.remove();'>"..QBCore.Shared.Items[removeitem].label,
+            txt = "Required: <p> <img src=nui://"..Config.img..QBCore.Shared.Items[removeitem].image.." " .. removeitemamount .. " width=45px onerror='this.onerror=null; this.remove();'>"..QBCore.Shared.Items[removeitem].label,
             params = { 
                 event = "Polar-Sub:Client:Transfer",
                 args = {

@@ -54,7 +54,7 @@ end
 function ammo()
     local PlayerData = QBCore.Functions.GetPlayerData()
 	local ammomenu = {
-		{ header = "Weapons Bench", txt = "", icon = "", isMenuHeader = true },
+		{ header = "Ammunition Bench", txt = "", icon = "", isMenuHeader = true },
 		{ icon = "fas fa-circle-xmark", header = "", txt = "Close", params = { event = "Menu:Close" } } }
         local disable = false
         local hide = false
@@ -126,22 +126,13 @@ for i = 1, #Config.ToolsBench do
 end
 
 
-RegisterNetEvent('Polar-Crafting:Client:StartAnim', function()
 
-    exports["Polar-Emotes"]:EmoteCommandStart('mechanic', 1)
-
-end)
-RegisterNetEvent('Polar-Crafting:Client:EndAnim', function()
-
-    exports["Polar-Emotes"]:EmoteCancel('mechanic')
-
-end)
 RegisterNetEvent('Polar-Crafting:Client:Anim', function(item)
     
    
     QBCore.Functions.Progressbar("crafting", "Crafting " .. item .. " ", 14000, false, true, 
     {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = false, },
-    {}, {}, {}, 
+    {animDict = "mini@repair", anim = "fixing_a_ped", flags = 0,}, {}, {}, 
     function() -- Done
 
      
@@ -162,71 +153,37 @@ RegisterNetEvent('Polar-Crafting:Client:Anim', function(item)
 end)
 
 
----- ANIMATIONS -----
-function animation()
-    local playerPed = PlayerPedId()
-    TaskStartScenarioInPlace(playerPed, "WORLD_VEHICLE_POLICE_CAR  ", 0, true)
 
-end
-function endanimation()
-    local playerPed = PlayerPedId()
-    ClearPedTasks(playerPed)
-end
 
-RegisterNetEvent('Polar-Crafting:Client:OpenMenuWeapons', function()
+RegisterNetEvent('Polar-Crafting:Client:OpenMenuPublic', function(data)
+   type = data.type
    
-   
+   if type == 'weapons' then
     GetHeader()
     Wait(50)
     Wait(50)
-    weapons()
-    --openmenupublicweapons()
-
-end)
-
-RegisterNetEvent('Polar-Crafting:Client:OpenMenuExplosives', function()
-   
-    --xpcheck()
-    GetHeader()
-    Wait(50)
-    Wait(50)
-    explosives()
-    --openmenupublicexplosives()
-
-end)
-RegisterNetEvent('Polar-Crafting:Client:OpenMenuPublicparts', function()
-   
-     --xpcheck()
-     GetHeader()
-     Wait(50)
-     Wait(50)
-    -- openmenupublicparts()
-    
-
-end)
-RegisterNetEvent('Polar-Crafting:Client:OpenMenuPublicammo', function()
-   
-    --xpcheck()
+   TriggerEvent('Polar-Crafting:Client:WeaponsBench')
+   elseif type == 'ammo' then
     GetHeader()
     Wait(50)
     Wait(50)
     ammo()
-    --openmenupublicammo()
-  
-
+   elseif type == 'tools' then
+    GetHeader()
+    Wait(50)
+    Wait(50)
+    tools()
+   elseif type == 'explosives' then
+  --xpcheck()
+  GetHeader()
+  Wait(50)
+  Wait(50)
+  explosives()
+   else
+    print('error')
+   end
 end)
-RegisterNetEvent('Polar-Crafting:Client:OpenMenuPublictools', function()
-   
-     --xpcheck()
-     GetHeader()
-     Wait(50)
-     Wait(50)
-     tools()
-    -- openmenupublictools()
-   
-   
 
-end)
 local gang = nil
 local GangName = nil
 function GetGang()
@@ -261,7 +218,7 @@ function GetGang()
 
 end
 RegisterNetEvent('Polar-Crafting:Client:WeaponsBench', function()
-    GetHeader()
+    --GetHeader()
 
    
     exports['qb-menu']:openMenu({
@@ -276,7 +233,7 @@ RegisterNetEvent('Polar-Crafting:Client:WeaponsBench', function()
             txt = "Highly Advanced Weaponry to Your Disposal",
             icon = "fas fa-gun",
             params = { 
-                event = "Polar-Crafting:Client:OpenMenuWeapons",
+                event = "Polar-Crafting:Client:CraftWeapons",
                 
             }
         },
@@ -292,6 +249,11 @@ RegisterNetEvent('Polar-Crafting:Client:WeaponsBench', function()
         },
 
     })
+
+end)
+RegisterNetEvent('Polar-Crafting:Client:CraftWeapons', function()
+
+    weapons()
 
 end)
 RegisterNetEvent('Polar-Crafting:Client:Gang', function()

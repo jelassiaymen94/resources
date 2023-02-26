@@ -10,40 +10,7 @@ local gang = nil
 local GangName = nil
 
 local exp = 5
---[[
-CreateThread(function()
 
-
-
-   
-       
-   
-    exports['qb-target']:AddBoxZone("gangcraft1", vector3(-252.9, -981.75, 32.01), 5, 5, {
-        name = "gangcraft1",
-        heading = 0,
-        debug = true,
-            minZ = 30.6,
-            maxZ =  34.6,
-        }, {
-            options = {
-                {
-                    type = "Client",
-                    event = "Polar-Crafting:Client:OpenGangMenu",
-                    icon = "fa-solid fa-bolt",
-                    label = "Open",
-                    --job = 'police',
-                    --gang = 'vatos',
-                   -- excludejob = 'police'
-                }
-            },
-            distance = 1.5
-        })
-
-     
-     
-
-end)
-]]
 RegisterNetEvent('Polar-Crafting:Client:OpenGangMenu', function()
 
     findgang()

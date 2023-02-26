@@ -12,10 +12,10 @@ Config.Locations = {
       x = -515.1486,y = -256.6466,z = 34.6088, -- Spawn Coords
     },
     {
-      top = 640, -- Margin from Top (in pixels)
-      left = 1120, -- Margin from Left (in pixels)
-      label = 'Pier', -- Pin Label
-      x = -1604.5989,y = -1048.3868,z = 12.0422, -- Spawn Coords
+      top = 435, -- Margin from Top (in pixels)
+      left = 1190, -- Margin from Left (in pixels)
+      label = 'Police Department', -- Pin Label
+      x = 426.5989,y = -1631.3868,z = 29.0422, -- Spawn Coords
     },
     {
       top = 502, -- Margin from Top (in pixels)

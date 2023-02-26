@@ -72,7 +72,7 @@ CreateThread(function()
    
 
    
-    exports['qb-target']:AddBoxZone("mission", vector3(1045.2, -3194.85, -38.33), 1, 1, {
+   --[[ exports['qb-target']:AddBoxZone("mission", vector3(1045.2, -3194.85, -38.33), 1, 1, {
         name = "mission",
         heading = 0,
         debug = Config.Debug,
@@ -89,7 +89,7 @@ CreateThread(function()
                 }
             },
             distance = 1.5
-        })
+        })]]
     
     
 
@@ -158,8 +158,8 @@ CreateThread(function()
 end)
 CreateThread(function()
    
---[[
-    exports['qb-target']:AddBoxZone("POT1", vector3(1049.38, -3195.28, -39.15), 1, 1, {
+
+    --[[exports['qb-target']:AddBoxZone("POT1", vector3(1049.38, -3195.28, -39.15), 1, 1, {
         name = "POT1",
         heading = 0,
         debug = Config.Debug,
@@ -183,7 +183,7 @@ CreateThread(function()
     { options = { {  event = "Polar-Weed:Client:Stash", icon = "fas fa-box-open", label = 'Open', excludejob = 'police', stash = "Storage", coords = vector3(1044.78, -3198.98, -38.45), }, },  distance = 2.0 })
 
     
-    exports['qb-target']:AddBoxZone("Sort2", vector3(1034.56, -3206.16, -38.68), 1, 1, {
+   --[[ exports['qb-target']:AddBoxZone("Sort2", vector3(1034.56, -3206.16, -38.68), 1, 1, {
         name = "Sort2",
         heading = 0,
         debug = Config.Debug,
@@ -218,7 +218,7 @@ CreateThread(function()
                     }
                 },
                 distance = 1.5
-            })
+            })]]
             exports['qb-target']:AddBoxZone("Sort5", vector3(1037.4, -3205.92, -38.69), 1, 1, {
                 name = "Sort5",
                 heading = 0,
@@ -236,7 +236,7 @@ CreateThread(function()
                         }
                     },
                     distance = 1.5
-                })
+                })--[[
             exports['qb-target']:AddBoxZone("Sort4", vector3(1039.37, -3205.9, -38.7), 1, 1, {
                 name = "Sort4",
                 heading = 0,
@@ -272,7 +272,7 @@ CreateThread(function()
                     }
                 },
                 distance = 1.5
-            })
+            })]]
 end)
 function camerastart()
     local sceneCam = CreateCam("DEFAULT_SCRIPTED_CAMERA", true)
@@ -292,7 +292,7 @@ function cameraend()
         end
 
 end
-RegisterNetEvent('Polar-Weed:Client:MissionStart', function()
+--[[RegisterNetEvent('Polar-Weed:Client:MissionStart', function()
     
     QBCore.Functions.TriggerCallback('Polar-Weed:Server:MCooldownCheck', function(MissionCheck)
         cooldown1 = MissionCheck
@@ -308,7 +308,7 @@ RegisterNetEvent('Polar-Weed:Client:MissionStart', function()
         QBCore.Functions.Notify("Someone is Already Sourcing Products", red, alerttime)
         if Config.Debug then print('Someone is Already Sourcing Products') end
     end
-end)
+end)]]
 
 function randommail()
     local math = math.random(1,15)
@@ -1145,7 +1145,7 @@ RegisterNetEvent('Polar-Weed:Client:Sort1', function()
         TriggerServerEvent('Polar-Weed:Server:Checked1')
         
     local heading = 0
-    local coord =  vector3(1034.56, -3206.16, -37.68)
+    local coord =  vector3(1034.56, -3206.16, -3700.68)
     local rotx = 0-- -0.60
     local roty = 0.75
     local rotz = -1.4
@@ -1272,7 +1272,7 @@ RegisterNetEvent('Polar-Weed:Client:Sort2', function()
         if Config.Debug then print('Started Sort') end
         TriggerServerEvent('Polar-Weed:Server:Checked2')
     local heading = 90
-    local coord =  vector3(1034.56, -3206.16, -37.68)
+    local coord =  vector3(1034.56, -3206.16, -3700.68)
     local rotx =  -0.60
     local roty = 0--0.75
     local rotz = -1.4
@@ -1400,7 +1400,7 @@ RegisterNetEvent('Polar-Weed:Client:Sort3', function()
         if Config.Debug then print('Started Sort') end
         TriggerServerEvent('Polar-Weed:Server:Checked2')
     local heading = 270
-    local coord =  vector3(1032.64, -3206.14, -37.7)
+    local coord =  vector3(1032.64, -3206.14, -3700.7)
     local rotx =  0.85
     local roty = 0--0.75
     local rotz = -1.4
@@ -1528,7 +1528,7 @@ RegisterNetEvent('Polar-Weed:Client:Sort4', function()
         if Config.Debug then print('Started Sort') end
         TriggerServerEvent('Polar-Weed:Server:Checked3')
     local heading = 90
-    local coord =  vector3(1039.37, -3205.9, -37.7)
+    local coord =  vector3(1039.37, -3205.9, -3700.7)
     local rotx =  -0.85
     local roty = 0--0.75
     local rotz = -1.4

@@ -3,7 +3,7 @@ local QBCore = exports['qb-core']:GetCoreObject()
 
 
 CreateThread(function()
-    targets()
+    --targets()
 end)
 AddEventHandler('onResourceStart', function(resource)
     if resource == GetCurrentResourceName() then
@@ -17,203 +17,33 @@ RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function()
     
 end)
 
+function makeProp(data, freeze, synced)
+    RequestModel(data.prop)
+    local prop = CreateObject(data.prop, data.coords.x, data.coords.y, data.coords.z-1.03, synced or 0, synced or false, false)
+    SetEntityHeading(prop, data.coords.w)
+    FreezeEntityPosition(prop, freeze or 0)
+    if Config.Debug then print("^5Debug^7: ^6Prop ^2Created ^7: '^6"..prop.."^7'") end
+    return prop
+end
+
 function targets()
+   -- print('startin2g')
+    for i = 1, #Config.Locations do
 
-    if Config.Debug then print('starting') end
+        table = Config.Locations[i].Table
+        Wait(50)
+	--print('1')
+    makeProp({prop = `prop_tool_bench02`, coords = vector4(table.x, table.y, table.z, table.w-180.0)}, 1, false)
+   -- print('3')
+    exports['qb-target']:AddBoxZone("h: " .. Config.Locations[i].name .. " ", vector3(table.x, table.y, table.z), 0.8, 0.5, { name="h: " .. Config.Locations[i].name .. " ", heading = table.w+180.0, debugPoly=false, minZ=table.z-1.05, maxZ=table.z+0.80 },
+				{ options = { { event = "Polar-Crafting:Client:OpenMenuPublic", icon = "fa-solid fa-bolt", label = "Open", type = Config.Locations[i].type }, },
+				distance = 2.0 })
 
+        
+    end
 end
 RegisterNetEvent('Polar-Crafting:Client:OpenBench', function(data)
     type = data.type
     print(type)
-
-end)
-
-
---[[
-CreateThread(function()
-    --Weapon Parts
-
-  
-    exports['qb-target']:AddBoxZone("public2", vector3(2510.49, -977.5, 31.01), 5, 5, {
-        name = "public2",
-        heading = 0,
-        debug = true,
-            minZ = 30.6,
-            maxZ =  34.6,
-        }, {
-            options = {
-                {
-                    type = "Client",
-                    event = "Polar-Crafting:Client:OpenMenuPublicparts",
-                    icon = "fa-solid fa-bolt",
-                    label = "Open",
-                    --job = 'police',
-                   -- excludejob = 'police'
-                }
-            },
-            distance = 1.5
-        })
-    
-
-end)
-
-]]
-CreateThread(function()
-    --Ammo Bench
-
-  
-    exports['qb-target']:AddBoxZone("public3", vector3(2781.2, 1400.37, 24.4), 5, 5, {
-        name = "public3",
-        heading = 0,
-        debug = true,
-            minZ = 20.6,
-            maxZ =  24.6,
-        }, {
-            options = {
-                {
-                    type = "Client",
-                    event = "Polar-Crafting:Client:OpenMenuPublicammo",
-                    icon = "fa-solid fa-bolt",
-                    label = "Open",
-                    --job = 'police',
-                   -- excludejob = 'police'
-                }
-            },
-            distance = 1.5
-        })
-
-
-    exports['qb-target']:AddBoxZone("public10", vector3(-52.58, 1888.6, 195.35), 5, 5, {
-            name = "public10",
-            heading = 0,
-            debug = true,
-                minZ = 195.0,
-                maxZ =  195.5,
-        }, {
-                options = {
-                    {
-                        type = "Client",
-                        event = "Polar-Crafting:Client:OpenMenuPublicammo",
-                        icon = "fa-solid fa-bolt",
-                        label = "Open",
-                        --job = 'police',
-                       -- excludejob = 'police'
-                    }
-                },
-                distance = 1.5
-        })
-    
-    
-     
-
-end)
-CreateThread(function()
-    --Tools Bench
-
-  
-    exports['qb-target']:AddBoxZone("public4", vector3(2463.35, 3452.09, 49.9), 5, 5, {
-        name = "public4",
-        heading = 0,
-        debug = true,
-            minZ = 49.9,
-            maxZ =  50.6,
-        }, {
-            options = {
-                {
-                    type = "Client",
-                    event = "Polar-Crafting:Client:OpenMenuPublictools",
-                    icon = "fa-solid fa-bolt",
-                    label = "Open",
-                    --job = 'police',
-                   -- excludejob = 'police'
-                }
-            },
-            distance = 1.5
-        })
-
-        
-    exports['qb-target']:AddBoxZone("25", vector3(303.76, 2899.5, 43.48), 5, 5, {
-        name = "25",
-        heading = 35,
-        debug = true,
-            minZ = 43.4,
-            maxZ =  43.9,
-        }, {
-            options = {
-                {
-                    type = "Client",
-                    event = "Polar-Crafting:Client:OpenMenuPublictools",
-                    icon = "fa-solid fa-bolt",
-                    label = "Open",
-                    --job = 'police',
-                   -- excludejob = 'police'
-                }
-            },
-            distance = 1.5
-        })
-     
-
-end)
-CreateThread(function()
-    -- weapon Bench
-
-        -- 1
-        exports['qb-target']:AddBoxZone("public1", vector3(1598.52, -1666.9, 88.02), 5, 5, {
-            name = "public1",
-            heading = 0,
-            debug = true,
-                minZ = 88.0,
-                maxZ =  88.5,
-            }, {
-                options = {
-                    {
-                        type = "Client",
-                        event = "Polar-Crafting:Client:WeaponsBench",
-                        icon = "fa-solid fa-bolt",
-                        label = "Open",
-                        --job = 'police',
-                        --gang = "scrap",
-                       -- excludejob = 'police'
-                    }
-                },
-                distance = 1.5
-            })
-
-          
-         
-
-
-
-end)
-
-
-
-CreateThread(function()
-    -- explosive Bench
-
-        -- 1
-        exports['qb-target']:AddBoxZone("public5", vector3(679.32, 1287.06, 360.27), 5, 5, {
-            name = "public5",
-            heading = 0,
-            debug = true,
-                minZ = 360.0,
-                maxZ =  360.5,
-            }, {
-                options = {
-                    {
-                        type = "Client",
-                        event = "Polar-Crafting:Client:OpenMenuExplosives",
-                        icon = "fa-solid fa-bolt",
-                        label = "Open",
-                        --job = 'police',
-                       -- excludejob = 'police'
-                    }
-                },
-                distance = 1.5
-            })
-    
-         
-
-
 
 end)

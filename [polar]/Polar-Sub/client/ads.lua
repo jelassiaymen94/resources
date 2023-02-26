@@ -15,7 +15,7 @@ CreateThread( function()
   while true do    
     
     Wait(1)
-
+--[[
 
         if IsControlPressed(0, INPUT_AIM) then
           justpressed = justpressed + 1
@@ -50,7 +50,7 @@ CreateThread( function()
         	end
     		UseFPS = false
         end
-
+]]
         -- stops melee bs
         if IsPedArmed(ped,1) or not IsPedArmed(ped,7) then
             if IsControlJustPressed(0,24) or IsControlJustPressed(0,141) or IsControlJustPressed(0,142) or IsControlJustPressed(0,140)  then
@@ -125,7 +125,7 @@ CreateThread(function()
            
                
                 end
-                print(FPS)
+               -- print(FPS)
                 
             end
            

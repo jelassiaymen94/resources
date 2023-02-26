@@ -1,15 +1,28 @@
 local QBCore = exports['qb-core']:GetCoreObject()
-
+CreateThread(function()
+    --traderpeds()
+end)
+AddEventHandler('onResourceStart', function(resource)
+    if resource == GetCurrentResourceName() then
+        Wait(100)
+       -- peds()
+    end
+end)
+RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function()
+    Wait(100)
+   -- peds()
+    
+end)
 -- vector3(1305.74, 241.73, -49.06)
-
+--[[
 CreateThread(function()
    
 
     local lift = createobject
     -- imp_prop_impexp_carrack
    
-    local prop =  CreateObject(GetHashKey("imp_prop_impexp_carrack"),vector3(138.68, -3047.09, 6.04), true, false, false) 
-    local prop =  CreateObject(GetHashKey("imp_prop_impexp_carrack"),vector3(144.44, -3047.06, 6.04), true, false, false) 
+   -- local prop =  CreateObject(GetHashKey("imp_prop_impexp_carrack"),vector3(138.68, -3047.09, 6.04), true, false, false) 
+   -- local prop =  CreateObject(GetHashKey("imp_prop_impexp_carrack"),vector3(144.44, -3047.06, 6.04), true, false, false) 
     --local prop =  CreateObject(GetHashKey("imp_prop_impexp_carrack"),vector3(146.1, -3046.98, 6.04), true, false, false) 
     Wait(50)
     FreezeEntityPosition(prop, true)
@@ -23,7 +36,18 @@ CreateThread(function()
 end)
 
 function cars()
-
+  --[[  local car = `r32`
+    RequestModel(car)
+    while not HasModelLoaded(car) do
+        Wait(0)
+    end
+    veh = CreateVehicle(car, 151.2, -3031.52, 6.04, 58.38, false, false)
+    SetModelAsNoLongerNeeded(car)
+    SetVehicleOnGroundProperly(veh)
+    SetEntityInvincible(veh, true) 
+    SetVehicleModKit(veh, 0)
+    SetVehicleNumberPlateText(veh, "JAPANZI")
+    SetVehicleNumberPlateTextIndex(veh, 3)
     ------ row
 
     QBCore.Functions.SpawnVehicle('r32', function(veh)
@@ -105,7 +129,7 @@ function cars()
 
     
 
-  --[[ QBCore.Functions.SpawnVehicle('bdragon', function(veh)
+   QBCore.Functions.SpawnVehicle('bdragon', function(veh)
         SetEntityHeading(veh, 0)
         SetVehicleNumberPlateText(veh, "HATCHBAK")
         FreezeEntityPosition(veh, true)
@@ -119,6 +143,6 @@ function cars()
         FreezeEntityPosition(veh, true)
 
     end, vector3(125.45, -3035.05, 6.18), false)
-    ]]
+    
 end
-
+]]

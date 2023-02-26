@@ -21,6 +21,9 @@ CreateThread(function()
 end)
 
 
+-- Define a table to store the props that have been placed down
+local placedProps = {}
+
 
 
 

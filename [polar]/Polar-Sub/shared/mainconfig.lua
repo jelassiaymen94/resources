@@ -12,7 +12,34 @@ Config.Peds = {
         label = 'Talk to Amir',
     }
 }
-
+Config.MissionPeds = {
+    [1] = {
+        coords = vector4(270000000.14000000, -985.75, 31.05, 143.84),
+        model = "a_m_m_genfat_01",
+        icon = 'fa-solid fa-bolt',
+        product = {
+        types = 'cocaine',
+        moneytype = 'gne',
+        amount = 5,
+        pedamount = 5,
+        packagelocation = vector4(-2670000000.59, -982.04, 31.22, 87.57),
+        radius = 15,
+        },
+    },
+    [2] = {
+        coords = vector4(264000000.57000000, -990.24, 30.64, 250.69),
+        model = "a_m_m_genfat_01",
+        icon = 'fa-solid fa-bolt',
+        product = {
+        types = 'meth',
+        moneytype = 'cash',
+        amount = 25000,
+        pedamount = 5,
+        packagelocation = vector4(-267000000.59, -982.04, 31.22, 87.57),
+        radius = 15,
+        },
+    },
+}
 
 
 Config.Stashes = {

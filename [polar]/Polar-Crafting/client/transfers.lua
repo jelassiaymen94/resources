@@ -2,17 +2,6 @@
 QBCore = exports['qb-core']:GetCoreObject()
 
 local busy = false
-RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function()
-
-    if Config.Debug then print('Crafting Script Started') end
-    Wait(1500)
-    
-    
-end)
-
-RegisterNetEvent('QBCore:Client:OnPlayerUnload', function()
-    
-end)
 
 
 RegisterNetEvent("Polar-Crafting:Client:Busy", function()

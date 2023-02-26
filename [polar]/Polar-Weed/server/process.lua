@@ -459,12 +459,12 @@ RegisterNetEvent('Polar-Weed:Server:ProcessBag', function(args)
     else
         local highGrade = Player.Functions.GetItemByName("crophigh") 
         if highGrade ~= nil then
-            if highGrade.amount >= removeAmount then
+            if highGrade.amount >= 1 then
                 local baggies = Player.Functions.GetItemByName("drugbag") 
                 if baggies ~= nil then
                     if baggies.amount >= baggieAmount then
-                        Player.Functions.RemoveItem("crophigh", removeAmount)
-                        TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['crophigh'], "remove", removeAmount)
+                        Player.Functions.RemoveItem("crophigh", 1)
+                        TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['crophigh'], "remove", 1)
                         local number = math.random(1,9)
                        
                        
@@ -484,16 +484,16 @@ RegisterNetEvent('Polar-Weed:Server:ProcessBag', function(args)
                       --  TriggerClientEvent('Polar-Weed:Client:AnimationStart')
                         --TriggerClientEvent('QBCore:Notify', src, "Bagging 3.5 Grams...", 'primary', packageTime)
                         SetTimeout(packageTime, function()
-                            if Player.Functions.AddItem('35weedhigh', returnAmount, nil, info, {["quality"] = 100}) then
+                            if Player.Functions.AddItem('weedpound', returnAmount, nil, info, {["quality"] = 100}) then
                                 Player.Functions.RemoveItem("drugbag", baggieAmount)
                                 TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items["drugbag"], "remove", baggieAmount)
-                                TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items["35weedhigh"], "add", returnAmount)
+                                TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items["weedpound"], "add", math.random(2,3))-- returnAmount)
                             --   
                             else
                                 TriggerClientEvent('QBCore:Notify', src, 'You have to much in your pockets', 'error')
                               -- 
-                                Player.Functions.AddItem("crophigh", removeAmount)
-                                TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items["crophigh"], "add", removeAmount)
+                                Player.Functions.AddItem("crophigh", 1)
+                                TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items["crophigh"], "add", 1)
                             end
                         end)
                     else

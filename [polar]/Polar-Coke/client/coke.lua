@@ -25,9 +25,22 @@ local level2 = false
 local level3 = false
 local level4 = false
 CreateThread(function()
-
-
-
+    --traderpeds()
+end)
+AddEventHandler('onResourceStart', function(resource)
+    if resource == GetCurrentResourceName() then
+        Wait(100)
+        targets()
+        props()
+    end
+end)
+RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function()
+    Wait(100)
+    targets()
+    props()
+    
+end)
+function targets()
     exports['qb-target']:AddBoxZone("enterlab2", vector3(387.1, 3584.2, 33.79), 1, 1, {
         name = "enterlab3",
         heading = 0,
@@ -45,29 +58,29 @@ CreateThread(function()
             },
             distance = 1.5
         })
+        exports['qb-target']:AddBoxZone("exitlab", vector3(1088.16, -3187.18, -38.85), 1, 1, {
+            name = "exitlab",
+            heading = 0,
+                 debugPoly = false,
+                minZ =  -39.00,
+                maxZ =-38.7,
+            }, {
+                options = {
+                    {
+                        type = "Client",
+                        event = "Polar-Coke:Client:Exit",
+                        icon = "fa-solid fa-bolt",
+                        label = "Exit",
+                    }
+                },
+                distance = 1.5
+            })
+end
 
-
-end)
 CreateThread(function()
 
 
-    exports['qb-target']:AddBoxZone("exitlab", vector3(1088.16, -3187.18, -38.85), 1, 1, {
-        name = "exitlab",
-        heading = 0,
-             debugPoly = false,
-            minZ =  -39.00,
-            maxZ =-38.7,
-        }, {
-            options = {
-                {
-                    type = "Client",
-                    event = "Polar-Coke:Client:Exit",
-                    icon = "fa-solid fa-bolt",
-                    label = "Exit",
-                }
-            },
-            distance = 1.5
-        })
+  
     
     exports['qb-target']:AddTargetModel("h4_prop_bush_cocaplant_01", {
             options = {
@@ -172,8 +185,8 @@ CreateThread(function()
    
    
    
-        props()
-    
+      --  props()
+    --
    
    
 

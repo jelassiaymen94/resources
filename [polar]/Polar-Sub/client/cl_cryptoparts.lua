@@ -76,9 +76,9 @@ RegisterNetEvent('Polar-Sub:Client:Anim2', function(items, cryptos, amounts)
      
 
         pp = math.random(1,100)
-        if pp < 25 then
+        if pp < 50 then
             emote = 'argue2'
-        elseif pp < 50 then
+        elseif pp < 101 then
             emote = 'argue3'
         elseif pp < 75 then
             emote = 'argue4'
@@ -87,7 +87,7 @@ RegisterNetEvent('Polar-Sub:Client:Anim2', function(items, cryptos, amounts)
         end
         Wait(5)
        
-        exports["Polar-Emotes"]:EmoteCommandStart(emote, 1)
+        TriggerEvent('animations:client:EmoteCommandStart', {emote})
     QBCore.Functions.Progressbar("hi", "Sending " .. amounts .. " Crypto... ", 2500, false, true, 
     {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = false, },
     {}, {}, {}, 
@@ -95,12 +95,12 @@ RegisterNetEvent('Polar-Sub:Client:Anim2', function(items, cryptos, amounts)
 
      
         
-        exports["Polar-Emotes"]:EmoteCancel(emote)
+        TriggerEvent('animations:client:EmoteCommandStart', {"c"})
         TriggerServerEvent('Polar-Sub:Server:RemoveCrypto', items, cryptos, amounts)
       
 
     end, function()
-        exports["Polar-Emotes"]:EmoteCancel(emote)
+        TriggerEvent('animations:client:EmoteCommandStart', {"c"})
         -- cancel notification
         QBCore.Functions.Notify('Canceled', 'error')
 

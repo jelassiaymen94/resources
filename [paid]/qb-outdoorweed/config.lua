@@ -2,17 +2,17 @@ Config = {}
 
 Config.CoreName = 'qb-core' -- The qb-core resource name if you have renamed it
 
-Config.GrowthTime = 360
+Config.GrowthTime = 60
 
-Config.MinPlantDistance = 4.0 -- Minimum distance between plants - recommended to be at least 4.0 minimum
+Config.MinPlantDistance = 3.0 -- Minimum distance between plants - recommended to be at least 4.0 minimum
 
 Config.MaleFactor = 0.9
 Config.FertilizerFactor = 0.9
 
 Config.HarvestPercent = 95
 
-Config.WaterAdd = math.random(16,20)
-Config.FertilizerAdd = math.random(16,20)
+Config.WaterAdd = math.random(20,40)
+Config.FertilizerAdd = math.random(2,40)
 
 Config.WaterReduceAmt = 5 -- How much to reduce water units by (5 default)
 Config.FertReduceAmt = 5 -- How much to reduce fertilizer units by (5 default)
@@ -29,28 +29,28 @@ Config.QualityAmt = 200 -- This means a maximum of 20 weed (Making this number s
 
 
 ---- ** MALE SEED CONFIG ** ----
-Config.FemaleSeeds = math.random(1,4)
-Config.MaleSeeds = math.random(1,1)
+Config.FemaleSeeds = math.random(2,4)
+Config.MaleSeeds = math.random(0,1)
 
 ---- ** ITEM CONFIG ** ----
-Config.DryWeed = "drybud"
-Config.WeedItem = "croplow"
+Config.DryWeed = "crophigh"
+Config.WeedItem = "wetbud"
 Config.JointItem = 'rolling_paper' -- What item is needed to roll joints?
-Config.WeedBag = 'empty_weed_bag' -- What item is needed to Bag weed?
-Config.WeedInBag = 'weed_bag'
+Config.WeedBag = 'drugbag' -- What item is needed to Bag weed?
+Config.WeedInBag = '1ozhigh'
 Config.FinalJoint = "joint"
 
 Config.FertilizerItem = 'weed_nutrition'
-Config.WaterItem = 'water_bottle'
+Config.WaterItem = 'purifiedwater'
 Config.MaleSeedItem = 'male_seed'
-Config.FemaleSeedItem = 'weed_seeds'
+Config.FemaleSeedItem = 'female_seed'
 
 ---- ** TIME CONFIG ** ----
 Config.ProcessTime = 2500 -- This is in Milliseconds so this is 2.5 seconds
-Config.UpdateInterval = 30 * (60 * 1000) -- How often do you want to update your plants (30mins default)
+Config.UpdateInterval = 5 * (60 * 1000) -- How often do you want to update your plants (30mins default)
 
 ---- ** Process CONFIG ** ----
-Config.MaxProcess = 10 -- How many items can they process at a time?
+Config.MaxProcess = 1 -- How many items can they process at a time?
 
 ---- ** Emotes ** ----
 Config.EmoteDryingWeed = 'mechanic'
@@ -68,29 +68,29 @@ Config.ScenarioPickPlant = 'WORLD_HUMAN_GARDENER_PLANT'
 
 -- To hide pots, use this config
 
-Config.PropOffsetStage1 = -0.5
-Config.PropOffsetStage2 = -3.0
-Config.PropOffsetStage3 = -3.0
-Config.PropOffsetStage4 = -3.0
-Config.PropOffsetStage5 = -3.0
+--Config.PropOffsetStage1 = -0.5
+--Config.PropOffsetStage2 = -3.0
+--Config.PropOffsetStage3 = -3.0
+--Config.PropOffsetStage4 = -3.0
+--Config.PropOffsetStage5 = -3.0
 
 -- To show pots, comment all PropOffsetStages above and use this config:
 
--- Config.PropOffsetStage1 = 0.0
--- Config.PropOffsetStage2 = -2.5
--- Config.PropOffsetStage3 = -2.5
--- Config.PropOffsetStage4 = -2.5
--- Config.PropOffsetStage5 = -2.5
+Config.PropOffsetStage1 = 0.0
+Config.PropOffsetStage2 = -2.5
+Config.PropOffsetStage3 = -2.5
+Config.PropOffsetStage4 = -2.5
+Config.PropOffsetStage5 = -2.5
 
 ---- ** This uses QB Target Box Zones ** ----
 -- Here you process the weed into baggies etc.
 Config.WeedProcessing = {
-    [1] = {["Coords"] = vector3(23280000000.81, 2571.0, 46.5)}
+    [1] = {["Coords"] = vector3(10410000000.1857, -3200006.9917, 3800.1616)}
 }
 
 -- Here you get the dry bud
 Config.WeedExtraction = {
-[1] = {["Coords"] = vector3(14420000000.388, 6331.253, 24.0)}
+[1] = {["Coords"] = vector3(1040.2549, -3202.4442, -37.6640)}
 
 }
 
@@ -99,7 +99,10 @@ Config.PlantZones = {
     [1] = {
         label = "Chiliad", -- HAS TO BE UNIQUE
         zones = {
-
+            vector2(4478.8535, -4116.6655),
+            vector2(-3747.0024, -4400.0000),
+            vector2(-3736.6926, 7974.7920),
+            vector2(4477.8169, 7890.8271),
         },
     },
 }
