@@ -21,7 +21,7 @@ Config = {
 	Crafting = true, -- Set true to turn on crafting features
 	StashCraft = true,  -- Set true to grab materials from mechaincs stash for crafting
 	PreviewPhone = false, -- Enable this is preview menu generates an email, False if you want to give an item
-	PreviewJob = true, -- Enable this if you want /preview to require a Job Role
+	PreviewJob = false, -- Enable this if you want /preview to require a Job Role
 	PreviewLocation = true, -- Enable this if you want to lock /preview to a job location (ignored if LocationRequired is false)
 
 	PhoneMail = "qb", 	-- If PreviewPhone is true, change this to choose the correct phone system
@@ -76,9 +76,9 @@ Config = {
 						-- Set this to "-1.0" to disable this
 						-- This doesn't affect the boost acceleration
 	NosBoostPower = { -- NOS boost acceleration power
-		2.2, -- Level 1
-		5.2, -- Level 2
-		10.0, -- Level 3
+		5.0, -- Level 1
+		--5.2, -- Level 2
+		--10.0, -- Level 3
 	},
 
 	NitrousUseRate = 2.0, -- How fast the nitrous drains (halved for level1, doubled for level3)

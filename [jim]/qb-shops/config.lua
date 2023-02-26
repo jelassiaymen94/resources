@@ -56,7 +56,7 @@ Config = {
 		},
 		["hardware"] = {
 			{ name = "lockpick", price = 500, amount = 25, },
-			--{ name = "a4sheets", price = 100, amount = 15, },
+			{ name = "jerry_can", price = 500, amount = 10, },
 			{ name = "ducttape", price = 100, amount = 25, },
 			--{ name = "weapon_bat", price = 500, amount = 50,  requiredGang = { "lostmc" } },  -- Gang only options in stores
 			{ name = "powersaw", price = 2500, amount = 10,} ,
@@ -80,15 +80,15 @@ Config = {
 		},
 		["weedshop"] = {
 			--{ name = "joint", price = 100, amount = 30, },
-			{ name = "scale", price = 2500, amount = 5, },
+			--{ name = "scale", price = 2500, amount = 5, },
 			{ name = "weed_nutrition", price = 100, amount = 20, },
 			{ name = "drugbag", price = 10, amount = 250, },
 			{ name = "purifiedwater", price = 100, amount = 20, },
-			{ name = "rollingpaper", price = 50, amount = 15, },
-			--{ name = "backwoods_honey", price = 100, amount = 15, },
-			--{ name = "banana_backwoods", price = 100, amount = 15, },
-			--{ name = "backwoods_grape", price = 100, amount = 15, },
-			{ name = "smalljoint", price = 100, amount = 25, },
+			{ name = "rolling_paper", price = 50, amount = 15, },
+			{ name = "backwoods_honey", price = 100, amount = 15, },
+			{ name = "banana_backwoods", price = 100, amount = 15, },
+			{ name = "backwoods_grape", price = 100, amount = 15, },
+			--{ name = "smalljoint", price = 100, amount = 25, },
 		
 			
 		},
@@ -257,12 +257,12 @@ Config = {
 		},
 		["ammo"] = {
 			{ name = "pistol_ammo", price = 125, amount = 100, },
-			{ name = "shotgun_ammo", price = 1000, amount = 100, },
+			--{ name = "shotgun_ammo", price = 1000, amount = 100, },
 			{ name = "smg_ammo", price = 600, amount = 100, },
 			{ name = "rifle_ammo", price = 900, amount = 100, },
-			{ name = "mg_ammo", price = 1000, amount = 100, },
-			{ name = "rpg_ammo", price = 5000, amount = 100, },
-			{ name = "pdarmor", price = 2500, amount = 100, },
+			--{ name = "mg_ammo", price = 1000, amount = 100, },
+			--{ name = "rpg_ammo", price = 5000, amount = 100, },
+			--{ name = "pdarmor", price = 2500, amount = 100, },
 		},
 
 

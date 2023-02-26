@@ -111,7 +111,7 @@ job = "pizzathis",
 enableBooth = true,
 DefaultVolume = 0.2,
 radius = 15,
-coords = vector3(796.0356, -748.2004, 26.2438),
+coords = vector3(796.0356, -748.2004, 26.8438),
 soundLoc = vector3(804.4647, -749.1584, 26.7808), -- Add sound origin location if you don't want the music to play from the dj booth
 prop = `prop_radio_01`
 

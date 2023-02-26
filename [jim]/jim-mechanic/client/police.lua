@@ -73,7 +73,7 @@ RegisterNetEvent('jim-mechanic:client:Police:Extra:Apply', function(data)
 	SetVehicleEngineHealth(vehicle, veh.engine)
 	SetVehicleBodyHealth(vehicle, veh.body)
 	TriggerEvent('jim-mechanic:client:Police:Extra')
-	end
+	
 end)
 RegisterNetEvent('jim-mechanic:client:Police:Repair', function()
 	local vehicle = GetVehiclePedIsIn(PlayerPedId(), false) pushVehicle(vehicle)

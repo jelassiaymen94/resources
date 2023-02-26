@@ -11,7 +11,7 @@ AddEventHandler('onResourceStart', function(r) if GetCurrentResourceName() ~= r 
 
 	if not Config.JimConsumables then
 		-- Make Items Usable
-		local food = { "bento", "blueberry", "cake", "nekocookie", "nekodonut", "riceball", "miso", "bmochi", "pmochi", "gmochi", "omochi", "strawberry", "rice", "cakepop", "pizza", "pancake", "purrito", "noodlebowl", "ramen", "pikachusoup","ernadotaco", }
+		local food = { "bento", "blueberry", "cake", "nekocookie", "nekodonut", "riceball", "miso", "bmochi", "pmochi", "gmochi", "omochi", "strawberry", "rice", "cakepop", "pizza", "pancake", "purrito", "noodlebowl", "ramen", "pikachusoup","ernadotaco", "mozzarellasticks", }
 		for _, v in pairs(food) do QBCore.Functions.CreateUseableItem(v, function(source, item) TriggerClientEvent('jim-catcafe:client:Eat', source, item.name) end) end
 
 		local drinks = { "bobatea", "bbobatea", "gbobatea", "pbobatea", "obobatea", "nekolatte", "mocha", "catcoffee", "sleepylatte", "chapocapp" }

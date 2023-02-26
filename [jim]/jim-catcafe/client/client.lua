@@ -82,6 +82,13 @@ CreateThread(function()
 	Targets["CatHob"] =
 	exports['qb-target']:AddBoxZone("CatHob", vector3(-591.02, -1056.56, 22.36), 1.5, 0.6, { name="CatHob", heading = 0, debugPoly=Config.Debug, minZ = 19.84, maxZ = 23.84, },
 		{ options = { { event = "jim-catcafe:Crafting", icon = "fas fa-temperature-high", label = Loc[Config.Lan].target["hob"], job = "catcafe", craftable = Crafting.Hob, header = Loc[Config.Lan].menu["header_hob"], coords = vector3(-591.02, -1056.56, 22.36), }, }, distance = 2.0 })
+
+	--Pizza
+	Targets["PTPizza"] =
+	exports['qb-target']:AddBoxZone("PTPizza", vector3(808.1379, -760.1563, 26.7809), 1.5, 0.6, { name="PTPizza", heading = 0, debugPoly=Config.Debug, minZ = 25.84, maxZ = 27.84, },
+		{ options = { { event = "jim-catcafe:Crafting", icon = "fas fa-temperature-high", label = "Soup Station" --[[Loc[Config.Lan].target["pizza"] ]], job = "pizzathis", craftable = Crafting.Pizza, header = "Mama Mia!"--[[Loc[Config.Lan].menu["header_pizza"] ]], coords = vector3(808.1379, -760.1563, 26.7809), }, }, distance = 2.0 })
+
+
 	--Trays
 	Targets["CatCounter"] =
 	exports['qb-target']:AddBoxZone("CatCounter", vector3(-584.01, -1059.27, 22.34), 0.6, 1.0, { name="CatCounter", heading = 0, debugPoly=Config.Debug, minZ=22.0, maxZ=23.04 },
@@ -168,6 +175,9 @@ RegisterNetEvent('jim-catcafe:Crafting:MakeItem', function(data)
 		animDictNow = "mp_ped_interaction"
 		animNow = "handshake_guy_a"
 	elseif data.header == Loc[Config.Lan].menu["header_hob"] then
+		animDictNow = "amb@prop_human_bbq@male@base"
+		animNow = "base"
+	elseif data.header == Loc[Config.Lan].menu["header_pizza"] then
 		animDictNow = "amb@prop_human_bbq@male@base"
 		animNow = "base"
 	elseif data.header == Loc[Config.Lan].menu["header_oven"] then
@@ -325,6 +335,7 @@ RegisterNetEvent('jim-catcafe:client:Eat', function(itemName)
 	elseif itemName == "nekodonut" then TriggerEvent('animations:client:EmoteCommandStart', {"eat"})
 	elseif itemName == "purrito" then TriggerEvent('animations:client:EmoteCommandStart', {"eat"})
 	elseif itemName == "noodlebowl" then TriggerEvent('animations:client:EmoteCommandStart', {"eat"})
+	elseif itemName == "mozzarellasticks" then TriggerEvent('animations:client:EmoteCommandStart', {"eat"})	
 	elseif itemName == "ramen" then TriggerEvent('animations:client:EmoteCommandStart', {"eat"})
 	elseif itemName == "bento" then TriggerEvent('animations:client:EmoteCommandStart', {"eat"})
 	elseif itemName == "nekocookie" then TriggerEvent('animations:client:EmoteCommandStart', {"eat"})

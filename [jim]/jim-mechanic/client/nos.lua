@@ -227,7 +227,7 @@ local forceStop = false
 local damageTimer = 0
 local CurrentVehicle
 local Plate
-
+--[[
 RegisterKeyMapping('levelUP', 'Boost/Purge lvl Up', 'keyboard', 'PRIOR')
 RegisterCommand('levelUP', function()
 	local Plate = trim(GetVehicleNumberPlateText(GetVehiclePedIsIn(PlayerPedId())))
@@ -265,7 +265,7 @@ RegisterCommand('levelDown', function()
 			if not ShowOdo then	triggerNotify(nil, Loc[Config.Lan]["nos"].boost..boostLevel) end
 		end
 	end
-end)
+end)]]
 RegisterKeyMapping('nosSwitch', 'Boost/Purge Switch', 'keyboard', 'LCONTROL')
 RegisterCommand('nosSwitch', function()
 	local Plate = trim(GetVehicleNumberPlateText(GetVehiclePedIsIn(PlayerPedId())))

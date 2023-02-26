@@ -35,6 +35,7 @@ Config = {
 		"blakepop",
 		"johnpop",
 		"jessepop",
+		"tommypop",
 	},
 
 	Items = {
@@ -112,6 +113,12 @@ Crafting = {
 		{ ['miso'] = { ['nori'] = 1, ['tofu'] = 1, ['onion'] = 1, }, },
 		{ ['ramen'] = { ['noodles'] = 1, ['onion'] = 1, }, },
 		{ ['noodlebowl'] = { ['noodles'] = 1, }, },
+		{ ['pikachusoup'] = { ['noodles'] = 1, ['onion'] = 1, }, },
+	},
+	Pizza = {
+		{ ['miso'] = { ['nori'] = 1, ['tofu'] = 1, ['onion'] = 1, }, },
+		{ ['ramen'] = { ['noodles'] = 1, ['onion'] = 1, }, },
+		{ ['mozzarellasticks'] = { ['mozz'] = 1, }, },
 		{ ['pikachusoup'] = { ['noodles'] = 1, ['onion'] = 1, }, },
 	},
 }

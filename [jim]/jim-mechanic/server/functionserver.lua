@@ -6,12 +6,12 @@ local Previewing = {}
 --[[QBCore.Commands.Add("test", "", {}, false, function(source, args) TriggerServerEvent('jim-mechanic:server:LoadNitrous', trim(GetVehicleNumberPlateText(GetVehiclePedIsIn(source)))) end)]]
 
 QBCore.Commands.Add("preview", Loc[Config.Lan]["servfunction"].checkmods, {}, false, function(source) TriggerClientEvent("jim-mechanic:client:Preview:Menu", source) end)
-QBCore.Commands.Add("showodo", "Odometer", {}, false, function(source) TriggerClientEvent("jim-mechanic:ShowOdo", source) end)
+--QBCore.Commands.Add("showodo", "Odometer", {}, false, function(source) TriggerClientEvent("jim-mechanic:ShowOdo", source) end)
 QBCore.Commands.Add("checkdamage", Loc[Config.Lan]["servfunction"].checkdamage, {}, false, function(source) TriggerClientEvent("jim-mechanic:client:Repair:Check", source, -2) end)
 QBCore.Commands.Add("checkmods", Loc[Config.Lan]["servfunction"].checkmods, {}, false, function(source) TriggerClientEvent("jim-mechanic:client:Menu:List", source) end)
-QBCore.Commands.Add("flipvehicle", Loc[Config.Lan]["servfunction"].flipvehicle, {}, false, function(source)	TriggerClientEvent("jim-mechanic:flipvehicle", source) end)
+--QBCore.Commands.Add("flipvehicle", Loc[Config.Lan]["servfunction"].flipvehicle, {}, false, function(source)	TriggerClientEvent("jim-mechanic:flipvehicle", source) end)
 QBCore.Commands.Add("togglesound", Loc[Config.Lan]["servfunction"].togglesound, {}, false, function(source)	TriggerClientEvent("jim-mechanic:togglesound", source) end)
-QBCore.Commands.Add("cleancar", Loc[Config.Lan]["servfunction"].cleancar, {}, false, function(source) TriggerClientEvent("jim-mechanic:client:cleanVehicle", source, false) end)
+--QBCore.Commands.Add("cleancar", Loc[Config.Lan]["servfunction"].cleancar, {}, false, function(source) TriggerClientEvent("jim-mechanic:client:cleanVehicle", source, false) end)
 QBCore.Commands.Add("hood", Loc[Config.Lan]["servfunction"].hood, {}, false, function(source) TriggerClientEvent("jim-mechanic:client:openDoor", source, 4) end)
 QBCore.Commands.Add("trunk", Loc[Config.Lan]["servfunction"].trunk, {}, false, function(source) TriggerClientEvent("jim-mechanic:client:openDoor", source, 5) end)
 QBCore.Commands.Add("door", Loc[Config.Lan]["servfunction"].door, {{name="0-3", help="Door ID"}}, false, function(source, args) TriggerClientEvent("jim-mechanic:client:openDoor", source, args[1]) end)
