@@ -511,7 +511,7 @@ local function StartMinigame()
         local type = Config.Jobs[currentJobId].Items.FetchItemMinigame.Type
         local variables = Config.Jobs[currentJobId].Items.FetchItemMinigame.Variables
         if type == "Circle" then
-            exports['ps-ui']:Circle(function(success)
+            exports['Polar-Minigames']:Circle(function(success)
                 if success then
                     MinigameSuccess()
                 else
@@ -519,7 +519,7 @@ local function StartMinigame()
                 end
             end, variables[1], variables[2]) -- NumberOfCircles, MS
         elseif type == "Maze" then
-            exports['ps-ui']:Maze(function(success)
+            exports['Polar-Minigames']:Maze(function(success)
                 if success then
                     MinigameSuccess()
                 else
@@ -527,7 +527,7 @@ local function StartMinigame()
                 end
             end, variables[1]) -- Hack Time Limit
         elseif type == "VarHack" then
-            exports['ps-ui']:VarHack(function(success)
+            exports['Polar-Minigames']:VarHack(function(success)
                 if success then
                     MinigameSuccess()
                 else
@@ -535,7 +535,7 @@ local function StartMinigame()
                 end
              end, variables[1], variables[2]) -- Number of Blocks, Time (seconds)
         elseif type == "Thermite" then 
-            exports["ps-ui"]:Thermite(function(success)
+            exports["Polar-Minigames"]:Thermite(function(success)
                 if success then
                     MinigameSuccess()
                 else
@@ -543,7 +543,7 @@ local function StartMinigame()
                 end
             end, variables[1], variables[2], variables[3]) -- Time, Gridsize (5, 6, 7, 8, 9, 10), IncorrectBlocks
         elseif type == "Scrambler" then
-            exports['ps-ui']:Scrambler(function(success)
+            exports['Polar-Minigames']:Scrambler(function(success)
                 if success then
                     MinigameSuccess()
                 else
@@ -552,7 +552,7 @@ local function StartMinigame()
             end, variables[1], variables[2], variables[3]) -- Type (alphabet, numeric, alphanumeric, greek, braille, runes), Time (Seconds), Mirrored (0: Normal, 1: Normal + Mirrored 2: Mirrored only )
         end
     else
-        exports["ps-ui"]:Thermite(function(success)
+        exports["Polar-Minigames"]:Thermite(function(success)
             if success then
                 MinigameSuccess()
             else

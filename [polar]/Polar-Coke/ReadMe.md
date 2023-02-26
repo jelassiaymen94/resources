@@ -13,7 +13,7 @@ Polar Coke Script
 
 -  Qb-Core
 
--  Ps-Ui
+-  Polar-Minigames
 
 
 

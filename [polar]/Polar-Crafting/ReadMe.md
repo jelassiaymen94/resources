@@ -13,7 +13,7 @@ Preview: https://youtu.be/UdPLwmzGQv4
 
 -  Qb-Core
 
--  Ps-Ui
+-  Polar-Minigames
 
 # Optional
 

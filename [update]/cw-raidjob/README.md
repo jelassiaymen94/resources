@@ -50,11 +50,11 @@ All you need to do to add more jobs is to add new Job objects (with all the requ
 **FetchItemProp**: (optional) Name of the in game prop that shows up\
 **FetchItemContents**: Name of the object you want to get (that shows up in inventory). This is the item that is returned to the boss\
 **FetchItemContentsAmount**: Integer of how many you get.\
-**FetchItemMinigame = { Type, Variables = {var1, var2...} }**: (optional) Sets the minigame or the difficulty. Defaults to a thermite game. The *Type* is the name of the minigame. The *Variables* follow the same order as shown on the PS-UI github page (link at bottom) but here is the quick version:
+**FetchItemMinigame = { Type, Variables = {var1, var2...} }**: (optional) Sets the minigame or the difficulty. Defaults to a thermite game. The *Type* is the name of the minigame. The *Variables* follow the same order as shown on the Polar-Minigames github page (link at bottom) but here is the quick version:
 
 ```
 Circle: NumberOfCircles, MS
-Maze: Hack Time Limit (this one seems to be broken, but might get fixed in future PS-UI updates)
+Maze: Hack Time Limit (this one seems to be broken, but might get fixed in future Polar-Minigames updates)
 VarHack: Number of Blocks, Time (seconds)
 Thermite: Time, Gridsize (5, 6, 7, 8, 9, 10), IncorrectBlocks
 Scrambler: Type (alphabet, numeric, alphanumeric, greek, braille, runes), Time (Seconds), Mirrored (0: Normal, 1: Normal + Mirrored 2: Mirrored only )
@@ -104,7 +104,7 @@ Also make sure the images are in qb-inventory>html>images
 
 
 # Dependencies
-* PS-UI - https://github.com/Project-Sloth/ps-ui/blob/main/README.md
+* Polar-Minigames - https://github.com/Project-Sloth/Polar-Minigames/blob/main/README.md
 * qb-target - https://github.com/BerkieBb/qb-target
 
 Inspired by the [PS-Methjob](https://github.com/iplocator/ps-methrun)

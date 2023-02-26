@@ -399,7 +399,7 @@ RegisterNetEvent('police:client:GetCuffed', function(playerId, isSoftcuff)
     if not isHandcuffed then
         local seconds = 3
         Wait(500)
-        exports['ps-ui']:Circle(function(success)
+        exports['Polar-Minigames']:Circle(function(success)
             if success then
                 QBCore.Functions.Notify("You managed to break free", "success")
                 TriggerServerEvent('police:server:cuffstruggle')    

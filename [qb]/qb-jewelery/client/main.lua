@@ -173,7 +173,7 @@ RegisterNetEvent('qb-jewellery:client:Thermite', function()
             QBCore.Functions.TriggerCallback('qb-jewellery:server:getCops', function(cops)
                 if cops >= Config.RequiredCops then
                     PlantThermite()
-                    exports['ps-ui']:Thermite(function(success)
+                    exports['Polar-Minigames']:Thermite(function(success)
                         if success then
                             ThermiteEffect()
                         else

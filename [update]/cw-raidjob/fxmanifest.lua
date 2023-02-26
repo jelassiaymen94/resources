@@ -18,4 +18,4 @@ server_scripts{
 
 
 dependency 'qb-target'
-dependency 'ps-ui'
+dependency 'Polar-Minigames'
