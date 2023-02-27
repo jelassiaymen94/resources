@@ -13,7 +13,7 @@ Polar Meth Script
 
 -  Qb-Core
 
--  Polar-Minigames
+-  Ps-Ui
 
 
 

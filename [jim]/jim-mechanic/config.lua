@@ -95,7 +95,7 @@ Config = {
 	EnableScreen = false, -- True adds screen effects while boosting
 
 	skillcheck = "qb-skillbar", -- When adding Nos to a vehicle there are three script options available
-								-- "qb-skillbar" "qb-lock" "Polar-Minigames"
+								-- "qb-skillbar" "qb-lock" "ps-ui"
 
 	explosiveFail = true, 		-- Better not fail that skill check. (1 in 10 chance of explosion)
 	explosiveFailJob = true, 	-- if true, mechanics can trigger an explosion

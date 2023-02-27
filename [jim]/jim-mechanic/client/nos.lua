@@ -96,7 +96,7 @@ RegisterNetEvent('jim-mechanic:client:applyNOS', function()
 					end
 				end
 			end
-		elseif Config.skillcheck == "Polar-Minigames" then
+		elseif Config.skillcheck == "ps-ui" then
 			exports['ps-ui']:Circle(function(success)
 				local time = math.random(7000,10000)
 				if success then

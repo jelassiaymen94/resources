@@ -8,7 +8,7 @@ local function CreateMenu(MenuData)
 end
 exports("CreateMenu", CreateMenu)
 
-RegisterNetEvent("Polar-Minigames:CreateMenu", function(MenuData)
+RegisterNetEvent("ps-ui:CreateMenu", function(MenuData)
     CreateMenu(MenuData)
 end)
 
@@ -17,7 +17,7 @@ local function CloseMenu()
 end
 exports("CloseMenu", CloseMenu)
 
-RegisterNetEvent("Polar-Minigames:CloseMenu", function()
+RegisterNetEvent("ps-ui:CloseMenu", function()
     CloseMenu()
 end)
 

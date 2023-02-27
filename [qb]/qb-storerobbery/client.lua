@@ -137,7 +137,7 @@ function grabmoney(currentRegister)
 end
 function minigame(currentRegister)
     animation()
-    exports['Polar-Minigames']:Circle(function(success)
+    exports['ps-ui']:Circle(function(success)
         if success then
             print("success")
             if currentRegister ~= 0 then

@@ -10,7 +10,7 @@ Config.RemoveLockpickAdvanced = 0.02 -- Chance to remove advanced lockpick on fa
 Config.LockPickDoorEvent = function() -- This function is called when a player attempts to lock pick a vehicle
     loadAnimDict("veh@break_in@0h@p_m_one@")
     TaskPlayAnim(PlayerPedId(), "veh@break_in@0h@p_m_one@", "low_force_entry_ds", 3.0, 3.0, -1, 16, 0, 0, 0, 0)
-    exports['Polar-Minigames']:Circle(function(success)
+    exports['ps-ui']:Circle(function(success)
         if success then
             LockpickFinishCallback(success)
         else

@@ -1,7 +1,7 @@
 fx_version 'cerulean'
 game 'gta5'
 
-description 'https://github.com/Project-Sloth/Polar-Minigames'
+description 'https://github.com/Project-Sloth/ps-ui'
 
 credits 'https://github.com/sharkiller/nopixel_minigame'
 

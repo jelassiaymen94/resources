@@ -47,13 +47,13 @@ document.addEventListener("keydown", function(ev) {
 });
 
 function MenuClose() {
-    $.post('https://Polar-Minigames/menuClose', JSON.stringify({"ok":true}));
+    $.post('https://ps-ui/menuClose', JSON.stringify({"ok":true}));
     $(".item").remove();
     Open = false
 }
 
 function MenuSelect(id) {
     let data = Items[id];
-    $.post(`https://Polar-Minigames/MenuSelect`, JSON.stringify({"data":data, "ok":true}));
+    $.post(`https://ps-ui/MenuSelect`, JSON.stringify({"data":data, "ok":true}));
     MenuClose();
 }

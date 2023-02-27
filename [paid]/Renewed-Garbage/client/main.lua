@@ -133,7 +133,7 @@ RegisterNetEvent('Renewed-Garbage:client:OpenMainMenu', function()
         header = "Exit",
         icon = "fa-solid fa-circle-xmark",
         params = {
-            event = "Polar-Minigames:client:closeMenu",
+            event = "ps-ui:client:closeMenu",
         }
     }
 

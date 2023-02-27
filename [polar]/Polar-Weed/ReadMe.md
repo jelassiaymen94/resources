@@ -13,7 +13,7 @@ Polar Weed Lab Script
 
 -  Qb-Core
 
--  Polar-Minigames
+-  Ps-Ui
 
 # Optional
 

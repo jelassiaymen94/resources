@@ -5,7 +5,7 @@ Config.RenewedFuel = false
 
 Config.CoreName = "qb-core"
 
-Config.Menu = "qb-menu" -- Change this to whatever you use, some use qb-menu, others use Polar-Minigames etc. just make sure they are compatible with qb-menu
+Config.Menu = "qb-menu" -- Change this to whatever you use, some use qb-menu, others use ps-ui etc. just make sure they are compatible with qb-menu
 
 Config.GarbageVehicle = "trash2"
 
