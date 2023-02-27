@@ -13,7 +13,7 @@ Polar Meth Script
 
 -  Qb-Core
 
--  Ps-Ui
+-  Polar-UI
 
 
 

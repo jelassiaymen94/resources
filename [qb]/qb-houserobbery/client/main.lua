@@ -151,7 +151,7 @@ local function searchCabin(cabin)
     TriggerServerEvent('qb-houserobbery:server:SetBusyState', cabin, currentHouse, true)
     --FreezeEntityPosition(ped, true)
     IsLockpicking = true
-    exports['ps-ui']:Circle(function(success)
+    exports['Polar-UI']:Circle(function(success)
         if success then
           
             openingDoor = false

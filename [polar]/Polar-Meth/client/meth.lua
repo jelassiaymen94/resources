@@ -333,15 +333,15 @@ RegisterNetEvent('Polar-Meth:client:Temperature', function()
     if mix then
         --FreezeEntityPosition(PlayerPedId(), true)
         animation()
-        exports['ps-ui']:Circle(function(success)
+        exports['Polar-UI']:Circle(function(success)
             if success then
                 QBCore.Functions.Notify('Temperature is Okay', green, alerttime)
                 Wait(1000)
-                exports['ps-ui']:Circle(function(success)
+                exports['Polar-UI']:Circle(function(success)
                     if success then
                         QBCore.Functions.Notify('Temperature is Decent', green, alerttime)
                         Wait(1000)
-                        exports['ps-ui']:Scrambler(function(success)
+                        exports['Polar-UI']:Scrambler(function(success)
                             if success then
                                 temp = true
                                 QBCore.Functions.Notify('The Temperature is Perfect', green, alerttime)

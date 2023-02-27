@@ -7,7 +7,7 @@ A single resource made up of several smaller, UI-related scripts for use in your
 ## Circle Minigame
 
 ```
-exports['ps-ui']:Circle(function(success)
+exports['Polar-UI']:Circle(function(success)
     if success then
         print("success")
 	else
@@ -19,7 +19,7 @@ end, 2, 20) -- NumberOfCircles, MS
 
 ## Number Maze
 ```
-exports['ps-ui']:Maze(function(success)
+exports['Polar-UI']:Maze(function(success)
     if success then
         print("success")
 	else
@@ -31,7 +31,7 @@ end, 20) -- Hack Time Limit
 
 ## VAR
 ```
-exports['ps-ui']:VarHack(function(success)
+exports['Polar-UI']:VarHack(function(success)
     if success then
         print("success")
 	else
@@ -43,7 +43,7 @@ exports['ps-ui']:VarHack(function(success)
  
  ## Thermite
  ```
-exports['ps-ui']:Thermite(function(success)
+exports['Polar-UI']:Thermite(function(success)
     if success then
         print("success")
 	else
@@ -55,7 +55,7 @@ end, 10, 5, 3) -- Time, Gridsize (5, 6, 7, 8, 9, 10), IncorrectBlocks
 
 ## Scrambler
 ```
-exports['ps-ui']:Scrambler(function(success)
+exports['Polar-UI']:Scrambler(function(success)
     if success then
         print("success")
 	else
@@ -67,28 +67,28 @@ end, "numeric", 30, 0) -- Type (alphabet, numeric, alphanumeric, greek, braille,
 
 ## Display Text
 ```
-exports['ps-ui']:DisplayText("Example Text", "primary") -- Colors: primary, error, success, warning, info, mint
-exports['ps-ui']:HideText()
+exports['Polar-UI']:DisplayText("Example Text", "primary") -- Colors: primary, error, success, warning, info, mint
+exports['Polar-UI']:HideText()
 ```
 ![image](https://user-images.githubusercontent.com/7463741/170587380-0629b5fc-80d6-4c2a-85c1-4e5426167197.png)
 
 ## Status UI
 ```
-exports['ps-ui']:StatusShow("Area Dominance", {
+exports['Polar-UI']:StatusShow("Area Dominance", {
   "Gang: Ballas",
   "Influence: %100",
 })
-exports['ps-ui']:StatusUpdate("Area Dominance", {
+exports['Polar-UI']:StatusUpdate("Area Dominance", {
   "Gang: Ballas",
   "Influence: %99",
 })
-exports['ps-ui']:StatusHide()
+exports['Polar-UI']:StatusHide()
 ```
 ![image](https://user-images.githubusercontent.com/7463741/170587637-57217095-29ab-460e-9933-123fb0500e12.png)
 
 ## Menus
 ```
-exports['ps-ui']:CreateMenu({
+exports['Polar-UI']:CreateMenu({
         {
             header = "header1",
             text = "text1",
@@ -146,7 +146,7 @@ exports['ps-ui']:CreateMenu({
 ## Input
 
 ```
-local input = exports['ps-ui']:Input({
+local input = exports['Polar-UI']:Input({
         title = "Test",
         inputs = {
             {
@@ -169,7 +169,7 @@ local input = exports['ps-ui']:Input({
 ## Show Image
 
 ```
-exports['ps-ui']:ShowImage("https://user-images.githubusercontent.com/91661118/168956591-43462c40-e7c2-41af-8282-b2d9b6716771.png")
+exports['Polar-UI']:ShowImage("https://user-images.githubusercontent.com/91661118/168956591-43462c40-e7c2-41af-8282-b2d9b6716771.png")
 ```
 ![image](https://user-images.githubusercontent.com/70592880/173483722-53c40c11-faf0-42d8-98b2-ec97d99c3a39.png)
 

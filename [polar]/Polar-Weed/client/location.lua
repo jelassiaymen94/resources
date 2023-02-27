@@ -175,10 +175,10 @@ function searchPlant(entity)
 	local HarvestTime = math.random(10000,15000)
 	local circles = math.random(1,4)
 	local time = math.random(20,40)
-	exports['ps-ui']:Circle(function(success)
+	exports['Polar-UI']:Circle(function(success)
 		if success then
 			Wait(50)
-			exports['ps-ui']:Circle(function(success)
+			exports['Polar-UI']:Circle(function(success)
 				if success then
 					FreezeEntityPosition(playerPed, true)
 					

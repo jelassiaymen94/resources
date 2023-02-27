@@ -47,24 +47,24 @@ Config.SkilledRodGame = 'qb-skillbar' -- only change this if you have changed yo
 Config.NeededAttemptsMin = 1 -- minimum ammout of times you need to do the skillcheck
 Config.NeededAttemptsMax = 3 -- maximum ammout of times you need to do the skillcheck
 
-Config.AllUsesPsUiLock = true-- make this true if you only want to use ps-ui lock for all fishing rod minigames
+Config.AllUsesPsUiLock = true-- make this true if you only want to use Polar-UI lock for all fishing rod minigames
 --
--- First Fishing Rod (All PS-UI Lock)
+-- First Fishing Rod (All Polar-UI Lock)
 Config.CircleSpeed1 = 10 -- Speed the skillcheck for the first fishingrod is (This only matters if Config.AllUsesPsUiLock is true) [lower number is faster]
 Config.CirclesMin1 = 3 -- minimum ammout of times you need to do the skillcheck for the first fishingrod (This only matters if Config.AllUsesPsUiLock is true)
 Config.CirclesMax1 = 3 -- maximum ammout of times you need to do the skillcheck for the first fishingrod (This only matters if Config.AllUsesPsUiLock is true)
--- Second Fishing Rod (All PS-UI Lock)
+-- Second Fishing Rod (All Polar-UI Lock)
 Config.CircleSpeed2 = 10 -- Speed the skillcheck for the first fishingrod is (This only matters if Config.AllUsesPsUiLock is true) [lower number is faster]
 Config.CirclesMin2 = 2 -- minimum ammout of times you need to do the skillcheck for the first fishingrod (This only matters if Config.AllUsesPsUiLock is true)
 Config.CirclesMax2 = 2 -- maximum ammout of times you need to do the skillcheck for the first fishingrod (This only matters if Config.AllUsesPsUiLock is true)
--- Third Fishing Rod (All PS-UI Lock)
+-- Third Fishing Rod (All Polar-UI Lock)
 Config.CircleSpeed3 = 10 -- Speed the skillcheck for the first fishingrod is (This only matters if Config.AllUsesPsUiLock is true) [lower number is faster]
 Config.CirclesMin3 = 1 -- minimum ammout of times you need to do the skillcheck for the first fishingrod (This only matters if Config.AllUsesPsUiLock is true)
 Config.CirclesMax3 = 1 -- maximum ammout of times you need to do the skillcheck for the first fishingrod (This only matters if Config.AllUsesPsUiLock is true)
 
 --Professional Fishing Rod
 -- this doesnt matter if Config.AllUsesPsUiLock is true. You can disreguard it
-Config.ProfessionalRodGame = 'qb-lock' -- only change this if you have changed your qb-lock file name or if you are using ps-ui. Not just any minigame will work
+Config.ProfessionalRodGame = 'qb-lock' -- only change this if you have changed your qb-lock file name or if you are using Polar-UI. Not just any minigame will work
 Config.CirclesMin = 1 -- minimum ammout of times you need to do the skillcheck
 Config.CirclesMax = 1 -- maximum ammout of times you need to do the skillcheck
 

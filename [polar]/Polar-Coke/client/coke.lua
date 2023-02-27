@@ -691,16 +691,16 @@ function minigames()
     animation()
     print(ems)
     print(timer)
-    exports['ps-ui']:Circle(function(success)
+    exports['Polar-UI']:Circle(function(success)
         if success then
             Wait(250)
-            exports['ps-ui']:Circle(function(success)
+            exports['Polar-UI']:Circle(function(success)
                 if success then
                     Wait(250)
-                    exports['ps-ui']:Circle(function(success)
+                    exports['Polar-UI']:Circle(function(success)
                         if success then
                             Wait(250)
-                            exports['ps-ui']:Thermite(function(success)
+                            exports['Polar-UI']:Thermite(function(success)
                                 if success then
                                     level4 = true
                                     setminigame()
@@ -719,7 +719,7 @@ function minigames()
                     end, 4, ms) -- NumberOfCircles, MS
                 else
                     Wait(250)
-                    exports['ps-ui']:Thermite(function(success)
+                    exports['Polar-UI']:Thermite(function(success)
                         if success then
                             level3 = true
                             setminigame()
@@ -736,10 +736,10 @@ function minigames()
             end, 4, ms) -- NumberOfCircles, MS
         else
             Wait(250)
-            exports['ps-ui']:Circle(function(success)
+            exports['Polar-UI']:Circle(function(success)
                 if success then
                     Wait(250)
-                    exports['ps-ui']:Circle(function(success)
+                    exports['Polar-UI']:Circle(function(success)
                         if success then
                             level2 = true
                             setminigame()
