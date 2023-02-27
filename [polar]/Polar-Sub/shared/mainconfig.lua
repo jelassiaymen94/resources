@@ -50,7 +50,7 @@ Config.Stashes = {
         max = 18.3,
         slots = 5,
         weight = 5,
-        numba = '1',
+        numba = 'container_large_7691',
     },
     
 
