@@ -13,11 +13,11 @@ Polar Weed Lab Script
 
 -  Qb-Core
 
--  Polar-UI
+-  Ps-Ui
 
 # Optional
 
-- qb-dispatch
+- Ps-Dispatch
 
 - qb-phone (Mail)
 

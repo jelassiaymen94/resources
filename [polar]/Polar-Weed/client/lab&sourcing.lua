@@ -277,9 +277,9 @@ end)
 function camerastart()
     local sceneCam = CreateCam("DEFAULT_SCRIPTED_CAMERA", true)
     if Config.UseCam then
-    RenderScriptCams(true, false, 0, 1, 0)
-    SetCamCoord(sceneCam, 1030.45, -3202.58, -37.2)
-    PointCamAtEntity(sceneCam, playerPed, 0.0, 0.0, 0.0, 1)
+  --  RenderScriptCams(true, false, 0, 1, 0)
+  --  SetCamCoord(sceneCam, 1030.45, -3202.58, -37.2)
+   -- PointCamAtEntity(sceneCam, playerPed, 0.0, 0.0, 0.0, 1)
     end
 
     --vector3(1030.45, -3202.58, -38.2)
@@ -287,8 +287,8 @@ end
 function cameraend()
 
     if Config.UseCam then
-        RenderScriptCams(false, false, 0, 1, 0)
-        DestroyCam(sceneCam, false)
+      --  RenderScriptCams(false, false, 0, 1, 0)
+      --  DestroyCam(sceneCam, false)
         end
 
 end
@@ -1152,7 +1152,7 @@ RegisterNetEvent('Polar-Weed:Client:Sort1', function()
     local playerPed = PlayerPedId()
     local animDict = "anim@amb@business@weed@weed_sorting_seated@"
     RequestAnimDict(animDict)
-    while not HasAnimDictLoaded(animDict) do Citizen.Wait(10) end
+    while not HasAnimDictLoaded(animDict) do Wait(10) end
     RequestModel("bkr_prop_weed_dry_01a")
     RequestModel("bkr_prop_weed_leaf_01a")
     RequestModel("bkr_prop_weed_bag_01a")
@@ -1160,9 +1160,9 @@ RegisterNetEvent('Polar-Weed:Client:Sort1', function()
     RequestModel("bkr_prop_weed_bud_02a")
     RequestModel("bkr_prop_weed_bag_pile_01a")
     RequestModel("bkr_prop_weed_bucket_open_01a")
-    while not HasModelLoaded("bkr_prop_weed_dry_01a") and not HasModelLoaded("bkr_prop_weed_leaf_01a") and not HasModelLoaded("bkr_prop_weed_bag_01a") and not HasModelLoaded("bkr_prop_weed_bud_02b") and not HasModelLoaded("bkr_prop_weed_bud_02a") and not HasModelLoaded("bkr_prop_weed_bag_pile_01a") and not HasModelLoaded("bkr_prop_weed_bucket_open_01a") do Citizen.Wait(50) end
+    while not HasModelLoaded("bkr_prop_weed_dry_01a") and not HasModelLoaded("bkr_prop_weed_leaf_01a") and not HasModelLoaded("bkr_prop_weed_bag_01a") and not HasModelLoaded("bkr_prop_weed_bud_02b") and not HasModelLoaded("bkr_prop_weed_bud_02a") and not HasModelLoaded("bkr_prop_weed_bag_pile_01a") and not HasModelLoaded("bkr_prop_weed_bucket_open_01a") do Wait(50) end
     SetEntityHeading(playerPed, heading)
-    Citizen.Wait(10)
+    Wait(10)
     camerastart()
     local packScene = NetworkCreateSynchronisedScene(coord.x+rotx, coord.y+roty, coord.z+rotz, 0.0, 0.0, 0.0, 2, false, false, 1065353216, 0, 1.3)
     local packScene2 = NetworkCreateSynchronisedScene(coord.x+rotx, coord.y+roty, coord.z+rotz, 0.0, 0.0, 0.0, 2, false, false, 1065353216, 0, 1.3)
@@ -1211,7 +1211,7 @@ RegisterNetEvent('Polar-Weed:Client:Sort1', function()
     NetworkStartSynchronisedScene(packScene4)
     NetworkStartSynchronisedScene(packScene5)
     NetworkStartSynchronisedScene(packScene6)
-    Citizen.Wait(24000)
+    Wait(24000)
     NetworkStopSynchronisedScene(packScene)
     NetworkStopSynchronisedScene(packScene2)
     NetworkStopSynchronisedScene(packScene3)
@@ -1279,7 +1279,7 @@ RegisterNetEvent('Polar-Weed:Client:Sort2', function()
     local playerPed = PlayerPedId()
     local animDict = "anim@amb@business@weed@weed_sorting_seated@"
     RequestAnimDict(animDict)
-    while not HasAnimDictLoaded(animDict) do Citizen.Wait(10) end
+    while not HasAnimDictLoaded(animDict) do Wait(10) end
     RequestModel("bkr_prop_weed_dry_01a")
     RequestModel("bkr_prop_weed_leaf_01a")
     RequestModel("bkr_prop_weed_bag_01a")
@@ -1287,9 +1287,9 @@ RegisterNetEvent('Polar-Weed:Client:Sort2', function()
     RequestModel("bkr_prop_weed_bud_02a")
     RequestModel("bkr_prop_weed_bag_pile_01a")
     RequestModel("bkr_prop_weed_bucket_open_01a")
-    while not HasModelLoaded("bkr_prop_weed_dry_01a") and not HasModelLoaded("bkr_prop_weed_leaf_01a") and not HasModelLoaded("bkr_prop_weed_bag_01a") and not HasModelLoaded("bkr_prop_weed_bud_02b") and not HasModelLoaded("bkr_prop_weed_bud_02a") and not HasModelLoaded("bkr_prop_weed_bag_pile_01a") and not HasModelLoaded("bkr_prop_weed_bucket_open_01a") do Citizen.Wait(50) end
+    while not HasModelLoaded("bkr_prop_weed_dry_01a") and not HasModelLoaded("bkr_prop_weed_leaf_01a") and not HasModelLoaded("bkr_prop_weed_bag_01a") and not HasModelLoaded("bkr_prop_weed_bud_02b") and not HasModelLoaded("bkr_prop_weed_bud_02a") and not HasModelLoaded("bkr_prop_weed_bag_pile_01a") and not HasModelLoaded("bkr_prop_weed_bucket_open_01a") do Wait(50) end
     SetEntityHeading(playerPed, heading)
-    Citizen.Wait(10)
+    Wait(10)
     camerastart()
     local packScene = NetworkCreateSynchronisedScene(coord.x+rotx, coord.y+roty, coord.z+rotz, 0.0, 0.0, 90.0, 2, false, false, 1065353216, 0, 1.3)
     local packScene2 = NetworkCreateSynchronisedScene(coord.x+rotx, coord.y+roty, coord.z+rotz, 0.0, 0.0, 90.0, 2, false, false, 1065353216, 0, 1.3)
@@ -1338,7 +1338,7 @@ RegisterNetEvent('Polar-Weed:Client:Sort2', function()
     NetworkStartSynchronisedScene(packScene4)
     NetworkStartSynchronisedScene(packScene5)
     NetworkStartSynchronisedScene(packScene6)
-    Citizen.Wait(24000)
+    Wait(24000)
     NetworkStopSynchronisedScene(packScene)
     NetworkStopSynchronisedScene(packScene2)
     NetworkStopSynchronisedScene(packScene3)
@@ -1407,7 +1407,7 @@ RegisterNetEvent('Polar-Weed:Client:Sort3', function()
     local playerPed = PlayerPedId()
     local animDict = "anim@amb@business@weed@weed_sorting_seated@"
     RequestAnimDict(animDict)
-    while not HasAnimDictLoaded(animDict) do Citizen.Wait(10) end
+    while not HasAnimDictLoaded(animDict) do Wait(10) end
     RequestModel("bkr_prop_weed_dry_01a")
     RequestModel("bkr_prop_weed_leaf_01a")
     RequestModel("bkr_prop_weed_bag_01a")
@@ -1415,9 +1415,9 @@ RegisterNetEvent('Polar-Weed:Client:Sort3', function()
     RequestModel("bkr_prop_weed_bud_02a")
     RequestModel("bkr_prop_weed_bag_pile_01a")
     RequestModel("bkr_prop_weed_bucket_open_01a")
-    while not HasModelLoaded("bkr_prop_weed_dry_01a") and not HasModelLoaded("bkr_prop_weed_leaf_01a") and not HasModelLoaded("bkr_prop_weed_bag_01a") and not HasModelLoaded("bkr_prop_weed_bud_02b") and not HasModelLoaded("bkr_prop_weed_bud_02a") and not HasModelLoaded("bkr_prop_weed_bag_pile_01a") and not HasModelLoaded("bkr_prop_weed_bucket_open_01a") do Citizen.Wait(50) end
+    while not HasModelLoaded("bkr_prop_weed_dry_01a") and not HasModelLoaded("bkr_prop_weed_leaf_01a") and not HasModelLoaded("bkr_prop_weed_bag_01a") and not HasModelLoaded("bkr_prop_weed_bud_02b") and not HasModelLoaded("bkr_prop_weed_bud_02a") and not HasModelLoaded("bkr_prop_weed_bag_pile_01a") and not HasModelLoaded("bkr_prop_weed_bucket_open_01a") do Wait(50) end
     SetEntityHeading(playerPed, heading)
-    Citizen.Wait(10)
+    Wait(10)
     camerastart()
     local packScene = NetworkCreateSynchronisedScene(coord.x+rotx, coord.y+roty, coord.z+rotz, 0.0, 0.0, 270.0, 2, false, false, 1065353216, 0, 1.3)
     local packScene2 = NetworkCreateSynchronisedScene(coord.x+rotx, coord.y+roty, coord.z+rotz, 0.0, 0.0, 270.0, 2, false, false, 1065353216, 0, 1.3)
@@ -1466,7 +1466,7 @@ RegisterNetEvent('Polar-Weed:Client:Sort3', function()
     NetworkStartSynchronisedScene(packScene4)
     NetworkStartSynchronisedScene(packScene5)
     NetworkStartSynchronisedScene(packScene6)
-    Citizen.Wait(24000)
+    Wait(24000)
     NetworkStopSynchronisedScene(packScene)
     NetworkStopSynchronisedScene(packScene2)
     NetworkStopSynchronisedScene(packScene3)
@@ -1535,7 +1535,7 @@ RegisterNetEvent('Polar-Weed:Client:Sort4', function()
     local playerPed = PlayerPedId()
     local animDict = "anim@amb@business@weed@weed_sorting_seated@"
     RequestAnimDict(animDict)
-    while not HasAnimDictLoaded(animDict) do Citizen.Wait(10) end
+    while not HasAnimDictLoaded(animDict) do Wait(10) end
     RequestModel("bkr_prop_weed_dry_01a")
     RequestModel("bkr_prop_weed_leaf_01a")
     RequestModel("bkr_prop_weed_bag_01a")
@@ -1543,9 +1543,9 @@ RegisterNetEvent('Polar-Weed:Client:Sort4', function()
     RequestModel("bkr_prop_weed_bud_02a")
     RequestModel("bkr_prop_weed_bag_pile_01a")
     RequestModel("bkr_prop_weed_bucket_open_01a")
-    while not HasModelLoaded("bkr_prop_weed_dry_01a") and not HasModelLoaded("bkr_prop_weed_leaf_01a") and not HasModelLoaded("bkr_prop_weed_bag_01a") and not HasModelLoaded("bkr_prop_weed_bud_02b") and not HasModelLoaded("bkr_prop_weed_bud_02a") and not HasModelLoaded("bkr_prop_weed_bag_pile_01a") and not HasModelLoaded("bkr_prop_weed_bucket_open_01a") do Citizen.Wait(50) end
+    while not HasModelLoaded("bkr_prop_weed_dry_01a") and not HasModelLoaded("bkr_prop_weed_leaf_01a") and not HasModelLoaded("bkr_prop_weed_bag_01a") and not HasModelLoaded("bkr_prop_weed_bud_02b") and not HasModelLoaded("bkr_prop_weed_bud_02a") and not HasModelLoaded("bkr_prop_weed_bag_pile_01a") and not HasModelLoaded("bkr_prop_weed_bucket_open_01a") do Wait(50) end
     SetEntityHeading(playerPed, heading)
-    Citizen.Wait(10)
+    Wait(10)
     camerastart()
     local packScene = NetworkCreateSynchronisedScene(coord.x+rotx, coord.y+roty, coord.z+rotz, 0.0, 0.0, 90.0, 2, false, false, 1065353216, 0, 1.3)
     local packScene2 = NetworkCreateSynchronisedScene(coord.x+rotx, coord.y+roty, coord.z+rotz, 0.0, 0.0, 90.0, 2, false, false, 1065353216, 0, 1.3)
@@ -1594,7 +1594,7 @@ RegisterNetEvent('Polar-Weed:Client:Sort4', function()
     NetworkStartSynchronisedScene(packScene4)
     NetworkStartSynchronisedScene(packScene5)
     NetworkStartSynchronisedScene(packScene6)
-    Citizen.Wait(24000)
+    Wait(24000)
     NetworkStopSynchronisedScene(packScene)
     NetworkStopSynchronisedScene(packScene2)
     NetworkStopSynchronisedScene(packScene3)
@@ -1665,7 +1665,7 @@ RegisterNetEvent('Polar-Weed:Client:Sort5', function()
     local playerPed = PlayerPedId()
     local animDict = "anim@amb@business@weed@weed_sorting_seated@"
     RequestAnimDict(animDict)
-    while not HasAnimDictLoaded(animDict) do Citizen.Wait(10) end
+    while not HasAnimDictLoaded(animDict) do Wait(10) end
     RequestModel("bkr_prop_weed_dry_01a")
     RequestModel("bkr_prop_weed_leaf_01a")
     RequestModel("bkr_prop_weed_bag_01a")
@@ -1673,9 +1673,9 @@ RegisterNetEvent('Polar-Weed:Client:Sort5', function()
     RequestModel("bkr_prop_weed_bud_02a")
     RequestModel("bkr_prop_weed_bag_pile_01a")
     RequestModel("bkr_prop_weed_bucket_open_01a")
-    while not HasModelLoaded("bkr_prop_weed_dry_01a") and not HasModelLoaded("bkr_prop_weed_leaf_01a") and not HasModelLoaded("bkr_prop_weed_bag_01a") and not HasModelLoaded("bkr_prop_weed_bud_02b") and not HasModelLoaded("bkr_prop_weed_bud_02a") and not HasModelLoaded("bkr_prop_weed_bag_pile_01a") and not HasModelLoaded("bkr_prop_weed_bucket_open_01a") do Citizen.Wait(50) end
+    while not HasModelLoaded("bkr_prop_weed_dry_01a") and not HasModelLoaded("bkr_prop_weed_leaf_01a") and not HasModelLoaded("bkr_prop_weed_bag_01a") and not HasModelLoaded("bkr_prop_weed_bud_02b") and not HasModelLoaded("bkr_prop_weed_bud_02a") and not HasModelLoaded("bkr_prop_weed_bag_pile_01a") and not HasModelLoaded("bkr_prop_weed_bucket_open_01a") do Wait(50) end
     SetEntityHeading(playerPed, heading)
-    Citizen.Wait(10)
+    Wait(10)
     camerastart()
     local packScene = NetworkCreateSynchronisedScene(coord.x+rotx, coord.y+roty, coord.z+rotz, 0.0, 0.0, 270.0, 2, false, false, 1065353216, 0, 1.3)
     local packScene2 = NetworkCreateSynchronisedScene(coord.x+rotx, coord.y+roty, coord.z+rotz, 0.0, 0.0, 270.0, 2, false, false, 1065353216, 0, 1.3)
@@ -1724,7 +1724,7 @@ RegisterNetEvent('Polar-Weed:Client:Sort5', function()
     NetworkStartSynchronisedScene(packScene4)
     NetworkStartSynchronisedScene(packScene5)
     NetworkStartSynchronisedScene(packScene6)
-    Citizen.Wait(24000)
+    Wait(24000)
     NetworkStopSynchronisedScene(packScene)
     NetworkStopSynchronisedScene(packScene2)
     NetworkStopSynchronisedScene(packScene3)
