@@ -42,8 +42,8 @@ The example above uses `rampage` as this is what the effect is named after, you 
 	"trevor"
 ```
 
-## PS-Buffs Support
-This scripts can be expanded with ps-buffs (https://github.com/Project-Sloth/ps-buffs)
+## qb-buffs Support
+This scripts can be expanded with qb-buffs (https://github.com/Project-Sloth/qb-buffs)
 
 If this script is enabled it will automatically try to use their system to apply buffs:
 

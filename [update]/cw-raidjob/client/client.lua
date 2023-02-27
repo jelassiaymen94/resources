@@ -564,8 +564,8 @@ end
 
 RegisterNetEvent('cw-raidjob:client:items', function()
     if QBCore.Functions.HasItem("casekey") then
-        exports['ps-dispatch']:ScrapRobbery(camId)
-        --exports['ps-dispatch']:DrugBoatRobbery()
+        exports['qb-dispatch']:ScrapRobbery(camId)
+        --exports['qb-dispatch']:DrugBoatRobbery()
         StartMinigame()
     else
         QBCore.Functions.Notify(Lang:t("error.you_cannot_do_this"), 'error')

@@ -601,7 +601,7 @@ Config.WhitelistedWeapons = {
     },
 ```
 
-## Add this next line of code to your weaponsTable in `ps-dispatch/client/cl_events.lua`
+## Add this next line of code to your weaponsTable in `qb-dispatch/client/cl_events.lua`
 
 ```lua
 -- Custom weapons

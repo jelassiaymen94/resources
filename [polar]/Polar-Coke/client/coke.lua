@@ -754,7 +754,7 @@ function minigames()
                     end, 4, ms) -- NumberOfCircles, MS
                 else
                     Wait(250)
-                    exports['ps-ui']:Thermite(function(success)
+                    exports['Polar-UI']:Thermite(function(success)
                         if success then
                             level1 = true
                             setminigame()
@@ -1195,7 +1195,7 @@ function givestuff()
     if Config.Debug then print('rewards giving') end
     if level0 then
     if Config.Buffs then
-        if exports['ps-buffs']:HasBuff(Config.LuckBuff) then
+        if exports['qb-buffs']:HasBuff(Config.LuckBuff) then
             TriggerServerEvent('Polar-Coke:server:level0buff')
         else
             
@@ -1204,7 +1204,7 @@ function givestuff()
     end
     elseif level1 then
         if Config.Buffs then
-            if exports['ps-buffs']:HasBuff(Config.LuckBuff) then
+            if exports['qb-buffs']:HasBuff(Config.LuckBuff) then
                 TriggerServerEvent('Polar-Coke:server:level1buff')
             else
                 
@@ -1213,7 +1213,7 @@ function givestuff()
         end
     elseif level2 then
         if Config.Buffs then
-            if exports['ps-buffs']:HasBuff(Config.LuckBuff) then
+            if exports['qb-buffs']:HasBuff(Config.LuckBuff) then
                 TriggerServerEvent('Polar-Coke:server:level2buff')
             else
                 
@@ -1222,7 +1222,7 @@ function givestuff()
         end
     elseif level3 then
         if Config.Buffs then
-            if exports['ps-buffs']:HasBuff(Config.LuckBuff) then
+            if exports['qb-buffs']:HasBuff(Config.LuckBuff) then
                 TriggerServerEvent('Polar-Coke:server:level3buff')
             else
                 
@@ -1231,7 +1231,7 @@ function givestuff()
         end
     elseif level4 then
         if Config.Buffs then
-            if exports['ps-buffs']:HasBuff(Config.LuckBuff) then
+            if exports['qb-buffs']:HasBuff(Config.LuckBuff) then
                 TriggerServerEvent('Polar-Coke:server:level4buff')
             else
                 

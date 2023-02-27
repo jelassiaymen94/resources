@@ -10,7 +10,7 @@ local robbedplates = {}
 local AlertCops = function()
     if copsCalled then return end
     copsCalled = true
-    exports['ps-dispatch']:BankTruckRobbery(camId)
+    exports['qb-dispatch']:BankTruckRobbery(camId)
     --TriggerServerEvent('police:server:policeAlert', 'Banktruck Robbery') -- Regular QBCore
 
     CreateThread(function()

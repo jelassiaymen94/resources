@@ -17,7 +17,7 @@ Polar Weed Lab Script
 
 # Optional
 
-- Ps-Dispatch
+- qb-dispatch
 
 - qb-phone (Mail)
 

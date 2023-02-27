@@ -119,7 +119,7 @@ Config.DumpItems = {
 "hydrochloric_acid",	"hydrochloric_acid",	"hydrochloric_acid",	"hydrochloric_acid",	"hydrochloric_acid",	"hydrochloric_acid",	"hydrochloric_acid",													
 "weed_nutrition",	"weed_nutrition",	"weed_nutrition",	"weed_nutrition",	"weed_nutrition",	"weed_nutrition",	"weed_nutrition",	"weed_nutrition",	"weed_nutrition",	"weed_nutrition",										
 "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", 
-"male_seed", "male_seed",
+--"male_seed", "male_seed",
 "purifiedwater",	"purifiedwater",	"purifiedwater",	"purifiedwater",	"purifiedwater",	"purifiedwater",	"purifiedwater",	"purifiedwater",	"purifiedwater",	"purifiedwater",																								
 "sodium_hydroxide",	"sodium_hydroxide",	"sodium_hydroxide",	"sodium_hydroxide",	"sodium_hydroxide",	"sodium_hydroxide",	"sodium_hydroxide",													
 "weapon_switchblade", "weapon_switchblade", "weapon_switchblade", "weapon_switchblade",	"weapon_knife",	"weapon_knife",	"weapon_knife",	"weapon_knife",															

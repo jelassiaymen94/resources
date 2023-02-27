@@ -56,7 +56,7 @@ GarageNameAsBlipName = true -- if set to true, the blips name will match the gar
 UseEnc0dedPersistenVehicles = false -- enable if you use this script, not really a requirement for your server and I don't recommend it if you don't know what you're doing as it requires a lot of changes in other places
 -- NEW --
 
-FuelScript = 'ps-fuel' -- change to lj-fuel / ps-fuel if you use lj-fuel / ps-fuel or something else if you use any other LegcyFuel compatible script
+FuelScript = 'LegacyFuel' -- change to lj-fuel / LegacyFuel if you use lj-fuel / LegacyFuel or something else if you use any other LegcyFuel compatible script
 UseLoafHousing = false
 AllowSpawningFromAnywhere = true -- if set to true, the car can be spawned from anywhere inside the zone on the closest parking lot, if set to false you will have to walk up to a parking lot 
 AutoRespawn = false --True == auto respawn cars that are outside into your garage on script restart, false == does not put them into your garage and players have to go to the impound

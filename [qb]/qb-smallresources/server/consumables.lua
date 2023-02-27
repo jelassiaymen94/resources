@@ -79,7 +79,7 @@ QBCore.Functions.CreateUseableItem("joint", function(source, item)
     local Player = QBCore.Functions.GetPlayer(source)
 	if Player.Functions.RemoveItem(item.name, 1, item.slot) then
         TriggerClientEvent("consumables:client:UseJoint", source)
-        exports['ps-buffs']:AddArmorBuff(10000, 10)
+        exports['qb-buffs']:AddArmorBuff(10000, 10)
     end
 end)
 
@@ -102,7 +102,7 @@ end)
 
 QBCore.Functions.CreateUseableItem("meth", function(source)
     TriggerClientEvent("consumables:client:meth", source)
-    exports['ps-buffs']:AddArmorBuff(45000, 10)
+    exports['qb-buffs']:AddArmorBuff(45000, 10)
 
 end)
 

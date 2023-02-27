@@ -389,7 +389,7 @@ end
 function callcops()
     if not copsCalled then
         copsCalled = true
-    exports['ps-dispatch']:StoreRobbery(camId)
+    exports['qb-dispatch']:StoreRobbery(camId)
 
     end
 

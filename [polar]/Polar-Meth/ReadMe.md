@@ -23,7 +23,7 @@ Polar Meth Script
 
 + Randomized Loot tables with Buff Options
 
-+ Ps-Buffs Luck Buffs
++ qb-buffs Luck Buffs
 
 + Easy to change Minigame
 

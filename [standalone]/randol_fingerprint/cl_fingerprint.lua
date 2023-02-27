@@ -5,7 +5,7 @@ local PlayerJob = {}
 
 UseMDT = true -- Set to true if you want to use MDT option on the fingerprint menu. (true/false)
 
-Event = "randol_fingerprint:client:psmdt" -- The event to trigger for your MDT. (I MADE A PS-MDT EVENT TO TRIGGER BY DEFAULT SO IF YOU USE PS-MDT, LEAVE IT AS IT IS.)
+Event = "randol_fingerprint:client:psmdt" -- The event to trigger for your MDT. (I MADE A Polar-MDT EVENT TO TRIGGER BY DEFAULT SO IF YOU USE Polar-MDT, LEAVE IT AS IT IS.)
 
 --
 
