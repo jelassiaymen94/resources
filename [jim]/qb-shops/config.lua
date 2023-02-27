@@ -81,9 +81,9 @@ Config = {
 		["weedshop"] = {
 			--{ name = "joint", price = 100, amount = 30, },
 			--{ name = "scale", price = 2500, amount = 5, },
-			{ name = "weed_nutrition", price = 100, amount = 20, },
+			{ name = "weed_nutrition", price = 100, amount = 150, },
 			{ name = "drugbag", price = 10, amount = 250, },
-			{ name = "purifiedwater", price = 100, amount = 20, },
+			{ name = "purifiedwater", price = 100, amount = 150, },
 			{ name = "rolling_paper", price = 50, amount = 15, },
 			{ name = "backwoods_honey", price = 100, amount = 15, },
 			{ name = "banana_backwoods", price = 100, amount = 15, },
@@ -95,7 +95,7 @@ Config = {
 		["gearshop"] = {
 			{ name = "diving_gear", price = 2500, amount = 5, },
 			{ name = "fishingrod", price = 1000, amount = 30,},
-			{ name = "fishingbait", price = 25, amount = 150, },
+			{ name = "fishingbait", price = 25, amount = 500, },
 			
 		},
 		["shops"] = {
