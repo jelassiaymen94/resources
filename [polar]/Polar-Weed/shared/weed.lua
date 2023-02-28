@@ -20,7 +20,7 @@ Config.Ground4 = -461750719
 
 -- HOW FAST PLANT GROWS
 -- it grows less the further along                                                                                                           1000 seconds, / minute / hour
-Config.GrowRate = 30 -- In how many seconds it takes to update the plant (plant will grow 0.1% every update) (10 Hours roughly, takes Config.GrowRate * 1000 / 60 / 60)
+Config.GrowRate = 60 -- In how many seconds it takes to update the plant (plant will grow 0.1% every update) (10 Hours roughly, takes Config.GrowRate * 1000 / 60 / 60)
 Config.MinHarvest = 98 -- how much percent before you can harvest
 
 -- see rate

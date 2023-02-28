@@ -154,7 +154,7 @@ function minigame(currentRegister)
           
            currentRegister = 0
         end
-    end, 5, 60) -- NumberOfCircles, MS
+    end, 5, 85) -- NumberOfCircles, MS
 
 end
 

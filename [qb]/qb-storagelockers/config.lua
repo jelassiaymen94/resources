@@ -17,7 +17,8 @@ Config.SL_234656 = '0000' -- Stash10
 
 Config.SL_54367 = '1023' -- Stash 2
 Config.SL_567346 = 'JB1693' -- Stash11 - JOHNNY BIGS
-Config.SL_523567 = '1023' -- Stash12
+Config.SL_523567 = '1023' -- Stash12 - Joey Rossy container
+Config.JR_001 = '1023' -- Stash13 - Joey Rossy Motel
 Config.SL_532672 = '1023' -- Stash13
 Config.SL_213564 = '1248' -- Stash14
 
@@ -129,3 +130,6 @@ Config.SB_001 = 'MaxBurps117' -- 28
 
 -- Cop House Motel Vault
 Config.CO_001 = 'RangerHut' -- 28
+
+-- Aunties Vault
+Config.AU_001 = 'Wow420' -- 28

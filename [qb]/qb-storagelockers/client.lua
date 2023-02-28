@@ -2013,3 +2013,79 @@ function EnterStash44()
         slots = 200,
     })
 end
+
+
+
+
+
+
+
+
+
+
+RegisterNetEvent('qb-stopragelockers:StashAvailability45', function()
+	local keyboard = exports["qb-keyboard"]:KeyboardInput({
+		header = "Enter Password",
+		rows = {
+			{
+				id = 0,
+				txt = ""
+			}
+		}
+	})
+    if keyboard ~= nil then
+        if keyboard[1].input == Config.AU_001 then
+            EnterStash45()
+        end
+    end
+end)
+
+RegisterNetEvent('qb-stopragelockers:StashCoppy45', function()
+	SendNUIMessage({
+		coords = "AU_001"
+	})
+end)
+function EnterStash45()
+    TriggerEvent("inventory:client:SetCurrentStash", "AU_001")
+    TriggerServerEvent("inventory:server:OpenInventory", "stash", "AU_001", {
+        maxweight = 2000000,
+        slots = 200,
+    })
+end
+
+
+
+
+
+
+
+
+RegisterNetEvent('qb-stopragelockers:StashAvailability46', function()
+	local keyboard = exports["qb-keyboard"]:KeyboardInput({
+		header = "Enter Password",
+		rows = {
+			{
+				id = 0,
+				txt = ""
+			}
+		}
+	})
+    if keyboard ~= nil then
+        if keyboard[1].input == Config.JR_001 then
+            EnterStash46()
+        end
+    end
+end)
+
+RegisterNetEvent('qb-stopragelockers:StashCoppy46', function()
+	SendNUIMessage({
+		coords = "JR_001"
+	})
+end)
+function EnterStash46()
+    TriggerEvent("inventory:client:SetCurrentStash", "JR_001")
+    TriggerServerEvent("inventory:server:OpenInventory", "stash", "JR_001", {
+        maxweight = 2000000,
+        slots = 200,
+    })
+end

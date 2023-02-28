@@ -941,6 +941,22 @@ exports['qb-target']:AddBoxZone("Stash44", vector3(-804.6722, 177.8873, 72.8348)
 
 
 
+  exports['qb-target']:AddBoxZone("Stash45", vector3(-12.7897, -1435.1010, 30.8016), 5.2, 1, {
+    name="Stash45",
+    heading=96.0089,
+    debugPoly=false,
+    minZ=30.07,
+    maxZ=32.07
+  }, {
+      options = {
+          {
+              event = "qb-stopragelockers:StashAvailability45",
+              icon = "fas fa-briefcase",
+              label = "Open Vault",
+          },
+      },
+      distance = 2.0
+  })
 
 
 
@@ -953,8 +969,22 @@ exports['qb-target']:AddBoxZone("Stash44", vector3(-804.6722, 177.8873, 72.8348)
 
 
 
-
-
+  exports['qb-target']:AddBoxZone("Stash46", vector3(309.5018, -220.1472, 57.5245), 5.2, 1, {
+    name="Stash46",
+    heading=64.0089,
+    debugPoly=false,
+    minZ=57.07,
+    maxZ=59.07
+  }, {
+      options = {
+          {
+              event = "qb-stopragelockers:StashAvailability46",
+              icon = "fas fa-briefcase",
+              label = "Open Vault",
+          },
+      },
+      distance = 2.0
+  })
 
 
 

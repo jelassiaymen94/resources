@@ -660,7 +660,7 @@ Config.Locations = {
 
 	["bm3"] = {
 		["label"] = "Black Market",
-		["coords"] = { vector4(-2077.4089, 2612.3154, 3.5730, 110.8416), },
+		["coords"] = { vector4(-2079.7310, 2611.6172, 3.0840, 119.5305), },
 		["type"] = "items",
 		["killable"] = true,
 		["targetLabel"] = "Talk",
