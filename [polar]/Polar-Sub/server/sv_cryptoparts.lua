@@ -41,6 +41,7 @@ function netup(items, cryptos, amounts)
             else
 
                 TriggerClientEvent('QBCore:Notify', src, 'Could not give ' .. items .. " ", 'error')
+                exports['qb-phone']:AddCrypto(src, cryptos, amounts)
                 
             end
         else

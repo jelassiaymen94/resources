@@ -5,11 +5,16 @@ Config.RosterLink = {
     ['ambulance'] = '',
     ['bcso'] = '',
     ['doj'] = '',
-    ['weazelnews'] = '',
+    ['sast'] = '',
+    ['sasp'] = '',
+    ['doc'] = '',
+    ['lssd'] = '',
+    ['sapr'] = '',	
 }
 
 
-Config.UseWolfknightRadar = true
+Config.UseWolfknightRadar = false
+Config.WolfknightNotifyTime = 5000 --How long the notification displays for in milliseconds (30000 = 30 seconds)
 --[[
 Adds support for Wraith ARS 2X by WolfKnight98 (wk_wars2x)
 https://github.com/WolfKnight98/wk_wars2x
@@ -19,7 +24,7 @@ This will only check plates of vehicles that have been occupied by a player
 
 Config.OnlyShowOnDuty = true
 
-Config.Fuel = "LegacyFuel" -- "", "lj-fuel"
+Config.Fuel = "lj-fuel" -- "LegacyFuel", "lj-fuel"
 
 Config.PenalCodeTitles = {
     [1] = 'OFFENSES AGAINST PERSONS',
@@ -33,7 +38,6 @@ Config.PenalCodeTitles = {
     [9] = 'OFFENSES INVOLVING THE OPERATION OF A VEHICLE',
     [10] = 'OFFENSES INVOLVING THE WELL-BEING OF WILDLIFE',
 }
-
 Config.PenalCode = {
     [1] = {
         [1] = {title = 'Simple Assault', class = 'Misdemeanor', id = 'P.C. 1001', months = 0, fine = 500, color = 'green'},
@@ -246,9 +250,9 @@ Config.PoliceJobs = {
     ['sast'] = true,
     ['sasp'] = true,
     ['doc'] = true,
+    ['lssd'] = true,
     ['sapr'] = true,
-    ['pa'] = true, -- yucky
-    ['weazelnews'] = true
+    ['pa'] = true -- yucky
 }
 
 Config.AmbulanceJobs = {
@@ -258,7 +262,7 @@ Config.AmbulanceJobs = {
 
 Config.DojJobs = {
     ['lawyer'] = true,
-
+    ['judge'] = true
 }
 
 -- Leave my hacky code alone ya goblins
@@ -281,7 +285,22 @@ Config.LogPerms = {
 	['police'] = {
 		[4] = true,
 	},
-    ['weazelnews'] = {
+    ['bcso'] = {
+		[4] = true,
+	},
+    ['sast'] = {
+		[4] = true,
+	},
+    ['sasp'] = {
+		[4] = true,
+	},
+    ['sapr'] = {
+		[4] = true,
+	},
+    ['doc'] = {
+		[4] = true,
+	},
+    ['lssd'] = {
 		[4] = true,
 	},
 }
@@ -649,7 +668,7 @@ end
 
 -- this is a hack, because the qb-menu in qb-policejob populates an impound location and passed it through to the event.
 -- if this impound locations are changed in qb-policejob, they must also be changed here.
-Config.ImpoundLocations = { 
+Config.ImpoundLocations = {
     [1] = vector4(436.68, -1007.42, 27.32, 180.0),
     [2] = vector4(-436.14, 5982.63, 31.34, 136.0),
 }

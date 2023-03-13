@@ -196,7 +196,7 @@ local function CarBoosting(vehicle)
 end exports('CarBoosting', CarBoosting)
 
 ---------------------------
----- ps-signrobbery -------
+
 ---------------------------
 
 local function SignRobbery()

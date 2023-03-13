@@ -1,8 +1,10 @@
 local QBCore = exports['qb-core']:GetCoreObject()
-    
 
-    CreateThread(function()
-
+RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function()
+   
+  -- for _, v in pairs(QBCore.Functions.GetPlayers()) do
+  
+   
         -- altruist camp
         local altruist = AddBlipForCoord(vector3(-1119.58, 4927.58, 218.5))
         SetBlipSprite (altruist, 269)
@@ -164,39 +166,15 @@ local QBCore = exports['qb-core']:GetCoreObject()
 
 
 
-
+            
+       
       end)
 
-
-
-CreateThread(function()
-
-
-
-
-
-
-
-
-end)
-
-
-CreateThread(function()
-   Wait(1000)
-   if QBCore.Functions.GetPlayerData().job ~= nil and next(QBCore.Functions.GetPlayerData().job) then
-       PlayerJob = QBCore.Functions.GetPlayerData().job
-       if PlayerJob == 'police' then
-         
-         pd()
-
-       end
-   end
-end)
 
 function pd()
 
 
-
+ 
 
 
    local blip = AddBlipForCoord(vector3(643.17, -1828.23, 9.08))

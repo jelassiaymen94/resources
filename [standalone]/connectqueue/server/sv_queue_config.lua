@@ -4,7 +4,7 @@ Config = {}
 -- a lot of the steamid converting websites are broken rn and give you the wrong steamid. I use https://steamid.xyz/ with no problems.
 -- you can also give priority through the API, read the examples/readme.
 Config.Priority = {
-    
+
     ["STEAM_0:1:0000####"] = 1,
     ["steam:110000######"] = 25,
     ["ip:127.0.0.0"] = 85
@@ -38,7 +38,7 @@ Config.GracePower = 100
 -- how long grace time lasts in seconds
 Config.GraceTime = 480
 
-Config.AntiSpam = true
+Config.AntiSpam = false
 Config.AntiSpamTimer = 30
 Config.PleaseWait = "Please wait %f seconds. The connection will start automatically!"
 

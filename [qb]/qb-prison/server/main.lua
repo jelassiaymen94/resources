@@ -68,6 +68,7 @@ RegisterNetEvent('prison:server:SecurityLockdown', function()
     for _, v in pairs(QBCore.Functions.GetPlayers()) do
         local Player = QBCore.Functions.GetPlayer(v)
         if Player then
+            TriggerServerEvent('prison:server:SetJailStatus', 0)
             if Player.PlayerData.job.name == "police" and Player.PlayerData.job.onduty then
                 TriggerClientEvent("prison:client:PrisonBreakAlert", v)
             end
