@@ -18,7 +18,7 @@ end
 
 -- \ Send police alert on drug sale
 local function PoliceAlert()
-	exports['qb-dispatch']:DrugSale()
+	exports['ps-dispatch']:DrugSale()
     -- Add Your alert system here
 	-- TriggerServerEvent('police:server:policeAlert', 'Drug sale in progress')
 	if Config.Debug then print('Police Notify Function triggered') end
