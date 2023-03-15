@@ -12,7 +12,7 @@ Config.FertilizerFactor = 0.9
 Config.HarvestPercent = 95
 
 Config.WaterAdd = math.random(20,40)
-Config.FertilizerAdd = math.random(2,40)
+Config.FertilizerAdd = math.random(20,40)
 
 Config.WaterReduceAmt = 5 -- How much to reduce water units by (5 default)
 Config.FertReduceAmt = 5 -- How much to reduce fertilizer units by (5 default)
@@ -30,11 +30,12 @@ Config.QualityAmt = 200 -- This means a maximum of 20 weed (Making this number s
 
 ---- ** MALE SEED CONFIG ** ----
 Config.FemaleSeeds = math.random(2,4)
-Config.MaleSeeds = math.random(0,1)
+Config.MaleSeeds = math.random(1,1)
 
 ---- ** ITEM CONFIG ** ----
 Config.DryWeed = "crophigh"
 Config.WeedItem = "wetbud"
+Config.Weed = "marijuana"
 Config.JointItem = 'rolling_paper' -- What item is needed to roll joints?
 Config.WeedBag = 'drugbag' -- What item is needed to Bag weed?
 Config.WeedInBag = '1ozhigh'
@@ -46,11 +47,12 @@ Config.MaleSeedItem = 'male_seed'
 Config.FemaleSeedItem = 'female_seed'
 
 ---- ** TIME CONFIG ** ----
-Config.ProcessTime = 2500 -- This is in Milliseconds so this is 2.5 seconds
+Config.ProcessTime = 4000 -- This is in Milliseconds so this is 2.5 seconds
 Config.UpdateInterval = 5 * (60 * 1000) -- How often do you want to update your plants (30mins default)
 
 ---- ** Process CONFIG ** ----
-Config.MaxProcess = 1 -- How many items can they process at a time?
+Config.BagMaxProcess = 16 -- How many items can they process at a time?
+Config.DryMaxProcess = 1
 
 ---- ** Emotes ** ----
 Config.EmoteDryingWeed = 'mechanic'
@@ -85,7 +87,7 @@ Config.PropOffsetStage5 = -2.5
 ---- ** This uses QB Target Box Zones ** ----
 -- Here you process the weed into baggies etc.
 Config.WeedProcessing = {
-    [1] = {["Coords"] = vector3(10410000000.1857, -3200006.9917, 3800.1616)}
+    [1] = {["Coords"] = vector3(1038.8072, -3205.8753, -38.2674)}
 }
 
 -- Here you get the dry bud

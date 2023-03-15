@@ -56,16 +56,16 @@ RegisterNetEvent('qb-outdoorweed:client:DryWeed', function()
                 type = 'number',
                 isRequired = true,
                 name = 'DryWeed',
-                text = Lang:t('menu.weed_drying_process_max', {value = Config.MaxProcess}),
+                text = Lang:t('menu.weed_drying_process_max', {value = Config.DryMaxProcess}),
             },
         }
     })
     if dialog then
         if not dialog.DryWeed then return end
-        if tonumber(dialog.DryWeed) <= Config.MaxProcess then
+        if tonumber(dialog.DryWeed) <= Config.DryMaxProcess then
             TriggerServerEvent('qb-outdoorweed:server:CheckWetAmount', dialog.DryWeed)
         else
-            QBCore.Functions.Notify(Lang:t('menu.weed_drying_process_max', {value = Config.MaxProcess}), "error", 4500)
+            QBCore.Functions.Notify(Lang:t('menu.weed_drying_process_max', {value = Config.DryMaxProcess}), "error", 4500)
         end
     end
 end)

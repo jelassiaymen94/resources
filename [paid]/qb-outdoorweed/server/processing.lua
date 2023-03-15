@@ -4,7 +4,7 @@ RegisterServerEvent('qb-outdoorweed:server:CheckAmount', function(ItemAmount, it
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
     local ItemAmount = tonumber(ItemAmount)
-    local CanProcess = Player.Functions.GetItemByName(Config.DryWeed)
+    local CanProcess = Player.Functions.GetItemByName(Config.Weed)
     if CanProcess ~= nil and CanProcess.amount >= ItemAmount then
         if item == "WeedBag" then
             local Itemsneeded = Player.Functions.GetItemByName(Config.WeedBag)
@@ -34,8 +34,8 @@ RegisterServerEvent('qb-outdoorweed:client:MakingWeedDone', function(amount)
     Player.Functions.RemoveItem(Config.WeedBag, amount, false)
     TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.WeedBag], 'remove')
 
-    Player.Functions.RemoveItem(Config.DryWeed, amount, false)
-    TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.DryWeed], 'remove')
+    Player.Functions.RemoveItem(Config.Weed, amount, false)
+    TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.Weed], 'remove')
 
     Wait(1000)
     Player.Functions.AddItem(Config.WeedInBag, amount, false)

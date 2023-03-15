@@ -11,19 +11,19 @@ local function OpenWeedTable()
     Wait(100)
     table.insert(ProcessMenu, {
         header = Lang:t('menu.header_weed_bags'),
-        txt = Lang:t('menu.weed_bags_description'),
+        --txt = Lang:t('menu.weed_bags_description'),
         params = {
             event = "qb-outdoorweed:client:WeedBag",
         },
     })
     Wait(100)
-    table.insert(ProcessMenu, {
+    --[[table.insert(ProcessMenu, {
         header = Lang:t('menu.header_joints'),
         txt = Lang:t('menu.roll_some_joints_description'),
         params = {
             event = "qb-outdoorweed:client:Joint",
         }
-    })
+    })]]
     Wait(100)
     exports['qb-menu']:openMenu(ProcessMenu)
 end
@@ -65,16 +65,16 @@ RegisterNetEvent('qb-outdoorweed:client:WeedBag', function()
                 type = 'number',
                 isRequired = true,
                 name = 'WeedBag',
-                text = Lang:t('menu.weed_bagging_process_max', {value=Config.MaxProcess})
+                text = Lang:t('menu.weed_bagging_process_max', {value=Config.BagMaxProcess})
             },
         }
     })
     if dialog then
         if not dialog.WeedBag then return end
-        if tonumber(dialog.WeedBag) <= Config.MaxProcess then
+        if tonumber(dialog.WeedBag) <= Config.BagMaxProcess then
             TriggerServerEvent('qb-outdoorweed:server:CheckAmount', dialog.WeedBag, "WeedBag")
         else
-            QBCore.Functions.Notify(Lang:t('error.weed_bagging_process_max', {value=Config.MaxProcess}), "error", 4500)
+            QBCore.Functions.Notify(Lang:t('error.weed_bagging_process_max', {value=Config.BagMaxProcess}), "error", 4500)
         end
     end
 end)
@@ -88,16 +88,16 @@ RegisterNetEvent('qb-outdoorweed:client:Joint', function()
                 type = 'number',
                 isRequired = true,
                 name = 'Joint',
-                text = Lang:t('menu.joint_making_process_max', {value=Config.MaxProcess})
+                text = Lang:t('menu.joint_making_process_max', {value=Config.DryMaxProcess})
             },
         }
     })
     if dialog then
         if not dialog.Joint then return end
-        if tonumber(dialog.Joint) <= Config.MaxProcess then
+        if tonumber(dialog.Joint) <= Config.DryMaxProcess then
             TriggerServerEvent('qb-outdoorweed:server:CheckAmount', dialog.Joint, "Joints")
         else
-            QBCore.Functions.Notify(Lang:t('error.joint_making_process_max', {value=Config.MaxProcess}), "error", 4500)
+            QBCore.Functions.Notify(Lang:t('error.joint_making_process_max', {value=Config.DryMaxProcess}), "error", 4500)
         end
     end
 end)
