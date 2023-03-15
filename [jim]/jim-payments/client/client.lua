@@ -59,7 +59,7 @@ end)
 
 RegisterNetEvent('jim-payments:client:Charge', function(data, outside)
 	--Check if player is using /cashregister command
-	if not outside and not onDuty and data.gang == nil then triggerNotify(nil, Loc[Config.Lan].error["not_onduty"], "error") return end
+	--if not outside and not onDuty and data.gang == nil then triggerNotify(nil, Loc[Config.Lan].error["not_onduty"], "error") return end
 	local newinputs = {} -- Begin qb-input creation here.
 	if Config.List then -- If nearby player list is wanted:
 		--Retrieve a list of nearby players from server
