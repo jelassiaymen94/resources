@@ -13,7 +13,7 @@ Polar Coke Script
 
 -  Qb-Core
 
--  Polar-UI
+-  Ps-Ui
 
 
 
@@ -23,7 +23,7 @@ Polar Coke Script
 
 + Randomized Loot tables with Buff Options
 
-+ qb-buffs Luck Buffs
++ Ps-Buffs Luck Buffs
 
 + Easy to change Minigame
 
