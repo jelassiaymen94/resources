@@ -1,18 +1,18 @@
 
 
--- wuchangegarage created by Blake
-Config.DoorList['wuchangegarage'] = {
-    objYaw = 0.0,
-    distance = 5,
+-- downstairsdoor created by Oldnewz
+Config.DoorList['downstairsdoor'] = {
+    distance = 2,
     doorRate = 1.0,
+    doorType = 'door',
+    authorizedJobs = { ['wuchang'] = 0 },
     fixText = false,
-    objName = -700626879,
-    objCoords = vec3(-816.223633, -740.162659, 24.165236),
-    doorType = 'garage',
+    objName = -2023754432,
+    objCoords = vec3(-820.658508, -715.694885, 23.939939),
+    objYaw = 179.99998474121,
     audioRemote = false,
     pickable = false,
     locked = true,
-    authorizedJobs = { ['wuchang'] = 0 },
     --audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     --audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
     --autoLock = 1000,
