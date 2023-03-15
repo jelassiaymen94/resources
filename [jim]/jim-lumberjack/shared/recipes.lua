@@ -87,13 +87,18 @@ Crafting["Wood Crafting"] = {
 
 Crafting["Illegal"] = {
     ["Weed"] = {
+        ["Trimming"] = {
+            { ["weedpound"] = { ["crophigh"] = 1, ["drugbag"] = 2 }, amount = math.random(2,3) },
+        },
         ["Grinding"] = {
-            { ["nugs"] = { ["1ozhigh"] = 1 }, amount = 4 },
+            { ["nugs"] = { ["marijuana"] = 1 }, amount = 4 },
+            { ["marijuana"] = { ["weedpound"] = 1 }, amount = 16 },
         },
-        ["Bagging"] = {
+       --[[ ["Bagging"] = {
             { ["1ozhigh"] = { ["weedpound"] = 1, ["drugbag"] = 16 }, amount = 16 },
+            
         },
-        --[[["Rolling"] = {
+        ["Rolling"] = {
             { ["monkeykush_joint"] = { ["rolling_paper"] = 1, ["nugs"] = 2 }, amount = 1 },
             { ["ogscar_joint"] = { ["rolling_paper"] = 1, ["nugs"] = 2 }, amount = 1 },
             { ["granddaddycaine_joint"] = { ["rolling_paper"] = 1, ["nugs"] = 2 }, amount = 1 },
