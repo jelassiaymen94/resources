@@ -41,7 +41,7 @@ RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function()
     
 end)
 function targets()
-    exports['qb-target']:AddBoxZone("enterlab2", vector3(-99999387.1, 3584.2, 33.79), 1, 1, {
+    exports['qb-target']:AddBoxZone("enterlab2", vector3(387.1, 3584.2, 33.79), 1, 1, {
         name = "enterlab3",
         heading = 0,
              debugPoly = false,
@@ -58,13 +58,12 @@ function targets()
             },
             distance = 1.5
         })
-        
-        exports['qb-target']:AddBoxZone("exitlab", vector3(-999991088.16, -3187.18, -38.85), 1, 1, {
+        exports['qb-target']:AddBoxZone("exitlab", vector3(1088.16, -3187.18, -38.85), 1, 1, {
             name = "exitlab",
             heading = 0,
                  debugPoly = false,
-                minZ = -39.00,
-                maxZ = -38.00,
+                minZ =  -39.00,
+                maxZ =-38.7,
             }, {
                 options = {
                     {
@@ -692,7 +691,7 @@ function minigames()
     animation()
     print(ems)
     print(timer)
-    --[[exports['Polar-UI']:Circle(function(success)
+    exports['Polar-UI']:Circle(function(success)
         if success then
             Wait(250)
             exports['Polar-UI']:Circle(function(success)
@@ -753,9 +752,9 @@ function minigames()
                             endanimation()
                         end
                     end, 4, ms) -- NumberOfCircles, MS
-                else]]
+                else
                     Wait(250)
-                    --[[exports['Polar-UI']:Thermite(function(success)
+                    exports['Polar-UI']:Thermite(function(success)
                         if success then
                             level1 = true
                             setminigame()
@@ -766,11 +765,11 @@ function minigames()
                            
                             endanimation()
                         end
-                    end, times, 5, 3)]] -- Time, Gridsize (5, 6, 7, 8, 9, 10), IncorrectBlocks
-                --end
-            --end, 4, ms) -- NumberOfCircles, MS
-       -- end
-    --end, 4, ms)-- NumberOfCircles, MS
+                     end, times, 5, 3) -- Time, Gridsize (5, 6, 7, 8, 9, 10), IncorrectBlocks
+                end
+            end, 4, ms) -- NumberOfCircles, MS
+        end
+    end, 4, ms)-- NumberOfCircles, MS
 end
 
 
