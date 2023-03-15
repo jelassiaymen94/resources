@@ -249,8 +249,8 @@ RegisterNetEvent('Polar-WeedPlanting:client:DeliverWeed', function()
 
 		-- Alert Cops
 		if math.random(100) <= Shared.CallCopsChance then
-            if GetResourceState('ps-dispatch') == 'started' then
-                exports['ps-dispatch']:DrugSale() -- Project-SLoth ps-dispatch
+            if GetResourceState('qb-dispatch') == 'started' then
+                exports['qb-dispatch']:DrugSale() -- Project-SLoth qb-dispatch
             end
         end
         

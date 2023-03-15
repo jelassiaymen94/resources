@@ -17,7 +17,7 @@ Preview: https://youtu.be/UdPLwmzGQv4
 
 # Optional
 
-- Ps-Dispatch
+- qb-dispatch
 
 - qb-phone (Mail)
 

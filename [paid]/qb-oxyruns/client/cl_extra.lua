@@ -2,7 +2,7 @@ local QBCore = exports['qb-core']:GetCoreObject()
 
 function OxyPoliceCall()
   if Config.PoliceAlertChance >= math.random(1, 100) then 
-      exports['ps-dispatch']:DrugSale()
+      exports['qb-dispatch']:DrugSale()
   end
 end
 

@@ -6,7 +6,7 @@ Config = {
     CoreExport = 'qb-core',
     TargetExport = 'qb-target',
     MenuExport = 'qb-menu',
-    FuelExport = 'ps-fuel',
+    FuelExport = 'LegacyFuel',
     VehicleKeysTrigger = "vehiclekeys:client:SetOwner",
 
     -- ## Items
