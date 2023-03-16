@@ -44,71 +44,153 @@ end)
 
 --- Events
 
+function GetGroundHash(ped)
+    local posped = GetEntityCoords(ped)
+    local num = StartShapeTestCapsule(posped.x, posped.y, posped.z + 4, posped.x, posped.y, posped.z - 2.0, 2, 1, ped, 7)
+    local arg1, arg2, arg3, arg4, arg5 = GetShapeTestResultEx(num)
+    return arg5
+end
+
 RegisterNetEvent('Polar-Weed:client:UseWeedSeed', function()
     if GetVehiclePedIsIn(PlayerPedId(), false) ~= 0 then return end
     if seedUsed then return end
+    if Config.UseGroundTypes then
+        if GetGroundHash(PlayerPedId()) == Config.Ground1 or GetGroundHash(PlayerPedId()) == Config.Ground2 or GetGroundHash(PlayerPedId()) == Config.Ground3 or GetGroundHash(PlayerPedId()) == Config.Ground4 then
     seedUsed = true
     local ModelHash = Config.Props[1]
     RequestModel(ModelHash)
     while not HasModelLoaded(ModelHash) do Wait(0) end
-    exports['qb-core']:DrawText(text('place_or_cancel'), 'left')
-    local hit, dest, _, _ = RayCastCamera(7.0)
-    local plant = CreateObject(ModelHash, dest.x, dest.y, dest.z + -0.5, false, false, false)
-    SetEntityCollision(plant, false, false)
-    SetEntityAlpha(plant, 150, true)
 
-    local planted = false
-    while not planted do
-        Wait(0)
-        hit, dest, _, _ = RayCastCamera(7.0)
-        if hit == 1 then
-            SetEntityCoords(plant, dest.x, dest.y, dest.z + -0.5)
-
-            -- [E] To spawn plant
-            if IsControlJustPressed(0, 38) then
-                planted = true
-                exports['qb-core']:KeyPressed(38)
-                DeleteObject(plant)
-                local ped = PlayerPedId()
-                RequestAnimDict('amb@medic@standing@kneel@base')
-                RequestAnimDict('anim@gangops@facility@servers@bodysearch@')
-                while 
-                    not HasAnimDictLoaded('amb@medic@standing@kneel@base') or
-                    not HasAnimDictLoaded('anim@gangops@facility@servers@bodysearch@')
-                do 
-                    Wait(0) 
+            exports['qb-core']:DrawText(text('place_or_cancel'), 'left')
+            local hit, dest, _, _ = RayCastCamera(7.0)
+            local plant = CreateObject(ModelHash, dest.x, dest.y, dest.z + -0.5, false, false, false)
+            SetEntityCollision(plant, false, false)
+            SetEntityAlpha(plant, 150, true)
+                
+            local planted = false
+            while not planted do
+               
+                Wait(0)
+                hit, dest, _, _ = RayCastCamera(7.0)
+                if hit == 1 then
+                    SetEntityCoords(plant, dest.x, dest.y, dest.z + -0.5)
+        
+                    -- [E] To spawn plant
+                    if IsControlJustPressed(0, 38) then
+                        planted = true
+                        exports['qb-core']:KeyPressed(38)
+                        DeleteObject(plant)
+                        local ped = PlayerPedId()
+                        RequestAnimDict('amb@medic@standing@kneel@base')
+                        RequestAnimDict('anim@gangops@facility@servers@bodysearch@')
+                        while 
+                            not HasAnimDictLoaded('amb@medic@standing@kneel@base') or
+                            not HasAnimDictLoaded('anim@gangops@facility@servers@bodysearch@')
+                        do 
+                            Wait(0) 
+                        end
+                        TaskPlayAnim(ped, 'amb@medic@standing@kneel@base', 'base', 8.0, 8.0, -1, 1, 0, false, false, false)
+                        TaskPlayAnim(ped, 'anim@gangops@facility@servers@bodysearch@', 'player_search', 8.0, 8.0, -1, 48, 0, false, false, false)
+        
+                        QBCore.Functions.Progressbar('spawn_plant', text('place_sapling'), Config.PlaceTime, false, true, {
+                            disableMovement = true,
+                            disableCarMovement = false,
+                            disableMouse = false,
+                            disableCombat = true,
+                        }, {}, {}, {}, function()
+                            TriggerServerEvent('Polar-Weed:server:CreateNewPlant', dest)
+                            planted = false
+                            seedUsed = false
+                            ClearPedTasks(ped)
+                                RemoveAnimDict('amb@medic@standing@kneel@base')
+                                RemoveAnimDict('anim@gangops@facility@servers@bodysearch@')
+                        end, function() 
+                            QBCore.Functions.Notify(text('canceled'), 'error', 2500)
+                            planted = false
+                            seedUsed = false
+                            ClearPedTasks(ped)
+                               RemoveAnimDict('amb@medic@standing@kneel@base')
+                               RemoveAnimDict('anim@gangops@facility@servers@bodysearch@')
+                        end)
+                    end
+                    
+                    -- [G] to cancel
+                    if IsControlJustPressed(0, 47) then
+                        exports['qb-core']:KeyPressed(47)
+                        planted = false
+                        seedUsed = false
+                        DeleteObject(plant)
+                        return
+                    end
+               
                 end
-                TaskPlayAnim(ped, 'amb@medic@standing@kneel@base', 'base', 8.0, 8.0, -1, 1, 0, false, false, false)
-                TaskPlayAnim(ped, 'anim@gangops@facility@servers@bodysearch@', 'player_search', 8.0, 8.0, -1, 48, 0, false, false, false)
-                QBCore.Functions.Progressbar('spawn_plant', text('place_sapling'), Config.PlaceTime, false, true, {
-                    disableMovement = true,
-                    disableCarMovement = false,
-                    disableMouse = false,
-                    disableCombat = true,
-                }, {}, {}, {}, function() 
-                    TriggerServerEvent('Polar-Weed:server:CreateNewPlant', dest)
-                    planted = false
-                    seedUsed = false
-                    ClearPedTasks(ped)
-                    RemoveAnimDict('amb@medic@standing@kneel@base')
-                    RemoveAnimDict('anim@gangops@facility@servers@bodysearch@')
-                end, function() 
-                    QBCore.Functions.Notify(text('canceled'), 'error', 2500)
-                    planted = false
-                    seedUsed = false
-                    ClearPedTasks(ped)
-                    RemoveAnimDict('amb@medic@standing@kneel@base')
-                    RemoveAnimDict('anim@gangops@facility@servers@bodysearch@')
-                end)
             end
+        else
+            QBCore.Functions.Notify('You Cannot Plant Here', 'error', 2500)
+        end
+    else
+        exports['qb-core']:DrawText(text('place_or_cancel'), 'left')
+        local hit, dest, _, _ = RayCastCamera(7.0)
+        local plant = CreateObject(ModelHash, dest.x, dest.y, dest.z + -0.5, false, false, false)
+        SetEntityCollision(plant, false, false)
+        SetEntityAlpha(plant, 150, true)
             
-            -- [G] to cancel
-            if IsControlJustPressed(0, 47) then
-                exports['qb-core']:KeyPressed(47)
-                planted = false
-                seedUsed = false
-                DeleteObject(plant)
-                return
+        local planted = false
+        while not planted do
+           
+            Wait(0)
+            hit, dest, _, _ = RayCastCamera(7.0)
+            if hit == 1 then
+                SetEntityCoords(plant, dest.x, dest.y, dest.z + -0.5)
+    
+                -- [E] To spawn plant
+                if IsControlJustPressed(0, 38) then
+                    planted = true
+                    exports['qb-core']:KeyPressed(38)
+                    DeleteObject(plant)
+                    local ped = PlayerPedId()
+                    RequestAnimDict('amb@medic@standing@kneel@base')
+                    RequestAnimDict('anim@gangops@facility@servers@bodysearch@')
+                    while 
+                        not HasAnimDictLoaded('amb@medic@standing@kneel@base') or
+                        not HasAnimDictLoaded('anim@gangops@facility@servers@bodysearch@')
+                    do 
+                        Wait(0) 
+                    end
+                    TaskPlayAnim(ped, 'amb@medic@standing@kneel@base', 'base', 8.0, 8.0, -1, 1, 0, false, false, false)
+                    TaskPlayAnim(ped, 'anim@gangops@facility@servers@bodysearch@', 'player_search', 8.0, 8.0, -1, 48, 0, false, false, false)
+    
+                    QBCore.Functions.Progressbar('spawn_plant', text('place_sapling'), Config.PlaceTime, false, true, {
+                        disableMovement = true,
+                        disableCarMovement = false,
+                        disableMouse = false,
+                        disableCombat = true,
+                    }, {}, {}, {}, function()
+                        TriggerServerEvent('Polar-Weed:server:CreateNewPlant', dest)
+                        planted = false
+                        seedUsed = false
+                        ClearPedTasks(ped)
+                            RemoveAnimDict('amb@medic@standing@kneel@base')
+                            RemoveAnimDict('anim@gangops@facility@servers@bodysearch@')
+                    end, function() 
+                        QBCore.Functions.Notify(text('canceled'), 'error', 2500)
+                        planted = false
+                        seedUsed = false
+                        ClearPedTasks(ped)
+                           RemoveAnimDict('amb@medic@standing@kneel@base')
+                           RemoveAnimDict('anim@gangops@facility@servers@bodysearch@')
+                    end)
+                end
+                
+                -- [G] to cancel
+                if IsControlJustPressed(0, 47) then
+                    exports['qb-core']:KeyPressed(47)
+                    planted = false
+                    seedUsed = false
+                    DeleteObject(plant)
+                    return
+                end
+           
             end
         end
     end
@@ -131,7 +213,7 @@ RegisterNetEvent('Polar-Weed:client:CheckPlant', function(data)
                 {
                     header = text('clear_plant_header'),
                     txt = text('clear_plant_text'),
-                    -- icon = 'fas fa-skull-crossbones',
+                     icon = 'fas fa-skull-crossbones',
                     params = {
                         event = 'Polar-Weed:client:ClearPlant',
                         args = data.entity
@@ -337,6 +419,7 @@ end)
 RegisterNetEvent('Polar-Weed:client:ClearPlant', function(entity)
     local netId = NetworkGetNetworkIdFromEntity(entity)
     local ped = PlayerPedId()
+    --[[
     TaskTurnPedToFaceEntity(ped, entity, 1.0)
     Wait(1500)
 
@@ -350,28 +433,45 @@ RegisterNetEvent('Polar-Weed:client:ClearPlant', function(entity)
     end
     TaskPlayAnim(ped, 'amb@medic@standing@kneel@base', 'base', 8.0, 8.0, -1, 1, 0, false, false, false)
     TaskPlayAnim(ped, 'anim@gangops@facility@servers@bodysearch@', 'player_search', 8.0, 8.0, -1, 48, 0, false, false, false)
+    ]]
+
+    local model = 'prop_cs_trowel'
+    TaskTurnPedToFaceEntity(ped, entity, 1.0)
+    Wait(1500)
+    RequestModel(model)
+    while not HasModelLoaded(model) do Wait(0) end
+    local created_object = CreateObject(model, coords.x, coords.y, coords.z, true, true, true)
+    AttachEntityToEntity(created_object, ped, GetPedBoneIndex(ped, 28422), 0.3, 0.1, 0.0, 90.0, 180.0, 0.0, true, true, false, true, 1, true)
+
 
     QBCore.Functions.Progressbar('clear_plant', text('clear_plant'), Config.RemovePlantTime, false, true, {
         disableMovement = true,
         disableCarMovement = true,
         disableMouse = false,
         disableCombat = true,
-    }, {}, {}, {}, function()
+    }, {
+        animDict = 'amb@world_human_gardener_plant@male@base',
+        anim = 'base',
+        flags = 1,
+    }, {}, {}, function()
         TriggerServerEvent('Polar-Weed:server:ClearPlant', netId)
         ClearPedTasks(ped)
-        RemoveAnimDict('amb@medic@standing@kneel@base')
-        RemoveAnimDict('anim@gangops@facility@servers@bodysearch@')
+     --   RemoveAnimDict('amb@medic@standing@kneel@base')
+     --   RemoveAnimDict('anim@gangops@facility@servers@bodysearch@')
+        DeleteEntity(created_object)
     end, function()
         QBCore.Functions.Notify(text('canceled'), 'error', 2500)
         ClearPedTasks(ped)
-        RemoveAnimDict('amb@medic@standing@kneel@base')
-        RemoveAnimDict('anim@gangops@facility@servers@bodysearch@')
+       -- RemoveAnimDict('amb@medic@standing@kneel@base')
+       -- RemoveAnimDict('anim@gangops@facility@servers@bodysearch@')
+        DeleteEntity(created_object)
     end)
 end)
 
 RegisterNetEvent('Polar-Weed:client:HarvestPlant', function(entity)
     local netId = NetworkGetNetworkIdFromEntity(entity)
     local ped = PlayerPedId()
+    --[[
     TaskTurnPedToFaceEntity(ped, entity, 1.0)
     Wait(1500)
 
@@ -384,23 +484,43 @@ RegisterNetEvent('Polar-Weed:client:HarvestPlant', function(entity)
         Wait(0) 
     end
     TaskPlayAnim(ped, 'amb@medic@standing@kneel@base', 'base', 8.0, 8.0, -1, 1, 0, false, false, false)
-    TaskPlayAnim(ped, 'anim@gangops@facility@servers@bodysearch@', 'player_search', 8.0, 8.0, -1, 48, 0, false, false, false)
+    TaskPlayAnim(ped, 'anim@gangops@facility@servers@bodysearch@', 'player_search', 8.0, 8.0, -1, 48, 0, false, false, false)]]
+
+
+    local model = 'prop_cs_trowel'
+    TaskTurnPedToFaceEntity(ped, entity, 1.0)
+    Wait(1500)
+    RequestModel(model)
+    while not HasModelLoaded(model) do Wait(0) end
+    local created_object = CreateObject(model, coords.x, coords.y, coords.z, true, true, true)
+    AttachEntityToEntity(created_object, ped, GetPedBoneIndex(ped, 28422), 0.3, 0.1, 0.0, 90.0, 180.0, 0.0, true, true, false, true, 1, true)
+
 
     QBCore.Functions.Progressbar('harvest_plant', text('harvesting_plant'), Config.HarvestTime, false, true, {
         disableMovement = true, 
         disableCarMovement = true,
         disableMouse = false,
         disableCombat = true,
-    }, {}, {}, {}, function()
+
+
+    }, {
+        animDict = 'amb@world_human_gardener_plant@male@base',
+        anim = 'base',
+        flags = 1,
+    }, {}, {}, function()
+
+
         TriggerServerEvent('Polar-Weed:server:HarvestPlant', netId)
         ClearPedTasks(ped)
-        RemoveAnimDict('amb@medic@standing@kneel@base')
-        RemoveAnimDict('anim@gangops@facility@servers@bodysearch@')
+      --  RemoveAnimDict('amb@medic@standing@kneel@base')
+      --  RemoveAnimDict('anim@gangops@facility@servers@bodysearch@')
+      DeleteEntity(created_object)
     end, function()
         QBCore.Functions.Notify(text('canceled'), 'error', 2500)
         ClearPedTasks(ped)
-        RemoveAnimDict('amb@medic@standing@kneel@base')
-        RemoveAnimDict('anim@gangops@facility@servers@bodysearch@')
+      --  RemoveAnimDict('amb@medic@standing@kneel@base')
+     --   RemoveAnimDict('anim@gangops@facility@servers@bodysearch@')
+     DeleteEntity(created_object)
     end)
 end)
 
@@ -471,13 +591,22 @@ RegisterNetEvent('Polar-Weed:client:GiveFertilizer', function(entity)
         local netId = NetworkGetNetworkIdFromEntity(entity)
         local ped = PlayerPedId()
         local coords = GetEntityCoords(ped)
-        local model = 'w_am_jerrycan_sf'
+
+
+        local model = 'v_ind_cs_chemcan'
+        local effect = 'scrape_mud'
+
         TaskTurnPedToFaceEntity(ped, entity, 1.0)
         Wait(1500)
         RequestModel(model)
-        while not HasModelLoaded(model) do Wait(0) end
+        RequestNamedPtfxAsset('core')
+        while not HasModelLoaded(model) or not HasNamedPtfxAssetLoaded('core') do Wait(0) end
+        SetPtfxAssetNextCall('core')
         local created_object = CreateObject(model, coords.x, coords.y, coords.z, true, true, true)
-        AttachEntityToEntity(created_object, ped, GetPedBoneIndex(ped, 28422), 0.3, 0.1, 0.0, 90.0, 180.0, 0.0, true, true, false, true, 1, true)
+        AttachEntityToEntity(created_object, ped, GetPedBoneIndex(ped, 28422), 0.4, 0.1, 0.0, 90.0, 180.0, 0.0, true, true, false, true, 1, true)
+        local effect = StartParticleFxLoopedOnEntity(effect, created_object, 0.35, 0.0, 0.25, 0.0, 0.0, 0.0, 2.0, false, false, false)
+
+
         QBCore.Functions.Progressbar('weedplanting_fertilizer', text('fertilizing_plant'), Config.FertProgressTime, false, false, {
             disableMovement = true,
             disableCarMovement = true,

@@ -3,7 +3,7 @@ Polar Weed Lab Script
 * **EASY INSTALLATION**
 * QbCore Framework
 
-
+Some updates inspired from Project Sloth
 
 # Dependencies
 

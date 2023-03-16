@@ -13,8 +13,8 @@ Config.Debug = false -- debug for checks
 
 Config.PoliceJob = 'police' -- police can destroy plants
 Config.DestroyIcon = 'fas fa-fire'
-Config.CloseIcon =  'fas fa-chevron-left'
-Config.GrowthIcon = 'fas fa-chart-simple'
+Config.CloseIcon =  '' -- 'fas fa-chevron-left'
+Config.GrowthIcon =  '' --'fas fa-chart-simple'
 
 --------- GENERAL ----------
 Config.RestartPlantRemoval = false -- remove dead plants on restart
@@ -44,14 +44,14 @@ Config.WaterItem = 'purifiedwater'
 Config.WaterMin = 40 -- minimum water or health will degrade
 Config.WaterTime = 0.4 -- Percent of water that is removed every minute
 Config.WaterProgressTime = 6000 -- progressbar time
-Config.WaterIcon = 'fas fa-shower'
+Config.WaterIcon =  '' --'fas fa-shower'
 
 ------------ FERTILIZER ------------
 Config.FertilizerItem = 'weed_nutrition'
 Config.FertMin = 40 -- minimum fert or health will degrade
 Config.FertTime = 0.4 -- Percent of fertilizer that is removed every minute
 Config.FertProgressTime = 6000 -- progressbar time
-Config.FertIcon = 'fab fa-nutritionix'
+Config.FertIcon =  '' --'fab fa-nutritionix'
 
 ---------- HARVEST -------
 Config.WeedPlantItem = 'wetbud' -- item you get from harvest
@@ -59,7 +59,7 @@ Config.UseHealthWeed = true -- uses health amount to determine amount of weed yo
 Config.WeedPlantItemAmount = 1 -- uses if not using health weed
 Config.WeedPlantHealthAmount = 4 -- max amount you can get
 Config.HarvestTime = 8500 -- progressbar time
-Config.HarvestIcon = 'fas fa-scissors'
+Config.HarvestIcon =  '' --'fas fa-scissors'
 
 ------ TREASURE -----------------
 Config.FemaleWeedTreasure = true -- get possible treasure when harvesting Female weed?
@@ -74,6 +74,12 @@ Config.TreasureItem = { -- common sense chance
 
 
 
+-- GROUND TYPES -- WEED CAN ONLY BE PLANTED ON THESE TYPES
+Config.UseGroundTypes = true
+Config.Ground1 = -1286696947
+Config.Ground2 = -1885547121
+Config.Ground3 = 223086562
+Config.Ground4 = -461750719
 
 
 Config.Props = {
