@@ -4,12 +4,21 @@ Config = {
 	Debug = false, -- Set to true to show target locations
 	Locations = {
 		{ -- Vanilla Unicorn DJ Booth
-			job = "public", -- Set this to required job role
+			job = "vu", -- Set this to required job role
 			enableBooth = true, -- option to disable rather than deleting code
 			DefaultVolume = 0.1, -- 0.01 is lowest, 1.0 is max
-			radius = 30, -- The radius of the sound from the booth
+			radius = 25, -- The radius of the sound from the booth
 			coords = vector3(120.0, -1281.72, 29.48), -- Where the booth is located
 		},
+		{ -- VU VIP Room
+		job = "vu", -- "public" makes it so anyone can add music.
+		enableBooth = true,
+		DefaultVolume = 0.15,
+		radius = 7,
+		coords = vector3(111.3007, -1304.3901, 28.6876),
+		--soundLoc = vector3(113.4731, -1303.0309, 29.8930), -- Add sound origin location if you don't want the music to play from the dj booth
+		prop = `prop_radio_01`
+	},
 		{ -- Sisyphus Theater
 			job = "public", -- "public" makes it so anyone can add music.
 			enableBooth = true,
@@ -116,7 +125,15 @@ soundLoc = vector3(804.4647, -749.1584, 26.7808), -- Add sound origin location i
 prop = `prop_radio_01`
 
 },
+{ --Reese 
+enableBooth = true,
+DefaultVolume = 0.1,
+radius = 35,
+coords = vector3(943.4400, -1808.0016, 1.3817),
+soundLoc = vector3(943.4400, -1808.0016, 1.3817), -- Add sound origin location if you don't want the music to play from the dj booth
+prop = `prop_radio_01`
 
+},
 
 { -- cop House
 --job = "pizzathis",

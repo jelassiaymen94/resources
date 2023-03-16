@@ -167,10 +167,11 @@ RegisterNetEvent('Renewed-Deliveries:server:CollectCheck', function()
                     Player.Functions.AddItem("safecracker", 1, false)
                     TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items["safecracker"], "add")-- 50%
                     TriggerEvent("qb-log:server:CreateLog", "jobitemadded", "RENEWED DELIVERIES", "yellow", "**" .. src .. "** ADDED 1 SAFE CRACKER")
-                --[[elseif chance >=27 and chance <75 then 
-                    Player.Functions.AddItem("cryptostick", 1, false)
-                    TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items["cryptostick"], "add")-- 50%
-                elseif chance >=76 and chance <150 then
+                elseif chance >=27 and chance <75 then 
+                    Player.Functions.AddItem("pharmaceuticals", 1, false)
+                    TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items["pharmaceuticals"], "add")-- 50%
+                    TriggerEvent("qb-log:server:CreateLog", "jobitemadded", "RENEWED DELIVERIES", "yellow", "**" .. src .. "** ADDED 1 Pharmaceuticals")
+                --[[elseif chance >=76 and chance <150 then
                     Player.Functions.AddItem("cryptostick", 1, false)
                     TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items["cryptostick"], "add") -- 50%]]
                 --[[elseif chance >=27 and chance <300 then

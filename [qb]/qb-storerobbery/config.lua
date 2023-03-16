@@ -3,13 +3,11 @@ Config = {}
 Config.minEarn = 1500
 Config.maxEarn = 2500
 Config.RegisterEarnings = math.random(Config.minEarn, Config.maxEarn)
-Config.MinimumStoreRobberyPolice = 1
+Config.MinimumStoreRobberyPolice = 2
 
 Config.Registers = {
-
-
-    [1] = {vector3(-47.2, -1757.67, 29.54), robbed = false, time = 0, safeKey = 1, camId = 4},
-    [2] = {vector3(-48.51, -1759.23, 29.54), robbed = false, time = 0, safeKey = 1, camId = 4},
+    [1] = {vector3(-47.24,-1757.65, 29.53), robbed = false, time = 0, safeKey = 1, camId = 4},
+    [2] = {vector3(-48.58,-1759.21, 29.59), robbed = false, time = 0, safeKey = 1, camId = 4},
     [3] = {vector3(-1486.26,-378.0,  40.16), robbed = false, time = 0, safeKey = 2, camId = 5},
     [4] = {vector3(-1222.03,-908.32, 12.32), robbed = false, time = 0, safeKey = 3, camId = 6},
     [5] = {vector3(-706.08, -915.42, 19.21), robbed = false, time = 0, safeKey = 4, camId = 7},
@@ -38,13 +36,8 @@ Config.Registers = {
     [28] = {vector3(1728.86, 6417.26, 35.03), robbed = false, time = 0, safeKey = 17, camId = 20},
     [29] = {vector3(1727.85, 6415.14, 35.03), robbed = false, time = 0, safeKey = 17, camId = 20},
     [30] = {vector3(-161.07, 6321.23, 31.5), robbed = false, time = 0, safeKey = 18, camId = 27},
-    [31] = {vector3(160.83, 6640.52, 31.88), robbed = false, time = 0, safeKey = 19, camId = 28},
-    [32] = {vector3(162.34, 6642.07, 31.88), robbed = false, time = 0, safeKey = 19, camId = 28},
-    
-   -- [33] = {vector3(162.16, 6643.22, 31.6), robbed = false, time = 0, safeKey = 19, camId = 29},
-
-
-    
+    [31] = {vector3(160.52, 6641.74, 31.6), robbed = false, time = 0, safeKey = 19, camId = 28},
+    [32] = {vector3(162.16, 6643.22, 31.6), robbed = false, time = 0, safeKey = 19, camId = 29},
 }
 
 

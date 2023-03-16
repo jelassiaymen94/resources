@@ -13,7 +13,7 @@ Polar Meth Script
 
 -  Qb-Core
 
--  Polar-UI
+-  Ps-Ui
 
 
 
@@ -23,7 +23,7 @@ Polar Meth Script
 
 + Randomized Loot tables with Buff Options
 
-+ qb-buffs Luck Buffs
++ Ps-Buffs Luck Buffs
 
 + Easy to change Minigame
 

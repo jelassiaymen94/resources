@@ -56,7 +56,7 @@ GarageNameAsBlipName = true -- if set to true, the blips name will match the gar
 UseEnc0dedPersistenVehicles = false -- enable if you use this script, not really a requirement for your server and I don't recommend it if you don't know what you're doing as it requires a lot of changes in other places
 -- NEW --
 
-FuelScript = 'LegacyFuel' -- change to lj-fuel / LegacyFuel if you use lj-fuel / LegacyFuel or something else if you use any other LegcyFuel compatible script
+FuelScript = 'ps-fuel' -- change to lj-fuel / ps-fuel if you use lj-fuel / ps-fuel or something else if you use any other LegcyFuel compatible script
 UseLoafHousing = false
 AllowSpawningFromAnywhere = true -- if set to true, the car can be spawned from anywhere inside the zone on the closest parking lot, if set to false you will have to walk up to a parking lot 
 AutoRespawn = false --True == auto respawn cars that are outside into your garage on script restart, false == does not put them into your garage and players have to go to the impound
@@ -162,7 +162,7 @@ Garages = {
         blipName = "Impound Lot",
         blipNumber = 68,
         type = 'depot',                --public, job, gang, depot
-        vehicleCategories = {'car', 'motorcycle', 'other', 'air'},
+        vehicleCategories = {'car', 'motorcycle', 'other', 'helicopter'},
         drawText = 'Impound',                 --car, air, sea
         debug = false,
         ['ParkingSpots'] = {
@@ -872,7 +872,7 @@ Garages = {
         blipName = "Public Parking",
         blipNumber = 357,
         type = 'public',                --public, job, gang, depot
-        vehicleCategories = {'car', 'motorcycle', 'other', 'helicopter',},
+        vehicleCategories = {'car', 'motorcycle', 'other'},
         drawText = 'Parking',                 --car, air, sea
         debug = false,
         ['ParkingSpots'] = {
@@ -896,6 +896,70 @@ Garages = {
             vector4(-810.4664, -753.4540, 22.6744, 268.8644),
         }
     },
+
+
+    ['vulot'] = {
+        ['Zone'] = {
+            ['Shape'] = { --polygon that surrounds the parking area
+                vector2(130.0572, -1318.0892),
+                vector2(135.2324, -1314.7942),
+                vector2(154.8048, -1328.5175),
+                vector2(151.2167, -1334.5228),
+            },
+            ['minZ'] = 28.00,  -- min height of the parking zone
+            ['maxZ'] = 30.45,  -- max height of the parking zone
+        },
+        label = "Vanilla Unicorn Parking",
+        showBlip = false,
+        blipcoords = vector3(-1578.2623, 5158.5210, 19.8344),
+        blipName = "Public Parking",
+        blipNumber = 357,
+        type = 'public',                --public, job, gang, depot
+        vehicleCategories = {'car', 'motorcycle', 'other'},
+        drawText = 'Parking',                 --car, air, sea
+        debug = false,
+        ['ParkingSpots'] = {
+            vector4(151.1527, -1328.8937, 29.2156, 324.0431),
+            vector4(149.0453, -1327.1033, 29.2173, 327.5661),
+            vector4(146.6463, -1325.7971, 29.2139, 326.8974),
+            vector4(144.6837, -1324.4755, 29.2118, 324.9914),
+            vector4(142.8348, -1323.0786, 29.2100, 327.0063),
+            vector4(140.6355, -1321.5085, 29.2076, 326.0431),
+            vector4(138.1314, -1319.8497, 29.2022, 324.4772),
+            vector4(136.2252, -1318.6997, 29.2022, 327.9397),
+            vector4(134.2890, -1317.5713, 29.2022, 327.7503),
+        }
+    },
+
+    ['wuroof'] = {
+        ['Zone'] = {
+            ['Shape'] = { --polygon that surrounds the parking area
+                vector2(-841.4285, -717.9707),
+                vector2(-830.9104, -718.1366),
+                vector2(-830.8128, -728.2653),
+                vector2(-841.2303, -728.2330),
+            },
+            ['minZ'] = 122.00,  -- min height of the parking zone
+            ['maxZ'] = 124.45,  -- max height of the parking zone
+        },
+        label = "Wu Chang Helipad",
+        showBlip = false,
+        blipcoords = vector3(-1578.2623, 5158.5210, 19.8344),
+        blipName = "Public Parking",
+        blipNumber = 357,
+        type = 'public',                --public, job, gang, depot
+        --job = 'wuchang',
+        vehicleCategories = {'air', "helicopter",},
+        drawText = 'Parking',                 --car, air, sea
+        debug = false,
+        ['ParkingSpots'] = {
+            vector4(-836.1098, -722.9332, 123.3460, 268.9737),
+        }
+    },
+
+
+
+
 
     ['catcafelot'] = {
         ['Zone'] = {

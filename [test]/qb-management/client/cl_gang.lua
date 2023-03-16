@@ -88,15 +88,6 @@ RegisterNetEvent('qb-gangmenu:client:OpenMenu', function()
                 event = "qb-gangmenu:client:HireMembers",
             }
         },
-
-       --[[ {
-            header = Lang:t("bodygang.storage"),
-            txt = Lang:t("bodygang.storaged"),
-            icon = "fa-solid fa-box-open",
-            params = {
-                event = "qb-gangmenu:client:Stash",
-            }
-        },
         {
             header = Lang:t("bodygang.outfits"),
             txt = Lang:t("bodygang.outfitsd"),
@@ -105,6 +96,15 @@ RegisterNetEvent('qb-gangmenu:client:OpenMenu', function()
                 event = "qb-gangmenu:client:Warbobe",
             }
         },
+       --[[ {
+            header = Lang:t("bodygang.storage"),
+            txt = Lang:t("bodygang.storaged"),
+            icon = "fa-solid fa-box-open",
+            params = {
+                event = "qb-gangmenu:client:Stash",
+            }
+        },
+
         {
             header = Lang:t("bodygang.money"),
             txt = Lang:t("bodygang.moneyd"),

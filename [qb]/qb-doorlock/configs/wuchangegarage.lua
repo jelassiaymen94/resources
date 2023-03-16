@@ -10,7 +10,7 @@ Config.DoorList['wuchangegarage'] = {
     objCoords = vec3(-816.223633, -740.162659, 24.165236),
     doorType = 'garage',
     audioRemote = false,
-    pickable = true,
+    pickable = false,
     locked = true,
     authorizedJobs = { ['wuchang'] = 0 },
     --audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
