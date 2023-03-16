@@ -6,8 +6,8 @@ Config.Menu = "qb-menu"
 
 Config.Route = {
     ["small"] = 0,
-    ["medium"] = 0,
-    ["large"] = 0,
+    ["medium"] = 50,
+    ["large"] = 150,
 }
 
 Config.StopsAmt = {

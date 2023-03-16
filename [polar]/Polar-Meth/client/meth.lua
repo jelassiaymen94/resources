@@ -333,15 +333,15 @@ RegisterNetEvent('Polar-Meth:client:Temperature', function()
     if mix then
         --FreezeEntityPosition(PlayerPedId(), true)
         animation()
-        exports['ps-ui']:Circle(function(success)
+        exports['Polar-UI']:Circle(function(success)
             if success then
                 QBCore.Functions.Notify('Temperature is Okay', green, alerttime)
                 Wait(1000)
-                exports['ps-ui']:Circle(function(success)
+                exports['Polar-UI']:Circle(function(success)
                     if success then
                         QBCore.Functions.Notify('Temperature is Decent', green, alerttime)
                         Wait(1000)
-                        exports['ps-ui']:Scrambler(function(success)
+                        exports['Polar-UI']:Scrambler(function(success)
                             if success then
                                 temp = true
                                 QBCore.Functions.Notify('The Temperature is Perfect', green, alerttime)
@@ -703,7 +703,7 @@ function givestuff()
     if Config.Debug then print('rewards giving') end
     if temp1 then
     if Config.Buffs then
-        if exports['ps-buffs']:HasBuff(Config.LuckBuff) then
+        if exports['qb-buffs']:HasBuff(Config.LuckBuff) then
     TriggerServerEvent('Polar-Meth:server:reward1luck')
         else
             --QBCore.Functions.Notify('You Bagged 1', green, alerttime)
@@ -712,7 +712,7 @@ function givestuff()
     end
     elseif temp2 then
         if Config.Buffs then
-            if exports['ps-buffs']:HasBuff(Config.LuckBuff) then
+            if exports['qb-buffs']:HasBuff(Config.LuckBuff) then
         TriggerServerEvent('Polar-Meth:server:reward2luck')
             else
                 --QBCore.Functions.Notify('You Bagged 2', green, alerttime)
@@ -721,7 +721,7 @@ function givestuff()
         end
     elseif temp3 then
         if Config.Buffs then
-            if exports['ps-buffs']:HasBuff(Config.LuckBuff) then
+            if exports['qb-buffs']:HasBuff(Config.LuckBuff) then
         TriggerServerEvent('Polar-Meth:server:reward3luck')
             else
                 --QBCore.Functions.Notify('You Bagged 3', green, alerttime)
@@ -730,7 +730,7 @@ function givestuff()
         end
     elseif temp4 then
         if Config.Buffs then
-            if exports['ps-buffs']:HasBuff(Config.LuckBuff) then
+            if exports['qb-buffs']:HasBuff(Config.LuckBuff) then
         TriggerServerEvent('Polar-Meth:server:reward4luck')
             else
                 --QBCore.Functions.Notify('You Bagged 4', green, alerttime)

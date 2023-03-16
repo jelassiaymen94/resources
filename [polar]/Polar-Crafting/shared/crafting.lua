@@ -13,7 +13,6 @@ Config.Skillbar = 'qb-skillbar'
 Config.Debug = false -- debug for checks
 Config.img = "qb-inventory/html/images/"
 
-Config.StoreBenchmin = 0
 Config.ToolsBenchmin = 0
 Config.WeaponsBenchmin = 200
 Config.ExplosivesBenchmin = 520
@@ -41,11 +40,7 @@ Config.Locations = {
     type = 'explosives',
     name = '4',
     },
-    [5] = {
-    Table =  vector4(18.2827, -1100.2949, 29.7972, 340.9893),
-    type = 'store',
-    name = '5',
-    },
+    
 
 }
  
@@ -136,42 +131,42 @@ Config.WeaponsBench = {
     [4] = {
         item = 'weapon_fnx45',
         icon = "",
-        txt = "Required: ".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['pistolgrip'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Pistol Grip".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['pistolbody'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Pistol Body ".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['pistolbarrel'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Pistol Barrel ".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['refined_iron'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Refined Iron ".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['refined_aluminum'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Refined Aluminum ".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['carbon'].image.." width=30px onerror='this.onerror=null; this.remove();'> 5 Carbon ",
+        txt = "Required: ".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['pistolgrip'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Pistol Grip".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['pistolbody'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Pistol Body ".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['pistolbarrel'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Pistol Barrel ".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['refined_iron'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Refined Iron ".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['refined_aluminum'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Refined Aluminum ".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['copper'].image.." width=30px onerror='this.onerror=null; this.remove();'> 4 Copper ",
         exp = 3334,
       
     },
     [5] = {
         item = 'weapon_microsmg2',
         icon = "",
-        txt = "Required: ".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['refined_copper'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Refined Copper".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['smgbarrel'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Smg Barrel".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['smgbody'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Smg Body".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['smggrip'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Smg Grip".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['refined_steel'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Refined Steel".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['carbon'].image.." width=30px onerror='this.onerror=null; this.remove();'> 5 Carbon",
+        txt = "Required: ".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['refined_copper'].image.." width=25px onerror='this.onerror=null; this.remove();'> 2 Refined Copper".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['smgbarrel'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Smg Barrel".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['smgbody'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Smg Body".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['smggrip'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Smg Grip".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['refined_steel'].image.." width=25px onerror='this.onerror=null; this.remove();'> 2 Refined Steel".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['rubber'].image.." width=30px onerror='this.onerror=null; this.remove();'> 5 Rubber",
         exp = 15000,
       
     },
     [6] = {
         item = 'weapon_microsmg3',
         icon = "",
-        txt = "Required: ".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['refined_copper'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Refined Copper".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['smgbarrel'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Smg Barrel".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['smgbody'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Smg Body".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['smggrip'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Smg Grip".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['refined_steel'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Refined Steel".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['carbon'].image.." width=30px onerror='this.onerror=null; this.remove();'> 5 Carbon",
+        txt = "Required: ".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['refined_copper'].image.." width=25px onerror='this.onerror=null; this.remove();'> 2 Refined Copper".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['smgbarrel'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Smg Barrel".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['smgbody'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Smg Body".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['smggrip'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Smg Grip".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['refined_steel'].image.." width=25px onerror='this.onerror=null; this.remove();'> 2 Refined Steel".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['rubber'].image.." width=30px onerror='this.onerror=null; this.remove();'> 5 Rubber",
         exp = 17000,
       
     },
     [7] = {
         item = 'weapon_pistol50',
         icon = "",
-        txt = "Required: ".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['pistolgrip'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Pistol Grip".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['pistolbody'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Pistol Body ".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['pistolbarrel'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Pistol Barrel ".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['carbon'].image.." width=25px onerror='this.onerror=null; this.remove();'> 5 Carbon".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['refined_steel'].image.." width=25px onerror='this.onerror=null; this.remove();'> 2 Refined Steel ".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['refined_aluminum'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Refined Aluminum ",
+        txt = "Required: ".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['pistolgrip'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Pistol Grip".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['pistolbody'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Pistol Body ".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['pistolbarrel'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Pistol Barrel ".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['rubber'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Rubber".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['refined_steel'].image.." width=25px onerror='this.onerror=null; this.remove();'> 5 Refined Steel ".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['refined_aluminum'].image.." width=25px onerror='this.onerror=null; this.remove();'> 5 Refined Aluminum ",
         exp = 23379,
       
     },
     [8] = {
         item = 'weapon_assaultrifle2',
         icon = "",
-        txt = "Required: ".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['riflereciever'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Rifle Reciever".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['rifletrigger'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Rifle Trigger ".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['riflebody'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Rifle Body ".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['carbon'].image.." width=25px onerror='this.onerror=null; this.remove();'> 10 Carbon ".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['refined_aluminum'].image.." width=25px onerror='this.onerror=null; this.remove();'> 2 Refined Aluminum " .."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['refined_steel'].image.." width=25px onerror='this.onerror=null; this.remove();'> 2 Refined Steel ".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['refined_copper'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Refined Copper ",
+        txt = "Required: ".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['riflereciever'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Rifle Reciever".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['rifletrigger'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Rifle Trigger ".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['riflegrip'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Rifle Grip ".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['carbon'].image.." width=25px onerror='this.onerror=null; this.remove();'> 5 Carbon ".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['refined_aluminum'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Refined Aluminum " .."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['refined_steel'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Refined Steel ".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['refined_copper'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Refined Copper ".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['rubber'].image.." width=25px onerror='this.onerror=null; this.remove();'> 5 Rubber ",
         exp = 29000,
       
     },
     [9] = {
         item = 'weapon_assaultrifle',
         icon = "",
-        txt = "Required: ".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['riflereciever'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Rifle Reciever".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['rifletrigger'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Rifle Trigger ".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['riflebody'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Rifle Body ".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['carbon'].image.." width=25px onerror='this.onerror=null; this.remove();'> 10 Carbon ".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['refined_aluminum'].image.." width=25px onerror='this.onerror=null; this.remove();'> 2 Refined Aluminum " .."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['refined_steel'].image.." width=25px onerror='this.onerror=null; this.remove();'> 2 Refined Steel ".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['refined_copper'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Refined Copper ",
+        txt = "Required: ".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['riflereciever'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Rifle Reciever".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['rifletrigger'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Rifle Trigger ".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['riflegrip'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Rifle Grip ".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['carbon'].image.." width=25px onerror='this.onerror=null; this.remove();'> 10 Carbon ".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['refined_aluminum'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Refined Aluminum " .."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['refined_steel'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Refined Steel ".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['refined_copper'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Refined Copper ".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['rubber'].image.." width=25px onerror='this.onerror=null; this.remove();'> 5 Rubber ",
         exp = 31000,
       
     },
@@ -237,7 +232,7 @@ Config.ExplosivesBench = {
     [4] = {
         item = 'weapon_molotov',
         icon = "",
-        txt = "Required: ".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['weapon_petrolcan'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Gas Can".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['bottle'].image.." width=25px onerror='this.onerror=null; this.remove();'> 2 Bottle".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['cloth'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Cloth",
+        txt = "Required: ".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['weapon_petrolcan'].image.." width=25px onerror='this.onerror=null; this.remove();'> 2 Gas Cans".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['bottle'].image.." width=25px onerror='this.onerror=null; this.remove();'> 2 Bottle".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['cloth'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Cloth",
         exp = 10500,
       
     },
@@ -260,97 +255,3 @@ Config.ExplosivesBench = {
 
 
 
-Config.StoreBench = {
-
-    [1] = {
-        item = 'gunpowder',
-        icon = "",
-        txt = "Required: ".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['charcoal'].image.." width=25px onerror='this.onerror=null; this.remove();'> 25 Charcoal".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['aluminumoxide'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Aluminum Oxide Powder",
-        exp = 1839,
-       
-    },
-    [2] = {
-        item = 'pistol_ammo',
-        icon = "",
-        txt = "Required: ".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['copperore'].image.." width=25px onerror='this.onerror=null; this.remove();'> 2 Copper ore".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['gunpowder'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Gun Powder",
-        exp = 2529,
-      
-    },
-    [3] = {
-        item = 'smg_ammo',
-        icon = "",
-        txt = "Required: ".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['copperore'].image.." width=25px onerror='this.onerror=null; this.remove();'> 4 Copper ore".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['gunpowder'].image.." width=25px onerror='this.onerror=null; this.remove();'> 2 Gun Powder",
-        exp = 14750,
-       
-    },
-    [4] = {
-        item = 'rifle_ammo',
-        icon = "",
-        txt = "Required: ".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['copperore'].image.." width=25px onerror='this.onerror=null; this.remove();'> 6 Copper ore".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['gunpowder'].image.." width=25px onerror='this.onerror=null; this.remove();'> 3 Gun Powder",
-        exp = 27000,
-      
-    },
-    [5] = {
-        item = 'pistolbarrel',
-        icon = "",
-        txt = "Required: ".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['copper'].image.." width=25px onerror='this.onerror=null; this.remove();'> 5 Copper Nails".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['refined_aluminum'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Refined Aluminum".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['ironore'].image.." width=25px onerror='this.onerror=null; this.remove();'> 5 Iron Ore".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['metalscrap'].image.." width=25px onerror='this.onerror=null; this.remove();'> 5 Scrap Metal",
-        exp = 2529,
-      
-    },
-    [6] = {
-        item = 'pistolbody',
-        icon = "",
-        txt = "Required: ".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['copper'].image.." width=25px onerror='this.onerror=null; this.remove();'> 5 Copper Nails".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['refined_steel'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Refined Steel".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['ironore'].image.." width=25px onerror='this.onerror=null; this.remove();'> 5 Iron Ore".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['metalscrap'].image.." width=25px onerror='this.onerror=null; this.remove();'> 5 Scrap Metal",
-        exp = 2529,
-       
-    },
-    [7] = {
-        item = 'pistolgrip',
-        icon = "",
-        txt = "Required: ".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['copper'].image.." width=25px onerror='this.onerror=null; this.remove();'> 5 Copper Nails".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['refined_rubber'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Refined Rubber".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['ironore'].image.." width=25px onerror='this.onerror=null; this.remove();'> 5 Iron Ore".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['metalscrap'].image.." width=25px onerror='this.onerror=null; this.remove();'> 5 Scrap Metal",
-        exp = 2529,
-      
-    },
-    [8] = {
-        item = 'smgbarrel',
-        icon = "",
-        txt = "Required: ".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['copper'].image.." width=25px onerror='this.onerror=null; this.remove();'> 5 Copper Nails".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['refined_aluminum'].image.." width=25px onerror='this.onerror=null; this.remove();'> 2 Refined Aluminum".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['ironore'].image.." width=25px onerror='this.onerror=null; this.remove();'> 5 Iron Ore".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['metalscrap'].image.." width=25px onerror='this.onerror=null; this.remove();'> 10 Scrap Metal",
-        exp = 14750,
-      
-    },
-    [9] = {
-        item = 'smgbody',
-        icon = "",
-        txt = "Required: ".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['copper'].image.." width=25px onerror='this.onerror=null; this.remove();'> 5 Copper Nails".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['refined_steel'].image.." width=25px onerror='this.onerror=null; this.remove();'> 2 Refined Steel".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['ironore'].image.." width=25px onerror='this.onerror=null; this.remove();'> 5 Iron Ore".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['metalscrap'].image.." width=25px onerror='this.onerror=null; this.remove();'> 10 Scrap Metal",
-        exp = 14750,
-       
-    },
-    [10] = {
-        item = 'smggrip',
-        icon = "",
-        txt = "Required: ".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['copper'].image.." width=25px onerror='this.onerror=null; this.remove();'> 5 Copper Nails".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['refined_rubber'].image.." width=25px onerror='this.onerror=null; this.remove();'> 2 Refined Rubber".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['ironore'].image.." width=25px onerror='this.onerror=null; this.remove();'> 5 Iron Ore".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['metalscrap'].image.." width=25px onerror='this.onerror=null; this.remove();'> 10 Scrap Metal",
-        exp = 14750,
-      
-    },
-    [11] = {
-        item = 'riflebody',
-        icon = "",
-        txt = "Required: ".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['copper'].image.." width=25px onerror='this.onerror=null; this.remove();'> 5 Copper Nails".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['refined_aluminum'].image.." width=25px onerror='this.onerror=null; this.remove();'> 2 Refined Aluminum".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['ironore'].image.." width=25px onerror='this.onerror=null; this.remove();'> 10 Iron Ore".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['metalscrap'].image.." width=25px onerror='this.onerror=null; this.remove();'> 10 Scrap Metal",
-        exp = 27000,
-      
-    },
-    [12] = {
-        item = 'rifletrigger',
-        icon = "",
-        txt = "Required: ".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['copper'].image.." width=25px onerror='this.onerror=null; this.remove();'> 5 Copper Nails".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['refined_steel'].image.." width=25px onerror='this.onerror=null; this.remove();'> 2 Refined Steel".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['ironore'].image.." width=25px onerror='this.onerror=null; this.remove();'> 10 Iron Ore".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['metalscrap'].image.." width=25px onerror='this.onerror=null; this.remove();'> 10 Scrap Metal".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['goldingot'].image.." width=25px onerror='this.onerror=null; this.remove();'> 5 Gold Ingot",
-        exp = 27000,
-       
-    },
-    [13] = {
-        item = 'riflereciever',
-        icon = "",
-        txt = "Required: ".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['copper'].image.." width=25px onerror='this.onerror=null; this.remove();'> 5 Copper Nails".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['refined_rubber'].image.." width=25px onerror='this.onerror=null; this.remove();'> 2 Refined Rubber".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['ironore'].image.." width=25px onerror='this.onerror=null; this.remove();'> 10 Iron Ore".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['metalscrap'].image.." width=25px onerror='this.onerror=null; this.remove();'> 10 Scrap Metal".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['silveringot'].image.." width=25px onerror='this.onerror=null; this.remove();'> 5 Silver Ingot",
-        exp = 27000,
-      
-    },
-}

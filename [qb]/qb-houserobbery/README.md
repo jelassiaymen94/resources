@@ -1,12 +1,12 @@
 # qb-houserobbery
-House Robberies For QB-Core - Improved with more searchable locations, new interior shell and support for ps-dispatch
+House Robberies For QB-Core - Improved with more searchable locations, new interior shell and support for qb-dispatch
 
 ## Dependencies
 
 - qb-lockpick: https://github.com/qbcore-framework/qb-lockpick
 - qb-skillbar: https://github.com/qbcore-framework/qb-skillbar
 
-- ps-dispatch: https://github.com/Project-Sloth/ps-dispatch
+- qb-dispatch: https://github.com/Project-Sloth/qb-dispatch
 
 ## Installation
 

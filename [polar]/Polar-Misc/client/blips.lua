@@ -1,8 +1,10 @@
 local QBCore = exports['qb-core']:GetCoreObject()
-    
 
-    CreateThread(function()
-
+RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function()
+   
+  -- for _, v in pairs(QBCore.Functions.GetPlayers()) do
+  
+   
         -- altruist camp
         local altruist = AddBlipForCoord(vector3(-1119.58, 4927.58, 218.5))
         SetBlipSprite (altruist, 269)
@@ -62,17 +64,8 @@ local QBCore = exports['qb-core']:GetCoreObject()
          AddTextComponentSubstringPlayerName("Weazel News")
          EndTextCommandSetBlipName(weazle)
 
-         -- VU
-         local vu = AddBlipForCoord(vector3(129.0987, -1299.3462, 29.2327))
-         SetBlipSprite (vu, 121)
-         SetBlipDisplay(vu, 6) 
-         SetBlipScale  (vu, 0.7)
-         SetBlipAsShortRange(vu, true)
-         SetBlipColour(vu, 45)
-         BeginTextCommandSetBlipName("STRING")
-         AddTextComponentSubstringPlayerName("Vanilla Unicorn")
-         EndTextCommandSetBlipName(vu)
 
+--[[
          -- pizza this
          local pizzathis = AddBlipForCoord(vector3(797.0662, -739.9894, -77.6257))
          SetBlipSprite (pizzathis, 681)
@@ -83,7 +76,7 @@ local QBCore = exports['qb-core']:GetCoreObject()
          BeginTextCommandSetBlipName("STRING")
          AddTextComponentSubstringPlayerName("Pizza This!")
          EndTextCommandSetBlipName(pizzathis)
-
+]]
 
          -- churhc of rockford
          local blip = AddBlipForCoord(vector3(-766.1784, -24.1005, 21.0794))
@@ -173,39 +166,15 @@ local QBCore = exports['qb-core']:GetCoreObject()
 
 
 
-
+            
+       
       end)
 
-
-
-CreateThread(function()
-
-
-
-
-
-
-
-
-end)
-
-
-CreateThread(function()
-   Wait(1000)
-   if QBCore.Functions.GetPlayerData().job ~= nil and next(QBCore.Functions.GetPlayerData().job) then
-       PlayerJob = QBCore.Functions.GetPlayerData().job
-       if PlayerJob == 'police' then
-         
-         pd()
-
-       end
-   end
-end)
 
 function pd()
 
 
-
+ 
 
 
    local blip = AddBlipForCoord(vector3(643.17, -1828.23, 9.08))

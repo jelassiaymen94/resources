@@ -459,7 +459,7 @@ RegisterNetEvent('Polar-Doorlock:Client:ThermiteDoor', function()
 	local position = GetEntityCoords(PlayerPedId())
 	local area = #(position - distance)
    	if area <= 1.0 then
-	exports['ps-ui']:Thermite(function(success)
+	exports['Polar-UI']:Thermite(function(success)
 		if success then
 			ThermitePlantCharge()
 			
