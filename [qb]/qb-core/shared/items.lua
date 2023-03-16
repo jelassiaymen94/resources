@@ -703,7 +703,7 @@ QBShared.Items = {
 	['joint'] 						 = {['name'] = 'joint', 			  	  		['label'] = 'Joint',			 		['weight'] = 1000, 		['type'] = 'item', 		['image'] = 'joint.png', 				['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,    ['combinable'] = nil,   ['description'] = 'A joint made off Weed'},
 	
 	-- ** Wet Bud
---	['wetbud'] 						 = {['name'] = 'wetbud', 			  	  		['label'] = 'Wet Bud', 					['weight'] = 2500, 		['type'] = 'item', 		['image'] = 'weed_og-kush_bud.png', 				['unique'] = false, 	['useable'] = false, 	['shouldClose'] = true,    ['combinable'] = nil,   ['description'] = 'Wet Bud'},
+	['wetbud'] 						 = {['name'] = 'wetbud', 			  	  		['label'] = 'Wet Bud', 					['weight'] = 2500, 		['type'] = 'item', 		['image'] = 'weed_og-kush_bud.png', 				['unique'] = false, 	['useable'] = false, 	['shouldClose'] = true,    ['combinable'] = nil,   ['description'] = 'Wet Bud'},
 
 --MISC food
 ["apples"] 				 	 	     = {["name"] = "apples",								["label"] = "Apples",					["weight"] = 100,		["type"] = "item",		["image"] = "apples.png",						["unique"] = false,		["useable"] = true,		["shouldClose"] = true,	   ["combinable"] = nil,   ["description"] = "Food Ingredients"},
@@ -1341,10 +1341,10 @@ QBShared.Items = {
 ["lighter"] 		 	 	 = {["name"] = "lighter", 				["label"] = "Lighter", 					["weight"] = 1000, 	    ["type"] = "item", 		["image"] = "lighter.png", 				["unique"] = false, 	["useable"] = false, 	["shouldClose"] = true,    		["combinable"] = nil,   ["description"] = "Only meth heads use this kind of lighter"},
 ["rollingpaper"] 		         = {["name"] = "rollingpaper", 			["label"] = "Rolling Papers", 			["weight"] = 1000, 	    ["type"] = "item", 		["image"] = "rollingpaper.png", 			["unique"] = false, 	["useable"] = false, 	["shouldClose"] = true,    		["combinable"] = nil,   ["description"] = "These aint Raw Rolling Papers!!?"},
 ["scale"] 		 	         = {["name"] = "scale", 					["label"] = "Scale", 					["weight"] = 1000, 	    ["type"] = "item", 		["image"] = "scale.png", 					["unique"] = false, 	["useable"] = true, 	["shouldClose"] = false,   		["combinable"] = nil,   ["description"] = "This is not what it looks like"},
-['weed_nutrition'] 			 = {['name'] = 'weed_nutrition', 			    ['label'] = 'Plant Fertilizer', 		['weight'] = 1000, 		['type'] = 'item', 		['image'] = 'weed_nutrition.png', 				['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,	  		['combinable'] = nil,   ['description'] = 'Plant nutrition'},
-['purifiedwater'] 			 	 = {['name'] = 'purifiedwater', 			    	['label'] = 'Purified Water', 				['weight'] = 1250, 		['type'] = 'item', 		['image'] = 'purifiedwater.png', 					['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,	  		['combinable'] = nil,   ['description'] = 'Plant water'},
+--['weed_nutrition'] 			 = {['name'] = 'weed_nutrition', 			    ['label'] = 'Plant Fertilizer', 		['weight'] = 1000, 		['type'] = 'item', 		['image'] = 'weed_nutrition.png', 				['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,	  		['combinable'] = nil,   ['description'] = 'Plant nutrition'},
+--['purifiedwater'] 			 	 = {['name'] = 'purifiedwater', 			    	['label'] = 'Purified Water', 				['weight'] = 1250, 		['type'] = 'item', 		['image'] = 'purifiedwater.png', 					['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,	  		['combinable'] = nil,   ['description'] = 'Plant water'},
 ['weedkey'] 			 	 = {['name'] = 'weedkey', 			    	['label'] = 'Key', 				['weight'] = 1000, 		['type'] = 'item', 		['image'] = 'weedkey.png', 					['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,	  		['combinable'] = nil,   ['description'] = 'This key smells like Dope'},
-['scissors'] 			 	 = {['name'] = 'scissors', 			    	['label'] = 'Scissors', 				['weight'] = 1000, 		['type'] = 'item', 		['image'] = 'scissors.png', 					['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,	  		['combinable'] = nil,   ['description'] = 'These Scissors have some extra Dope on them'},
+--['scissors'] 			 	 = {['name'] = 'scissors', 			    	['label'] = 'Scissors', 				['weight'] = 1000, 		['type'] = 'item', 		['image'] = 'scissors.png', 					['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,	  		['combinable'] = nil,   ['description'] = 'These Scissors have some extra Dope on them'},
 
 
 

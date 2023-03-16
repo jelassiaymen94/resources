@@ -87,8 +87,8 @@ function getFormattedDate(date, prefomattedDate = false, hideYear = false) {
 }
 
 var quotes = [
-  'Project Sloth On Top!',
-  'A Discord rewrite fixes everything.',
+  'Polar On Top',
+  'Shoot a Cop, Ride a Cowboy',
   'Does anyone even read these?',
 ]
 

@@ -7,45 +7,91 @@ Config.Menu = 'qb-menu'
 Config.Input = 'qb-input'
 Config.Inventory = 'qb-inventory'
 Config.Skillbar = 'qb-skillbar'
-----------------------------------------------------------------
 Config.img = "qb-inventory/html/images/"
--- Debug
+----------------------------------------------------------------
 Config.Debug = false -- debug for checks
 
--- GROUND TYPES -- WEED CAN ONLY BE PLANTED ON THESE TYPES
-Config.Ground1 = -1286696947
-Config.Ground2 = -1885547121
-Config.Ground3 = 223086562
-Config.Ground4 = -461750719
+Config.PoliceJob = 'police' -- police can destroy plants
+Config.DestroyIcon = 'fas fa-fire'
+Config.CloseIcon =  'fas fa-chevron-left'
+Config.GrowthIcon = 'fas fa-chart-simple'
 
--- HOW FAST PLANT GROWS
--- it grows less the further along                                                                                                           1000 seconds, / minute / hour
-Config.GrowRate = 60 -- In how many seconds it takes to update the plant (plant will grow 0.1% every update) (10 Hours roughly, takes Config.GrowRate * 1000 / 60 / 60)
-Config.MinHarvest = 98 -- how much percent before you can harvest
+--------- GENERAL ----------
+Config.RestartPlantRemoval = false -- remove dead plants on restart
+Config.TimeToGrow = 20 -- Time in minutes for a plant to grow from 0 to 100
+Config.Updates = 15 -- Time in minutes to update everything
+Config.HealthRemoved = {7, 10} -- Min/Max Amount of health decay when the plant is below the above thresholds for water and nutrition
+Config.PlaceTime = 2000 -- progressbar time to place plant
+Config.RemovePlantTime = 8500
 
--- see rate
-Config.SeeRate = false
-Config.PlantName = "Weed Plant"
-
--- min and max each fertilizer gives your plant
-Config.FertPecentMin = 30
-Config.FertPecentMax = 50
-
--- min and max each water gives your plant
-Config.WaterPecentMin = 30
-Config.WaterPecentMax = 50
-
--- How much it decreases by each time it grows, as the plant grows it removes more and more because its growing
-Config.FertDecrease = 0.01 -- 2%
-Config.WaterDecrease = 0.02 -- 0.02
+--------- MALE SEED --------------
+Config.MaleSeed = 'male_seed' -- item that makes plants pregnant
+Config.GiveMaleSeed = true -- do you want to get more male seeds from 1 male seed?
+Config.GiveMaleSeedAmount = 1 -- use if Config.GiveMaleSeedOverHealth = False
+Config.GiveMaleSeedOverHealth = true -- use if you want to do Health / Config.HealthMaleRateSeed
+Config.HealthMaleRateSeed = 50 -- Divider over Health EX. 100 / 50 = 2
 
 
-Config.PlowItem = 'trowel'
-Config.PlowItemName = 'Trowel'
+--------- FEMALE SEED ------------
+Config.FemaleSeed = 'female_seed' -- usable item to place plants
+Config.GiveFemaleSeedAmount = 1 -- use if Config.GiveMaleSeedOverHealth = False
+Config.GiveFemaleSeedOverHealth = true
+Config.HealthFemaleRateSeed = 20 -- Divider over Health EX. 100 / 20 = 5
+
+
+------------ WATER ------------
 Config.WaterItem = 'purifiedwater'
-Config.WaterItemAmount = 1
+Config.WaterMin = 40 -- minimum water or health will degrade
+Config.WaterTime = 0.4 -- Percent of water that is removed every minute
+Config.WaterProgressTime = 6000 -- progressbar time
+Config.WaterIcon = 'fas fa-shower'
+
+------------ FERTILIZER ------------
 Config.FertilizerItem = 'weed_nutrition'
-Config.FertilizerItemAmount = 1
+Config.FertMin = 40 -- minimum fert or health will degrade
+Config.FertTime = 0.4 -- Percent of fertilizer that is removed every minute
+Config.FertProgressTime = 6000 -- progressbar time
+Config.FertIcon = 'fab fa-nutritionix'
+
+---------- HARVEST -------
+Config.WeedPlantItem = 'wetbud' -- item you get from harvest
+Config.UseHealthWeed = true -- uses health amount to determine amount of weed you get
+Config.WeedPlantItemAmount = 1 -- uses if not using health weed
+Config.WeedPlantHealthAmount = 4 -- max amount you can get
+Config.HarvestTime = 8500 -- progressbar time
+Config.HarvestIcon = 'fas fa-scissors'
+
+------ TREASURE -----------------
+Config.FemaleWeedTreasure = true -- get possible treasure when harvesting Female weed?
+Config.MaleWeedTreasure = true -- get possible treasure when harvesting Male weed?
+Config.TreasureChance = 10 -- uses math.random(1,100) 10 = 10%
+Config.TreasureItemAmount = math.random(1,3)
+Config.TreasureItem = { -- common sense chance
+    'scrapmetal',  'scrapmetal',  'scrapmetal', -- 60%
+    'iron', -- 20%
+    'plastic', -- 20%
+}
+
+
+
+
+
+Config.Props = {
+    [1] = 'bkr_prop_weed_01_small_01b', -- 0% growth
+    [2] = 'bkr_prop_weed_med_01a', -- 20% growth
+    [3] = 'bkr_prop_weed_med_01b', -- 40% growth
+    [4] = 'bkr_prop_weed_lrg_01a', -- 60% growth
+    [5] = 'bkr_prop_weed_lrg_01b' -- 80+% growth
+}
+
+
+
+
+
+
+
+
+
 
 --- ITEM NEEDED TO ENTER & EXIT
 Config.Usekey = true
