@@ -162,15 +162,14 @@ RegisterNetEvent('Renewed-Garbage:server:CollectCheck', function()
                     Player.Functions.AddItem("safecracker", 1, false)
                     TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items["safecracker"], "add", 1)-- 50%
                     TriggerEvent("qb-log:server:CreateLog", "jobitemadded", "RENEWED DELIVERIES", "green", "**" .. src .. "** ADDED " .. 1 .. "safecracker")
-                elseif chance >=27 and chance <75 then 
-                    Player.Functions.AddItem("pharmaceuticals", 1, false)
-                    TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items["pharmaceuticals"], "add")-- 50%
-                    TriggerEvent("qb-log:server:CreateLog", "jobitemadded", "RENEWED DELIVERIES", "green", "**" .. src .. "** ADDED " .. 1 .. "pharmaceuticals")
-                elseif chance >=76 and chance <101 then
-                    Player.Functions.AddItem("male_seed", 1, false)
-                    TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items["male_seed"], "add") -- 50%]]
-                elseif chance >=101 and chance <300 then
-                    local luck = math.random(3,10)
+                --[[elseif chance >=27 and chance <75 then 
+                    Player.Functions.AddItem("cryptostick", 1, false)
+                    TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items["cryptostick"], "add")-- 50%
+                elseif chance >=76 and chance <150 then
+                    Player.Functions.AddItem("cryptostick", 1, false)
+                    TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items["cryptostick"], "add") -- 50%]]
+                elseif chance >=27 and chance <300 then
+                    local luck = math.random(1,2)
                     Player.Functions.AddItem("recyclablematerial", luck, false)
                     TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items["recyclablematerial"], "add", luck) -- 50%
                     TriggerEvent("qb-log:server:CreateLog", "jobitemadded", "RENEWED DELIVERIES", "green", "**" .. src .. "** ADDED " .. luck .. "recyclablematerial")

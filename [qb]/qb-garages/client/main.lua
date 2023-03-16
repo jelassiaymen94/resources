@@ -296,7 +296,7 @@ local function ParkVehicle(veh, garageName, vehLocation)
             if FuelScript then
                 totalFuel = exports[FuelScript]:GetFuel(veh)
             else
-                totalFuel = exports['ps-fuel']:GetFuel(veh) -- Don't change this. Change it in the  Defaults to legacy fuel if not set in the config
+                totalFuel = exports['LegacyFuel']:GetFuel(veh) -- Don't change this. Change it in the  Defaults to legacy fuel if not set in the config
             end
 
             local canPark, closestLocation = CanParkVehicle(veh, garageName, vehLocation)
@@ -657,7 +657,7 @@ RegisterNetEvent('qb-garages:client:TakeOutGarage', function(data, cb)
                 if FuelScript then
                     exports[FuelScript]:SetFuel(veh, vehicle.fuel)
                 else
-                    exports['ps-fuel']:SetFuel(veh, vehicle.fuel) -- Don't change this. Change it in the  Defaults to legacy fuel if not set in the config
+                    exports['LegacyFuel']:SetFuel(veh, vehicle.fuel) -- Don't change this. Change it in the  Defaults to legacy fuel if not set in the config
                 end
                 QBCore.Functions.SetVehicleProperties(veh, properties)
                 SetVehicleNumberPlateText(veh, vehicle.plate)
@@ -674,7 +674,7 @@ RegisterNetEvent('qb-garages:client:TakeOutGarage', function(data, cb)
             if FuelScript then
                 exports[FuelScript]:SetFuel(veh, 100)
             else
-                exports['ps-fuel']:SetFuel(veh, 100) -- Don't change this. Change it in the  Defaults to legacy fuel if not set in the config
+                exports['LegacyFuel']:SetFuel(veh, 100) -- Don't change this. Change it in the  Defaults to legacy fuel if not set in the config
             end
             TriggerEvent("vehiclekeys:client:SetOwner", plate)
             TriggerServerEvent("qb-garage:server:UpdateSpawnedVehicle", plate, true)

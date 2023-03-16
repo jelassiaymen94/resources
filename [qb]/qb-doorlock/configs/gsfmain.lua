@@ -3,7 +3,7 @@
 -- gsfmain created by Oldnewz
 Config.DoorList['gsfmain'] = {
     pickable = true,
-    locked = true,
+    locked = false,
     distance = 2,
     objName = 1381046002,
     authorizedGangs = { ['gsf'] = 0 },

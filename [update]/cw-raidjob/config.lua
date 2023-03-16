@@ -11,7 +11,7 @@ Config.DefaultValues = {
 --- METH RUN ---
 
 local MethBoss = {
-    coords = vector4(-9999992609.76, 1867.66, -999999999167.32, 347.67),
+    coords = vector4(-2609.76, 1867.66, 167.32, 347.67),
     model = 'g_m_m_mexboss_01',
     missionTitle = "Start Meth Run",
     available = {from = 1, to = 24},
@@ -323,8 +323,8 @@ local ArtBoss = {
 }
 -- 930.1734, -1628.7979, 39.8120, 305.8762
 local ArtItems = {
-    FetchItemLocation = vector4(-1105.3082, 4938.1147, 221.2058, 8.3212),
-    FetchItemTime = 120000, -- time it takes for the item to activate
+    FetchItemLocation = vector4(933.4912, -1628.3762, 44.5679, 82.8663),
+    FetchItemTime = 180000, -- time it takes for the item to activate
     FetchItem = 'securitycase', -- item (inventory)
     FetchItemProp = 'ex_prop_adv_case_sm_03', -- item (world object)
     FetchItemContents = 'deed', -- item that drops from FetchItem after FetchItemTime is over
@@ -334,11 +334,11 @@ local ArtItems = {
         Variables = { 10, 11 }
     },
     FetchItemRandom = {
-        CircleCenter = vector3(-1107.1654, 4944.0405, 218.8775),
+        CircleCenter = vector3(946.9948, -1630.9601, 30.3186),
         Locations = {
-            vector4(-1105.3082, 4938.1147, 221.4058, 8.3212),
-            vector4(-1105.3281, 4946.2769, 217.0543, 145.3362),
-            vector4(-1104.9011, 4938.9321, 217.0543, 60.4375),
+            vector4(963.7053, -1644.8999, 29.9198, 43.4231),
+            vector4(964.8780, -1635.0586, 35.5911, 254.7872),
+            vector4(932.8581, -1628.3937, 43.50679, 74.8320),
         }
     }
 }
@@ -347,31 +347,31 @@ local ArtItems = {
 local ArtGuardPositions = {
     --[[vector4(967.5609, -1626.4957, 30.1106, 357.4035),
     vector4(967.5854, -1638.9662, 30.1107, 177.0497),]]
-    vector4(-1108.8267, 4939.6519, 223.1277, 337.9205),
-    vector4(-1103.9277, 4947.3618, 222.7060, 339.5759),
-    vector4(-1106.6138, 4956.2651, 222.7065, 216.0136),
-    vector4(-1108.5321, 4953.0542, 218.3543, 251.3641),
-    vector4(-1102.6888, 4943.8643, 218.3588, 170.6721),
-    vector4(-1109.6968, 4940.9858, 218.3588, 331.1916),
-    vector4(-1107.2675, 4942.8359, 218.3543, 257.2951),
-    vector4(-1111.5966, 4935.6431, 218.3763, 162.9164),
-    vector4(-1103.0496, 4932.2031, 218.3541, 260.4865),
-    vector4(-1099.5160, 4940.5166, 218.3540, 263.2073),
-    vector4(-1093.0109, 4947.4058, 218.3453, 333.7869),
-    vector4(-1105.2491, 4947.5239, 218.3541, 161.6412),
-    --[[vector4(962.3577, -1625.9961, 36.0169, 138.3839),
+    vector4(945.8005, -1634.7710, 35.0687, 81.2633),
+    vector4(961.3444, -1629.8660, 30.3073, 66.2601),
+    vector4(963.8297, -1631.9226, 30.3290, 180.9377),
+    vector4(960.5316, -1634.4414, 30.3073, 356.0388),
+    vector4(945.7532, -1635.4476, 30.5693, 304.5635),
+    vector4(948.8224, -1641.7803, 30.3053, 354.8971),
+    vector4(953.1635, -1640.0913, 30.3214, 90.0617),
+    vector4(962.7858, -1645.0768, 30.9100, 14.7892),
+    vector4(945.2003, -1627.1417, 30.3073, 134.9139),
+    vector4(933.6765, -1628.2472, 35.0670, 260.2715),
+    vector4(949.1882, -1635.6273, 35.6925, 72.1254),
+    vector4(953.4191, -1626.2211, 35.8388, 219.9693),
+    vector4(962.3577, -1625.9961, 36.0169, 138.3839),
     vector4(955.2947, -1634.9484, 35.6925, 321.7735),
     vector4(921.6250, -1627.3228, 39.8120, 243.5775),
     vector4(936.9341, -1631.4695, 39.8221, 54.7177),
-    vector4(950.5989, -1627.9938, 30.3074, 295.5002),]]
+    vector4(950.5989, -1627.9938, 30.3074, 295.5002),
     
 }
 
 local ArtCivilians = {
-   --[[ { coords = vector4(954.7362, -1626.9626, 30.0842, 272.5546), model = '',animation = 'PROP_HUMAN_BBQ' },
+   -- { coords = vector4(954.7362, -1626.9626, 30.0842, 272.5546), model = '',animation = 'PROP_HUMAN_BBQ' },
     { coords = vector4(955.8776, -1627.6030, 31.2844, 46.2528), model = 'a_f_y_beach_01', animation = 'WORLD_HUMAN_SMOKING_POT' },
-    { coords = vector4(954.2493, -1626.5699, 30.8841, 226.4920), model = 'a_f_y_beach_01', animation = 'WORLD_HUMAN_SMOKING_POT' },]]
-    { coords = vector4(-1099.5767, 4924.0811, 216.2271, 236.4141), model = 'g_m_m_mexboss_02', animation = 'WORLD_HUMAN_SMOKING_POT' },
+    { coords = vector4(954.2493, -1626.5699, 30.8841, 226.4920), model = 'a_f_y_beach_01', animation = 'WORLD_HUMAN_SMOKING_POT' },
+    { coords = vector4(967.3304, -1630.0063, 30.1106, 270.0336), model = 'g_m_m_mexboss_02', animation = 'WORLD_HUMAN_SMOKING_POT' },
 }
 
 local ArtGuards = {
@@ -383,14 +383,16 @@ local ArtGuards = {
     { model = 'g_m_y_mexgoon_03', weapon = 'WEAPON_PISTOL'},
    -- { model = 'g_m_y_mexgoon_03', weapon = 'weapon_pumpshotgun', armor = 100 },
     { model = 'g_m_y_pologoon_01', weapon = 'WEAPON_PISTOL'},
-    { coords = vector4(-1106.6244, 4947.7227, 218.3543, 155.8165), model = 'a_m_y_mexthug_01', weapon = 'weapon_microsmg', armor = 100 },
+    { coords = vector4(962.8946, -1631.7418, 35.6926, 103.0902), model = 'a_m_y_mexthug_01', weapon = 'weapon_microsmg', armor = 100 },
     { model = 'g_m_y_mexgang_01', weapon = 'weapon_pistol50', armor = 100 },
+    { model = 'ig_ramp_mex', weapon = 'weapon_vintagepistol'},
+    { model = 'ig_ramp_mex', weapon = 'weapon_vintagepistol'},
     { model = 'ig_ramp_mex', weapon = 'weapon_pumpshotgun', armor = 100 },
     { model = 'g_m_y_mexgoon_03', weapon = 'weapon_vintagepistol'},
     { model = 'g_m_y_mexgoon_03', weapon = 'WEAPON_PISTOL'},
     { model = 'g_m_y_mexgoon_03', weapon = 'weapon_pumpshotgun', armor = 100 },
     { model = 'g_m_y_pologoon_01', weapon = 'WEAPON_PISTOL'},
-    { coords = vector4(-1101.6714, 4954.1387, 220.5253, 136.4511), model = 'a_m_y_mexthug_01', weapon = 'weapon_microsmg', armor = 100 },
+    { coords = vector4(921.8884, -1627.3739, 44.5679, 232.8544), model = 'a_m_y_mexthug_01', weapon = 'weapon_microsmg', armor = 100 },
 }
 
 local ArtVehicles = {

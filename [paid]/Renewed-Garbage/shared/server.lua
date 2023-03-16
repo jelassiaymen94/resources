@@ -19,7 +19,7 @@ Config.GroupPay = 1.5 -- How much more you get paid for doing a group run (5% mo
 Config.GroupPayLimit = 3 -- How many people to get the Config.GroupPay bonus?
 
 Config.Buffs = true -- Do u use ps or tnj buffs then enable this
-Config.BuffExport = "ps-buffs" -- Some people still use tnj-buffs some uses ps-buffs they are the just edit the BuffExport to whatever you use
+Config.BuffExport = "qb-buffs" -- Some people still use tnj-buffs some uses qb-buffs they are the just edit the BuffExport to whatever you use
 Config.BuffType = "luck" -- What buff type do u use for players to recieve more money?
 Config.BuffPay = 1.15 -- How much more do they get paid for having the buff? (10% more)
 

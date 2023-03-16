@@ -1,6 +1,6 @@
 Config = {} 
 Config.img = "qb-inventory/html/images/"
-Config.Debug = false
+Config.Debug = true
 
 Config.Job = nil
 
@@ -50,16 +50,8 @@ Config.Stashes = {
         max = 18.3,
         slots = 5,
         weight = 5,
-        numba = '1',
+        numba = 'container_large_7691',
     },
-    --[[[2] = {--triads subway stash 1
-        coords = vector3(-805.4885, -717.9180, -16.8630),
-        min = -16.3,
-        max = -18.3,
-        slots = 100,
-        weight = 2000,
-        numba = 'container_large_5900',
-    },]]
     
 
 
@@ -237,23 +229,6 @@ Config.TraderPeds = {
       
         
     },
-
-    [9] = { -- purified water
-        coords = vector4(-1996.1952, 3397.2236, 31.7219, 340.2658),
-        model = "csb_ramp_mex",
-        scene = "WORLD_HUMAN_AA_SMOKE",
-        icon = 'fa-solid fa-bolt',
-        label = 'Talk to Fabir',
-        product = {
-            item = "purifiedwater",
-            amount = 10,
-            removeitem = "plastic",
-            removeitemamount = 10,
-        },
-  
-    
-    },
-
    --[[ [9] = { -- aluminum
         coords = vector4(-35.35, -2689.88, 6.0, 44.67),
         model = "s_m_m_gardener_01",

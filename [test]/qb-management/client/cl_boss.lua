@@ -67,14 +67,6 @@ RegisterNetEvent('qb-bossmenu:client:OpenMenu', function()
                 event = "qb-bossmenu:client:employeelist",
             }
         },
-        {
-            header = Lang:t("body.outfits"),
-             txt = Lang:t("body.outfitsd"),
-             icon = "fa-solid fa-shirt",
-             params = {
-                 event = "qb-bossmenu:client:Wardrobe",
-             }
-         },
        --[[ {
             header = Lang:t("body.hire"),
             txt = Lang:t("body.hired"),
@@ -91,7 +83,15 @@ RegisterNetEvent('qb-bossmenu:client:OpenMenu', function()
             params = {
                 event = "qb-bossmenu:client:Stash",
             }
-        }, 
+        },
+                {
+            header = Lang:t("body.outfits"),
+            txt = Lang:t("body.outfitsd"),
+            icon = "fa-solid fa-shirt",
+            params = {
+                event = "qb-bossmenu:client:Wardrobe",
+            }
+        },
         {
             header = Lang:t("body.money"),
             txt = Lang:t("body.moneyd"),

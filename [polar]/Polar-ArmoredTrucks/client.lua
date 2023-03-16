@@ -217,9 +217,9 @@ function minigame(veh)
 
     if chance < 101 then
 
-        local time = math.random(120000,150000)
+       
         Wait(5)
-        local settings = {timeLimit = time}
+        local settings = {gridSize = 15, lives = 2, timeLimit = 10000}
         Wait(5)
         
         exports["Polar-Minigames"]:StartMinigame(function(success)

@@ -39,11 +39,9 @@ RegisterServerEvent('Polar-ArmoredTrucks:server:receiveItem', function(netId)
     if not Player then return end
 
     local entity = NetworkGetEntityFromNetworkId(netId)
-    if not DoesEntityExist(entity) then return end
-    if GetEntityModel(entity) ~= 'stockade' then
+    if not DoesEntityExist(entity) then 
         exports['qb-core']:ExploitBan(src, "banktrucks-no-stockade")
-        return
-    end
+    return end
     
     local plate = GetVehicleNumberPlateText(entity)
     if lootedtrucks[plate] then return end
@@ -69,7 +67,16 @@ QBCore.Functions.CreateCallback('Polar-ArmoredTrucks:server:getConfig', function
     cb(robbedplates, lootedtrucks)
 end)
 
+function reward()
+    local luck = math.random(1,100)
 
+    if luck < 30 then
+        
+    else
+        TriggerEvent('Polar-BankTruck:Server:BankNotes')
+    end
+
+end
 
 RegisterNetEvent('Polar-BankTruck:Server:BankNotes', function()
 
