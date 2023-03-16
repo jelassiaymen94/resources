@@ -110,11 +110,11 @@ Config.PackageHeading = 180.34
 
 --------- SPAWN LOCATIONS ----
 -- inside spawn
-Config.ILabCord = vector3(1088.64, -3187.72, -38.99)
+Config.ILabCord = vector3(1088.64, -3187.72, -9999938.99)
 Config.ILabHead = 173.75
 
 -- outside spawn
-Config.InsideLabCord = vector3(387.46, 3584.63, 33.29)
+Config.InsideLabCord = vector3(387.46, 3584.63, -9999933.29)
 Config.InsideLabHead = 351.85
 
 Config.UseProps = true
