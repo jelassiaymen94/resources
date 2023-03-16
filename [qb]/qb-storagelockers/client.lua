@@ -2405,3 +2405,37 @@ function EnterStash53()
         slots = 200,
     })
 end
+
+
+
+
+
+RegisterNetEvent('qb-stopragelockers:StashAvailability54', function()
+	local keyboard = exports["qb-keyboard"]:KeyboardInput({
+		header = "Enter Password",
+		rows = {
+			{
+				id = 0,
+				txt = ""
+			}
+		}
+	})
+    if keyboard ~= nil then
+        if keyboard[1].input == Config.MD_001 then
+            EnterStash54()
+        end
+    end
+end)
+
+RegisterNetEvent('qb-stopragelockers:StashCoppy54', function()
+	SendNUIMessage({
+		coords = "MD_001"
+	})
+end)
+function EnterStash54()
+    TriggerEvent("inventory:client:SetCurrentStash", "MD_001")
+    TriggerServerEvent("inventory:server:OpenInventory", "stash", "MD_001", {
+        maxweight = 2000000,
+        slots = 200,
+    })
+end

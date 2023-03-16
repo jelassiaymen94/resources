@@ -84,6 +84,17 @@ local QBCore = exports['qb-core']:GetCoreObject()
          AddTextComponentSubstringPlayerName("Pizza This!")
          EndTextCommandSetBlipName(pizzathis)
 
+         -- maxdamage
+         local maxdamage = AddBlipForCoord(vector3(17.3019, -1115.8473, 29.7912))
+         SetBlipSprite (maxdamage, 556)
+         SetBlipDisplay(maxdamage, 6) 
+         SetBlipScale  (maxdamage, 0.6)
+         SetBlipAsShortRange(maxdamage, true)
+         SetBlipColour(maxdamage, 78)
+         BeginTextCommandSetBlipName("STRING")
+         AddTextComponentSubstringPlayerName("Max Damage")
+         EndTextCommandSetBlipName(maxdamage)
+
 
          -- churhc of rockford
          local blip = AddBlipForCoord(vector3(-766.1784, -24.1005, 21.0794))

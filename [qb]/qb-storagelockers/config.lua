@@ -125,7 +125,7 @@ Config.IM_001 = '1MP0RTS' -- 28
 
 
 
--- JohnnyBiggs Motel Vault
+-- Seymour Motel Vault
 Config.SB_001 = 'MaxBurps117' -- 28
 
 
@@ -151,3 +151,8 @@ Config.RC_001 = 'Crago23'
 --VU Fridge
 Config.VU_001 = 'Hoes'
 Config.VU_002 = 'Hoes'
+
+
+
+-- Seymour Motel Vault
+Config.MD_001 = 'MaxHerps' -- 28
