@@ -511,10 +511,10 @@ bankAuth = true,
     },
 
 
-   ['organics'] = {
-		label = 'LD Organics',
+   ['maxdamage'] = {
+		label = 'Max Damage Firearms',
 		defaultDuty = false,
-		offDutyPay = false,
+		offDutyPay = true,
 		grades = {
             ['0'] = {
                 name = 'Trainee',
@@ -526,13 +526,13 @@ bankAuth = true,
             },
             ['2'] = {
                 name = 'Manager',
-                payment = 2800,
+                payment = 3000,
                 isboss = true,
                 bankAuth = true,
             },
             ['3'] = {
                 name = 'Boss',
-                payment = 3000,
+                payment = 3500,
                 isboss = true,
                 bankAuth = true,
             },
