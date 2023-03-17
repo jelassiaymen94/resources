@@ -998,7 +998,39 @@ Garages = {
         }
     },
 
+    ['maxdamagelot'] = {
+        ['Zone'] = {
+            ['Shape'] = { --polygon that surrounds the parking area
+                vector2(22.2157, -1115.6195),
+                vector2(28.0101, -1118.0267),
+                vector2(45.1776, -1089.2415),
+                vector2(37.5747, -1087.4126),
+            },
+            ['minZ'] = 28.00,  -- min height of the parking zone
+            ['maxZ'] = 30.45,  -- max height of the parking zone
+        },
+        label = "Max Damage Parking",
+        showBlip = false,
+        blipcoords = vector3(-1578.2623, 5158.5210, 19.8344),
+        blipName = "Public Parking",
+        blipNumber = 357,
+        type = 'public',                --public, job, gang, depot
+        --job = 'wuchang',
+        vehicleCategories = {'car', 'motorcycle', 'other'},
+        drawText = 'Parking',                 --car, air, sea
+        debug = false,
+        ['ParkingSpots'] = {
+            vector4(39.1369, -1090.8230, 29.4895, 90.7514),
+            vector4(37.7975, -1093.5839, 29.4778, 91.2648),
+            vector4(36.4647, -1095.7861, 29.4546, 89.7030),
+            vector4(34.8576, -1098.2810, 29.4130, 87.3049),
 
+            vector4(33.4904, -1100.7590, 29.3841, 89.4310),
+            vector4(32.2435, -1103.3470, 29.3659, 88.9987),
+            vector4(29.7112, -1108.0677, 29.3185, 88.8203),
+            vector4(28.6082, -1110.8877, 29.3101, 81.3684),
+        }
+    },
 
     ['scrappganglot'] = {
         ['Zone'] = {

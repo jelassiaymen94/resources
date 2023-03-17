@@ -24,10 +24,10 @@ RegisterNetEvent('qb-taxi:server:NpcPay', function(Payment)
             if chance < 21 then
                 Player.Functions.AddItem("keycard", 1, false)
                 TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items["keycard"], "add")-- 50%
-            --[[elseif chance >=27 and chance <75 then 
-                Player.Functions.AddItem("safecracker", 1, false)
-                TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items["cryptostick"], "add")-- 50%
-            elseif chance >=76 and chance <150 then
+            elseif chance >=50 and chance <75 then 
+                Player.Functions.AddItem("pharmaceuticals", 1, false)
+                TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items["pharmaceuticals"], "add")-- 50%
+            --[[elseif chance >=76 and chance <150 then
                 Player.Functions.AddItem("cryptostick", 1, false)
                 TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items["cryptostick"], "add") -- 50%]]
             elseif chance >=21 and chance <50 then

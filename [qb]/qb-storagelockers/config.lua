@@ -17,8 +17,8 @@ Config.SL_234656 = '0000' -- Stash10
 
 Config.SL_54367 = '1023' -- Stash 2
 Config.SL_567346 = 'JB1693' -- Stash11 - JOHNNY BIGS
-Config.SL_523567 = '1023' -- Stash12 - Joey Rossy container
-Config.JR_001 = '1023' -- Stash13 - Joey Rossy Motel
+Config.SL_523567 = '4834021' -- Stash12 - Joey Rossy container
+Config.JR_001 = '4834021' -- Stash13 - Joey Rossy Motel
 Config.SL_532672 = '1023' -- Stash13
 Config.SL_213564 = '1248' -- Stash14
 
@@ -44,6 +44,8 @@ Config.SL_213500 = '0000' -- 27
 Config.WC_001 = 'MonkeyOnTop' -- 28
 Config.WC_002 = '' -- 31
 Config.WC_003 = '' -- 32
+Config.WC_004 = '123' -- 32
+Config.WC_005 = '123' -- 32
 
 
 -- Church Vault
@@ -54,7 +56,7 @@ Config.CH_001 = 'HolyLips' -- 29
 Config.WZ_001 = 'News4life' -- 30
 
 -- Pizza This! Frige/Tray
-Config.PT_001 = '' -- 31
+Config.PT_001 = '' -- 22
 Config.PT_002 = '' -- 32
 Config.PT_003 = 'Crustyz' -- 33
 
@@ -104,7 +106,7 @@ Config.JT_001 = 'Jim3Stanton' -- 28
 
 -- GSF Vault
 Config.GS_001 = 'Chapo123' -- 28
-
+Config.GR_001 = 'Sleepy420' -- 28
 
 
 -- ScrappGang Vault
@@ -114,7 +116,7 @@ Config.SG_001 = 'OGMOB' -- 28
 
 -- JohnnyBiggs Motel Vault
 Config.JB_001 = 'JB1693' -- 28
-
+Config.GS_002 = '0116' -- 28
 
 
 
@@ -123,13 +125,34 @@ Config.IM_001 = '1MP0RTS' -- 28
 
 
 
--- JohnnyBiggs Motel Vault
+-- Seymour Motel Vault
 Config.SB_001 = 'MaxBurps117' -- 28
 
 
 
--- Cop House Motel Vault
-Config.CO_001 = 'RangerHut' -- 28
+-- Portolia House Motel Vault
+Config.CO_001 = 'AC23' -- 28
 
 -- Aunties Vault
 Config.AU_001 = 'Wow420' -- 28
+
+
+--Jaquarius Dingleberry Motel Vault
+Config.JD_001 = '69JD420'
+
+
+
+--Reese Vault
+Config.RC_001 = 'Crago23'
+
+
+
+
+--VU Fridge
+Config.VU_001 = 'Hoes'
+Config.VU_002 = 'Hoes'
+
+
+
+-- Seymour Motel Vault
+Config.MD_001 = 'MaxHerps' -- 28
