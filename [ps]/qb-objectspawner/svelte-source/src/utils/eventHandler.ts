@@ -40,7 +40,7 @@ export async function fetchNui(eventName: string, data: unknown = {}) {
     body: JSON.stringify(data),
   };
 
-  const resourceName: string = "qb-objectspawner";
+  const resourceName: string = "qb-objects";
 
   try {
     const resp = await fetch(`https://${resourceName}/${eventName}`, options);
