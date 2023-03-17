@@ -45,6 +45,7 @@ local Locales = {
 	['weedrun_delivery_waitfornew'] = 'Wait for a new location..',
 	['weedrun_delivery_success'] = 'Delivery was good, you will be updated with the next drop-off..',
 	['errorfull'] = "Your Pockets are Too Full!",
+	['notub'] = "You don't have a planting tub"
 }
 
 

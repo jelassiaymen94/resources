@@ -1,6 +1,6 @@
 Config = {} or Config
 
--- Core Values----------------------------------------------------------------
+--==========================================================================
 Config.Core = 'qb-core'
 Config.Target = 'qb-target'
 Config.Menu = 'qb-menu'
@@ -8,13 +8,26 @@ Config.Input = 'qb-input'
 Config.Inventory = 'qb-inventory'
 Config.Skillbar = 'qb-skillbar'
 Config.img = "qb-inventory/html/images/"
-----------------------------------------------------------------
+--==========================================================================
+
 Config.Debug = false -- debug for checks
+
+
+
 
 Config.PoliceJob = 'police' -- police can destroy plants
 Config.DestroyIcon = 'fas fa-fire'
-Config.CloseIcon =  '' -- 'fas fa-chevron-left'
-Config.GrowthIcon =  '' --'fas fa-chart-simple'
+Config.CloseIcon =  '' -- 'fas fa-chevron-left' -- for closing menu icon
+Config.GrowthIcon =  '' --'fas fa-chart-simple' -- for growth menu icon
+Config.TargetIcon = 'fas fa-cannabis' -- for third eye icon
+Config.Sound = true
+
+
+--==========================================================================
+Config.Works = false ---- if planting doesnt want to work turn this to TRUE
+--==========================================================================
+
+
 
 --------- GENERAL ----------
 Config.RestartPlantRemoval = false -- remove dead plants on restart
@@ -54,9 +67,15 @@ Config.FertProgressTime = 6000 -- progressbar time
 Config.FertIcon =  '' --'fab fa-nutritionix'
 
 ---------- HARVEST -------
-Config.WeedPlantItem = 'wetbud' -- item you get from harvest
+Config.UseMultipleWeeds = true -- true = 3 weeds, false = 1
+Config.SingleWeed = 'wetbud' -- uses if UseMultipleWeeds = false
+
+Config.GrowingWeedAmount = true
+Config.WeedPlantItemLow = 'wetbud' -- item you get from harvest
+Config.WeedPlantItemMid = 'wetbud2'
+Config.WeedPlantItemGood = 'wetbud3'
 Config.UseHealthWeed = true -- uses health amount to determine amount of weed you get
-Config.WeedPlantItemAmount = 1 -- uses if not using health weed
+Config.WeedPlantItemAmount = 1 -- uses if not using growing weed amount
 Config.WeedPlantHealthAmount = 4 -- max amount you can get
 Config.HarvestTime = 8500 -- progressbar time
 Config.HarvestIcon =  '' --'fas fa-scissors'
@@ -90,12 +109,14 @@ Config.Props = {
     [5] = 'bkr_prop_weed_lrg_01b' -- 80+% growth
 }
 
+Config.ProcessItemReturn = 'weedpound' -- after process what do you get
+Config.ProcessItemReturnAmountMin = 1 -- after process how much you get
+Config.ProcessItemReturnAmountMax = 3
 
-
-
-
-
-
+Config.BagItem = 'drugbag' -- item needed to process
+Config.BagAmount = 1 -- amount needed to process
+Config.BagOunces = true -- to get ounces does it require another bag?
+Config.TubItem = 'weedtub'
 
 
 
@@ -107,6 +128,26 @@ Config.LabKeyCardAmount = 1
 -- Item needed to trim plants
 Config.NeededPickItem = 'scissors'
 Config.NeededPickItemAmount = 1
+
+-------- JOINTS -----------
+Config.Lighter = 'lighter'
+Config.SmallJointItem = 'smalljoint'
+Config.LargeJointItem = 'largejoint'
+Config.ScaleItem = 'scale'
+
+
+Config.FieldAbove = vector3(3713.15, 416.39, 0.47) -- pickable weed field
+
+
+
+
+
+
+
+
+
+
+
 
 -- FUTURE UPDATE ---------------------------------
 Config.PotItem = 'specialsauce'
@@ -151,7 +192,7 @@ Config.UseCam = true
 
 
 
-Config.FieldAbove = vector3(3713.15, 416.39, 0.47) -- dont touch
+
 
 
 ------ PRODUCT SOURCING ---------------

@@ -238,19 +238,36 @@ RegisterNetEvent('Polar-Weed:server:HarvestPlant', function(netId)
         local health = calcHealth(entity)
         if WeedPlants[entity].gender == 'female' then
             local info = { health = health }
-            if Config.UseHealthWeed then
-                local healthweed = math.floor(health / Config.WeedPlantHealthAmount)
-                if Player.Functions.AddItem(Config.WeedPlantItem, healthweed, false, info) then
-                    TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.WeedPlantItem], 'add', healthweed)
-                    else
-                        TriggerClientEvent('QBCore:Notify', src, text('errorfull'), 'error', 2500)
-                    end
+            if Config.UseMultipleWeeds then
+            if health < 34 then
+                if Config.GrowingWeedAmount then
+                    local healthweed = math.floor(health / Config.WeedPlantHealthAmount)
+                    if Player.Functions.AddItem(Config.WeedPlantItemLow, healthweed, false, info) then TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.WeedPlantItemLow], 'add', healthweed) else TriggerClientEvent('QBCore:Notify', src, text('errorfull'), 'error', 2500) end
+                else
+                    if Player.Functions.AddItem(Config.WeedPlantItemLow, Config.WeedPlantItemAmount, false, info) then TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.WeedPlantItemLow], 'add', Config.WeedPlantItemAmount) else TriggerClientEvent('QBCore:Notify', src, text('errorfull'), 'error', 2500) end
+                end
+            elseif health < 67 then
+                if Config.GrowingWeedAmount then
+                    local healthweed = math.floor(health / Config.WeedPlantHealthAmount)
+                    if Player.Functions.AddItem(Config.WeedPlantItemMid, healthweed, false, info) then TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.WeedPlantItemMid], 'add', healthweed) else TriggerClientEvent('QBCore:Notify', src, text('errorfull'), 'error', 2500) end
+                else
+                    if Player.Functions.AddItem(Config.WeedPlantItemMid, Config.WeedPlantItemAmount, false, info) then TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.WeedPlantItemMid], 'add', Config.WeedPlantItemAmount) else TriggerClientEvent('QBCore:Notify', src, text('errorfull'), 'error', 2500) end
+                end
             else
-            if Player.Functions.AddItem(Config.WeedPlantItem, Config.WeedPlantItemAmount, false, info) then
-            TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.WeedPlantItem], 'add', Config.WeedPlantItemAmount)
-            else
-                TriggerClientEvent('QBCore:Notify', src, text('errorfull'), 'error', 2500)
+                if Config.GrowingWeedAmount then
+                    local healthweed = math.floor(health / Config.WeedPlantHealthAmount)
+                    if Player.Functions.AddItem(Config.WeedPlantItemGood, healthweed, false, info) then TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.WeedPlantItemGood], 'add', healthweed) else TriggerClientEvent('QBCore:Notify', src, text('errorfull'), 'error', 2500) end
+                else
+                    if Player.Functions.AddItem(Config.WeedPlantItemGood, Config.WeedPlantItemAmount, false, info) then TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.WeedPlantItemGood], 'add', Config.WeedPlantItemAmount) else TriggerClientEvent('QBCore:Notify', src, text('errorfull'), 'error', 2500) end
+                end
             end
+            else
+                if Config.GrowingWeedAmount then
+                    local healthweed = math.floor(health / Config.WeedPlantHealthAmount)
+                    if Player.Functions.AddItem(Config.SingleWeed, healthweed, false, info) then TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.SingleWeed], 'add', healthweed) else TriggerClientEvent('QBCore:Notify', src, text('errorfull'), 'error', 2500) end
+                else
+                    if Player.Functions.AddItem(Config.SingleWeed, Config.WeedPlantItemAmount, false, info) then TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.SingleWeed], 'add', Config.WeedPlantItemAmount) else TriggerClientEvent('QBCore:Notify', src, text('errorfull'), 'error', 2500) end
+                end
             end
             if Config.FemaleWeedTreasure then
                 local chance = math.random(1,100)
@@ -451,14 +468,7 @@ QBCore.Functions.CreateCallback('Polar-Weed:server:GetPlantData', function(sourc
     cb(temp)
 end)
 
---- Items
 
-QBCore.Functions.CreateUseableItem(Config.FemaleSeed, function(source)
-    TriggerClientEvent("Polar-Weed:client:UseWeedSeed", source)
-end)
-
-
---- Threads
 
 CreateThread(function()
     Wait(Config.Updates * 60 * 1000)
