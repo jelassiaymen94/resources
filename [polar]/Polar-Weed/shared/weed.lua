@@ -117,10 +117,6 @@ Config.Usekey = true
 Config.LabKeyCard = 'weedkey'
 Config.LabKeyCardAmount = 1
 
--- Item needed to trim plants
-Config.NeededPickItem = 'scissors'
-Config.NeededPickItemAmount = 1
-
 -------- JOINTS -----------
 Config.Lighter = 'lighter'
 Config.SmallJointItem = 'smalljoint'
