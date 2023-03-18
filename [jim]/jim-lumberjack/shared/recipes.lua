@@ -86,22 +86,7 @@ Crafting["Wood Crafting"] = {
 }
 
 Crafting["Illegal"] = {
-    ["Weed"] = {
-        ["Grinding"] = {
-            { ["nugs"] = { ["1ozhigh"] = 1 }, amount = 4 },
-        },
-        ["Bagging"] = {
-            { ["1ozhigh"] = { ["weedpound"] = 1, ["drugbag"] = 16 }, amount = 16 },
-        },
-        --[[["Rolling"] = {
-            { ["monkeykush_joint"] = { ["rolling_paper"] = 1, ["nugs"] = 2 }, amount = 1 },
-            { ["ogscar_joint"] = { ["rolling_paper"] = 1, ["nugs"] = 2 }, amount = 1 },
-            { ["granddaddycaine_joint"] = { ["rolling_paper"] = 1, ["nugs"] = 2 }, amount = 1 },
-            { ["monkeykush_blunt"] = { ["banana_backwoods"] = 1, ["nugs"] = 3 }, amount = 1 },
-            { ["ogscar_blunt"] = { ["backwoods_grape"] = 1, ["nugs"] = 3 }, amount = 1 },
-            { ["granddaddycaine_blunt"] = { ["backwoods_honey"] = 1, ["nugs"] = 3 }, amount = 1 },
-        },]]
-    },
+ 
    --[[["Forgery"] = {
         ["Licences"] = {
             { ["fakecert"] = { ["paper"] = 1 }, amount = 1 },
@@ -116,4 +101,4 @@ Crafting["Illegal"] = {
         },
     },]]
 
-    }
+}

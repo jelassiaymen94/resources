@@ -1,6 +1,6 @@
 local QBCore = exports['qb-core']:GetCoreObject()
 
-QBCore.Functions.CreateCallback('Polar-Drugsales:server:GetCops', function(source, cb)
+QBCore.Functions.CreateCallback('Polar-Drugsales:Server:GetCops', function(source, cb)
     local amount = 0
     local players = QBCore.Functions.GetQBPlayers()
     for k, v in pairs(players) do
@@ -24,7 +24,7 @@ RegisterNetEvent('Polar-Drugsales:initiatedrug', function(ZoneDrug)
 			if Player.Functions.RemoveItem(tostring(ZoneDrug.item), 1) then
 				TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[tostring(ZoneDrug.item)], "remove", 1)				
 				Player.Functions.AddMoney("cash", price)
-				TriggerEvent("qb-log:server:CreateLog", "drugsale", "POLAR DRUGSALE", "black", "**" .. src .. "** Got " .. price .. " for selling " .. ZoneDrug.item .. " 1")
+				TriggerEvent("qb-log:Server:CreateLog", "drugsale", "POLAR DRUGSALE", "black", "**" .. src .. "** Got " .. price .. " for selling " .. ZoneDrug.item .. " 1")
 				TriggerClientEvent('Polar-Drugsales:notify', src, 'You recieved $'..price)
 				if Config.Debug then print('You got 1 '..ZoneDrug.item..' for $'..price) end
 			else				
@@ -45,7 +45,7 @@ elseif luck < 75 then
 			if Player.Functions.RemoveItem(tostring(ZoneDrug.item), 2) then
 				TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[tostring(ZoneDrug.item)], "remove", 2)				
 				Player.Functions.AddMoney("cash", price)
-				TriggerEvent("qb-log:server:CreateLog", "drugsale", "POLAR DRUGSALE", "black", "**" .. src .. "** Got " .. price .. " for selling " .. ZoneDrug.item .. " 2")
+				TriggerEvent("qb-log:Server:CreateLog", "drugsale", "POLAR DRUGSALE", "black", "**" .. src .. "** Got " .. price .. " for selling " .. ZoneDrug.item .. " 2")
 				TriggerClientEvent('Polar-Drugsales:notify', src, 'You recieved $'..price)
 				if Config.Debug then print('You got 2 '..ZoneDrug.item..' for $'..price) end
 				local math = math.random(1,100)
@@ -74,7 +74,7 @@ elseif luck < 90 then
 			if Player.Functions.RemoveItem(tostring(ZoneDrug.item), 3) then
 				TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[tostring(ZoneDrug.item)], "remove", 3)				
 				Player.Functions.AddMoney("cash", price)
-				TriggerEvent("qb-log:server:CreateLog", "drugsale", "POLAR DRUGSALE", "black", "**" .. src .. "** Got " .. price .. " for selling " .. ZoneDrug.item .. " 3")
+				TriggerEvent("qb-log:Server:CreateLog", "drugsale", "POLAR DRUGSALE", "black", "**" .. src .. "** Got " .. price .. " for selling " .. ZoneDrug.item .. " 3")
 				TriggerClientEvent('Polar-Drugsales:notify', src, 'You recieved $'..price)
 				if Config.Debug then print('You got 3 '..ZoneDrug.item..' for $'..price) end
 				local math = math.random(1,100)
@@ -103,7 +103,7 @@ elseif luck < 95 then
 			if Player.Functions.RemoveItem(tostring(ZoneDrug.item), 4) then
 				TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[tostring(ZoneDrug.item)], "remove", 4)				
 				Player.Functions.AddMoney("cash", price)
-				TriggerEvent("qb-log:server:CreateLog", "drugsale", "POLAR DRUGSALE", "black", "**" .. src .. "** Got " .. price .. " for selling " .. ZoneDrug.item .. " 4")
+				TriggerEvent("qb-log:Server:CreateLog", "drugsale", "POLAR DRUGSALE", "black", "**" .. src .. "** Got " .. price .. " for selling " .. ZoneDrug.item .. " 4")
 				TriggerClientEvent('Polar-Drugsales:notify', src, 'You recieved $'..price)
 				if Config.Debug then print('You got 4 '..ZoneDrug.item..' for $'..price) end
 				local math = math.random(1,100)
@@ -132,7 +132,7 @@ elseif luck < 101 then
 			if Player.Functions.RemoveItem(tostring(ZoneDrug.item), 5) then
 				TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[tostring(ZoneDrug.item)], "remove", 5)				
 				Player.Functions.AddMoney("cash", price)
-				TriggerEvent("qb-log:server:CreateLog", "drugsale", "POLAR DRUGSALE", "black", "**" .. src .. "** Got " .. price .. " for selling " .. ZoneDrug.item .. " 5")
+				TriggerEvent("qb-log:Server:CreateLog", "drugsale", "POLAR DRUGSALE", "black", "**" .. src .. "** Got " .. price .. " for selling " .. ZoneDrug.item .. " 5")
 				TriggerClientEvent('Polar-Drugsales:notify', src, 'You recieved $'..price)
 				if Config.Debug then print('You got 5 '..ZoneDrug.item..' for $'..price) end
 				local math = math.random(1,100)

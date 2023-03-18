@@ -12,8 +12,8 @@ Config.img = "qb-inventory/html/images/"
 
 Config.Debug = false -- debug for checks
 
-
-
+Config.WetBudLow = 65 -- if health <= WetBudLow then youll get low quality
+Config.WetBudMid = 97  -- if health <= WetBudMid then youll get medium quality
 
 Config.PoliceJob = 'police' -- police can destroy plants
 Config.DestroyIcon = 'fas fa-fire'
@@ -24,10 +24,10 @@ Config.Sound = true
 
 
 --==========================================================================
-Config.Works = false ---- if planting doesnt want to work turn this to TRUE
+Config.QuickPlant = true ---- if planting doesnt want to work turn this to TRUE
 --==========================================================================
-
-
+Config.Offset = - 0.5
+Config.Distance = 7.0
 
 --------- GENERAL ----------
 Config.RestartPlantRemoval = false -- remove dead plants on restart
@@ -57,26 +57,24 @@ Config.WaterItem = 'purifiedwater'
 Config.WaterMin = 40 -- minimum water or health will degrade
 Config.WaterTime = 0.4 -- Percent of water that is removed every minute
 Config.WaterProgressTime = 6000 -- progressbar time
-Config.WaterIcon =  '' --'fas fa-shower'
+Config.WaterIcon =  'fas fa-shower' --'fas fa-shower'
 
 ------------ FERTILIZER ------------
 Config.FertilizerItem = 'weed_nutrition'
 Config.FertMin = 40 -- minimum fert or health will degrade
 Config.FertTime = 0.4 -- Percent of fertilizer that is removed every minute
 Config.FertProgressTime = 6000 -- progressbar time
-Config.FertIcon =  '' --'fab fa-nutritionix'
+Config.FertIcon =  'fab fa-nutritionix' --'fab fa-nutritionix'
 
 ---------- HARVEST -------
-Config.UseMultipleWeeds = true -- true = 3 weeds, false = 1
+
 Config.SingleWeed = 'wetbud' -- uses if UseMultipleWeeds = false
 
 Config.GrowingWeedAmount = true
 Config.WeedPlantItemLow = 'wetbud' -- item you get from harvest
 Config.WeedPlantItemMid = 'wetbud2'
 Config.WeedPlantItemGood = 'wetbud3'
-Config.UseHealthWeed = true -- uses health amount to determine amount of weed you get
-Config.WeedPlantItemAmount = 1 -- uses if not using growing weed amount
-Config.WeedPlantHealthAmount = 4 -- max amount you can get
+Config.WeedPlantItemAmount = 1 -- amount you get per plant
 Config.HarvestTime = 8500 -- progressbar time
 Config.HarvestIcon =  '' --'fas fa-scissors'
 
@@ -93,14 +91,6 @@ Config.TreasureItem = { -- common sense chance
 
 
 
--- GROUND TYPES -- WEED CAN ONLY BE PLANTED ON THESE TYPES
-Config.UseGroundTypes = true
-Config.Ground1 = -1286696947
-Config.Ground2 = -1885547121
-Config.Ground3 = 223086562
-Config.Ground4 = -461750719
-
-
 Config.Props = {
     [1] = 'bkr_prop_weed_01_small_01b', -- 0% growth
     [2] = 'bkr_prop_weed_med_01a', -- 20% growth
@@ -109,9 +99,11 @@ Config.Props = {
     [5] = 'bkr_prop_weed_lrg_01b' -- 80+% growth
 }
 
-Config.ProcessItemReturn = 'weedpound' -- after process what do you get
+Config.ProcessItemReturn = 'weedpound' -- after process what do you get (low quality)
+Config.ProcessItemReturn2 = 'weedpound2' -- after process what do you get (medium quality)
+Config.ProcessItemReturn3 = 'weedpound3' -- after process what do you get (high quality)
 Config.ProcessItemReturnAmountMin = 1 -- after process how much you get
-Config.ProcessItemReturnAmountMax = 3
+Config.ProcessItemReturnAmountMax = 1
 
 Config.BagItem = 'drugbag' -- item needed to process
 Config.BagAmount = 1 -- amount needed to process

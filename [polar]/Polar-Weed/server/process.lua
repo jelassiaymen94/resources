@@ -75,25 +75,24 @@ else
     local low = Player.Functions.GetItemByName(processitem) local mid = Player.Functions.GetItemByName(processitemmid) local good = Player.Functions.GetItemByName(processitemgood)
 if low ~= nil then if low.amount >= processitemamount then if Config.Debug then print('bad weed') end
     next(processitem, processitemamount, Config.ProcessItemReturn, Config.ProcessItemReturnAmountMin, Config.ProcessItemReturnAmountMax)
+    else TriggerClientEvent('QBCore:Notify', src, "You dont have any weed", 'error') end
 elseif mid ~= nil then if mid.amount >= processitemamount then if Config.Debug then print('mid weed') end
-    next(processitemmid, processitemamount, Config.ProcessItemReturn, Config.ProcessItemReturnAmountMin, Config.ProcessItemReturnAmountMax)
-elseif good ~= nil then if mid.amount >= good then if Config.Debug then print('good weed') end
-    next(processitemgood, processitemamount, Config.ProcessItemReturn, Config.ProcessItemReturnAmountMin, Config.ProcessItemReturnAmountMax)
-    else
-    TriggerClientEvent('QBCore:Notify', src, "You dont have any weed", 'error') end   else TriggerClientEvent('QBCore:Notify', src, "You dont have any weed", 'error') end  else TriggerClientEvent('QBCore:Notify', src, "You dont have any weed", 'error') end   else TriggerClientEvent('QBCore:Notify', src, "You dont have any weed", 'error') end    
+    next(processitemmid, processitemamount, Config.ProcessItemReturn2, Config.ProcessItemReturnAmountMin, Config.ProcessItemReturnAmountMax)
+    else TriggerClientEvent('QBCore:Notify', src, "You dont have any weed", 'error') end
+elseif good ~= nil then if good.amount >= processitemamount then if Config.Debug then print('good weed') end
+    next(processitemgood, processitemamount, Config.ProcessItemReturn3, Config.ProcessItemReturnAmountMin, Config.ProcessItemReturnAmountMax)
+    else TriggerClientEvent('QBCore:Notify', src, "You dont have any weed", 'error') end else TriggerClientEvent('QBCore:Notify', src, "You dont have any weed", 'error') end
 end end)
 function next(item, amount, returnitem, returnitemamountmin, returnitemamountmax)
         local src = source local Player = QBCore.Functions.GetPlayer(src) local packageTime = 50
-        local baggies = Player.Functions.GetItemByName(drugbagitem) if baggies ~= nil then if baggies.amount >= drugbagitemamount then 
+        local pp = math.random(returnitemamountmin, returnitemamountmax)
         SetTimeout(packageTime, function()
-        if Player.Functions.AddItem(returnitem, math.random(returnitemamountmin, returnitemamountmax), nil, nil, {["quality"] = 100}) then
-        TriggerClientEvent('inventory:Client:ItemBox', src, QBCore.Shared.Items[returnitem], "add", math.random(returnitemamountmin, returnitemamountmax))
-        Player.Functions.RemoveItem(item, amount) TriggerClientEvent('inventory:Client:ItemBox', src, QBCore.Shared.Items[item], "remove", amount)
-        Player.Functions.RemoveItem(drugbagitem, drugbagitemamount) TriggerClientEvent('inventory:Client:ItemBox', src, QBCore.Shared.Items[drugbagitem], "remove", drugbagitemamount)                            
+        if Player.Functions.AddItem(returnitem, pp, nil, nil, {["quality"] = 100}) then
+        TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[returnitem], "add", pp)
+        Player.Functions.RemoveItem(item, amount) TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[item], "remove", amount)                            
         else
         TriggerClientEvent('QBCore:Notify', src, 'You have to much in your pockets', 'error')
         end end)
-        else TriggerClientEvent('QBCore:Notify', src, "You need atleast " .. drugbagitemamount ..  " baggies", 'error') end   else TriggerClientEvent('QBCore:Notify', src, "You need atleast" .. drugbagitemamount ..  " baggies", 'error') end
 end
 RegisterNetEvent('Polar-Weed:Server:Ounces', function()
     local src = source local Player = QBCore.Functions.GetPlayer(src)
@@ -101,11 +100,11 @@ RegisterNetEvent('Polar-Weed:Server:Ounces', function()
     local bags = Player.Functions.GetItemByName(drugbagitem)
     if bags ~= nil then if bags.amount >= pounddrugbagitemamount then
 if low ~= nil then if low.amount >= poundamount then if Config.Debug then print('bad pound') end
-    blake(poundlow, poundamount, LowName, lowpotencymin, lowpotencymax, ouncelow, pounddrugbagitemamount) end
+    blake(poundlow, poundamount, LowName, lowpotencymin, lowpotencymax, ouncelow, pounddrugbagitemamount) else TriggerClientEvent('QBCore:Notify', src, 'You dont have a pound of weed', 'error') end
 elseif mid ~= nil then if mid.amount >= poundamount then if Config.Debug then print('mid pound') end
-    blake(poundmid, poundamount, MidName, midpotencymin, midpotencymax, ouncemid, pounddrugbagitemamount) end
-elseif good ~= nil then if mid.amount >= poundamount then if Config.Debug then print('good pound') end
-    blake(poundgood, poundamount, HighName, highpotencymin, highpotencymax, ouncegood, pounddrugbagitemamount) end
+    blake(poundmid, poundamount, MidName, midpotencymin, midpotencymax, ouncemid, pounddrugbagitemamount) else TriggerClientEvent('QBCore:Notify', src, 'You dont have a pound of weed', 'error') end
+elseif good ~= nil then if good.amount >= poundamount then if Config.Debug then print('good pound') end
+    blake(poundgood, poundamount, HighName, highpotencymin, highpotencymax, ouncegood, pounddrugbagitemamount) else TriggerClientEvent('QBCore:Notify', src, 'You dont have a pound of weed', 'error') end
 else TriggerClientEvent('QBCore:Notify', src, 'You dont have a pound of weed', 'error') end
     else TriggerClientEvent('QBCore:Notify', src, 'You dont have ' .. pounddrugbagitemamount .. ' bags', 'error') end  else TriggerClientEvent('QBCore:Notify', src, 'You dont have ' .. pounddrugbagitemamount .. ' bags', 'error') end
 end)
@@ -115,9 +114,9 @@ function blake(item, amount, Potency, min, max, returnitem, returnamount)
     local number = math.random(min,max)
     local colorizer = colortable[math.random(#colortable)] local randomInfo = { {strain = strains, potency = Potency, thc = number,color = colorizer, type = types}, {strain = strains, potency = Potency, thc = number, color = colorizer,type = types}, {strain = strains, potency = Potency, thc = number,  color = colorizer, type = types},}local info = randomInfo[math.random(#randomInfo)]
     if Player.Functions.AddItem(returnitem, returnamount, nil, info, {["quality"] = 100}) then
-        TriggerClientEvent('inventory:Client:ItemBox', src, QBCore.Shared.Items[returnitem], "add", returnamount)
-        Player.Functions.RemoveItem(item, amount) TriggerClientEvent('inventory:Client:ItemBox', src, QBCore.Shared.Items[item], "remove", amount)
-        if require then Player.Functions.RemoveItem(drugbagitem, pounddrugbagitemamount) TriggerClientEvent('inventory:Client:ItemBox', src, QBCore.Shared.Items[drugbagitem], "remove", pounddrugbagitemamount) end     
+        TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[returnitem], "add", returnamount)
+        Player.Functions.RemoveItem(item, amount) TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[item], "remove", amount)
+        if require then Player.Functions.RemoveItem(drugbagitem, pounddrugbagitemamount) TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[drugbagitem], "remove", pounddrugbagitemamount) end     
     else TriggerClientEvent('QBCore:Notify', src, 'You have to much in your pockets', 'error') end
 end
 RegisterNetEvent('Polar-Weed:Server:LargeJoints', function()
@@ -125,14 +124,14 @@ RegisterNetEvent('Polar-Weed:Server:LargeJoints', function()
     local low = Player.Functions.GetItemByName(ouncelow) local mid = Player.Functions.GetItemByName(ouncemid) local good = Player.Functions.GetItemByName(ouncegood)
     local paper = Player.Functions.GetItemByName(rollingpaper)
     if paper ~= nil then if paper.amount >= rollingpaperamount then
-    if low ~= nil then if low.amount >= largeounceamount then if Config.Debug then print('bad large joint') end
-        joint(ouncelow, largeounceamount, largejointitem, lareturnamount)
-    end
-    elseif mid ~= nil then if low.amount >= largeounceamount then if Config.Debug then print('mid large joint') end
-        joint(ouncelow, largeounceamount, largejointitem, lareturnamount)
+   -- if low ~= nil then if low.amount >= largeounceamount then if Config.Debug then print('bad large joint') end
+        --joint(ouncelow, largeounceamount, largejointitem, lareturnamount) else TriggerClientEvent('QBCore:Notify', src, 'You dont have ' .. largeounceamount ..' ounces', 'error')
+  --  end
+    if mid ~= nil then if low.amount >= largeounceamount then if Config.Debug then print('mid large joint') end
+        joint(ouncelow, largeounceamount, largejointitem, lareturnamount) else TriggerClientEvent('QBCore:Notify', src, 'You dont have ' .. largeounceamount ..' medium quality ounce', 'error')
     end
     elseif good ~= nil then if mid.amount >= largeounceamount then if Config.Debug then print('high large joint') end
-        joint(ouncelow, largeounceamount, largejointitem, lareturnamount)
+        joint(ouncelow, largeounceamount, largejointitem, 3) else TriggerClientEvent('QBCore:Notify', src, 'You dont have ' .. 3 ..' high quality ounces', 'error')
     end
     else TriggerClientEvent('QBCore:Notify', src, 'You dont have ' .. largeounceamount ..' ounces', 'error') TriggerClientEvent('Polar-Weed:Client:Joint') end
     else TriggerClientEvent('QBCore:Notify', src, 'You dont have enough rolling paper', 'error') TriggerClientEvent('Polar-Weed:Client:Joint') end
@@ -146,25 +145,21 @@ RegisterNetEvent('Polar-Weed:Server:SmallJoints', function()
     if low ~= nil then if low.amount >= smallounceamount then if Config.Debug then print('bad small joint') end
         joint(ouncelow, smallounceamount, smalljointitem, smreturnamount)
     end
-    elseif mid ~= nil then if low.amount >= smallounceamount then if Config.Debug then print('mid small joint') end
+   --[[ elseif mid ~= nil then if low.amount >= smallounceamount then if Config.Debug then print('mid small joint') end
         joint(ouncemid, smallounceamount, smalljointitem, smreturnamount)
     end
     elseif good ~= nil then if mid.amount >= smallounceamount then if Config.Debug then print('high small joint') end
         joint(ouncegood, smallounceamount, smalljointitem, smreturnamount)
-    end
-    else TriggerClientEvent('QBCore:Notify', src, 'You dont have ' .. smallounceamount ..' ounce', 'error') TriggerClientEvent('Polar-Weed:Client:Joint') end
+    end]]
+    else TriggerClientEvent('QBCore:Notify', src, 'You dont have ' .. smallounceamount ..' low quality ounce', 'error') TriggerClientEvent('Polar-Weed:Client:Joint') end
     else TriggerClientEvent('QBCore:Notify', src, 'You dont have enough rolling paper', 'error') TriggerClientEvent('Polar-Weed:Client:Joint') end
     end
 end)
 function joint(item, amount, returnitem, returnamount)
     local src = source local Player = QBCore.Functions.GetPlayer(src)
     if Player.Functions.AddItem(returnitem, returnamount, nil, nil, {["quality"] = 100}) then
-        TriggerClientEvent('inventory:Client:ItemBox', src, QBCore.Shared.Items[returnitem], "add", returnamount)
-        Player.Functions.RemoveItem(item, amount) TriggerClientEvent('inventory:Client:ItemBox', src, QBCore.Shared.Items[item], "remove", amount)
-        Player.Functions.RemoveItem(rollingpaper, rollingpaperamount) TriggerClientEvent('inventory:Client:ItemBox', src, QBCore.Shared.Items[rollingpaper], "remove", rollingpaperamount)   
+        TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[returnitem], "add", returnamount)
+        Player.Functions.RemoveItem(item, amount) TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[item], "remove", amount)
+        Player.Functions.RemoveItem(rollingpaper, rollingpaperamount) TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[rollingpaper], "remove", rollingpaperamount)   
     else TriggerClientEvent('QBCore:Notify', src, 'You have to much in your pockets', 'error') end
 end
-RegisterNetEvent('Polar-Weed:Server:RemoveTub', function()
-    local src = source local Player = QBCore.Functions.GetPlayer(src)
-    Player.Functions.RemoveItem(Config.TubItem, 1) TriggerClientEvent('inventory:Client:ItemBox', src, QBCore.Shared.Items[Config.TubItem], "remove", 1)   
-end)

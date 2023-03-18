@@ -210,7 +210,7 @@ end)
 
 --- Events
 
-RegisterNetEvent('Polar-Weed:server:ClearPlant', function(netId)
+RegisterNetEvent('Polar-Weed:Server:ClearPlant', function(netId)
     local entity = NetworkGetEntityFromNetworkId(netId)
     if not WeedPlants[entity] then return end
     if #(GetEntityCoords(GetPlayerPed(source)) - WeedPlants[entity].coords) > 10 then return end
@@ -225,7 +225,8 @@ RegisterNetEvent('Polar-Weed:server:ClearPlant', function(netId)
     end
 end)
 
-RegisterNetEvent('Polar-Weed:server:HarvestPlant', function(netId)
+RegisterNetEvent('Polar-Weed:Server:HarvestPlant', function(netId)
+   
     local entity = NetworkGetEntityFromNetworkId(netId)
     if not WeedPlants[entity] then return end
     local src = source
@@ -233,42 +234,20 @@ RegisterNetEvent('Polar-Weed:server:HarvestPlant', function(netId)
     if not Player then return end
     if #(GetEntityCoords(GetPlayerPed(src)) - WeedPlants[entity].coords) > 10 then return end
     if calcGrowth(entity) ~= 100 then return end
-
+    
     if DoesEntityExist(entity) then
         local health = calcHealth(entity)
+
         if WeedPlants[entity].gender == 'female' then
-            local info = { health = health }
-            if Config.UseMultipleWeeds then
-            if health < 34 then
-                if Config.GrowingWeedAmount then
-                    local healthweed = math.floor(health / Config.WeedPlantHealthAmount)
-                    if Player.Functions.AddItem(Config.WeedPlantItemLow, healthweed, false, info) then TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.WeedPlantItemLow], 'add', healthweed) else TriggerClientEvent('QBCore:Notify', src, text('errorfull'), 'error', 2500) end
-                else
-                    if Player.Functions.AddItem(Config.WeedPlantItemLow, Config.WeedPlantItemAmount, false, info) then TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.WeedPlantItemLow], 'add', Config.WeedPlantItemAmount) else TriggerClientEvent('QBCore:Notify', src, text('errorfull'), 'error', 2500) end
-                end
-            elseif health < 67 then
-                if Config.GrowingWeedAmount then
-                    local healthweed = math.floor(health / Config.WeedPlantHealthAmount)
-                    if Player.Functions.AddItem(Config.WeedPlantItemMid, healthweed, false, info) then TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.WeedPlantItemMid], 'add', healthweed) else TriggerClientEvent('QBCore:Notify', src, text('errorfull'), 'error', 2500) end
-                else
-                    if Player.Functions.AddItem(Config.WeedPlantItemMid, Config.WeedPlantItemAmount, false, info) then TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.WeedPlantItemMid], 'add', Config.WeedPlantItemAmount) else TriggerClientEvent('QBCore:Notify', src, text('errorfull'), 'error', 2500) end
-                end
+
+            if health <= Config.WetBudLow then
+                if Player.Functions.AddItem(Config.WeedPlantItemLow, Config.WeedPlantItemAmount, false, nil) then TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.WeedPlantItemLow], 'add', Config.WeedPlantItemAmount) else TriggerClientEvent('QBCore:Notify', src, text('errorfull'), 'error', 2500) end
+            elseif health <= Config.WetBudMid then  
+                if Player.Functions.AddItem(Config.WeedPlantItemMid, Config.WeedPlantItemAmount, false, nil) then TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.WeedPlantItemMid], 'add', Config.WeedPlantItemAmount) else TriggerClientEvent('QBCore:Notify', src, text('errorfull'), 'error', 2500) end
             else
-                if Config.GrowingWeedAmount then
-                    local healthweed = math.floor(health / Config.WeedPlantHealthAmount)
-                    if Player.Functions.AddItem(Config.WeedPlantItemGood, healthweed, false, info) then TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.WeedPlantItemGood], 'add', healthweed) else TriggerClientEvent('QBCore:Notify', src, text('errorfull'), 'error', 2500) end
-                else
-                    if Player.Functions.AddItem(Config.WeedPlantItemGood, Config.WeedPlantItemAmount, false, info) then TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.WeedPlantItemGood], 'add', Config.WeedPlantItemAmount) else TriggerClientEvent('QBCore:Notify', src, text('errorfull'), 'error', 2500) end
-                end
+                if Player.Functions.AddItem(Config.WeedPlantItemGood, Config.WeedPlantItemAmount, false, nil) then TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.WeedPlantItemGood], 'add', Config.WeedPlantItemAmount) else TriggerClientEvent('QBCore:Notify', src, text('errorfull'), 'error', 2500) end
             end
-            else
-                if Config.GrowingWeedAmount then
-                    local healthweed = math.floor(health / Config.WeedPlantHealthAmount)
-                    if Player.Functions.AddItem(Config.SingleWeed, healthweed, false, info) then TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.SingleWeed], 'add', healthweed) else TriggerClientEvent('QBCore:Notify', src, text('errorfull'), 'error', 2500) end
-                else
-                    if Player.Functions.AddItem(Config.SingleWeed, Config.WeedPlantItemAmount, false, info) then TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.SingleWeed], 'add', Config.WeedPlantItemAmount) else TriggerClientEvent('QBCore:Notify', src, text('errorfull'), 'error', 2500) end
-                end
-            end
+
             if Config.FemaleWeedTreasure then
                 local chance = math.random(1,100)
                 if chance <= Config.TreasureChance then
@@ -281,7 +260,7 @@ RegisterNetEvent('Polar-Weed:server:HarvestPlant', function(netId)
                     end
                 end
             end
-
+           
         else -- male seed added
 
             if Config.MaleWeedTreasure then
@@ -338,7 +317,7 @@ RegisterNetEvent('Polar-Weed:server:HarvestPlant', function(netId)
     end
 end)
 
-RegisterNetEvent('Polar-Weed:server:PoliceDestroy', function(netId)
+RegisterNetEvent('Polar-Weed:Server:PoliceDestroy', function(netId)
     local entity = NetworkGetEntityFromNetworkId(netId)
     if not WeedPlants[entity] then return end
     local src = source
@@ -353,13 +332,13 @@ RegisterNetEvent('Polar-Weed:server:PoliceDestroy', function(netId)
         })
         WeedPlants[entity] = nil
 
-        TriggerClientEvent('Polar-Weed:client:FireGoBrrrrrrr', -1, WeedPlants[entity].coords)
+        TriggerClientEvent('Polar-Weed:Client:FireGoBrrrrrrr', -1, WeedPlants[entity].coords)
         Wait(10000)
         DeleteEntity(entity)
     end
 end)
 
-RegisterNetEvent('Polar-Weed:server:GiveWater', function(netId)
+RegisterNetEvent('Polar-Weed:Server:GiveWater', function(netId)
     local entity = NetworkGetEntityFromNetworkId(netId)
     if not WeedPlants[entity] then return end
     local src = source
@@ -379,7 +358,7 @@ RegisterNetEvent('Polar-Weed:server:GiveWater', function(netId)
     end
 end)
 
-RegisterNetEvent('Polar-Weed:server:GiveFertilizer', function(netId)
+RegisterNetEvent('Polar-Weed:Server:GiveFertilizer', function(netId)
     local entity = NetworkGetEntityFromNetworkId(netId)
     if not WeedPlants[entity] then return end
     local src = source
@@ -399,7 +378,7 @@ RegisterNetEvent('Polar-Weed:server:GiveFertilizer', function(netId)
     end
 end)
 
-RegisterNetEvent('Polar-Weed:server:AddMaleSeed', function(netId)
+RegisterNetEvent('Polar-Weed:Server:AddMaleSeed', function(netId)
     local entity = NetworkGetEntityFromNetworkId(netId)
     if not WeedPlants[entity] then return end
     local src = source
@@ -419,11 +398,11 @@ RegisterNetEvent('Polar-Weed:server:AddMaleSeed', function(netId)
     end
 end)
 
-RegisterNetEvent('Polar-Weed:server:CreateNewPlant', function(coords)
+RegisterNetEvent('Polar-Weed:Server:CreateNewPlant', function(coords)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
     if not Player then return end
-    if #(GetEntityCoords(GetPlayerPed(src)) - coords) > 7.0 + 10 then return end
+    if #(GetEntityCoords(GetPlayerPed(src)) - coords) > Config.Distance + 10 then return end
     if Player.Functions.RemoveItem(Config.FemaleSeed, 1) then
         TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.FemaleSeed], 'remove', 1)
         local ModelHash = Config.Props[1]
@@ -451,7 +430,7 @@ end)
 
 --- Callbacks
 
-QBCore.Functions.CreateCallback('Polar-Weed:server:GetPlantData', function(source, cb, netId)
+QBCore.Functions.CreateCallback('Polar-Weed:Server:GetPlantData', function(source, cb, netId)
     local entity = NetworkGetEntityFromNetworkId(netId)
     if not WeedPlants[entity] then cb(nil) return end
     local temp = {

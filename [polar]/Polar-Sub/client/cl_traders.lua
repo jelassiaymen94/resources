@@ -40,7 +40,7 @@ RegisterNetEvent('Polar-Sub:Client:Transfer', function(data)
     end
     Wait(5)
     if hasamount then
-        TriggerEvent('animations:client:EmoteCommandStart', {emote})
+        TriggerEvent('animations:Client:EmoteCommandStart', {emote})
    -- exports["Polar-Emotes"]:EmoteCommandStart(emote, 1)
     QBCore.Functions.Progressbar("hi", "Arguing Over "  .. removeitemamount4 .. " " .. QBCore.Shared.Items[removeitem4].label .. " " , 15000, false, true, 
     {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = false, },
@@ -49,11 +49,11 @@ RegisterNetEvent('Polar-Sub:Client:Transfer', function(data)
 
         TriggerServerEvent('Polar-Sub:Server:Trada', item4, amount4, removeitem4, removeitemamount4)
        -- exports["Polar-Emotes"]:EmoteCancel(emote)
-TriggerEvent('animations:client:EmoteCommandStart', {"c"})
+TriggerEvent('animations:Client:EmoteCommandStart', {"c"})
 
     end, function()
       --  exports["Polar-Emotes"]:EmoteCancel(emote)
-      TriggerEvent('animations:client:EmoteCommandStart', {"c"})
+      TriggerEvent('animations:Client:EmoteCommandStart', {"c"})
         -- cancel notification
         QBCore.Functions.Notify('Canceled', 'error')
 

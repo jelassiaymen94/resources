@@ -171,7 +171,7 @@ CreateThread(function()
             Wait(6000)
             ClearPedTasksImmediately(PlayerPedId())
             ClearPedTasksImmediately(blue)]]
-            TriggerServerEvent('hud:server:RelieveStress', 20)
+            TriggerServerEvent('hud:Server:RelieveStress', 20)
             
         end
 

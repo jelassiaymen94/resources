@@ -45,8 +45,8 @@ function targets()
     { options = {{ event = "Polar-Weed:Client:Stash", icon = "fas fa-box-open", label = 'Open', excludejob = 'police', stash = "Storage", coords = vector3(1044.78, -3198.98, -38.45), }, },  distance = 2.0 })
     exports['qb-target']:AddBoxZone("Process", vector3(1037.4, -3205.92, -38.69), 1, 1, { name = "Process", heading = 0, debug = Config.Debug, minZ = -40.19, maxZ =  -38.19,}, 
     { options = {{ event = "Polar-Weed:Client:Process", icon = "fa-solid fa-cannabis", label = "Process", excludejob = 'police'}}, distance = 1.5 }) 
-    exports['qb-target']:AddBoxZone("Divide Pound", vector3(1041.27, -3207.79, -38.32), 1, 1, { name = "Bag", heading = 0, debug = Config.Debug, minZ = -40.19, maxZ =  -38.19,}, 
-    { options = {{ event = "Polar-Weed:Client:OuncesMake", icon = "fa-solid fa-cannabis", label = "Bag", excludejob = 'police'}}, distance = 1.5 }) 
+    exports['qb-target']:AddBoxZone("Divideound", vector3(229.16, -1760.91, 28.54), 1, 1, { name = "DividePound", heading = 0, debug = Config.Debug, minZ = 28, maxZ =  29,}, 
+    { options = {{ event = "Polar-Weed:Client:OuncesMake", icon = "fa-solid fa-cannabis", label = "Divide Pound", excludejob = 'police'}}, distance = 1.5 }) 
 end
 function loadAnimDict(dict) while (not HasAnimDictLoaded(dict)) do RequestAnimDict(dict) Wait(5) end end
 RegisterNetEvent('Polar-Weed:Client:Enter', function() enter() end)
@@ -66,6 +66,7 @@ RegisterNetEvent('Polar-Weed:Client:Process', function()
     else QBCore.Functions.Notify('You dont have any weed', red, alerttime) if Config.Debug then print('You dont have any weed') end end
 end)
 function pp()
+    FreezeEntityPosition(PlayerPedId(), true)
     local drugbatitem = QBCore.Functions.HasItem(drugbagitem, drugbagitemamount) if drugbatitem then if Config.Debug then print('are you in chair?') end
     QBCore.Functions.TriggerCallback('Polar-Weed:Server:Check', function(Check) ForceCheck = Check end) Wait(100) if not ForceCheck then if Config.Debug then print('not in chair') end 
     TriggerServerEvent('Polar-Weed:Server:ForceCheck')
@@ -89,6 +90,7 @@ function pp()
     TriggerServerEvent('Polar-Weed:Server:Process', 3)   
     else QBCore.Functions.Notify('This Seat is Taken', red, alerttime) if Config.Debug then print('This Seat is Taken') end end
     else QBCore.Functions.Notify('You dont have enough bags', red, alerttime) if Config.Debug then print('You dont have enough bags') end end
+    FreezeEntityPosition(PlayerPedId(), false)
 end
 RegisterNetEvent('Polar-Weed:Client:Joint', function()
     exports['qb-menu']:openMenu({
@@ -110,14 +112,14 @@ RegisterNetEvent('Polar-Weed:Client:LargeJointMake', function()
     disableMovement = true, disableCarMovement = false, disableMouse = false, disableCombat = true,
     }, {}, {}, {}, function()
         TriggerServerEvent('Polar-Weed:Server:LargeJoints') end)
-        ClearPedTasks(ped)
+        ClearPedTasks(PlayerPedId())
         RemoveAnimDict('amb@medic@standing@kneel@base')
         RemoveAnimDict('anim@gangops@facility@servers@bodysearch@')
     end, function() 
-        ClearPedTasks(ped)
+        ClearPedTasks(PlayerPedId())
         RemoveAnimDict('amb@medic@standing@kneel@base')
         RemoveAnimDict('anim@gangops@facility@servers@bodysearch@')
-    end)
+end)
 RegisterNetEvent('Polar-Weed:Client:SmallJointMake', function() 
     local ped = PlayerPedId() RequestAnimDict('amb@medic@standing@kneel@base') RequestAnimDict('anim@gangops@facility@servers@bodysearch@')
     while not HasAnimDictLoaded('amb@medic@standing@kneel@base') or not HasAnimDictLoaded('anim@gangops@facility@servers@bodysearch@') do Wait(0) end

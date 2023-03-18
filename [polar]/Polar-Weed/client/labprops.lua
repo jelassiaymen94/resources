@@ -46,6 +46,7 @@ function props2() if Config.UseProps then if Config.Debug then print('Props 2 En
 else if Config.Debug then print('Props 2 not Enabled') end 
 end end
 function props3() if Config.UseProps then if Config.Debug then print('Props 3 Enabled') end Wait(50)
+    local prop =  CreateObject(GetHashKey("bkr_prop_weed_table_01a"),vector3(229.13, -1760.71, 27.68), false, false, false) -- weed table
     local prop =  CreateObject(GetHashKey("bkr_prop_weed_bigbag_03a"), vector3(1038.33, -3206.74, -38.3), false, false, false) 
     local prop =  CreateObject(GetHashKey("bkr_prop_fertiliser_pallet_02a"), vector3(vector3(1039.9, -3197.45, -39.17)), false, false, false) 
     local prop =  CreateObject(GetHashKey("bkr_prop_weed_bag_pile_01a"),vector3(1041.23, -3207.8, -38.34), false, false, false) 

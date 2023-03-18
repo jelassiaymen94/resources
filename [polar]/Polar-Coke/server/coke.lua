@@ -58,7 +58,7 @@ RegisterNetEvent('Polar-Coke:Server:GivePrepare', function()
 
     Player.Functions.AddItem(Config.PreparedItem, Config.PreparedItemAmount)
         TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items[Config.PreparedItem], 'add',  Config.PreparedItemAmount)
-         --TriggerEvent("qb-log:server:CreateLog", "coke", "GRABBED ITEM", "blue", "**" .. GetPlayerName(src) .. "** Grabbed Item")
+         --TriggerEvent("qb-log:Server:CreateLog", "coke", "GRABBED ITEM", "blue", "**" .. GetPlayerName(src) .. "** Grabbed Item")
 
 
 
@@ -70,7 +70,7 @@ RegisterNetEvent('Polar-Coke:Server:GiveIngredients', function()
 
     --Player.Functions.AddItem(Config.Ing3, Config.Ing3Amount)
        -- TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items[Config.Ing3], 'add',  Config.Ing3Amount)
-         --TriggerEvent("qb-log:server:CreateLog", "coke", "GRABBED ITEM", "blue", "**" .. GetPlayerName(src) .. "** Grabbed Item")
+         --TriggerEvent("qb-log:Server:CreateLog", "coke", "GRABBED ITEM", "blue", "**" .. GetPlayerName(src) .. "** Grabbed Item")
 
 
 
@@ -114,33 +114,33 @@ RegisterNetEvent('Polar-Coke:GiveLeaf', function()
         if lucl < 20 then
             Player.Functions.AddItem('copper', 1)
             TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items[Config.LeafItem], 'add', 1)
-            TriggerEvent("qb-log:server:CreateLog", "coke", "LEAFS", "blue", "**" .. GetPlayerName(src) .. "** Got 1 Leaf")
+            TriggerEvent("qb-log:Server:CreateLog", "coke", "LEAFS", "blue", "**" .. GetPlayerName(src) .. "** Got 1 Leaf")
         else
         Player.Functions.AddItem(Config.LeafItem, 1)
         TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items[Config.LeafItem], 'add', 1)
-        TriggerEvent("qb-log:server:CreateLog", "coke", "LEAFS", "blue", "**" .. GetPlayerName(src) .. "** Got 1 Leafs")
+        TriggerEvent("qb-log:Server:CreateLog", "coke", "LEAFS", "blue", "**" .. GetPlayerName(src) .. "** Got 1 Leafs")
         end
     elseif luck < 95 then
         local lucl = math.random(1,100)
         if lucl < 20 then
             Player.Functions.AddItem('copper', 1)
             TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items[Config.LeafItem], 'add', 1)
-            TriggerEvent("qb-log:server:CreateLog", "coke", "LEAFS", "blue", "**" .. GetPlayerName(src) .. "** Got 1 Leaf")
+            TriggerEvent("qb-log:Server:CreateLog", "coke", "LEAFS", "blue", "**" .. GetPlayerName(src) .. "** Got 1 Leaf")
         else
         Player.Functions.AddItem(Config.LeafItem, 2)
         TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items[Config.LeafItem], 'add', 2)
-        TriggerEvent("qb-log:server:CreateLog", "coke", "LEAFS", "blue", "**" .. GetPlayerName(src) .. "** Got 2 Leafs")
+        TriggerEvent("qb-log:Server:CreateLog", "coke", "LEAFS", "blue", "**" .. GetPlayerName(src) .. "** Got 2 Leafs")
         end
     elseif luck < 101 then
         local specialluck = math.random(1,100)
         if specialluck > 90 then
         Player.Functions.AddItem(Config.LeafItem, 6)
         TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items[Config.LeafItem], 'add', 3)
-        TriggerEvent("qb-log:server:CreateLog", "coke", "LEAFS", "blue", "**" .. GetPlayerName(src) .. "** Got 3 Leafs")
+        TriggerEvent("qb-log:Server:CreateLog", "coke", "LEAFS", "blue", "**" .. GetPlayerName(src) .. "** Got 3 Leafs")
         else
             Player.Functions.AddItem(Config.LeafItem, 6)
             TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items[Config.LeafItem], 'add', 6)
-            TriggerEvent("qb-log:server:CreateLog", "coke", "LEAFS", "blue", "**" .. GetPlayerName(src) .. "** Got 6 Leafs")
+            TriggerEvent("qb-log:Server:CreateLog", "coke", "LEAFS", "blue", "**" .. GetPlayerName(src) .. "** Got 6 Leafs")
         end
     end
 end)
@@ -153,49 +153,49 @@ end)
 
 
 
-RegisterNetEvent('Polar-Coke:server:level0', function()
+RegisterNetEvent('Polar-Coke:Server:level0', function()
     local Player = QBCore.Functions.GetPlayer(source)
     local level0 = math.random(5,10)
 
     Player.Functions.AddItem(Config.CokeItem, level0)
         TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items[Config.CokeItem], 'add', level0)
-         TriggerEvent("qb-log:server:CreateLog", "coke", "COCAINE", "blue", "**" .. GetPlayerName(src) .. "** Got Cocaine")
+         TriggerEvent("qb-log:Server:CreateLog", "coke", "COCAINE", "blue", "**" .. GetPlayerName(src) .. "** Got Cocaine")
 end)
 
-RegisterNetEvent('Polar-Coke:server:level1', function()
+RegisterNetEvent('Polar-Coke:Server:level1', function()
     local Player = QBCore.Functions.GetPlayer(source)
     local level1 = math.random(10,15)
 
     Player.Functions.AddItem(Config.CokeItem, level1)
         TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items[Config.CokeItem], 'add', level1)
-         TriggerEvent("qb-log:server:CreateLog", "coke", "COCAINE", "blue", "**" .. GetPlayerName(src) .. "** Got Cocaine")
+         TriggerEvent("qb-log:Server:CreateLog", "coke", "COCAINE", "blue", "**" .. GetPlayerName(src) .. "** Got Cocaine")
 end)
 
-RegisterNetEvent('Polar-Coke:server:level2', function()
+RegisterNetEvent('Polar-Coke:Server:level2', function()
     local Player = QBCore.Functions.GetPlayer(source)
     local level2 = math.random(15,25)
 
     Player.Functions.AddItem(Config.CokeItem, level2)
         TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items[Config.CokeItem], 'add', level2)
-         TriggerEvent("qb-log:server:CreateLog", "coke", "COCAINE", "blue", "**" .. GetPlayerName(src) .. "** Got Cocaine")
+         TriggerEvent("qb-log:Server:CreateLog", "coke", "COCAINE", "blue", "**" .. GetPlayerName(src) .. "** Got Cocaine")
 end)
 
-RegisterNetEvent('Polar-Coke:server:level3', function()
+RegisterNetEvent('Polar-Coke:Server:level3', function()
     local Player = QBCore.Functions.GetPlayer(source)
     local level3 = math.random(25,35)
 
     Player.Functions.AddItem(Config.CokeItem, level3)
         TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items[Config.CokeItem], 'add', level3)
-         TriggerEvent("qb-log:server:CreateLog", "coke", "COCAINE", "blue", "**" .. GetPlayerName(src) .. "** Got Cocaine")
+         TriggerEvent("qb-log:Server:CreateLog", "coke", "COCAINE", "blue", "**" .. GetPlayerName(src) .. "** Got Cocaine")
 end)
 
-RegisterNetEvent('Polar-Coke:server:level4', function()
+RegisterNetEvent('Polar-Coke:Server:level4', function()
     local Player = QBCore.Functions.GetPlayer(source)
     local level4 = math.random(35,50)
 
     Player.Functions.AddItem(Config.CokeItem, level4)
         TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items[Config.CokeItem], 'add', level4)
-         TriggerEvent("qb-log:server:CreateLog", "coke", "COCAINE", "blue", "**" .. GetPlayerName(src) .. "** Got Cocaine")
+         TriggerEvent("qb-log:Server:CreateLog", "coke", "COCAINE", "blue", "**" .. GetPlayerName(src) .. "** Got Cocaine")
 end)
 
 
@@ -204,49 +204,49 @@ end)
 
 
 
-RegisterNetEvent('Polar-Coke:server:level0buff', function()
+RegisterNetEvent('Polar-Coke:Server:level0buff', function()
     local Player = QBCore.Functions.GetPlayer(source)
     local level0buff = math.random(8,10)
 
         Player.Functions.AddItem(Config.CokeItem, level0buff)
         TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items[Config.CokeItem], 'add', level0buff)
-         TriggerEvent("qb-log:server:CreateLog", "coke", "COCAINE", "blue", "**" .. GetPlayerName(src) .. "** Got Cocaine")
+         TriggerEvent("qb-log:Server:CreateLog", "coke", "COCAINE", "blue", "**" .. GetPlayerName(src) .. "** Got Cocaine")
 end)
 
-RegisterNetEvent('Polar-Coke:server:level1buff', function()
+RegisterNetEvent('Polar-Coke:Server:level1buff', function()
     local Player = QBCore.Functions.GetPlayer(source)
    local level1buff = math.random(10,15)
 
     Player.Functions.AddItem(Config.CokeItem, level1buff)
         TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items[Config.CokeItem], 'add', level1buff)
-      TriggerEvent("qb-log:server:CreateLog", "coke", "COCAINE", "blue", "**" .. GetPlayerName(src) .. "** Got Cocaine")
+      TriggerEvent("qb-log:Server:CreateLog", "coke", "COCAINE", "blue", "**" .. GetPlayerName(src) .. "** Got Cocaine")
 end)
 
-RegisterNetEvent('Polar-Coke:server:level2buff', function()
+RegisterNetEvent('Polar-Coke:Server:level2buff', function()
     local Player = QBCore.Functions.GetPlayer(source)
     local level2buff = math.random(20,25)
 
     Player.Functions.AddItem(Config.CokeItem, level2buff)
         TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items[Config.CokeItem], 'add', level2buff)
-         TriggerEvent("qb-log:server:CreateLog", "coke", "COCAINE", "blue", "**" .. GetPlayerName(src) .. "** Got Cocaine")
+         TriggerEvent("qb-log:Server:CreateLog", "coke", "COCAINE", "blue", "**" .. GetPlayerName(src) .. "** Got Cocaine")
 end)
 
-RegisterNetEvent('Polar-Coke:server:level3buff', function()
+RegisterNetEvent('Polar-Coke:Server:level3buff', function()
     local Player = QBCore.Functions.GetPlayer(source)
     local level3buff = math.random(30,35)
 
     Player.Functions.AddItem(Config.CokeItem, level3buff)
         TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items[Config.CokeItem], 'add', level3buff)
-         TriggerEvent("qb-log:server:CreateLog", "coke", "COCAINE", "blue", "**" .. GetPlayerName(src) .. "** Got Cocaine")
+         TriggerEvent("qb-log:Server:CreateLog", "coke", "COCAINE", "blue", "**" .. GetPlayerName(src) .. "** Got Cocaine")
 end)
 
-RegisterNetEvent('Polar-Coke:server:level4buff', function()
+RegisterNetEvent('Polar-Coke:Server:level4buff', function()
     local Player = QBCore.Functions.GetPlayer(source)
     local level4buff = math.random(45,50)
 
     Player.Functions.AddItem(Config.CokeItem, level4buff)
         TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items[Config.CokeItem], 'add', level4buff)
-         TriggerEvent("qb-log:server:CreateLog", "coke", "COCAINE", "blue", "**" .. GetPlayerName(src) .. "** Got Cocaine")
+         TriggerEvent("qb-log:Server:CreateLog", "coke", "COCAINE", "blue", "**" .. GetPlayerName(src) .. "** Got Cocaine")
 end)
 
 RegisterNetEvent('Polar-Coke:Server:AddPackage', function()
@@ -255,7 +255,7 @@ RegisterNetEvent('Polar-Coke:Server:AddPackage', function()
 
     Player.Functions.AddItem(Config.PackageItem, Config.PackageItemAmount)
         TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items[Config.PackageItem], 'add', Config.PackageItemAmount)
-         TriggerEvent("qb-log:server:CreateLog", "coke", "COCAINE", "blue", "**" .. GetPlayerName(src) .. "** Got Unpackaged Brick")
+         TriggerEvent("qb-log:Server:CreateLog", "coke", "COCAINE", "blue", "**" .. GetPlayerName(src) .. "** Got Unpackaged Brick")
 
 
 end)
@@ -268,7 +268,7 @@ RegisterNetEvent('Polar-Coke:Server:AddPackaged', function()
 
     Player.Functions.AddItem(Config.PackagedItem, Config.PackagedItemAmount)
         TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items[Config.PackagedItem], 'add', Config.PackagedItemAmount)
-         TriggerEvent("qb-log:server:CreateLog", "coke", "COCAINE", "blue", "**" .. GetPlayerName(src) .. "** Got Packaged Brick")
+         TriggerEvent("qb-log:Server:CreateLog", "coke", "COCAINE", "blue", "**" .. GetPlayerName(src) .. "** Got Packaged Brick")
 
 
 

@@ -1082,7 +1082,7 @@ RegisterNetEvent('Polar-Coke:Client:CokeBill', function()
             uses()
             AddArmourToPed(playerPed, math.random(9, 14))
             Wait(3000)
-            TriggerServerEvent('hud:server:RelieveStress', math.random(5, 10)) 
+            TriggerServerEvent('hud:Server:RelieveStress', math.random(5, 10)) 
             if use < 3 then
                 local chance = math.random(1,100)
                 if chance > 25 then
@@ -1121,12 +1121,12 @@ RegisterNetEvent('Polar-Coke:Client:CokeBill', function()
         if inJoint then
             inJoint = false
             ClearPedTasks(playerPed)
-            TriggerEvent('qb-core:client:HideText')
+            TriggerEvent('qb-core:Client:HideText')
             
             playAnim("timetable@gardener@smoking_joint", "idle_cough", 2000)
             AddArmourToPed(playerPed, math.random(15, 20))
             Wait(3000)
-            TriggerServerEvent('hud:server:RelieveStress', math.random(15, 20))
+            TriggerServerEvent('hud:Server:RelieveStress', math.random(15, 20))
         end 
    
 
@@ -1196,46 +1196,46 @@ function givestuff()
     if level0 then
     if Config.Buffs then
         if exports['qb-buffs']:HasBuff(Config.LuckBuff) then
-            TriggerServerEvent('Polar-Coke:server:level0buff')
+            TriggerServerEvent('Polar-Coke:Server:level0buff')
         else
             
-            TriggerServerEvent('Polar-Coke:server:level0')
+            TriggerServerEvent('Polar-Coke:Server:level0')
         end
     end
     elseif level1 then
         if Config.Buffs then
             if exports['qb-buffs']:HasBuff(Config.LuckBuff) then
-                TriggerServerEvent('Polar-Coke:server:level1buff')
+                TriggerServerEvent('Polar-Coke:Server:level1buff')
             else
                 
-                TriggerServerEvent('Polar-Coke:server:level1')
+                TriggerServerEvent('Polar-Coke:Server:level1')
             end
         end
     elseif level2 then
         if Config.Buffs then
             if exports['qb-buffs']:HasBuff(Config.LuckBuff) then
-                TriggerServerEvent('Polar-Coke:server:level2buff')
+                TriggerServerEvent('Polar-Coke:Server:level2buff')
             else
                 
-                TriggerServerEvent('Polar-Coke:server:level2')
+                TriggerServerEvent('Polar-Coke:Server:level2')
             end
         end
     elseif level3 then
         if Config.Buffs then
             if exports['qb-buffs']:HasBuff(Config.LuckBuff) then
-                TriggerServerEvent('Polar-Coke:server:level3buff')
+                TriggerServerEvent('Polar-Coke:Server:level3buff')
             else
                 
-                TriggerServerEvent('Polar-Coke:server:level3')
+                TriggerServerEvent('Polar-Coke:Server:level3')
             end
         end
     elseif level4 then
         if Config.Buffs then
             if exports['qb-buffs']:HasBuff(Config.LuckBuff) then
-                TriggerServerEvent('Polar-Coke:server:level4buff')
+                TriggerServerEvent('Polar-Coke:Server:level4buff')
             else
                 
-                TriggerServerEvent('Polar-Coke:server:level4')
+                TriggerServerEvent('Polar-Coke:Server:level4')
             end
         end
 
