@@ -29,15 +29,13 @@ Config.QuickPlant = true ---- if planting doesnt want to work turn this to TRUE
 Config.Offset = - 0.5
 Config.Distance = 7.0
 
-
 --------- GENERAL ----------
 Config.RestartPlantRemoval = false -- remove dead plants on restart
-Config.TimeToGrow = 120 -- Time in minutes for a plant to grow from 0 to 100
+Config.TimeToGrow = 20 -- Time in minutes for a plant to grow from 0 to 100
 Config.Updates = 15 -- Time in minutes to update everything
 Config.HealthRemoved = {7, 10} -- Min/Max Amount of health decay when the plant is below the above thresholds for water and nutrition
 Config.PlaceTime = 2000 -- progressbar time to place plant
 Config.RemovePlantTime = 8500
-
 
 --------- MALE SEED --------------
 Config.MaleSeed = 'male_seed' -- item that makes plants pregnant
@@ -61,7 +59,6 @@ Config.WaterTime = 0.4 -- Percent of water that is removed every minute
 Config.WaterProgressTime = 6000 -- progressbar time
 Config.WaterIcon =  'fas fa-shower' --'fas fa-shower'
 
-
 ------------ FERTILIZER ------------
 Config.FertilizerItem = 'weed_nutrition'
 Config.FertMin = 40 -- minimum fert or health will degrade
@@ -69,8 +66,10 @@ Config.FertTime = 0.4 -- Percent of fertilizer that is removed every minute
 Config.FertProgressTime = 6000 -- progressbar time
 Config.FertIcon =  'fab fa-nutritionix' --'fab fa-nutritionix'
 
-
 ---------- HARVEST -------
+
+Config.SingleWeed = 'wetbud' -- uses if UseMultipleWeeds = false
+
 Config.GrowingWeedAmount = true
 Config.WeedPlantItemLow = 'wetbud' -- item you get from harvest
 Config.WeedPlantItemMid = 'wetbud2'
@@ -78,7 +77,6 @@ Config.WeedPlantItemGood = 'wetbud3'
 Config.WeedPlantItemAmount = 1 -- amount you get per plant
 Config.HarvestTime = 8500 -- progressbar time
 Config.HarvestIcon =  '' --'fas fa-scissors'
-
 
 ------ TREASURE -----------------
 Config.FemaleWeedTreasure = true -- get possible treasure when harvesting Female weed?
