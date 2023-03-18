@@ -60,50 +60,34 @@ Some updates inspired from Project Sloth
 * **Config the Shared.Luas to your liking**
 
 
------------------------------- WEEEEEED ----------------------------
-
-
-
+------------------------------ POLAR WEED ----------------------------
+['1ozlow'] 			 	 = {['name'] = '1ozlow', 				['label'] = '1oz Weed', 			['weight'] = 1800, 		['type'] = 'item', 		['image'] = '1ozlow.png', 				['unique'] = true,    	['useable'] = false,    ['shouldClose'] = false,	   	['combinable'] = nil,   ['description'] = 'Low Quality Weed Ounce '},	
+['1ozmid'] 		 	 	 = {['name'] = '1ozmid', 				['label'] = '1oz Weed', 			['weight'] = 1800, 		['type'] = 'item', 		['image'] = '1ozmid.png', 				['unique'] = true,    	['useable'] = false,    ['shouldClose'] = false,	   	['combinable'] = nil,   ['description'] = 'Medium Quality Weed Ounce'},	
+['1ozhigh'] 		 	 	 = {['name'] = '1ozhigh', 				['label'] = '1oz Weed', 			['weight'] = 1800, 		['type'] = 'item', 		['image'] = '1ozhigh.png', 				['unique'] = true,    	['useable'] = false,    ['shouldClose'] = false,	   	['combinable'] = nil,   ['description'] = 'Great Quality Weed Ounce'},	
 
 ['weed_nutrition'] 				 = {['name'] = 'weed_nutrition', 			    ['label'] = 'Fertilizer', 		['weight'] = 5000, 		['type'] = 'item', 		['image'] = 'np_fertilizer.png', 		['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,	   ['combinable'] = nil,   ['description'] = 'Plant nutrition'},
 ['male_seed'] 					 = {['name'] = 'male_seed', 				    ['label'] = 'Male Seed',		 		['weight'] = 200, 		['type'] = 'item', 		['image'] = 'weed_seed.png', 			['unique'] = false, 	['useable'] = false, 	['shouldClose'] = true,	   ['combinable'] = nil,   ['description'] = 'Male Weed Seed'},
 ['female_seed'] 				 = {['name'] = 'female_seed', 				    ['label'] = 'Female Seed',		 		['weight'] = 1000, 		['type'] = 'item', 		['image'] = 'weed_seed.png', 			['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,	   ['combinable'] = nil,   ['description'] = 'Female Weed Seed'},
-['wetbud'] 						 = {['name'] = 'wetbud', 			  	  		['label'] = 'Wet Bud', 					['weight'] = 2500, 		['type'] = 'item', 		['image'] = 'weed_og-kush_bud.png', 				['unique'] = false, 	['useable'] = false, 	['shouldClose'] = true,    ['combinable'] = nil,   ['description'] = 'Wet Bud'},
 ["purifiedwater"] 		 	 = {["name"] = "purifiedwater",           		  		["label"] = "Purified Water",	 		["weight"] = 1000, 		["type"] = "item", 		["image"] = "waterjug.png", 		    		["unique"] = false, 	["useable"] = false, 	["shouldClose"] = false,   	["combinable"] = nil,   ["description"] = "A Household Water Jug"},
 		
+['wetbud'] 						 = {['name'] = 'wetbud', 			  	  		['label'] = 'Wet Bud', 					['weight'] = 2500, 		['type'] = 'item', 		['image'] = 'wetbud.png', 				['unique'] = false, 	['useable'] = false, 	['shouldClose'] = true,    ['combinable'] = nil,   ['description'] = 'Low Quality Wet Bud (Possible THC Levels of 1%-9%)'},
+['wetbud2'] 						 = {['name'] = 'wetbud2', 			  	  		['label'] = 'Wet Bud', 					['weight'] = 2500, 		['type'] = 'item', 		['image'] = 'wetbud.png', 				['unique'] = false, 	['useable'] = false, 	['shouldClose'] = true,    ['combinable'] = nil,   ['description'] = 'Medium Quality Wet Bud (Possible THC Levels of 10%-20%)'},
+['wetbud3'] 						 = {['name'] = 'wetbud3', 			  	  		['label'] = 'Wet Bud', 					['weight'] = 2500, 		['type'] = 'item', 		['image'] = 'wetbud.png', 				['unique'] = false, 	['useable'] = false, 	['shouldClose'] = true,    ['combinable'] = nil,   ['description'] = 'Good Quality Wet Bud (Possible THC Levels of 25%-45%)'},
 
--- Bad Quality
-['croplow'] 			 	 = {['name'] = 'croplow', 				['label'] = 'Harvested Crop', 			['weight'] = 5500, 		['type'] = 'item', 		['image'] = 'croplow.png', 				['unique'] = false,    	['useable'] = false,    ['shouldClose'] = false,	   	['combinable'] = nil,   ['description'] = 'Shit Quality Crop'},	
-['35weedlow'] 			 	 = {['name'] = '35weedlow', 				['label'] = '3.5g Low Weed', 			['weight'] = 2800, 		['type'] = 'item', 		['image'] = '35weedlow.png', 				['unique'] = false,    	['useable'] = true,     ['shouldClose'] = true,	   		['combinable'] = nil,   ['description'] = 'Spawned In'},	
-['1ozlow'] 			 	 = {['name'] = '1ozlow', 				['label'] = '1oz Weed', 			['weight'] = 2800, 		['type'] = 'item', 		['image'] = '1ozlow.png', 				['unique'] = false,    	['useable'] = false,    ['shouldClose'] = false,	   	['combinable'] = nil,   ['description'] = 'Spawned In'},	
-
--- Decent Quality
-['cropmid'] 		 	 	 = {['name'] = 'cropmid', 				['label'] = 'Harvested Crop', 			['weight'] = 5500, 		['type'] = 'item', 		['image'] = 'cropmid.png', 				['unique'] = false,    	['useable'] = false,    ['shouldClose'] = false,	   	['combinable'] = nil,   ['description'] = 'Decent Quality Crop'},	
-['35weedmid'] 		 	 	 = {['name'] = '35weedmid', 				['label'] = '3.5g Mid Grade Weed', 			['weight'] = 2800, 		['type'] = 'item', 		['image'] = '35weedmid.png', 				['unique'] = false,    	['useable'] = true,     ['shouldClose'] = true,	   		['combinable'] = nil,   ['description'] = 'Spawned In'},	
-['1ozmid'] 		 	 	 = {['name'] = '1ozmid', 				['label'] = '1oz Weed', 			['weight'] = 2800, 		['type'] = 'item', 		['image'] = '1ozmid.png', 				['unique'] = false,    	['useable'] = false,    ['shouldClose'] = false,	   	['combinable'] = nil,   ['description'] = 'Spawned In'},	
-
--- Good Quality
-['crophigh'] 		 	 = {['name'] = 'crophigh', 				['label'] = 'Harvested Crop', 			['weight'] = 5500, 		['type'] = 'item', 		['image'] = 'crophigh.png', 				['unique'] = false,    	['useable'] = false,    ['shouldClose'] = false,	   	['combinable'] = nil,   ['description'] = 'Good Quality Crop'},	
-['35weedhigh'] 		 	 	 = {['name'] = '35weedhigh', 				['label'] = '3.5g High Grade Weed', 			['weight'] = 2800, 		['type'] = 'item', 		['image'] = '35weedhigh.png', 				['unique'] = false,    	['useable'] = true,     ['shouldClose'] = true,	   		['combinable'] = nil,   ['description'] = 'Spawned In'},	
-['1ozhigh'] 		 	 	 = {['name'] = '1ozhigh', 				['label'] = '1oz Weed', 			['weight'] = 2800, 		['type'] = 'item', 		['image'] = '1ozhigh.png', 				['unique'] = false,    	['useable'] = false,    ['shouldClose'] = false,	   	['combinable'] = nil,   ['description'] = 'Spawned In'},	
-['weedpound'] 		 	 	 = {['name'] = 'weedpound', 				['label'] = 'Pound of Weed', 			['weight'] = 10000, 		['type'] = 'item', 		['image'] = '1ozhigh.png', 				['unique'] = false,    	['useable'] = false,    ['shouldClose'] = false,	   	['combinable'] = nil,   ['description'] = 'Spawned In'},	
+['weedpound'] 		 	 	 = {['name'] = 'weedpound', 				['label'] = 'Pound of Weed', 			['weight'] = 10000, 		['type'] = 'item', 		['image'] = 'weedpound.png', 				['unique'] = false,    	['useable'] = false,    ['shouldClose'] = false,	   	['combinable'] = nil,   ['description'] = 'Low Quality Weed Pound, This Shit makes Hella Stank Ounces'},	
+['weedpound2'] 		 	 	 = {['name'] = 'weedpound2', 				['label'] = 'Pound of Weed', 			['weight'] = 10000, 		['type'] = 'item', 		['image'] = 'weedpound.png', 				['unique'] = false,    	['useable'] = false,    ['shouldClose'] = false,	   	['combinable'] = nil,   ['description'] = 'Medium Quality Weed Pound, This Shit makes Hella Ounces'},	
+['weedpound3'] 		 	 	 = {['name'] = 'weedpound3', 				['label'] = 'Pound of Weed', 			['weight'] = 10000, 		['type'] = 'item', 		['image'] = 'weedpound.png', 				['unique'] = false,    	['useable'] = false,    ['shouldClose'] = false,	   	['combinable'] = nil,   ['description'] = 'Good Quality Weed Pound, This Shit makes Hella Ounces'},	
 
 -- Items
 ['smalljoint'] 			 	 = {['name'] = 'smalljoint', 					['label'] = 'Joint', 					['weight'] = 500, 		['type'] = 'item', 		['image'] = 'smalljoint.png', 					['unique'] = false,    	['useable'] = true, 	['shouldClose'] = true,	   		['combinable'] = nil,   ['description'] = 'You a lil bitch with this small ass joint'},	
 ['largejoint'] 			 	 = {['name'] = 'largejoint', 				['label'] = 'Joint', 			    	['weight'] = 500, 		['type'] = 'item', 		['image'] = 'largejoint.png', 				['unique'] = false,    	['useable'] = true, 	['shouldClose'] = true,	   		['combinable'] = nil,   ['description'] = 'Large Ass Joint'},	
-	
--- Shop Items
-['burnerphone'] 			 	 = {['name'] = 'burnerphone', 					['label'] = 'Burner Phone', 			['weight'] = 1000, 		['type'] = 'item', 		['image'] = 'burnerphone.png', 					['unique'] = false,    	['useable'] = true, 	['shouldClose'] = true,	   		['combinable'] = nil,   ['description'] = 'Dont Call the Police'},	
-['trowel'] 			 	 = {['name'] = 'trowel', 			  		['label'] = 'Trowel', 					['weight'] = 1000, 		['type'] = 'item', 		['image'] = 'trowel.png', 				['unique'] = false,    	['useable'] = true, 	['shouldClose'] = true,	   		['combinable'] = nil,   ['description'] = 'A Shitty Small handheld garden shovel'},
 ["lighter"] 		 	 	 = {["name"] = "lighter", 				["label"] = "Lighter", 					["weight"] = 1000, 	    ["type"] = "item", 		["image"] = "lighter.png", 				["unique"] = false, 	["useable"] = false, 	["shouldClose"] = true,    		["combinable"] = nil,   ["description"] = "Only meth heads use this kind of lighter"},
 ["rollingpaper"] 		         = {["name"] = "rollingpaper", 			["label"] = "Rolling Papers", 			["weight"] = 1000, 	    ["type"] = "item", 		["image"] = "rollingpaper.png", 			["unique"] = false, 	["useable"] = false, 	["shouldClose"] = true,    		["combinable"] = nil,   ["description"] = "These aint Raw Rolling Papers!!?"},
-["scale"] 		 	         = {["name"] = "scale", 					["label"] = "Scale", 					["weight"] = 1000, 	    ["type"] = "item", 		["image"] = "scale.png", 					["unique"] = false, 	["useable"] = true, 	["shouldClose"] = false,   		["combinable"] = nil,   ["description"] = "This is not what it looks like"},
-['weedkey'] 			 	 = {['name'] = 'weedkey', 			    	['label'] = 'Key', 				['weight'] = 1000, 		['type'] = 'item', 		['image'] = 'weedkey.png', 					['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,	  		['combinable'] = nil,   ['description'] = 'This key smells like Dope'},
-['scissors'] 			 	 = {['name'] = 'scissors', 			    	['label'] = 'Scissors', 				['weight'] = 1000, 		['type'] = 'item', 		['image'] = 'scissors.png', 					['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,	  		['combinable'] = nil,   ['description'] = 'These Scissors have some extra Dope on them'},
-
-
-
+["scale"] 		 	         = {["name"] = "scale", 					["label"] = "Scale", 					["weight"] = 1000, 	    ["type"] = "item", 		["image"] = "scale.png", 					["unique"] = false, 	["useable"] = true, 	["shouldClose"] = false,   		["combinable"] = nil,   ["description"] = "Its not what it looks like"},
+['weedkey'] 			 	 = {['name'] = 'weedkey', 			    	['label'] = 'Key', 				['weight'] = 1000, 		['type'] = 'item', 		['image'] = 'weedcard.png', 					['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,	  		['combinable'] = nil,   ['description'] = 'This a Key? Stinks like Weed'},
+['weedtub'] 			 	 = {['name'] = 'weedtub', 			    	['label'] = 'Planting Pot', 				['weight'] = 1000, 		['type'] = 'item', 		['image'] = 'weedtub.png', 					['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,	  		['combinable'] = nil,   ['description'] = 'Hmm I suppose I could plant something in here'},
 ------------------------------------------------------------------
+
 
 
 
@@ -119,7 +103,7 @@ Add all Images
 * **qb-inventory>html/js/app.js** look for the ```function FormatItemInfo```
 Add Items
 
-        else if (itemData.name == "1ozhigh") {
+        } else if (itemData.name == "1ozhigh") {
             $(".item-info-title").html('<p>' + itemData.label + '</p>')
             $(".item-info-description").html('<p>Strain: ' + itemData.info.strain + '</p>Potency: ' + itemData.info.potency + '</p>Type: ' + itemData.info.type + '<p>Thc: ' + itemData.info.thc + '%</p>' + '<p>Color: ' + itemData.info.color + '</p>');
       	 } else if (itemData.name == "1ozmid") {

@@ -45,7 +45,7 @@ function targets()
     { options = {{ event = "Polar-Weed:Client:Stash", icon = "fas fa-box-open", label = 'Open', excludejob = 'police', stash = "Storage", coords = vector3(1044.78, -3198.98, -38.45), }, },  distance = 2.0 })
     exports['qb-target']:AddBoxZone("Process", vector3(1037.4, -3205.92, -38.69), 1, 1, { name = "Process", heading = 0, debug = Config.Debug, minZ = -40.19, maxZ =  -38.19,}, 
     { options = {{ event = "Polar-Weed:Client:Process", icon = "fa-solid fa-cannabis", label = "Process", excludejob = 'police'}}, distance = 1.5 }) 
-    exports['qb-target']:AddBoxZone("Divideound", vector3(229.16, -1760.91, 28.54), 1, 1, { name = "DividePound", heading = 0, debug = Config.Debug, minZ = 28, maxZ =  29,}, 
+    exports['qb-target']:AddBoxZone("Divideound", vector3(229.67, -1759.67, 28.53), 1, 1, { name = "DividePound", heading = 0, debug = Config.Debug, minZ = 28, maxZ =  29,}, 
     { options = {{ event = "Polar-Weed:Client:OuncesMake", icon = "fa-solid fa-cannabis", label = "Divide Pound", excludejob = 'police'}}, distance = 1.5 }) 
 end
 function loadAnimDict(dict) while (not HasAnimDictLoaded(dict)) do RequestAnimDict(dict) Wait(5) end end
