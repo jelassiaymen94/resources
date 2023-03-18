@@ -10,7 +10,7 @@ Config.Skillbar = 'qb-skillbar'
 Config.img = "qb-inventory/html/images/"
 --==========================================================================
 
-Config.Debug = true -- debug for checks
+Config.Debug = false -- debug for checks
 Config.UseProps = true -- use props?
 
 Config.RequiredCops = 0

@@ -1,5 +1,15 @@
 local QBCore = exports['qb-core']:GetCoreObject()
 
+if Config.Debug then
+    local staffonlydoor = true
+    local officeback = true
+    local bayofficeleft = true
+    local officeright = true
+    local kitchen = true
+    local fusebox = true
+    local robatm = true
+end
+
 local staffonlydoor = false
 local officeback = false
 local bayofficeleft = false
