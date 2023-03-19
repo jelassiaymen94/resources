@@ -12,7 +12,7 @@ Config.PoliceAndAmbulance = { "police", "ambulance", "bcso"}
 Config.PhoneModel = 'prop_npc_phone_02'
 
 -- sets report chance to 100%
-Config.DebugChance = true
+Config.DebugChance = false
 
 -- Explosion Alert Types (Gas Pumps by default)
 -- Ex.  Config.ExplosionTypes = {1, 2, 3, 4, 5}

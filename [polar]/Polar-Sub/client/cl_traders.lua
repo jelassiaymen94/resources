@@ -140,7 +140,7 @@ function trada(item, amount, removeitem, removeitemamount)
         {   
             --icon = 'fa-solid fa-recycle',
             header = "<img src=nui://"..Config.img..QBCore.Shared.Items[item].image.." " .. amount .. " width=45px onerror='this.onerror=null; this.remove();'>"..QBCore.Shared.Items[item].label,
-            txt = "Required: <p> <img src=nui://"..Config.img..QBCore.Shared.Items[removeitem].image.." " .. removeitemamount .. " width=45px onerror='this.onerror=null; this.remove();'>"..QBCore.Shared.Items[removeitem].label,
+            txt = "Required: <p> <img src=nui://"..Config.img..QBCore.Shared.Items[removeitem].image.." width=45px onerror='this.onerror=null; this.remove();'>" .. removeitemamount .." ".. QBCore.Shared.Items[removeitem].label,
             params = { 
                 event = "Polar-Sub:Client:Transfer",
                 args = {

@@ -1,7 +1,7 @@
 
 
 -- staffonlydoor created by Blake
-Config.DoorList['staffonlydoor'] = {
+Config.DoorList['baystaffonlydoor'] = {
     distance = 1,
     objYaw = 37.447757720947,
     locked = true,
@@ -19,7 +19,7 @@ Config.DoorList['staffonlydoor'] = {
 }
 
 -- kitchen created by Blake
-Config.DoorList['kitchen'] = {
+Config.DoorList['baykitchendoor'] = {
     objYaw = 127.96137237549,
     authorizedJobs = { ['police'] = 0 },
     doorRate = 1.0,
@@ -37,7 +37,7 @@ Config.DoorList['kitchen'] = {
 }
 
 -- officeback created by Blake
-Config.DoorList['officeback'] = {
+Config.DoorList['bayofficeback'] = {
     audioRemote = false,
     authorizedJobs = { ['police'] = 0 },
     doorRate = 1.0,
@@ -68,6 +68,78 @@ Config.DoorList['bayofficeleft'] = {
     doorRate = 1.0,
     doorType = 'double',
     authorizedJobs = { ['police'] = 0 },
+    --audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
+    --audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
+    --autoLock = 1000,
+}
+
+-- front1 created by Blake
+Config.DoorList['bayfrondoor1'] = {
+    pickable = false,
+    distance = 1,
+    authorizedJobs = { ['police'] = 0 },
+    doors = {
+        {objName = 1585070778, objYaw = 217.44776916504, objCoords = vec3(-1309.078613, -833.246887, 17.298380)},
+        {objName = -1738361206, objYaw = 37.156219482422, objCoords = vec3(-1307.009644, -831.670593, 17.298380)}
+    },
+    doorRate = 1.0,
+    audioRemote = false,
+    locked = true,
+    doorType = 'double',
+    --audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
+    --audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
+    --autoLock = 1000,
+}
+
+-- front2 created by Blake
+Config.DoorList['bayfrondoor2'] = {
+    pickable = false,
+    distance = 1,
+    authorizedJobs = { ['police'] = 0 },
+    doors = {
+        {objName = 852936996, objYaw = 307.23071289062, objCoords = vec3(-1316.395630, -832.615784, 17.061110)},
+        {objName = 1347919902, objYaw = 127.15113830566, objCoords = vec3(-1317.965698, -830.544312, 17.061110)}
+    },
+    doorRate = 1.0,
+    audioRemote = false,
+    locked = true,
+    doorType = 'double',
+    --audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
+    --audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
+    --autoLock = 1000,
+}
+
+-- bayofficeright created by Blake
+Config.DoorList['bayofficeright'] = {
+    doorType = 'double',
+    authorizedJobs = { ['police'] = 0 },
+    pickable = false,
+    audioRemote = false,
+    doors = {
+        {objName = -1821777087, objYaw = 307.14263916016, objCoords = vec3(-1296.567871, -832.483948, 17.306374)},
+        {objName = -1821777087, objYaw = 127.3868560791, objCoords = vec3(-1298.141602, -830.416199, 17.306374)}
+    },
+    distance = 1,
+    locked = true,
+    doorRate = 1.0,
+    --audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
+    --audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
+    --autoLock = 1000,
+}
+
+-- baygate created by Blake
+Config.DoorList['bayvaultgate'] = {
+    doorType = 'door',
+    authorizedJobs = { ['police'] = 0 },
+    pickable = false,
+    distance = 1,
+    fixText = false,
+    locked = true,
+    audioRemote = false,
+    objYaw = 36.649875640869,
+    objName = -1508355822,
+    objCoords = vec3(-1307.473267, -813.371033, 17.298399),
+    doorRate = 1.0,
     --audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     --audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
     --autoLock = 1000,
