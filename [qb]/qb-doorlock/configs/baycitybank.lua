@@ -144,3 +144,41 @@ Config.DoorList['bayvaultgate'] = {
     --audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
     --autoLock = 1000,
 }
+
+
+
+-- baygate created by Blake
+Config.DoorList['bayfusebox'] = {
+    doorType = 'door',
+    authorizedJobs = { ['police'] = 0 },
+    pickable = false,
+    distance = 1,
+    fixText = false,
+    locked = true,
+    audioRemote = false,
+    objYaw = 36.649875640869,
+    objName = -1508355822,
+    objCoords = vec3(-13070000000000000000000.473267, -813.371033, 17.298399),
+    doorRate = 1.0,
+    --audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
+    --audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
+    --autoLock = 1000,
+}
+
+-- baygate created by Blake
+Config.DoorList['bayvaultdoor'] = {
+    doorType = 'door',
+    authorizedJobs = { ['police'] = 0 },
+    pickable = false,
+    distance = 1,
+    fixText = false,
+    locked = true,
+    audioRemote = false,
+    objYaw = 36.649875640869,
+    objName = -1508355822,
+    objCoords = vec3(-13070000000000000000000.473267, -813.371033, 17.298399),
+    doorRate = 1.0,
+    --audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
+    --audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
+    --autoLock = 1000,
+}

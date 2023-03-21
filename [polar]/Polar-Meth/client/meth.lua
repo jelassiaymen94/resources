@@ -357,7 +357,7 @@ RegisterNetEvent('Polar-Meth:Client:Temperature', function()
                                 temp3 = true
                                 TriggerServerEvent('Polar-Meth:Server:TrayAdd')
                             end
-                        end, Config.RandomScrambler2[math.random(1, #Config.RandomScrambler2- 1 )], math.random(Config.ScramblerSecondMin2 + 1,Config.ScramblerSecondMax2 + 1),  math.random(Config.ScramblerMirrorMin2,Config.ScramblerMirrorMax2)) -- Type (alphabet, numeric, alphanumeric, greek, braille, runes), Time (Seconds), Mirrored (0: Normal, 1: Normal + Mirrored 2: Mirrored only )
+                        end, Config.RandomScrambler2[math.random(1, #Config.RandomScrambler2 )], math.random(Config.ScramblerSecondMin2 + 1,Config.ScramblerSecondMax2 + 1),  math.random(Config.ScramblerMirrorMin2,Config.ScramblerMirrorMax2)) -- Type (alphabet, numeric, alphanumeric, greek, braille, runes), Time (Seconds), Mirrored (0: Normal, 1: Normal + Mirrored 2: Mirrored only )
                     else
                         temp = true
                         QBCore.Functions.Notify('The Temperature is too Low!', red, alerttime)

@@ -33,7 +33,7 @@ function targets()
         table = Config.Locations[i].Table
         Wait(50)
 	--print('1')
-    makeProp({prop = `prop_tool_bench02`, coords = vector4(table.x, table.y, table.z, table.w-180.0)}, 1, false)
+    makeProp({prop = 'prop_tool_bench02', coords = vector4(table.x, table.y, table.z, table.w-180.0)}, 1, false)
    -- print('3')
     exports['qb-target']:AddBoxZone("h: " .. Config.Locations[i].name .. " ", vector3(table.x, table.y, table.z), 0.8, 0.5, { name="h: " .. Config.Locations[i].name .. " ", heading = table.w+180.0, debugPoly=false, minZ=table.z-1.05, maxZ=table.z+0.80 },
 				{ options = { { event = "Polar-Crafting:Client:OpenMenuPublic", icon = "fa-solid fa-bolt", label = "Open", type = Config.Locations[i].type }, },

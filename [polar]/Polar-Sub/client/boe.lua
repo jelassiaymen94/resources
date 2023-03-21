@@ -130,7 +130,7 @@ function balls(data)
     TaskSetBlockingOfNonTemporaryEvents(blue, false)
     --ClearPedTasks(blue)
     LoadPed(data)
-    ApplyPedOverlay(blue, `mpbeach_overlays` , `MP_Bea_M_Neck_000`)
+    ApplyPedOverlay(blue, 'mpbeach_overlays' , 'MP_Bea_M_Neck_000')
 
   
 

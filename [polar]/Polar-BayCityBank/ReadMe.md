@@ -1,5 +1,8 @@
 # Description
-Polar Weed Lab Script
+Polar BayCityBank Script
+
+-- MLO https://unclejust.tebex.io/package/4795890
+
 * **EASY INSTALLATION**
 * QbCore Framework
 

@@ -15,7 +15,7 @@ Config.Debug = false -- debug for checks
 --============== GENERAL ================
 Config.UseProps = true -- use props?
 Config.RequiredCops = 0
-Config.CooldownTime = 60 -- minutes in between robberies
+Config.CooldownTime = 2 -- minutes in between robberies
 
 
 --============== BANK BLIP -=============
@@ -25,10 +25,9 @@ Config.BlipLocation = vector3(-1308.48, -827.52, 17.15) -- blip location
 Config.BlipSprite = 106 -- https://docs.fivem.net/docs/game-references/blips/ -- picture of blip
 Config.BlipColor = 6  -- https://gtaforums.com/topic/864881-all-blip-color-ids-pictured/ -- color of blip
 
-
 --============== CLOTHING ================
 ---- DUFFLE BAG
-Config.BagUseID = 1
+Config.BagUseID = 82
 Config.HideBagID = 0
 --- GLOVES
 Config.MaleGloves = { [0] = true, [1] = true, [2] = true, [3] = true, [4] = true, [5] = true, [6] = true, [7] = true, [8] = true, [9] = true, [10] = true, [11] = true, [12] = true, [13] = true, [14] = true, [15] = true, [18] = true, [26] = true, [52] = true, [53] = true, [54] = true, [55] = true, [56] = true, [57] = true, [58] = true, [59] = true, [60] = true, [61] = true, [62] = true, [112] = true, [113] = true, [114] = true, [118] = true, [125] = true, [132] = true,}
@@ -40,12 +39,27 @@ function CallPolice() exports["qb-dispatch"]:CustomAlert({
         coords = vector3(-1308.48, -827.52, 17.15), message = "Bank Robbery",
         dispatchCode = "10-90", description = "", radius = 10,
         sprite = 304,  color = 75, scale = 1.0,  length = 1,
-}) end
+       
+        })          
+end
 
 
 
 
 
 
-
-
+-- SCRAMBLER MINIGAME
+Config.RandomScrambler2 = {
+    
+        'alphabet',
+        'numeric',
+        'alphanumeric',
+        'greek',
+        'braille',
+        'runes',
+    
+    } 
+    Config.ScramblerMirrorMin2 = 0
+    Config.ScramblerMirrorMax2 = 2
+    Config.ScramblerSecondMin2 = 20
+    Config.ScramblerSecondMax2 = 30
