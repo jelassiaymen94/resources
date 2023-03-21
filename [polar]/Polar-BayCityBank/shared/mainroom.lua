@@ -1,5 +1,5 @@
 Config.bayfusebox = true 
-Config.baykitchendoor = true
+Config.baykitchendoor = false
 Config.bayofficeleft = false    Config.bayofficeback = false   Config.bayofficeright = false  Config.baykitchoor = false       Config.bayatmleft = false 
 Config.bayatmright = false     Config.baycomputerleft = false     Config.baycomputerright = false    Config.baycomputerback = false   Config.baybutton = false     Config.baybutton = false 
 Config.baybutton2 = false     Config.baybutton3 = false   Config.baybutton4 = false     Config.baybutton5 = false    Config.baybutton6 = false    Config.baybutton7 = false 
@@ -12,7 +12,7 @@ Config.baystaffonlydoor = false
 Config.bayvaultdoor = false
 Config.Vault = false
 
-
+function setdoor() Config.baykitchendoor = true end
 Config.MainRoomLocations5 = {
     vector4(-1302.74, -826.67, 17.05, 212.02), -- circle couch left
     vector4(-1303.71, -818.98, 17.2, 40.8), -- counter right
