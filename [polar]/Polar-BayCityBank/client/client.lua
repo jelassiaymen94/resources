@@ -123,10 +123,10 @@ end
 function vaultdone() Config.Vault = true TriggerServerEvent('Polar-BayCityBank:Server:StartInteract', 'bayvaultgate') TriggerServerEvent('Polar-BayCityBank:Server:Vault') end
 function system() TriggerServerEvent('Polar-BayCityBank:Server:StartInteract', 'baystaffonlydoor')  TriggerServerEvent('Polar-BayCityBank:Server:StartInteract', 'bayvaultdoor') QBCore.Functions.Notify("System Disabled", "success", 2500) TriggerServerEvent('Polar-BayCityBank:Server:StartInteract', 'baycomputer1')  TriggerServerEvent('Polar-BayCityBank:Server:StartInteract', 'baycomputer2')  TriggerServerEvent('Polar-BayCityBank:Server:StartInteract', 'baycomputer3')  TriggerServerEvent('Polar-BayCityBank:Server:StartInteract', 'baycomputer4') end
 function turnatmon() TriggerServerEvent('Polar-BayCityBank:Server:StartInteract', 'bayatmleft') TriggerServerEvent('Polar-BayCityBank:Server:StartInteract', 'bayatmright')  QBCore.Functions.Notify("Partial System Disabled", "success", 2500) end
-function pcback() TriggerServerEvent('Polar-BayCityBank:Server:StartInteract', 'bayofficeback')  end
+function pcback() TriggerServerEvent('Polar-BayCityBank:Server:StartInteract', 'baycomputerback')  end
 function pcleft() TriggerServerEvent('Polar-BayCityBank:Server:StartInteract', 'baycomputerleft') QBCore.Functions.Notify("Partial System Disabled", "success", 2500) end
 function pcright() TriggerServerEvent('Polar-BayCityBank:Server:StartInteract', 'baycomputerright')  end
-function turnbackon() TriggerServerEvent('Polar-BayCityBank:Server:StartInteract', 'baycomputerback')  end 
+function turnbackon() TriggerServerEvent('Polar-BayCityBank:Server:StartInteract', 'bayofficeback') end 
 function turnlefton() TriggerServerEvent('Polar-BayCityBank:Server:StartInteract', 'bayofficeleft') end
 function turnrighton() TriggerServerEvent('Polar-BayCityBank:Server:StartInteract', 'bayofficeright')  end
 function unlockdoor(door) TriggerServerEvent('qb-doorlock:server:updateState', door, false, false, false, true, false, false) QBCore.Functions.Notify("Door Unlocked", "success", 2500) TriggerServerEvent('Polar-BayCityBank:Server:StartButton') end
@@ -279,9 +279,9 @@ function hack(door)
         LocalPlayer.state:set('inv_busy', false, true) 
     end)
 end
-RegisterNetEvent('Polar-BayCityBank:client:HackComputerRight', function() TriggerServerEvent('Polar-BayCityBank:Server:StopInteract', door) local chance=math.random(1,100) local success = exports[memorygame]:MiniGame(10, 7) if success then  if chance < 50 then TriggerServerEvent('Polar-BayCityBank:Server:RemoveItem', computeritem, 1) end turnlefton()  else  if chance < 50 then TriggerServerEvent('Polar-BayCityBank:Server:RemoveItem', computeritem, 1) end end end) 
-RegisterNetEvent('Polar-BayCityBank:client:HackComputerLeft', function() TriggerServerEvent('Polar-BayCityBank:Server:StopInteract', door) local chance=math.random(1,100) exports[thermiteexport]:Scrambler(function(success)  if success then  if chance < 50 then TriggerServerEvent('Polar-BayCityBank:Server:RemoveItem', computeritem, 1) end turnbackon()    else if chance < 50 then TriggerServerEvent('Polar-BayCityBank:Server:RemoveItem', computeritem, 1) end end end, Config.RandomScrambler2[math.random(1, #Config.RandomScrambler2)], math.random(Config.ScramblerSecondMin2 + 1,Config.ScramblerSecondMax2 + 1),  math.random(Config.ScramblerMirrorMin2,Config.ScramblerMirrorMax2)) end)
-RegisterNetEvent('Polar-BayCityBank:client:HackComputerBack', function() TriggerServerEvent('Polar-BayCityBank:Server:StopInteract', door) local chance=math.random(1,100) exports[thermiteexport]:Var(function(success)  if success then  if chance < 50 then TriggerServerEvent('Polar-BayCityBank:Server:RemoveItem', computeritem, 1) end turnatmon() system()   else if chance < 50 then TriggerServerEvent('Polar-BayCityBank:Server:RemoveItem', computeritem, 1) end end  end, 5, 5) end)
+RegisterNetEvent('Polar-BayCityBank:client:HackComputerRight', function() TriggerServerEvent('Polar-BayCityBank:Server:StopInteract', 'baycomputerright') local chance=math.random(1,100) local success = exports[memorygame]:MiniGame(10, 7) if success then   turnlefton()  else  if chance < 50 then TriggerServerEvent('Polar-BayCityBank:Server:RemoveItem', computeritem, 1) end TriggerServerEvent('Polar-BayCityBank:Server:StartInteract', 'baycomputerright') end end) 
+RegisterNetEvent('Polar-BayCityBank:client:HackComputerLeft', function() TriggerServerEvent('Polar-BayCityBank:Server:StopInteract', 'baycomputerleft') local chance=math.random(1,100) exports[thermiteexport]:Scrambler(function(success)  if success then   turnbackon()    else if chance < 50 then TriggerServerEvent('Polar-BayCityBank:Server:RemoveItem', computeritem, 1) end TriggerServerEvent('Polar-BayCityBank:Server:StartInteract', 'baycomputerleft') end end, Config.RandomScrambler2[math.random(1, #Config.RandomScrambler2)], math.random(Config.ScramblerSecondMin2 + 1,Config.ScramblerSecondMax2 + 1),  math.random(Config.ScramblerMirrorMin2,Config.ScramblerMirrorMax2)) end)
+RegisterNetEvent('Polar-BayCityBank:client:HackComputerBack', function() TriggerServerEvent('Polar-BayCityBank:Server:StopInteract', 'baycomputerback') local chance=math.random(1,100) exports[thermiteexport]:VarHack(function(success)  if success then  turnatmon() system()   else if chance < 50 then TriggerServerEvent('Polar-BayCityBank:Server:RemoveItem', computeritem, 1) end TriggerServerEvent('Polar-BayCityBank:Server:StartInteract', 'baycomputerback') end  end, 5, 5) end)
 RegisterNetEvent('Polar-BayCityBank:client:keycard', function(door, position, rot, item, itemchance) TriggerServerEvent('Polar-BayCityBank:Server:StopInteract', door) pcright()
     local ped = PlayerPedId() local chance = math.random(1,100) local pos = GetEntityCoords(ped) local animDict = "anim@heists@keycard@" loadAnimDict(animDict) local prop = 'vw_prop_vw_key_card_01a' loadModel(prop) local prop2 =  CreateObject(prop, pos.x, pos.y, pos.z + 0.2,  true,  true, true)
     FreezeEntityPosition(ped, true) AttachEntityToEntity(prop2, ped, GetPedBoneIndex(ped, 28422), 0, 0, 0, 0, 0, 180.0, true, true, false, true, 1, true) SetEntityHeading(ped, 131.12) SetEntityCoords(ped, vector3(-1299.13, -828.04, 16.15)) if chance <= itemchance then TriggerServerEvent('Polar-BayCityBank:Server:RemoveItem', item, 1) end 
@@ -467,8 +467,10 @@ function Animation(door, props, model, animDict)
         NetworkAddPedToSynchronisedScene(ped, scene2, animDict, 'grab', 4.0, -4.0, 1033, 0, 1000.0, 0) 
         NetworkAddEntityToSynchronisedScene(bag, scene2, animDict, 'grab_bag', 1.0, -1.0, 1148846080) 
         if model == 'h4_prop_h4_gold_stack_01a' then 
-        NetworkAddEntityToSynchronisedScene(props, scene2, animDict, 'grab_gold', 1.0, -1.0, 1148846080) else 
-        NetworkAddEntityToSynchronisedScene(props, scene2, animDict, 'grab_cash', 1.0, -1.0, 1148846080) end
+        NetworkAddEntityToSynchronisedScene(props, scene2, animDict, 'grab_gold', 1.0, -1.0, 1148846080) 
+        else 
+        NetworkAddEntityToSynchronisedScene(props, scene2, animDict, 'grab_cash', 1.0, -1.0, 1148846080) 
+        end
         local scene3 = NetworkCreateSynchronisedScene(GetEntityCoords(props), 
         GetEntityRotation(props), 2, true, false, 1065353216, 0, 1.3)
         NetworkAddPedToSynchronisedScene(ped, scene3, animDict, 'exit', 4.0, -4.0, 1033, 0, 1000.0, 0) 
