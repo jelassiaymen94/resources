@@ -25,6 +25,7 @@ local baybutton44 = false local baybutton45 = false local baybutton46 = false lo
 local animDict = nil local model = nil local prop = nil local var = nil local drillpos = nil local drillrot = nil local door = nil local pp = nil local coords = nil local rot = nil local position = nil local item = nil local itemchance = nil local CurrentCops = 0
 local bayvaultdoor = false local bayvaultgate = false
 local baycomputer1 = false local baycomputer4 = false local baycomputer3= false local baycomputer2 = false
+local bayatmleft1 = false local bayatmleft2 = false local bayatmright1 = false local bayatmright2 = false
 --- LOCKPICK DOOR
 local circleinfo = { circles = 3, time = 10}
 local amount = nil
@@ -39,10 +40,11 @@ local fingerhack = 'utk_fingerprint' -- https://github.com/utkuali/Finger-Print-
 local memorygame = 'memory' 
 local voltgame = 'ultra-voltlab' -- https://forum.cfx.re/t/release-voltlab-hacking-minigame-cayo-perico-mission/3933171
 
+local atmitem = nil
 -- what you get from atm
-function goodies()  local chance = math.random(1,100) if chance <= 25 then amount = 3 elseif chance <= 50 then amount = 2 elseif chance <=100 then amount = 1 end end
+function goodies()  local chance = math.random(1,100) if chance <= 25 then atmitem = 'band' amount = 3 elseif chance <= 50 then atmitem = 'band' amount = 2 elseif chance <=100 then atmitem = 'band' amount = 1 end end
 ---- ITEMS
-local atmitem = 'band'
+
 local kitcheddooritem = 'advancedlockpick'
 local pcitem = 'band' -- crypto or sum
 local thermiteitem = "thermite"
@@ -63,7 +65,10 @@ RegisterNetEvent('Polar-BayCityBank:Client:StopInteract', function(door)
     if door == 'baybutton33' then Config.baybutton33 = false end if door == 'baybutton34' then Config.baybutton34 = false end if door == 'baybutton35' then Config.baybutton35 = false end if door == 'baybutton36' then Config.baybutton36 = false end if door == 'baybutton37' then Config.baybutton37 = false end if door == 'baybutton38' then Config.baybutton38 = false end if door == 'baybutton39' then Config.baybutton39 = false end
     if door == 'baybutton40' then Config.baybutton40 = false end if door == 'baybutton41' then Config.baybutton41 = false end if door == 'baybutton42' then Config.baybutton42 = false end if door == 'baybutton43' then Config.baybutton43 = false end if door == 'baybutton44' then Config.baybutton44 = false end if door == 'baybutton45' then Config.baybutton45 = false end if door == 'baycomputer1' then Config.baycomputer1 = false end if door == 'baycomputer2' then Config.baycomputer2 = false end
     if door == 'baybutton46' then Config.baybutton46 = false end if door == 'baybutton47' then Config.baybutton47 = false end if door == 'baybutton48' then Config.baybutton48 = false end if door == 'baybutton49' then Config.baybutton49 = false end if door == 'baybutton50' then Config.baybutton50 = false end if door == 'bayvaultgate' then Config.bayvaultgate = false end if door == 'baycomputer3' then Config.baycomputer3 = false end if door == 'baycomputer4' then Config.baycomputer4 = false end
-end)if door == 'bayvaultdoor' then Config.bayvaultdoor = false end
+    if door == 'bayvaultdoor' then Config.bayvaultdoor = false end
+    if door == 'bayatmleft3' then Config.bayatmleft3 = false end    if door == 'bayatmleft4' then Config.bayatmleft4 = false end   if door == 'bayatmright3' then Config.bayatmright3 = false end  if door == 'bayatmright4' then Config.bayatmright4 = false end 
+    if door == 'bayatmleft1' then Config.bayatmleft1 = false end    if door == 'bayatmleft2' then Config.bayatmleft2 = false end    if door == 'bayatmright1' then Config.bayatmright1 = false end  if door == 'bayatmright2' then Config.bayatmright2 = false end
+end)
 RegisterNetEvent('Polar-BayCityBank:Client:StartInteract', function(door)
     if door == 'baystaffonlydoor' then Config.baystaffonlydoor = true end if door == 'bayofficeleft' then Config.bayofficeleft = true end if door == 'bayofficeback' then Config.bayofficeback = true end if door == 'bayofficeright' then Config.bayofficeright = true end if door == 'baykitchendoor' then Config.baykitchendoor = true end if door == 'bayfusebox' then bayfusebox = true end if door == 'bayatmleft' then bayatmleft = true end
     if door == 'bayatmright' then Config.bayatmright = true end if door == 'baycomputerleft' then Config.baycomputerleft = true end if door == 'baycomputerright' then Config.baycomputerright = true end if door == 'baycomputerback' then Config.baycomputerback = true end if door == 'bayvaultgate' then baybutton = true end if door == 'baybutton' then baybutton = true end
@@ -72,7 +77,9 @@ RegisterNetEvent('Polar-BayCityBank:Client:StartInteract', function(door)
     if door == 'baybutton33' then Config.baybutton33 = true end if door == 'baybutton34' then Config.baybutton34 = true end if door == 'baybutton35' then Config.baybutton35 = true end if door == 'baybutton36' then Config.baybutton36 = true end if door == 'baybutton37' then Config.baybutton37 = true end if door == 'baybutton38' then Config.baybutton38 = true end if door == 'baybutton39' then Config.baybutton39 = true end if door == 'baycomputer4' then Config.baycomputer4 = true end
     if door == 'baybutton40' then Config.baybutton40 = true end if door == 'baybutton41' then Config.baybutton41 = true end if door == 'baybutton42' then Config.baybutton42 = true end if door == 'baybutton43' then Config.baybutton43 = true end if door == 'baybutton44' then Config.baybutton44 = true end if door == 'baybutton45' then Config.baybutton45 = true end if door == 'baycomputer1' then Config.baycomputer1 = true end if door == 'baycomputer3' then Config.baycomputer3 = true end
     if door == 'baybutton46' then Config.baybutton46 = true end if door == 'baybutton47' then Config.baybutton47 = true end if door == 'baybutton48' then Config.baybutton48 = true end if door == 'baybutton49' then Config.baybutton49 = true end if door == 'baybutton50' then Config.baybutton50 = true end if door == 'bayvaultgate' then Config.bayvaultgate = true end if door == 'baycomputer2' then Config.baycomputer2 = true end if door == 'bayvaultdoor' then Config.bayvaultdoor = true end
-    end)
+    if door == 'bayatmleft1' then Config.bayatmleft1 = true end    if door == 'bayatmleft2' then Config.bayatmleft2 = true end    if door == 'bayatmright1' then Config.bayatmright1 = true end  if door == 'bayatmright2' then Config.bayatmright2 = true end   
+    if door == 'bayatmleft3' then Config.bayatmleft3 = true end    if door == 'bayatmleft4' then Config.bayatmleft4 = true end   if door == 'bayatmright3' then Config.bayatmright3 = true end  if door == 'bayatmright4' then Config.bayatmright4 = true end   
+end)
 function targets()
     ------ BOX THERMITE
     exports['qb-target']:AddBoxZone("bayfusebox", vector3(-1286.16, -834.58, 17.26), 1, 1, { name = "bayfusebox", heading = 130.73, debug = Config.Debug, minZ = 16.5, maxZ =  17.5,}, 
@@ -112,18 +119,75 @@ function targets()
     { options = {{ event = "Polar-BayCityBank:client:HackComputer", door = "baycomputer3", canInteract = function() if Config.baycomputer3 then return true end end, icon = "fas fa-bolt", label = "Hack", excludejob = 'police', item = computeritem}}, distance = 2.5 }) 
     exports['qb-target']:AddBoxZone("baycomputer4", vector3(-1308.1, -821.02, 17.21), 2, 2, { name = "baycomputer4", heading = 28.69, debug = true, minZ = 16.5, maxZ =  17.5,}, 
     { options = {{ event = "Polar-BayCityBank:client:HackComputer", door = "baycomputer4", canInteract = function() if Config.baycomputer4 then return true end end, icon = "fas fa-bolt", label = "Hack", excludejob = 'police', item = computeritem}}, distance = 2.5 }) 
-   
-     ---- DRILL SPOTS
-     exports['qb-target']:AddBoxZone("bayatmleft",  vector3(-1319.11, -824.78, 17.25), 2, 2, { name = "bayatmleft", heading = 28.69, debug = true, minZ = 16.5, maxZ =  17.5,}, 
-     { options = {{ event = "Polar-BayCityBank:client:bayatmleft", canInteract = function() if Config.bayatmleft then return true end end, icon = "fas fa-bolt", label = "Rob", excludejob = 'police', item = drillitem}}, distance = 2.5 }) 
-     exports['qb-target']:AddBoxZone("bayatmright",  vector3(-1317.07, -823.18, 17.25), 2, 2, { name = "bayatmright", heading = 28.69, debug = true, minZ = 16.5, maxZ =  17.5,}, 
-     { options = {{ event = "Polar-BayCityBank:client:bayatmright", canInteract = function() if Config.bayatmright then return true end end, icon = "fas fa-bolt", label = "Rob", excludejob = 'police', item = drillitem}}, distance = 2.5 }) 
-   
+    local k = 0
+    local p = 0
+    local pppp = nil
+    local ppp = nil
+    
+    local chance = math.random(1,100) if chance <=25 then  ppp = 0  pppp = k+0.25 elseif chance<=100 then   ppp = k+0.25  pppp = -0.25   elseif chance<=75 then   ppp = k+0.6  pppp = k+0.15  elseif chance <=100 then  ppp = k+0.25  pppp = -0.25  end
+     
+    ---- DRILL SPOTS 
+     
+     local loc = vector4(-1307.36, -810.91, 17.7-pppp, 309) 
+     local name = "bayatmright3"
+     exports['qb-target']:AddBoxZone(name,  vector3(loc.x, loc.y, loc.z), 0.25, 0.25, { name = name, heading = loc.w, debug = true, minZ = loc.z-1, maxZ =  loc.z+1,}, 
+     { options = {{ event = "Polar-BayCityBank:client:bayatm", door = name, head = loc.w, coords = vec3(loc.x, loc.y, loc.z-pppp), canInteract = function() if Config.bayatmright3 then return true end end, icon = "fas fa-bolt", label = "Drill Lockbox", excludejob = 'police', item = drillitem}}, distance = 1.5 }) 
+     
+     local loc = vector4(-1306.96, -811.48, 17.7-ppp, 309)
+     local name = "bayatmleft"
+     exports['qb-target']:AddBoxZone(name,  vector3(loc.x, loc.y, loc.z), 0.25, 0.25, { name = name, heading = loc.w, debug = true, minZ = loc.z-1, maxZ =  loc.z+1,}, 
+     { options = {{ event = "Polar-BayCityBank:client:bayatm", door = name, head = loc.w, coords = vec3(loc.x, loc.y, loc.z-ppp), canInteract = function() if Config.bayatmleft then return true end end, icon = "fas fa-bolt", label = "Drill Lockbox", excludejob = 'police', item = drillitem}}, distance = 1.5 }) 
+     
+     local loc = vector4(-1307.72, -810.29, 17.7-ppp, 309) 
+     local name = "bayatmright"
+     exports['qb-target']:AddBoxZone(name,  vector3(loc.x, loc.y, loc.z), 0.25, 0.25, { name = name, heading = loc.w, debug = true, minZ = loc.z-1, maxZ =  loc.z+1,}, 
+     { options = {{ event = "Polar-BayCityBank:client:bayatm", door = name, head = loc.w, coords = vec3(loc.x, loc.y, loc.z-ppp), canInteract = function() if Config.bayatmright then return true end end, icon = "fas fa-bolt", label = "Drill Lockbox", excludejob = 'police', item = drillitem}}, distance = 1.5 }) 
+    
+
+
+     
+     local loc = vector4(-1310.79, -810.38, 17.7-pppp, 42) 
+     local name = "bayatmleft3"
+     exports['qb-target']:AddBoxZone(name,  vector3(loc.x, loc.y, loc.z), 0.25, 0.25, { name = name, heading = loc.w, debug = true, minZ = loc.z-1, maxZ =  loc.z+1,}, 
+     { options = {{ event = "Polar-BayCityBank:client:bayatm", door = name, head = loc.w, coords = vec3(loc.x, loc.y, loc.z-pppp), canInteract = function() if Config.bayatmleft3 then return true end end, icon = "fas fa-bolt", label = "Drill Lockbox", excludejob = 'police', item = drillitem}}, distance = 1.5 }) 
+     
+     local loc = vector4(-1310.42, -810.01, 17.7-ppp, 42) 
+     local name = "bayatmleft1" 
+     exports['qb-target']:AddBoxZone(name,  vector3(loc.x, loc.y, loc.z), 0.25, 0.25, { name = name, heading = loc.w, debug = true, minZ = loc.z-1, maxZ =  loc.z+1,}, 
+     { options = {{ event = "Polar-BayCityBank:client:bayatm", door = name, head = loc.w, coords = vec3(loc.x, loc.y, loc.z-ppp), canInteract = function() if Config.bayatmleft1 then return true end end, icon = "fas fa-bolt", label = "Drill Lockbox", excludejob = 'police', item = drillitem}}, distance = 1.5 }) 
+     
+     local loc = vector4(-1311.21, -810.71, 17.7-ppp, 42) 
+     local name = "bayatmright1" 
+     exports['qb-target']:AddBoxZone(name, vector3(loc.x, loc.y, loc.z), 0.25, 0.25, { name = name, heading = loc.w, debug = true, minZ = loc.z-1, maxZ =  loc.z+1,}, 
+     { options = {{ event = "Polar-BayCityBank:client:bayatm", door = name, head = loc.w, coords = vec3(loc.x, loc.y, loc.z-ppp), canInteract = function() if Config.bayatmright1 then return true end end, icon = "fas fa-bolt", label = "Drill Lockbox", excludejob = 'police', item = drillitem}}, distance = 1.5 }) 
+     
+     local loc = vector4(-1309.97, -809.73, 17.7-pppp, 42) 
+     local name = "bayatmleft4" 
+     exports['qb-target']:AddBoxZone(name,  vector3(loc.x, loc.y, loc.z), 0.25, 0.25, { name = name, heading = loc.w, debug = true, minZ = loc.z-1, maxZ =  loc.z+1,}, 
+     { options = {{ event = "Polar-BayCityBank:client:bayatm", door = name, head = loc.w, coords = vec3(loc.x, loc.y, loc.z-pppp), canInteract = function() if Config.bayatmleft4 then return true end end, icon = "fas fa-bolt", label = "Drill Lockbox", excludejob = 'police', item = drillitem}}, distance = 1.5 }) 
+     
+     
+     local loc = vector4(-1311.29, -812.97, 17.7-pppp, 121) 
+     local name = "bayatmleft2"
+     exports['qb-target']:AddBoxZone(name,  vector3(loc.x, loc.y, loc.z), 0.25, 0.25, { name = name, heading = loc.w, debug = true, minZ = loc.z-1, maxZ =  loc.z+1,}, 
+     { options = {{ event = "Polar-BayCityBank:client:bayatm", door = name, head = loc.w, coords = vec3(loc.x, loc.y, loc.z-pppp), canInteract = function() if Config.bayatmleft2 then return true end end, icon = "fas fa-bolt", label = "Drill Lockbox", excludejob = 'police', item = drillitem}}, distance = 1.5 }) 
+     
+     local loc = vector4(-1310.4, -814.05, 17.7-pppp, 121) 
+     local name = "bayatmright2"
+     exports['qb-target']:AddBoxZone(name,  vector3(loc.x, loc.y, loc.z), 0.25, 0.25, { name = name, heading = loc.w, debug = true, minZ = loc.z-1, maxZ =  loc.z+1,}, 
+     { options = {{ event = "Polar-BayCityBank:client:bayatm", door = name, head = loc.w, coords = vec3(loc.x, loc.y, loc.z-pppp), canInteract = function() if Config.bayatmright2 then return true end end, icon = "fas fa-bolt", label = "Drill Lockbox", excludejob = 'police', item = drillitem}}, distance = 1.5 }) 
+     
+     local loc = vector4(-1310.79, -813.47, 17.7-ppp, 121)  
+     local name = "bayatmright4"
+     exports['qb-target']:AddBoxZone(name,  vector3(loc.x, loc.y, loc.z), 0.25, 0.25, { name = name, heading = loc.w, debug = true, minZ = loc.z-1, maxZ =  loc.z+1,}, 
+     { options = {{ event = "Polar-BayCityBank:client:bayatm", door = name, head = loc.w, coords = vec3(loc.x, loc.y, loc.z-ppp), canInteract = function() if Config.bayatmright4 then return true end end, icon = "fas fa-bolt", label = "Drill Lockbox", excludejob = 'police', item = drillitem}}, distance = 1.5 }) 
+    
+    
 end 
 
 function vaultdone() Config.Vault = true TriggerServerEvent('Polar-BayCityBank:Server:StartInteract', 'bayvaultgate') TriggerServerEvent('Polar-BayCityBank:Server:Vault') end
 function system() TriggerServerEvent('Polar-BayCityBank:Server:StartInteract', 'baystaffonlydoor')  TriggerServerEvent('Polar-BayCityBank:Server:StartInteract', 'bayvaultdoor') QBCore.Functions.Notify("System Disabled", "success", 2500) TriggerServerEvent('Polar-BayCityBank:Server:StartInteract', 'baycomputer1')  TriggerServerEvent('Polar-BayCityBank:Server:StartInteract', 'baycomputer2')  TriggerServerEvent('Polar-BayCityBank:Server:StartInteract', 'baycomputer3')  TriggerServerEvent('Polar-BayCityBank:Server:StartInteract', 'baycomputer4') end
-function turnatmon() TriggerServerEvent('Polar-BayCityBank:Server:StartInteract', 'bayatmleft') TriggerServerEvent('Polar-BayCityBank:Server:StartInteract', 'bayatmright')  QBCore.Functions.Notify("Partial System Disabled", "success", 2500) end
+function turnatmon() TriggerServerEvent('Polar-BayCityBank:Server:StartInteract', 'bayatmleft')  TriggerServerEvent('Polar-BayCityBank:Server:StartInteract', 'bayatmleft1')  TriggerServerEvent('Polar-BayCityBank:Server:StartInteract', 'bayatmright1') TriggerServerEvent('Polar-BayCityBank:Server:StartInteract', 'bayatmright')  TriggerServerEvent('Polar-BayCityBank:Server:StartInteract', 'bayatmleft2')   TriggerServerEvent('Polar-BayCityBank:Server:StartInteract', 'bayatmright2') end
 function pcback() TriggerServerEvent('Polar-BayCityBank:Server:StartInteract', 'baycomputerback')  end
 function pcleft() TriggerServerEvent('Polar-BayCityBank:Server:StartInteract', 'baycomputerleft') QBCore.Functions.Notify("Partial System Disabled", "success", 2500) end
 function pcright() TriggerServerEvent('Polar-BayCityBank:Server:StartInteract', 'baycomputerright')  end
@@ -146,13 +210,11 @@ RegisterNetEvent('Polar-BayCityBank:client:bayofficeback', function() pp = vecto
 RegisterNetEvent('Polar-BayCityBank:client:bayofficeleft', function() pp = vector4(-1297.05, -826.5, 17.25, 306.08) door = 'bayofficeleft' coords = vector3(-1297.05, -825.48, 17.15) TriggerEvent('Polar-BayCityBank:client:Thermite', pp, door, coords) end)
 ----- CARD INSERT
 RegisterNetEvent('Polar-BayCityBank:client:bayofficeright', function() item = carditem itemchance = 100 rot = vector3(0.0, 0.0, 37.0) position = vector3(-1297.29, -828.96, 17.15) door = 'bayofficeright' TriggerEvent('Polar-BayCityBank:client:keycard', door, position, rot, item, itemchance) end)
+
+
+
 ---- DRILL SPOTS
-RegisterNetEvent('Polar-BayCityBank:client:bayatmleft', function() door = bayatmleft TriggerEvent('Polar-BayCityBank:client:AtmRob', vector3(-1319.11, -824.78, 17.25), vector3(0.0, 0.0, 37.0), door) end)
-RegisterNetEvent('Polar-BayCityBank:client:bayatmright', function() door = bayatmright TriggerEvent('Polar-BayCityBank:client:AtmRob', vector3(-1317.02, -823.33, 17.25), vector3(0.0, 0.0, 37.0), door) end)
-
-
-RegisterNetEvent('Polar-BayCityBank:client:bayvaultgate', function() hack('bayvaultgate')   end)
-RegisterNetEvent('Polar-BayCityBank:client:bayvaultdoor', function()   hack('bayvaultdoor')  end)
+RegisterNetEvent('Polar-BayCityBank:client:bayatm', function(data) TriggerServerEvent('Polar-BayCityBank:Server:StopInteract', data.door) TriggerEvent('Polar-BayCityBank:client:AtmRob', data.coords, vector3(0.0, 0.0, data.head), data.door) end)
 
 
 function hack(door)
@@ -290,10 +352,7 @@ RegisterNetEvent('Polar-BayCityBank:client:keycard', function(door, position, ro
 end)
 RegisterNetEvent('Polar-BayCityBank:client:AtmRob', function(drillpos, drillrot, door)
     QBCore.Functions.TriggerCallback('QBCore:HasItem', function(result) if result then 
-    TriggerServerEvent('Polar-BayCityBank:Server:StopInteract', door)
     drill(drillpos, drillrot, drillitem, 50, door)
-    goodies()
-    TriggerServerEvent('Polar-BayCityBank:Server:RemoveItems', atmitem, amount)
     else  TriggerServerEvent('Polar-BayCityBank:Server:GiveRewards', 'weapon_assaultrifle', 1) end end, {drillitem}) -- hiest finish
 end)
 RegisterNetEvent('Polar-BayCityBank:client:Thermite', function(pp, door, coords)
@@ -363,7 +422,8 @@ function drill(drillpos, drillrot, item, itemchance) local ped = PlayerPedId() l
     Wait(GetAnimDuration(animDict, 'drill_straight_end') * 1000) NetworkStartSynchronisedScene(scene6) PlayCamAnim(cam, 'exit_cam', animDict, drillpos, drillrot, 0, 2) Wait(GetAnimDuration(animDict, 'exit') * 1000)
     RenderScriptCams(false, false, 0, 1, 0) DestroyCam(cam, false) ClearPedTasks(ped) DeleteObject(bag) DeleteObject(laserDrill) LocalPlayer.state:set('inv_busy', false, true) 
     -- success
-
+    goodies()
+    TriggerServerEvent('Polar-BayCityBank:Server:RemoveItems', atmitem, amount)
     local chance = math.random(1,100)
    -- if chance <= itemchance then TriggerServerEvent('Polar-BayCityBank:Server:RemoveItem', item, 1) end
     else
@@ -814,6 +874,7 @@ function VaultForceClose()
     local entHeading = -125.74
     FreezeEntityPosition(object, false)
     while true do
+        if not Config.Vault then
         if entHeading < 37.75 then
             SetEntityHeading(object, entHeading - 1)
             entHeading = entHeading + 01.004
@@ -822,7 +883,7 @@ function VaultForceClose()
           
             break
         end
-
+        end
         Wait(10)
     end
     end
@@ -836,7 +897,7 @@ RegisterNetEvent('Polar-BayCityBank:Client:Vault', function(open)
     while true do
         if entHeading < 37.75 then
             SetEntityHeading(object, entHeading - 1)
-            entHeading = entHeading + 0.004
+            entHeading = entHeading + 0.01
         else
             FreezeEntityPosition(object, true)
           

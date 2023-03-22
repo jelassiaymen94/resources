@@ -64,7 +64,7 @@ Config.KitchenLocations4 = {
 
 local prop = nil
 function bigroom() kitchenstuff5() kitchenstuff6() kitchenstuff7() kitchenstuff25() kitchenstuff26() kitchenstuff27() kitchenstuff28() kitchenstuff29()  end
-function kitchenstuff() TriggerClientEvent('Polar-BayCityBank:Client:OpenDoor', -1)  kitchenstuff1() kitchenstuff2() kitchenstuff3() kitchenstuff4() end
+function kitchenstuff() TriggerClientEvent('Polar-BayCityBank:Client:OpenDoor', -1) kitchenstuff2() kitchenstuff3() kitchenstuff4() end
 function enterance() bigroom() office() setdoor() end
 function staff()  kitchenstuff41()  kitchenstuff42()  kitchenstuff44() kitchenstuff45()  kitchenstuff46()  kitchenstuff47() kitchenstuff48() kitchenstuff49() kitchenstuff50()end
 function office()  kitchenstuff30() kitchenstuff31() kitchenstuff32() kitchenstuff33() kitchenstuff34() kitchenstuff35() kitchenstuff36() kitchenstuff37() kitchenstuff38() kitchenstuff39() kitchenstuff40() end

@@ -52,8 +52,8 @@ export async function doPuzzle(duration, puzzleA){
     const [question, answer] = generateQuestionAndAnswer(nums, puzzles) 
     $('.answer-question').textContent = question.toUpperCase()
     
-    // for learning purposes
-    console.log(answer)
+
+    // console.log(answer)
 
     return new Promise(async (resolve) => {
 

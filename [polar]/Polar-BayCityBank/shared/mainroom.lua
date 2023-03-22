@@ -1,7 +1,7 @@
 Config.bayfusebox = true 
 Config.baykitchendoor = false
-Config.bayofficeleft = false    Config.bayofficeback = false   Config.bayofficeright = false  Config.baykitchoor = false       Config.bayatmleft = false 
-Config.bayatmright = false     Config.baycomputerleft = false     Config.baycomputerright = false    Config.baycomputerback = false   Config.baybutton = false     Config.baybutton = false 
+Config.bayofficeleft = false    Config.bayofficeback = false   Config.bayofficeright = false  Config.baykitchoor = false      
+    Config.baycomputerleft = false     Config.baycomputerright = false    Config.baycomputerback = false   Config.baybutton = false     Config.baybutton = false 
 Config.baybutton2 = false     Config.baybutton3 = false   Config.baybutton4 = false     Config.baybutton5 = false    Config.baybutton6 = false    Config.baybutton7 = false 
 Config.baybutton25 = false   Config.baybutton26 = false   Config.baybutton27 = false     Config.baybutton28 = false     Config.baybutton29 = false    Config.baybutton30 = false     Config.baybutton31 = false     Config.baybutton32 = false 
 Config.baybutton33 = false    Config.baybutton34 = false     Config.baybutton35 = false   Config.baybutton36 = false     Config.baybutton37 = false    Config.baybutton38 = false     Config.baybutton39 = false 
@@ -11,6 +11,12 @@ Config.baybutton46 = false    Config.baybutton47 = false   Config.baybutton48 = 
 Config.baystaffonlydoor = false 
 Config.bayvaultdoor = false
 Config.Vault = false
+
+Config.bayatmleft = true  Config.bayatmright = true 
+Config.bayatmright2 = true Config.bayatmleft2 = true
+Config.bayatmright1 = true Config.bayatmleft1 = true
+Config.bayatmleft4 = true Config.bayatmright4 = true
+Config.bayatmleft3 = true Config.bayatmright3 = true
 
 function setdoor() Config.baykitchendoor = true end
 Config.MainRoomLocations5 = {
