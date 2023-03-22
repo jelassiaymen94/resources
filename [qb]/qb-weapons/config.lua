@@ -254,38 +254,14 @@ WeaponAttachments = {
             item = 'pistol_suppressor',
         },
     },
-    ['WEAPON_DE'] = {
-        ['suppressor'] = {
-            component = 'COMPONENT_AT_PI_SUPP_02',
-            item = 'pistol_suppressor',
-        },
-    },
+  
     ['WEAPON_FNX45'] = {
         ['suppressor'] = {
             component = 'COMPONENT_AT_PI_SUPP_02',
             item = 'pistol_suppressor',
         },
     },
-    ['WEAPON_MP9'] = {
-        ['defaultclip'] = {
-            component = 'COMPONENT_MP9_CLIP_01',
-            item = 'microsmg_defaultclip',
-            type = 'clip',
-        },
-        ['extendedclip'] = {
-            component = 'COMPONENT_MP9_CLIP_02',
-            item = 'microsmg_extendedclip',
-            type = 'clip',
-        },
-        ['suppressor'] = {
-            component = 'COMPONENT_AT_AR_SUPP_02',
-            item = 'pistol_suppressor',
-        },
-        ['scope'] = {
-            component = 'COMPONENT_AT_SCOPE_MACRO',
-            item = 'microsmg_scope',
-        },
-    },
+ 
    
     ['WEAPON_M110'] = {
         ['defaultclip'] = {

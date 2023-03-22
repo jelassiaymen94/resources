@@ -1,20 +1,17 @@
 local weapons = {
 	--Custom Weapon
-	'WEAPON_AK47',
-	'WEAPON_M9',
+	
+	
 	'WEAPON_FNX45',
-	'WEAPON_DE',
+	
 	'WEAPON_GLOCK17',
 	'WEAPON_M4',
 	'WEAPON_HK416',
 	'WEAPON_MK14',
-	'WEAPON_HUNTINGRIFLE',
+	
 	'WEAPON_AR15',
-	'WEAPON_M70',
-	'WEAPON_M1911',
-	'WEAPON_MAC10',
-	'WEAPON_UZI',
-	'WEAPON_MP9',
+	
+
 	'WEAPON_M110',
 	'WEAPON_MOSSBERG',
 	'WEAPON_REMINGTON',
@@ -61,13 +58,16 @@ local weapons = {
 	'weapon_huntingrifle',
 	'weapon_pistol50',
 	'weapon_hk416',
-	'weapon_mp9',
+	
 	'weapon_ar15',
 	'weapon_scarh',
 	'weapon_remington',
 	'weapon_mossberg',
 	'weapon_m9',
 	'weapon_fnx45',
+
+
+
 
 	'WEAPON_KNIFE',
 	'WEAPON_NIGHTSTICK',
@@ -144,13 +144,11 @@ local weapons = {
 --Weapons that require the Police holster animation
 local holsterableWeapons = {
 	'WEAPON_STUNGUN',
-	
 	'WEAPON_SCARH',
 	'WEAPON_GLOCK',
 	'WEAPON_M4',
 	'WEAPON_REMINGTON',
 	'WEAPON_AR15',
-	'WEAPON_MP9',
 	'WEAPON_MK14',
 	
 	
