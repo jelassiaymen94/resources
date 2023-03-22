@@ -564,7 +564,7 @@ RegisterNetEvent('inventory:client:UseWeapon', function(weaponData, shootbool)
         RemoveAllPedWeapons(ped, true)
         TriggerEvent('weapons:client:SetCurrentWeapon', nil, shootbool)
         currentWeapon = nil
-    elseif weaponName == "weapon_stickybomb" or weaponName == "weapon_pipebomb" or weaponName == "weapon_smokegrenade" or weaponName == "weapon_cash" or weaponName == "weapon_shoe" or weaponName == "weapon_book" or weaponName == "weapon_flare" or weaponName == "weapon_proxmine" or weaponName == "weapon_ball"  or weaponName == "weapon_molotov" or weaponName == "weapon_grenade" or weaponName == "weapon_bzgas" then
+    elseif weaponName == "weapon_stickybomb" or weaponName == "weapon_pipebomb" or weaponName == "weapon_m67" or weaponName == "weapon_smokegrenade" or weaponName == "weapon_cash" or weaponName == "weapon_shoe" or weaponName == "weapon_book" or weaponName == "weapon_flare" or weaponName == "weapon_proxmine" or weaponName == "weapon_ball"  or weaponName == "weapon_molotov" or weaponName == "weapon_grenade" or weaponName == "weapon_bzgas" then
         GiveWeaponToPed(ped, weaponHash, 1, false, false)
         SetPedAmmo(ped, weaponHash, 1)
         SetCurrentPedWeapon(ped, weaponHash, true)

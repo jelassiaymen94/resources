@@ -20,7 +20,6 @@ QBShared.Items = {
 	 ['weapon_krambit'] 			 	 = {['name'] = 'weapon_krambit', 			['label'] = 'KRAMBIT', 			['weight'] = 1000, 		['type'] = 'weapon', 	['ammotype'] = 'nil',			    ['image'] = 'weapon_krambit.png', 		['unique'] = true, 		['useable'] = false, 	['description'] = 'LMAO CSGO'},
 	 ['weapon_gepard'] 				 = {['name'] = 'weapon_gepard', 			['label'] = 'GEPARD', 			['weight'] = 1000, 		['type'] = 'weapon', 	['ammotype'] = 'AMMO_RIFLE',		['image'] = 'weapon_gepard.png', 		['unique'] = true, 		['useable'] = false, 	['description'] = 'A SMALL ASSAULT RIFLE LIKE YOUR PP'},
 	 ['weapon_sword'] 		         = {['name'] = 'weapon_sword', 			    ['label'] = 'SWORD', 		    ['weight'] = 1000, 		['type'] = 'weapon', 	['ammotype'] = 'nil',			    ['image'] = 'weapon_sword.png', 		['unique'] = true, 		['useable'] = false, 	['description'] = 'A BIG SWORD BIGGER THAN YOUR PP'},
-	 ['weapon_flashbang'] 			 = {['name'] = 'weapon_flashbang', 		    ['label'] = 'FLASHBANG', 		['weight'] = 1000, 		['type'] = 'weapon', 	['ammotype'] = 'nil',				['image'] = 'weapon_flashbang.png', 	['unique'] = true, 		['useable'] = false, 	['description'] = 'BLINDED'},
 	 ['weapon_m67'] 				 	 = {['name'] = 'weapon_m67', 		    	['label'] = 'M67', 				['weight'] = 1000, 		['type'] = 'weapon', 	['ammotype'] = nil,					['image'] = 'weapon_m67.png', 			['unique'] = true, 		['useable'] = false, 	['description'] = 'A GRENADEEE'},
 	
 
