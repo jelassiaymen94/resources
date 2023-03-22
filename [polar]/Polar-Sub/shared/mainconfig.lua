@@ -251,8 +251,8 @@ Config.TraderPeds = {
 Config.Weapons = {
     'weapon_assaultrifle',
     'weapon_assaultrifle2',
-    'weapon_microsmg2',
-    'weapon_microsmg3',
+    'weapon_uzi',
+    'weapon_mac10',
 
 
 

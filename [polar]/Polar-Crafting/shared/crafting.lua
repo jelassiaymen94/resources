@@ -136,14 +136,14 @@ Config.WeaponsBench = {
       
     },
     [5] = {
-        item = 'weapon_microsmg2',
+        item = 'weapon_uzi',
         icon = "",
         txt = "Required: ".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['refined_copper'].image.." width=25px onerror='this.onerror=null; this.remove();'> 2 Refined Copper".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['smgbarrel'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Smg Barrel".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['smgbody'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Smg Body".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['smggrip'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Smg Grip".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['refined_steel'].image.." width=25px onerror='this.onerror=null; this.remove();'> 2 Refined Steel".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['rubber'].image.." width=30px onerror='this.onerror=null; this.remove();'> 5 Rubber",
         exp = 15000,
       
     },
     [6] = {
-        item = 'weapon_microsmg3',
+        item = 'weapon_mac10',
         icon = "",
         txt = "Required: ".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['refined_copper'].image.." width=25px onerror='this.onerror=null; this.remove();'> 2 Refined Copper".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['smgbarrel'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Smg Barrel".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['smgbody'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Smg Body".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['smggrip'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Smg Grip".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['refined_steel'].image.." width=25px onerror='this.onerror=null; this.remove();'> 2 Refined Steel".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['rubber'].image.." width=30px onerror='this.onerror=null; this.remove();'> 5 Rubber",
         exp = 17000,

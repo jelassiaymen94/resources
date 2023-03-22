@@ -49,8 +49,8 @@ local weapons = {
     'WEAPON_M67',
   
 
-	'weapon_microsmg2',
-	'weapon_microsmg3',
+	'weapon_uzi',
+	'weapon_mac10',
 	'weapon_pistol',
 	'weapon_katana',
 	'weapon_assaultrifle',

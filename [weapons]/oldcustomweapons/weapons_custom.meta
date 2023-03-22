@@ -1484,7 +1484,7 @@
         <!-- SMG START -->
 
         <Item type="CWeaponInfo">
-          <Name>WEAPON_MICROSMG2</Name>
+          <Name>weapon_uzi</Name>
           <Model>w_sb_microsmg2</Model>
           <Audio>AUDIO_ITEM_MICROSMG</Audio>
           <Slot>SLOT_MICROSMG2</Slot>
@@ -1813,7 +1813,7 @@
         </Item>
 
         <Item type="CWeaponInfo">
-          <Name>WEAPON_MICROSMG3</Name>
+          <Name>weapon_mac10</Name>
           <Model>w_sb_microsmg3</Model>
           <Audio>AUDIO_ITEM_MICROSMG</Audio>
           <Slot>SLOT_MICROSMG3</Slot>
