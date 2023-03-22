@@ -217,6 +217,10 @@ RegisterNetEvent('Polar-BayCityBank:client:bayofficeright', function() item = ca
 RegisterNetEvent('Polar-BayCityBank:client:bayatm', function(data) TriggerServerEvent('Polar-BayCityBank:Server:StopInteract', data.door) TriggerEvent('Polar-BayCityBank:client:AtmRob', data.coords, vector3(0.0, 0.0, data.head), data.door) end)
 
 
+RegisterNetEvent('Polar-BayCityBank:client:bayvaultgate', function() hack('bayvaultgate')   end)
+RegisterNetEvent('Polar-BayCityBank:client:bayvaultdoor', function()   hack('bayvaultdoor')  end)
+
+
 function hack(door)
     LocalPlayer.state:set('inv_busy', true, true) 
     TriggerServerEvent('Polar-BayCityBank:Server:StopInteract', door)

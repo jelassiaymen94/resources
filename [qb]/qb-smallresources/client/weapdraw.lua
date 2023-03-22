@@ -29,7 +29,25 @@ local weapons = {
 	'WEAPON_bat',
 	'weapon_golfclub',
 	'weapon_crowbar',
+
 	
+	'WEAPON_groza',
+	
+	'WEAPON_dp9',
+	
+	'WEAPON_dildo',
+	
+	
+
+    'WEAPON_krambit',
+    'WEAPON_gepard',
+ 
+    'WEAPON_g18c',
+  
+    'WEAPON_mp5',
+    'weapon_sword',
+    'WEAPON_M67',
+  
 
 	'weapon_microsmg2',
 	'weapon_microsmg3',

@@ -66,5 +66,7 @@ Config.WeaponsOnBack = {
      ["weapon_microsmg2"] = { model = "w_sb_microsmg2", hash = GetHashKey("weapon_microsmg2")},
      ["weapon_microsmg3"] = { model = "w_sb_microsmg3", hash = GetHashKey("weapon_microsmg3")},
     -- ["weapon_gusenberg"] = { model = "w_sb_gusenberg", hash = GetHashKey("weapon_gusenberg")},
-
+    ["weapon_groza"] = { model = "w_ar_groza", hash = GetHashKey("weapon_groza")},
+    ["weapon_gepard"] = { model = "w_ar_gepard", hash = GetHashKey("weapon_gepard")},
+    ["weapon_sword"] = { model = "w_me_sword", hash = GetHashKey("weapon_sword")},
 }
