@@ -1,4 +1,17 @@
 local QBCore = exports['qb-core']:GetCoreObject()
+
+
+local table = {
+	['bmochi'] = { ['sugar'] = 1, ['flour'] = 1, ['blueberry'] = 1, },
+	 ['gmochi'] = { ['sugar'] = 1, ['flour'] = 1, ['mint'] = 1, },
+	 ['omochi'] = { ['sugar'] = 1, ['flour'] = 1, ['orange'] = 1,  },
+	 ['pmochi'] = { ['sugar'] = 1, ['flour'] = 1, ['strawberry'] = 1, },
+	 ['riceball'] = { ['rice'] = 1, ['nori'] = 1, },
+	 ['bento'] = { ['rice'] = 1, ['nori'] = 1, ['tofu'] = 1, },
+	 ['purrito'] = { ['rice'] = 1, ['flour'] = 1, ['onion'] = 1, },
+	 ['ernadotaco'] = { ['rice'] = 1, ['flour'] = 1, ['onion'] = 1, }
+}
+
 CreateThread(function()
    -- while true do 
     --    Wait(1000)
@@ -13,10 +26,11 @@ CreateThread(function()
 		options = {
 		{ 
 			type = "client",
-			event = "Polar-Sub:client:TacoTruck",
+			event = "jim-catcafe:Crafting",
 			icon = "fas fa-bolt",
 			label = "Open Trunk",
-           -- job = 'taco',
+			craftable = table,
+            job = 'taco',
 			canInteract = function(e) local p = GetEntityModel(e) Wait(50) if p == 1951180813 then return true end end
 			
 			
@@ -26,6 +40,7 @@ CreateThread(function()
 	})
    -- end
 end)
+
 function LoadAnimDict(dict)
     if HasAnimDictLoaded(dict) then return end
 
