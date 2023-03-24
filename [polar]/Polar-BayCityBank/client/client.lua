@@ -124,60 +124,81 @@ function targets()
     local pppp = nil
     local ppp = nil
     
-    local chance = math.random(1,100) if chance <=25 then  ppp = 0  pppp = k+0.25 elseif chance<=100 then   ppp = k+0.25  pppp = -0.25   elseif chance<=75 then   ppp = k+0.6  pppp = k+0.15  elseif chance <=100 then  ppp = k+0.25  pppp = -0.25  end
+    local chance = math.random(1,100) 
+    
+    if chance<=10 then   ppp = k+0.44  pppp = k+0.22  
+    elseif chance<=25 then   ppp = k+0.22  pppp = k+0.44  
+    elseif chance<=30 then   ppp = k-0.44  pppp = k-0.22  
+    elseif chance<=35 then   ppp = k-0.22  pppp = k-0.44  
+
+    elseif chance<=40 then   ppp = k+0.0  pppp = k+0.44  
+    elseif chance<=45 then   ppp = k+0.0  pppp = k+0.22  
+    elseif chance<=50 then   ppp = k+0.22  pppp = k+0.0 
+    elseif chance<=55 then   ppp = k+0.44  pppp = k+0.0
+
+    elseif chance<=60 then   ppp = k-0.0  pppp = k-0.44  
+    elseif chance<=65 then   ppp = k-0.0  pppp = k-0.22  
+    elseif chance<=70 then   ppp = k-0.22  pppp = k-0.0 
+    elseif chance<=75 then   ppp = k-0.44  pppp = k-0.0
+
+    elseif chance<=80 then   ppp = k+0.22  pppp = k-0.22 
+    elseif chance<=85 then   ppp = k-0.22  pppp = k+0.22 
+    elseif chance<=90 then   ppp = k+0.44  pppp = k-0.44 
+    elseif chance<=100 then   ppp = k-0.44  pppp = k+0.44 
+
+    end
      
     ---- DRILL SPOTS 
      
-     local loc = vector4(-1307.36, -810.91, 17.7-pppp, 309) 
+     local loc = vector4(-1308.09, -809.82, 17.74-pppp, 309)  -- right side (left) - pppp
      local name = "bayatmright3"
      exports['qb-target']:AddBoxZone(name,  vector3(loc.x, loc.y, loc.z), 0.25, 0.25, { name = name, heading = loc.w, debug = true, minZ = loc.z-1, maxZ =  loc.z+1,}, 
      { options = {{ event = "Polar-BayCityBank:client:bayatm", door = name, head = loc.w, coords = vec3(loc.x, loc.y, loc.z-pppp), canInteract = function() if Config.bayatmright3 then return true end end, icon = "fas fa-bolt", label = "Drill Lockbox", excludejob = 'police', item = drillitem}}, distance = 1.5 }) 
-     
-     local loc = vector4(-1306.96, -811.48, 17.7-ppp, 309)
+    
+     local loc = vector4(-1307.63, -810.52, 17.74-ppp, 309)--  right side (middle)
      local name = "bayatmleft"
      exports['qb-target']:AddBoxZone(name,  vector3(loc.x, loc.y, loc.z), 0.25, 0.25, { name = name, heading = loc.w, debug = true, minZ = loc.z-1, maxZ =  loc.z+1,}, 
      { options = {{ event = "Polar-BayCityBank:client:bayatm", door = name, head = loc.w, coords = vec3(loc.x, loc.y, loc.z-ppp), canInteract = function() if Config.bayatmleft then return true end end, icon = "fas fa-bolt", label = "Drill Lockbox", excludejob = 'police', item = drillitem}}, distance = 1.5 }) 
      
-     local loc = vector4(-1307.72, -810.29, 17.7-ppp, 309) 
+     local loc = vector4(-1307.0, -811.36, 17.74-pppp, 309) 
      local name = "bayatmright"
      exports['qb-target']:AddBoxZone(name,  vector3(loc.x, loc.y, loc.z), 0.25, 0.25, { name = name, heading = loc.w, debug = true, minZ = loc.z-1, maxZ =  loc.z+1,}, 
      { options = {{ event = "Polar-BayCityBank:client:bayatm", door = name, head = loc.w, coords = vec3(loc.x, loc.y, loc.z-ppp), canInteract = function() if Config.bayatmright then return true end end, icon = "fas fa-bolt", label = "Drill Lockbox", excludejob = 'police', item = drillitem}}, distance = 1.5 }) 
     
 
-
-     
-     local loc = vector4(-1310.79, -810.38, 17.7-pppp, 42) 
+    
+     local loc = vector4(-1310.04, -809.87, 17.68-ppp, 42) 
      local name = "bayatmleft3"
      exports['qb-target']:AddBoxZone(name,  vector3(loc.x, loc.y, loc.z), 0.25, 0.25, { name = name, heading = loc.w, debug = true, minZ = loc.z-1, maxZ =  loc.z+1,}, 
      { options = {{ event = "Polar-BayCityBank:client:bayatm", door = name, head = loc.w, coords = vec3(loc.x, loc.y, loc.z-pppp), canInteract = function() if Config.bayatmleft3 then return true end end, icon = "fas fa-bolt", label = "Drill Lockbox", excludejob = 'police', item = drillitem}}, distance = 1.5 }) 
      
-     local loc = vector4(-1310.42, -810.01, 17.7-ppp, 42) 
+     local loc = vector4(-1310.57, -810.25, 17.68-pppp, 42) 
      local name = "bayatmleft1" 
      exports['qb-target']:AddBoxZone(name,  vector3(loc.x, loc.y, loc.z), 0.25, 0.25, { name = name, heading = loc.w, debug = true, minZ = loc.z-1, maxZ =  loc.z+1,}, 
      { options = {{ event = "Polar-BayCityBank:client:bayatm", door = name, head = loc.w, coords = vec3(loc.x, loc.y, loc.z-ppp), canInteract = function() if Config.bayatmleft1 then return true end end, icon = "fas fa-bolt", label = "Drill Lockbox", excludejob = 'police', item = drillitem}}, distance = 1.5 }) 
      
-     local loc = vector4(-1311.21, -810.71, 17.7-ppp, 42) 
+     local loc = vector4(-1310.87, -810.53, 17.28-pppp, 42) 
      local name = "bayatmright1" 
      exports['qb-target']:AddBoxZone(name, vector3(loc.x, loc.y, loc.z), 0.25, 0.25, { name = name, heading = loc.w, debug = true, minZ = loc.z-1, maxZ =  loc.z+1,}, 
      { options = {{ event = "Polar-BayCityBank:client:bayatm", door = name, head = loc.w, coords = vec3(loc.x, loc.y, loc.z-ppp), canInteract = function() if Config.bayatmright1 then return true end end, icon = "fas fa-bolt", label = "Drill Lockbox", excludejob = 'police', item = drillitem}}, distance = 1.5 }) 
      
-     local loc = vector4(-1309.97, -809.73, 17.7-pppp, 42) 
+     local loc = vector4(-1311.4, -810.71, 17.68-ppp, 42) 
      local name = "bayatmleft4" 
      exports['qb-target']:AddBoxZone(name,  vector3(loc.x, loc.y, loc.z), 0.25, 0.25, { name = name, heading = loc.w, debug = true, minZ = loc.z-1, maxZ =  loc.z+1,}, 
      { options = {{ event = "Polar-BayCityBank:client:bayatm", door = name, head = loc.w, coords = vec3(loc.x, loc.y, loc.z-pppp), canInteract = function() if Config.bayatmleft4 then return true end end, icon = "fas fa-bolt", label = "Drill Lockbox", excludejob = 'police', item = drillitem}}, distance = 1.5 }) 
      
-     
-     local loc = vector4(-1311.29, -812.97, 17.7-pppp, 121) 
+     --vector3(-1311.37, -812.73, 18.68)
+     local loc = vector4(-1310.35, -814.15, 17.68-pppp, 121) -- right (left)
      local name = "bayatmleft2"
      exports['qb-target']:AddBoxZone(name,  vector3(loc.x, loc.y, loc.z), 0.25, 0.25, { name = name, heading = loc.w, debug = true, minZ = loc.z-1, maxZ =  loc.z+1,}, 
      { options = {{ event = "Polar-BayCityBank:client:bayatm", door = name, head = loc.w, coords = vec3(loc.x, loc.y, loc.z-pppp), canInteract = function() if Config.bayatmleft2 then return true end end, icon = "fas fa-bolt", label = "Drill Lockbox", excludejob = 'police', item = drillitem}}, distance = 1.5 }) 
      
-     local loc = vector4(-1310.4, -814.05, 17.7-pppp, 121) 
+     local loc = vector4(-1311.37, -812.73, 17.68-pppp, 121) -- right (right)
      local name = "bayatmright2"
      exports['qb-target']:AddBoxZone(name,  vector3(loc.x, loc.y, loc.z), 0.25, 0.25, { name = name, heading = loc.w, debug = true, minZ = loc.z-1, maxZ =  loc.z+1,}, 
      { options = {{ event = "Polar-BayCityBank:client:bayatm", door = name, head = loc.w, coords = vec3(loc.x, loc.y, loc.z-pppp), canInteract = function() if Config.bayatmright2 then return true end end, icon = "fas fa-bolt", label = "Drill Lockbox", excludejob = 'police', item = drillitem}}, distance = 1.5 }) 
      
-     local loc = vector4(-1310.79, -813.47, 17.7-ppp, 121)  
+     local loc = vector4(-1310.79, -813.47, 17.68-ppp, 121)  -- right (middle)
      local name = "bayatmright4"
      exports['qb-target']:AddBoxZone(name,  vector3(loc.x, loc.y, loc.z), 0.25, 0.25, { name = name, heading = loc.w, debug = true, minZ = loc.z-1, maxZ =  loc.z+1,}, 
      { options = {{ event = "Polar-BayCityBank:client:bayatm", door = name, head = loc.w, coords = vec3(loc.x, loc.y, loc.z-ppp), canInteract = function() if Config.bayatmright4 then return true end end, icon = "fas fa-bolt", label = "Drill Lockbox", excludejob = 'police', item = drillitem}}, distance = 1.5 }) 

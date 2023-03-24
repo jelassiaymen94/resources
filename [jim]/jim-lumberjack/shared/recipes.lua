@@ -7,7 +7,7 @@ Crafting["Wood Crafting"] = {
         },
         
     },]]
-    ["Storage"] = {
+    --[[["Storage"] = {
         ["Containers"] = {
             { ["small_container"] = { ["wood"] = 15, ["copper"] = 4, }, amount = 1 },
             { ["medium_container"] = { ["wood"] = 30, ["copper"] = 8, }, amount = 1 },
@@ -15,7 +15,7 @@ Crafting["Wood Crafting"] = {
 
         },
         
-    },
+    },]]
 
     ["Other"] = {
         ["Tools"] = {
