@@ -179,7 +179,7 @@ Config.Shops = {
             ['super'] = 'Super',
             ['sports'] = 'Sports',
              ['sportsclassics'] = 'Sports Classics',
-             --['sedans'] = 'Sedans',
+             ['sedans'] = 'Sedans',
              ['coupes'] = 'Coupes',
              ['suvs'] = 'SUVs',
              ['offroad'] = 'Offroad',
@@ -188,7 +188,7 @@ Config.Shops = {
              ['motorcycles'] = 'Motorcycles',
              ['vans'] = 'Vans',
              ['cycles'] = 'Bicycles',
-             ['helicopters'] = 'Helicopters',
+            -- ['truck'] = 'Trucks',
         },
         ['TestDriveTimeLimit'] = 1.0,
         ['Location'] = vector3(107.43, -125.12, 54.1),
@@ -276,7 +276,7 @@ Config.Shops = {
                 chosenVehicle = 'marquis'
             },
         },
-    },
+    },]]
    ['air'] = {
         ['Type'] = 'free-use', -- no player interaction is required to purchase a vehicle
         ['Zone'] = {
@@ -292,14 +292,14 @@ Config.Shops = {
         },
         ['Job'] = 'none', -- Name of job or none
         ['ShopLabel'] = 'Air Shop', -- Blip name
-        ['showBlip'] = true, -- true or false
+        ['showBlip'] = false, -- true or false
         ['blipSprite'] = 251, -- Blip sprite
         ['blipColor'] = 3, -- Blip color
         ['Categories'] = {-- Categories available to browse
             ['helicopters'] = 'Helicopters',
             ['planes'] = 'Planes'
         },
-        ['TestDriveTimeLimit'] = 1.5, -- Time in minutes until the vehicle gets deleted
+        ['TestDriveTimeLimit'] = 1.0, -- Time in minutes until the vehicle gets deleted
         ['Location'] = vector3(-1652.76, -3143.4, 13.99), -- Blip Location
         ['ReturnLocation'] = vector3(-1628.44, -3104.7, 13.94), -- Location to return vehicle, only enables if the vehicleshop has a job owned
         ['VehicleSpawn'] = vector4(-1617.49, -3086.17, 13.94, 329.2), -- Spawn location when vehicle is bought
@@ -317,14 +317,14 @@ Config.Shops = {
             },
             [3] = {
                 coords = vector4(-1632.02, -3144.48, 12.99, 31.08),
-                defaultVehicle = 'nimbus',
-                chosenVehicle = 'nimbus'
+                defaultVehicle = 'microlight',
+                chosenVehicle = 'microlight'
             },
             [4] = {
                 coords = vector4(-1663.74, -3126.32, 12.99, 275.03),
-                defaultVehicle = 'frogger',
-                chosenVehicle = 'frogger'
+                defaultVehicle = 'havok',
+                chosenVehicle = 'havok'
             },
         },
-    },]]
+    },
 }
