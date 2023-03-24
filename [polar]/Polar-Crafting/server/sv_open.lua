@@ -98,7 +98,7 @@ function hitup(bool)
 
         removeitem(4, 75, 1, item, 'gunpowder', 10, 'refined_aluminum', 2, 'rubber', 3, 'thermitepowder', 1)  -- done***
 
-    elseif item == 'weapon_grenade' then
+    elseif item == 'weapon_m67' then
 
         removeitem(4, 100, 1, item, 'metalscrap', 6, 'refined_aluminum', 2, 'thermitepowder', 2, 'refined_iron', 1)  -- done***
 
@@ -114,11 +114,11 @@ function hitup(bool)
 
         removeitem(2, 30, 1, item, 'gunpowder', 2, 'copperore', 4) -- done***
 
-    elseif item == 'weapon_microsmg3' then
+    elseif item == 'weapon_mac10' then
 
         removeitem(6, 130, 1, item, 'refined_iron', 2, 'refined_copper', 2, 'smgbarrel', 1, 'smgbody', 1, 'smggrip', 1, 'rubber', 5)-- done***
 
-    elseif item == 'weapon_microsmg2' then
+    elseif item == 'weapon_uzi' then
 
         removeitem(6, 110, 1, item, 'refined_steel', 2, 'smgbarrel', 1, 'smgbody', 1, 'smggrip', 1, 'rubber', 5, 'refined_copper', 2)-- done***
 

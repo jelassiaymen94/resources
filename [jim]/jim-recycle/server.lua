@@ -906,8 +906,8 @@ AddEventHandler('jim-recycle:Dumpsters:Reward', function(listKey)
         local Odd = math.random(1, 200000)
         if Luck == Odd then
         local random = math.random(1, 1) 
-            Player.Functions.AddItem("weapon_microsmg2", random, false, {["quality"] = 5})
-            TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items["weapon_microsmg2"], 'add', random)
+            Player.Functions.AddItem("weapon_uzi", random, false, {["quality"] = 5})
+            TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items["weapon_uzi"], 'add', random)
 			TriggerEvent("qb-log:server:CreateLog", "dumpsterspecial", "JIM RECYCLE", "orange", "**" .. src .. "** ADDED weapon_microsmg2" .. random .. ", " .. Luck .. " == " .. Odd .. " ")
         end
 

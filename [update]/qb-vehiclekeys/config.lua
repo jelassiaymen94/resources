@@ -111,4 +111,6 @@ Config.NoCarjackWeapons = {
     "WEAPON_Ball",
     "WEAPON_Snowball",
     "WEAPON_SmokeGrenade",
+    "weapon_m67",
+    "weapon_sword",
 }

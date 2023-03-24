@@ -39,7 +39,7 @@ Config.BoxItems = {  --add as many items as you like. these are the random items
  "washkey",
  "cokekey",
  "methkey",
- "weapon_microsmg3",
+ "weapon_mac10",
  "weapon_sledgehammer",
  "thermitepowder",
  "plastic",
