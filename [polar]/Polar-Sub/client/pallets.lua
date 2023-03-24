@@ -23,7 +23,7 @@ CreateThread(function()
 			icon = "fas fa-bolt",
 			label = "Cut",
             --job = 'taco',
-			-- item = '',
+			 item = 'powersaw',
 			canInteract = function(e) p = e if h == 1 then return true end end,
 			
 		}
