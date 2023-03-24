@@ -12,13 +12,13 @@ Config.baystaffonlydoor = false
 Config.bayvaultdoor = false
 Config.Vault = false
 
-Config.bayatmleft = true  Config.bayatmright = true 
-Config.bayatmright2 = true Config.bayatmleft2 = true
-Config.bayatmright1 = true Config.bayatmleft1 = true
-Config.bayatmleft4 = true Config.bayatmright4 = true
-Config.bayatmleft3 = true Config.bayatmright3 = true
+Config.bayatmleft = false  Config.bayatmright = false 
+Config.bayatmright2 = false Config.bayatmleft2 = false
+Config.bayatmright1 = false Config.bayatmleft1 = false
+Config.bayatmleft4 = false Config.bayatmright4 = false
+Config.bayatmleft3 = false Config.bayatmright3 = false
 
-function setdoor() Config.baykitchendoor = true end
+function setdoor() Config.baykitchendoor = false end
 Config.MainRoomLocations5 = {
     vector4(-1302.74, -826.67, 17.05, 212.02), -- circle couch left
     vector4(-1303.71, -818.98, 17.2, 40.8), -- counter right
