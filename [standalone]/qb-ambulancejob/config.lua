@@ -496,37 +496,6 @@ Config.Weapons = { -- Correspond weapon names to their class number
     [`WEAPON_EXHAUSTION`] = Config.WeaponClasses['SUFFOCATING'], -- Exhaust
     [`WEAPON_BZGAS`] = Config.WeaponClasses['SUFFOCATING'],
     [`WEAPON_SMOKEGRENADE`] = Config.WeaponClasses['SUFFOCATING'],
-
-
-
-
-  --[[ HIGH CALIBER ]]
-  [`WEAPON_groza`] = Config.WeaponClasses['HIGH_CALIBER'],
-  [`WEAPON_gepard`] = Config.WeaponClasses['HIGH_CALIBER'],
-
-
-  [`WEAPON_mp5`] = Config.WeaponClasses['MEDIUM_CALIBER'],
-  --[[ SMALL CALIBER ]]
- 
-  [`WEAPON_dp9`] = Config.WeaponClasses['SMALL_CALIBER'],
-  [`WEAPON_g18c`] = Config.WeaponClasses['SMALL_CALIBER'],
-
-  --[[ CUTTING ]]
- 
-  [`WEAPON_krambit`] = Config.WeaponClasses['CUTTING'],
-  [`WEAPON_sword`] = Config.WeaponClasses['CUTTING'],
-  --[[ HEAVY IMPACT ]]
-  [`WEAPON_dildo`] = Config.WeaponClasses['HEAVY_IMPACT'],
-
-  --[[Explosives]]--
-  [`WEAPON_M67`] = Config.WeaponClasses['EXPLOSIVE'],
-  --[[ Shotguns ]]--
-  
-
-
-
-
-
 }
 
 Config.VehicleSettings = { -- Enable or disable vehicle extras when pulling them from the ambulance job vehicle spawner

@@ -81,7 +81,7 @@ end)]]
     if math.random(1, 100) < 7 then
         ResetPartial()
     end
-    SetEntityHealth(ped, GetEntityHealth(ped) + 50)
+    SetEntityHealth(ped, GetEntityHealth(ped) + 20)
     Wait(10000)
     SetEntityHealth(ped, GetEntityHealth(ped) + 2)
     Wait(10000)
