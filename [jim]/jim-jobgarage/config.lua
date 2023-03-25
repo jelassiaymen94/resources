@@ -484,30 +484,6 @@ Config = {
 				},
 			},
 		},
-
-		{ 	zoneEnable = true,
-			job = "taco",
-			garage = {
-				spawn = vector4(15.5954, -1614.2899, 29.2943, 137.8965),
-				out = vector4(16.5254, -1609.3326, 29.3783, 231.6623),
-				list = {
-					["taco"] = {
-						CustomName = "Taco Truck",
-						livery = 1,
-						rank = {0,1,2,3,4,5},
-						extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
-						performance = "max",
-                          rambar = 1,
-						trunkItems = {
-						
-						},
-				
-					},
-				},
-			},
-		},
-
-
 		{ 	zoneEnable = true,
 			job = "police",
 			garage = {

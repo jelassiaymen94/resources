@@ -67,8 +67,13 @@ Config = {
 			{ name = "drillbit", price = 150, amount = 50, },
 			{ name = "binoculars", price = 150, amount = 10, },
 			{ name = "bakingsoda", price = 550, amount = 2, },
+<<<<<<< HEAD
 			{ name = "advancedrepairkit", price = 3000, amount = 10, },
 			--{ name = "scissors", price = 1000, amount = 5, },
+=======
+			{ name = "trowel", price = 1500, amount = 5, },
+			{ name = "scissors", price = 1000, amount = 5, },
+>>>>>>> parent of 03daf773 (Jim_folder)
 			{ name = "cleaningkit", price = 5, amount = 50, },
 			--{ name = "emptycowbucket", price = 150, amount = 10,},
 			--{ name = "emp_bucket", price = 150, amount = 10,},
