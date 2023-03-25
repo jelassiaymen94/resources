@@ -1,6 +1,6 @@
 Config = {}
 
-Config.LastLocation = false -- Show Last Location Button
+Config.LastLocation = true -- Show Last Location Button
 
 Config.DefaultSpawn = vector3(-206.19,-1013.78,30.13) -- Default Spawn
 

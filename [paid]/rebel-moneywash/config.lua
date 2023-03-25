@@ -8,8 +8,8 @@ Config.Menu = "qb-menu" -- Can be either ox_lib or qb-menu
 Config.DrawText = "qb" -- Can be either ox_lib or qb
 
 Config.DiscordWebhooks = {
-    Washing_Logs = "https://discord.com/api/webhooks/1079720657044131880/9_VKGuorflQasSVHO-a4ygk6xfPc6rns8-wNqtxfKBUfIN96ytTzKvzM8ns1NpsStWKu",
-    Drying_Logs = "https://discord.com/api/webhooks/1079720749583044608/tukTWLYJftZl1nDKYjAjUFrQe8EnpuJl6LsQmjwT63OKgx5kvyvnurYZpiUVrCvn5Nyc"
+    Washing_Logs = "https://discord.com/api/webhooks/1035661139587113053/kuRc3VX2pagM4_a-39wJdBsPCvUWj09WdS8_4Y1iof74ZMkKB08wPyuNPh2MPeqNoCMT",
+    Drying_Logs = "https://discord.com/api/webhooks/1035661139587113053/kuRc3VX2pagM4_a-39wJdBsPCvUWj09WdS8_4Y1iof74ZMkKB08wPyuNPh2MPeqNoCMT"
 }
 
 Config.Washable_Items = {
