@@ -38,7 +38,7 @@ RegisterCommand(refillCommand, function(source, args, rawCommand)
             Citizen.Wait(3000)
             taserCartsLeft = maxTaserCarts
             ShowNotification("Taser Reloaded.")
-            TriggerServerEvent('DD-taser:server:jhkjkl')
+            TriggerServerEvent('DD-taser:Server:jhkjkl')
         else
             ShowNotification("You need a Cardridge")
         end

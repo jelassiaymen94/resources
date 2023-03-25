@@ -3,14 +3,14 @@ local QBCore = exports['qb-core']:GetCoreObject()
 local lootedtrucks = {}
 local robbedplates = {}
 
-RegisterServerEvent("Polar-ArmoredTrucks:server:removeCard", function() 
+RegisterServerEvent("Polar-ArmoredTrucks:Server:removeCard", function() 
 	local src = source
     local Player = QBCore.Functions.GetPlayer(src)
     if not Player then return end
     local chance = math.random(1,100)
 
 
-    if chance < 26 then
+    if chance < 75 then
     exports['qb-inventory']:RemoveItem(src, "hacking_device", 1) 
     TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items["hacking_device"], "remove", 1)  
     else
@@ -20,42 +20,40 @@ end)
 
 
 
-RegisterServerEvent('Polar-ArmoredTrucks:server:UpdatePlates', function(plate)
+RegisterServerEvent('Polar-ArmoredTrucks:Server:UpdatePlates', function(plate)
     robbedplates[plate] = true
-    TriggerClientEvent('Polar-ArmoredTrucks:client:UpdatePlates', -1, plate)
+    TriggerClientEvent('Polar-ArmoredTrucks:Client:UpdatePlates', -1, plate)
 end)
 
-RegisterServerEvent('Polar-ArmoredTrucks:server:RemoveDoors', function(truck)
-    TriggerClientEvent('Polar-ArmoredTrucks:client:RemoveDoors', -1, truck)
+RegisterServerEvent('Polar-ArmoredTrucks:Server:RemoveDoors', function(truck)
+    TriggerClientEvent('Polar-ArmoredTrucks:Client:RemoveDoors', -1, truck)
 end)
 
-RegisterServerEvent('Polar-ArmoredTrucks:server:ThermitePtfx', function(coords)
-    TriggerClientEvent('Polar-ArmoredTrucks:client:ThermitePtfx', -1, coords)
+RegisterServerEvent('Polar-ArmoredTrucks:Server:ThermitePtfx', function(coords)
+    TriggerClientEvent('Polar-ArmoredTrucks:Client:ThermitePtfx', -1, coords)
 end)
 
-RegisterServerEvent('Polar-ArmoredTrucks:server:receiveItem', function(netId)
+RegisterServerEvent('Polar-ArmoredTrucks:Server:receiveItem', function(netId)
 	local src = source
     local Player = QBCore.Functions.GetPlayer(src)
     if not Player then return end
 
     local entity = NetworkGetEntityFromNetworkId(netId)
-    if not DoesEntityExist(entity) then return end
-    if GetEntityModel(entity) ~= 'stockade' then
+    if not DoesEntityExist(entity) then 
         exports['qb-core']:ExploitBan(src, "banktrucks-no-stockade")
-        return
-    end
+    return end
     
     local plate = GetVehicleNumberPlateText(entity)
     if lootedtrucks[plate] then return end
     lootedtrucks[plate] = true
-    TriggerClientEvent('Polar-ArmoredTrucks:client:UpdateLooted', -1, plate)
+    TriggerClientEvent('Polar-ArmoredTrucks:Client:UpdateLooted', -1, plate)
 
     -- inked money bags
     reward()
 end)
 
 
-QBCore.Functions.CreateCallback('Polar-ArmoredTrucks:server:getCops', function(source, cb)
+QBCore.Functions.CreateCallback('Polar-ArmoredTrucks:Server:getCops', function(source, cb)
 	local amount = 0
     for k, v in pairs(QBCore.Functions.GetQBPlayers()) do
         if v.PlayerData.job.name == "police" and v.PlayerData.job.onduty then
@@ -65,23 +63,34 @@ QBCore.Functions.CreateCallback('Polar-ArmoredTrucks:server:getCops', function(s
     cb(amount)
 end)
 
-QBCore.Functions.CreateCallback('Polar-ArmoredTrucks:server:getConfig', function(source, cb)
+QBCore.Functions.CreateCallback('Polar-ArmoredTrucks:Server:getConfig', function(source, cb)
     cb(robbedplates, lootedtrucks)
 end)
 
+function reward()
+    local luck = math.random(1,100)
 
+    if luck < 30 then
+        
+    else
+        TriggerEvent('Polar-BankTruck:Server:BankNotes')
+    end
+
+end
 
 RegisterNetEvent('Polar-BankTruck:Server:BankNotes', function()
-
     local src = source
+    local Player = QBCore.Functions.GetPlayer(src)
+   
     local item = "markedbills"
     local amount = 1
     local info = {worth = math.random(10000, 30000)}
+    Wait(50)
     exports['qb-inventory']:AddItem(src, item, amount, false, info)
     TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[item], "add", amount) 
-    TriggerEvent("qb-log:server:CreateLog", "banktrucks", "Banktruck Rewards", "default", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' Received the following from the bank truck. **Loot**: '..amount.. ' x '.. item .. " worth " .. info .. "")
+    TriggerEvent("qb-log:Server:CreateLog", "banktrucks", "Banktruck Rewards", "default", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' Received the following from the bank truck. **Loot**: '..amount.. ' x '.. item .. " worth " .. info .. "")
 
-    Wait(150)
+   
 
 end)
 
@@ -95,6 +104,8 @@ end)
 
 function sped()
     local src = source
+    local Player = QBCore.Functions.GetPlayer(src)
+  
 
 
     -- Sped Rewards
@@ -119,29 +130,29 @@ function sped()
     if tier == 1 then
         exports['qb-inventory']:AddItem(src, "goldbar", 1, false)
         TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items["goldbar"], "add", 1)
-        TriggerEvent("qb-log:server:CreateLog", "banktrucks", "Banktruck Rewards", "default", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' Received the following from the bank truck. **Loot**: '.."1".. ' x '.. "markedbills")
+        TriggerEvent("qb-log:Server:CreateLog", "banktrucks", "Banktruck Rewards", "default", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' Received the following from the bank truck. **Loot**: '.."1".. ' x '.. "markedbills")
     elseif tier == 2 then
         exports['qb-inventory']:AddItem(src, "diamond", 1, false)
         TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items["diamond"], "add", 1)
-        TriggerEvent("qb-log:server:CreateLog", "banktrucks", "Banktruck Rewards", "default", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' Received the following from the bank truck. **Loot**: '.."3".. ' x '.. "markedbills")
+        TriggerEvent("qb-log:Server:CreateLog", "banktrucks", "Banktruck Rewards", "default", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' Received the following from the bank truck. **Loot**: '.."3".. ' x '.. "markedbills")
     elseif tier == 3 then
         local item = 'emerald'
         local amount = math.random(1,1)
         exports['qb-inventory']:AddItem(src, item, amount, false)
         TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[item], "add", amount)
-        TriggerEvent("qb-log:server:CreateLog", "banktrucks", "Banktruck Rewards", "black", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' Received the following from the bank truck. **Loot**: '..amount.. ' x '.. item "")
+        TriggerEvent("qb-log:Server:CreateLog", "banktrucks", "Banktruck Rewards", "black", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' Received the following from the bank truck. **Loot**: '..amount.. ' x '.. item "")
     elseif tier == 4 then
         exports['qb-inventory']:AddItem(src, "ruby", 1, false)
         TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items["ruby"], "add", 1)
-        TriggerEvent("qb-log:server:CreateLog", "banktrucks", "Banktruck Rewards", "black", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' Received the following from the bank truck. **Loot**: '.."1".. ' x '.. "security_card_04")
+        TriggerEvent("qb-log:Server:CreateLog", "banktrucks", "Banktruck Rewards", "black", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' Received the following from the bank truck. **Loot**: '.."1".. ' x '.. "security_card_04")
     elseif tier == 5 then
         exports['qb-inventory']:AddItem(src, "sapphire", 1, false)
         TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items["sapphire"], "add", 1)
-        TriggerEvent("qb-log:server:CreateLog", "banktrucks", "Banktruck Rewards", "green", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' Received the following from the bank truck. **Loot**: '.."1".. ' x '.. "security_card_01")
+        TriggerEvent("qb-log:Server:CreateLog", "banktrucks", "Banktruck Rewards", "green", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' Received the following from the bank truck. **Loot**: '.."1".. ' x '.. "security_card_01")
     elseif tier == 6 then
         exports['qb-inventory']:AddItem(src, "bluediamond", 1, false)
         TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items["bluediamond"], "add", 1)
-        TriggerEvent("qb-log:server:CreateLog", "banktrucks", "Banktruck Rewards", "yellow", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' Received the following from the bank truck. **Loot**: '.."1".. ' x '.. "security_card_02")       
+        TriggerEvent("qb-log:Server:CreateLog", "banktrucks", "Banktruck Rewards", "yellow", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' Received the following from the bank truck. **Loot**: '.."1".. ' x '.. "security_card_02")       
     end
 
 

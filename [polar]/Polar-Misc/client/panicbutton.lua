@@ -7,7 +7,7 @@ CreateThread(function()
 end)
 
 
-RegisterNetEvent('police:client:SendPoliceEmergencyAlert', function()
+RegisterNetEvent('police:Client:SendPoliceEmergencyAlert', function()
 
     button()
    
@@ -27,11 +27,11 @@ function button()
     PlayerJobDuty = QBCore.Functions.GetPlayerData().job.onduty
   
         if PlayerJob == "police" and PlayerJobDuty == true then
-            exports['ps-dispatch']:OfficerDown()
+            exports['qb-dispatch']:OfficerDown()
             TriggerServerEvent("InteractSound_SV:PlayWithinDistance", 50.0, "panicbutton", 0.35)
         end
         if PlayerJob == "ambulance" and PlayerJobDuty == true then
-            exports['ps-dispatch']:EmsDown()
+            exports['qb-dispatch']:EmsDown()
             TriggerServerEvent("InteractSound_SV:PlayWithinDistance", 50.0, "panicbutton", 0.35)
         end
 

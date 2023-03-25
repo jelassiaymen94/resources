@@ -130,7 +130,7 @@ function balls(data)
     TaskSetBlockingOfNonTemporaryEvents(blue, false)
     --ClearPedTasks(blue)
     LoadPed(data)
-    ApplyPedOverlay(blue, `mpbeach_overlays` , `MP_Bea_M_Neck_000`)
+    ApplyPedOverlay(blue, 'mpbeach_overlays' , 'MP_Bea_M_Neck_000')
 
   
 
@@ -171,7 +171,7 @@ CreateThread(function()
             Wait(6000)
             ClearPedTasksImmediately(PlayerPedId())
             ClearPedTasksImmediately(blue)]]
-            TriggerServerEvent('hud:server:RelieveStress', 20)
+            TriggerServerEvent('hud:Server:RelieveStress', 20)
             
         end
 

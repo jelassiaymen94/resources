@@ -1,6 +1,6 @@
 Config = {} 
 Config.img = "qb-inventory/html/images/"
-Config.Debug = false
+Config.Debug = true
 
 Config.Job = nil
 
@@ -50,16 +50,8 @@ Config.Stashes = {
         max = 18.3,
         slots = 5,
         weight = 5,
-        numba = '1',
+        numba = 'container_large_7691',
     },
-    --[[[2] = {--triads subway stash 1
-        coords = vector3(-805.4885, -717.9180, -16.8630),
-        min = -16.3,
-        max = -18.3,
-        slots = 100,
-        weight = 2000,
-        numba = 'container_large_5900',
-    },]]
     
 
 
@@ -142,7 +134,7 @@ Config.TraderPeds = {
             item = "refined_aluminum",
             amount = 4,
             removeitem = "aluminum",
-            removeitemamount = 40,
+            removeitemamount = 20,
         },
       
         
@@ -157,7 +149,7 @@ Config.TraderPeds = {
             item = "refined_iron",
             amount = 4,
             removeitem = "iron",
-            removeitemamount = 40,
+            removeitemamount = 20,
         },
       
         
@@ -170,9 +162,9 @@ Config.TraderPeds = {
         label = 'Talk to Mabir',
         product = {
             item = "refined_steel",
-            amount = 4,
+            amount = 3,
             removeitem = "steel",
-            removeitemamount = 40,
+            removeitemamount = 20,
         },
       
         
@@ -187,7 +179,7 @@ Config.TraderPeds = {
             item = "refined_plastic",
             amount = 4,
             removeitem = "plastic",
-            removeitemamount = 40,
+            removeitemamount = 20,
         },
       
         
@@ -202,7 +194,7 @@ Config.TraderPeds = {
             item = "refined_copper",
             amount = 4,
             removeitem = "copper",
-            removeitemamount = 40,
+            removeitemamount = 20,
         },
       
         
@@ -217,7 +209,7 @@ Config.TraderPeds = {
             item = "refined_glass",
             amount = 4,
             removeitem = "glass",
-            removeitemamount = 40,
+            removeitemamount = 20,
         },
       
         
@@ -232,47 +224,26 @@ Config.TraderPeds = {
             item = "refined_rubber",
             amount = 4,
             removeitem = "rubber",
-            removeitemamount = 40,
+            removeitemamount = 20,
         },
       
         
     },
-
-    [9] = { -- purified water
-        coords = vector4(-1996.1952, 3397.2236, 31.7219, 340.2658),
-        model = "csb_ramp_mex",
-        scene = "WORLD_HUMAN_AA_SMOKE",
-        icon = 'fa-solid fa-bolt',
-        label = 'Talk to Fabir',
-        citizenid = '11',
-        product = {
-            item = "purifiedwater",
-            amount = 10,
-            removeitem = "plastic",
-            removeitemamount = 10,
-        },
-  
-    
-    },
-
-
-   --[[ [10] = { -- purified water
-        coords = vector4(-953.6766, -723.1390, 19.9055, 88.7234),
-        model = "s_m_m_pilot_01",
+   --[[ [9] = { -- aluminum
+        coords = vector4(-35.35, -2689.88, 6.0, 44.67),
+        model = "s_m_m_gardener_01",
         scene = "WORLD_HUMAN_DRUG_DEALER",
         icon = 'fa-solid fa-bolt',
-        label = 'Talk to Vabir',
+        label = 'Talk to Fabir',
         product = {
-            item = "01_monkeyman",
-            amount = 1,
-            removeitem = "01_monkeymansigned",
-            removeitemamount = 1,
+            item = "refined_aluminum",
+            amount = 4,
+            removeitem = "aluminum",
+            removeitemamount = 20,
         },
-  
-    
+      
+        
     },]]
-
-
 }
 
 
@@ -280,15 +251,9 @@ Config.TraderPeds = {
 Config.Weapons = {
     'weapon_assaultrifle',
     'weapon_assaultrifle2',
-    'weapon_microsmg2',
-    'weapon_microsmg3',
+    'weapon_uzi',
+    'weapon_mac10',
 
 
 
 }
-
-
-
-
-
-

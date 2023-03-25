@@ -71,8 +71,8 @@ function hitup(bool)
 
     elseif item == 'weapon_fnx45' then
 
-        removeitem(6, 75, 1, item, 'refined_iron', 1, 'refined_aluminum', 1, 'pistolbarrel', 1, 
-        'pistolbody', 1, 'pistolgrip', 1, 'carbon', 5) -- done
+        removeitem(6, 35, 1, item, 'refined_iron', 1, 'refined_aluminum', 1, 'pistolbarrel', 1, 
+        'pistolbody', 1, 'pistolgrip', 1, 'copper', 4) -- done
 
     elseif item == 'ironoxcidepowder' then
 
@@ -96,15 +96,15 @@ function hitup(bool)
 
     elseif item == 'weapon_pipebomb' then
 
-        removeitem(4, 85, 1, item, 'gunpowder', 10, 'refined_aluminum', 2, 'rubber', 3, 'thermitepowder', 1)  -- done***
+        removeitem(4, 75, 1, item, 'gunpowder', 10, 'refined_aluminum', 2, 'rubber', 3, 'thermitepowder', 1)  -- done***
 
-    elseif item == 'weapon_grenade' then
+    elseif item == 'weapon_m67' then
 
         removeitem(4, 100, 1, item, 'metalscrap', 6, 'refined_aluminum', 2, 'thermitepowder', 2, 'refined_iron', 1)  -- done***
 
     elseif item == 'weapon_molotov' then
 
-        removeitem(3, 60, 1, item, 'weapon_petrolcan', 1, 'bottle', 2, 'cloth', 1)  -- done***
+        removeitem(3, 60, 2, item, 'weapon_petrolcan', 2, 'bottle', 2, 'cloth', 1)  -- done***
 
     elseif item == 'handcuffs' then
 
@@ -114,17 +114,17 @@ function hitup(bool)
 
         removeitem(2, 30, 1, item, 'gunpowder', 2, 'copperore', 4) -- done***
 
-    elseif item == 'weapon_microsmg3' then
+    elseif item == 'weapon_mac10' then
 
-        removeitem(6, 130, 1, item, 'refined_steel', 1, 'refined_copper', 1, 'smgbarrel', 1, 'smgbody', 1, 'smggrip', 1, 'carbon', 5)-- done***
+        removeitem(6, 130, 1, item, 'refined_iron', 2, 'refined_copper', 2, 'smgbarrel', 1, 'smgbody', 1, 'smggrip', 1, 'rubber', 5)-- done***
 
-    elseif item == 'weapon_microsmg2' then
+    elseif item == 'weapon_uzi' then
 
-        removeitem(6, 110, 1, item, 'refined_steel', 1, 'refined_copper', 1, 'smgbarrel', 1, 'smgbody', 1, 'smggrip', 1, 'carbon', 5)-- done***
+        removeitem(6, 110, 1, item, 'refined_steel', 2, 'smgbarrel', 1, 'smgbody', 1, 'smggrip', 1, 'rubber', 5, 'refined_copper', 2)-- done***
 
     elseif item == 'weapon_pistol50' then
 
-        removeitem(6, 150, 1, item, 'refined_steel', 2, 'refined_aluminum', 1, 'pistolbarrel', 1, 'pistolbody', 1, 'pistolgrip', 1, 'carbon', 5)-- done***
+        removeitem(6, 150, 1, item, 'refined_steel', 5, 'refined_aluminum', 5, 'pistolbarrel', 1, 'pistolbody', 1, 'pistolgrip', 1, 'rubber', 1)-- done***
              
     elseif item == 'rifle_ammo' then
 
@@ -132,50 +132,12 @@ function hitup(bool)
 
     elseif item == 'weapon_assaultrifle2' then
 
-        removeitem(7, 170, 1, item, 'carbon', 10, 'riflereciever', 1, 'rifletrigger', 1, 'riflebody', 1, 'refined_aluminum', 2, 'refined_steel', 2, 'refined_copper', 1)
+        removeitem(7, 170, 1, item, 'carbon', 5, 'riflereciever', 1, 'rifletrigger', 1, 'riflegrip', 1, 'refined_aluminum', 1, 'refined_steel', 1, 'rubber', 5, 'refined_copper', 1)
 
     elseif item == 'weapon_assaultrifle' then
 
-        removeitem(7, 190, 1, item, 'carbon', 10, 'riflereciever', 1, 'rifletrigger', 1, 'riflebody', 1, 'refined_aluminum', 2, 'refined_steel', 2, 'refined_copper', 1)
+        removeitem(7, 190, 1, item, 'carbon', 10, 'riflereciever', 5, 'rifletrigger', 1, 'riflegrip', 1, 'refined_aluminum', 1, 'refined_steel', 1, 'rubber', 5, 'refined_copper', 1)
 
-    --parts
-    elseif item == 'pistolbarrel' then
-
-        removeitem(4, 25, 1, item, 'metalscrap', 5, 'refined_aluminum', 1, 'ironore', 5, 'copper', 5)  -- done***
-
-    elseif item == 'pistolbody' then
-
-        removeitem(4, 25, 1, item, 'metalscrap', 5, 'refined_steel', 1, 'ironore', 5, 'copper', 5)  -- done***
-        
-    elseif item == 'pistolgrip' then
-
-        removeitem(4, 25, 1, item, 'metalscrap', 5, 'refined_rubber', 1, 'ironore', 5, 'copper', 5)  -- done***
-
-    elseif item == 'smgbarrel' then
-
-        removeitem(4, 35, 1, item, 'metalscrap', 10, 'refined_aluminum', 2, 'ironore', 5, 'copper', 5)  -- done***
-
-    elseif item == 'smgbody' then
-
-        removeitem(4, 35, 1, item, 'metalscrap', 10, 'refined_steel', 2, 'ironore', 5, 'copper', 5)  -- done***
-        
-    elseif item == 'smggrip' then
-
-        removeitem(4, 35, 1, item, 'metalscrap', 10, 'refined_rubber', 2, 'ironore', 5, 'copper', 5)  -- done***
-
-    elseif item == 'riflebody' then
-
-        removeitem(4, 45, 1, item, 'metalscrap', 10, 'refined_aluminum', 2, 'ironore', 10, 'copper', 5)  -- done***
-
-    elseif item == 'rifletrigger' then
-
-        removeitem(5, 45, 1, item, 'metalscrap', 10, 'refined_steel', 2, 'ironore', 10, 'copper', 5, 'goldingot', 5)  -- done***
-        
-    elseif item == 'riflereciever' then
-
-        removeitem(5, 45, 1, item, 'metalscrap', 10, 'refined_rubber', 2, 'ironore', 10, 'copper', 5, 'silveringot', 5)  -- done***
-
-    -- else
     else 
 
     TriggerClientEvent('QBCore:Notify', src,"No item Choosen", red, alerttime)

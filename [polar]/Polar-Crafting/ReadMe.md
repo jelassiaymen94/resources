@@ -13,11 +13,11 @@ Preview: https://youtu.be/UdPLwmzGQv4
 
 -  Qb-Core
 
--  Ps-Ui
+-  Polar-UI
 
 # Optional
 
-- Ps-Dispatch
+- qb-dispatch
 
 - qb-phone (Mail)
 

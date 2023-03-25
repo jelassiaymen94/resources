@@ -4,7 +4,7 @@ local PlayerData = {}
 local currentWalk = 'default'
 
 -- Walk Styles Menu --
-RegisterNetEvent('Polar-Misc:client:Menu', function()
+RegisterNetEvent('Polar-Misc:Client:Menu', function()
     local walkStyles = {}
 
    
@@ -12,7 +12,7 @@ RegisterNetEvent('Polar-Misc:client:Menu', function()
             header = 'Refresh Current Walk Style',
             params = {
                 isServer = true,
-                event = 'Polar-Misc:server:GetWalkStyle',
+                event = 'Polar-Misc:Server:GetWalkStyle',
             }
         }
 
@@ -20,7 +20,7 @@ RegisterNetEvent('Polar-Misc:client:Menu', function()
             walkStyles[#walkStyles+1] = {
                 header = Config.Styles[r].name,
                 params = {
-                    event = 'Polar-Misc:client:SetWalkStyle',
+                    event = 'Polar-Misc:Client:SetWalkStyle',
                     args = Config.Styles[r].value
                 }
             }
@@ -29,7 +29,7 @@ RegisterNetEvent('Polar-Misc:client:Menu', function()
         walkStyles[#walkStyles+1] = {
             header = 'Close Menu',
             params = {
-                event = 'qb-menu:client:closeMenu',
+                event = 'qb-menu:Client:closeMenu',
             }
         }
 
@@ -53,25 +53,25 @@ local function WalkStyle(walk)
 		ResetPedWeaponMovementClipset(ped)
 		ResetPedStrafeClipset(ped)
 	end
-    TriggerServerEvent('Polar-Misc:server:SetWalkStyle', walk)
+    TriggerServerEvent('Polar-Misc:Server:SetWalkStyle', walk)
    
 end
 
 -- Reset Walking Style --
 local function GetWalkStyle()
-    TriggerServerEvent('Polar-Misc:server:GetWalkStyle')
+    TriggerServerEvent('Polar-Misc:Server:GetWalkStyle')
 end
 exports('GetWalkStyle', GetWalkStyle)
 
 -- Set Walk Style --
-RegisterNetEvent('Polar-Misc:client:SetWalkStyle', function(walk)
+RegisterNetEvent('Polar-Misc:Client:SetWalkStyle', function(walk)
     currentWalk = walk
 	WalkStyle(walk)
 end)
 
 -- Menu Command --
 RegisterCommand('walks', function()
-    TriggerEvent('Polar-Misc:client:Menu')
+    TriggerEvent('Polar-Misc:Client:Menu')
 end, false)
 
 -- Constantly Reset Walk Style --
