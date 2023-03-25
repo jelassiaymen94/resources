@@ -66,15 +66,16 @@ Config = {
 		['burgershot'] = { MinAmountforTicket = 50, PayPerTicket = 50 , Commission = 0.10, },
 		['catcafe'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.10, },
 		['henhouse'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.10, },
-		['pizzathis'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.10, },
+		['pizzathis'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 1.0, },
 		['popsdiner'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.10, },
 		['tequilala'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.10, },
-		['vanilla'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.10, },
+		['vu'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 1.0, },
 		['tuner'] = { MinAmountforTicket = 0, PayPerTicket = 0, Commission = 0.10, },
 		['lostmc'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.10, gang = true, }, -- Example of a gang being supported
 		--['lostmech'] = { MinAmountforTicket = 0, PayPerTicket = 0, Commission = 0.10, },
 		['mechanic'] = { MinAmountforTicket = 0, PayPerTicket = 0, Commission = 0.10, },
-
+		['maxdamage'] = { MinAmountforTicket = 0, PayPerTicket = 0, Commission = 1.00, },
+		['taco'] = { MinAmountforTicket = 0, PayPerTicket = 0, Commission = 1.00, },
 		['wuchang'] = { MinAmountforTicket = 0, PayPerTicket = 0, Commission = 0.10, },
 
 
@@ -86,7 +87,26 @@ Config = {
 	-- This adds the ability to add multiple locations for each job
 	-- Basically adding ready made locations, all you need to a vector4 and to confrim if you need a new prop in that location
     CustomCashRegisters = {
-
+		["pizzathis"] = { -- Player job role restriction
+		{ coords = vector4(811.4328, -750.60050, 26.7808, 75.3316), prop = false, }, -- vector4 to place the till and the way it faces
+		--{ coords = vector4(-1184.34, -880.51, 13.93, 302.04), prop = true, }, -- "prop = true" spawns a prop at the coords
+		},
+		["vu"] = { -- Player job role restriction
+		{ coords = vector4(129.0562, -1284.9690, 29.3693, 120.1545), prop = false, }, -- vector4 to place the till and the way it faces
+		--{ coords = vector4(-1184.34, -880.51, 13.93, 302.04), prop = true, }, -- "prop = true" spawns a prop at the coords
+		},
+		["maxdamage"] = { -- Player job role restriction
+		{ coords = vector4(18.5146, -1108.8983, 30.0323, 175.8372), prop = false, }, -- vector4 to place the till and the way it faces
+		--{ coords = vector4(-1184.34, -880.51, 13.93, 302.04), prop = true, }, -- "prop = true" spawns a prop at the coords
+		},
+		["otto"] = { -- Player job role restriction
+		{ coords = vector4(804.4574, -829.6972, 26.2369, 180.8524), prop = true, }, -- vector4 to place the till and the way it faces
+		--{ coords = vector4(-1184.34, -880.51, 13.93, 302.04), prop = true, }, -- "prop = true" spawns a prop at the coords
+		},
+		["taco"] = { -- Player job role restriction
+		{ coords = vector4(10.0886, -1606.1912, 29.4933, 233.3182), prop = true, }, -- vector4 to place the till and the way it faces
+		--{ coords = vector4(-1184.34, -880.51, 13.93, 302.04), prop = true, }, -- "prop = true" spawns a prop at the coords
+		},
 	},
 
 	-- The /polcharge command requires specific jobs to be set
