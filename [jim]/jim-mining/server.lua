@@ -62,7 +62,7 @@ RegisterServerEvent('jim-mining:MineReward', function()
 		local randomChance = math.random(1, 1)
 		Player.Functions.AddItem('stone', randomChance, false, {["quality"] = nil})
 		TriggerClientEvent("inventory:client:ItemBox", source, QBCore.Shared.Items["stone"], "add", randomChance)
-		--TriggerEvent("qb-log:server:CreateLog", "jobitemadded", "JIM MINING", "blue", "**" .. Player .. "** Add " .. randomChance .. " stone")
+		TriggerEvent("qb-log:server:CreateLog", "jobitemadded", "JIM MINING", "blue", "**" .. Player .. "** Add " .. randomChance .. " stone")
 		
 	end
 end)
