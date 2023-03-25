@@ -17,7 +17,7 @@ Config.BossMenus = {
    --     vector3(907.24, -150.19, 74.17),
    -- },
     ['wuchang'] = {
-      vector3(-819.7119, -698.0801, 28.1010),
+      vector3(-816.96, -699.1, 31.94),
     },
     ['tuner'] = {
         vector3(125.56, -3007.39, 6.86),
@@ -25,14 +25,8 @@ Config.BossMenus = {
     ['mechanic'] = {
         vector3(988.88, -135.67, 73.88),
     },
-    ['pizzathis'] = {
-        vector3(797.0854, -751.3807, 31.1964),
-    },
-    ['vu'] = {
-        vector3(96.3458, -1292.7917, 29.0654),
-    },
-    ['taco'] = {
-        vector3(11.0971, -1609.3677, 0.4835),
+    ['organics'] = {
+        vector3(-1217.9350, -1483.6053, 4.1716),
     },
 }
 
@@ -50,7 +44,7 @@ Config.BossMenuZones = {
   --      { coords = vector3(907.24, -150.19, 74.17), length = 1.0, width = 3.4, heading = 327.0, minZ = 73.17, maxZ = 74.57 },
   --  },
     ['wuchang'] = {
-        { coords = vector3(-819.7119, -698.0801, 28.1010), length = 1.2, width = 1.05, heading = 0.0, minZ = 27.407, maxZ = 29.67 },
+        { coords = vector3(-816.96, -699.1, 31.94), length = 1.2, width = 1.05, heading = 0.0, minZ = 31.07, maxZ = 34.67 },
    },
     ['tuner'] = {
         { coords = vector3(125.56, -3007.39, 6.86), length = 1.15, width = 2.6, heading = 353.0, minZ = 5.86, maxZ = 7.869 },
@@ -58,14 +52,8 @@ Config.BossMenuZones = {
     ['mechanic'] = {
         { coords = vector3(988.88, -135.67, 73.88), length = 1.15, width = 2.6, heading = 0.0, minZ = 72.86, maxZ = 75.869 },
     },
-    ['pizzathis'] = {
-        { coords = vector3(797.0854, -751.3807, 31.1964), length = 1.15, width = 2.6, heading = 191.0, minZ = 30.86, maxZ = 32.869 },
-    },
-    ['vu'] = {
-        { coords = vector3(96.3458, -1292.7917, 29.0654), length = 1.15, width = 2.6, heading = 300.0, minZ = 28.86, maxZ = 29.869 },
-    },
-    ['taco'] = {
-        { coords = vector3(11.0971, -1609.3677, 0.4835), length = 1.15, width = 2.6, heading = 300.0, minZ = -0.4, maxZ = 1.4869 },
+    ['organics'] = {
+        { coords = vector3(-1217.9350, -1483.6053, 4.1716), length = 1.15, width = 2.6, heading = 191.0, minZ = 3.86, maxZ = 5.869 },
     },
 }
 -- vector3(988.88, -135.67, 74.88)
