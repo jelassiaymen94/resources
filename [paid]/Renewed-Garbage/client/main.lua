@@ -133,7 +133,7 @@ RegisterNetEvent('Renewed-Garbage:client:OpenMainMenu', function()
         header = "Exit",
         icon = "fa-solid fa-circle-xmark",
         params = {
-            event = "ps-ui:client:closeMenu",
+            event = "Polar-UI:client:closeMenu",
         }
     }
 
@@ -200,7 +200,7 @@ RegisterNetEvent('Renewed-Garbage:client:NewPlace', function(location, NetID, pl
     if NetID and plate then
         CachedNet = NetID
         local vehicle = NetToVeh(NetID)
-        if not Config.RenewedFuel then exports['ps-fuel']:SetFuel(vehicle, 100.0) end
+        if not Config.RenewedFuel then exports['LegacyFuel']:SetFuel(vehicle, 100.0) end
         TriggerServerEvent("qb-vehiclekeys:server:AcquireVehicleKeys", plate)
     end
 

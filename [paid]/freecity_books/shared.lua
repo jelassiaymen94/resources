@@ -60,8 +60,4 @@ Config.Items = {                     -- Add and create here your items, Your ima
         name = 'LS Imports Car Catalog',
         numberOfPages = 6,
     },
-    ['newsissueone'] = {
-        name = 'Weekly Weazel Issue # 1',
-        numberOfPages = 6,
-    },
 }
