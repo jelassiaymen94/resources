@@ -308,7 +308,7 @@ function QBCore.Player.CreatePlayer(PlayerData, Offline)
     end
 
     function self.Functions.AddMoney(moneytype, amount, reason)
-        reason = reason or 'SUSPICIOUS'
+        reason = reason or 'unknown'
         moneytype = moneytype:lower()
         amount = tonumber(amount)
         if amount < 0 then return end

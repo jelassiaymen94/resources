@@ -50,7 +50,7 @@ end)
 
 function targets()
     props()
-    
+    print('hi')
     exports['qb-target']:AddBoxZone("hi", vector3(157.47, -1316.6, 29.5), 1, 1, {
         name = "hi",
         heading = 145.5,

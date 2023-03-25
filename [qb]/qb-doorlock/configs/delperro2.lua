@@ -3,7 +3,8 @@
 -- delperro2 created by Oldnewz
 Config.DoorList['delperro2'] = {
     pickable = true,
-    items = { ['delperrokey2'] = 1 },
+    --items = { ['delperrokey2'] = 1 },
+    authorizedCitizenIDs = { ['166'] = true },
     doorRate = 1.0,
     distance = 2,
     audioRemote = false,

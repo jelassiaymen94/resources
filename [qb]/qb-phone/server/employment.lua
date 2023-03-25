@@ -3,7 +3,7 @@ local QBCore = exports['qb-core']:GetCoreObject()
 local CachedJobs = {}
 local CachedPlayers = {}
 
-
+ 
 local function getMyJobs(cid)
     local jobs = {}
     local employees = {}

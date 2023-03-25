@@ -1,6 +1,6 @@
 
 
--- eclipse1 created by Oldnewz
+-- eclipse1 created by Oldnewz 681
 Config.DoorList['eclipse1'] = {
     audioRemote = false,
     distance = 2,
@@ -9,7 +9,8 @@ Config.DoorList['eclipse1'] = {
     locked = true,
     doorType = 'door',
     fixText = false,
-    items = { ['eclipsekey1'] = 1 },
+--    items = { ['eclipsekey1'] = 1 },
+    authorizedCitizenIDs = { ['681'] = true },
     pickable = true,
     doorRate = 1.0,
     objCoords = vec3(-779.314453, 317.878235, 176.917542),

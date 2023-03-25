@@ -38,11 +38,11 @@ AddEventHandler('playerDropped', function()
         if vehicles then
             for _, v in pairs(vehicles) do
                 local playTime = financetimer[v.citizenid]
-                --[[if v.balance >= 1 and playTime then
+                if v.balance >= 1 and playTime then
                     local newTime = math.floor(v.financetime - (((GetGameTimer() - playTime) / 1000) / 60))
                     if newTime < 0 then newTime = 0 end
                     MySQL.update('UPDATE player_vehicles SET financetime = ? WHERE plate = ?', {newTime, v.plate})
-                end]]
+                end
             end
             if vehicles[1] and financetimer[vehicles[1].citizenid] then financetimer[vehicles[1].citizenid] = nil end
         end

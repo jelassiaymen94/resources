@@ -321,29 +321,29 @@ bankAuth = true,
         },
     },
     
-    ['henhouse'] = {
-        label = 'Hen House',
+    ['taco'] = {
+        label = 'Taco Truck',
         defaultDuty = true,
         grades = {
             ['0'] = {
-                name = 'Recruit',
-                payment = 100
+                name = 'Trainee',
+                payment = 2200
             },
             ['1'] = {
-                name = 'Worker',
-                payment = 150
+                name = 'Employee',
+                payment = 2500
             },
             ['2'] = {
-                name = 'Shift Manager',
+                name = 'Manager',
+                payment = 3000,
                 isboss = true,
-bankAuth = true,
-                payment = 150
+                bankAuth = true,
             },
-            ['4'] = {
-                name = 'Owner',
+            ['3'] = {
+                name = 'Boss',
+                payment = 3500,
                 isboss = true,
-bankAuth = true,
-                payment = 50
+                bankAuth = true,
             },
         },
     },
@@ -658,21 +658,21 @@ bankAuth = true,
             grades = {
                 ['0'] = {
                         name = 'Ottos Recruit',
-                        payment = 100
+                        payment = 3000
                 },
                 ['1'] = {
                         name = 'Ottos Mechanic',
-                        payment = 125
+                        payment = 3250
                 },
                 ['2'] = {
                         name = 'Ottos Manager',
-                        payment = 150,
+                        payment = 3375,
                         isboss = true,
                         bankAuth = true,
                 },
                 ['3'] = {
                         name = 'Ottos Owner',
-                        payment = 200,
+                        payment = 3500,
                         isboss = true,
                         bankAuth = true,
                 },     

@@ -67,9 +67,9 @@ local function smashVitrine(k)
         local plyCoords = GetOffsetFromEntityInWorldCoords(ped, 0, 0.6, 0)
         local pedWeapon = GetSelectedPedWeapon(ped)
         if math.random(1, 100) <= 80 and not IsWearingHandshoes() then
-            TriggerServerEvent("evidence:Server:CreateFingerDrop", plyCoords)
+            TriggerServerEvent("evidence:server:CreateFingerDrop", plyCoords)
         elseif math.random(1, 100) <= 5 and IsWearingHandshoes() then
-            TriggerServerEvent("evidence:Server:CreateFingerDrop", plyCoords)
+            TriggerServerEvent("evidence:server:CreateFingerDrop", plyCoords)
             QBCore.Functions.Notify("You've left a fingerprint on the glass", "error")
         end
         smashing = true
@@ -79,19 +79,19 @@ local function smashVitrine(k)
             disableMouse = false,
             disableCombat = true,
         }, {}, {}, {}, function() -- Done
-            TriggerServerEvent('qb-jewellery:Server:setVitrineState', "isOpened", true, k)
-            TriggerServerEvent('qb-jewellery:Server:setVitrineState', "isBusy", false, k)
-            TriggerServerEvent('qb-jewellery:Server:vitrineReward')
-            TriggerServerEvent('qb-jewellery:Server:setTimeout')
-            --TriggerServerEvent('police:Server:policeAlert', 'Robbery in progress')
+            TriggerServerEvent('qb-jewellery:server:setVitrineState', "isOpened", true, k)
+            TriggerServerEvent('qb-jewellery:server:setVitrineState', "isBusy", false, k)
+            TriggerServerEvent('qb-jewellery:server:vitrineReward')
+            TriggerServerEvent('qb-jewellery:server:setTimeout')
+            --TriggerServerEvent('police:server:policeAlert', 'Robbery in progress')
             smashing = false
             TaskPlayAnim(ped, animDict, "exit", 3.0, 3.0, -1, 2, 0, 0, 0, 0)
         end, function() -- Cancel
-            TriggerServerEvent('qb-jewellery:Server:setVitrineState', "isBusy", false, k)
+            TriggerServerEvent('qb-jewellery:server:setVitrineState', "isBusy", false, k)
             smashing = false
             TaskPlayAnim(ped, animDict, "exit", 3.0, 3.0, -1, 2, 0, 0, 0, 0)
         end)
-        TriggerServerEvent('qb-jewellery:Server:setVitrineState', "isBusy", true, k)
+        TriggerServerEvent('qb-jewellery:server:setVitrineState', "isBusy", true, k)
 
         CreateThread(function()
             while smashing do
@@ -114,7 +114,7 @@ local ThermiteEffect = function()
     RequestAnimDict("anim@heists@ornate_bank@thermal_charge")
     while not HasAnimDictLoaded("anim@heists@ornate_bank@thermal_charge") do Wait(50) end
     Wait(1500)
-    TriggerServerEvent("qb-jewellery:Server:ThermitePtfx")
+    TriggerServerEvent("qb-jewellery:server:ThermitePtfx")
     Wait(500)
     TaskPlayAnim(ped, "anim@heists@ornate_bank@thermal_charge", "cover_eyes_intro", 8.0, 8.0, 1000, 36, 1, 0, 0, 0)
     TaskPlayAnim(ped, "anim@heists@ornate_bank@thermal_charge", "cover_eyes_loop", 8.0, 8.0, 3000, 49, 1, 0, 0, 0)
@@ -122,9 +122,9 @@ local ThermiteEffect = function()
     ClearPedTasks(ped)
     Wait(2000)
     if Config.DoorLock == 'qb' then
-        TriggerServerEvent('qb-doorlock:Server:updateState', Config.DoorId, false, false, false, true, false, false)
+        TriggerServerEvent('qb-doorlock:server:updateState', Config.DoorId, false, false, false, true, false, false)
     elseif Config.DoorLock == 'nui' then
-        TriggerServerEvent('nui_doorlock:Server:updateState', Config.DoorId, false, false, false, true)
+        TriggerServerEvent('nui_doorlock:server:updateState', Config.DoorId, false, false, false, true)
     end
 end
 
@@ -159,7 +159,7 @@ local PlantThermite = function()
     CreateThread(function()
         Wait(15000)
         DeleteEntity(thermite)
-        exports['qb-dispatch']:VangelicoRobbery(camId)
+        exports['ps-dispatch']:VangelicoRobbery(camId)
     end)
 end
 
@@ -168,12 +168,12 @@ RegisterNetEvent('qb-jewellery:client:Thermite', function()
     QBCore.Functions.TriggerCallback('QBCore:HasItem', function(result)
         if result then 
             if math.random(1, 100) <= 85 and not IsWearingHandshoes() then
-                TriggerServerEvent("evidence:Server:CreateFingerDrop", GetEntityCoords(PlayerPedId()))
+                TriggerServerEvent("evidence:server:CreateFingerDrop", GetEntityCoords(PlayerPedId()))
             end
-            QBCore.Functions.TriggerCallback('qb-jewellery:Server:getCops', function(cops)
+            QBCore.Functions.TriggerCallback('qb-jewellery:server:getCops', function(cops)
                 if cops >= Config.RequiredCops then
                     PlantThermite()
-                    exports['Polar-UI']:Thermite(function(success)
+                    exports['ps-ui']:Thermite(function(success)
                         if success then
                             ThermiteEffect()
                         else

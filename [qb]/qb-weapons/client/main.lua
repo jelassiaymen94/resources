@@ -100,7 +100,7 @@ RegisterNetEvent('weapon:client:AddAmmo', function(type, amount, itemData)
                     QBCore.Functions.Notify(Lang:t('error.canceled'), "error")
                 end)
             else
-                QBCore.Functions.Notify('This weapon cant take anymore ammo', "error")
+                QBCore.Functions.Notify(Lang:t('This weapon cant take anymore ammo'), "error")
             end
         else
             QBCore.Functions.Notify(Lang:t('error.no_weapon'), "error")

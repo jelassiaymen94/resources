@@ -10,7 +10,7 @@ Config.DoorList['policebackgate'] = {
     objYaw = 90.0,
     objCoords = vec3(488.894806, -1017.211975, 27.149349),
     audioRemote = false,
-    distance = 2,
+    distance = 5,
     fixText = false,
     doorRate = 1.0,
     --audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
