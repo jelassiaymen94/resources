@@ -384,7 +384,7 @@ end)
 
 RegisterNetEvent("qb-inventory:client:closeinv", function()
     closeInventory()
-    exports["Renewed-Weaponscarry"]:refreshProps()
+    exports["Polar-Sub"]:refreshProps()
 end)
 
 RegisterNetEvent('inventory:client:CheckOpenState', function(type, id, label)

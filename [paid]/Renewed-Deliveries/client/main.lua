@@ -285,7 +285,7 @@ RegisterNetEvent('Renewed-Deliveries:client:TakePackage', function()
         if result then
             prop = randomTable[math.random(1, #randomTable)]
             Wait(50)
-            exports['Renewed-Weaponscarry']:carryProp(prop)
+            exports['Polar-Sub']:carryProp(prop)
         end
     end, CachedNet)
 end)
