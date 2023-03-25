@@ -15,10 +15,10 @@ Config.WhitelistedWeapons = {
     [`weapon_assaultrifle2`] = {
        ["timeOut"] = 10000
     },
-    [`weapon_microsmg2`] = {
+    [`weapon_uzi`] = {
        ["timeOut"] = 15000
     },
-    [`weapon_microsmg3`] = {
+    [`weapon_mac10`] = {
        ["timeOut"] = 15000
     },
     [`weapon_sledgehammer`] = {

@@ -4,21 +4,12 @@ Config = {
 	Debug = false, -- Set to true to show target locations
 	Locations = {
 		{ -- Vanilla Unicorn DJ Booth
-			job = "vu", -- Set this to required job role
+			job = "public", -- Set this to required job role
 			enableBooth = true, -- option to disable rather than deleting code
 			DefaultVolume = 0.1, -- 0.01 is lowest, 1.0 is max
-			radius = 25, -- The radius of the sound from the booth
+			radius = 30, -- The radius of the sound from the booth
 			coords = vector3(120.0, -1281.72, 29.48), -- Where the booth is located
 		},
-		{ -- VU VIP Room
-		job = "vu", -- "public" makes it so anyone can add music.
-		enableBooth = true,
-		DefaultVolume = 0.15,
-		radius = 7,
-		coords = vector3(111.3007, -1304.3901, 28.6876),
-		--soundLoc = vector3(113.4731, -1303.0309, 29.8930), -- Add sound origin location if you don't want the music to play from the dj booth
-		prop = `prop_radio_01`
-	},
 		{ -- Sisyphus Theater
 			job = "public", -- "public" makes it so anyone can add music.
 			enableBooth = true,
@@ -41,8 +32,6 @@ Config = {
 			radius = 30,
 			coords = vector3(-549.68, 282.64, 82.98),
 		},
-
-
 		{ -- GabzTuners Radio Prop
 			job = "public",
 			enableBooth = true,
@@ -117,16 +106,6 @@ Config = {
 	
 },
 
-{ -- Skarr Hillcrest
-job = "public",
-enableBooth = true,
-DefaultVolume = 0.2,
-radius = 20,
-coords = vector3(-859.7776, 675.8516, 152.4534),
---soundLoc = vector3(-815.17, -718.96, 32.34), -- Add sound origin location if you don't want the music to play from the dj booth
-
-},
-
 { -- Pizza This!
 job = "pizzathis",
 enableBooth = true,
@@ -138,78 +117,6 @@ prop = `prop_radio_01`
 
 },
 
-{ -- Ottos
-job = "otto",
-enableBooth = true,
-DefaultVolume = 0.2,
-radius = 20,
-coords = vector3(827.0007, -808.6041, 33.5819),
---soundLoc = vector3(804.4647, -749.1584, 26.7808), -- Add sound origin location if you don't want the music to play from the dj booth
-prop = `prop_radio_01`
-
-},
-
-{ -- LJ's House
---job = "pizzathis",
-enableBooth = true,
-DefaultVolume = 0.2,
-radius = 15,
-coords = vector3(-763.5918, 316.5329, 174.8565),
---soundLoc = vector3(804.4647, -749.1584, 26.7808), -- Add sound origin location if you don't want the music to play from the dj booth
-prop = `prop_radio_01`
-
-},
-
-{ -- Reese's Eclipse House
---job = "pizzathis",
-enableBooth = true,
-DefaultVolume = 0.2,
-radius = 15,
-coords = vector3(-763.9574, 316.5620, 221.3105),
---soundLoc = vector3(804.4647, -749.1584, 26.7808), -- Add sound origin location if you don't want the music to play from the dj booth
-prop = `prop_radio_01`
-
-},
-
-{ -- Taco!
-job = "taco",
-enableBooth = true,
-DefaultVolume = 0.2,
-radius = 15,
-coords = vector3(14.5372, -1609.0043, 29.1865),
-soundLoc = vector3(14.5372, -1609.0043, 29.1865), -- Add sound origin location if you don't want the music to play from the dj booth
-prop = `prop_radio_01`
-
-},
-
-{ -- Max Damage!
-enableBooth = true,
-DefaultVolume = 0.2,
-radius = 15,
-coords = vector3(19.9091, -1107.2761, 29.9082),
-soundLoc = vector3(19.9091, -1107.2761, 30.9082), -- Add sound origin location if you don't want the music to play from the dj booth
-prop = `prop_radio_01`
-
-},
-
-{ -- event!
-enableBooth = true,
-DefaultVolume = 0.2,
-radius = 15,
-coords = vector3(-1551.9783, -1010.9634, 12.0179),
-soundLoc = vector3(-1551.9783, -1010.9634, 12.0179), -- Add sound origin location if you don't want the music to play from the dj booth
-prop = `prop_radio_01`
-
-},
-{ --Reese 
-enableBooth = true,
-DefaultVolume = 0.1,
-radius = 35,
-coords = vector3(943.4400, -1808.0016, 1.3817),
-soundLoc = vector3(943.4400, -1808.0016, 1.3817), -- Add sound origin location if you don't want the music to play from the dj booth
-prop = `prop_radio_01`
-
-},
 
 { -- cop House
 --job = "pizzathis",

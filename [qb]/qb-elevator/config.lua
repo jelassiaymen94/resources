@@ -55,6 +55,55 @@ Config.Elevators = {
     },
 
 
+    ["wuchang1"] = {
+        Sound = "liftSoundBellRing",
+        Name = "Wu Chang",
+        Floors = {
+            [1] = {
+                Label = "Garage",
+                FloorDesc = "Garage",
+                Coords = vector3(-819.2164, -710.6398, 23.7791),
+                ExitHeading = "90.93"
+            },
+            [2] = {
+                Label = "Entrance",
+                FloorDesc = "Entrance",
+                Coords = vector3(-819.2204, -710.6462, 28.0601),
+                ExitHeading = "180.27"
+            },
+            [3] = {
+                Label = "2nd Floor",
+                FloorDesc = "2nd Floor",
+                Coords = vector3(-817.7, -709.51, 32.34),
+                ExitHeading = "90.93"
+            },
+            [4] = {
+                Label = "Roof",
+                FloorDesc = "Roof",
+                Coords = vector3(-820.55, -721.98, 121.27),
+                ExitHeading = "180.27"
+            },
+        }
+    },--[[
+    ["wuchang2"] = {
+        Sound = "liftSoundBellRing",
+        Name = "Wu Chang Elevator",
+        Floors = {
+            [1] = {
+                Label = "First Floor",
+                FloorDesc = "Wu Chang First Floor",
+                Require = "thermite",
+                Coords = vector3(-820.0, -705.48, 28.06),
+                ExitHeading = "89.21"
+            },
+            [2] = {
+                Label = "Second Floor",
+                FloorDesc = "Wu Chang Second Floor",
+                Coords = vector3(-817.7, -709.51, 32.34),
+                ExitHeading = "90.93"
+            },
+        }
+    },]]
 
     ["morgue"] = {
         Sound = "liftSoundBellRing",
@@ -204,21 +253,21 @@ Config.Elevators = {
         }
     },
 
-	["weedlab"] = {
+	["RecordAStudios"] = {
         Sound = "liftSoundBellRing",
-        Name = "Weed Lab",
+        Name = "Record A Studios",
         Floors = {
             [1] = {
                 Label = "Entrance",
                 FloorDesc = "Entrance",
-                Coords = vector3(753.4214, -3182.3750, 7.4058),
-                ExitHeading = "4.91"
+                Coords = vector3(-842.0522, -229.3305, 37.2430),
+                ExitHeading = "70.91"
             },
             [2] = {
-                Label = "Inside",
-                FloorDesc = "Interior",
-                Coords = vector3(1065.6599, -3183.3489, -39.1635),
-                ExitHeading = "91.86"
+                Label = "Roof",
+                FloorDesc = "Roof",
+                Coords = vector3(-843.2968, -236.9579, 61.0156),
+                ExitHeading = "262.86"
             },
 		
         }
@@ -924,23 +973,29 @@ Config.Elevators = {
                 ExitHeading = "250.07"
             },
             [3] = {
+                Label = "Facility 2",
+                FloorDesc = "Facility 2",
+                Coords = vector3(462.0664, 4816.0762, -59.0005),
+                ExitHeading = "250.07"
+            },
+            [4] = {
                 Label = "Server Room",
                 FloorDesc = "Server Room",
                 Coords = vector3(2156.5676, 2922.0498, -81.0753),
                 ExitHeading = "250.07"
             },
-            [4] = {
+            [5] = {
                 Label = "Office",
                 FloorDesc = "Office",
                 Coords = vector3(117.2040, -636.4240, 206.0466),
                 ExitHeading = "250.07"
             },	
-            [5] = {
+            [6] = {
                 Label = "Roof",
                 FloorDesc = "Roof",
                 Coords = vector3(146.9827, -616.1884, 258.1493),
                 ExitHeading = "250.07"
-            },		
+            },			
         }
     },
 
@@ -1031,7 +1086,24 @@ Config.Elevators = {
         }
     },
 
-
+    ["Labexit"] = {
+        Sound = "liftSoundBellRing",
+        Name = "Lab",
+        Floors = {
+            [1] = {
+                Label = "Upstairs",
+                FloorDesc = "To main labs",
+                Coords = vector3(3540.8320, 3675.9675, 28.1211),
+                ExitHeading = "155"
+            },
+            [2] = {
+                Label = "Downstairs",
+                FloorDesc = "Private Access Floor",
+                Coords = vector3(3538.1846, 3672.9658, 20.9918),
+                ExitHeading = "355"
+            },			
+        }
+    },
 
     ["Ferry"] = {
         Sound = "liftSoundBellRing",
@@ -1282,25 +1354,6 @@ Config.Elevators = {
         }
     },
 
-    ["cokelab"] = {
-        Sound = "liftSoundBellRing",
-        Name = "Coke Lab",
-        Floors = {
-            [1] = {
-                Label = "Entrance",
-                FloorDesc = "Entrance",
-                Coords = vector3(387.4596, 3585.0432, 33.2922),
-                ExitHeading = "250.07"
-            },
-            [2] = {
-                Label = "Interior",
-                FloorDesc = "Interior",
-                Coords = vector3(1088.6024, -3188.1460, -38.9935),
-                ExitHeading = "250.07"
-            },			
-        }
-    },
-
     --[[["churchalter"] = {
         Sound = "liftSoundBellRing",
         Name = "Alter",
@@ -1371,109 +1424,24 @@ Config.Elevators = {
         }
     }, 
 
-    ["wuchang"] = {
+    ["wuchangsubway"] = {
         Sound = "liftSoundBellRing",
-        Name = "Wu Chang Records",
+        Name = "Wu-Chang",
+        Group = {"wuchang"},
         Floors = {
             [1] = {
-                Label = "Subway",
-                FloorDesc = "Subway",
-                --Restricted = true,
-                Coords = vector3(-763.9021, -690.7076, 11.6015),
-                ExitHeading = "128.8159"
-            },	
-            [2] = {
                 Label = "Garage",
                 FloorDesc = "Garage",
-                Coords = vector3(-817.6007, -709.4996, 23.7813),
-                ExitHeading = "90.93"
-            },
-            --[[[3] = {
-                Label = "Entrance",
-                FloorDesc = "Entrance",
-                Coords = vector3(-817.6382, -709.5163, 28.0620),
-                ExitHeading = "196.27"
-            },]]
-            [3] = {
-                Label = "Studio",
-                FloorDesc = "Studio",
-                Coords = vector3(-817.7, -709.51, 32.34),
-                ExitHeading = "90.93"
-            },
-            [4] = {
-                Label = "Roof",
-                FloorDesc = "Roof",
-                Coords = vector3(-820.55, -721.98, 121.27),
-                ExitHeading = "180.27"
-            },
-        }
-    },
-
-
-    ["base"] = {
-        Sound = "liftSoundBellRing",
-        Name = "Secret Base",
-        --Group = {"church"},
-        Floors = {
-            [1] = {
-                Label = "Base Entrance",
-                FloorDesc = "Base Entrance",
-                Coords = vector3(-2051.9717, 3237.4282, 31.5012),
-                ExitHeading = "60.7197"
-            },
-            [2] = {
-                Label = "Interior",
-                FloorDesc = "Interior",
-                Coords = vector3(460.6374, 4815.9185, -59.0001),
-                ExitHeading = "28.8159"
-            },			
-        }
-    },
-
-
-    ["police"] = {
-        Sound = "liftSoundBellRing",
-        Name = "Police Elevator",
-        --Group = {"church"},
-        Floors = {
-            [1] = {
-                Label = "Back Entrance",
-                FloorDesc = "Back Entrance",
-                --Restricted = true,
-                Coords = vector3(458.9353, -1007.9950, 28.2650),
-                ExitHeading = "90.7197"
-            },
-            [2] = {
-                Label = "Interior",
-                FloorDesc = "Interior",
-                --Restricted = true,
-                Coords = vector3(469.6956, -1010.3312, 26.3864),
-                ExitHeading = "90.8159"
-            },			
-        }
-    },
-
-
-    ["hillcrest"] = {
-        Sound = "liftSoundBellRing",
-        Name = "Hill Crest Ave",
-        Group = {"scrappgang"},
-        --authorizedCitizenIDs = "159",
-        Floors = {
-            [1] = {
-                Label = "Entrance",
-                FloorDesc = "Entrance",
-                --Citizenid = "157",
-                --Restricted = true,
-                Coords = vector3(-853.1183, 695.6870, 148.7868),
-                ExitHeading = "7.7197"
-            },
-            [2] = {
-                Label = "Interior",
-                FloorDesc = "Interior",
                 Restricted = true,
-                Coords = vector3(-859.9027, 691.0850, 152.8607),
-                ExitHeading = "190.8159"
+                Coords = vector3(-818.9490, -706.5113, 23.7794),
+                ExitHeading = "110.7197"
+            },
+            [2] = {
+                Label = "Subway",
+                FloorDesc = "Subway",
+                Restricted = true,
+                Coords = vector3(-763.9021, -690.7076, 11.6015),
+                ExitHeading = "128.8159"
             },			
         }
     },
@@ -1500,6 +1468,16 @@ Config.ElevatorButton = {
     [4] = { name = "Main Floor", location = vector3(325.65, -603.39, 43.28), width = 0.1, length = 0.3, heading = 160.6, minz = 43.48, maxz = 43.78},
     [5] = { name = "Heli Pad", location = vector3(338.42, -583.71, 74.16), width = 0.5, length = 2.8, heading = 70.21, minz = 74.16 - 1, maxz = 74.16 + 1.5 },
 
+    --[10] = { name = "Wu Chang First Floor", location = vector3(-819.6, -706.57, 28.26), width = 0.5, length = 2.8, heading = 260.3, minz = 28.16 - 1, maxz = 28.16 + 1.5 },
+    --[11] = { name = "Wu Chang Inside", location = vector3(-819.54, -710.63, 32.54), width = 0.5, length = 2.8, heading = 260.3, minz = 32.34 - 1, maxz = 32.34 + 1.5 },
+
+    --[6] = { name = "Wu Chang Garage", location = vector3(-819.2164, -710.6398, 23.7791), width = 0.5, length = 2.0, heading = 260.3, minz = 23.7791 - 1, maxz = 23.7791 + 1.5 },
+    [7] = { name = "Wu Chang 1st Floor", location = vector3(-819.2204, -710.6462, 28.0601), width = 0.5, length = 2.8, heading = 260.3, minz = 28.0601 - 1, maxz = 28.0601 + 1.5 },
+    [8] = { name = "Wu Chang 2nd Floor", location = vector3(-819.54, -710.63, 32.54), width = 0.5, length = 2.8, heading = 260.3, minz = 32.34 - 1, maxz = 32.34 + 1.5 },
+    [9] = { name = "Wu Chang Roof", location = vector3(-820.25, -721.58, 121.44), width = 0.5, length = 2.8, heading = 260.3, minz = 121.27 - 1, maxz = 121.27 + 1.5 },
+
+    [178] = { name = "WC Subway", location = vector3(-763.9021, -690.7076, 11.6015), width = 0.5, length = 2.8, heading = 281.9846, minz = 9.6734 - 1, maxz = 13.6734 + 1.5 },
+    [179] = { name = "WC Garage 2", location = vector3(-819.6490, -706.5713, 23.9794), width = 0.5, length = 2.0, heading = 110.3, minz = 21.8196 - 1, maxz = 25.8196 + 1.5 },
 
 
     [10] = { name = "Leave Morgue", location = vector3(276.24, -1361.83, 24.54), width = 0.5, length = 2.8, heading = 47.11, minz = 24.54 - 1, maxz = 24.54 + 1.5 },
@@ -1527,8 +1505,8 @@ Config.ElevatorButton = {
     [29] = { name = "Eclipse Tower Apartment 7", location = vector3(-785.4201, 322.7842, 212.2272), width = 0.5, length = 2.8, heading = 260.3, minz = 211.9972 - 1, maxz = 211.9972 + 1.5 },
     [30] = { name = "Eclipse Tower Roof", location = vector3(-802.4498, 334.9964, 230.8369), width = 0.5, length = 2.8, heading = 260.3, minz = 230.6369 - 1, maxz = 230.6369 + 1.5 },
 
-    [31] = { name = "Weed Lab Entrance", location = vector3(753.9180, -3183.1766, 7.5771), width = 0.5, length = 2.8, heading = 221.3, minz = 6.2430 - 1, maxz = 8.2430 + 1.5 },
-    [32] = { name = "Weed Lab Interior", location = vector3(1066.5866, -3183.9275, -39.0638), width = 0.5, length = 2.8, heading = 260.3, minz = -38.0156 - 1, maxz = -40.0156 + 1.5 },
+    [31] = { name = "Record A Studios Entrance", location = vector3(-842.0522, -229.3305, 37.2430), width = 0.5, length = 2.8, heading = 260.3, minz = 37.2430 - 1, maxz = 37.2430 + 1.5 },
+    [32] = { name = "Record A Studios Roof", location = vector3(-843.2968, -236.9579, 61.0156), width = 0.5, length = 2.8, heading = 260.3, minz = 61.0156 - 1, maxz = 61.0156 + 1.5 },
 
     [33] = { name = "Corporation 1 Garage", location = vector3(-1027.6680, -409.5724, 33.4125), width = 0.5, length = 2.8, heading = 260.3, minz = 33.4125 - 1, maxz = 33.4125 + 1.5 },
     [34] = { name = "Corporation 1 Entrance", location = vector3(-1032.3049, -421.9883, 39.6161), width = 0.5, length = 2.8, heading = 260.3, minz = 39.6161 - 1, maxz = 39.6161 + 1.5 },
@@ -1638,7 +1616,7 @@ Config.ElevatorButton = {
 
 	[121] = { name = "IAA Entrance", location = vector3(139.7316, -614.3456, 44.2187), width = 0.5, length = 2.8, heading = 260.3, minz = 44.2187 - 1, maxz = 44.2187 + 1.5 },
 	[122] = { name = "IAA Facility", location = vector3(2153.03, 2920.89, -61.9), width = 0.5, length = 2.8, heading = 260.3, minz = -61.9 - 1, maxz = -61.9 + 1.5 },
-	--[123] = { name = "IAA Facility 2", location = vector3(462.0664, 4816.0762, -59.0005), width = 0.5, length = 2.8, heading = 260.3, minz = -59.0005 - 1, maxz = -59.0005 + 1.5 },
+	[123] = { name = "IAA Facility 2", location = vector3(462.0664, 4816.0762, -59.0005), width = 0.5, length = 2.8, heading = 260.3, minz = -59.0005 - 1, maxz = -59.0005 + 1.5 },
 	[124] = { name = "IAA Server Room", location = vector3(2156.5676, 2922.0498, -81.0753), width = 0.5, length = 2.8, heading = 260.3, minz = -81.0753 - 1, maxz = -81.0753 + 1.5 },
 	[125] = { name = "IAA Office", location = vector3(117.2040, -636.4240, 206.0466), width = 0.5, length = 2.8, heading = 260.3, minz = 206.0466 - 1, maxz = 206.0466 + 1.5 },
 	[144] = { name = "IAA Roof", location = vector3(146.9827, -616.1884, 258.1493), width = 0.5, length = 2.8, heading = 260.3, minz = 258.1493 - 1, maxz = 258.1493 + 1.5 },
@@ -1701,7 +1679,7 @@ Config.ElevatorButton = {
     [167] = { name = "Bahama Mamas Interior", location = vector3(-1402.9528, -610.1988, 30.3196), width = 0.5, length = 2.8, heading = 129.3, minz = 28.8196 - 1, maxz = 32.8196 + 1.5 },
     [168] = { name = "BM Back Entrance", location = vector3(-1392.0369, -640.1103, 28.6234), width = 0.9, length = 2.8, heading = 307.9846, minz = 28.6734 - 1, maxz = 28.6734 + 1.5 },
     
-    [174] = { name = "Labexit", location = vector3(441.0599, 4824.05, -58.6511), width = 0.5, length = 2.8, heading = 3.3, minz = -60.0005 - 1, maxz = -58.0005 + 1.5 },
+    [174] = { name = "Labexit", location = vector3(3538.2646, 3673.3658, 21.5218), width = 0.9, length = 2.8, heading = 355.9846, minz = 18.6734 - 1, maxz = 22.6734 + 1.5 },
    
     [175] = { name = "Bahama Mamas Main Bar", location = vector3(-1385.1377, -605.7789, 30.3195), width = 0.5, length = 2.8, heading = 306.3, minz = 28.8196 - 1, maxz = 32.8196 + 1.5 },
     [176] = { name = "BM Employee Entrance", location = vector3(-1383.0656, -639.2765, 28.6734), width = 0.9, length = 2.8, heading = 307.9846, minz = 26.6734 - 1, maxz = 30.6734 + 1.5 },
@@ -1715,29 +1693,7 @@ Config.ElevatorButton = {
     [184] = { name = "Corporation 4 Roof", location = vector3(-1017.4561, -766.4927, 76.5368), width = 0.5, length = 2.8, heading = 265.3, minz = 75.3691 - 1, maxz = 77.3691 + 1.5 },
 
 
-    [185] = { name = "Wuchang Subway", location = vector3(-763.5021, -690.2076, 11.6015), width = 0.5, length = 0.8, heading = 260.3, minz = 11.6015 - 1, maxz = 11.6015 + 1 },
-    [186] = { name = "Wuchang Garage", location = vector3(-819.4704, -710.6462, 23.9101), width = 0.5, length = 0.8, heading = 260.3, minz = 23.9101 - 1, maxz = 23.9101 + 1 },
-    --[187] = { name = "Wuchang Entrance", location = vector3(-819.5204, -710.6462, 28.301), width = 0.5, length = 0.8, heading = 260.3, minz = 28.301 - 1, maxz = 28.301 + 1 },
-    [188] = { name = "Wuchang Studio", location = vector3(-819.5204, -710.6462, 32.5301), width = 0.5, length = 0.8, heading = 260.3, minz = 32.5301 - 1, maxz = 32.5301 + 1 },
-    [189] = { name = "Wuchang Roof", location = vector3(-820.25, -721.58, 121.44), width = 0.5, length = 0.8, heading = 260.3, minz = 121.44 - 1, maxz = 121.44 + 1 },
---1088.16, -3187.18, -38.85
-    [190] = { name = "Coke Lab Inside", location = vector3(1088.16, -3187.18, -38.85), width = 0.5, length = 2.8, heading = 260.3, minz = -39.0057 - 1, maxz = -37.0057 + 1.5 },
-    [191] = { name = "Coke Lab Entrance", location = vector3(386.9, 3584.2, 33.5), width = 0.5, length = 2.8, heading = 260.3, minz = 32.5290 - 1, maxz = 34.5290 + 1.5 },
-
-
-    [192] = { name = "Base Inside", location = vector3(462.2964, 4815.7762, -58.7505), width = 0.5, length = 2.8, heading = 260.3, minz = -59.0005 - 1, maxz = -59.0005 + 1.5 },
-    [193] = { name = "Base Entrance", location = vector3(-2054.5969, 3237.1632, 31.8989), width = 0.5, length = 2.8, heading = 209.3, minz = 30.5290 - 1, maxz = 31.5290 + 1.5 },
-    
-    [194] = { name = "Police Inside", location = vector3(469.8831, -1010.4639, 26.3864), width = 0.5, length = 2.8, heading = 180.3, minz = 25.0005 - 1, maxz = 27.0005 + 1.5 },
-    [195] = { name = "Police Entrance", location = vector3(459.2121, -1008.4308, 28.2625), width = 0.5, length = 2.8, heading = 209.3, minz = 27.5290 - 1, maxz = 29.5290 + 1.5 },
-
-
-    [196] = { name = "Hillcrest Inside", location = vector3(-861.2460, 691.2911, 153.3529), width = 0.5, length = 0.8, heading = 92.3, minz = 151.0005 - 1, maxz = 152.0005 + 1.5 },
-    [197] = { name = "Hillcrest Entrance", location = vector3(-852.6307, 693.4830, 149.4418), citizenid = 157, width = 0.5, length = 0.8, heading = 209.3, minz = 148.5290 - 1, maxz = 150.5290 + 1.5 },
-    
-   -- [194] = { name = "Base Exit", location = vector3(441.0599, 4824.05, -58.6511), width = 0.5, length = 2.8, heading = 3.3, minz = -60.0005 - 1, maxz = -58.0005 + 1.5 },
-
-    -- NEXT # [195] 
+    -- NEXT # [185] 
 
     -- vector3(-819.86, -710.67, 32.34)
 }

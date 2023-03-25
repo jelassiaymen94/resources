@@ -1,20 +1,17 @@
 local weapons = {
 	--Custom Weapon
-	'WEAPON_AK47',
-	'WEAPON_M9',
+	
+	
 	'WEAPON_FNX45',
-	'WEAPON_DE',
+	
 	'WEAPON_GLOCK17',
 	'WEAPON_M4',
 	'WEAPON_HK416',
 	'WEAPON_MK14',
-	'WEAPON_HUNTINGRIFLE',
+	
 	'WEAPON_AR15',
-	'WEAPON_M70',
-	'WEAPON_M1911',
-	'WEAPON_MAC10',
-	'WEAPON_UZI',
-	'WEAPON_MP9',
+	
+
 	'WEAPON_M110',
 	'WEAPON_MOSSBERG',
 	'WEAPON_REMINGTON',
@@ -29,10 +26,28 @@ local weapons = {
 	'WEAPON_bat',
 	'weapon_golfclub',
 	'weapon_crowbar',
+
+	
+	'WEAPON_groza',
+	
+	'WEAPON_dp9',
+	
+	'WEAPON_dildo',
+	
 	
 
-	'weapon_microsmg2',
-	'weapon_microsmg3',
+    'WEAPON_krambit',
+    'WEAPON_gepard',
+ 
+    'WEAPON_g18c',
+  
+    'WEAPON_mp5',
+    'weapon_sword',
+    'WEAPON_M67',
+  
+
+	'weapon_uzi',
+	'weapon_mac10',
 	'weapon_pistol',
 	'weapon_katana',
 	'weapon_assaultrifle',
@@ -43,13 +58,16 @@ local weapons = {
 	'weapon_huntingrifle',
 	'weapon_pistol50',
 	'weapon_hk416',
-	'weapon_mp9',
+	
 	'weapon_ar15',
 	'weapon_scarh',
 	'weapon_remington',
 	'weapon_mossberg',
 	'weapon_m9',
 	'weapon_fnx45',
+
+
+
 
 	'WEAPON_KNIFE',
 	'WEAPON_NIGHTSTICK',
@@ -126,13 +144,11 @@ local weapons = {
 --Weapons that require the Police holster animation
 local holsterableWeapons = {
 	'WEAPON_STUNGUN',
-	
 	'WEAPON_SCARH',
 	'WEAPON_GLOCK',
 	'WEAPON_M4',
 	'WEAPON_REMINGTON',
 	'WEAPON_AR15',
-	'WEAPON_MP9',
 	'WEAPON_MK14',
 	
 	
@@ -140,7 +156,7 @@ local holsterableWeapons = {
 
 local holstered = true
 local canFire = true
-local currWeapon = `WEAPON_UNARMED`
+local currWeapon = 'WEAPON_UNARMED'
 local currentHolster = nil
 local currentHolsterTexture = nil
 local WearingHolster = nil
@@ -148,7 +164,7 @@ local WearingHolster = nil
 RegisterNetEvent('weapons:ResetHolster', function()
 	holstered = true
 	canFire = true
-	currWeapon = `WEAPON_UNARMED`
+	currWeapon = 'WEAPON_UNARMED'
 	currentHolster = nil
 	currentHolsterTexture = nil
 	WearingHolster = nil
@@ -254,7 +270,7 @@ CreateThread(function()
 								SetPedComponentVariation(ped, 7, currentHolster, currentHolsterTexture, 2)
 							end
 
-							SetCurrentPedWeapon(ped, `WEAPON_UNARMED`, true)
+							SetCurrentPedWeapon(ped, 'WEAPON_UNARMED', true)
 							currentHolster = GetPedDrawableVariation(ped, 7)
 							currentHolsterTexture = GetPedTextureVariation(ped, 7)
 
@@ -281,7 +297,7 @@ CreateThread(function()
 							canFire = false
 							TaskPlayAnimAdvanced(ped, 'reaction@intimidation@1h', 'outro', GetEntityCoords(ped, true), 0, 0, rot, 8.0, 3.0, -1, 50, 0, 0, 0)
 							Wait(1600)
-							SetCurrentPedWeapon(ped, `WEAPON_UNARMED`, true)
+							SetCurrentPedWeapon(ped, 'WEAPON_UNARMED', true)
 							TaskPlayAnimAdvanced(ped, 'reaction@intimidation@1h', 'intro', GetEntityCoords(ped, true), 0, 0, rot, 8.0, 3.0, -1, 50, 0, 0, 0)
 							Wait(1000)
 							SetCurrentPedWeapon(ped, newWeap, true)
@@ -293,7 +309,7 @@ CreateThread(function()
 						end
 					else
 						if WearingHolster == true then
-							SetCurrentPedWeapon(ped, `WEAPON_UNARMED`, true)
+							SetCurrentPedWeapon(ped, 'WEAPON_UNARMED', true)
 							currentHolster = GetPedDrawableVariation(ped, 7)
 							currentHolsterTexture = GetPedTextureVariation(ped, 7)
 							TaskPlayAnimAdvanced(ped, 'rcmjosh4', 'josh_leadout_cop2', GetEntityCoords(ped, true), 0, 0, rot, 3.0, 3.0, -1, 50, 0, 0, 0)
@@ -316,7 +332,7 @@ CreateThread(function()
 							holstered = false
 							canFire = true
 						else
-							SetCurrentPedWeapon(ped, `WEAPON_UNARMED`, true)
+							SetCurrentPedWeapon(ped, 'WEAPON_UNARMED', true)
 							TaskPlayAnimAdvanced(ped, 'reaction@intimidation@1h', 'intro', GetEntityCoords(ped, true), 0, 0, rot, 8.0, 3.0, -1, 50, 0, 0, 0)
 							Wait(1000)
 							SetCurrentPedWeapon(ped, newWeap, true)
@@ -338,7 +354,7 @@ CreateThread(function()
 								SetPedComponentVariation(ped, 7, currentHolster, 0, 2)
 							end
 
-							SetCurrentPedWeapon(ped, `WEAPON_UNARMED`, true)
+							SetCurrentPedWeapon(ped, 'WEAPON_UNARMED', true)
 							ClearPedTasks(ped)
 							SetCurrentPedWeapon(ped, newWeap, true)
 							holstered = true
@@ -348,7 +364,7 @@ CreateThread(function()
 							canFire = false
 							TaskPlayAnimAdvanced(ped, 'reaction@intimidation@1h', 'outro', GetEntityCoords(ped, true), 0, 0, rot, 8.0, 3.0, -1, 50, 0, 0, 0)
 							Wait(1400)
-							SetCurrentPedWeapon(ped, `WEAPON_UNARMED`, true)
+							SetCurrentPedWeapon(ped, 'WEAPON_UNARMED', true)
 							ClearPedTasks(ped)
 							SetCurrentPedWeapon(ped, newWeap, true)
 							holstered = true
