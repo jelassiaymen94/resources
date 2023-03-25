@@ -15,8 +15,8 @@ RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function()
     
 end)
 ---- Super jump OP client.lua
-RegisterNetEvent('Polar-Sub:Client:superjump')
-AddEventHandler('Polar-Sub:Client:superjump', function()
+RegisterNetEvent('Polar-Sub:client:superjump')
+AddEventHandler('Polar-Sub:client:superjump', function()
     QBCore.Functions.Progressbar("use_superjump", "Poppin Pills", 3500, false, true, {
         disableMovement = false,
         disableCarMovement = false,
@@ -27,8 +27,8 @@ AddEventHandler('Polar-Sub:Client:superjump', function()
         anim = "pill_fp",
         flags = 49,
     }, {}, {}, function() -- Done
-        TriggerServerEvent("Polar-Sub:Server:superjump")
-        TriggerEvent('inventory:Client:ItemBox', QBCore.Shared.Items['superjump'], 'remove')
+        TriggerServerEvent("Polar-Sub:server:superjump")
+        TriggerEvent('inventory:client:ItemBox', QBCore.Shared.Items['superjump'], 'remove')
        -- QBCore.Functions.Notify('Super Jump Power Started', 'success')
         local superJump = true
         CreateThread(function()

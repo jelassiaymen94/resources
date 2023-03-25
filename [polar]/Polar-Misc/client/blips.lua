@@ -84,6 +84,17 @@ local QBCore = exports['qb-core']:GetCoreObject()
          AddTextComponentSubstringPlayerName("Pizza This!")
          EndTextCommandSetBlipName(pizzathis)
 
+         -- taco
+         local taco = AddBlipForCoord(vector3(11.2888, -1607.3955, 29.3974))
+         SetBlipSprite (taco, 209)
+         SetBlipDisplay(taco, 6) 
+         SetBlipScale  (taco, 0.6)
+         SetBlipAsShortRange(taco, true)
+         SetBlipColour(taco, 27)
+         BeginTextCommandSetBlipName("STRING")
+         AddTextComponentSubstringPlayerName("Cousin's Tacos")
+         EndTextCommandSetBlipName(taco)
+
          -- maxdamage
          local maxdamage = AddBlipForCoord(vector3(17.3019, -1115.8473, 29.7912))
          SetBlipSprite (maxdamage, 556)
@@ -95,6 +106,26 @@ local QBCore = exports['qb-core']:GetCoreObject()
          AddTextComponentSubstringPlayerName("Max Damage")
          EndTextCommandSetBlipName(maxdamage)
 
+         -- Event 3082.7336, -4813.3213, 16.0881
+         local ntos = AddBlipForCoord(vector3(-471.2943, -864.6298, 23.9640))
+         SetBlipSprite (ntos, 566)
+         SetBlipDisplay(ntos, 6) 
+         SetBlipScale  (ntos, 0.6)
+         SetBlipAsShortRange(ntos, true)
+         SetBlipColour(ntos, 59)
+         BeginTextCommandSetBlipName("STRING")
+         AddTextComponentSubstringPlayerName("New Times Overhaul Systems")
+         EndTextCommandSetBlipName(ntos)
+
+         local event = AddBlipForCoord(vector3(-1544.3285, -1001.2804, 15.7731))
+         SetBlipSprite (event, 419)
+         SetBlipDisplay(event, 6) 
+         SetBlipScale  (event, 0.6)
+         SetBlipAsShortRange(event, true)
+         SetBlipColour(event, 59)
+         BeginTextCommandSetBlipName("STRING")
+         AddTextComponentSubstringPlayerName("Car Show by Weazel News!")
+         EndTextCommandSetBlipName(event)
 
          -- churhc of rockford
          local blip = AddBlipForCoord(vector3(-766.1784, -24.1005, 21.0794))

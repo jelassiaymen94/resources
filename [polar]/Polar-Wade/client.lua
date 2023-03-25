@@ -25,7 +25,7 @@ local pacific = false
 
 
 
-RegisterNetEvent('Polar-Wade:Client:Banks', function()
+RegisterNetEvent('Polar-Wade:client:Banks', function()
     
    
    
@@ -65,13 +65,13 @@ RegisterNetEvent('Polar-Wade:Client:Banks', function()
         header = "Go Back",
         icon = "fa-solid fa-angle-left",
         params = {
-            event = "Polar-Wade:Client:MainMenu",
+            event = "Polar-Wade:client:MainMenu",
         }
     },
     })
 
 end)
-RegisterNetEvent('Polar-Wade:Client:AvailableRobberies', function()
+RegisterNetEvent('Polar-Wade:client:AvailableRobberies', function()
    
    
   
@@ -116,14 +116,14 @@ RegisterNetEvent('Polar-Wade:Client:AvailableRobberies', function()
         header = "Go Back",
         icon = "fa-solid fa-angle-left",
         params = {
-            event = "Polar-Wade:Client:MainMenu",
+            event = "Polar-Wade:client:MainMenu",
         }
     },
     })
 
 end)
 
-RegisterNetEvent('Polar-Wade:Client:OpenShop', function()
+RegisterNetEvent('Polar-Wade:client:OpenShop', function()
     local header = {
         {
             isMenuHeader = true,
@@ -139,7 +139,7 @@ RegisterNetEvent('Polar-Wade:Client:OpenShop', function()
                 icon = v.icon,
                 params = {
                     isServer = true,
-                    event = "Polar-Wade:Server:buyshit",
+                    event = "Polar-Wade:server:buyshit",
                     args = k
                 }
             }
@@ -149,14 +149,14 @@ RegisterNetEvent('Polar-Wade:Client:OpenShop', function()
         header = "Go Back",
         icon = "fa-solid fa-angle-left",
         params = {
-            event = "Polar-Wade:Client:MainMenu",
+            event = "Polar-Wade:client:MainMenu",
         }
     }
 
     exports['qb-menu']:openMenu(header)
 end)
 
-RegisterNetEvent('Polar-Wade:Client:MainMenu', function()
+RegisterNetEvent('Polar-Wade:client:MainMenu', function()
     
     exports['qb-menu']:openMenu({
  
@@ -189,7 +189,7 @@ RegisterNetEvent('Polar-Wade:Client:MainMenu', function()
             icon = "fa-solid fa-circle-info",
             header = "View Shop",
             params = {
-                event = "Polar-Wade:Client:OpenShop",
+                event = "Polar-Wade:client:OpenShop",
             }
         },
     })
@@ -212,7 +212,7 @@ for i = 1, #Config.Peds do
                 type = "client",
                 icon = 'fa-solid fa-question',
                 label = 'Talk to Wade',
-                event = 'Polar-Wade:Client:MainMenu',
+                event = 'Polar-Wade:client:MainMenu',
              
             }
             },
@@ -281,9 +281,9 @@ RegisterNetEvent('Polar-Wade:Client:Types', function(data)
         fleecatext = 'Not Available'
 
         if number == 1 then
-            TriggerEvent('Polar-Wade:Client:AvailableRobberies')
+            TriggerEvent('Polar-Wade:client:AvailableRobberies')
         elseif number == 2 then
-            TriggerEvent('Polar-Wade:Client:Banks')
+            TriggerEvent('Polar-Wade:client:Banks')
     
         end
     elseif cops == 1 then
@@ -310,9 +310,9 @@ RegisterNetEvent('Polar-Wade:Client:Types', function(data)
         end
        
         if number == 1 then
-            TriggerEvent('Polar-Wade:Client:AvailableRobberies')
+            TriggerEvent('Polar-Wade:client:AvailableRobberies')
         elseif number == 2 then
-            TriggerEvent('Polar-Wade:Client:Banks')
+            TriggerEvent('Polar-Wade:client:Banks')
     
         end
     elseif cops == 2 then
@@ -344,9 +344,9 @@ RegisterNetEvent('Polar-Wade:Client:Types', function(data)
             storetext = 'Not Available'
         end
         if number == 1 then
-            TriggerEvent('Polar-Wade:Client:AvailableRobberies')
+            TriggerEvent('Polar-Wade:client:AvailableRobberies')
         elseif number == 2 then
-            TriggerEvent('Polar-Wade:Client:Banks')
+            TriggerEvent('Polar-Wade:client:Banks')
     
         end
 
@@ -391,9 +391,9 @@ RegisterNetEvent('Polar-Wade:Client:Types', function(data)
             trucktext = 'Not Available'
         end
         if number == 1 then
-            TriggerEvent('Polar-Wade:Client:AvailableRobberies')
+            TriggerEvent('Polar-Wade:client:AvailableRobberies')
         elseif number == 2 then
-            TriggerEvent('Polar-Wade:Client:Banks')
+            TriggerEvent('Polar-Wade:client:Banks')
     
         end
     elseif cops >= 4 then
@@ -455,9 +455,9 @@ RegisterNetEvent('Polar-Wade:Client:Types', function(data)
             pacifictext = 'Not Available'
         end
         if number == 1 then
-            TriggerEvent('Polar-Wade:Client:AvailableRobberies')
+            TriggerEvent('Polar-Wade:client:AvailableRobberies')
         elseif number == 2 then
-            TriggerEvent('Polar-Wade:Client:Banks')
+            TriggerEvent('Polar-Wade:client:Banks')
     
         end
     else

@@ -40,7 +40,7 @@ RegisterNetEvent('Polar-Sub:Client:Transfer', function(data)
     end
     Wait(5)
     if hasamount then
-        TriggerEvent('animations:Client:EmoteCommandStart', {emote})
+        TriggerEvent('animations:client:EmoteCommandStart', {emote})
    -- exports["Polar-Emotes"]:EmoteCommandStart(emote, 1)
     QBCore.Functions.Progressbar("hi", "Arguing Over "  .. removeitemamount4 .. " " .. QBCore.Shared.Items[removeitem4].label .. " " , 15000, false, true, 
     {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = false, },
@@ -49,11 +49,11 @@ RegisterNetEvent('Polar-Sub:Client:Transfer', function(data)
 
         TriggerServerEvent('Polar-Sub:Server:Trada', item4, amount4, removeitem4, removeitemamount4)
        -- exports["Polar-Emotes"]:EmoteCancel(emote)
-TriggerEvent('animations:Client:EmoteCommandStart', {"c"})
+TriggerEvent('animations:client:EmoteCommandStart', {"c"})
 
     end, function()
       --  exports["Polar-Emotes"]:EmoteCancel(emote)
-      TriggerEvent('animations:Client:EmoteCommandStart', {"c"})
+      TriggerEvent('animations:client:EmoteCommandStart', {"c"})
         -- cancel notification
         QBCore.Functions.Notify('Canceled', 'error')
 
@@ -140,7 +140,7 @@ function trada(item, amount, removeitem, removeitemamount)
         {   
             --icon = 'fa-solid fa-recycle',
             header = "<img src=nui://"..Config.img..QBCore.Shared.Items[item].image.." " .. amount .. " width=45px onerror='this.onerror=null; this.remove();'>"..QBCore.Shared.Items[item].label,
-            txt = "Required: <p> <img src=nui://"..Config.img..QBCore.Shared.Items[removeitem].image.." width=45px onerror='this.onerror=null; this.remove();'>" .. removeitemamount .." ".. QBCore.Shared.Items[removeitem].label,
+            txt = "Required: <p> <img src=nui://"..Config.img..QBCore.Shared.Items[removeitem].image.." " .. removeitemamount .. " width=45px onerror='this.onerror=null; this.remove();'>"..QBCore.Shared.Items[removeitem].label,
             params = { 
                 event = "Polar-Sub:Client:Transfer",
                 args = {

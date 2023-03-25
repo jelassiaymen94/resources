@@ -67,21 +67,21 @@ local meth = math.random(499,1499)
 local coke = math.random(399,1251)
 Config.ZoneDrugs = { -- \ Names should be same as zone names
     -- Multiple drugs can be added to a zone like shown below
-    [1] = {zone="sellzonegroove", item = 'cokebag', price = math.random(399,851)},
-    [2] = {zone="sellzonegroove", item = 'meth', price =math.random(499,999)},  
-    [3] = {zone="sellzonegroove", item = '1ozhigh', price = math.random(100,150)},   
+    [1] = {zone="sellzonegroove", item = 'cokebag', price = math.random(399,1251)},
+    [2] = {zone="sellzonegroove", item = 'meth', price =math.random(499,1499)},  
+    [3] = {zone="sellzonegroove", item = '1ozhigh', price = math.random(400,600)},   
     --[[[3] = {zone="sellzonegroove", item = '35weedlow', price = math.random(100,400)}, 
     [4] = {zone="sellzonegroove", item = '35weedmid', price = math.random(451,851)}, 
     [5] = {zone="sellzonegroove", item = '35weedhigh', price = math.random(851,1251)},]] 
-    [4] = {zone="sellzonevinewood", item = 'cokebag', price = math.random(399,851)},
-    [5] = {zone="sellzonevinewood", item = 'meth', price = math.random(499,999)},   
-    [6] = {zone="sellzonevinewood", item = '1ozhigh', price = math.random(100,150)}, 
+    [4] = {zone="sellzonevinewood", item = 'cokebag', price = math.random(399,1251)},
+    [5] = {zone="sellzonevinewood", item = 'meth', price = math.random(499,1499)},   
+    [6] = {zone="sellzonevinewood", item = '1ozhigh', price = math.random(400,600)},  
     --[[[9] = {zone="sellzonevinewood", item = '35weedlow', price = math.random(100,400)},
     [10] = {zone="sellzonevinewood", item = '35weedmid', price = math.random(451,851)},
     [11] = {zone="sellzonevinewood", item = '35weedhigh', price = math.random(851,1251)},]]
-    [7] = {zone="sellzoneforumdr", item = 'cokebag', price = math.random(399,851)},
-    [8] = {zone="sellzoneforumdr", item = 'meth', price = math.random(499,999)}, 
-    [9] = {zone="sellzoneforumdr", item = '1ozhigh', price = math.random(100,150)}, 
+    [7] = {zone="sellzoneforumdr", item = 'cokebag', price = math.random(399,1251)},
+    [8] = {zone="sellzoneforumdr", item = 'meth', price = math.random(499,1499)}, 
+    [9] = {zone="sellzoneforumdr", item = '1ozhigh', price = math.random(400,600)},     
     --[[[15] = {zone="sellzoneforumdr", item = '35weedlow', price = math.random(100,400)}, 
     [16] = {zone="sellzoneforumdr", item = '35weedmid', price = math.random(451,851)},  
     [17] = {zone="sellzoneforumdr", item = '35weedhigh', price = math.random(851,1251)},]]  

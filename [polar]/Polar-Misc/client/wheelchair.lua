@@ -15,9 +15,9 @@ AddEventHandler('wheelchair', function()
         SetPedIntoVehicle(PlayerPedId(), wheelChair, -1)
         SetModelAsNoLongerNeeded(wheelChairModel)
         local wheelChairPlate = GetVehicleNumberPlateText(wheelChair)
-        TriggerEvent("vehiclekeys:Client:SetOwner", wheelChairPlate)
+        TriggerEvent("vehiclekeys:client:SetOwner", wheelChairPlate)
         SetVehicleEngineOn(wheelChair, true, true)
-        exports['LegacyFuel']:SetFuel(wheelChair, 100)
+        exports['ps-fuel']:SetFuel(wheelChair, 100)
     elseif DoesEntityExist(wheelChair) and #(GetEntityCoords(wheelChair) - GetEntityCoords(PlayerPedId())) < 3.0 and GetPedInVehicleSeat(wheelChair,-1) == 0 then
         DeleteVehicle(wheelChair)
         wheelChair = nil

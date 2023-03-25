@@ -34,7 +34,7 @@ CreateThread(function()
             options = {
                 {
                     type = "client",
-                    event = "Polar-Meth:Client:Mix",
+                    event = "Polar-Meth:client:Mix",
                     icon = "fa-solid fa-bolt",
                     label = "Mix",
                 }
@@ -53,7 +53,7 @@ CreateThread(function()
                 options = {
                     {
                         type = "client",
-                        event = "Polar-Meth:Client:Temperature",
+                        event = "Polar-Meth:client:Temperature",
                         icon = "fa-solid fa-bolt",
                         label = "Check Temperature",
                     }
@@ -73,7 +73,7 @@ CreateThread(function()
                 options = {
                     {
                         type = "client",
-                        event = "Polar-Meth:Client:smash",
+                        event = "Polar-Meth:client:smash",
                         icon = "fa-solid fa-bolt",
                         label = "Smash Tray",
                     }
@@ -93,7 +93,7 @@ CreateThread(function()
                 options = {
                     {
                         type = "client",
-                        event = "Polar-Meth:Client:bag",
+                        event = "Polar-Meth:client:bag",
                         icon = "fa-solid fa-bolt",
                         label = "Bag",
                     }
@@ -121,7 +121,7 @@ function targets()
             options = {
                 {
                     type = "client",
-                    event = "Polar-Meth:Client:enter",
+                    event = "Polar-Meth:client:enter",
                     icon = "fa-solid fa-bolt",
                     label = "Enter",
                 }
@@ -139,7 +139,7 @@ function targets()
                 options = {
                     {
                         type = "client",
-                        event = "Polar-Meth:Client:exit",
+                        event = "Polar-Meth:client:exit",
                         icon = "fa-solid fa-bolt",
                         label = "Exit",
                     }
@@ -177,7 +177,7 @@ end)
 ----------------------
 ----------------------
 
-RegisterNetEvent('Polar-Meth:Client:Mix', function()
+RegisterNetEvent('Polar-Meth:client:Mix', function()
     
 
 
@@ -237,7 +237,7 @@ function mixmeth()
             {}, {}, function() -- Done
                 percents = true
                 endanimation()
-            TriggerServerEvent('Polar-Meth:Server:RemoveIngredients')
+            TriggerServerEvent('Polar-Meth:server:RemoveIngredients')
             QBCore.Functions.Notify('The Mixer Has Started!', green, alerttime)
             if Config.Debug then print('mixing started') end
             
@@ -290,7 +290,7 @@ function mixmeth()
             DeleteEntity(sacid)
             
             percents = true
-            TriggerServerEvent('Polar-Meth:Server:RemoveIngredients')
+            TriggerServerEvent('Polar-Meth:server:RemoveIngredients')
             QBCore.Functions.Notify('The Mixer Has Started!', green, alerttime)
             if Config.Debug then print('mixing started') end
             cooldown = true
@@ -325,7 +325,7 @@ function mixmeth()
 
 
 
-RegisterNetEvent('Polar-Meth:Client:Temperature', function()
+RegisterNetEvent('Polar-Meth:client:Temperature', function()
     local random2 = math.random(2,10)
     local random = math.random(10,20)
   if not temp then
@@ -333,38 +333,38 @@ RegisterNetEvent('Polar-Meth:Client:Temperature', function()
     if mix then
         --FreezeEntityPosition(PlayerPedId(), true)
         animation()
-        exports['Polar-UI']:Circle(function(success)
+        exports['ps-ui']:Circle(function(success)
             if success then
                 QBCore.Functions.Notify('Temperature is Okay', green, alerttime)
                 Wait(1000)
-                exports['Polar-UI']:Circle(function(success)
+                exports['ps-ui']:Circle(function(success)
                     if success then
                         QBCore.Functions.Notify('Temperature is Decent', green, alerttime)
                         Wait(1000)
-                        exports['Polar-UI']:Scrambler(function(success)
+                        exports['ps-ui']:Scrambler(function(success)
                             if success then
                                 temp = true
                                 QBCore.Functions.Notify('The Temperature is Perfect', green, alerttime)
                                 Wait(alerttime)
                                 QBCore.Functions.Notify('Now Smash the Tray', green, alerttime)
                                 temp4 = true
-                                TriggerServerEvent('Polar-Meth:Server:TrayAdd')
+                                TriggerServerEvent('Polar-Meth:server:TrayAdd')
                             else
                                 temp = true
                                 QBCore.Functions.Notify('The Temperature is too high!', red, alerttime)
                                 Wait(alerttime)
                                 QBCore.Functions.Notify('Now Smash the Tray', green, alerttime)
                                 temp3 = true
-                                TriggerServerEvent('Polar-Meth:Server:TrayAdd')
+                                TriggerServerEvent('Polar-Meth:server:TrayAdd')
                             end
-                        end, Config.RandomScrambler2[math.random(1, #Config.RandomScrambler2 )], math.random(Config.ScramblerSecondMin2 + 1,Config.ScramblerSecondMax2 + 1),  math.random(Config.ScramblerMirrorMin2,Config.ScramblerMirrorMax2)) -- Type (alphabet, numeric, alphanumeric, greek, braille, runes), Time (Seconds), Mirrored (0: Normal, 1: Normal + Mirrored 2: Mirrored only )
+                        end, Config.RandomScrambler2[math.random(1, #Config.RandomScrambler2- 1 )], math.random(Config.ScramblerSecondMin2 + 1,Config.ScramblerSecondMax2 + 1),  math.random(Config.ScramblerMirrorMin2,Config.ScramblerMirrorMax2)) -- Type (alphabet, numeric, alphanumeric, greek, braille, runes), Time (Seconds), Mirrored (0: Normal, 1: Normal + Mirrored 2: Mirrored only )
                     else
                         temp = true
                         QBCore.Functions.Notify('The Temperature is too Low!', red, alerttime)
                         Wait(alerttime)
                         QBCore.Functions.Notify('Now Smash the Tray', green, alerttime)
                         temp2 = true
-                        TriggerServerEvent('Polar-Meth:Server:TrayAdd')
+                        TriggerServerEvent('Polar-Meth:server:TrayAdd')
                     end
                 end, random2, random) -- NumberOfCircles, MS
             else
@@ -373,7 +373,7 @@ RegisterNetEvent('Polar-Meth:Client:Temperature', function()
                 Wait(alerttime)
                 QBCore.Functions.Notify('Now Smash the Tray', green, alerttime)
                 temp1 = true
-                TriggerServerEvent('Polar-Meth:Server:TrayAdd')
+                TriggerServerEvent('Polar-Meth:server:TrayAdd')
             end
         end, random2, random) -- NumberOfCircles, MS
     else
@@ -390,7 +390,7 @@ RegisterNetEvent('Polar-Meth:Client:Temperature', function()
     ClearPedTasks(PlayerPedId())
 end)
 
-RegisterNetEvent('Polar-Meth:Client:smash', function()
+RegisterNetEvent('Polar-Meth:client:smash', function()
     local hashammer = QBCore.Functions.HasItem(Config.BreakItem) 
     local hastray = QBCore.Functions.HasItem(Config.TrayItem) 
     if hashammer then
@@ -401,7 +401,7 @@ RegisterNetEvent('Polar-Meth:Client:smash', function()
     if temp then
         -- shit reward
         animation()
-        TriggerServerEvent('Polar-Meth:Server:TrayRemove')
+        TriggerServerEvent('Polar-Meth:server:TrayRemove')
         QBCore.Functions.Progressbar("smashing", "Smashing Tray...", bar, false, true, {
     
             -- what is disabled
@@ -451,7 +451,7 @@ RegisterNetEvent('Polar-Meth:Client:smash', function()
     end
 end)
                                      
-RegisterNetEvent('Polar-Meth:Client:bag', function()
+RegisterNetEvent('Polar-Meth:client:bag', function()
     local bagitem = QBCore.Functions.HasItem(Config.BagItem)
 if not bag then
     if not percents then
@@ -630,7 +630,7 @@ end)
 local unlocked = false
 
 --------------- TELEPORT ----------------------
-RegisterNetEvent('Polar-Meth:Client:enter', function()
+RegisterNetEvent('Polar-Meth:client:enter', function()
     QBCore.Functions.TriggerCallback('Polar-Crafting:Server:Header', function(islock)
         unlocked = islock
     end)
@@ -653,7 +653,7 @@ RegisterNetEvent('Polar-Meth:Client:enter', function()
         end
     end
 end)
-RegisterNetEvent('Polar-Meth:Client:exit', function()
+RegisterNetEvent('Polar-Meth:client:exit', function()
     QBCore.Functions.TriggerCallback('Polar-Crafting:Server:Header', function(islock)
         unlocked = islock
     end)
@@ -697,44 +697,44 @@ end
 
 function givestuff()
 
-    TriggerServerEvent('Polar-Meth:Server:BagItem')
+    TriggerServerEvent('Polar-Meth:server:BagItem')
     bag = true
     QBCore.Functions.Notify('You Bagged Methamphetamine', green, alerttime)
     if Config.Debug then print('rewards giving') end
     if temp1 then
     if Config.Buffs then
-        if exports['qb-buffs']:HasBuff(Config.LuckBuff) then
-    TriggerServerEvent('Polar-Meth:Server:reward1luck')
+        if exports['ps-buffs']:HasBuff(Config.LuckBuff) then
+    TriggerServerEvent('Polar-Meth:server:reward1luck')
         else
             --QBCore.Functions.Notify('You Bagged 1', green, alerttime)
-            TriggerServerEvent('Polar-Meth:Server:reward1')
+            TriggerServerEvent('Polar-Meth:server:reward1')
         end
     end
     elseif temp2 then
         if Config.Buffs then
-            if exports['qb-buffs']:HasBuff(Config.LuckBuff) then
-        TriggerServerEvent('Polar-Meth:Server:reward2luck')
+            if exports['ps-buffs']:HasBuff(Config.LuckBuff) then
+        TriggerServerEvent('Polar-Meth:server:reward2luck')
             else
                 --QBCore.Functions.Notify('You Bagged 2', green, alerttime)
-                TriggerServerEvent('Polar-Meth:Server:reward2')
+                TriggerServerEvent('Polar-Meth:server:reward2')
             end
         end
     elseif temp3 then
         if Config.Buffs then
-            if exports['qb-buffs']:HasBuff(Config.LuckBuff) then
-        TriggerServerEvent('Polar-Meth:Server:reward3luck')
+            if exports['ps-buffs']:HasBuff(Config.LuckBuff) then
+        TriggerServerEvent('Polar-Meth:server:reward3luck')
             else
                 --QBCore.Functions.Notify('You Bagged 3', green, alerttime)
-                TriggerServerEvent('Polar-Meth:Server:reward3')
+                TriggerServerEvent('Polar-Meth:server:reward3')
             end
         end
     elseif temp4 then
         if Config.Buffs then
-            if exports['qb-buffs']:HasBuff(Config.LuckBuff) then
-        TriggerServerEvent('Polar-Meth:Server:reward4luck')
+            if exports['ps-buffs']:HasBuff(Config.LuckBuff) then
+        TriggerServerEvent('Polar-Meth:server:reward4luck')
             else
                 --QBCore.Functions.Notify('You Bagged 4', green, alerttime)
-                TriggerServerEvent('Polar-Meth:Server:reward4')
+                TriggerServerEvent('Polar-Meth:server:reward4')
             end
         end
     elseif not temp then
