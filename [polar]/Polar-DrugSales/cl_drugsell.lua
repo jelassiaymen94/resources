@@ -20,7 +20,7 @@ end
 local function PoliceAlert()
 	exports['qb-dispatch']:DrugSale()
     -- Add Your alert system here
-	-- TriggerServerEvent('police:server:policeAlert', 'Drug sale in progress')
+	-- TriggerServerEvent('police:Server:policeAlert', 'Drug sale in progress')
 	if Config.Debug then print('Police Notify Function triggered') end
 end
 
@@ -93,7 +93,7 @@ end
 
 -- \ Initialize the drug sales
 local function InitiateSales(entity)
-	QBCore.Functions.TriggerCallback('Polar-Drugsales:server:GetCops', function(result)
+	QBCore.Functions.TriggerCallback('Polar-Drugsales:Server:GetCops', function(result)
 		if result < Config.MinimumCops then
 			TriggerEvent('Polar-Drugsales:notify', 'Buyer is not interested to buy now!')			
 			if Config.Debug then print('Not Enough Cops') end

@@ -88,7 +88,7 @@ local function RepairVehicleFull(veh)
         SetVehicleDoorOpen(veh, 4, false, false)
     end
 	
-	QBCore.Functions.Progressbar("repair_vehicle", Lang:t("progress.repair_veh"), math.random(20000, 30000), false, true, {
+	QBCore.Functions.Progressbar("repair_vehicle", Lang:t("progress.repair_veh"), math.random(10000, 20000), false, true, {
 		disableMovement = true,
 		disableCarMovement = true,
 		disableMouse = false,

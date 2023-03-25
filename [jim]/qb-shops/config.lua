@@ -48,18 +48,15 @@ Config = {
 			--{ name = "rolling_paper", price = 2, amount = 5000,  },
 		},
 		["bar"] = {
-			{ name = "water_bottle", price = 600, amount = 50, },
+			{ name = "water_bottle", price = 200, amount = 50, },
 			{ name = "beer", price = 100, amount = 50, },
 			{ name = "whiskey", price = 150, amount = 50, },
 			{ name = "vodka", price = 100, amount = 50, },
 			{ name = "wine", price = 150, amount = 25, },
-			{ name = "ecola", price = 600, amount = 50, },
-			{ name = "ecolalight", price = 600, amount = 50, },
-			{ name = "sprunk", price = 600, amount = 50, },
-			{ name = "sprunklight", price = 600, amount = 25, },
 		},
 		["hardware"] = {
 			{ name = "lockpick", price = 500, amount = 25, },
+			{ name = "jerry_can", price = 500, amount = 10, },
 			{ name = "ducttape", price = 100, amount = 25, },
 			--{ name = "weapon_bat", price = 500, amount = 50,  requiredGang = { "lostmc" } },  -- Gang only options in stores
 			{ name = "powersaw", price = 2500, amount = 10,} ,
@@ -70,8 +67,8 @@ Config = {
 			{ name = "drillbit", price = 150, amount = 50, },
 			{ name = "binoculars", price = 150, amount = 10, },
 			{ name = "bakingsoda", price = 550, amount = 2, },
-			--{ name = "trowel", price = 1500, amount = 5, },
-			{ name = "scissors", price = 1000, amount = 5, },
+			{ name = "advancedrepairkit", price = 3000, amount = 10, },
+			--{ name = "scissors", price = 1000, amount = 5, },
 			{ name = "cleaningkit", price = 5, amount = 50, },
 			--{ name = "emptycowbucket", price = 150, amount = 10,},
 			--{ name = "emp_bucket", price = 150, amount = 10,},
@@ -85,7 +82,7 @@ Config = {
 			--{ name = "joint", price = 100, amount = 30, },
 			--{ name = "scale", price = 2500, amount = 5, },
 			{ name = "weed_nutrition", price = 100, amount = 150, },
-			{ name = "drugbag", price = 100, amount = 1500, },
+			{ name = "drugbag", price = 10, amount = 250, },
 			{ name = "purifiedwater", price = 100, amount = 150, },
 			{ name = "rolling_paper", price = 50, amount = 15, },
 			{ name = "backwoods_honey", price = 100, amount = 15, },
@@ -99,24 +96,26 @@ Config = {
 			{ name = "diving_gear", price = 2500, amount = 5, },
 			{ name = "fishingrod", price = 1000, amount = 30,},
 			{ name = "fishingbait", price = 25, amount = 500, },
-			{ name = "jerry_can", price = 2500, amount = 3, },
-
+			
 		},
 		["shops"] = {
 			--{ name = "strawberry", price = 5, amount = 5, },
 			--{ name = "pickle", price = 5, amount = 50, },
 			--{ name = "pineapple", price = 5, amount = 50, },
 			--{ name = "wholeham", price = 25, amount = 50, },
+			--{ name = "peperoni", price = 25, amount = 50, },
 			--{ name = "potato", price = 5, amount = 50, },
 			--{ name = "lettuce", price = 5, amount = 50, },
 			{ name = "coffeebean", price = 50, amount = 50, },
 			--{ name = "eggs", price = 5, amount = 50, },
+			{ name = "cream", price = 50, amount = 50, },
 			--{ name = "rice", price = 5, amount = 50, },
 			--{ name = "salami", price = 25, amount = 50, },
 			--{ name = "granola", price = 5, amount = 50, },
 			--{ name = "flavouring", price = 5, amount = 50, },
 			--{ name = "rose_oil", price = 5, amount = 50, },
 			--{ name = "nachos", price = 5, amount = 50, },
+			{ name = "pasta", price = 50, amount = 50, },
 			--{ name = "crisps", price = 5, amount = 50, },
 			--{ name = "chocolate", price = 5, amount = 50, },
 			--{ name = "cranberry", price = 5, amount = 50, },
@@ -127,30 +126,22 @@ Config = {
 			--{ name = "icream", price = 25, amount = 50, },
 			--{ name = "amaretto", price = 5, amount = 50, },
 			--{ name = "curaco", price = 5, amount = 50, },
+			--{ name = "flour", price = 5, amount = 50, },
 			--{ name = "mint", price = 5, amount = 50, },
 			--{ name = "cheddar", price = 5, amount = 50, },
 			--{ name = "yeast", price = 5, amount = 50, },
 			--{ name = "basil", price = 5, amount = 50, },
 			{ name = "mozz", price = 50, amount = 50, },
-			{ name = "tomato", price = 25, amount = 75, },
-			{ name = "pasta", price = 50, amount = 50, },
-			{ name = "cream", price = 50, amount = 50, },
-			{ name = "pepperoni", price = 25, amount = 50, },
-			{ name = "flour", price = 50, amount = 50, },
-			{ name = "milk", price = 50, amount = 50, },
-			{ name = "rawchicken", price = 50, amount = 100, },
-			{ name = "raw_beef", price = 50, amount = 70, },
-			{ name = "raw_bacon", price = 50, amount = 50, },
-			{ name = "raw_pork", price = 50, amount = 70, },
-			{ name = "raw_ham", price = 50, amount = 50, },
-			{ name = "chilipeppers", price = 50, amount = 50, },
-			{ name = "rawlamb", price = 50, amount = 50, },
+			--{ name = "sauce", price = 5, amount = 50, },
 			--{ name = "ketchup", price = 25, amount = 50, },
 			--{ name = "vodka", price = 5, amount = 50, },
 			--{ name = "beef", price = 25, amount = 50, },
 			--{ name = "packagedchicken", price = 5, amount = 50, },
 			--{ name = "apples", price = 25, amount = 50, },
+			--{ name = "tomato", price = 25, amount = 50, },
+			--{ name = "milk", price = 25, amount = 50, },
 			{ name = "sugar", price = 50, amount = 50, },
+			{ name = "flour", price = 50, amount = 50, },
 			{ name = "nori", price = 50, amount = 50, },
 			{ name = "tofu", price = 50, amount = 50, },
 			{ name = "onion", price = 50, amount = 50, },
@@ -159,6 +150,7 @@ Config = {
 			{ name = "orange", price = 50, amount = 50, },
 			{ name = "strawberry", price = 50, amount = 50, },
 			{ name = "blueberry", price = 50, amount = 50, },
+			{ name = "milk", price = 50, amount = 50, },
 			{ name = "rice", price = 50, amount = 50, },
 			{ name = "sake", price = 50, amount = 50, },
 			{ name = "noodles", price = 50, amount = 50, },
@@ -166,7 +158,7 @@ Config = {
 		["leisureshop"] = {
 			{ name = "parachute", price = 1500, amount = 5, },
 			{ name = "binoculars", price = 750, amount = 5, },
-			--{ name = "jerry_can", price = 1250, amount = 15, },
+			{ name = "jerry_can", price = 1250, amount = 15, },
 		},
 		["weapons"] = {
 			{ name = "weapon_knife", price = 500, amount = 5, },
@@ -198,9 +190,9 @@ Config = {
 			{ name = "vpn", price = 1250, amount = 15, },
 		},
 		["vending"] = {
-			{ name = "newsissueone", price = 100, amount = 25, },
-			--[[{ name = "kurkakola", price = 100, amount = 25, },
-			{ name = "coffee", price = 200, amount = 25 },]]
+			{ name = "water_bottle", price = 100, amount = 25, },
+			{ name = "kurkakola", price = 100, amount = 25, },
+			{ name = "coffee", price = 200, amount = 25 },
 			--{ name = "drpepper", price = 10, amount = 10, },
 			--{ name = "prime", price = 10, amount = 10, },
 			--{ name = "mtdew", price = 10, amount = 10, },
@@ -235,13 +227,13 @@ Config = {
 			--{ name = "cocainekey", price = 5000, amount = 5 },
 		},
 		["meth"] = {
-			{ name = "hydrochloric_acid", price = 1000, amount = 2 },
-			{ name = "sodium_hydroxide", price = 1000, amount = 2 },
+			{ name = "hydrochloric_acid", price = 700, amount = 5 },
+			
 			
 			
 		},
-		["gunparts"] = {
-			{ name = "randomcase", price = 20000, amount = 5 },
+		["mething2"] = {
+			{ name = "hydrochloric_acid", price = 700, amount = 5 },
 			
 			
 			
@@ -256,7 +248,7 @@ Config = {
 			{ name = "sandwich", price = 100, amount = 25, },
 		},
 		["extra"] = {
-			{ name = "weapon_fireworks", price = 250, amount = 25 },
+			--{ name = "pharmaceuticals", price = 250, amount = 25 },
 			
 		},
 		["preparedfood"] = {
@@ -327,30 +319,15 @@ Config = {
 			{ name = "welcomeguide", price = 10, amount = 25, },
 		},
 		
-		["ottoshop"] = {
-			{ name = "mechanic_tools", price = 100, amount = 100, },
-			{ name = "paintcan", price = 25, amount = 100, },
-			{ name = "tint_supplies", price = 100, amount = 100, },
-			{ name = "stancer", price = 1250, amount = 100, },
-			{ name = "underglow_controller", price = 100, amount = 100, },
-			{ name = "wires", price = 5, amount = 100, },
-			{ name = "ducttape", price = 50, amount = 100, },
-			{ name = "cleaningkit", price = 0, amount = 100, },
+		--[[["comicshop"] = {
+			{ name = "hentai", price = 0, amount = 100, },
+			{ name = "ted", price = 0, amount = 100, },
+			{ name = "bubble", price = 0, amount = 100, },
+			{ name = "01_monkeyman", price = 0, amount = 100, },
+			{ name = "01_monkeymansigned", price = 0, amount = 100, },
+			{ name = "bubble", price = 0, amount = 100, },
 
-		},
-
-
-		["tacoshop"] = {
-			{ name = "tortilla", price = 100, amount = 100, },
-			--[[{ name = "paintcan", price = 25, amount = 100, },
-			{ name = "tint_supplies", price = 100, amount = 100, },
-			{ name = "stancer", price = 1250, amount = 100, },
-			{ name = "underglow_controller", price = 100, amount = 100, },
-			{ name = "wires", price = 5, amount = 100, },
-			{ name = "ducttape", price = 50, amount = 100, },
-			{ name = "cleaningkit", price = 0, amount = 100, },]]
-
-		},
+		},]]
 
 
 		["petshop"] = {
@@ -480,13 +457,12 @@ Config.Locations = {
 	--		`IG_Benny_02`,
 	--		`MP_F_BennyMech_01`,
 	--	},
-		--["logo"] = "https://i.imgur.com/bPcM0TM.png",
+		["logo"] = "https://i.imgur.com/bPcM0TM.png",
         ["coords"] = {
 			vector4(-1576.8630, -3018.5583, -79.0059, 177.7386),
 			vector4(-1582.7583, -3013.9414, -76.0052, 267.4595),
-			vector4(813.8794, -749.3380, 26.9808, 268.8144),
+			vector4(813.4794, -749.3380, 26.7808, 267.9144),
 			vector4(-831.3847, -730.3113, 28.0601, 179.9212),
-			vector4(129.8545, -1285.3943, 29.0693, 115.9125),
 		},
         ["products"] = Config.Products["bar"],
         ["blipsprite"] = 525,
@@ -575,7 +551,7 @@ Config.Locations = {
 			`S_M_M_StrVend_01`,
 		},
         ["coords"] = {
-			vector4(562.4535, 2740.9490, 42.7968, 193.6022),
+			vector4(563.74, 2753.1, 42.88, 181.83),
 			--vector4(-1486.82, -377.48, 40.16, 130.89),
 			--vector4(-2966.41, 391.62, 15.04, 87.82),
 			--vector4(1165.15, 2710.78, 38.16, 177.96),
@@ -631,7 +607,7 @@ Config.Locations = {
 			vector4(1693.16, 3761.94, 34.71, 189.83),
             vector4(-330.72, 6085.81, 31.45, 190.52),
 			vector4(253.41, -51.67, 69.94, 28.88),
-			--vector4(23.69, -1105.95, 29.8, 124.58),
+			vector4(23.69, -1105.95, 29.8, 124.58),
             vector4(2566.81, 292.54, 108.73, 320.09),
             vector4(-1118.19, 2700.5, 18.55, 185.31),
             vector4(841.31, -1035.28, 28.19, 334.27),
@@ -926,10 +902,7 @@ Config.Locations = {
 			`mp_m_boatstaff_01`,
 			`a_m_y_beach_01`,
 		},
-		["coords"] = { 
-			vector4(-1505.67, 1512.29, 115.29, 244.94),
-			--vector4(-818.8972, -723.4490, 121.2673, 99.8275),
-		 },
+		["coords"] = { vector4(-1505.67, 1512.29, 115.29, 244.94) },
 		["products"] = Config.Products["leisureshop"],
 		["blipsprite"] = 52,
 		["blipcolour"] = 2,
@@ -966,26 +939,24 @@ Config.Locations = {
 			`A_F_M_TrampBeac_01`,
 			`A_M_M_Tramp_01`,
 		},
-        ["coords"] = { 
-			vector4(896.44, 3614.14, 32.82, 139.6),
-		    vector4(-1501.6445, 857.7659, 181.5947, 24.7322),
-			vector4(-1461.1973, 6768.1938, 7.8146, 69.7084),
-		},
+        ["coords"] = { vector4(896.44, 3614.14, 32.82, 139.6), },
         ["products"] = Config.Products["meth"],
 		["hideblip"] = true,
     }, -- vector4(896.44, 3614.14, 32.82, 139.6)
 	
-	["gunparts"] = {
-        ["label"] = "IAA Agent",
+	["mething2"] = {
+        ["label"] = "Meth Head",
 		["type"] = "items",
-		["killable"] = false,
+		["killable"] = true,
 		["targetLabel"] = "Talk",
 		["model"] = {
 			
-			'cs_casey',
+			`IG_RussianDrunk`,
+			`A_F_M_TrampBeac_01`,
+			`A_M_M_Tramp_01`,
 		},
-        ["coords"] = { vector4(417.6751, 4825.4043, -58.9997, 133.7803), },
-        ["products"] = Config.Products["gunparts"],
+        ["coords"] = { vector4(3559.94, 3674.5, 28.12, 168.93), },
+        ["products"] = Config.Products["mething2"],
 		["hideblip"] = true,
     },
 
@@ -1059,36 +1030,20 @@ Config.Locations = {
 		["hideblip"] = false,
     },
 
-	["ottoshop"] = {
-        ["label"] = "Otto's Shop",
+	["prepfood"] = {
+        ["label"] = "Prepared Food",
 		["type"] = "items",
 		--["killable"] = true,
-		["targetLabel"] = "Parts",
+		["targetLabel"] = "Talk",
 		--["model"] = {
 		--	`a_m_y_beach_01`,
 		--},
-        ["coords"] = { vector4(838.2644, -826.7849, 26.826, 91.8974), },
-        ["products"] = Config.Products["ottoshop"],
+        ["coords"] = { vector4(805.7027, -761.7300, 26.7809, 98.0817), },
+        ["products"] = Config.Products["preparedfood"],
 		["blipsprite"] = 682,
 		["blipcolour"] = 5,
 		["hideblip"] = true,
     },
-
-	--[[["tacoshop"] = {
-        ["label"] = "Taco Shop",
-		["type"] = "items",
-		--["killable"] = true,
-		["targetLabel"] = "Shop",
-		["model"] = {
-			`a_m_y_beach_01`,
-		},
-        ["coords"] = { vector4(12.6877, -1605.5760, 29.3970, 135.2366), },
-        ["products"] = Config.Products["tacoshop"],
-		["blipsprite"] = 682,
-		["blipcolour"] = 5,
-		["hideblip"] = true,
-    },]]
-
 
 	--[["pizzadough"] = {
         ["label"] = "Make Pizza Dough",
@@ -1290,7 +1245,7 @@ if Config.GabzAmmu then
 		vector4(1698.04, 3757.43, 34.71, 136.69),
 		vector4(-326.03, 6081.17, 31.45, 138.33),
 		vector4(246.87, -51.3, 69.94, 335.47),
-		vector4(4.8863, -1109.0562, 29.7972, 340.6324),
+		vector4(18.71, -1108.24, 29.8, 158.71),
 		vector4(2564.85, 298.83, 108.74, 283.17),
 		vector4(-1112.4, 2697.08, 18.55, 152.96),
 		vector4(841.16, -1028.63, 28.19, 294.2),
@@ -1320,17 +1275,17 @@ end
 
 if Config.VendOverride then
 	Config.Locations["vendingmachine"] = {
-		["label"] = "Newspaper Kiosk",
+		["label"] = "Vending Machine",
 		["targetIcon"] = "fas fa-calculator",
-		["targetLabel"] = "Newspaper Kiosk",
+		["targetLabel"] = "Vending Machine",
 		["type"] = "items",
-		["logo"] = "https://static.wikia.nocookie.net/gtawiki/images/8/83/Weazel_News.png",
+		["logo"] = "https://static.wikia.nocookie.net/gtawiki/images/d/d4/Ecola-GTAO-LSTunersBanner.png",
 		["model"] = { -- You can add more models to this, but these make the most sense for the vending machine stuff
-			--[[`prop_vend_soda_01`,
+			`prop_vend_soda_01`,
 			`prop_vend_soda_02`,
 			`prop_vend_snak_01`,
-			`prop_vend_snak_01_tu`]]
-			`prop_news_disp_02a`		},
+			`prop_vend_snak_01_tu`
+		},
 		["coords"] = { -- If you want to place custom vending machine locations
 			vector4(131.13, -3007.16, 7.04, 0.0), -- GABZ LS Tuners
 		},

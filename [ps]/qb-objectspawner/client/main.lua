@@ -12,7 +12,7 @@ local ObjectTypes = {
 }
 
 local ObjectParams = {
-    ["container"] = {event = "qb-objectspawner:client:containers", icon = "fas fa-question", label = "Container", SpawnRange = 500},
+    ["container"] = {event = "qb-objects:client:containers", icon = "fas fa-question", label = "Container", SpawnRange = 500},
     ["none"] = {SpawnRange = 500},
 }
 
@@ -61,7 +61,7 @@ AddEventHandler('onResourceStart', function(resourceName)
                 end)
             end
         end)
-        QBCore.Functions.TriggerCallback('qb-objectspawner:server:RequestObjects', function(incObjectList)
+        QBCore.Functions.TriggerCallback('qb-objects:server:RequestObjects', function(incObjectList)
             ObjectList = incObjectList
         end)
     end
@@ -79,7 +79,7 @@ AddEventHandler('onResourceStop', function(resourceName)
 end)
 
 RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function()
-    QBCore.Functions.TriggerCallback('qb-objectspawner:server:RequestObjects', function(incObjectList)
+    QBCore.Functions.TriggerCallback('qb-objects:server:RequestObjects', function(incObjectList)
         ObjectList = incObjectList
     end)
 
@@ -198,7 +198,7 @@ local function PlaceSpawnedObject(heading)
         Options = { event = ObjectParams[CurrentObjectType].event, icon = ObjectParams[CurrentObjectType].icon, label = ObjectParams[CurrentObjectType].label, SpawnRange = ObjectParams[CurrentObjectType].SpawnRange} --will be replaced with config of options later
     end
     local finalCoords = vector4(CurrentCoords.x, CurrentCoords.y, CurrentCoords.z, heading)
-    TriggerServerEvent("qb-objectspawner:server:CreateNewObject", CurrentModel, finalCoords, CurrentObjectType, Options, CurrentObjectName)
+    TriggerServerEvent("qb-objects:server:CreateNewObject", CurrentModel, finalCoords, CurrentObjectType, Options, CurrentObjectName)
     DeleteObject(CurrentObject)
     PlacingObject = false
     CurrentObject = nil
@@ -276,7 +276,7 @@ RegisterNUICallback('spawn', function(data, cb)
     cb('ok')
 end)
 
-RegisterNetEvent("qb-objectspawner:client:UpdateObjectList", function(NewObjectList)
+RegisterNetEvent("qb-objects:client:UpdateObjectList", function(NewObjectList)
     ObjectList = NewObjectList
 end)
 
@@ -340,7 +340,7 @@ CreateThread(function()
 	end
 end)
 
-RegisterNetEvent("qb-objectspawner:client:AddObject", function(object)
+RegisterNetEvent("qb-objects:client:AddObject", function(object)
     ObjectList[object.id] = object
     if group and group['god'] or group == 'god' then
         SendNUIMessage({ 
@@ -359,7 +359,7 @@ end)
 
 RegisterNUICallback('delete', function(data, cb)
     if group and group['god'] or group == 'god' then
-        TriggerServerEvent("qb-objectspawner:server:DeleteObject", data.id)
+        TriggerServerEvent("qb-objects:server:DeleteObject", data.id)
     end
     cb('ok')
 end)

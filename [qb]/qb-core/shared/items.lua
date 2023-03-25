@@ -11,14 +11,21 @@ QBShared.Items = {
 
 
 
+     
+	 ['weapon_dp9'] 				     = {['name'] = 'weapon_dp9', 			 	['label'] = 'DP9', 				['weight'] = 1000, 		['type'] = 'weapon', 	['ammotype'] = 'AMMO_PISTOL',		['image'] = 'weapon_dp9.png', 			['unique'] = true, 		['useable'] = false, 	['description'] = 'POW POW'},
+	 ['weapon_mp5'] 				     = {['name'] = 'weapon_mp5', 			 	['label'] = 'MP5', 				['weight'] = 1000, 		['type'] = 'weapon', 	['ammotype'] = 'AMMO_SMG',			['image'] = 'weapon_mp5.png', 			['unique'] = true, 		['useable'] = false, 	['description'] = 'A BETTER VERSION OF SMG'},
+	 ['weapon_dildo'] 				 = {['name'] = 'weapon_dildo', 			 	['label'] = 'DILDO', 			['weight'] = 1000, 		['type'] = 'weapon', 	['ammotype'] = 'nil',			    ['image'] = 'weapon_dildo.png', 		['unique'] = true, 		['useable'] = false, 	['description'] = 'YOU CAN GIVE THIS TO YOUR GIRLFRIEND'},
+	 ['weapon_groza'] 				 = {['name'] = 'weapon_groza', 			 	['label'] = 'GROZA', 			['weight'] = 1000, 		['type'] = 'weapon', 	['ammotype'] = 'AMMO_RIFLE',		['image'] = 'weapon_groza.png', 		['unique'] = true, 		['useable'] = false, 	['description'] = 'LETS PLAY PUBG WITH THIS'},
+	 ['weapon_g18c'] 				 = {['name'] = 'weapon_g18c', 			 	['label'] = 'GLOCK-18C', 		['weight'] = 1000, 		['type'] = 'weapon', 	['ammotype'] = 'AMMO_PISTOL',		['image'] = 'weapon_g18c.png', 			['unique'] = true, 		['useable'] = false, 	['description'] = 'A SMALL ASSAULT PISTOL'},
+	 ['weapon_krambit'] 			 	 = {['name'] = 'weapon_krambit', 			['label'] = 'KRAMBIT', 			['weight'] = 1000, 		['type'] = 'weapon', 	['ammotype'] = 'nil',			    ['image'] = 'weapon_krambit.png', 		['unique'] = true, 		['useable'] = false, 	['description'] = 'LMAO CSGO'},
+	 ['weapon_gepard'] 				 = {['name'] = 'weapon_gepard', 			['label'] = 'GEPARD', 			['weight'] = 1000, 		['type'] = 'weapon', 	['ammotype'] = 'AMMO_RIFLE',		['image'] = 'weapon_gepard.png', 		['unique'] = true, 		['useable'] = false, 	['description'] = 'A SMALL ASSAULT RIFLE LIKE YOUR PP'},
+	 ['weapon_sword'] 		         = {['name'] = 'weapon_sword', 			    ['label'] = 'SWORD', 		    ['weight'] = 1000, 		['type'] = 'weapon', 	['ammotype'] = 'nil',			    ['image'] = 'weapon_sword.png', 		['unique'] = true, 		['useable'] = false, 	['description'] = 'A BIG SWORD BIGGER THAN YOUR PP'},
+	 ['weapon_m67'] 				 	 = {['name'] = 'weapon_m67', 		    	['label'] = 'M67', 				['weight'] = 1000, 		['type'] = 'weapon', 	['ammotype'] = nil,					['image'] = 'weapon_m67.png', 			['unique'] = true, 		['useable'] = false, 	['description'] = 'A GRENADEEE'},
+	
 
 
-
-
-
-
-
-
+	 ['advancedrepairkit'] 			 = {['name'] = 'advancedrepairkit', 			['label'] = 'Advanced Repairkit', 		['weight'] = 4000, 		['type'] = 'item', 		['image'] = 'advancedkit.png', 			['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,	   ['combinable'] = nil,   ['description'] = 'A nice toolbox with stuff to repair your vehicle'},
+	
 
 
 
@@ -543,7 +550,7 @@ QBShared.Items = {
 ["recyclablematerial"]  = {["name"] = "recyclablematerial",   ["label"] = "Recycle Box",      ["weight"] = 500, ["type"] = "item", 		["image"] = "recyclablematerial.png",   ["unique"] = false, 	["useable"] = false, 	["shouldClose"] = false, ["combinable"] = nil,   ["description"] = "A box of Recyclable Materials"},
 
 
---
+
 --['weapon_nailgun'] 		 		 = {['name'] = 'weapon_nailgun', 	 			  	['label'] = 'Nail Gun', 					['weight'] = 1000, 	['type'] = 'weapon', 	['ammotype'] = 'AMMO_PISTOL',			['image'] = 'weapon_assaultrifle.png', 				['unique'] = true, 		['useable'] = false,["created"] = nil,	['description'] = 'A rapid-fire, magazine-fed automatic rifle designed for infantry use'},
 --['weapon_sniperrifle2'] 		 		 = {['name'] = 'weapon_sniperrifle2', 	 			  	['label'] = 'Hunting Rifle', 					['weight'] = 1000, 	['type'] = 'weapon', 	['ammotype'] = 'AMMO_RIFLE',			['image'] = 'weapon_assaultrifle.png', 				['unique'] = true, 		['useable'] = false,["created"] = nil,	['description'] = 'A rapid-fire, magazine-fed automatic rifle designed for infantry use'},
  	--['ammotype'] = nil,			['image'] = 'weapon_assaultrifle.png', 				['unique'] = true, 		['useable'] = false,["created"] = nil,	['description'] = 'A rapid-fire, magazine-fed automatic rifle designed for infantry use'},
@@ -551,21 +558,14 @@ QBShared.Items = {
 ['weapon_shoe'] 		 		 = {['name'] = 'weapon_shoe', 	 			  	['label'] = 'Stolen Shoe', 					['weight'] = 2500, 	['type'] = 'weapon', 	['ammotype'] = nil,			['image'] = 'shoes.png', 				['unique'] = true, 		['useable'] = false,["created"] = nil,	['description'] = 'A rapid-fire, magazine-fed automatic rifle designed for infantry use'},
 ['weapon_assaultrifle2'] 		 		 = {['name'] = 'weapon_assaultrifle2', 	 			  	['label'] = 'M 70', 					['weight'] = 30000, 	['type'] = 'weapon', 	['ammotype'] = 'AMMO_RIFLE',			['image'] = 'm70.png', 				['unique'] = true, 		['useable'] = false,["created"] = nil,	['description'] = 'A rapid-fire, magazine-fed automatic rifle designed for infantry use'},
 ['weapon_glock'] 		 		 = {['name'] = 'weapon_glock', 	 			  	['label'] = 'PD Glock', 					['weight'] = 8000, 	['type'] = 'weapon', 	['ammotype'] = 'AMMO_PISTOL',			['image'] = 'glock-17.png', 				['unique'] = true, 		['useable'] = false,["created"] = nil,	['description'] = 'A rapid-fire, magazine-fed automatic rifle designed for infantry use'},
-['weapon_microsmg3'] 		 		 = {['name'] = 'weapon_microsmg3', 	 			  	['label'] = 'Mac 10', 					['weight'] = 12000, 	['type'] = 'weapon', 	['ammotype'] = 'AMMO_SMG',			['image'] = 'mac-10.png', 				['unique'] = true, 		['useable'] = false,["created"] = nil,	['description'] = 'A rapid-fire, magazine-fed automatic rifle designed for infantry use'},
-['weapon_microsmg2'] 		 		 = {['name'] = 'weapon_microsmg2', 	 			  	['label'] = 'Uzi', 					['weight'] = 12000, 	['type'] = 'weapon', 	['ammotype'] = 'AMMO_SMG',			['image'] = 'uzi.png', 				['unique'] = true, 		['useable'] = false,["created"] = nil,	['description'] = 'A rapid-fire, magazine-fed automatic rifle designed for infantry use'},
+['weapon_mac10'] 		 		 = {['name'] = 'weapon_mac10', 	 			  	['label'] = 'Mac 10', 					['weight'] = 12000, 	['type'] = 'weapon', 	['ammotype'] = 'AMMO_SMG',			['image'] = 'mac-10.png', 				['unique'] = true, 		['useable'] = false,["created"] = nil,	['description'] = 'A rapid-fire, magazine-fed automatic rifle designed for infantry use'},
+['weapon_uzi'] 		 		 = {['name'] = 'weapon_uzi', 	 			  	['label'] = 'Uzi', 					['weight'] = 12000, 	['type'] = 'weapon', 	['ammotype'] = 'AMMO_SMG',			['image'] = 'uzi.png', 				['unique'] = true, 		['useable'] = false,["created"] = nil,	['description'] = 'A rapid-fire, magazine-fed automatic rifle designed for infantry use'},
 
 
-	--['weapon_ak47'] 		 		 = {['name'] = 'weapon_ak47', 	 			  	['label'] = 'AK 47', 					['weight'] = 30000, 	['type'] = 'weapon', 	['ammotype'] = 'AMMO_RIFLE',			['image'] = 'weapon_assaultrifle.png', 				['unique'] = true, 		['useable'] = false,["created"] = nil,	['description'] = 'A rapid-fire, magazine-fed automatic rifle designed for infantry use'},
-	--['weapon_de'] 					 = {['name'] = 'weapon_de', 			 	  	['label'] = 'Desert Eagle',			    ['weight'] = 8000, 		['type'] = 'weapon', 	['ammotype'] = 'AMMO_RIFLE',			['image'] = 'deagle.png', 							['unique'] = true, 		['useable'] = false,["created"] = nil,	['description'] = 'A .50 caliber firearm designed to be held with both hands'},
 	['weapon_fnx45'] 				 = {['name'] = 'weapon_fnx45', 	 			  	['label'] = 'FNX 45', 				['weight'] = 8000, 		['type'] = 'weapon', 	['ammotype'] = 'AMMO_PISTOL',			['image'] = 'weapon_combat-pistol.png', 			['unique'] = true, 		['useable'] = false,["created"] = nil,	['description'] = 'A combat version small firearm designed to be held in one hand'},
-	--['weapon_glock17'] 				 = {['name'] = 'weapon_glock17', 			 	['label'] = 'Glock 17', 				['weight'] = 8000, 		['type'] = 'weapon', 	['ammotype'] = 'AMMO_PISTOL',			['image'] = 'glock-17.png', 						['unique'] = true, 		['useable'] = false,["created"] = nil,	['description'] = 'PD GUN'},
 	['weapon_m4'] 					 = {['name'] = 'weapon_m4', 	 			  	['label'] = 'PD M4', 					['weight'] = 8000, 	['type'] = 'weapon', 	['ammotype'] = 'AMMO_RIFLE',			['image'] = 'weapon_carbinerifle.png',			 	['unique'] = true, 		['useable'] = false,["created"] = nil,	['description'] = 'A lightweight automatic rifle for the Police'},
 	['weapon_m9'] 					 = {['name'] = 'weapon_m9', 				 	['label'] = 'Beretta M9A3', 			['weight'] = 8000, 		['type'] = 'weapon', 	['ammotype'] = 'AMMO_PISTOL',			['image'] = 'm1911.png', 							['unique'] = true, 		['useable'] = false,["created"] = nil,	['description'] = 'A M91'},
-	--['weapon_m70'] 					 = {['name'] = 'weapon_m70', 	 			  	['label'] = 'Draco', 						['weight'] = 30000, 	['type'] = 'weapon', 	['ammotype'] = 'AMMO_RIFLE',			['image'] = 'm70.png',  							['unique'] = true, 		['useable'] = false,["created"] = nil,	['description'] = 'A rapid-fire, magazine-fed automatic rifle designed for infantry use'},
-	--['weapon_m1911'] 				 = {['name'] = 'weapon_m1911', 	 			  	['label'] = 'M1911', 					['weight'] = 8000, 		['type'] = 'weapon', 	['ammotype'] = 'AMMO_PISTOL',			['image'] = 'browning.png',  						['unique'] = true, 		['useable'] = false,["created"] = nil,	['description'] = 'A hefty firearm designed to be held in one hand (or attempted)'},
-	--['weapon_uzi'] 					 = {['name'] = 'weapon_uzi', 			 	  	['label'] = 'UZI', 						['weight'] = 15000, 	['type'] = 'weapon', 	['ammotype'] = 'AMMO_SMG',				['image'] = 'uzi.png', 								['unique'] = true, 		['useable'] = false,["created"] = nil,	['description'] = 'A handheld lightweight machine gun'},
-	--['weapon_mac10'] 				 = {['name'] = 'weapon_mac10', 			 	  	['label'] = 'MAC 10', 					['weight'] = 15000, 	['type'] = 'weapon', 	['ammotype'] = 'AMMO_SMG',				['image'] = 'mac-10.png', 							['unique'] = true, 		['useable'] = false,["created"] = nil,	['description'] = 'A handheld lightweight machine gun'},
---	['weapon_mossberg'] 			 = {['name'] = 'weapon_mossberg', 			 	['label'] = 'Mossberg 500', 			['weight'] = 20000, 	['type'] = 'weapon', 	['ammotype'] = 'AMMO_SHOTGUN',			['image'] = 'mossberg500.png',						['unique'] = true,	 	['useable'] = false,["created"] = nil,	['description'] = 'A sawn-off smoothbore gun for firing small shot at short range'},
+	--	['weapon_mossberg'] 			 = {['name'] = 'weapon_mossberg', 			 	['label'] = 'Mossberg 500', 			['weight'] = 20000, 	['type'] = 'weapon', 	['ammotype'] = 'AMMO_SHOTGUN',			['image'] = 'mossberg500.png',						['unique'] = true,	 	['useable'] = false,["created"] = nil,	['description'] = 'A sawn-off smoothbore gun for firing small shot at short range'},
 --	['weapon_remington'] 			 = {['name'] = 'weapon_remington', 		 	  	['label'] = 'Remington 870', 			['weight'] = 20000, 		['type'] = 'weapon', 	['ammotype'] = 'AMMO_SHOTGUN',			['image'] = 'remington.png', 						['unique'] = true, 		['useable'] = false,["created"] = nil,	['description'] = 'A pump-action smoothbore gun for firing small shot at short range'},
 --	['weapon_scarh'] 				 = {['name'] = 'weapon_scarh', 				 	['label'] = 'PD SCAR', 				['weight'] = 25000, 	['type'] = 'weapon', 	['ammotype'] = 'AMMO_RIFLE',			['image'] = 'scar.png',								['unique'] = true, 		['useable'] = false,["created"] = nil,	['description'] = 'An extremely versatile assault rifle for any combat situation'},
 	['weapon_shiv'] 				 = {['name'] = 'weapon_shiv', 			 	  	['label'] = 'Shiv', 					['weight'] = 3000, 		['type'] = 'weapon', 	['ammotype'] = nil,						['image'] = 'shiv.png', 							['unique'] = true, 		['useable'] = false,["created"] = nil,	['description'] = 'An instrument composed of a blade fixed into a handle, used for cutting or as a weapon'},
@@ -574,7 +574,6 @@ QBShared.Items = {
 -- 	['weapon_huntingrifle'] 		 = {['name'] = 'weapon_huntingrifle', 	 	  	['label'] = 'Hunting Rifle', 			['weight'] = 15000, 	['type'] = 'weapon', 	['ammotype'] = 'AMMO_SNIPER',			['image'] = 'huntingrifle.png', 					['unique'] = true, 		['useable'] = false,["created"] = nil,	['description'] = 'For Hunting Purposes Only (Headshots Count)'},
 	['weapon_katana'] 				 = {['name'] = 'weapon_katana', 	 		  	['label'] = 'Katana', 					['weight'] = 3000, 	['type'] = 'weapon', 	['ammotype'] = nil,						['image'] = 'katana.png', 							['unique'] = true, 		['useable'] = false,["created"] = nil,	['description'] = 'A single-edged sword that is the longer of a pair worn by the Japanese samurai.'},
 	['weapon_sledgehammer'] 				 = {['name'] = 'weapon_sledgehammer', 	 		  	['label'] = 'Sledge Hammer', 					['weight'] = 10000, 	['type'] = 'weapon', 	['ammotype'] = nil,						['image'] = 'sledgehammer.png', 							['unique'] = true, 		['useable'] = false,["created"] = nil,	['description'] = 'A Sledge Hammer to destroy peoples heads'},
---	['weapon_mp9'] 			 = {['name'] = 'weapon_mp9', 		 	  	['label'] = 'MP9', 				['weight'] = 15000, 		['type'] = 'weapon', 	['ammotype'] = 'AMMO_SMG',				['image'] = '???', 		['unique'] = true, 		['useable'] = false,["created"] = nil,["decay"] = 1.0,     	['description'] = 'A handheld lightweight machine gun'},
 	--['weapon_m110'] 		 = {['name'] = 'weapon_m110', 	 	  	['label'] = 'M110', 			['weight'] = 75000, 		['type'] = 'weapon', 	['ammotype'] = 'AMMO_SNIPER',			['image'] = '???', 	['unique'] = true, 		['useable'] = false,["created"] = nil,["decay"] = 30.0,     	['description'] = 'A very accurate single-fire rifle'},
 --	['weapon_hk416'] 		 = {['name'] = 'weapon_hk416', 	 	  	['label'] = 'PD HK-416', 			['weight'] = 25000, 		['type'] = 'weapon', 	['ammotype'] = 'AMMO_RIFLE',			['image'] = 'weapon_carbinerifle.png', 	['unique'] = true, 		['useable'] = false,["created"] = nil,["decay"] = 30.0,     	['description'] = 'A lightweight automatic rifle'},
 
@@ -646,8 +645,7 @@ QBShared.Items = {
 
 	["creamsauce"] 					= {["name"] = "creamsauce",  	  		["label"] = "Creamsauce",	["weight"] = 100, 		["type"] = "item", 		["image"] = "creamsauce.png", 		["unique"] = false, 	["useable"] = true, 	["shouldClose"] = true,   	["combinable"] = nil,   ["description"] = ""},
 
-   ["scissors"] 			 		 = {["name"] = "scissors", 						["label"] = "Scissors", 				["weight"] = 5000, 		["type"] = "item", 		["image"] = "np_scissors.png", 			["unique"] = false, 	["useable"] = true, 	["shouldClose"] = true,	   ["combinable"] = nil,   ["expire"] = 90,  ["description"] = "Scissors"},
-    ["marijuana"] 			 		 = {["name"] = "marijuana", 					["label"] = "Marijuana", 				["weight"] = 1000,		["type"] = "item", 		["image"] = "marijuana.png", 			["unique"] = false, 	["useable"] = false, 	["shouldClose"] = true,	   ["combinable"] = nil,   ["expire"] = 90,  ["description"] = "Some fine smelling buds."},
+     ["marijuana"] 			 		 = {["name"] = "marijuana", 					["label"] = "Marijuana", 				["weight"] = 1000,		["type"] = "item", 		["image"] = "marijuana.png", 			["unique"] = false, 	["useable"] = false, 	["shouldClose"] = true,	   ["combinable"] = nil,   ["expire"] = 90,  ["description"] = "Some fine smelling buds."},
 	["nugs"] 			 		 = {["name"] = "nugs", 					["label"] = "Marijuana Nugs", 				["weight"] = 100,		["type"] = "item", 		["image"] = "nugs.png", 			["unique"] = false, 	["useable"] = false, 	["shouldClose"] = true,	   ["combinable"] = nil,   ["expire"] = 90,  ["description"] = "Some fine smelling nugs."},
 
 	["chemicals"] 		 	 	 	 = {["name"] = "chemicals",           			["label"] = "Cleaning Chemicals",	 			["weight"] = 2000, 		["type"] = "item", 		["image"] = "liquidmix.png", 			["unique"] = false, 	["useable"] = false, 	["shouldClose"] = false,   ["combinable"] = nil,   ["expire"] = 90,  ["description"] = "Chemicals, handle with care..."},
@@ -695,18 +693,12 @@ QBShared.Items = {
 	["megaphone"]						= {["name"] = "megaphone",			["label"] = "Megaphone",		["weight"] = 10000,	["type"] = "item",	["image"] = "megaphone.png",	["unique"] = true,	["useable"] = true,	["shouldClose"] = false,	["combinable"] = nil,	   ["description"] = "A loudspeaker to yell at civilians."},
 	['scanner'] 			 		 = {['name'] = 'scanner', 						['label'] = 'Scanner', 		['weight'] = 5000, 		['type'] = 'item', 		['image'] = 'radioscanner.png', 		['unique'] = false, 		['useable'] = true, 	['shouldClose'] = true,	   ['combinable'] = nil,   ['description'] = 'Used to scan for radio channels'},
 
-	['weed_nutrition'] 				 = {['name'] = 'weed_nutrition', 			    ['label'] = 'Fertilizer', 		['weight'] = 5000, 		['type'] = 'item', 		['image'] = 'np_fertilizer.png', 		['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,	   ['combinable'] = nil,   ['description'] = 'Plant nutrition'},
-	['female_seed'] 				 = {['name'] = 'female_seed', 				    ['label'] = 'Female Seed',		 		['weight'] = 1000, 		['type'] = 'item', 		['image'] = 'weed_seed.png', 			['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,	   ['combinable'] = nil,   ['description'] = 'Female Weed Seed'},
---	['male_seed'] 					 = {['name'] = 'male_seed', 				    ['label'] = 'Male Seed',		 		['weight'] = 1000, 		['type'] = 'item', 		['image'] = 'weed_seed.png', 			['unique'] = false, 	['useable'] = false, 	['shouldClose'] = true,	   ['combinable'] = nil,   ['description'] = 'Male Weed Seed'},
---	['empty_weed_bag'] 				 = {['name'] = 'empty_weed_bag', 			    ['label'] = 'Empty Weed Bag', 			['weight'] = 100, 		['type'] = 'item', 		['image'] = 'weed_baggy_empty.png', 	['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,	   ['combinable'] = nil,   ['description'] = 'A large empty bag'},
---	['weed_bag'] 				 	 = {['name'] = 'weed_bag', 					  	['label'] = 'Bag of Weed', 				['weight'] = 1000, 		['type'] = 'item', 		['image'] = 'weedbag.png', 			['unique'] = false, 	['useable'] = false, 	['shouldClose'] = true,	   ['combinable'] = nil,   ['description'] = 'A big ass bag of weed'},
-
+	
 	-- ** Joints
-	['joint'] 						 = {['name'] = 'joint', 			  	  		['label'] = 'Joint',			 		['weight'] = 1000, 		['type'] = 'item', 		['image'] = 'joint.png', 				['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,    ['combinable'] = nil,   ['description'] = 'A joint made off Weed'},
+--	['joint'] 						 = {['name'] = 'joint', 			  	  		['label'] = 'Joint',			 		['weight'] = 1000, 		['type'] = 'item', 		['image'] = 'joint.png', 				['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,    ['combinable'] = nil,   ['description'] = 'A joint made off Weed'},
 	
 	-- ** Wet Bud
-	['wetbud'] 						 = {['name'] = 'wetbud', 			  	  		['label'] = 'Wet Bud', 					['weight'] = 2500, 		['type'] = 'item', 		['image'] = 'weed_og-kush_bud.png', 				['unique'] = false, 	['useable'] = false, 	['shouldClose'] = true,    ['combinable'] = nil,   ['description'] = 'Wet Bud'},
-
+	
 --MISC food
 ["apples"] 				 	 	     = {["name"] = "apples",								["label"] = "Apples",					["weight"] = 100,		["type"] = "item",		["image"] = "apples.png",						["unique"] = false,		["useable"] = true,		["shouldClose"] = true,	   ["combinable"] = nil,   ["description"] = "Food Ingredients"},
 ["pickle"] 							 = {["name"] = "pickle",  	     						["label"] = "Pickle",	 		 		["weight"] = 200, 		["type"] = "item", 		["image"] = "pickle.png", 						["unique"] = false, 	["useable"] = true, 	["shouldClose"] = true,   	["combinable"] = nil,   ["description"] = "Food Ingredients" },
@@ -1159,10 +1151,13 @@ QBShared.Items = {
 ["cokepowder"] 				 = {["name"] = "cokepowder", 			  	  		["label"] = "Cocain Powder",   		["weight"] = 10000, 		["type"] = "item", 		["image"] = "coke.png", 				["unique"] = false, 	["useable"] = false, 	["shouldClose"] = false,	['combinable'] = {accept = {'band'}, reward = 'cokebill', amount = 1, anim = {['dict'] = 'anim@amb@business@weed@weed_inspecting_high_dry@', ['lib'] = 'weed_inspecting_high_base_inspector', ['text'] = 'Rolling Bill', ['timeOut'] = 5000,}}, ["description"] = "A big pile of the snorty good shit"},
 ["cokebill"] 				 = {["name"] = "cokebill", 			  	  		["label"] = "Rolled Bill",   		["weight"] = 2500, 		["type"] = "item", 		["image"] = "rolledbill.png", 				["unique"] = true, 	["useable"] = true, 	["shouldClose"] = true,	["combinable"] = nil,   ["description"] = "A crisp 100$ bill with some powder inside"},
 ["cokebag"] 				 = {["name"] = "cokebag", 						["label"] = "Coke Bag", 	   		["weight"] = 500, 		["type"] = "item", 		["image"] = "cokebag.png", 				["unique"] = false, 	["useable"] = false, 	["shouldClose"] = false,	["combinable"] = nil,   ["description"] = "A Small Bag of the White Goodness"},
-["purifiedwater"] 		 	 = {["name"] = "purifiedwater",           		  		["label"] = "Purified Water",	 		["weight"] = 1000, 		["type"] = "item", 		["image"] = "waterjug.png", 		    		["unique"] = false, 	["useable"] = false, 	["shouldClose"] = false,   	["combinable"] = nil,   ["description"] = "A Household Water Jug"},
+
+
+
+
+
 ['cokekey'] 				 = {['name'] = 'cokekey', 						['label'] = 'Special Key', 			['weight'] = 500, 		['type'] = 'item', 		['image'] = 'security_card_04.png', 			    	['unique'] = false, 	['useable'] = false, 	['shouldClose'] = false,   	['combinable'] = nil,   ['description'] = 'A Very Special Key, Secrets Hide Behind Doors...'},
 ["sodium_hydroxide"] 			 = {["name"] = "sodium_hydroxide", 					["label"] = "Sodium Hydroxide", 		["weight"] = 2000, 		["type"] = "item", 		["image"] = "sodium_hydroxide.png", 			["unique"] = false, 	["useable"] = false, 	["shouldClose"] = true,	   	["combinable"] = nil,   ["description"] = "Salty Chemicals"},
-['drugbag'] 				 = {['name'] = 'drugbag', 						['label'] = 'Empty Bag', 			['weight'] = 2000, 		['type'] = 'item', 		['image'] = 'np_meth_empty_baggy.png', 				['unique'] = false, 	['useable'] = false, 	['shouldClose'] = false,   	['combinable'] = nil,   ['description'] = 'A Empty Bag'},
 ['bakingsoda'] 				 = {['name'] = 'bakingsoda', 						['label'] = 'Baking Soda', 			['weight'] = 5000, 		['type'] = 'item', 		['image'] = 'bakingsoda.png', 			    	['unique'] = false, 	['useable'] = false, 	['shouldClose'] = false,   	['combinable'] = nil,   ['description'] = 'Bake with some SODA!!'},
 ["bigbrick"] 				 = {["name"] = "bigbrick", 			  	  		["label"] = "Suspicious Package",   		["weight"] = 10000, 		["type"] = "item", 		["image"] = "bigbrick.png", 				["unique"] = false, 	["useable"] = false, 	["shouldClose"] = false,	["combinable"] = nil,   ["description"] = "A very Suspicious Package"},
 ["cokematerials"] 			 = {["name"] = "cokematerials", 					["label"] = "Ingredients", 		["weight"] = 2000, 		["type"] = "item", 		["image"] = "sodium_hydroxide.png", 			["unique"] = false, 	["useable"] = false, 	["shouldClose"] = true,	   	["combinable"] = nil,   ["description"] = "Powdery Chemicals"},
@@ -1311,49 +1306,33 @@ QBShared.Items = {
 
 
 
+------------------------------ POLAR WEED ----------------------------
+['1ozlow'] 			 	 = {['name'] = '1ozlow', 				['label'] = '1oz Weed', 			['weight'] = 1800, 		['type'] = 'item', 		['image'] = '1ozlow.png', 				['unique'] = true,    	['useable'] = false,    ['shouldClose'] = false,	   	['combinable'] = nil,   ['description'] = 'Low Quality Weed Ounce '},	
+['1ozmid'] 		 	 	 = {['name'] = '1ozmid', 				['label'] = '1oz Weed', 			['weight'] = 1800, 		['type'] = 'item', 		['image'] = '1ozmid.png', 				['unique'] = true,    	['useable'] = false,    ['shouldClose'] = false,	   	['combinable'] = nil,   ['description'] = 'Medium Quality Weed Ounce'},	
+['1ozhigh'] 		 	 	 = {['name'] = '1ozhigh', 				['label'] = '1oz Weed', 			['weight'] = 1800, 		['type'] = 'item', 		['image'] = '1ozhigh.png', 				['unique'] = true,    	['useable'] = false,    ['shouldClose'] = false,	   	['combinable'] = nil,   ['description'] = 'Great Quality Weed Ounce'},	
 
+['weed_nutrition'] 				 = {['name'] = 'weed_nutrition', 			    ['label'] = 'Fertilizer', 		['weight'] = 5000, 		['type'] = 'item', 		['image'] = 'weed_nutrition.png', 		['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,	   ['combinable'] = nil,   ['description'] = 'Plant nutrition'},
+['male_seed'] 					 = {['name'] = 'male_seed', 				    ['label'] = 'Male Seed',		 		['weight'] = 200, 		['type'] = 'item', 		['image'] = 'weed_seed.png', 			['unique'] = false, 	['useable'] = false, 	['shouldClose'] = true,	   ['combinable'] = nil,   ['description'] = 'Male Weed Seed'},
+['female_seed'] 				 = {['name'] = 'female_seed', 				    ['label'] = 'Female Seed',		 		['weight'] = 1000, 		['type'] = 'item', 		['image'] = 'weed_seed.png', 			['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,	   ['combinable'] = nil,   ['description'] = 'Female Weed Seed'},
+["purifiedwater"] 		 	 = {["name"] = "purifiedwater",           		  		["label"] = "Purified Water",	 		["weight"] = 1000, 		["type"] = "item", 		["image"] = "waterjug.png", 		    		["unique"] = false, 	["useable"] = false, 	["shouldClose"] = false,   	["combinable"] = nil,   ["description"] = "A Household Water Jug"},
+		
+['wetbud'] 						 = {['name'] = 'wetbud', 			  	  		['label'] = 'Wet Bud', 					['weight'] = 2500, 		['type'] = 'item', 		['image'] = 'wetbud.png', 				['unique'] = false, 	['useable'] = false, 	['shouldClose'] = true,    ['combinable'] = nil,   ['description'] = 'Low Quality Wet Bud (Possible THC Levels of 1%-9%)'},
+['wetbud2'] 						 = {['name'] = 'wetbud2', 			  	  		['label'] = 'Wet Bud', 					['weight'] = 2500, 		['type'] = 'item', 		['image'] = 'wetbud.png', 				['unique'] = false, 	['useable'] = false, 	['shouldClose'] = true,    ['combinable'] = nil,   ['description'] = 'Medium Quality Wet Bud (Possible THC Levels of 10%-20%)'},
+['wetbud3'] 						 = {['name'] = 'wetbud3', 			  	  		['label'] = 'Wet Bud', 					['weight'] = 2500, 		['type'] = 'item', 		['image'] = 'wetbud.png', 				['unique'] = false, 	['useable'] = false, 	['shouldClose'] = true,    ['combinable'] = nil,   ['description'] = 'Good Quality Wet Bud (Possible THC Levels of 25%-45%)'},
 
-
-
-
-
-
--- Bad Quality
-['croplow'] 			 	 = {['name'] = 'croplow', 				['label'] = 'Harvested Crop', 			['weight'] = 5500, 		['type'] = 'item', 		['image'] = 'croplow.png', 				['unique'] = false,    	['useable'] = false,    ['shouldClose'] = false,	   	['combinable'] = nil,   ['description'] = 'Shit Quality Crop'},	
-['35weedlow'] 			 	 = {['name'] = '35weedlow', 				['label'] = '3.5g Low Weed', 			['weight'] = 2800, 		['type'] = 'item', 		['image'] = '35weedlow.png', 				['unique'] = false,    	['useable'] = true,     ['shouldClose'] = true,	   		['combinable'] = nil,   ['description'] = 'Spawned In'},	
-['1ozlow'] 			 	 = {['name'] = '1ozlow', 				['label'] = '1oz Weed', 			['weight'] = 2800, 		['type'] = 'item', 		['image'] = '1ozlow.png', 				['unique'] = false,    	['useable'] = false,    ['shouldClose'] = false,	   	['combinable'] = nil,   ['description'] = 'Spawned In'},	
-
--- Decent Quality
-['cropmid'] 		 	 	 = {['name'] = 'cropmid', 				['label'] = 'Harvested Crop', 			['weight'] = 5500, 		['type'] = 'item', 		['image'] = 'cropmid.png', 				['unique'] = false,    	['useable'] = false,    ['shouldClose'] = false,	   	['combinable'] = nil,   ['description'] = 'Decent Quality Crop'},	
-['35weedmid'] 		 	 	 = {['name'] = '35weedmid', 				['label'] = '3.5g Mid Grade Weed', 			['weight'] = 2800, 		['type'] = 'item', 		['image'] = '35weedmid.png', 				['unique'] = false,    	['useable'] = true,     ['shouldClose'] = true,	   		['combinable'] = nil,   ['description'] = 'Spawned In'},	
-['1ozmid'] 		 	 	 = {['name'] = '1ozmid', 				['label'] = '1oz Weed', 			['weight'] = 2800, 		['type'] = 'item', 		['image'] = '1ozmid.png', 				['unique'] = false,    	['useable'] = false,    ['shouldClose'] = false,	   	['combinable'] = nil,   ['description'] = 'Spawned In'},	
-
--- Good Quality
-['crophigh'] 		 	 = {['name'] = 'crophigh', 				['label'] = 'Harvested Crop', 			['weight'] = 5500, 		['type'] = 'item', 		['image'] = 'crophigh.png', 				['unique'] = false,    	['useable'] = false,    ['shouldClose'] = false,	   	['combinable'] = nil,   ['description'] = 'Good Quality Crop'},	
-['35weedhigh'] 		 	 	 = {['name'] = '35weedhigh', 				['label'] = '3.5g High Grade Weed', 			['weight'] = 2800, 		['type'] = 'item', 		['image'] = '35weedhigh.png', 				['unique'] = false,    	['useable'] = true,     ['shouldClose'] = true,	   		['combinable'] = nil,   ['description'] = 'Spawned In'},	
-['1ozhigh'] 		 	 	 = {['name'] = '1ozhigh', 				['label'] = '1oz Weed', 			['weight'] = 2800, 		['type'] = 'item', 		['image'] = '1ozhigh.png', 				['unique'] = false,    	['useable'] = false,    ['shouldClose'] = false,	   	['combinable'] = nil,   ['description'] = 'Spawned In'},	
-['weedpound'] 		 	 	 = {['name'] = 'weedpound', 				['label'] = 'Pound of Weed', 			['weight'] = 10000, 		['type'] = 'item', 		['image'] = '1ozhigh.png', 				['unique'] = false,    	['useable'] = false,    ['shouldClose'] = false,	   	['combinable'] = nil,   ['description'] = 'Spawned In'},	
+['weedpound'] 		 	 	 = {['name'] = 'weedpound', 				['label'] = 'Pound of Weed', 			['weight'] = 10000, 		['type'] = 'item', 		['image'] = 'weedpound.png', 				['unique'] = false,    	['useable'] = false,    ['shouldClose'] = false,	   	['combinable'] = nil,   ['description'] = 'Low Quality Weed Pound, This Shit makes Hella Stank Ounces'},	
+['weedpound2'] 		 	 	 = {['name'] = 'weedpound2', 				['label'] = 'Pound of Weed', 			['weight'] = 10000, 		['type'] = 'item', 		['image'] = 'weedpound.png', 				['unique'] = false,    	['useable'] = false,    ['shouldClose'] = false,	   	['combinable'] = nil,   ['description'] = 'Medium Quality Weed Pound, This Shit makes Hella Ounces'},	
+['weedpound3'] 		 	 	 = {['name'] = 'weedpound3', 				['label'] = 'Pound of Weed', 			['weight'] = 10000, 		['type'] = 'item', 		['image'] = 'weedpound.png', 				['unique'] = false,    	['useable'] = false,    ['shouldClose'] = false,	   	['combinable'] = nil,   ['description'] = 'Good Quality Weed Pound, This Shit makes Hella Ounces'},	
+['drugbag'] 				 = {['name'] = 'drugbag', 						['label'] = 'Empty Bag', 			['weight'] = 2000, 		['type'] = 'item', 		['image'] = 'emptybag.png', 				['unique'] = false, 	['useable'] = false, 	['shouldClose'] = false,   	['combinable'] = nil,   ['description'] = 'A Empty Bag'},
 
 -- Items
---['weed_seeds'] 			 	 = {['name'] = 'weed_seeds', 					['label'] = 'Seeds', 			['weight'] = 500, 		['type'] = 'item', 		['image'] = 'weed_seeds.png', 					['unique'] = false,    	['useable'] = true, 	['shouldClose'] = true,	   		['combinable'] = nil,   ['description'] = 'ooooo seeds'},	
 ['smalljoint'] 			 	 = {['name'] = 'smalljoint', 					['label'] = 'Joint', 					['weight'] = 500, 		['type'] = 'item', 		['image'] = 'smalljoint.png', 					['unique'] = false,    	['useable'] = true, 	['shouldClose'] = true,	   		['combinable'] = nil,   ['description'] = 'You a lil bitch with this small ass joint'},	
 ['largejoint'] 			 	 = {['name'] = 'largejoint', 				['label'] = 'Joint', 			    	['weight'] = 500, 		['type'] = 'item', 		['image'] = 'largejoint.png', 				['unique'] = false,    	['useable'] = true, 	['shouldClose'] = true,	   		['combinable'] = nil,   ['description'] = 'Large Ass Joint'},	
-['male_seed'] 					 = {['name'] = 'male_seed', 				    ['label'] = 'Male Seed',		 		['weight'] = 200, 		['type'] = 'item', 		['image'] = 'weed_seed.png', 			['unique'] = false, 	['useable'] = false, 	['shouldClose'] = true,	   ['combinable'] = nil,   ['description'] = 'Male Weed Seed'},
-	
--- Shop Items
-['burnerphone'] 			 	 = {['name'] = 'burnerphone', 					['label'] = 'Burner Phone', 			['weight'] = 1000, 		['type'] = 'item', 		['image'] = 'burnerphone.png', 					['unique'] = false,    	['useable'] = true, 	['shouldClose'] = true,	   		['combinable'] = nil,   ['description'] = 'Dont Call the Police'},	
-['trowel'] 			 	 = {['name'] = 'trowel', 			  		['label'] = 'Trowel', 					['weight'] = 1000, 		['type'] = 'item', 		['image'] = 'trowel.png', 				['unique'] = false,    	['useable'] = true, 	['shouldClose'] = true,	   		['combinable'] = nil,   ['description'] = 'A Shitty Small handheld garden shovel'},
 ["lighter"] 		 	 	 = {["name"] = "lighter", 				["label"] = "Lighter", 					["weight"] = 1000, 	    ["type"] = "item", 		["image"] = "lighter.png", 				["unique"] = false, 	["useable"] = false, 	["shouldClose"] = true,    		["combinable"] = nil,   ["description"] = "Only meth heads use this kind of lighter"},
 ["rollingpaper"] 		         = {["name"] = "rollingpaper", 			["label"] = "Rolling Papers", 			["weight"] = 1000, 	    ["type"] = "item", 		["image"] = "rollingpaper.png", 			["unique"] = false, 	["useable"] = false, 	["shouldClose"] = true,    		["combinable"] = nil,   ["description"] = "These aint Raw Rolling Papers!!?"},
-["scale"] 		 	         = {["name"] = "scale", 					["label"] = "Scale", 					["weight"] = 1000, 	    ["type"] = "item", 		["image"] = "scale.png", 					["unique"] = false, 	["useable"] = true, 	["shouldClose"] = false,   		["combinable"] = nil,   ["description"] = "This is not what it looks like"},
---['weed_nutrition'] 			 = {['name'] = 'weed_nutrition', 			    ['label'] = 'Plant Fertilizer', 		['weight'] = 1000, 		['type'] = 'item', 		['image'] = 'weed_nutrition.png', 				['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,	  		['combinable'] = nil,   ['description'] = 'Plant nutrition'},
---['purifiedwater'] 			 	 = {['name'] = 'purifiedwater', 			    	['label'] = 'Purified Water', 				['weight'] = 1250, 		['type'] = 'item', 		['image'] = 'purifiedwater.png', 					['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,	  		['combinable'] = nil,   ['description'] = 'Plant water'},
-['weedkey'] 			 	 = {['name'] = 'weedkey', 			    	['label'] = 'Key', 				['weight'] = 1000, 		['type'] = 'item', 		['image'] = 'weedkey.png', 					['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,	  		['combinable'] = nil,   ['description'] = 'This key smells like Dope'},
---['scissors'] 			 	 = {['name'] = 'scissors', 			    	['label'] = 'Scissors', 				['weight'] = 1000, 		['type'] = 'item', 		['image'] = 'scissors.png', 					['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,	  		['combinable'] = nil,   ['description'] = 'These Scissors have some extra Dope on them'},
-
-
-
-
+["scale"] 		 	         = {["name"] = "scale", 					["label"] = "Scale", 					["weight"] = 1000, 	    ["type"] = "item", 		["image"] = "scale.png", 					["unique"] = false, 	["useable"] = true, 	["shouldClose"] = false,   		["combinable"] = nil,   ["description"] = "Its not what it looks like"},
+['weedkey'] 			 	 = {['name'] = 'weedkey', 			    	['label'] = 'Key', 				['weight'] = 1000, 		['type'] = 'item', 		['image'] = 'weedcard.png', 					['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,	  		['combinable'] = nil,   ['description'] = 'This a Key? Stinks like Weed'},
+------------------------------------------------------------------
 
 
 

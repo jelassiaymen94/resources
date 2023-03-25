@@ -22,7 +22,19 @@ local recoils = {
 	-- [-800287667] = 0.0,		--['weapon_handcuffs']
 	-- [1309015656] = 0.0,		--['weapon_bread']
 	-- [940833800] = 0.3,		--['weapon_stone_hatchet']
+-- GD-WEAPONS
+	[GetHashKey("weapon_groza")] = 0.5,
+    [GetHashKey("weapon_gepard")] = 0.5,
+  
 
+	[GetHashKey("weapon_dp9")] = 0.3,
+	
+   
+   	[GetHashKey("weapon_g18c")] = 0.3,
+
+	
+    [GetHashKey("weapon_mp5")] = 0.4,
+    [GetHashKey("weapon_beanbag")] = 0.1,
 	-- Handguns
 	[453432689] = 0.3,			--['weapon_pistol']
 	[-1075685676] = 0.5,		--['weapon_pistol_mk2']

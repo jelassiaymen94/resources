@@ -52,7 +52,7 @@ end
 
 
 
-RegisterNetEvent('polar-mba:client:basketball', function(source, args, rawCommand)
+RegisterNetEvent('polar-mba:Client:basketball', function(source, args, rawCommand)
     if not args[1] then return end
     if args[1] then
         if args[1] == "all" then return end
@@ -102,11 +102,11 @@ RegisterCommand('evidence', function(source, args)
         if canOpen then
             slot = tonumber(args[1])
             if args[1] ~= nil then
-                TriggerServerEvent("inventory:server:OpenInventory", "stash", " 1 | Drawer "..slot, {
+                TriggerServerEvent("inventory:Server:OpenInventory", "stash", " 1 | Drawer "..slot, {
                     maxweight = 1000000,
                     slots = 100,
                 })
-                TriggerEvent("inventory:client:SetCurrentStash", " 1 | Drawer "..slot)
+                TriggerEvent("inventory:Client:SetCurrentStash", " 1 | Drawer "..slot)
             else
                 QBCore.Functions.Notify("You must enter a drawer number.", "error")
             end  

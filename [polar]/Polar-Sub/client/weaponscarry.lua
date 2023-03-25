@@ -41,7 +41,13 @@ local PlayerSlots = {
 local props = {
   ---- ** Drugs ** ----
   -- Weed
-  ["wetbud"]                    = { model = "bkr_prop_weed_drying_02a", hash = joaat("bkr_prop_weed_drying_02a"), tier = 1, yr = 90.0, blockAttack = true, blockCar = true, blockRun = true, }, -- This is more of an item that deserves a
+  ["wetbud2"]                    = { model = "bkr_prop_weed_drying_01a", hash = joaat("bkr_prop_weed_drying_01a"), tier = 1, yr = 90.0, blockAttack = true, blockCar = true, blockRun = true, }, -- This is more of an item that deserves a
+  ["wetbud3"]                    = { model = "bkr_prop_weed_drying_02a", hash = joaat("bkr_prop_weed_drying_02a"), tier = 1, yr = 90.0, blockAttack = true, blockCar = true, blockRun = true, }, -- This is more of an item that deserves a
+
+  ["weedpound"]                 = { carry = true,   model = "bkr_prop_weed_bigbag_02a",       bone = 24817, x = -0.20,  y = 0.43, z = 0.05, xr = 91.0,  yr = 0.0,    zr = -265.0, blockAttack = true, blockCar = true, blockRun = true},
+  ["weedpound2"]                 = { carry = true,   model = "bkr_prop_weed_bigbag_01a",       bone = 24817, x = -0.20,  y = 0.43, z = 0.05, xr = 91.0,  yr = 0.0,    zr = -265.0, blockAttack = true, blockCar = true, blockRun = true},
+  ["weedpound3"]                 = { carry = true,   model = "bkr_prop_weed_bigbag_03a",       bone = 24817, x = -0.20,  y = 0.43, z = 0.05, xr = 91.0,  yr = 0.0,    zr = -265.0, blockAttack = true, blockCar = true, blockRun = true},
+ 
 
   -- meth
   ["meth"]                      = { model = "hei_prop_pill_bag_01", hash = joaat("hei_prop_pill_bag_01"), tier = 3},
@@ -521,7 +527,7 @@ end exports('makeObjectBusy', makeObjectBusy)
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 -- ** GENERIC EVENTS ** --
-RegisterNetEvent('weapons:client:SetCurrentWeapon', function(data)
+RegisterNetEvent('weapons:Client:SetCurrentWeapon', function(data)
   if data and LocalPlayer.state.isLoggedIn then
     if props[data.name] and items_attatched[props[data.name].model] then
       DeleteWeapon(props[data.name].model)

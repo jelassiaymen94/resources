@@ -7,7 +7,7 @@ Crafting["Wood Crafting"] = {
         },
         
     },]]
-    ["Storage"] = {
+    --[[["Storage"] = {
         ["Containers"] = {
             { ["small_container"] = { ["wood"] = 15, ["copper"] = 4, }, amount = 1 },
             { ["medium_container"] = { ["wood"] = 30, ["copper"] = 8, }, amount = 1 },
@@ -15,7 +15,7 @@ Crafting["Wood Crafting"] = {
 
         },
         
-    },
+    },]]
 
     ["Other"] = {
         ["Tools"] = {
@@ -86,27 +86,7 @@ Crafting["Wood Crafting"] = {
 }
 
 Crafting["Illegal"] = {
-    ["Weed"] = {
-        ["Trimming"] = {
-            { ["weedpound"] = { ["crophigh"] = 1, ["drugbag"] = 2 }, amount = math.random(2,3) },
-        },
-        ["Grinding"] = {
-            { ["nugs"] = { ["marijuana"] = 1 }, amount = 4 },
-            { ["marijuana"] = { ["weedpound"] = 1 }, amount = 16 },
-        },
-       --[[ ["Bagging"] = {
-            { ["1ozhigh"] = { ["weedpound"] = 1, ["drugbag"] = 16 }, amount = 16 },
-            
-        },
-        ["Rolling"] = {
-            { ["monkeykush_joint"] = { ["rolling_paper"] = 1, ["nugs"] = 2 }, amount = 1 },
-            { ["ogscar_joint"] = { ["rolling_paper"] = 1, ["nugs"] = 2 }, amount = 1 },
-            { ["granddaddycaine_joint"] = { ["rolling_paper"] = 1, ["nugs"] = 2 }, amount = 1 },
-            { ["monkeykush_blunt"] = { ["banana_backwoods"] = 1, ["nugs"] = 3 }, amount = 1 },
-            { ["ogscar_blunt"] = { ["backwoods_grape"] = 1, ["nugs"] = 3 }, amount = 1 },
-            { ["granddaddycaine_blunt"] = { ["backwoods_honey"] = 1, ["nugs"] = 3 }, amount = 1 },
-        },]]
-    },
+ 
    --[[["Forgery"] = {
         ["Licences"] = {
             { ["fakecert"] = { ["paper"] = 1 }, amount = 1 },
@@ -121,4 +101,4 @@ Crafting["Illegal"] = {
         },
     },]]
 
-    }
+}

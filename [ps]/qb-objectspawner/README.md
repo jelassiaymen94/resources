@@ -1,6 +1,6 @@
-![Project Sloth GitHub Project qb-objectspawner Banner](https://user-images.githubusercontent.com/91661118/176777941-9f3dfa83-0da6-47e4-8cc9-5add55e198bc.png)
+![Project Sloth GitHub Project qb-objects Banner](https://user-images.githubusercontent.com/91661118/176777941-9f3dfa83-0da6-47e4-8cc9-5add55e198bc.png)
 
-### qb-objectspawner
+### qb-objects
 A well thought out simplistic user-friendly experience for spawning objects around your server.
 
 ![Project Sloth Buttons 2](https://user-images.githubusercontent.com/91661118/176778087-bd5285aa-09ac-4c5f-83d8-53687fab84a9.png)
@@ -15,7 +15,7 @@ First, run the included sql file to create the `objects` table in your database.
 
 <br>
 
-![Project Sloth GitHub Project qb-objectspawner Install Banner](https://user-images.githubusercontent.com/91661118/176777943-37417e7f-0f77-4afb-92ec-fb3fab2e6543.png)
+![Project Sloth GitHub Project qb-objects Install Banner](https://user-images.githubusercontent.com/91661118/176777943-37417e7f-0f77-4afb-92ec-fb3fab2e6543.png)
 
 ### Instructions:
 After creating the `objects` table and ensuring you have the `god` permission, use the `/object` command to open the spawning/management menu. In the Create menu, you can name and search for objects you would like to place in the world. You can also specify a spawning distance, that will determine when the object becomes visible to the player; this is specified in standard FiveM distance units. Finally, can add a type of target that the object will hold. We have provided an example (ex `container`) event/target that will create an inventory stash for the spawned object, but more can be added through the client code.
@@ -26,10 +26,10 @@ Finally, the object hashes within the Search list are maintained in the included
 
 <br>
 
-![Project Sloth GitHub Project qb-objectspawner Features Banner](https://user-images.githubusercontent.com/91661118/176777942-becd37e0-3186-498f-ae00-ad5281bc2019.png)
+![Project Sloth GitHub Project qb-objects Features Banner](https://user-images.githubusercontent.com/91661118/176777942-becd37e0-3186-498f-ae00-ad5281bc2019.png)
 
 
-#### Some features to mention within this qb-objectspawner:
+#### Some features to mention within this qb-objects:
 * Spawn objects
 * Manage objects
 * Render distance for optimization
@@ -37,11 +37,11 @@ Finally, the object hashes within the Search list are maintained in the included
 
 <br>
 
-![Project Sloth GitHub Project qb-objectspawner Showcase Banner](https://user-images.githubusercontent.com/91661118/176777945-9f072499-f1d5-41d4-ac56-c06b5064ecc2.png)
+![Project Sloth GitHub Project qb-objects Showcase Banner](https://user-images.githubusercontent.com/91661118/176777945-9f072499-f1d5-41d4-ac56-c06b5064ecc2.png)
 
 
 ### Time to show you what it looks like!
-Here's a few showcased examples while using qb-objectspawner.
+Here's a few showcased examples while using qb-objects.
 
 #### Spawn object:
 ![unknown (4)](https://user-images.githubusercontent.com/91661118/176781258-063b432c-4f71-40d5-baf8-f74d3d01f6a6.png)

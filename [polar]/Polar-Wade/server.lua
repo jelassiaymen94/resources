@@ -10,7 +10,7 @@ local paleto1 = false
 local fleeca1 = false
 
 
-RegisterNetEvent('Polar-Wade:server:buyshit', function(ped)
+RegisterNetEvent('Polar-Wade:Server:buyshit', function(ped)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
     if not src or not Player or not ped then return end

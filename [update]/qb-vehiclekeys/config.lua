@@ -15,7 +15,7 @@ Config.LockPickDoorEvent = function() -- This function is called when a player a
             LockpickFinishCallback(success)
         else
 
-            AttemptPoliceAlert("carjack")
+           
             TriggerServerEvent('hud:server:GainStress', math.random(1, 4))
             TriggerEvent("QBCore:Notify", "You failed to lockpick.", "error")
         end
@@ -111,4 +111,6 @@ Config.NoCarjackWeapons = {
     "WEAPON_Ball",
     "WEAPON_Snowball",
     "WEAPON_SmokeGrenade",
+    "weapon_m67",
+    "weapon_sword",
 }

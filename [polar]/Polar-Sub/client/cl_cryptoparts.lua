@@ -87,7 +87,7 @@ RegisterNetEvent('Polar-Sub:Client:Anim2', function(items, cryptos, amounts)
         end
         Wait(5)
        
-        TriggerEvent('animations:client:EmoteCommandStart', {emote})
+        TriggerEvent('animations:Client:EmoteCommandStart', {emote})
     QBCore.Functions.Progressbar("hi", "Sending " .. amounts .. " Crypto... ", 2500, false, true, 
     {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = false, },
     {}, {}, {}, 
@@ -95,12 +95,12 @@ RegisterNetEvent('Polar-Sub:Client:Anim2', function(items, cryptos, amounts)
 
      
         
-        TriggerEvent('animations:client:EmoteCommandStart', {"c"})
+        TriggerEvent('animations:Client:EmoteCommandStart', {"c"})
         TriggerServerEvent('Polar-Sub:Server:RemoveCrypto', items, cryptos, amounts)
       
 
     end, function()
-        TriggerEvent('animations:client:EmoteCommandStart', {"c"})
+        TriggerEvent('animations:Client:EmoteCommandStart', {"c"})
         -- cancel notification
         QBCore.Functions.Notify('Canceled', 'error')
 
