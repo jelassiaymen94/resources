@@ -238,7 +238,7 @@ elseif exp <= 6200 then
                         }
                     },
                     {
-                        header = "<img src=nui://"..Config.img..QBCore.Shared.Items['weapon_m67'].image.." width=35px onerror='this.onerror=null; this.remove();'>"..QBCore.Shared.Items['weapon_m67'].label,
+                        header = "<img src=nui://"..Config.img..QBCore.Shared.Items['weapon_grenade'].image.." width=35px onerror='this.onerror=null; this.remove();'>"..QBCore.Shared.Items['weapon_grenade'].label,
                         txt = "Required: ".."<p> 6 Metal Scrap".."<p> 2 Refined Aluminum".."<p> 1 Highly Explosive Powder".."<p> 2 Duct Tape".."<p> 10 Cloth",
                         params = { 
                             event = "Polar-Crafting:Client:35",

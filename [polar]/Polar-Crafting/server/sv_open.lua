@@ -23,7 +23,7 @@ function hitup(bool)
 
     if item == 'lockpick' then
         -- 3(amount of items), 1(xp given per craft), 1(giveamount), item(no touch), mat1, mat1amount, mat2, mat2amount, mat3, mat3amount etc.
-        removeitem(3, 1, 1, item, 'metalscrap', 3, 'plastic', 2, 'rubber', 1) -- done***
+        removeitem(3, 1, 1, item, 'metalscrap', 10, 'steel', 5, 'rubber', 3) -- done***
         
     elseif item == 'screwdriverset' then
       
