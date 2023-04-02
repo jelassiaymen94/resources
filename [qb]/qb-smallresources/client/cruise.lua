@@ -76,7 +76,7 @@ local function TriggerCruiseControl()
         end
     end
 end
-
+--[[
 RegisterCommand('togglecruise', function()
     local veh = GetVehiclePedIsIn(PlayerPedId())
     local vehClass = GetVehicleClass(veh)
@@ -91,3 +91,4 @@ RegisterCommand('togglecruise', function()
 end, false)
 
 RegisterKeyMapping('togglecruise', 'Toggle Cruise Control', 'keyboard', 'Y')
+]]
