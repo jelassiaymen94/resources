@@ -55,6 +55,42 @@ RegisterNetEvent('Polar-Crafting:Server:XpNil', function()
 
 end)
 
+function next(itemname, xp, give)
+ 
+    local src = source
+    local Player = QBCore.Functions.GetPlayer(src)
+  
+
+    Wait(100)
+    TriggerClientEvent('Polar-Crafting:Client:StartAnim', src)
+    local packageTime = 15000
+   -- TriggerClientEvent('QBCore:Notify', src, "Crafting " .. give .. "", 'primary', packageTime)
+    TriggerClientEvent('Polar-Crafting:Client:Anim', src, itemname)
+    SetTimeout(packageTime, function()
+            TriggerClientEvent('Polar-Crafting:Client:EndAnim', src)
+            TriggerClientEvent('Polar-Crafting:Client:Busy', src)
+            if itemname == 'weapon_fnx45' then
+                local info = {
+                    ammo = 0,
+                    serie="No Serial Number"
+                }
+                Player.Functions.AddItem(itemname, give, nil, info, {["quality"] = 100}) 
+                TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[itemname], "add", give)
+            else
+            Player.Functions.AddItem(itemname, give, nil, {["quality"] = 100}) 
+            TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[itemname], "add", give)
+            end
+            
+            local Player = QBCore.Functions.GetPlayer(src)
+            local data = Player.PlayerData.metadata["craftingrep"] or 0
+            TriggerClientEvent('QBCore:Notify', src, " " .. data .. " is your Total Exp", green, alerttime)
+            pp = (data + xp)
+            Player.Functions.SetMetaData('craftingrep', pp)
+            TriggerClientEvent('QBCore:Notify', src, " " .. pp .. " is your Total Exp", green, alerttime)
+            
+    end)
+  
+end   
 local data = 0
 
 RegisterNetEvent('Polar-Crafting:Server:GiveEXP', function()
