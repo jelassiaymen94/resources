@@ -126,11 +126,10 @@ for i = 1, #Config.ToolsBench do
 end
 
 
-
 RegisterNetEvent('Polar-Crafting:Client:Anim', function(item)
     
-   
-    QBCore.Functions.Progressbar("crafting", "Crafting " .. item .. " ", 14000, false, true, 
+    local itemname = QBCore.Shared.Items[item].label
+    QBCore.Functions.Progressbar("crafting", "Crafting " .. itemname .. " ", 13500, false, true, 
     {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = false, },
     {animDict = "mini@repair", anim = "fixing_a_ped", flags = 0,}, {}, {}, 
     function() -- Done
@@ -151,7 +150,6 @@ RegisterNetEvent('Polar-Crafting:Client:Anim', function(item)
 
 
 end)
-
 
 
 
