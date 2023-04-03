@@ -99,8 +99,7 @@ Config.Prices = {
 	['can'] = { name = 'bottle', amount = 5 },
 }
 
-Config.DumpItems = {
-	"weapon_shoe","weapon_shoe","weapon_shoe","weapon_shoe","weapon_shoe",
+Config.DumpItems = {"weapon_shoe","weapon_shoe","weapon_shoe","weapon_shoe","weapon_shoe",
 "recyclablematerial",	"recyclablematerial",	"recyclablematerial",	"recyclablematerial",	"recyclablematerial",	"recyclablematerial",	"recyclablematerial",	"recyclablematerial",	"recyclablematerial",	"recyclablematerial",	"recyclablematerial",	"recyclablematerial",	"recyclablematerial",	"recyclablematerial",	"recyclablematerial",	"recyclablematerial",	"recyclablematerial",	"recyclablematerial",	"recyclablematerial",	"recyclablematerial",
 "plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic", "plastic",	"plastic",	"plastic",	"plastic",	"plastic", "plastic",	"plastic",	"plastic",	"plastic",	"plastic","plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic", "plastic",	"plastic",	"plastic",	"plastic",	"plastic", "plastic",	"plastic",	"plastic",	"plastic",	"plastic",
 "rubber",	"rubber",	"rubber",	"rubber",	"rubber",	"rubber",	"rubber",	"rubber",	"rubber",	"rubber",	"rubber",	"rubber",	"rubber",	"rubber",	"rubber",	"rubber",	"rubber",	"rubber",	"rubber",	"rubber",
@@ -119,7 +118,7 @@ Config.DumpItems = {
 "hydrochloric_acid",	"hydrochloric_acid",	"hydrochloric_acid",	"hydrochloric_acid",	"hydrochloric_acid",	"hydrochloric_acid",	"hydrochloric_acid",													
 "weed_nutrition",	"weed_nutrition",	"weed_nutrition",	"weed_nutrition",	"weed_nutrition",	"weed_nutrition",	"weed_nutrition",	"weed_nutrition",	"weed_nutrition",	"weed_nutrition",										
 "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", 
---"male_seed", "male_seed",
+"male_seed", "male_seed", "male_seed", 
 "purifiedwater",	"purifiedwater",	"purifiedwater",	"purifiedwater",	"purifiedwater",	"purifiedwater",	"purifiedwater",	"purifiedwater",	"purifiedwater",	"purifiedwater",																								
 "sodium_hydroxide",	"sodium_hydroxide",	"sodium_hydroxide",	"sodium_hydroxide",	"sodium_hydroxide",	"sodium_hydroxide",	"sodium_hydroxide",													
 "weapon_switchblade", "weapon_switchblade", "weapon_switchblade", "weapon_switchblade",	"weapon_knife",	"weapon_knife",	"weapon_knife",	"weapon_knife",															
@@ -158,8 +157,11 @@ Config.DumpItems = {
 "megaphone",	"megaphone",	"megaphone",	"megaphone",	"megaphone",															
 "01_monkeyman",	"01_monkeyman",																		
 "02_mrsmonkey",	"02_mrsmonkey",	"02_mrsmonkey",
-"washkey",	"washkey",			
-"weedkey", 	"weedkey", 													
+"03_tommyscaletta", "03_tommyscaletta","03_tommyscaletta","03_tommyscaletta",
+"04_seymourbutts","04_seymourbutts","04_seymourbutts","04_seymourbutts",
+"05_reese", "05_reese", "05_reese", "05_reese", "05_reese", "05_reese",
+"randomgun", "randomgun",
+"washkey",	"washkey",															
 "craftingkey",	"craftingkey",																		
 "apple_juice",	"apple_juice",	"apple_juice",	"apple_juice",	"apple_juice",	"apple_juice",	"apple_juice",	"apple_juice",	"apple_juice",	"apple_juice",	"apple_juice",	"apple_juice",								
 "raw_ham",	"raw_ham",	"raw_ham",	"raw_ham",	"raw_ham",	"raw_ham",	"raw_ham",	"raw_ham",	"raw_ham",	"raw_ham",	"raw_ham",	"raw_ham",								
@@ -197,11 +199,11 @@ Config.DumpItems = {
 "drillbit",	"drillbit",	"drillbit",	"drillbit",	"drillbit",	"drillbit",														
 "pickaxe",	"pickaxe",	"pickaxe",	"pickaxe",	"pickaxe",	"pickaxe",	"pickaxe",													
 "pistol_ammo",	"pistol_ammo",	"pistol_ammo",	"pistol_ammo",	"pistol_ammo",	"pistol_ammo",	"pistol_ammo",													
-"35weedlow", "35weedmid", "35weedhigh", 
+"1ozhigh","1ozhigh","1ozhigh",
 "meth",	"meth",
 "cokebag",																		
 "tomato",	"tomato",	"tomato",	"tomato",	"tomato",	"tomato",	"tomato",	"tomato",	"tomato",	"tomato",										
-"tomatopaste",	"tomatopaste",	"tomatopaste",	"tomatopaste",	"tomatopaste",	"tomatopaste",	"tomatopaste",	"tomatopaste",	"tomatopaste",	"tomatopaste",										
+"tomatopaste",	"tomatopaste",	"tomatopaste",	"tomatopaste",	"tomatopaste",	"tomatopaste",	"tomatopaste",	"tomatopaste",	"tomatopaste",	"tomatopaste",											
 }
 Config.tenmin = "1"
 Config.tenmax = "1"

@@ -5,11 +5,7 @@ Config.RosterLink = {
     ['ambulance'] = '',
     ['bcso'] = '',
     ['doj'] = '',
-    ['sast'] = '',
-    ['sasp'] = '',
-    ['doc'] = '',
-    ['lssd'] = '',
-    ['sapr'] = '',	
+    ['weazelnews'] = '',
 }
 
 
@@ -38,6 +34,7 @@ Config.PenalCodeTitles = {
     [9] = 'OFFENSES INVOLVING THE OPERATION OF A VEHICLE',
     [10] = 'OFFENSES INVOLVING THE WELL-BEING OF WILDLIFE',
 }
+
 Config.PenalCode = {
     [1] = {
         [1] = {title = 'Simple Assault', class = 'Misdemeanor', id = 'P.C. 1001', months = 0, fine = 500, color = 'green'},
@@ -250,9 +247,9 @@ Config.PoliceJobs = {
     ['sast'] = true,
     ['sasp'] = true,
     ['doc'] = true,
-    ['lssd'] = true,
     ['sapr'] = true,
-    ['pa'] = true -- yucky
+    ['pa'] = true, -- yucky
+    ['weazelnews'] = true
 }
 
 Config.AmbulanceJobs = {
@@ -262,7 +259,7 @@ Config.AmbulanceJobs = {
 
 Config.DojJobs = {
     ['lawyer'] = true,
-    ['judge'] = true
+
 }
 
 -- Leave my hacky code alone ya goblins
@@ -285,22 +282,7 @@ Config.LogPerms = {
 	['police'] = {
 		[4] = true,
 	},
-    ['bcso'] = {
-		[4] = true,
-	},
-    ['sast'] = {
-		[4] = true,
-	},
-    ['sasp'] = {
-		[4] = true,
-	},
-    ['sapr'] = {
-		[4] = true,
-	},
-    ['doc'] = {
-		[4] = true,
-	},
-    ['lssd'] = {
+    ['weazelnews'] = {
 		[4] = true,
 	},
 }
@@ -668,7 +650,7 @@ end
 
 -- this is a hack, because the qb-menu in qb-policejob populates an impound location and passed it through to the event.
 -- if this impound locations are changed in qb-policejob, they must also be changed here.
-Config.ImpoundLocations = {
+Config.ImpoundLocations = { 
     [1] = vector4(436.68, -1007.42, 27.32, 180.0),
     [2] = vector4(-436.14, 5982.63, 31.34, 136.0),
 }

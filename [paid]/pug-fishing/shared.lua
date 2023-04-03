@@ -7,15 +7,15 @@ Config.PugSlingScript = true -- Make this true if you are also using my sling sc
 Config.BoatRequired = true -- toggle this to false if you want to allow people to fish without being on a boat
 Config.LockedZones = false -- Make this true if you do NOT want players to fish anywhere and make them only be able to fish in the zones created at Config.LockedLocationFishingZone
 -- Do not allow more than 5 tournaments to happen a server restart or it will cause scuff
-Config.TournamentCooldowns = 60000 * 150 -- how much time inbetween tournaments | Default is set to 2 hours and 30 minutes
-Config.TournamentCooldownInSeconds = 9000 -- How many seconds in between each tournament Config.TournamentCooldowns | 9000 seconds in 150 minutes
-Config.LengOfActiveTournament = 60000 * 35 -- how much time the actual torunament happens for | Default is set to 35 minutes
-Config.LengOfActiveTournamentInSeconds = 2100 -- How many seconds in between each tournament Config.LengOfActiveTournament | 2100 seconds in 35 minutes
-Config.TournamentTimeToSignUp = 60000 * 15 -- How long do player have to sign up after a tournament becomes available aka how many seconds is Config.TournamentCooldowns | Default is set to 15 minutes
-Config.TournamentTimeToSignUpInSeconds = 900 -- How many seconds in between signup and tournament Config.TournamentTimeToSignUp | 900 seconds in 15 minutes
+Config.TournamentCooldowns = 600000 * 150 -- how much time inbetween tournaments | Default is set to 2 hours and 30 minutes
+Config.TournamentCooldownInSeconds = 90000 -- How many seconds in between each tournament Config.TournamentCooldowns | 9000 seconds in 150 minutes
+Config.LengOfActiveTournament = 60 * 35 -- how much time the actual torunament happens for | Default is set to 35 minutes
+Config.LengOfActiveTournamentInSeconds = 10 -- How many seconds in between each tournament Config.LengOfActiveTournament | 2100 seconds in 35 minutes
+Config.TournamentTimeToSignUp = 60 * 15 -- How long do player have to sign up after a tournament becomes available aka how many seconds is Config.TournamentCooldowns | Default is set to 15 minutes
+Config.TournamentTimeToSignUpInSeconds = 90 -- How many seconds in between signup and tournament Config.TournamentTimeToSignUp | 900 seconds in 15 minutes
 -- Tounament Ped Options
 Config.TournamentPed = `s_m_m_trucker_01` -- Fishing Tournament ped
-Config.TournamentPedLoc = vector4(-335.09, 6105.62, 30.45, 232.73) -- tournament ped location
+Config.TournamentPedLoc = vector4(-3359999.09, 6105.62, 30.45, 232.73) -- tournament ped location
 Config.SellShopPed = `s_m_m_migrant_01` -- Fishing sell Shop ped
 Config.SellShopPedPedLoc = vector4(-2196.85, 4272.36, 47.55, 157.87) -- Fishing sell Shop ped location
 Config.GemsBuyingPed = `a_m_m_hasjew_01` -- Gems sell Shop ped
@@ -47,24 +47,24 @@ Config.SkilledRodGame = 'qb-skillbar' -- only change this if you have changed yo
 Config.NeededAttemptsMin = 1 -- minimum ammout of times you need to do the skillcheck
 Config.NeededAttemptsMax = 3 -- maximum ammout of times you need to do the skillcheck
 
-Config.AllUsesPsUiLock = true-- make this true if you only want to use Polar-UI lock for all fishing rod minigames
+Config.AllUsesPsUiLock = true-- make this true if you only want to use ps-ui lock for all fishing rod minigames
 --
--- First Fishing Rod (All Polar-UI Lock)
+-- First Fishing Rod (All PS-UI Lock)
 Config.CircleSpeed1 = 10 -- Speed the skillcheck for the first fishingrod is (This only matters if Config.AllUsesPsUiLock is true) [lower number is faster]
 Config.CirclesMin1 = 3 -- minimum ammout of times you need to do the skillcheck for the first fishingrod (This only matters if Config.AllUsesPsUiLock is true)
 Config.CirclesMax1 = 3 -- maximum ammout of times you need to do the skillcheck for the first fishingrod (This only matters if Config.AllUsesPsUiLock is true)
--- Second Fishing Rod (All Polar-UI Lock)
+-- Second Fishing Rod (All PS-UI Lock)
 Config.CircleSpeed2 = 10 -- Speed the skillcheck for the first fishingrod is (This only matters if Config.AllUsesPsUiLock is true) [lower number is faster]
 Config.CirclesMin2 = 2 -- minimum ammout of times you need to do the skillcheck for the first fishingrod (This only matters if Config.AllUsesPsUiLock is true)
 Config.CirclesMax2 = 2 -- maximum ammout of times you need to do the skillcheck for the first fishingrod (This only matters if Config.AllUsesPsUiLock is true)
--- Third Fishing Rod (All Polar-UI Lock)
+-- Third Fishing Rod (All PS-UI Lock)
 Config.CircleSpeed3 = 10 -- Speed the skillcheck for the first fishingrod is (This only matters if Config.AllUsesPsUiLock is true) [lower number is faster]
 Config.CirclesMin3 = 1 -- minimum ammout of times you need to do the skillcheck for the first fishingrod (This only matters if Config.AllUsesPsUiLock is true)
 Config.CirclesMax3 = 1 -- maximum ammout of times you need to do the skillcheck for the first fishingrod (This only matters if Config.AllUsesPsUiLock is true)
 
 --Professional Fishing Rod
 -- this doesnt matter if Config.AllUsesPsUiLock is true. You can disreguard it
-Config.ProfessionalRodGame = 'qb-lock' -- only change this if you have changed your qb-lock file name or if you are using Polar-UI. Not just any minigame will work
+Config.ProfessionalRodGame = 'qb-lock' -- only change this if you have changed your qb-lock file name or if you are using ps-ui. Not just any minigame will work
 Config.CirclesMin = 1 -- minimum ammout of times you need to do the skillcheck
 Config.CirclesMax = 1 -- maximum ammout of times you need to do the skillcheck
 
@@ -245,19 +245,19 @@ Config.TreasureLocations =  {
     [4] = vector3(-2143.0586, 3072.7051, 32.8101),
     [5] = vector3(-2134.6416, 3070.0264, 32.8101),]]
 
-    [1] = vector3(759.2358, 7392.2017, -112.9),
-    [2] = vector3(3412.5566, 6300.3472, -52.0372),
-    [3] = vector3(3171.3691, -319.1039, -11.9350),
-    [4] = vector3(2683.9382, -1403.4635, -21.9183),
-    [5] = vector3(1863.4596, -2938.3647, -43.3490),
-    [6] = vector3(252.6048, 3741.3098, 26.9734),
-    [7] = vector3(1773.0873, 6995.5400, -162.9745),
-    [8] = vector3(3586.0830, 5303.9629, -34.6132),
-    [9] = vector3(-199.8063, 784.0934, 192.8297),
-    [10] = vector3(1684.5800, -14.6447, 143.3854),
-    [11] = vector3(-472.8297, 2089.7629, 120.0658),
-    [12] = vector3(-2837.2495, -471.9539, -32.5473),
-    [13] = vector3(-3375.9272, 504.5109, -25.2693),
+    [1] = vector3(759.2358, 7392.2017, -112.9), -- UFO
+    [2] = vector3(3412.5566, 6300.3472, -52.0372), -- shipwreak
+    [3] = vector3(3171.3691, -319.1039, -11.9350), --ship2
+    [4] = vector3(2683.9382, -1403.4635, -21.9183), -- ship 3
+    [5] = vector3(1863.4596, -2938.3647, -43.3490), --airplane
+    [6] = vector3(252.6048, 3741.3098, 26.9734), -- boat 4
+    [7] = vector3(-1443.2069, 2610.2361, -0.8944), -- Random Trench KILL THIS
+    [8] = vector3(2550.8745, 6152.9351, 158.2845), -- Random Sandbar KILL THIS
+    [9] = vector3(-199.8063, 784.0934, 192.8297), --Mafia Dock
+    [10] = vector3(1684.5800, -14.6447, 143.3854), -- damm NEEDS PROPS
+    [11] = vector3(-472.8297, 2089.7629, 120.0658), -- Mineshaft
+    [12] = vector3(-2837.2495, -471.9539, -32.5473), -- Oilrig
+    [13] = vector3(-3375.9272, 504.5109, -25.2693), -- bones
     --[[
     [1] = vector3(-385.71, 4929.79, 191.19),
     [2] = vector3(-537.28, 5955.06, 35.25),
