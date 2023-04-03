@@ -98,7 +98,7 @@ function hitup(bool)
 
         removeitem(4, 85, 1, item, 'gunpowder', 10, 'refined_aluminum', 2, 'rubber', 3, 'thermitepowder', 1)  -- done***
 
-    elseif item == 'weapon_grenade' then
+    elseif item == 'weapon_m67' then
 
         removeitem(4, 100, 1, item, 'metalscrap', 6, 'refined_aluminum', 1, 'thermitepowder', 1, 'refined_iron', 1)  -- done***
 

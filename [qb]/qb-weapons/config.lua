@@ -42,8 +42,8 @@ Config.DurabilityMultiplier = {
 ['weapon_sledgehammer'] 	        = 0.15,
 
 ['weapon_pistol'] 				 = 0.10,
-['weapon_uzi'] 			 = 0.10,
-['weapon_mac10'] 			 = 0.10,
+['weapon_microsmg2'] 			 = 0.10,
+['weapon_microsmg3'] 			 = 0.10,
 ['weapon_assaultrifle2'] 			 = 0.10,
 ['weapon_assaultrifle'] 		= 0.10,
 ['weapon_pistol50'] 			 = 0.10,

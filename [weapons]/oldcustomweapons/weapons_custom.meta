@@ -122,7 +122,7 @@
           <RecoilAccuracyToAllowHeadShotAI value="1000.000000" />
           <MinHeadShotDistanceAI value="1000.000000" />
           <MaxHeadShotDistanceAI value="1000.000000" />
-          <HeadShotDamageModifierAI value="1000.000000" />
+          <HeadShotDamageModifierAI value="1.50.000000" />
           <RecoilAccuracyToAllowHeadShotPlayer value="0.175000" />
           <MinHeadShotDistancePlayer value="5.000000" />
           <MaxHeadShotDistancePlayer value="40.000000" />
@@ -436,7 +436,7 @@
           <RecoilAccuracyToAllowHeadShotAI value="1000.000000" />
           <MinHeadShotDistanceAI value="1000.000000" />
           <MaxHeadShotDistanceAI value="1000.000000" />
-          <HeadShotDamageModifierAI value="1000.000000" />
+          <HeadShotDamageModifierAI value="1.50.000000" />
           <RecoilAccuracyToAllowHeadShotPlayer value="0.175000" />
           <MinHeadShotDistancePlayer value="5.000000" />
           <MaxHeadShotDistancePlayer value="40.000000" />
@@ -750,7 +750,7 @@
           <RecoilAccuracyToAllowHeadShotAI value="1000.000000" />
           <MinHeadShotDistanceAI value="1000.000000" />
           <MaxHeadShotDistanceAI value="1000.000000" />
-          <HeadShotDamageModifierAI value="1000.000000" />
+          <HeadShotDamageModifierAI value="1.50.000000" />
           <RecoilAccuracyToAllowHeadShotPlayer value="0.175000" />
           <MinHeadShotDistancePlayer value="5.000000" />
           <MaxHeadShotDistancePlayer value="300.000000" />
@@ -1150,7 +1150,7 @@
           <RecoilAccuracyToAllowHeadShotAI value="1000.000000" />
           <MinHeadShotDistanceAI value="1000.000000" />
           <MaxHeadShotDistanceAI value="1000.000000" />
-          <HeadShotDamageModifierAI value="1000.000000" />
+          <HeadShotDamageModifierAI value="1.50.000000" />
           <RecoilAccuracyToAllowHeadShotPlayer value="0.175000" />
           <MinHeadShotDistancePlayer value="5.000000" />
           <MaxHeadShotDistancePlayer value="40.000000" />
@@ -1484,7 +1484,7 @@
         <!-- SMG START -->
 
         <Item type="CWeaponInfo">
-          <Name>weapon_uzi</Name>
+          <Name>weapon_microsmg2</Name>
           <Model>w_sb_microsmg2</Model>
           <Audio>AUDIO_ITEM_MICROSMG</Audio>
           <Slot>SLOT_MICROSMG2</Slot>
@@ -1513,7 +1513,7 @@
           <RecoilAccuracyToAllowHeadShotAI value="1000.000000" />
           <MinHeadShotDistanceAI value="1000.000000" />
           <MaxHeadShotDistanceAI value="1000.000000" />
-          <HeadShotDamageModifierAI value="1000.000000" />
+          <HeadShotDamageModifierAI value="1.50.000000" />
           <RecoilAccuracyToAllowHeadShotPlayer value="0.175000" />
           <MinHeadShotDistancePlayer value="5.000000" />
           <MaxHeadShotDistancePlayer value="60.000000" />
@@ -1813,7 +1813,7 @@
         </Item>
 
         <Item type="CWeaponInfo">
-          <Name>weapon_mac10</Name>
+          <Name>weapon_microsmg3</Name>
           <Model>w_sb_microsmg3</Model>
           <Audio>AUDIO_ITEM_MICROSMG</Audio>
           <Slot>SLOT_MICROSMG3</Slot>
@@ -1842,7 +1842,7 @@
           <RecoilAccuracyToAllowHeadShotAI value="1000.000000" />
           <MinHeadShotDistanceAI value="1000.000000" />
           <MaxHeadShotDistanceAI value="1000.000000" />
-          <HeadShotDamageModifierAI value="1000.000000" />
+          <HeadShotDamageModifierAI value="1.50.000000" />
           <RecoilAccuracyToAllowHeadShotPlayer value="0.175000" />
           <MinHeadShotDistancePlayer value="5.000000" />
           <MaxHeadShotDistancePlayer value="60.000000" />
@@ -2179,7 +2179,7 @@
           <RecoilAccuracyToAllowHeadShotAI value="1000.000000" />
           <MinHeadShotDistanceAI value="1000.000000" />
           <MaxHeadShotDistanceAI value="1000.000000" />
-          <HeadShotDamageModifierAI value="1000.000000" />
+          <HeadShotDamageModifierAI value="1.50.000000" />
           <RecoilAccuracyToAllowHeadShotPlayer value="0.175000" />
           <MinHeadShotDistancePlayer value="5.000000" />
           <MaxHeadShotDistancePlayer value="40.000000" />
