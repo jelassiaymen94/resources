@@ -9,7 +9,6 @@ local home1 = false
 local paleto1 = false
 local fleeca1 = false
 
-
 RegisterNetEvent('Polar-Wade:Server:buyshit', function(ped)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
@@ -146,3 +145,11 @@ QBCore.Functions.CreateCallback('Polar-Wade:Server:cops', function(source, cb)
     end
     cb(amount)
 end)
+
+
+
+
+
+
+
+

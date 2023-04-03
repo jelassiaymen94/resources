@@ -8,13 +8,13 @@ version '1.0.0'
 lua54 'yes'
 
 shared_script {
-    'config.lua'
+    'config.lua',
 }
 
 client_scripts {
-    'client.lua'
+    'client.lua',
 }
 
 server_scripts {
-    'server.lua'
+    'server.lua',
 }

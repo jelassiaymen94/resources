@@ -469,3 +469,14 @@ RegisterNetEvent('Polar-Wade:Client:Types', function(data)
     
 
 end)
+
+
+
+
+
+
+
+
+
+
+

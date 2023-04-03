@@ -286,3 +286,56 @@ Config.Weapons = {
 
 
 }
+
+
+
+
+
+
+
+Config.Prop = true
+
+Config.DropLocations = {
+
+    vector3(1213.44, 5660.95, 948.39),
+   
+
+
+
+}
+Config.AirDropItems = {
+
+    'lockpick',
+    'weapon_gusenberg',
+    'weapon_molotov',
+    'weapon_molotov',
+    'weapon_pistol',
+    'pistol_suppressor',
+    'pistol_suppressor',
+    'gusenberg_extendedclip',
+    'rifle_ammo',
+    'rolex',
+    'weapon_katana',
+    'matcoupon',
+    'methkey',
+    'weapon_pistol50',
+    'weapon_pistol50',
+    'cokekey',
+    'keepcompanionpoodle',
+    'keepcompanionmtlion',
+    'weapon_',
+    'weapon_battleaxe',
+    'weapon_pipebomb',
+    'weapon_stickybomb',
+
+}
+
+Config.PlaneStarts = {
+
+    vector3(-2821.87, 5124.65, 1.18),
+   -- vector3(49.76, 7849.22, 0.19),
+   -- vector3(3988.08, 2202.62, 0.17),
+  --  vector3(-68.99, -3441.38, 23.85),
+    
+}
+
