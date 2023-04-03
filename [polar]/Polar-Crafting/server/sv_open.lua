@@ -23,7 +23,7 @@ function hitup(bool)
 
     if item == 'lockpick' then
         -- 3(amount of items), 1(xp given per craft), 1(giveamount), item(no touch), mat1, mat1amount, mat2, mat2amount, mat3, mat3amount etc.
-        removeitem(3, 1, 1, item, 'metalscrap', 3, 'plastic', 2, 'rubber', 1) -- done***
+        removeitem(3, 1, 1, item, 'metalscrap', 10, 'steel', 5, 'rubber', 3) -- done***
         
     elseif item == 'screwdriverset' then
       
@@ -96,9 +96,9 @@ function hitup(bool)
 
     elseif item == 'weapon_pipebomb' then
 
-        removeitem(4, 85, 1, item, 'gunpowder', 10, 'refined_aluminum', 1, 'rubber', 3, 'thermitepowder', 1)  -- done***
+        removeitem(4, 85, 1, item, 'gunpowder', 10, 'refined_aluminum', 2, 'rubber', 3, 'thermitepowder', 1)  -- done***
 
-    elseif item == 'weapon_m67' then
+    elseif item == 'weapon_grenade' then
 
         removeitem(4, 100, 1, item, 'metalscrap', 6, 'refined_aluminum', 1, 'thermitepowder', 1, 'refined_iron', 1)  -- done***
 
@@ -114,11 +114,11 @@ function hitup(bool)
 
         removeitem(2, 30, 1, item, 'gunpowder', 2, 'copperore', 4) -- done***
 
-    elseif item == 'weapon_mac10' then
+    elseif item == 'weapon_microsmg3' then
 
         removeitem(6, 130, 1, item, 'refined_steel', 1, 'refined_copper', 1, 'smgbarrel', 1, 'smgbody', 1, 'smggrip', 1, 'carbon', 5)-- done***
 
-    elseif item == 'weapon_uzi' then
+    elseif item == 'weapon_microsmg2' then
 
         removeitem(6, 110, 1, item, 'refined_steel', 1, 'refined_copper', 1, 'smgbarrel', 1, 'smgbody', 1, 'smggrip', 1, 'carbon', 5)-- done***
 

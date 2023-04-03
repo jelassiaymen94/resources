@@ -11,10 +11,11 @@ RegisterNetEvent('qb-weapons:Server:scratch', function(weapon, weaponammo)
         if weaponInfo then
             local info = {
                 ammo = weaponammo,
-                serie="xxxxxx"
+                serie="Scratched"
             }
             Player.Functions.RemoveItem(weaponName, 1)
             Player.Functions.AddItem(weaponName, 1, weaponInfo.slot, info)
+             
         end
     end
 end)

@@ -216,7 +216,6 @@ Config = {
 			--{ name = "laptop", price = 10000, amount = 15 },
 			{ name = "drill", price = 15000, amount = 1 },
 			{ name = "aluminumoxide", price = 1250, amount = 5 },
-			{ name = "scissors", price = 2500, amount = 1 },
 			{ name = "metalscratchy", price = 2500, amount = 2 },
 			--{ name = "thermite", price = 15000, amount = 2 },
 			--{ name = "chemicals", price = 125, amount = 10 },

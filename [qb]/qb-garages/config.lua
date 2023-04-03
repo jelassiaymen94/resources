@@ -1355,7 +1355,7 @@ Garages = {
         }
     },
 
-    ['cophouselot'] = {
+    ['cophouselot2'] = {
         ['Zone'] = {
             ['Shape'] = { --polygon that surrounds the parking area
                 vector2(-829.1654, 179.4629),

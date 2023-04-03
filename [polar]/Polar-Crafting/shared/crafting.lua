@@ -141,14 +141,14 @@ Config.WeaponsBench = {
       
     },
     [5] = {
-        item = 'weapon_uzi',
+        item = 'weapon_microsmg2',
         icon = "",
         txt = "Required: ".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['refined_copper'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Refined Copper".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['smgbarrel'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Smg Barrel".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['smgbody'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Smg Body".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['smggrip'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Smg Grip".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['refined_steel'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Refined Steel".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['carbon'].image.." width=30px onerror='this.onerror=null; this.remove();'> 5 Carbon",
         exp = 15000,
       
     },
     [6] = {
-        item = 'weapon_mac10',
+        item = 'weapon_microsmg3',
         icon = "",
         txt = "Required: ".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['refined_copper'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Refined Copper".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['smgbarrel'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Smg Barrel".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['smgbody'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Smg Body".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['smggrip'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Smg Grip".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['refined_steel'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Refined Steel".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['carbon'].image.." width=30px onerror='this.onerror=null; this.remove();'> 5 Carbon",
         exp = 17000,
@@ -249,7 +249,7 @@ Config.ExplosivesBench = {
       
     },
     [6] = {
-        item = 'weapon_m67',
+        item = 'weapon_grenade',
         icon = "",
         txt = "Required: ".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['metalscrap'].image.." width=25px onerror='this.onerror=null; this.remove();'> 6 Metal Scrap".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['refined_aluminum'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Refined Aluminum".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['thermitepowder'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Highly Explosive Powder".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['refined_iron'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Refined Iron",
         exp = 19500,

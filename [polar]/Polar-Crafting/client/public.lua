@@ -123,14 +123,38 @@ for i = 1, #Config.ToolsBench do
         end
 	exports['qb-menu']:openMenu(toolsmenu)
     end
+end 
+function store()
+    local PlayerData = QBCore.Functions.GetPlayerData()
+	local storemenu = {
+		{ header = "Store Bench", txt = "", icon = "", isMenuHeader = true },
+		{ icon = "fas fa-circle-xmark", header = "", txt = "Close", params = { event = "Menu:Close" } } }
+        if PlayerData.metadata["craftingrep"] < Config.StoreBenchmin then 
+            local disable = false
+            local hide = false
+            storemenu[#storemenu+1] = { hidden = hide, disabled = disable, icon = "", header = "You Don't Have enough Exp", txt = "Required: " .. Config.StoreBenchmin .. " exp"}
+            Wait(0)
+            exports['qb-menu']:openMenu(storemenu)
+        else
+for i = 1, #Config.StoreBench do
+		local setheader = "<img src=nui://"..Config.img..QBCore.Shared.Items[Config.StoreBench[i].item].image.." width=45px onerror='this.onerror=null; this.remove();'>"..QBCore.Shared.Items[Config.StoreBench[i].item].label
+		local disable = false
+        local hide = true
+      
+        if PlayerData.metadata["craftingrep"] >= Config.StoreBench[i].exp then hide = false end
+       -- print(exp)
+       storemenu[#storemenu+1] = { hidden = hide, disabled = disable, icon = Config.StoreBench[i].icon, header = setheader, txt = Config.StoreBench[i].txt, params = { event = "Polar-Crafting:Client:Transfer", args = { item = Config.StoreBench[i].item} } }
+		Wait(0)
+        end
+	exports['qb-menu']:openMenu(storemenu)
+    end
 end
-
 
 
 RegisterNetEvent('Polar-Crafting:Client:Anim', function(item)
     
-   
-    QBCore.Functions.Progressbar("crafting", "Crafting " .. item .. " ", 14000, false, true, 
+    local itemname = QBCore.Shared.Items[item].label
+    QBCore.Functions.Progressbar("crafting", "Crafting " .. itemname .. " ", 13500, false, true, 
     {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = false, },
     {animDict = "mini@repair", anim = "fixing_a_ped", flags = 0,}, {}, {}, 
     function() -- Done
@@ -173,6 +197,11 @@ RegisterNetEvent('Polar-Crafting:Client:OpenMenuPublic', function(data)
     Wait(50)
     Wait(50)
     tools()
+elseif type == 'store' then
+    GetHeader()
+    Wait(50)
+    Wait(50)
+    store()
    elseif type == 'explosives' then
   --xpcheck()
   GetHeader()

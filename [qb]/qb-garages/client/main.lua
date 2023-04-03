@@ -11,6 +11,7 @@ local VehicleClassMap = {}
 local GarageZones = {}
 
 -- helper functionw
+local nearby = true
 
 local function TableContains (tab, val)
     if type(val) == "table" then -- checks if atleast one the values in val is contained in tab 
@@ -808,7 +809,6 @@ RegisterNetEvent('QBCore:Client:OnJobUpdate', function(job)
     PlayerJob = job
 end)
 
--- Threads
 
 CreateThread(function()
     for _, garage in pairs(Garages) do
