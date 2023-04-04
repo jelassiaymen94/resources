@@ -297,12 +297,23 @@ Config.Prop = true
 
 Config.DropLocations = {
 
-    vector3(1213.44, 5660.95, 948.39),
-   
+    --vector3(1213.44, 5660.95, 948.39),
+    vector3(992.18, 2411.8, 948.21),
+    vector3(805.15, 1511.17, 948.03),
 
 
 
 }
+
+Config.PlaneStarts = {
+
+    vector3(-2821.87, 5124.65, 1.18),
+    vector3(49.76, 7849.22, 0.19),
+    vector3(3988.08, 2202.62, 0.17),
+    vector3(-68.99, -3441.38, 23.85),
+    
+}
+
 Config.AirDropItems = {
 
     'lockpick',
@@ -328,14 +339,5 @@ Config.AirDropItems = {
     'weapon_pipebomb',
     'weapon_stickybomb',
 
-}
-
-Config.PlaneStarts = {
-
-    vector3(-2821.87, 5124.65, 1.18),
-   -- vector3(49.76, 7849.22, 0.19),
-   -- vector3(3988.08, 2202.62, 0.17),
-  --  vector3(-68.99, -3441.38, 23.85),
-    
 }
 
