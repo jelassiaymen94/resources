@@ -277,19 +277,6 @@ Config.TraderPeds = {
 
 
 
-Config.Weapons = {
-    'weapon_assaultrifle',
-    'weapon_assaultrifle2',
-    'weapon_microsmg2',
-    'weapon_microsmg3',
-
-
-
-}
-
-
-
-
 
 
 
@@ -297,12 +284,23 @@ Config.Prop = true
 
 Config.DropLocations = {
 
-    --vector3(1213.44, 5660.95, 948.39),
-    vector3(992.18, 2411.8, 948.21),
-    vector3(805.15, 1511.17, 948.03),
-
-
-
+    vector3(62.99, -411.28, 39.92),
+    vector3(-1191.59, 91.1, 57.67),
+    vector3(609.26, 5629.44, 737.08),
+    vector3(1756.18, 5629.4, 248.42),
+    vector3(114.71, 6988.55, 8.41),
+    vector3(-925.58, 6060.53, 7.48),
+    vector3(-2150.25, 3032.42, 32.81),
+    vector3(-1378.43, -3030.68, 14.08),
+    vector3(1648.94, -1982.11, 107.31),
+    vector3(-1472.23, -1156.83, 2.17),
+    vector3(2345.57, 4839.63, 40.74),
+    vector3(3699.38, 4488.3, 20.92),
+    vector3(2935.33, 2834.02, 49.24),
+    vector3(-1893.71, 2034.21, 140.74),
+    vector3(-2217.99, 2605.6, -0.67),
+    vector3(-478.56, -1708.35, 18.7),
+    
 }
 
 Config.PlaneStarts = {
@@ -316,28 +314,58 @@ Config.PlaneStarts = {
 
 Config.AirDropItems = {
 
-    'lockpick',
+    'advancedlockpick', 'advancedlockpick', 'advancedlockpick',  'advancedlockpick', 'advancedlockpick', 'advancedlockpick',  'advancedlockpick', 'advancedlockpick', 'advancedlockpick',
+    'weapon_hammer', 'weapon_hammer',
+    'mg_ammo', 'mg_ammo',
+    'weapon_microsmg3',
+    'weapon_switchblade',
     'weapon_gusenberg',
-    'weapon_molotov',
-    'weapon_molotov',
-    'weapon_pistol',
-    'pistol_suppressor',
-    'pistol_suppressor',
+    'weapon_molotov', 'weapon_molotov',
+    'weapon_flare', 'weapon_flare', 'weapon_flare',
+    'weapon_pipebomb',
+    'weapon_pistol', 'weapon_pistol', 'weapon_pistol',
+    'pistol_suppressor', 'pistol_suppressor', 'pistol_suppressor', 'pistol_suppressor',
     'gusenberg_extendedclip',
-    'rifle_ammo',
-    'rolex',
+    'rolex', 'rolex',
     'weapon_katana',
-    'matcoupon',
+    'matcoupon', 'matcoupon', 'matcoupon', 'matcoupon', 'matcoupon',  'matcoupon', 'matcoupon',
     'methkey',
-    'weapon_pistol50',
-    'weapon_pistol50',
+    'weapon_pistol50', 'weapon_pistol50',
     'cokekey',
     'keepcompanionpoodle',
     'keepcompanionmtlion',
-    'weapon_',
     'weapon_battleaxe',
     'weapon_pipebomb',
     'weapon_stickybomb',
-
+    'washkey',
+    'washkey',
+    'weapon_groza',
+    'rifle_ammo', 'rifle_ammo', 'rifle_ammo', 'rifle_ammo',
+    'weapon_dp9',
+    'weapon_dildo',
+    'randombox',   'randombox',
+    'randombag',  'randombag',  'randombag',
+    'redruby', 'bluediamond', 'saphire',
+    'funkopop_snape',
+    'weapon_mp5',
+    'weapon_sword', 
+    'weapon_gepard', 
+    'weapon_krambit', 
+    'airdrop',
+    'pistol50_luxuryfinish',
+    'assaultrifle_drum',
+    'thermite',  'thermite',
+    'armor',   'armor',  'armor',  'armor',  'armor',  'armor',
+    'parachute',  'parachute', 'parachute',
+    'hacking_device', 'hacking_device',
+    'wires', 'wires', 'wires', 'wires',
+    'cutters',  'cutters',  'cutters',
+    'datadrive', 'datadrive',
+    'advancedrepairkit',  'advancedrepairkit',  'advancedrepairkit', 
+    'weapon_fnx45',
+    'weapon_shoe', 'weapon_shoe', 'weapon_shoe', 'weapon_shoe',
+    'weapon_microsmg2',
+    'rpg_ammo',
+    'carbon', 'carbon', 'carbon', 'carbon',
 }
 

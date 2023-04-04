@@ -17,7 +17,7 @@ CreateThread(function()
 end)
 
 RegisterNetEvent('Polar-Sub:Client:StartDrop', function(planepos, dest)
-    RequestNamedPtfxAsset('core') while not HasNamedPtfxAssetLoaded('core') do Wait(10) end UseParticleFxAssetNextCall("core")  SetParticleFxNonLoopedColour(1.0, 0.0, 0.0)  StartParticleFxLoopedAtCoord('exp_grd_flare', dest.x, dest.y, dest.z, 0.0, 0.0, 0.0, size, 0.0, 0.0, 0.0)
+    RequestNamedPtfxAsset('core') while not HasNamedPtfxAssetLoaded('core') do Wait(10) end UseParticleFxAssetNextCall("core")  SetParticleFxNonLoopedColour(1.0, 0.0, 0.0)  StartParticleFxLoopedAtCoord('exp_grd_flare', dest.x, dest.y, dest.z - 1, 0.0, 0.0, 0.0, size, 0.0, 0.0, 0.0)
  
     print('drop starting')
     RequestModel(planes)
