@@ -1427,7 +1427,9 @@ function ChangeVariation(data)
             skinData["decals"].texture = item
         end
     elseif clothingCategory == "accessory" then
+        -- penis
         if type == "item" then
+           -- if item == 34 then item = 35 end
             SetPedComponentVariation(ped, 7, item, 0, 2)
             skinData["accessory"].item = item
         elseif type == "texture" then
