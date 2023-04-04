@@ -8,19 +8,20 @@ QBShared.Items = {
 
 
 
-
+	['airdrop'] 					 = {['name'] = 'airdrop', 			 	  	  	['label'] = 'Supply Signal', 				['weight'] = 15000, 		['type'] = 'item', 		['image'] = 'weapon_smokegrenade.png', 			['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,	    ['description'] = 'A military grade air drop, big no no'},
+	
 
 
      
-	 ['weapon_dp9'] 				     = {['name'] = 'weapon_dp9', 			 	['label'] = 'DP9', 				['weight'] = 1000, 		['type'] = 'weapon', 	['ammotype'] = 'AMMO_PISTOL',		['image'] = 'weapon_dp9.png', 			['unique'] = true, 		['useable'] = false, 	['description'] = 'POW POW'},
-	 ['weapon_mp5'] 				     = {['name'] = 'weapon_mp5', 			 	['label'] = 'MP5', 				['weight'] = 1000, 		['type'] = 'weapon', 	['ammotype'] = 'AMMO_SMG',			['image'] = 'weapon_mp5.png', 			['unique'] = true, 		['useable'] = false, 	['description'] = 'A BETTER VERSION OF SMG'},
+	 ['weapon_dp9'] 				     = {['name'] = 'weapon_dp9', 			 	['label'] = 'DP9', 				['weight'] = 1000, 		['type'] = 'weapon', 	['ammotype'] = 'AMMO_PISTOL',		['image'] = 'weapon_dp9.png', 			['unique'] = true, 		['useable'] = false, 	['description'] = 'Oh shit this is a new gun??'},
+	 ['weapon_mp5'] 				     = {['name'] = 'weapon_mp5', 			 	['label'] = 'MP5', 				['weight'] = 1000, 		['type'] = 'weapon', 	['ammotype'] = 'AMMO_SMG',			['image'] = 'weapon_mp5.png', 			['unique'] = true, 		['useable'] = false, 	['description'] = 'A SWAT grade weapon, highly illegal'},
 	 ['weapon_dildo'] 				 = {['name'] = 'weapon_dildo', 			 	['label'] = 'DILDO', 			['weight'] = 1000, 		['type'] = 'weapon', 	['ammotype'] = 'nil',			    ['image'] = 'weapon_dildo.png', 		['unique'] = true, 		['useable'] = false, 	['description'] = 'YOU CAN GIVE THIS TO YOUR GIRLFRIEND'},
-	 ['weapon_groza'] 				 = {['name'] = 'weapon_groza', 			 	['label'] = 'GROZA', 			['weight'] = 1000, 		['type'] = 'weapon', 	['ammotype'] = 'AMMO_RIFLE',		['image'] = 'weapon_groza.png', 		['unique'] = true, 		['useable'] = false, 	['description'] = 'LETS PLAY PUBG WITH THIS'},
-	 ['weapon_g18c'] 				 = {['name'] = 'weapon_g18c', 			 	['label'] = 'GLOCK-18C', 		['weight'] = 1000, 		['type'] = 'weapon', 	['ammotype'] = 'AMMO_PISTOL',		['image'] = 'weapon_g18c.png', 			['unique'] = true, 		['useable'] = false, 	['description'] = 'A SMALL ASSAULT PISTOL'},
-	 ['weapon_krambit'] 			 	 = {['name'] = 'weapon_krambit', 			['label'] = 'KRAMBIT', 			['weight'] = 1000, 		['type'] = 'weapon', 	['ammotype'] = 'nil',			    ['image'] = 'weapon_krambit.png', 		['unique'] = true, 		['useable'] = false, 	['description'] = 'LMAO CSGO'},
-	 ['weapon_gepard'] 				 = {['name'] = 'weapon_gepard', 			['label'] = 'GEPARD', 			['weight'] = 1000, 		['type'] = 'weapon', 	['ammotype'] = 'AMMO_RIFLE',		['image'] = 'weapon_gepard.png', 		['unique'] = true, 		['useable'] = false, 	['description'] = 'A SMALL ASSAULT RIFLE LIKE YOUR PP'},
-	 ['weapon_sword'] 		         = {['name'] = 'weapon_sword', 			    ['label'] = 'SWORD', 		    ['weight'] = 1000, 		['type'] = 'weapon', 	['ammotype'] = 'nil',			    ['image'] = 'weapon_sword.png', 		['unique'] = true, 		['useable'] = false, 	['description'] = 'A BIG SWORD BIGGER THAN YOUR PP'},
-	 ['weapon_m67'] 				 	 = {['name'] = 'weapon_m67', 		    	['label'] = 'M67', 				['weight'] = 1000, 		['type'] = 'weapon', 	['ammotype'] = nil,					['image'] = 'weapon_m67.png', 			['unique'] = true, 		['useable'] = false, 	['description'] = 'A GRENADEEE'},
+	 ['weapon_groza'] 				 = {['name'] = 'weapon_groza', 			 	['label'] = 'GROZA', 			['weight'] = 1000, 		['type'] = 'weapon', 	['ammotype'] = 'AMMO_RIFLE',		['image'] = 'weapon_groza.png', 		['unique'] = true, 		['useable'] = false, 	['description'] = 'A Russian Semi-Reliable Assault Rifle'},
+	 ['weapon_g18c'] 				 = {['name'] = 'weapon_g18c', 			 	['label'] = 'GLOCK-18C', 		['weight'] = 1000, 		['type'] = 'weapon', 	['ammotype'] = 'AMMO_PISTOL',		['image'] = 'weapon_g18c.png', 			['unique'] = true, 		['useable'] = false, 	['description'] = 'Glock wit a bump switch'},
+	 ['weapon_krambit'] 			 	 = {['name'] = 'weapon_krambit', 			['label'] = 'KRAMBIT', 			['weight'] = 1000, 		['type'] = 'weapon', 	['ammotype'] = 'nil',			    ['image'] = 'weapon_krambit.png', 		['unique'] = true, 		['useable'] = false, 	['description'] = 'the csgo knife, slice n dice'},
+	 ['weapon_gepard'] 				 = {['name'] = 'weapon_gepard', 			['label'] = 'GEPARD', 			['weight'] = 1000, 		['type'] = 'weapon', 	['ammotype'] = 'AMMO_RIFLE',		['image'] = 'weapon_gepard.png', 		['unique'] = true, 		['useable'] = false, 	['description'] = 'A smaller version of a ak47 but suckier'},
+	 ['weapon_sword'] 		         = {['name'] = 'weapon_sword', 			    ['label'] = 'SWORD', 		    ['weight'] = 1000, 		['type'] = 'weapon', 	['ammotype'] = 'nil',			    ['image'] = 'weapon_sword.png', 		['unique'] = true, 		['useable'] = false, 	['description'] = 'a longsword, used to cut up fishes'},
+	 ['weapon_m67'] 				 	 = {['name'] = 'weapon_m67', 		    	['label'] = 'M67', 				['weight'] = 1000, 		['type'] = 'weapon', 	['ammotype'] = nil,					['image'] = 'weapon_m67.png', 			['unique'] = true, 		['useable'] = false, 	['description'] = 'A old WW2 hand grenade'},
 	
 
 
