@@ -249,7 +249,7 @@ Config.ExplosivesBench = {
       
     },
     [6] = {
-        item = 'weapon_grenade',
+        item = 'weapon_m67',
         icon = "",
         txt = "Required: ".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['metalscrap'].image.." width=25px onerror='this.onerror=null; this.remove();'> 6 Metal Scrap".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['refined_aluminum'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Refined Aluminum".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['thermitepowder'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Highly Explosive Powder".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['refined_iron'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Refined Iron",
         exp = 19500,

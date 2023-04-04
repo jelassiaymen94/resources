@@ -58,8 +58,8 @@ Config.WeaponsOnBack = {
      ["weapon_advancedrifle"] = { model = "w_ar_advancedrifle", hash = GetHashKey("weapon_advancedrifle")},
      ["weapon_compactrifle"] = { model = "w_ar_assaultrifle_smg", hash = GetHashKey("weapon_compactrifle")},
      ["weapon_gusenberg"] = { model = "w_sb_gusenberg", hash = GetHashKey("weapon_gusenberg")},
-     ["weapon_uzi"] = { model = "w_sb_microsmg2", hash = GetHashKey("weapon_uzi")},
-     ["weapon_mac10"] = { model = "w_sb_microsmg3", hash = GetHashKey("weapon_mac10")},
+     ["weapon_microsmg2"] = { model = "w_sb_microsmg2", hash = GetHashKey("weapon_microsmg2")},
+     ["weapon_microsmg3"] = { model = "w_sb_microsmg3", hash = GetHashKey("weapon_microsmg3")},
     ["weapon_groza"] = { model = "w_ar_groza", hash = GetHashKey("weapon_groza")},
     ["weapon_gepard"] = { model = "w_ar_gepard", hash = GetHashKey("weapon_gepard")},
    

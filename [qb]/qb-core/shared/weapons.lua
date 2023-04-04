@@ -184,8 +184,8 @@ QBShared.Weapons = {
 	
 	[`weapon_glock`] 		 = {['name'] = 'weapon_glock', 	 	['label'] = 'weapon_glock', 				['ammotype'] =  'AMMO_PISTOL', ['caliber'] = '5.56',	['damagereason'] = 'Ended / Rifled / Shot down / Floored'},
 	
-	[`weapon_mac10`] 		 = {['name'] = 'weapon_mac10', 	 	['label'] = 'weapon_mac10', 				['ammotype'] =  'AMMO_SMG', ['caliber'] = '5.56',	['damagereason'] = 'Ended / Rifled / Shot down / Floored'},
-	[`weapon_uzi`] 		 = {['name'] = 'weapon_uzi', 	 	['label'] = 'weapon_uzi', 				['ammotype'] =  'AMMO_SMG', ['caliber'] = '5.56',	['damagereason'] = 'Ended / Rifled / Shot down / Floored'},
+	[`weapon_microsmg3`] 		 = {['name'] = 'weapon_microsmg3', 	 	['label'] = 'weapon_microsmg3', 				['ammotype'] =  'AMMO_SMG', ['caliber'] = '5.56',	['damagereason'] = 'Ended / Rifled / Shot down / Floored'},
+	[`weapon_microsmg2`] 		 = {['name'] = 'weapon_microsmg2', 	 	['label'] = 'weapon_microsmg2', 				['ammotype'] =  'AMMO_SMG', ['caliber'] = '5.56',	['damagereason'] = 'Ended / Rifled / Shot down / Floored'},
 	
 	[`weapon_gepard`] 		 		 = {['name'] = 'weapon_gepard', 	 		['label'] = 'GEPARD', 						['weapontype'] = 'Assault Rifle',	['ammotype'] = 'AMMO_RIFLE',	['damagereason'] = 'Ended / Rifled / Shot down / Floored'},
 	[`weapon_g18c`] 				 = {['name'] = 'weapon_g18c', 			['label'] = 'GLOCK-18C', 				['weapontype'] = 'Pistol',	['ammotype'] = 'AMMO_PISTOL',	['damagereason'] = 'Pistoled / Blasted / Plugged / Bust a cap in'},
