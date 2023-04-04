@@ -17,6 +17,8 @@ CreateThread(function()
 end)
 
 RegisterNetEvent('Polar-Sub:Client:StartDrop', function(planepos, dest)
+    RequestNamedPtfxAsset('core') while not HasNamedPtfxAssetLoaded('core') do Wait(10) end UseParticleFxAssetNextCall("core")  SetParticleFxNonLoopedColour(1.0, 0.0, 0.0)  StartParticleFxLoopedAtCoord('exp_grd_flare', dest.x, dest.y, dest.z, 0.0, 0.0, 0.0, size, 0.0, 0.0, 0.0)
+ 
     print('drop starting')
     RequestModel(planes)
     while not HasModelLoaded(planes) do
@@ -45,7 +47,6 @@ RegisterNetEvent('Polar-Sub:Client:StartDrop', function(planepos, dest)
             difference = difference + 360
         end
         local pitch = math.max(-20, math.min(20, -(planeCoords.z - dest.z) / 10))
-        SetBlipRotation(destinationBlip, difference)
         SetEntityRotation(plane, pitch, 0, destinationHeading, 2, true)
         SetEntityVelocity(plane, GetEntityForwardVector(plane) * speed)
     end
@@ -56,11 +57,12 @@ RegisterNetEvent('Polar-Sub:Client:StartDrop', function(planepos, dest)
 
     SetVehicleDoorOpen(plane, 2, false, false)
 
+ 
    
     Wait(1500) local planeCoords = GetEntityCoords(plane) 
     local obj1 = CreateObject(model1, planeCoords.x, planeCoords.y, planeCoords.z - 20, server, server)
     exports['qb-target']:AddTargetEntity(obj1, {  options = { {  event = 'Polar-Sub:Client:Crate1',  icon = 'fa-solid fa-star',  label = 'Grab Crate', } }, distance = 1.5,  })
-    SetEntityVelocity(obj1, vector3(0.0, 0.0, -0.1))
+    SetEntityVelocity(obj1, vector3(0.0, 0.0, -5.1))
    -- local crateblip = AddBlipForEntity(obj1) SetBlipSprite (crateblip, 306) SetBlipColour(crateblip, 46) SetBlipFlashesAlternate(crateblip, true) BeginTextCommandSetBlipName("STRING") AddTextComponentSubstringPlayerName("Crate") EndTextCommandSetBlipName(crateblip)
     RequestNamedPtfxAsset('core') while not HasNamedPtfxAssetLoaded('core') do Wait(10) end UseParticleFxAssetNextCall("core")  SetParticleFxNonLoopedColour(1.0, 0.0, 0.0)  StartParticleFxLoopedOnEntity('exp_grd_flare', obj1, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, size, 0.0, 0.0, 0.0)
     
@@ -139,9 +141,13 @@ RegisterNetEvent('Polar-Sub:Client:Crate7', function()   animation() TriggerServ
 RegisterNetEvent('Polar-Sub:Client:Crate8', function()   animation() TriggerServerEvent('Polar-Sub:Server:Crate8') end)
 
 function  animation()
-
-
-
+     local ped = PlayerPedId()
+  loadAnimDict('amb@medic@standing@kneel@base')
+  loadAnimDict('anim@gangops@facility@servers@bodysearch@')
+  TaskPlayAnim(ped, 'amb@medic@standing@kneel@base', 'base', 8.0, 8.0, -1, 1, 0, false, false, false)
+  TaskPlayAnim(ped, 'anim@gangops@facility@servers@bodysearch@', 'player_search', 8.0, 8.0, -1, 48, 0, false, false, false)
+  Wait(30000)
+  ClearPedTasks(ped)
 end
 
 
