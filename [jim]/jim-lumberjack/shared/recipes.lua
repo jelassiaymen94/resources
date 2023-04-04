@@ -86,9 +86,6 @@ Crafting["Wood Crafting"] = {
 }
 
 Crafting["Illegal"] = {
-<<<<<<< HEAD
- 
-=======
     ["Weed"] = {
         ["Grinding"] = {
             { ["nugs"] = { ["1ozhigh"] = 1 }, amount = 4 },
@@ -105,7 +102,6 @@ Crafting["Illegal"] = {
             { ["granddaddycaine_blunt"] = { ["backwoods_honey"] = 1, ["nugs"] = 3 }, amount = 1 },
         },]]
     },
->>>>>>> parent of 03daf773 (Jim_folder)
    --[[["Forgery"] = {
         ["Licences"] = {
             { ["fakecert"] = { ["paper"] = 1 }, amount = 1 },

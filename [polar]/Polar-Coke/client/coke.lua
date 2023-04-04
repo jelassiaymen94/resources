@@ -41,12 +41,12 @@ RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function()
     
 end)
 function targets()
-    exports['qb-target']:AddBoxZone("enterlab2", vector3(387.1, 3584.2, 33.79), 1, 1, {
+    --[[exports['qb-target']:AddBoxZone("enterlab2", vector3(99999387.1, 3584.2, -9999933.79), 1, 1, {
         name = "enterlab3",
         heading = 0,
              debugPoly = false,
-            minZ =  32.79,
-            maxZ =  34.79,
+            minZ =  99932.79,
+            maxZ =  99934.79,
         }, {
             options = {
                 {
@@ -58,12 +58,12 @@ function targets()
             },
             distance = 1.5
         })
-        exports['qb-target']:AddBoxZone("exitlab", vector3(1088.16, -3187.18, -38.85), 1, 1, {
+        exports['qb-target']:AddBoxZone("exitlab", vector3(9999991088.16, -3187.18, -9999938.85), 1, 1, {
             name = "exitlab",
             heading = 0,
                  debugPoly = false,
-                minZ =  -39.00,
-                maxZ =-38.7,
+                minZ = 99939.00,
+                maxZ = 9998.7,
             }, {
                 options = {
                     {
@@ -74,7 +74,7 @@ function targets()
                     }
                 },
                 distance = 1.5
-            })
+            })]]
 end
 
 CreateThread(function()
@@ -1082,7 +1082,7 @@ RegisterNetEvent('Polar-Coke:Client:CokeBill', function()
             uses()
             AddArmourToPed(playerPed, math.random(9, 14))
             Wait(3000)
-            TriggerServerEvent('hud:Server:RelieveStress', math.random(5, 10)) 
+            TriggerServerEvent('hud:server:RelieveStress', math.random(5, 10)) 
             if use < 3 then
                 local chance = math.random(1,100)
                 if chance > 25 then
@@ -1121,12 +1121,12 @@ RegisterNetEvent('Polar-Coke:Client:CokeBill', function()
         if inJoint then
             inJoint = false
             ClearPedTasks(playerPed)
-            TriggerEvent('qb-core:Client:HideText')
+            TriggerEvent('qb-core:client:HideText')
             
             playAnim("timetable@gardener@smoking_joint", "idle_cough", 2000)
             AddArmourToPed(playerPed, math.random(15, 20))
             Wait(3000)
-            TriggerServerEvent('hud:Server:RelieveStress', math.random(15, 20))
+            TriggerServerEvent('hud:server:RelieveStress', math.random(15, 20))
         end 
    
 
@@ -1196,46 +1196,46 @@ function givestuff()
     if level0 then
     if Config.Buffs then
         if exports['qb-buffs']:HasBuff(Config.LuckBuff) then
-            TriggerServerEvent('Polar-Coke:Server:level0buff')
+            TriggerServerEvent('Polar-Coke:server:level0buff')
         else
             
-            TriggerServerEvent('Polar-Coke:Server:level0')
+            TriggerServerEvent('Polar-Coke:server:level0')
         end
     end
     elseif level1 then
         if Config.Buffs then
             if exports['qb-buffs']:HasBuff(Config.LuckBuff) then
-                TriggerServerEvent('Polar-Coke:Server:level1buff')
+                TriggerServerEvent('Polar-Coke:server:level1buff')
             else
                 
-                TriggerServerEvent('Polar-Coke:Server:level1')
+                TriggerServerEvent('Polar-Coke:server:level1')
             end
         end
     elseif level2 then
         if Config.Buffs then
             if exports['qb-buffs']:HasBuff(Config.LuckBuff) then
-                TriggerServerEvent('Polar-Coke:Server:level2buff')
+                TriggerServerEvent('Polar-Coke:server:level2buff')
             else
                 
-                TriggerServerEvent('Polar-Coke:Server:level2')
+                TriggerServerEvent('Polar-Coke:server:level2')
             end
         end
     elseif level3 then
         if Config.Buffs then
             if exports['qb-buffs']:HasBuff(Config.LuckBuff) then
-                TriggerServerEvent('Polar-Coke:Server:level3buff')
+                TriggerServerEvent('Polar-Coke:server:level3buff')
             else
                 
-                TriggerServerEvent('Polar-Coke:Server:level3')
+                TriggerServerEvent('Polar-Coke:server:level3')
             end
         end
     elseif level4 then
         if Config.Buffs then
             if exports['qb-buffs']:HasBuff(Config.LuckBuff) then
-                TriggerServerEvent('Polar-Coke:Server:level4buff')
+                TriggerServerEvent('Polar-Coke:server:level4buff')
             else
                 
-                TriggerServerEvent('Polar-Coke:Server:level4')
+                TriggerServerEvent('Polar-Coke:server:level4')
             end
         end
 

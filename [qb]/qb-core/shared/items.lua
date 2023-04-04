@@ -485,7 +485,7 @@ QBShared.Items = {
 ["sparkplugs"]				= {["name"] = "sparkplugs",				["label"] = "Spark Plugs",			["weight"] = 2000, 		["type"] = "item", 		["image"] = "sparkplugs.png", 			["unique"] = 1, 		 	      ["description"] = ""},
 ["carbattery"]				= {["name"] = "carbattery",				["label"] = "Car Battery",			["weight"] = 6000, 		["type"] = "item", 		["image"] = "carbattery.png", 			["unique"] = 1, 		 	      ["description"] = ""},
 ["axleparts"]				= {["name"] = "axleparts",				["label"] = "Axle Parts",			["weight"] = 5000, 		["type"] = "item", 		["image"] = "axleparts.png", 			 	 	      ["description"] = ""},
-["sparetire"]				= {["name"] = "sparetire",				["label"] = "Spare Tire",			["weight"] = 8000, 		["type"] = "item", 		["image"] = "sparetire.png", 			["unique"] = 1, 		["useable"] = 1, 	["shouldClose"] = 1,      ["description"] = ""},
+["sparetire"]				= {["name"] = "sparetire",				["label"] = "Spare Tire",			["weight"] = 8000, 		["type"] = "item", 		["image"] = "sparetire.png", 			["unique"] = 0, 		["useable"] = 1, 	["shouldClose"] = 1,      ["description"] = ""},
 
 
 

@@ -10,7 +10,7 @@ Config.DoorList['wuchang4'] = {
     objCoords = vec3(-822.034485, -715.693359, 32.486649),
     doorType = 'door',
     audioRemote = false,
-    pickable = true,
+    pickable = false,
     locked = true,
     authorizedJobs = { ['wuchang'] = 0 },
     --audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},

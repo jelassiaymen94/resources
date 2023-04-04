@@ -20,7 +20,7 @@ AddEventHandler('playerDropped', function(reason)
 
         Wait(5000)
        
-        TriggerEvent("qb-log:Server:CreateLog", "combatlog", "Player Combat Logged", "red", "**" .. playerName .. "** Citizen ID" .. citizenId .. " While Downed @everyone")
+        TriggerEvent("qb-log:server:CreateLog", "combatlog", "Player Combat Logged", "red", "**" .. playerName .. "** Citizen ID" .. citizenId .. " While Downed @everyone")
 
 
 
@@ -33,7 +33,7 @@ AddEventHandler('playerDropped', function(reason)
 
         Wait(5000)
        
-        TriggerEvent("qb-log:Server:CreateLog", "combatlog", "Player Combat Logged", "red", "**" .. playerName .. "** Citizen ID" .. citizenId .. " While Dead @everyone")
+        TriggerEvent("qb-log:server:CreateLog", "combatlog", "Player Combat Logged", "red", "**" .. playerName .. "** Citizen ID" .. citizenId .. " While Dead @everyone")
 
            
     elseif Player.PlayerData.metadata["ishandcuffed"] and reason == 'Exiting' then
@@ -45,7 +45,7 @@ AddEventHandler('playerDropped', function(reason)
 
         Wait(5000)
         exploitBan(src, "Combat Logging")
-        TriggerEvent("qb-log:Server:CreateLog", "combatlog", "Player Combat Logged", "red", "**" .. playerName .. "** Citizen ID" .. citizenId .. " While Hand Cuffed @everyone")
+        TriggerEvent("qb-log:server:CreateLog", "combatlog", "Player Combat Logged", "red", "**" .. playerName .. "** Citizen ID" .. citizenId .. " While Hand Cuffed @everyone")
 
 
     end
@@ -64,7 +64,7 @@ local function exploitBan(id, reason)
             2147483647,
             'Blake Ban System'
         })
-    TriggerEvent('qb-log:Server:CreateLog', 'combatlog', 'Handcuffed Player Banned', 'red',
+    TriggerEvent('qb-log:server:CreateLog', 'combatlog', 'Handcuffed Player Banned', 'red',
         string.format('%s was banned by %s for %s', GetPlayerName(id), 'Blakes Ban Systemnier', reason), true)
     DropPlayer(id, 'You were Banned, Make a ticket at Discord.gg/Polar to get unbanned')
 end

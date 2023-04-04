@@ -471,4 +471,34 @@ reward = 60,
         wait = 1500,
         reward = 4500,
     },
+    ["03_tommyscaletta"] = {
+        name = "03_tommyscaletta",
+        wait = 1500,
+        reward = 500,
+    },
+    ["03_tommysigned"] = {
+        name = "03_tommysigned",
+        wait = 1500,
+        reward = 1500,
+    },
+    ["04_seymourbutts"] = {
+        name = "04_seymourbutts",
+        wait = 1500,
+        reward = 900,
+    },
+    ["04_seymoursigned"] = {
+        name = "04_seymoursigned",
+        wait = 1500,
+        reward = 4000,
+    },
+    ["05_reese"] = {
+        name = "05_reese",
+        wait = 1500,
+        reward = 700,
+    },
+    ["05_reese"] = {
+        name = "04_seymoursigned",
+        wait = 1500,
+        reward = 1500,
+    },
 }

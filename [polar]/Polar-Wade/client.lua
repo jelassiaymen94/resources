@@ -471,12 +471,23 @@ RegisterNetEvent('Polar-Wade:Client:Types', function(data)
 end)
 
 
+RegisterNetEvent('Polar-Wade:Client:Plane', function(planepos, dropPosition)
+
+    local plane = CreateVehicle("cuban800", planepos, true, true)
+              
+               
+    SetEntityHeading(plane, dropPosition.w)
+   -- print(dropPosition.w)
+    
+   
+    SetEntityVelocity(plane, vector3(-dropPosition.x, -dropPosition.y, dropPosition.z+ 50))
+    SetEntityMaxSpeed(plane, 1500.0)
+    SetVehicleOnGroundProperly(plane)
+    
+    TaskPlaneMission('s_m_m_pilot_01', plane, 0, 0, dropPosition.x, dropPosition.y, dropPosition.z, 4, 300.0, 0.0, 0.0, 100.0, 500.0)
+    SetVehicleEngineOn(plane, true, true)
+  
 
 
 
-
-
-
-
-
-
+end)

@@ -177,7 +177,7 @@ AddEventHandler("qb-randombox:GunCaseOpening", function()
     local forward   = GetEntityForwardVector(playerPed)
     local x, y, z   = table.unpack(coords + forward * 1.0)
 
-    local guncase = `prop_box_guncase_03a`
+    local guncase = `vw_prop_casino_cards_02`
     RequestModel(guncase)
     while (not HasModelLoaded(guncase)) do
         Wait(1)
@@ -187,7 +187,7 @@ AddEventHandler("qb-randombox:GunCaseOpening", function()
     SetEntityAsMissionEntity(gun1)
 
     TriggerEvent('animations:client:EmoteCommandStart', {"mechanic3"})
-    QBCore.Functions.Progressbar('name_here', 'Opening Gun Case...', 5000, false, true, {
+    QBCore.Functions.Progressbar('name_here', 'Opening PolarMon Booster...', 5000, false, true, {
         disableMovement = true,
         disableCarMovement = true,
         disableMouse = false,

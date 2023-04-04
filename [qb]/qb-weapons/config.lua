@@ -445,7 +445,7 @@ WeaponAttachments = {
         },
     },
     -- SMG'S
-    ['WEAPON_MICROSMG'] = {
+    ['WEAPON_MICROSMG2'] = {
         ['defaultclip'] = {
             component = 'COMPONENT_MICROSMG_CLIP_01',
             item = 'microsmg_defaultclip',
@@ -473,7 +473,7 @@ WeaponAttachments = {
             item = 'microsmg_luxuryfinish',
         },
     },
-    ['WEAPON_SMG'] = {
+    ['WEAPON_MICROSMG3'] = {
         ['defaultclip'] = {
             component = 'COMPONENT_SMG_CLIP_01',
             item = 'smg_defaultclip',

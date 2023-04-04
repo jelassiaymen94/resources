@@ -1,5 +1,5 @@
 print("^2Jim^7-^2CatCafe ^7v^41^7.^47^7.^42 ^7- ^2CatCafe Script by ^1Jimathy^7")
-
+ 
 Config = {
 	Debug = false, -- false to remove green boxes
 	Lan = "en",
@@ -115,12 +115,79 @@ Crafting = {
 		{ ['noodlebowl'] = { ['noodles'] = 1, }, },
 		{ ['pikachusoup'] = { ['noodles'] = 1, ['onion'] = 1, }, },
 	},
-	Pizza = {
-		{ ['miso'] = { ['nori'] = 1, ['tofu'] = 1, ['onion'] = 1, }, },
-		{ ['ramen'] = { ['noodles'] = 1, ['onion'] = 1, }, },
-		{ ['mozzarellasticks'] = { ['mozz'] = 1, }, },
-		{ ['pikachusoup'] = { ['noodles'] = 1, ['onion'] = 1, }, },
+	
+	--Pizza This
+	Grill = {
+		{ ['cookedchicken'] = { ['rawchicken'] = 1 }, },
+		{ ['meatballs'] = { ['raw_beef'] = 1 }, },
+		{ ['cooked_bacon'] = { ['raw_bacon'] = 1, }, },
+		{ ['cooked_ham'] = { ['raw_ham'] = 1 }, },
 	},
+	Fryer = {
+		{ ['mozzarellasticks'] = { ['mozz'] = 1, }, },
+		{ ['hotwings'] = { ['cookedchicken'] = 1, }, },
+	},
+	Sauce = {
+		{ ['sauce'] = { ['tomato'] = 1, }, },
+		{ ['creamsauce'] = { ['cream'] = 1, }, },
+		{ ['spaghetti'] = { ['sauce'] = 1, ['pasta'] = 1,['meatballs'] = 1, }, },
+		{ ['alfredo'] = { ['creamsauce'] = 1, ['pasta'] = 1,['cookedchicken'] = 1, }, },
+	},
+	Dough = {
+		{ ['dough'] = { ['flour'] = 1, ['milk'] = 1, }, },
+	},
+	Prep = {
+		{ ['rawcheesepizza'] = { ['dough'] = 1, ['mozz'] = 1, ['sauce'] = 1, }, },
+		{ ['rawpepperonipizza'] = { ['dough'] = 1, ['mozz'] = 1, ['sauce'] = 1, ['pepperoni'] = 1, }, },
+		{ ['rawmeatpizza'] = { ['dough'] = 1, ['mozz'] = 1, ['sauce'] = 1, ['pepperoni'] = 1, ['cooked_ham'] = 1, ['cooked_bacon'] = 1, }, },
+		{ ['rawveggiepizza'] = { ['dough'] = 1, ['mozz'] = 1, ['sauce'] = 1, ['chilipeppers'] = 1, }, },
+	},
+	PizzaOven = {
+		{ ['cheesepizza'] = { ['rawcheesepizza'] = 1 }, },
+		{ ['pepperonipizza'] = { ['rawpepperonipizza'] = 1 }, },
+		{ ['meatpizza'] = { ['rawmeatpizza'] = 1, }, },
+		{ ['veggiepizza'] = { ['rawveggiepizza'] = 1 }, },
+	},
+
+	--MISC
+	Meth = {
+		{ ['methylamine'] = { ['chemicals'] = 10, ['pharmaceuticals'] = 2, }, },
+	},
+
+	-- Taco Shop
+	Tortilla = {
+		{ ['tortilla'] = { ['flour'] = 1, ['milk'] = 1, }, },
+	},
+	Meat = {
+		{ ['cookedchicken'] = { ['rawchicken'] = 1 }, },
+		{ ['beef'] = { ['raw_beef'] = 1 }, },
+		{ ['cooked_pork'] = { ['raw_pork'] = 1, }, },
+	},
+ 
+	-- VU
+	Kebab = {
+		{ ['cookedchicken'] = { ['rawchicken'] = 1 }, },
+		{ ['cookedlamb'] = { ['rawlamb'] = 1 }, },
+		{ ['chickengyro'] = { ['cookedchicken'] = 1, ['tomato'] = 1 }, },
+		{ ['chickenkebab'] = { ['cookedchicken'] = 1, ['tomato'] = 1 }, },
+		{ ['lambgyro'] = { ['cookedlamb'] = 1, ['tomato'] = 1 }, },
+		{ ['lambkebab'] = { ['cookedlamb'] = 1, ['tomato'] = 1 }, },
+	},
+
+	--Autograph Station
+	Monkeyman = {
+		{ ['01_monkeymansigned'] = { ['01_monkeyman'] = 1, }, },
+	},
+	Seymour = {
+		{ ['04_seymoursigned'] = { ['04_seymourbutts'] = 1, }, },
+	},
+	Mrsmonkey = {
+		{ ['02_mrsmonkeysigned'] = { ['02_mrsmonkey'] = 1, }, },
+	},
+	Reese = {
+		{ ['05_reesesigned'] = { ['05_reese'] = 1, }, },
+	},
+
 }
 
 Loc = {}

@@ -25,7 +25,7 @@ Config.DoorList['craft'] = {
     locked = true,
     doorType = 'door',
     objCoords = vec3(8.044436, -1098.658691, 29.897390),
-    authorizedJobs = { ['maxdamage'] = 4 },
+    authorizedJobs = { ['maxdamage'] = 3 },
     doorRate = 1.0,
     objYaw = 340.00003051758,
     fixText = false,

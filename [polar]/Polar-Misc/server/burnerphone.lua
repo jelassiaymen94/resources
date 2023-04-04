@@ -21,7 +21,7 @@ RegisterNetEvent('Polar-Misc:Server:Misc', function()
 
             if exports['qb-inventory']:RemoveItem(Player.PlayerData.source, 'burnerphone', 1, false) then --  item removed from inventory
             TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['burnerphone'], 'remove', 1)
-            TriggerEvent("qb-log:Server:CreateLog", "weed", "REMOVED TRIM ITEM", "yellow", "**" .. GetPlayerName(src) .. "** Removed" .. 1 .. " " .. 'burnerphone' .. "s")
+            TriggerEvent("qb-log:server:CreateLog", "weed", "REMOVED TRIM ITEM", "yellow", "**" .. GetPlayerName(src) .. "** Removed" .. 1 .. " " .. 'burnerphone' .. "s")
             end
 
     end

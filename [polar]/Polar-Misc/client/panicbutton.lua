@@ -7,7 +7,7 @@ CreateThread(function()
 end)
 
 
-RegisterNetEvent('police:Client:SendPoliceEmergencyAlert', function()
+RegisterNetEvent('police:client:SendPoliceEmergencyAlert', function()
 
     button()
    

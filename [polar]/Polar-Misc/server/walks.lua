@@ -1,15 +1,15 @@
 local QBCore = exports['qb-core']:GetCoreObject()
 
 -- Get Walking Style --
-RegisterServerEvent('Polar-Misc:Server:GetWalkStyle', function()
+RegisterServerEvent('Polar-Misc:server:GetWalkStyle', function()
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
     if not Player then return end
-    TriggerClientEvent('Polar-Misc:Client:SetWalkStyle', src, Player.PlayerData.metadata['walkstyle'])
+    TriggerClientEvent('Polar-Misc:client:SetWalkStyle', src, Player.PlayerData.metadata['walkstyle'])
 end)
 
 -- Set Walking Style --
-RegisterServerEvent('Polar-Misc:Server:SetWalkStyle', function(style)
+RegisterServerEvent('Polar-Misc:server:SetWalkStyle', function(style)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
     if not Player then return end

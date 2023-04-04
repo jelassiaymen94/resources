@@ -3,40 +3,40 @@ local QBCore = exports[Config.Core]:GetCoreObject()
 
 
 
-RegisterNetEvent('Polar-Meth:Server:reward1', function()
+RegisterNetEvent('Polar-Meth:server:reward1', function()
     local Player = QBCore.Functions.GetPlayer(source)
     local temp1luck = math.random(10,15)
 
     Player.Functions.AddItem(Config.Methitem, temp1luck)
         TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items[Config.Methitem], 'add', temp1luck)
-         TriggerEvent("qb-log:Server:CreateLog", "meth", "METH", "blue", "**" .. GetPlayerName(src) .. "** Got Meth")
+         TriggerEvent("qb-log:server:CreateLog", "meth", "METH", "blue", "**" .. GetPlayerName(src) .. "** Got Meth")
 end)
 
-RegisterNetEvent('Polar-Meth:Server:reward2', function()
+RegisterNetEvent('Polar-Meth:server:reward2', function()
     local Player = QBCore.Functions.GetPlayer(source)
     local temp2luck = math.random(15,25)
 
     Player.Functions.AddItem(Config.Methitem, temp2luck)
         TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items[Config.Methitem], 'add', temp2luck)
-         TriggerEvent("qb-log:Server:CreateLog", "meth", "METH", "blue", "**" .. GetPlayerName(src) .. "** Got Meth")
+         TriggerEvent("qb-log:server:CreateLog", "meth", "METH", "blue", "**" .. GetPlayerName(src) .. "** Got Meth")
 end)
 
-RegisterNetEvent('Polar-Meth:Server:reward3', function()
+RegisterNetEvent('Polar-Meth:server:reward3', function()
     local Player = QBCore.Functions.GetPlayer(source)
     local temp3luck = math.random(25,35)
 
     Player.Functions.AddItem(Config.Methitem, temp3luck)
         TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items[Config.Methitem], 'add', temp3luck)
-         TriggerEvent("qb-log:Server:CreateLog", "meth", "METH", "blue", "**" .. GetPlayerName(src) .. "** Got Meth")
+         TriggerEvent("qb-log:server:CreateLog", "meth", "METH", "blue", "**" .. GetPlayerName(src) .. "** Got Meth")
 end)
 
-RegisterNetEvent('Polar-Meth:Server:reward4', function()
+RegisterNetEvent('Polar-Meth:server:reward4', function()
     local Player = QBCore.Functions.GetPlayer(source)
     local temp4luck = math.random(35,50)
 
     Player.Functions.AddItem(Config.Methitem, temp4luck)
         TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items[Config.Methitem], 'add', temp4luck)
-         TriggerEvent("qb-log:Server:CreateLog", "meth", "METH", "blue", "**" .. GetPlayerName(src) .. "** Got Meth")
+         TriggerEvent("qb-log:server:CreateLog", "meth", "METH", "blue", "**" .. GetPlayerName(src) .. "** Got Meth")
 end)
 
 
@@ -60,40 +60,40 @@ QBCore.Functions.CreateCallback("Polar-Crafting:Server:XpCheck", function(source
     
 end)
 
-RegisterNetEvent('Polar-Meth:Server:reward1luck', function()
+RegisterNetEvent('Polar-Meth:server:reward1luck', function()
     local Player = QBCore.Functions.GetPlayer(source)
     local temp1luck = math.random(15,15)
 
         Player.Functions.AddItem(Config.Methitem, temp1luck)
         TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items[Config.Methitem], 'add', temp1luck)
-         TriggerEvent("qb-log:Server:CreateLog", "meth", "METH", "blue", "**" .. GetPlayerName(src) .. "** Got Meth")
+         TriggerEvent("qb-log:server:CreateLog", "meth", "METH", "blue", "**" .. GetPlayerName(src) .. "** Got Meth")
 end)
 
-RegisterNetEvent('Polar-Meth:Server:reward2luck', function()
+RegisterNetEvent('Polar-Meth:server:reward2luck', function()
     local Player = QBCore.Functions.GetPlayer(source)
    local temp2luck = math.random(20,25)
 
     Player.Functions.AddItem(Config.Methitem, temp2luck)
         TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items[Config.Methitem], 'add')
-       --  TriggerEvent("qb-log:Server:CreateLog", "meth", "METH", "blue", "**" .. GetPlayerName(src) .. "** Got Meth")
+       --  TriggerEvent("qb-log:server:CreateLog", "meth", "METH", "blue", "**" .. GetPlayerName(src) .. "** Got Meth")
 end)
 
-RegisterNetEvent('Polar-Meth:Server:reward3luck', function()
+RegisterNetEvent('Polar-Meth:server:reward3luck', function()
     local Player = QBCore.Functions.GetPlayer(source)
     local temp3luck = math.random(30,35)
 
     Player.Functions.AddItem(Config.Methitem, temp3luck)
         TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items[Config.Methitem], 'add', temp3luck)
-         TriggerEvent("qb-log:Server:CreateLog", "meth", "METH", "blue", "**" .. GetPlayerName(src) .. "** Got Meth")
+         TriggerEvent("qb-log:server:CreateLog", "meth", "METH", "blue", "**" .. GetPlayerName(src) .. "** Got Meth")
 end)
 
-RegisterNetEvent('Polar-Meth:Server:reward4luck', function()
+RegisterNetEvent('Polar-Meth:server:reward4luck', function()
     local Player = QBCore.Functions.GetPlayer(source)
     local temp4luck = math.random(35,40)
 
     Player.Functions.AddItem(Config.Methitem, temp4luck)
         TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items[Config.Methitem], 'add', temp4luck)
-         TriggerEvent("qb-log:Server:CreateLog", "meth", "METH", "blue", "**" .. GetPlayerName(src) .. "** Got Meth")
+         TriggerEvent("qb-log:server:CreateLog", "meth", "METH", "blue", "**" .. GetPlayerName(src) .. "** Got Meth")
 end)
 
 
@@ -103,7 +103,7 @@ end)
 
 
 
-RegisterNetEvent('Polar-Meth:Server:SmashItem', function()
+RegisterNetEvent('Polar-Meth:server:SmashItem', function()
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
     if not Player then return end
@@ -116,7 +116,7 @@ RegisterNetEvent('Polar-Meth:Server:SmashItem', function()
     end
 end)
 
-RegisterNetEvent('Polar-Meth:Server:BagItem', function()
+RegisterNetEvent('Polar-Meth:server:BagItem', function()
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
     if not Player then return end
@@ -128,7 +128,7 @@ RegisterNetEvent('Polar-Meth:Server:BagItem', function()
         end
     
 end)
-RegisterNetEvent('Polar-Meth:Server:TrayRemove', function()
+RegisterNetEvent('Polar-Meth:server:TrayRemove', function()
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
     if not Player then return end
@@ -140,15 +140,15 @@ RegisterNetEvent('Polar-Meth:Server:TrayRemove', function()
         end
     
 end)
-RegisterNetEvent('Polar-Meth:Server:TrayAdd', function()
+RegisterNetEvent('Polar-Meth:server:TrayAdd', function()
     local Player = QBCore.Functions.GetPlayer(source)
     
 
     Player.Functions.AddItem(Config.TrayItem, Config.TrayItemAmount)
         TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items[Config.TrayItem], 'add', Config.TrayItemAmount)
-         TriggerEvent("qb-log:Server:CreateLog", "meth", "METH", "blue", "**" .. GetPlayerName(src) .. "** Got Meth Tray")
+         TriggerEvent("qb-log:server:CreateLog", "meth", "METH", "blue", "**" .. GetPlayerName(src) .. "** Got Meth Tray")
 end)
-RegisterNetEvent('Polar-Meth:Server:RemoveIngredients', function()
+RegisterNetEvent('Polar-Meth:server:RemoveIngredients', function()
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
     if not Player then return end

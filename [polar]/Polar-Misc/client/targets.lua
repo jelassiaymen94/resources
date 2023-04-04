@@ -17,7 +17,7 @@ local QBCore = exports['qb-core']:GetCoreObject()
                 {
                     type = "client",
                     icon = "fa-solid fa-bell",
-                    event = "polar:Client:burgershotding",
+                    event = "polar:client:burgershotding",
                     label = "Ring Bell",
                 }
             },
@@ -35,7 +35,7 @@ local QBCore = exports['qb-core']:GetCoreObject()
             options = {
                 {
                     type = "client",
-                    event = "polar:Client:burgershotding",
+                    event = "polar:client:burgershotding",
                     icon = "fa-solid fa-gavel",
                     label = "Use Gavel",
                 }
@@ -54,7 +54,7 @@ local QBCore = exports['qb-core']:GetCoreObject()
                 options = {
                     {
                         type = "client",
-                    event = "qb-police:Client:openArmoury",
+                    event = "qb-police:client:openArmoury",
                     icon = "fas fa-clipboard",
                     label = "Open Armory",
                     job = "police"
@@ -82,7 +82,7 @@ CreateThread(function()
             options = {
                 {
                     type = "client",
-                    event = "qb-tatto:Client:GoToMeno",
+                    event = "qb-tatto:client:GoToMeno",
                     icon = "fa-solid fa-bolt",
                     label = "Tattoo Shop",
                 }
@@ -100,7 +100,7 @@ CreateThread(function()
             options = {
                 {
                     type = "client",
-                    event = "apartments:Client:EnterApartment",
+                    event = "apartments:client:EnterApartment",
                     icon = "fa-solid fa-bolt",
                     label = "Enter Apartment",
                 }
@@ -127,10 +127,10 @@ end)
 
 
 
-RegisterNetEvent('polar:Client:judgeGavel', function()
+RegisterNetEvent('polar:client:judgeGavel', function()
     TriggerServerEvent("InteractSound_SV:PlayWithinDistance", 10, "gavel_hits", 0.5)
    end)
-   RegisterNetEvent('polar:Client:burgershotding', function()
+   RegisterNetEvent('polar:client:burgershotding', function()
     TriggerServerEvent("InteractSound_SV:PlayWithinDistance", 10, "bell-sound", 0.5)
    end)
  

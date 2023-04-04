@@ -492,7 +492,7 @@ QBShared.Vehicles = {
 		["hash"] = "defiler",
 		["shop"] = "luxury",
 	},
-	["deathbike"] = {							--DLC
+	--[[["deathbike"] = {							--DLC
 		["name"] = "deathbike",
 		["brand"] = "deathbike",
 		["model"] = "deathbike",

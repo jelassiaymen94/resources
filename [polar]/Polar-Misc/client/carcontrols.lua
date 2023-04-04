@@ -23,8 +23,8 @@ end)
 
 ----- Opens Menu ----
 
-RegisterNetEvent('ccvehmenu:Client:openMenu')
-AddEventHandler('ccvehmenu:Client:openMenu', function()
+RegisterNetEvent('ccvehmenu:client:openMenu')
+AddEventHandler('ccvehmenu:client:openMenu', function()
     if IsPedInAnyVehicle(PlayerPedId(), true) then
         createCarControlMenu()
         exports['qb-menu']:openMenu(ccMenu)
@@ -72,7 +72,7 @@ RegisterNetEvent('qb-vehiclemenu:windowscontrol', function(args)
                 RollUpWindow(veh, 3)
                 QBCore.Functions.Notify("Rolled Up Driver Window", "success", 3500)
                 end
-                TriggerEvent('ccvehmenu:Client:windowsMenu')
+                TriggerEvent('ccvehmenu:client:windowsMenu')
         end
 end)
 
@@ -111,11 +111,11 @@ RegisterNetEvent('qb-vehiclemenu:seatcontrol', function(args)
                     elseif args == 0 or nil then
                     QBCore.Functions.Notify("Select a Proper Seat", "error", 3500)
                     end
-                    TriggerEvent('ccvehmenu:Client:seatsMenu')
+                    TriggerEvent('ccvehmenu:client:seatsMenu')
                 end
             elseif IsSeatFree == false then
                 QBCore.Functions.Notify('This seat is occupied..')
-                TriggerEvent('ccvehmenu:Client:seatsMenu')
+                TriggerEvent('ccvehmenu:client:seatsMenu')
             end
         if veh == false then
             QBCore.Functions.Notify('Not In A Vehicle..')
@@ -139,11 +139,11 @@ RegisterNetEvent('qb-vehiclemenu:2seatcontrol', function(args)
                     elseif args == 0 or nil then
                     QBCore.Functions.Notify("Select a Proper Seat", "error", 3500)
                     end
-                    TriggerEvent('ccvehmenu:Client:seatsMenu')
+                    TriggerEvent('ccvehmenu:client:seatsMenu')
                 end
             elseif IsSeatFree == false then
                 QBCore.Functions.Notify('This seat is occupied..')
-                TriggerEvent('ccvehmenu:Client:seatsMenu')
+                TriggerEvent('ccvehmenu:client:seatsMenu')
             end
         if veh == false then
             QBCore.Functions.Notify('Not In A Vehicle..')
@@ -165,11 +165,11 @@ RegisterNetEvent('qb-vehiclemenu:enginecontrol:on', function(args)
                 SetVehicleEngineOn(veh, false, false, true)
                 QBCore.Functions.Notify("Engine Off", "success", 3500)
                 end
-                TriggerEvent('ccvehmenu:Client:engineMenu')
+                TriggerEvent('ccvehmenu:client:engineMenu')
             end
     else
         QBCore.Functions.Notify("Can\'t Engage Engine From This Seat", "error", 3500)
-        TriggerEvent('ccvehmenu:Client:engineMenu')
+        TriggerEvent('ccvehmenu:client:engineMenu')
     end
 end)
 
@@ -203,11 +203,11 @@ RegisterNetEvent('qb-vehiclemenu:doorcontrol', function(args)
                     SetVehicleDoorOpen(veh, 4, false, false)
                     SetVehicleDoorOpen(veh, 5, false, false)
                     end
-                    TriggerEvent('ccvehmenu:Client:doorMenu')
+                    TriggerEvent('ccvehmenu:client:doorMenu')
                 end
             else
                 QBCore.Functions.Notify('Doors are Closed')
-                TriggerEvent('ccvehmenu:Client:doorMenu')
+                TriggerEvent('ccvehmenu:client:doorMenu')
             end
         if veh == false then
             QBCore.Functions.Notify('Not In A Vehicle..')
@@ -240,7 +240,7 @@ RegisterNetEvent('qb-vehiclemenu:neoncontrol', function()
 
     if not hasNeons then 
         QBCore.Functions.Notify('Vehicles Neons Lights Not Installed', 'error')
-        TriggerEvent('ccvehmenu:Client:ccMenu')
+        TriggerEvent('ccvehmenu:client:ccMenu')
         return
     end
 
@@ -251,7 +251,7 @@ RegisterNetEvent('qb-vehiclemenu:neoncontrol', function()
     SetVehicleNeonLightEnabled(vehicle, 2, not neonsOn)
     SetVehicleNeonLightEnabled(vehicle, 3, not neonsOn)
         VehiclesWithNeons[vehicle] = not neonsOn
-        TriggerEvent('ccvehmenu:Client:ccMenu')
+        TriggerEvent('ccvehmenu:client:ccMenu')
 
 end)
 ------ Livery Events ------
@@ -274,11 +274,11 @@ local livery = IsVehicleSeatFree(veh, -2)
                     elseif args == 5 then 
                     SetVehicleLivery(veh, 5)
                     end
-                    TriggerEvent('ccvehmenu:Client:liveryMenu')
+                    TriggerEvent('ccvehmenu:client:liveryMenu')
                 end
             else
                 QBCore.Functions.Notify('No Liveries Available')
-                TriggerEvent('ccvehmenu:Client:ccMenu')
+                TriggerEvent('ccvehmenu:client:ccMenu')
             end
         if veh == false then
             QBCore.Functions.Notify('Not In A Vehicle..')
@@ -288,7 +288,7 @@ end)
 ------ Turbo Checks -------
 
 -----Turbo Check
-RegisterNetEvent('ccvehmenu:Client:turbo', function()
+RegisterNetEvent('ccvehmenu:client:turbo', function()
     if PlayerData.job.name == "police" then
         local playerPed = PlayerPedId()
         local veh = GetVehiclePedIsIn(playerPed, false)
@@ -299,7 +299,7 @@ RegisterNetEvent('ccvehmenu:Client:turbo', function()
                 else 
                     QBCore.Functions.Notify("No Turbo installed.")
                 end
-                TriggerEvent('ccvehmenu:Client:ccMenu')
+                TriggerEvent('ccvehmenu:client:ccMenu')
             elseif veh == false then
                 QBCore.Functions.Notify('Not In A Vehicle..')
             end
@@ -325,12 +325,12 @@ RegisterNetEvent('qb-vehiclemenu:vehicleExtras', function(args)
                 if args == 1 then 
                     SetVehicleExtra(veh, 1, 1)
                     QBCore.Functions.Notify('Extra ' .. 1 .. ' Deactivated', 'error', 2500)
-                    TriggerEvent('ccvehmenu:Client:extrasDeactMenu')
+                    TriggerEvent('ccvehmenu:client:extrasDeactMenu')
                     elseif args == 2 then 
                     SetVehicleExtra(veh, 1, 0)
                     SetVehicleAutoRepairDisabled(true)
                     QBCore.Functions.Notify('Extra ' .. 1 .. ' Activated', 'success', 2500)
-                    TriggerEvent('ccvehmenu:Client:extrasActMenu')
+                    TriggerEvent('ccvehmenu:client:extrasActMenu')
                     end
                 end
             if DoesExtraExist(veh, 2) then
@@ -338,12 +338,12 @@ RegisterNetEvent('qb-vehiclemenu:vehicleExtras', function(args)
                 if args == 3 then 
                     SetVehicleExtra(veh, 2, 1)
                     QBCore.Functions.Notify('Extra ' .. 2 .. ' Deactivated', 'error', 2500)
-                    TriggerEvent('ccvehmenu:Client:extrasDeactMenu')
+                    TriggerEvent('ccvehmenu:client:extrasDeactMenu')
                     elseif args == 4 then 
                     SetVehicleExtra(veh, 2, 0)
                     SetVehicleAutoRepairDisabled(true)
                     QBCore.Functions.Notify('Extra ' .. 2 .. ' Activated', 'success', 2500)
-                    TriggerEvent('ccvehmenu:Client:extrasActMenu')
+                    TriggerEvent('ccvehmenu:client:extrasActMenu')
                     end
                 end
             if DoesExtraExist(veh, 3) then
@@ -351,12 +351,12 @@ RegisterNetEvent('qb-vehiclemenu:vehicleExtras', function(args)
                 if args == 5 then 
                     SetVehicleExtra(veh, 3, 1)
                     QBCore.Functions.Notify('Extra ' .. 3 .. ' Deactivated', 'error', 2500)
-                    TriggerEvent('ccvehmenu:Client:extrasDeactMenu')
+                    TriggerEvent('ccvehmenu:client:extrasDeactMenu')
                     elseif args == 6 then 
                     SetVehicleExtra(veh, 3, 0)
                     SetVehicleAutoRepairDisabled(true)
                     QBCore.Functions.Notify('Extra ' .. 3 .. ' Activated', 'success', 2500)
-                    TriggerEvent('ccvehmenu:Client:extrasActMenu')
+                    TriggerEvent('ccvehmenu:client:extrasActMenu')
                     end
                 end
             if DoesExtraExist(veh, 4) then
@@ -364,12 +364,12 @@ RegisterNetEvent('qb-vehiclemenu:vehicleExtras', function(args)
                 if args == 7 then 
                     SetVehicleExtra(veh, 4, 1)
                     QBCore.Functions.Notify('Extra ' .. 4 .. ' Deactivated', 'error', 2500)
-                    TriggerEvent('ccvehmenu:Client:extrasDeactMenu')
+                    TriggerEvent('ccvehmenu:client:extrasDeactMenu')
                     elseif args == 8 then 
                     SetVehicleExtra(veh, 4, 0)
                     SetVehicleAutoRepairDisabled(true)
                     QBCore.Functions.Notify('Extra ' .. 4 .. ' Activated', 'success', 2500)
-                    TriggerEvent('ccvehmenu:Client:extrasActMenu')
+                    TriggerEvent('ccvehmenu:client:extrasActMenu')
                     end
                 end
             if DoesExtraExist(veh, 5) then
@@ -377,12 +377,12 @@ RegisterNetEvent('qb-vehiclemenu:vehicleExtras', function(args)
                 if args == 9 then 
                     SetVehicleExtra(veh, 5, 1)
                     QBCore.Functions.Notify('Extra ' .. 5 .. ' Deactivated', 'error', 2500)
-                    TriggerEvent('ccvehmenu:Client:extrasDeactMenu')
+                    TriggerEvent('ccvehmenu:client:extrasDeactMenu')
                     elseif args == 10 then 
                     SetVehicleExtra(veh, 5, 0)
                     SetVehicleAutoRepairDisabled(true)
                     QBCore.Functions.Notify('Extra ' .. 5 .. ' Activated', 'success', 2500)
-                    TriggerEvent('ccvehmenu:Client:extrasActMenu')
+                    TriggerEvent('ccvehmenu:client:extrasActMenu')
                     end
 
                 end
@@ -391,12 +391,12 @@ RegisterNetEvent('qb-vehiclemenu:vehicleExtras', function(args)
                 if args == 11 then 
                     SetVehicleExtra(veh, 6, 1)
                     QBCore.Functions.Notify('Extra ' .. 6 .. ' Deactivated', 'error', 2500)
-                    TriggerEvent('ccvehmenu:Client:extrasDeactMenu')
+                    TriggerEvent('ccvehmenu:client:extrasDeactMenu')
                     elseif args == 12 then 
                     SetVehicleExtra(veh, 6, 0)
                     SetVehicleAutoRepairDisabled(true)
                     QBCore.Functions.Notify('Extra ' .. 6 .. ' Activated', 'success', 2500)
-                    TriggerEvent('ccvehmenu:Client:extrasActMenu')
+                    TriggerEvent('ccvehmenu:client:extrasActMenu')
                     end
                 end
             if DoesExtraExist(veh, 7) then
@@ -404,12 +404,12 @@ RegisterNetEvent('qb-vehiclemenu:vehicleExtras', function(args)
                 if args == 13 then 
                     SetVehicleExtra(veh, 7, 1)
                     QBCore.Functions.Notify('Extra ' .. 7 .. ' Deactivated', 'error', 2500)
-                    TriggerEvent('ccvehmenu:Client:extrasDeactMenu')
+                    TriggerEvent('ccvehmenu:client:extrasDeactMenu')
                     elseif args == 14 then 
                     SetVehicleExtra(veh, 7, 0)
                     SetVehicleAutoRepairDisabled(true)
                     QBCore.Functions.Notify('Extra ' .. 7 .. ' Activated', 'success', 2500)
-                    TriggerEvent('ccvehmenu:Client:extrasActMenu')
+                    TriggerEvent('ccvehmenu:client:extrasActMenu')
                     end
                 end
             if DoesExtraExist(veh, 8) then
@@ -417,12 +417,12 @@ RegisterNetEvent('qb-vehiclemenu:vehicleExtras', function(args)
                 if args == 15 then 
                     SetVehicleExtra(veh, 8, 1)
                     QBCore.Functions.Notify('Extra ' .. 8 .. ' Deactivated', 'error', 2500)
-                    TriggerEvent('ccvehmenu:Client:extrasDeactMenu')
+                    TriggerEvent('ccvehmenu:client:extrasDeactMenu')
                     elseif args == 16 then 
                     SetVehicleExtra(veh, 8, 0)
                     SetVehicleAutoRepairDisabled(true)
                     QBCore.Functions.Notify('Extra ' .. 8 .. ' Activated', 'success', 2500)
-                    TriggerEvent('ccvehmenu:Client:extrasActMenu')
+                    TriggerEvent('ccvehmenu:client:extrasActMenu')
                     end
                 end
             if DoesExtraExist(veh, 9) then
@@ -430,12 +430,12 @@ RegisterNetEvent('qb-vehiclemenu:vehicleExtras', function(args)
                 if args == 17 then 
                     SetVehicleExtra(veh, 9, 1)
                     QBCore.Functions.Notify('Extra ' .. 9 .. ' Deactivated', 'error', 2500)
-                    TriggerEvent('ccvehmenu:Client:extrasDeactMenu')
+                    TriggerEvent('ccvehmenu:client:extrasDeactMenu')
                     elseif args == 18 then 
                     SetVehicleExtra(veh, 9, 0)
                     SetVehicleAutoRepairDisabled(true)
                     QBCore.Functions.Notify('Extra ' .. 9 .. ' Activated', 'success', 2500)
-                    TriggerEvent('ccvehmenu:Client:extrasActMenu')
+                    TriggerEvent('ccvehmenu:client:extrasActMenu')
                     end
                 end
             if DoesExtraExist(veh, 10) then
@@ -443,12 +443,12 @@ RegisterNetEvent('qb-vehiclemenu:vehicleExtras', function(args)
                 if args == 19 then 
                     SetVehicleExtra(veh, 10, 1)
                     QBCore.Functions.Notify('Extra ' .. 10 .. ' Deactivated', 'error', 2500)
-                    TriggerEvent('ccvehmenu:Client:extrasDeactMenu')
+                    TriggerEvent('ccvehmenu:client:extrasDeactMenu')
                     elseif args == 20 then 
                     SetVehicleExtra(veh, 10, 0)
                     SetVehicleAutoRepairDisabled(true)
                     QBCore.Functions.Notify('Extra ' .. 10 .. ' Activated', 'success', 2500)
-                    TriggerEvent('ccvehmenu:Client:extrasActMenu')
+                    TriggerEvent('ccvehmenu:client:extrasActMenu')
                     end
                 end
             if DoesExtraExist(veh, 11) then
@@ -456,12 +456,12 @@ RegisterNetEvent('qb-vehiclemenu:vehicleExtras', function(args)
                 if args == 21 then 
                     SetVehicleExtra(veh, 11, 1)
                     QBCore.Functions.Notify('Extra ' .. 11 .. ' Deactivated', 'error', 2500)
-                    TriggerEvent('ccvehmenu:Client:extrasDeactMenu')
+                    TriggerEvent('ccvehmenu:client:extrasDeactMenu')
                     elseif args == 22 then 
                     SetVehicleExtra(veh, 11, 0)
                     SetVehicleAutoRepairDisabled(true)
                     QBCore.Functions.Notify('Extra ' .. 11 .. ' Activated', 'success', 2500)
-                    TriggerEvent('ccvehmenu:Client:extrasActMenu')
+                    TriggerEvent('ccvehmenu:client:extrasActMenu')
                     end
                 end
             if DoesExtraExist(veh, 12) then
@@ -469,12 +469,12 @@ RegisterNetEvent('qb-vehiclemenu:vehicleExtras', function(args)
                 if args == 23 then 
                     SetVehicleExtra(veh, 12, 1)
                     QBCore.Functions.Notify('Extra ' .. 12 .. ' Deactivated', 'error', 2500)
-                    TriggerEvent('ccvehmenu:Client:extrasDeactMenu')
+                    TriggerEvent('ccvehmenu:client:extrasDeactMenu')
                     elseif args == 24 then 
                     SetVehicleExtra(veh, 12, 0)
                     SetVehicleAutoRepairDisabled(true)
                     QBCore.Functions.Notify('Extra ' .. 12 .. ' Activated', 'success', 2500)
-                    TriggerEvent('ccvehmenu:Client:extrasActMenu')
+                    TriggerEvent('ccvehmenu:client:extrasActMenu')
                     end
                 end
             if DoesExtraExist(veh, 13) then
@@ -482,12 +482,12 @@ RegisterNetEvent('qb-vehiclemenu:vehicleExtras', function(args)
                 if args == 25 then 
                     SetVehicleExtra(veh, 13, 1)
                     QBCore.Functions.Notify('Extra ' .. 13 .. ' Deactivated', 'error', 2500)
-                    TriggerEvent('ccvehmenu:Client:extrasDeactMenu')
+                    TriggerEvent('ccvehmenu:client:extrasDeactMenu')
                     elseif args == 26 then 
                     SetVehicleExtra(veh, 13, 0)
                     SetVehicleAutoRepairDisabled(true)
                     QBCore.Functions.Notify('Extra ' .. 13 .. ' Activated', 'success', 2500)
-                    TriggerEvent('ccvehmenu:Client:extrasActMenu')
+                    TriggerEvent('ccvehmenu:client:extrasActMenu')
                     end
                 end
             if DoesExtraExist(veh, nil) then
@@ -499,7 +499,7 @@ end)
 
 ------ Open Menu Events ------
 
-RegisterNetEvent('ccvehmenu:Client:ccMenu', function()
+RegisterNetEvent('ccvehmenu:client:ccMenu', function()
     local ped = PlayerPedId()
     local veh = IsPedSittingInVehicle(ped)
     local isnotVeh = IsPedInVehicle(ped, veh, false)
@@ -511,7 +511,7 @@ RegisterNetEvent('ccvehmenu:Client:ccMenu', function()
         end
 end)
 
-RegisterNetEvent('ccvehmenu:Client:seatsMenu', function()
+RegisterNetEvent('ccvehmenu:client:seatsMenu', function()
     local veh = GetVehiclePedIsIn(PlayerPedId())
 
     if veh ~= nil or veh ~= 0 then
@@ -529,7 +529,7 @@ RegisterNetEvent('ccvehmenu:Client:seatsMenu', function()
     end
 end)
 
-RegisterNetEvent('ccvehmenu:Client:windowsMenu', function()
+RegisterNetEvent('ccvehmenu:client:windowsMenu', function()
     local veh = GetVehiclePedIsIn(PlayerPedId())
 
     if veh ~= nil or veh ~= 0 then
@@ -547,12 +547,12 @@ RegisterNetEvent('ccvehmenu:Client:windowsMenu', function()
     end
 end)
 
-RegisterNetEvent('ccvehmenu:Client:engineMenu', function()
+RegisterNetEvent('ccvehmenu:client:engineMenu', function()
     createEngineMenu()
     exports['qb-menu']:openMenu(engineMenu)
 end)
 
-RegisterNetEvent('ccvehmenu:Client:doorMenu', function()
+RegisterNetEvent('ccvehmenu:client:doorMenu', function()
     local veh = GetVehiclePedIsIn(PlayerPedId())
 
     if veh ~= nil or veh ~= 0 then
@@ -570,12 +570,12 @@ RegisterNetEvent('ccvehmenu:Client:doorMenu', function()
     end
 end)
 
-RegisterNetEvent('ccvehmenu:Client:neonMenu', function()
+RegisterNetEvent('ccvehmenu:client:neonMenu', function()
     createNeonMenu()
     exports['qb-menu']:openMenu(neonMenu)
 end)
 
-RegisterNetEvent('ccvehmenu:Client:liveryMenu', function()
+RegisterNetEvent('ccvehmenu:client:liveryMenu', function()
     if PlayerData.job.name == "police" or PlayerData.job.name == "ambulance" or PlayerData.job.name == "mechanic" then
         createLiveryMenu()
         exports['qb-menu']:openMenu(liveryMenu)
@@ -584,17 +584,17 @@ RegisterNetEvent('ccvehmenu:Client:liveryMenu', function()
     end
 end)
 
-RegisterNetEvent('ccvehmenu:Client:extrasMenu', function()
+RegisterNetEvent('ccvehmenu:client:extrasMenu', function()
     createExtrasMenu()
     exports['qb-menu']:openMenu(extrasMenu)
 end)
 
-RegisterNetEvent('ccvehmenu:Client:extrasActMenu', function()
+RegisterNetEvent('ccvehmenu:client:extrasActMenu', function()
     createExtrasActMenu()
     exports['qb-menu']:openMenu(extrasActMenu)
 end)
 
-RegisterNetEvent('ccvehmenu:Client:extrasDeactMenu', function()
+RegisterNetEvent('ccvehmenu:client:extrasDeactMenu', function()
     createExtrasDeactMenu()
     exports['qb-menu']:openMenu(extrasDeactMenu)
 end)
@@ -614,7 +614,7 @@ function createCarControlMenu()
 			txt = "Choose a Seat",
 			params = {
                 isServer = false,
-                event = "ccvehmenu:Client:seatsMenu",
+                event = "ccvehmenu:client:seatsMenu",
             }
         },]]
         {
@@ -622,7 +622,7 @@ function createCarControlMenu()
 			txt = "Roll Down Windows",
 			params = {
                 isServer = false,
-                event = "ccvehmenu:Client:windowsMenu",
+                event = "ccvehmenu:client:windowsMenu",
             }
         },
         {
@@ -630,7 +630,7 @@ function createCarControlMenu()
 			txt = "Turn Car On/Off",
 			params = {
                 isServer = false,
-                event = "ccvehmenu:Client:engineMenu",
+                event = "ccvehmenu:client:engineMenu",
             }
         },
         --[[{
@@ -638,7 +638,7 @@ function createCarControlMenu()
 			txt = "Open Doors",
 			params = {
                 isServer = false,
-                event = "ccvehmenu:Client:doorMenu",
+                event = "ccvehmenu:client:doorMenu",
             }
         },]]
         {
@@ -646,7 +646,7 @@ function createCarControlMenu()
 			txt = "Switch Neon On/Off",
 			params = {
                 isServer = false,
-                event = "ccvehmenu:Client:neonMenu",
+                event = "ccvehmenu:client:neonMenu",
             }
         },
         --[[{
@@ -654,7 +654,7 @@ function createCarControlMenu()
 			txt = "Swap Liveries (PD, EMS, Mech Only)",
 			params = {
                 isServer = false,
-                event = "ccvehmenu:Client:liveryMenu",
+                event = "ccvehmenu:client:liveryMenu",
             }
         },]]
        --[[ {
@@ -662,7 +662,7 @@ function createCarControlMenu()
             txt = "Check Turbo (PD)",
             params = {
                 isServer = false,
-                event = "ccvehmenu:Client:turbo",
+                event = "ccvehmenu:client:turbo",
             }
         },]]
         {
@@ -670,7 +670,7 @@ function createCarControlMenu()
             txt = "Turn Extras On/Off",
             params = {
                 isServer = false,
-                event = "ccvehmenu:Client:extrasMenu",
+                event = "ccvehmenu:client:extrasMenu",
             }
         },
         {
@@ -769,7 +769,7 @@ function createWindowsMenu()
             txt = 'Go Back to Car Control Menu',
             params = {
                 isServer = false,
-                event = 'ccvehmenu:Client:openMenu',
+                event = 'ccvehmenu:client:openMenu',
             }
         },
     }
@@ -823,7 +823,7 @@ function create2WindowsMenu()
             txt = 'Go Back to Car Control Menu',
             params = {
                 isServer = false,
-                event = 'ccvehmenu:Client:openMenu',
+                event = 'ccvehmenu:client:openMenu',
             }
         },
     }
@@ -878,7 +878,7 @@ function createSeatMenu()
             txt = 'Go Back to Car Control Menu',
             params = {
                 isServer = false,
-                event = 'ccvehmenu:Client:openMenu',
+                event = 'ccvehmenu:client:openMenu',
             }
         },
     }
@@ -914,7 +914,7 @@ function create2SeatMenu()
             txt = 'Go Back to Car Control Menu',
             params = {
                 isServer = false,
-                event = 'ccvehmenu:Client:openMenu',
+                event = 'ccvehmenu:client:openMenu',
             }
         },
     }
@@ -986,7 +986,7 @@ function create6SeatMenu()
             txt = 'Go Back to Car Control Menu',
             params = {
                 isServer = false,
-                event = 'ccvehmenu:Client:openMenu',
+                event = 'ccvehmenu:client:openMenu',
             }
         },
     }
@@ -1022,7 +1022,7 @@ function createEngineMenu()
             txt = 'Go Back to Car Control Menu',
             params = {
                 isServer = false,
-                event = 'ccvehmenu:Client:openMenu',
+                event = 'ccvehmenu:client:openMenu',
             }
         },
     }
@@ -1112,7 +1112,7 @@ function createDoorMenu()
             txt = 'Go Back to Car Control Menu',
             params = {
                 isServer = false,
-                event = 'ccvehmenu:Client:openMenu',
+                event = 'ccvehmenu:client:openMenu',
             }
         },
     }
@@ -1184,7 +1184,7 @@ function create2DoorMenu()
             txt = 'Go Back to Car Control Menu',
             params = {
                 isServer = false,
-                event = 'ccvehmenu:Client:openMenu',
+                event = 'ccvehmenu:client:openMenu',
             }
         },
     }
@@ -1256,7 +1256,7 @@ function create6DoorMenu()
             txt = 'Go Back to Car Control Menu',
             params = {
                 isServer = false,
-                event = 'ccvehmenu:Client:openMenu',
+                event = 'ccvehmenu:client:openMenu',
             }
         },
     }
@@ -1292,7 +1292,7 @@ function createNeonMenu()
             txt = 'Go Back to Car Control Menu',
             params = {
                 isServer = false,
-                event = 'ccvehmenu:Client:openMenu',
+                event = 'ccvehmenu:client:openMenu',
             }
         },
     }
@@ -1355,7 +1355,7 @@ function createLiveryMenu()
             txt = 'Go Back to Car Control Menu',
             params = {
                 isServer = false,
-                event = 'ccvehmenu:Client:openMenu',
+                event = 'ccvehmenu:client:openMenu',
             }
         },
     }
@@ -1373,7 +1373,7 @@ function createExtrasMenu()
 			txt = "Turn Extra's On",
 			params = {
                 isServer = false,
-                event = "ccvehmenu:Client:extrasActMenu",
+                event = "ccvehmenu:client:extrasActMenu",
             }
         },
         {
@@ -1381,7 +1381,7 @@ function createExtrasMenu()
 			txt = "Turn Extra's Off",
 			params = {
                 isServer = false,
-                event = "ccvehmenu:Client:extrasDeactMenu",
+                event = "ccvehmenu:client:extrasDeactMenu",
             }
         },
         {
@@ -1389,7 +1389,7 @@ function createExtrasMenu()
             txt = 'Go Back to Car Control Menu',
             params = {
                 isServer = false,
-                event = 'ccvehmenu:Client:openMenu',
+                event = 'ccvehmenu:client:openMenu',
             }
         },
     }
@@ -1515,7 +1515,7 @@ function createExtrasDeactMenu()
             txt = 'Go Back to Car Control Menu',
             params = {
                 isServer = false,
-                event = 'ccvehmenu:Client:openMenu',
+                event = 'ccvehmenu:client:openMenu',
             }
         },
     }
@@ -1641,7 +1641,7 @@ function createExtrasActMenu()
             txt = 'Go Back to Car Control Menu',
             params = {
                 isServer = false,
-                event = 'ccvehmenu:Client:openMenu',
+                event = 'ccvehmenu:client:openMenu',
             }
         },
     }

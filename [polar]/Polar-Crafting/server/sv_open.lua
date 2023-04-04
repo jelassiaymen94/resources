@@ -74,17 +74,17 @@ function hitup(bool)
         removeitem(6, 75, 1, item, 'refined_iron', 1, 'refined_aluminum', 1, 'pistolbarrel', 1, 
         'pistolbody', 1, 'pistolgrip', 1, 'carbon', 5) -- done
 
-    elseif item == 'ironoxcidepowder' then
+    --[[elseif item == 'ironoxcidepowder' then
 
-        removeitem(4, 40, 1, item, 'glass', 15, 'gunpowder', 2, 'plastic', 1, 'refined_iron', 1) -- done
+        removeitem(4, 40, 1, item, 'glass', 15, 'gunpowder', 2, 'plastic', 1, 'refined_iron', 1)]] -- done
 
     elseif item == 'aluminumoxide' then
 
-        removeitem(4, 40, 1, item, 'glass', 20, 'plastic',1, 'copper', 5, 'refined_aluminum', 1) -- done
+        removeitem(4, 40, 1, item, 'glass', 20, 'plastic', 5, 'gunpowder', 5, 'refined_aluminum', 1) -- done
 
     elseif item == 'thermitepowder' then
 
-        removeitem(4, 45, 1, item, 'glass', 5, 'plastic', 1, 'ironoxcidepowder', 1, 'aluminumoxide', 1) -- done
+        removeitem(3, 45, 1, item, 'glass', 5, 'plastic', 5, 'aluminumoxide', 1) -- done  , 'ironoxcidepowder', 1
 
     elseif item == 'thermite' then
 
@@ -100,7 +100,7 @@ function hitup(bool)
 
     elseif item == 'weapon_m67' then
 
-        removeitem(4, 100, 1, item, 'metalscrap', 6, 'refined_aluminum', 1, 'thermitepowder', 1, 'refined_iron', 1)  -- done***
+        removeitem(4, 100, 1, item, 'metalscrap', 6, 'refined_aluminum', 2, 'thermitepowder', 2, 'refined_iron', 1)  -- done***
 
     elseif item == 'weapon_molotov' then
 

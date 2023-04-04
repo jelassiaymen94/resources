@@ -1,4 +1,4 @@
-print("^2Jim^7-^2JobGarage ^7v^41^7.^43^7.^42 ^7- ^2Job Garage Script by ^1Jimathy^7")
+print("^2Jim^7-^2JobGarage ^7v^41^7.^43^7.^42 ^7- ^2Job Garage Script by ^1Jimathy^7") 
 
 --[[	LIST OF POSSIBLE VEHICLE MODIFIERS   ]]--
 -- Using these will change how each vehicle spawns
@@ -276,6 +276,171 @@ Config = {
 		},
 		
 		{ 	zoneEnable = true,
+		job = "police",
+		garage = {
+			spawn =  vector4(452.8022, -1019.9819, 28.3834, 88.6225), -- mrpd
+			out = vector4(458.8082, -1011.9845, 28.2199, 94.3970), --  vector4(381.46, -1625.76, 29.29, 319.89)
+			list = {
+				["npolvic"] = {
+					CustomName = "Crown Vic",
+					livery = 1,
+					rank = {0,1,2,3,4,5},
+					extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
+					--performance = "max",
+					  rambar = 1,
+					trunkItems = {
+					
+					},
+				},
+				["npolchar"] = {
+					CustomName = "Dodge Charger",
+					livery = 1,
+					rank = {2,3,4,5},
+					extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
+					--performance = "max",
+					  rambar = 1,
+					trunkItems = {
+					
+					},
+				},
+				["npolexp"] = {
+					CustomName = "Ford Explorer",
+					livery = 1,
+					rank = {1,2,3,4,5},
+					extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
+					--performance = "max",
+					  rambar = 1,
+					trunkItems = {
+					
+					},
+				},
+				
+				["npolmm"] = {
+					CustomName = "Police Motorcycle",
+					livery = 1,
+					rank = {2,3,4,5},
+					extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
+					--performance = "max",
+					  rambar = 1,
+					trunkItems = {
+						
+					},
+				},
+				["npolvette"] = {
+					CustomName = "Chevy Corvette",
+					livery = 1,
+					rank = {3,4,5},
+					extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
+					--performance = "max",
+					  rambar = 1,
+					trunkItems = {
+					
+					},
+				},
+				["npolstang"] = {
+					CustomName = "Ford Mustang",
+					livery = 1,
+					rank = {3,4,5},
+					extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
+					--performance = "max",
+					  rambar = 1,
+					trunkItems = {
+					
+					},
+				},
+				["npolchal"] = {
+					CustomName = "Dodge Challenger",
+					livery = 1,
+					rank = {3,4,5},
+					extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
+					--performance = "max",
+					  rambar = 1,
+					trunkItems = {
+					
+					},
+				},
+				
+				["npolcoach"] = {
+					CustomName = "Police Bus",
+					livery = 1,
+					rank = {2, 3, 4, 5 },
+					extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
+					--performance = "max",
+					  rambar = 1,
+					trunkItems = {
+						
+					},
+				},
+				["uccomet"] = {
+					CustomName = "Undercover Comet",
+					livery = 1,
+					rank = { 2,3, 4, 5 },
+					extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
+					--performance = "max",
+					  rambar = 1,
+					trunkItems = {
+						
+					},
+				},
+				["uccoquette"] = {
+					CustomName = "Undercover Coquette",
+					livery = 1,
+					rank = { 2,3, 4, 5 },
+					extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
+					--performance = "max",
+					  rambar = 1,
+					trunkItems = {
+						
+					},
+				},
+				["bcat"] = {
+					CustomName = "Bear Cat",
+					livery = 1,
+					rank = {2, 3, 4, 5 },
+					extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
+					--performance = "max",
+					  rambar = 1,
+					trunkItems = {
+						
+					},2,
+				},
+				["ucballer"] = {
+					CustomName = "Undercover Baller",
+					livery = 1,
+					rank = { 2,3, 4, 5 },
+					extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
+					--performance = "max",
+					  rambar = 1,
+					trunkItems = {
+						
+					},
+				},
+				["polas350"] = {
+					CustomName = "Police Helicopter",
+					livery = 3,
+					rank = {2, 3,4,5},
+					extras = {2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
+					performance = "max",
+					trunkItems = {
+					
+					},
+				},
+				["f150"] = {
+					CustomName = "Ford Raptor",
+					livery = 1,
+					rank = {5},
+					extras = {2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
+					performance = "max",
+					trunkItems = {
+					
+					},
+				},
+			
+			},
+		},
+	},
+
+		{ 	zoneEnable = true,
 			job = "police",
 			garage = {
 				spawn =  vector4(1853.2279, 3706.2881, 33.9746, 207.6323), -- sapd
@@ -484,6 +649,30 @@ Config = {
 				},
 			},
 		},
+		
+		{ 	zoneEnable = true,
+			job = "taco",
+			garage = {
+				spawn = vector4(15.5954, -1614.2899, 29.2943, 137.8965),
+				out = vector4(16.5254, -1609.3326, 29.3783, 231.6623),
+				list = {
+					["taco"] = {
+						CustomName = "Taco Truck",
+						livery = 1,
+						rank = {0,1,2,3,4,5},
+						extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
+						performance = "max",
+                          rambar = 1,
+						trunkItems = {
+						
+						},
+				
+					},
+				},
+			},
+		},
+
+
 		{ 	zoneEnable = true,
 			job = "police",
 			garage = {

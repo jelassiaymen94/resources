@@ -11,7 +11,7 @@ Config.DoorList['wuchangfront'] = {
     doorType = 'double',
     doorRate = 1.0,
     locked = true,
-    pickable = true,
+    pickable = false,
     authorizedJobs = { ['wuchang'] = 0 },
     --audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     --audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},

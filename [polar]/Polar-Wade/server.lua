@@ -153,3 +153,49 @@ end)
 
 
 
+
+
+
+local isAirdropping = false
+local dropPosition = vector4(-2298.28, 3000.86, 62.81, 250) -- Change to your desired airdrop location
+local dropRadius = 50.0 -- Change to your desired airdrop radius
+local dropDelay = 10 -- Change to your desired airdrop delay (in seconds)
+local planepos = vector3(-2518.81, 3153.78, 32.82)
+local loc = false
+CreateThread(function()
+    print('hi')
+   -- while true do
+   --     Wait(0)
+        
+    
+    --    if not isAirdropping then
+        
+     --       if math.random(1, 100) <= 10 then
+                print('gonna drop')
+                isAirdropping = true
+                
+             
+              TriggerClientEvent('Polar-Wade:Client:Plane', -1, planepos, dropPosition)
+             
+                Wait(dropDelay * 1000)
+        
+                local package = CreateObject('prop_box_ammo07a', dropPosition, true, true)
+                SetEntityVelocity(package, vector3(0.0, 0.0, -5.0))
+                
+
+                Wait(10000)
+                
+              
+                DeleteEntity(package)
+                DeleteVehicle(plane)
+                
+              
+                isAirdropping = false
+       --     end
+     --  end
+  -- end
+end)
+
+
+
+

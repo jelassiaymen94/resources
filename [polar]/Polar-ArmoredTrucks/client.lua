@@ -10,9 +10,8 @@ local robbedplates = {}
 local AlertCops = function()
     if copsCalled then return end
     copsCalled = true
-
-    exports['qb-dispatch']:BankTruckRobbery()
-    --TriggerServerEvent('police:Server:policeAlert', 'Banktruck Robbery') -- Regular QBCore
+    exports['qb-dispatch']:BankTruckRobbery(camId)
+    --TriggerServerEvent('police:server:policeAlert', 'Banktruck Robbery') -- Regular QBCore
 
     CreateThread(function()
         Wait(1*60*1000)
@@ -86,7 +85,7 @@ local robTruck = function(veh)
 
     if chance < 50 then
         -- Remove doors
-        TriggerServerEvent('Polar-ArmoredTrucks:Server:RemoveDoors', veh)
+        TriggerServerEvent('Polar-ArmoredTrucks:server:RemoveDoors', veh)
     else
         -- Open doors
         SetVehicleDoorOpen(veh, -1, 0, 0)
@@ -127,7 +126,7 @@ local robTruck = function(veh)
 
     -- Update robbed plate config
     local plate = GetVehicleNumberPlateText(veh)
-    TriggerServerEvent('Polar-ArmoredTrucks:Server:UpdatePlates', plate)
+    TriggerServerEvent('Polar-ArmoredTrucks:server:UpdatePlates', plate)
 end
 
 local cooldown = false
@@ -141,7 +140,7 @@ local useCard = function(veh)
         if not cooldown then 
             TriggerServerEvent('Polar-ArmoredTrucks:Server:Cooldown2')
             TriggerServerEvent('Polar-ArmoredTrucks:Server:UnCooldown')
-    QBCore.Functions.TriggerCallback('Polar-ArmoredTrucks:Server:getCops', function(cops)
+    QBCore.Functions.TriggerCallback('Polar-ArmoredTrucks:server:getCops', function(cops)
         local plate = GetVehicleNumberPlateText(veh)
         if not robbedplates[plate] then
             if cops >= 0 then
@@ -171,15 +170,15 @@ local useCard = function(veh)
 end
 function start(veh)
 
-    TriggerServerEvent("Polar-ArmoredTrucks:Server:removeCard")
-   
+    TriggerServerEvent("Polar-ArmoredTrucks:server:removeCard")
+    QBCore.Functions.Notify('RUN!', "error", 4000)
     TriggerEvent('Polar-ArmoredTrucks:Client:Startup', veh)
 
 
 end
 RegisterNetEvent('Polar-ArmoredTrucks:Client:Startup', function(veh)
-    Wait(30000)
-    QBCore.Functions.Progressbar("crafting", "Unlocking Truck...  ", 10000, false, true, 
+
+    QBCore.Functions.Progressbar("crafting", "Unlocking Truck...  ", 60000, false, true, 
     {disableMovement = false, disableCarMovement = true, disableMouse = false, disableCombat = false, },
     {}, {}, {}, 
     function() -- Done
@@ -197,68 +196,53 @@ end)
 function fail(veh)
 
     --robTruck(veh)
-    TriggerServerEvent("Polar-ArmoredTrucks:Server:removeCard")
+    TriggerServerEvent("Polar-ArmoredTrucks:server:removeCard")
 
 end
 function minigame(veh)
     local chance = math.random(1,100)
 
-    QBCore.Functions.Progressbar("crafting", "Connecting Red Wire...  ", 2500, false, true, 
+    QBCore.Functions.Progressbar("crafting", "Connecting...  ", 10000, false, true, 
     {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = false, },
     { animDict = "mini@repair", anim = "fixing_a_ped", flags = 0, }, {}, {}, 
     function() -- Done
-        Wait(50)
 
-        QBCore.Functions.Progressbar("crafting", "Connecting Blue Wire...  ", 1500, false, true, 
-        {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = false, },
-        { animDict = "mini@repair", anim = "fixing_a_ped", flags = 0, }, {}, {}, 
-        function() -- Done
-            Wait(50)
-
-            QBCore.Functions.Progressbar("crafting", "Connecting Green Wire...  ", 3500, false, true, 
-            {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = false, },
-            { animDict = "mini@repair", anim = "fixing_a_ped", flags = 0, }, {}, {}, 
-            function() -- Done
-                Wait(50)
-
-        QBCore.Functions.Progressbar("crafting", "Connecting Yellow Wire...  ", 5000, false, true, 
-        {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = false, },
-        { animDict = "mini@repair", anim = "fixing_a_ped", flags = 0, }, {}, {}, 
-        function() -- Done
-            Wait(50)
-
-            QBCore.Functions.Progressbar("crafting", "Connecting Wifi Device...  ", 10000, false, true, 
-            {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = false, },
-            { animDict = "mini@repair", anim = "fixing_a_ped", flags = 0, }, {}, {}, 
-            function() -- Done
-                Wait(50)
-
-        QBCore.Functions.Progressbar("crafting", "Loading Up Hack...  ", 5000, false, true, 
-        {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = false, },
-        { animDict = "mini@repair", anim = "fixing_a_ped", flags = 0, }, {}, {}, 
-        function() -- Done
+       
     
-        if chance < 101 then
-            Wait(5)
-            local settings = {gridSize = 15, lives = 2, timeLimit = 10000}
-            Wait(5)
-            exports["Polar-Minigames"]:StartMinigame(function(success)
-                if success then
-                        QBCore.Functions.Notify('The Truck will Open in 30 Seconds', "error", 2000)
-                        
-                        start(veh)  
-                    else
-                        fail(veh)
-                    end
-                end, "path", settings)
-        end
 
-    end, function() end)  
-    end, function() end)  
-    end, function() end)  
-    end, function() end)  
-    end, function() end)  
-    end, function() end)  
+
+  
+
+
+
+    if chance < 101 then
+
+        local time = math.random(120000,150000)
+        Wait(5)
+        local settings = {timeLimit = time}
+        Wait(5)
+        
+        exports["Polar-Minigames"]:StartMinigame(function(success)
+            if success then
+                    start(veh)  
+                else
+                    fail(veh)
+                end
+            end, "path", settings)
+            -- Creates a grid (19x19) squares
+            -- Max gridsize is 31 and should be an odd number
+
+  
+   
+ 
+    end
+
+    end, function()
+
+    -- cancel notification
+
+
+    end)  
 end
 
 function Animation()
@@ -277,16 +261,8 @@ function Animation()
         TaskPlayAnim(PlayerPedId(), animDict, anim, inspeed, outspeed, duration, flags, playbackrate, false, false, false)
     end
 end
-local looted = false
---- Method to loot a specific banktruck and receive a reward
---- @param veh number - Vehicle entity
---- @return nil
-local lootTruck = function(veh)
-    if looted then return end
-    local plate = GetVehicleNumberPlateText(veh)
-    if lootedtrucks[plate] then return end
-    looted = true
-    local netId = NetworkGetNetworkIdFromEntity(veh)
+function prop()
+
     local bone = 57005
     local coords = { x = -0.005, y = 0.00, z = -0.16 }
     local rotation = { x = 250.0, y = -30.0, z = 0.0 }
@@ -321,66 +297,90 @@ local lootTruck = function(veh)
     AttachEntityToEntity(modelSpawn, ped, GetPedBoneIndex(ped, bone), coords.x, coords.y, coords.z, rotation.x, rotation.y, rotation.z, 1, 1, 0, 1, 0, 1)
     prop_net = netid
 
+   
+
+end
+--- Method to loot a specific banktruck and receive a reward
+--- @param veh number - Vehicle entity
+--- @return nil
+local lootTruck = function(veh)
+    --print('pp')
+    local plate = GetVehicleNumberPlateText(veh)
+    if lootedtrucks[plate] then return end
+   -- print('pp')
+    local netId = NetworkGetNetworkIdFromEntity(veh)
+    
+    prop()
     Animation()
 
     Wait(5000)
 
-    TriggerServerEvent('Polar-ArmoredTrucks:Server:receiveItem', netId)
- 
+    local time = math.random(2500,12500)
+    Wait(150)
+    Wait(time)
 
-    Wait(1500)
-    TriggerServerEvent('Polar-ArmoredTrucks:Server:receiveItem', netId)
-  
-    Wait(1500)
+    local time = math.random(2500,12500)
+    TriggerServerEvent('Polar-ArmoredTrucks:server:receiveItem', netId)
+    Wait(150)
+    Wait(time)
+
+    local time = math.random(2500,12500)
+    TriggerServerEvent('Polar-ArmoredTrucks:server:receiveItem', netId)
+    Wait(150)
+    Wait(time)
+
+    local time = math.random(2500,12500)
+    TriggerServerEvent('Polar-ArmoredTrucks:server:receiveItem', netId)
+    Wait(150)
+    Wait(time)
+
+    local time = math.random(2500,12500)
+    TriggerServerEvent('Polar-ArmoredTrucks:server:receiveItem', netId)
+    Wait(150)
+    Wait(time)
+
+    local time = math.random(2500,12500)
+    TriggerServerEvent('Polar-ArmoredTrucks:server:receiveItem', netId)
+    Wait(150)
+    Wait(time)
+
+    TriggerServerEvent('Polar-ArmoredTrucks:server:receiveItem', netId)
+    Wait(150)
    
-    TriggerServerEvent('Polar-ArmoredTrucks:Server:receiveItem', netId)
-    Wait(1500)
-  
-    
-    TriggerServerEvent('Polar-ArmoredTrucks:Server:receiveItem', netId)
-   
-    Wait(1500)
-  
-    TriggerServerEvent('Polar-ArmoredTrucks:Server:receiveItem', netId)
- 
-    Wait(1500)
-    TriggerServerEvent('Polar-ArmoredTrucks:Server:receiveItem', netId)
-  
-    Wait(1500)
      
 
 
-    DeleteEntity(modelSpawn)
+    
     -- clear tasks
     ClearPedTasks(PlayerPedId())
     -- bag on back
 	SetPedComponentVariation((PlayerPedId()), 5, 47, 0, 0)
 
-    looted = false
+  
     
-
+        
 end
 
 RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function()
-    QBCore.Functions.TriggerCallback('Polar-ArmoredTrucks:Server:getConfig', function(robbed, looted)
+    QBCore.Functions.TriggerCallback('Polar-ArmoredTrucks:server:getConfig', function(robbed, looted)
         robbedplates = robbed
         lootedtrucks = looted
     end)
 end)
 
 
-RegisterNetEvent('Polar-ArmoredTrucks:Client:RemoveDoors', function(truck)
+RegisterNetEvent('Polar-ArmoredTrucks:client:RemoveDoors', function(truck)
     SetVehicleDoorBroken(truck, -1, false)
     SetVehicleDoorBroken(truck, 0, false)
     SetVehicleDoorBroken(truck, 1, false)
     SetVehicleDoorBroken(truck, 2, false)
 end)
 
-RegisterNetEvent('Polar-ArmoredTrucks:Client:UpdatePlates', function(plate)
+RegisterNetEvent('Polar-ArmoredTrucks:client:UpdatePlates', function(plate)
     robbedplates[plate] = true
 end)
 
-RegisterNetEvent('Polar-ArmoredTrucks:Client:UpdateLooted', function(plate)
+RegisterNetEvent('Polar-ArmoredTrucks:client:UpdateLooted', function(plate)
     lootedtrucks[plate] = true
 end)
 

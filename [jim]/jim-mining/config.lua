@@ -118,14 +118,14 @@ Config = {
 	CrackPool = {
 		"carbon",
 		"carbon",
+		"carbon",
 		"copperore",
 		"ironore",
-		"metalscrap",
+		"copperore",
 		"goldore",
 		"silverore",
 		"copperore",
-		"ironore",
-		"metalscrap",
+		"ironore",	
 		"goldore",
 		"silverore",
 	},
@@ -323,7 +323,7 @@ Config = {
 }
 Crafting = {
 	SmeltMenu = {
-		{ ["copper"] = { ["copperore"] = 1 }, ['amount'] = 4 },
+		{ ["copper"] = { ["copperore"] = 1 }, ['amount'] = 1 },
 		{ ["goldingot"] = { ["goldore"] = 1 } },
 		{ ["goldingot"] = { ["goldchain"] = 2 } },
 		{ ["goldingot"] = { ["gold_ring"] = 1 } },
@@ -348,6 +348,9 @@ Crafting = {
 		{ ["metalscrap"] = { ["uturnsign"] = 1, }, ['amount'] = 3 },
 		{ ["metalscrap"] = { ["walkingmansign"] = 1, }, ['amount'] = 3 },
 		{ ["metalscrap"] = { ["yieldsign"] = 1, }, ['amount'] = 3 },
+		{ ["charcoal"] = { ["wood"] = 3, }, ['amount'] = 5 },
+		{ ["copperore"] = { ["copper"] = 5, }, ['amount'] = 3 },
+
 
 	},
 	GemCut = {

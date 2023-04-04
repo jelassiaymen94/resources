@@ -263,7 +263,7 @@ Config.Locations = {
 		discordimg = "https://static.wikia.nocookie.net/gtawiki/images/f/f2/GTAV-LSCustoms-Logo.png",
 	},
 	-- OTTOS AUTOS -- 
-    --[[{	job = "otto",
+    {	job = "otto",
 		zones = {
 			vector2(789.39, -835.61),
 			vector2(789.39, -771.21),

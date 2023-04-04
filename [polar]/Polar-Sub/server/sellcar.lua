@@ -35,32 +35,32 @@ RegisterNetEvent('Polar-Sub:Server:Sell', function(money, vehicle, plate)
         elseif car == GetHashKey('rr14') then
             model = 'rr14'
             amount = 315000
-        elseif car == GetHashKey('adder') then
+        elseif car == GetHashKey('mgt') then
             model = 'mgt'
             amount = 291200
-        elseif car == GetHashKey('adder') then
+        elseif car == GetHashKey('subwrx') then
             model = 'subwrx'
             amount = 273700
-        elseif car == GetHashKey('adder') then
+        elseif car == GetHashKey('evo9') then
             model = 'evo9'
             amount = 233100
-        elseif car == GetHashKey('adder') then
+        elseif car == GetHashKey('lc100') then
             model = 'lc100'
             amount = 192500
-        elseif car == GetHashKey('adder') then
+        elseif car == GetHashKey('488misha') then
             model = '488misha'
             amount = 525000
-        elseif car == GetHashKey('adder') then
+        elseif car == GetHashKey('fnfrx7') then
             model = 'fnfrx7'
             amount = 385000
-        elseif car == GetHashKey('adder') then
+        elseif car == GetHashKey('bt62r') then
             model = 'bt62r'
             amount = 1190000
-        elseif car == GetHashKey('adder') then
+        elseif car == GetHashKey('r8h') then
             model = 'r8h'
             amount = 770000
         elseif car == GetHashKey('audirs6tk') then
-            model = 'r8h'
+            model = 'audirs6tk'
             amount = 350000
         elseif car == GetHashKey('m4') then
             model = 'm4'

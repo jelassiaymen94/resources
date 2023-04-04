@@ -1,5 +1,5 @@
 print("^2Jim^7-^2Shops v^41^7.^47 ^7- ^2Shop Script by ^1Jimathy^7")
- 
+
 -- If you need support I now have a discord available, it helps me keep track of issues and give better support.
 
 -- https://discord.gg/xKgQZ6wZvS
@@ -34,7 +34,7 @@ Config = {
 	Products = {
 		["normal"] = {
 			{ name = "tosti", price = 10, amount = 50, },
-			{ name = "water_bottle", price = 200, amount = 50, },
+			{ name = "water_bottle", price = 10, amount = 50, },
 			{ name = "kurkakola", price = 10, amount = 50, },
 			{ name = "twerks_candy", price = 10, amount = 50, },
 			{ name = "snikkel_candy", price = 10, amount = 50, },
@@ -48,19 +48,18 @@ Config = {
 			--{ name = "rolling_paper", price = 2, amount = 5000,  },
 		},
 		["bar"] = {
-			{ name = "water_bottle", price = 200, amount = 50, },
+			{ name = "water_bottle", price = 600, amount = 50, },
 			{ name = "beer", price = 100, amount = 50, },
 			{ name = "whiskey", price = 150, amount = 50, },
 			{ name = "vodka", price = 100, amount = 50, },
 			{ name = "wine", price = 150, amount = 25, },
-			{ name = "ecola", price = 200, amount = 50, },
-			{ name = "ecolalight", price = 200, amount = 50, },
-			{ name = "sprunk", price = 200, amount = 50, },
-			{ name = "sprunklight", price = 200, amount = 25, },
+			{ name = "ecola", price = 600, amount = 50, },
+			{ name = "ecolalight", price = 600, amount = 50, },
+			{ name = "sprunk", price = 600, amount = 50, },
+			{ name = "sprunklight", price = 600, amount = 25, },
 		},
 		["hardware"] = {
 			{ name = "lockpick", price = 500, amount = 25, },
-			{ name = "jerry_can", price = 500, amount = 10, },
 			{ name = "ducttape", price = 100, amount = 25, },
 			--{ name = "weapon_bat", price = 500, amount = 50,  requiredGang = { "lostmc" } },  -- Gang only options in stores
 			{ name = "powersaw", price = 2500, amount = 10,} ,
@@ -72,7 +71,8 @@ Config = {
 			{ name = "binoculars", price = 150, amount = 10, },
 			{ name = "bakingsoda", price = 550, amount = 2, },
 			{ name = "advancedrepairkit", price = 3000, amount = 10, },
-			--{ name = "scissors", price = 1000, amount = 5, },
+			--{ name = "trowel", price = 1500, amount = 5, },
+			{ name = "scissors", price = 1000, amount = 5, },
 			{ name = "cleaningkit", price = 5, amount = 50, },
 			--{ name = "emptycowbucket", price = 150, amount = 10,},
 			--{ name = "emp_bucket", price = 150, amount = 10,},
@@ -86,7 +86,7 @@ Config = {
 			--{ name = "joint", price = 100, amount = 30, },
 			--{ name = "scale", price = 2500, amount = 5, },
 			{ name = "weed_nutrition", price = 100, amount = 150, },
-			{ name = "drugbag", price = 75, amount = 1500, },
+			{ name = "drugbag", price = 100, amount = 1500, },
 			{ name = "purifiedwater", price = 100, amount = 150, },
 			{ name = "rolling_paper", price = 50, amount = 15, },
 			{ name = "backwoods_honey", price = 100, amount = 15, },
@@ -102,9 +102,7 @@ Config = {
 			{ name = "fishingbait", price = 25, amount = 500, },
 			{ name = "jerry_can", price = 2500, amount = 3, },
 
-			
 		},
-		
 		["shops"] = {
 			--{ name = "strawberry", price = 5, amount = 5, },
 			--{ name = "pickle", price = 5, amount = 50, },
@@ -216,6 +214,7 @@ Config = {
 			--{ name = "laptop", price = 10000, amount = 15 },
 			{ name = "drill", price = 15000, amount = 1 },
 			{ name = "aluminumoxide", price = 1250, amount = 5 },
+			{ name = "scissors", price = 2500, amount = 1 },
 			{ name = "metalscratchy", price = 2500, amount = 2 },
 			--{ name = "thermite", price = 15000, amount = 2 },
 			--{ name = "chemicals", price = 125, amount = 10 },
@@ -1025,7 +1024,7 @@ Config.Locations = {
 			`s_m_y_cop_01`,
 			
 		},
-        ["coords"] = { vector4(360.28, -1601.61, 25.45, 273.7), },
+        ["coords"] = { vector4(360.28, -1601.61, 25.45, 273.7), vector4(454.0464, -979.9395, 30.6896, 87.0339),},
         ["products"] = Config.Products["armory"],
 		["hideblip"] = true,
 		["job"] = "police",

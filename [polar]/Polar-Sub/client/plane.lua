@@ -1,11 +1,12 @@
 local QBCore = exports['qb-core']:GetCoreObject()
-local model = GetHashKey('prop_drop_armscrate_01')
+local model1 = GetHashKey('prop_drop_armscrate_01')
+local model2 = GetHashKey('prop_drop_armscrate_01')
 local size = 1.5
 local planes = 'cargoplane'
 local speed = 100
 local server = false
 CreateThread(function()
-
+  
  
 end)
 
@@ -40,21 +41,27 @@ RegisterNetEvent('Polar-Sub:Client:StartDrop', function(planepos, dest)
         SetEntityVelocity(plane, GetEntityForwardVector(plane) * speed)
     end
   --  DeleteEntity(plane)
-   
-    
-    local loc = 50
+
+    RequestModel(model1) while not HasModelLoaded(model1) do Wait(10) end
+    RequestModel(model2) while not HasModelLoaded(model2) do Wait(10) end
+
+    SetVehicleDoorOpen(plane, 7, false, true)
+
     Wait(500) local planeCoords = GetEntityCoords(plane) 
-    object(1, vec3(planeCoords.x, planeCoords.y, planeCoords.z))
-    Wait(500) local planeCoords = GetEntityCoords(plane)
-    object(2, vec3(planeCoords.x, planeCoords.y, planeCoords.z))
-    Wait(500) local planeCoords = GetEntityCoords(plane)
-    object(3, vec3(planeCoords.x, planeCoords.y, planeCoords.z))
-    Wait(500) local planeCoords = GetEntityCoords(plane)
-    object(4, vec3(planeCoords.x, planeCoords.y, planeCoords.z))
-    Wait(500) local planeCoords = GetEntityCoords(plane)
-    object(5, vec3(planeCoords.x, planeCoords.y, planeCoords.z))
-  
+    local obj1 = CreateObject(model1, planeCoords.x, planeCoords.y, planeCoords.z - 30, server, server)
+    exports['qb-target']:AddTargetModel(obj1, {  options = { {  event = 'Polar-Sub:Client:Crate1',  icon = 'fa-solid fa-star',  label = 'Grab Crate', } }, distance = 1.5,  })
+    SetEntityVelocity(obj1, vector3(0.0, 0.0, -0.1))
+    local crateblip = AddBlipForEntity(obj1) SetBlipSprite (crateblip, 306) SetBlipColour(crateblip, 46) SetBlipFlashesAlternate(crateblip, true) BeginTextCommandSetBlipName("STRING") AddTextComponentSubstringPlayerName("Crate") EndTextCommandSetBlipName(crateblip)
+    RequestNamedPtfxAsset('core') while not HasNamedPtfxAssetLoaded('core') do Wait(10) end UseParticleFxAssetNextCall("core")  SetParticleFxNonLoopedColour(1.0, 0.0, 0.0)  StartParticleFxLoopedOnEntity('exp_grd_flare', obj1, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, size, 0.0, 0.0, 0.0)
     
+    Wait(500) local planeCoords = GetEntityCoords(plane) 
+    local obj2 = CreateObject(model2, planeCoords.x, planeCoords.y, planeCoords.z - 30, server, server)
+    exports['qb-target']:AddTargetModel(obj2, {  options = { {  event = 'Polar-Sub:Client:Crate2',  icon = 'fa-solid fa-star',  label = 'Grab Crate', } }, distance = 1.5,  })
+    SetEntityVelocity(obj2, vector3(0.0, 0.0, -0.1))
+    local crateblip = AddBlipForEntity(obj2) SetBlipSprite (crateblip, 306) SetBlipColour(crateblip, 46) SetBlipFlashesAlternate(crateblip, true) BeginTextCommandSetBlipName("STRING") AddTextComponentSubstringPlayerName("Crate") EndTextCommandSetBlipName(crateblip)
+    RequestNamedPtfxAsset('core') while not HasNamedPtfxAssetLoaded('core') do Wait(10) end UseParticleFxAssetNextCall("core")  SetParticleFxNonLoopedColour(1.0, 0.0, 0.0)  StartParticleFxLoopedOnEntity('exp_grd_flare', obj2, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, size, 0.0, 0.0, 0.0)
+  
+
 
     Wait(30000)
     RemoveBlip(destinationBlip)
@@ -66,39 +73,11 @@ RegisterNetEvent('Polar-Sub:Client:StartDrop', function(planepos, dest)
 end)
 
 
-function object(numba, dest)
-    local numbha = numba
-    RequestModel(model)
-    while not HasModelLoaded(model) do Wait(10) end
-    local obj = CreateObject(model, dest.x, dest.y, dest.z - 30, server, server)
-    exports['qb-target']:AddTargetModel(obj, {
-        options = {
-            {
-                event = 'Polar-Sub:Client:Crate',
-                icon = 'fa-solid fa-star',
-                label = 'Grab Crate',
-                product = numbha
-            }
-        },
-        distance = 1.5, 
-    })
-    SetEntityVelocity(obj, vector3(0.0, 0.0, -0.1))
-    local crateblip = AddBlipForEntity(obj)
-    SetBlipSprite (crateblip, 306)
-    SetBlipColour(crateblip, 46)
-    SetBlipFlashesAlternate(crateblip, true)
-    BeginTextCommandSetBlipName("STRING")
-    AddTextComponentSubstringPlayerName("Crate")
-    EndTextCommandSetBlipName(crateblip)
-    RequestNamedPtfxAsset('core')
-    while not HasNamedPtfxAssetLoaded('core') do Wait(10) end
-    UseParticleFxAssetNextCall("core")
-    SetParticleFxNonLoopedColour(1.0, 0.0, 0.0)
-    StartParticleFxLoopedOnEntity('exp_grd_flare', obj, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, size, 0.0, 0.0, 0.0)
-end
 
 
-RegisterNetEvent('Polar-Sub:Client:Crate', function(data) local n = data.product print(n) TriggerServerEvent('Polar-Sub:Server:Crate') end)
+RegisterNetEvent('Polar-Sub:Client:Crate1', function()  TriggerServerEvent('Polar-Sub:Server:Crate1') end)
+RegisterNetEvent('Polar-Sub:Client:Crate2', function()  TriggerServerEvent('Polar-Sub:Server:Crate2') end)
+
 
 
 

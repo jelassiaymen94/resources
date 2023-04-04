@@ -19,14 +19,14 @@ Config.SL_54367 = '1023' -- Stash 2
 Config.SL_567346 = 'JB1693' -- Stash11 - JOHNNY BIGS
 Config.SL_523567 = '4834021' -- Stash12 - Joey Rossy container
 Config.JR_001 = '4834021' -- Stash13 - Joey Rossy Motel
-Config.SL_532672 = '1023' -- Stash13
-Config.SL_213564 = '1248' -- Stash14
+Config.SL_532672 = 'crago23' -- Stash13
+Config.SL_213564 = 'crago23' -- Stash14
 
 Config.SL_213588 = '1693' -- 15
-Config.SL_213589 = '1996' -- 16
+Config.SL_213589 = 'Jim3Stanton' -- 16
 
 
-Config.SL_213590 = '6969' -- 17
+Config.SL_213590 = 'AC23' -- 17
 Config.SL_213591 = '6969' -- 18
 
 
@@ -111,7 +111,7 @@ Config.GR_001 = 'Sleepy420' -- 28
 
 -- ScrappGang Vault
 Config.SG_001 = 'OGMOB' -- 28
-
+Config.SK_001 = 'Skarr'
 
 
 -- JohnnyBiggs Motel Vault
@@ -132,6 +132,7 @@ Config.SB_001 = 'MaxBurps117' -- 28
 
 -- Portolia House Motel Vault
 Config.CO_001 = 'AC23' -- 28
+Config.CO_002 = 'AC27'
 
 -- Aunties Vault
 Config.AU_001 = 'Wow420' -- 28
@@ -144,7 +145,7 @@ Config.JD_001 = '69JD420'
 
 --Reese Vault
 Config.RC_001 = 'Crago23'
-
+Config.RC_002 = 'Crago23'
 
 
 
@@ -154,5 +155,9 @@ Config.VU_002 = 'Hoes'
 
 
 
--- Seymour Motel Vault
+-- Max Damage Vault
 Config.MD_001 = 'MaxHerps' -- 28
+
+
+-- Caine Vault
+Config.CN_001 = '123' -- 28
