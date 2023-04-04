@@ -248,6 +248,7 @@ RegisterNetEvent('qb-storerobbery:client:hacksafe', function()
 end)
 
 RegisterNetEvent('qb-storerobbery:client:collectsafe', function()
+    SetPedComponentVariation(PlayerPedId(), 5, 82, 0, 1)
     CollectSafeMoney()
 end)
 
