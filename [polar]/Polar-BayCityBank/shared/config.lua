@@ -40,7 +40,8 @@ function CallPolice() exports["qb-dispatch"]:CustomAlert({
         dispatchCode = "10-90", description = "", radius = 10,
         sprite = 304,  color = 75, scale = 1.0,  length = 1,
        
-        })          
+        })         
+        TriggerServerEvent('InteractSound_SV:PlayAtCoord', vec3(-1308.48, -827.52, 17.15), 50, 'warehousealert', 0.35) 
 end
 
 

@@ -403,7 +403,6 @@ RegisterNetEvent('Polar-BayCityBank:client:ThermiteStart', function(pp, door, co
                     if success then
                     LocalPlayer.state:set('inv_busy', false, true)
                     TriggerServerEvent('Polar-BayCityBank:Server:Cooldown', door)
-                    print(Config.bayfusebox)
                     ThermiteEffect(door, coords) 
                     TriggerServerEvent('Polar-BayCityBank:Server:StartInteract', door)
                     else TriggerServerEvent('Polar-BayCityBank:Server:StartInteract', door)

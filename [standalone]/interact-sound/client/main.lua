@@ -32,7 +32,7 @@ end)
 RegisterNetEvent('InteractSound_CL:PlayWithinDistance', function(otherPlayerCoords, maxDistance, soundFile, soundVolume)
 	if hasPlayerLoaded then
 		local myCoords = GetEntityCoords(PlayerPedId())
-		local distance = #(myCoords - otherPlayerCoords)
+		local distance = #(myCoords  - otherPlayerCoords)
 
 		if distance < maxDistance then
 			SendNUIMessage({
