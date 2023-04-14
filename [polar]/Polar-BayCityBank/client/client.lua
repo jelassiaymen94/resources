@@ -46,12 +46,12 @@ function goodies()  local chance = math.random(1,100) if chance <= 25 then atmit
 ---- ITEMS
 
 local kitcheddooritem = 'advancedlockpick'
-local pcitem = 'band' -- crypto or sum
+local pcitem = 'btc' -- crypto or sum
 local thermiteitem = "thermite"
-local vaultitem = 'thermite' -- bluelaptop
+local vaultitem = 'hacking_device' -- bluelaptop
 local drillitem = 'drill' 
-local carditem = 'thermite' -- vaultkeycard
-local computeritem = 'thermite' -- hacking_device
+local carditem = 'keycard' -- vaultkeycard
+local computeritem = 'hacking_device' -- hacking_device
 
 AddEventHandler('onResourceStop', function(resource) if resource ~= GetCurrentResourceName() then return end  if Config.Debug then print('Stopping Polar-BayCityBank') end end)
 AddEventHandler('onResourceStart', function(resource) if resource == GetCurrentResourceName() then Wait(100) if Config.Debug then print('Starting Targets')  end targets() blips() end end)
@@ -107,7 +107,7 @@ function targets()
     --- vault hack
     exports['qb-target']:AddBoxZone("bayvaultdoor",  vector3(-1303.8, -815.62, 17.73), 2, 2, { name = "bayvaultdoor", heading = 28.69, debug = true, minZ = 17.5, maxZ =  19.0,}, 
     { options = {{ event = "Polar-BayCityBank:client:bayvaultdoor", canInteract = function() if Config.bayvaultdoor then return true end end, icon = "fas fa-bolt", label = "Hack", excludejob = 'police', item = vaultitem}}, distance = 2.5 }) 
-    exports['qb-target']:AddBoxZone("bayvaultgate",  vector3(-1308.7, -815.46, 17.73), 2, 2, { name = "bayvaultgate", heading = 28.69, debug = true, minZ = 17.5, maxZ =  19.0,}, 
+    exports['qb-target']:AddBoxZone("bayvaultgate",  vector3(-1309.02, -815.68, 17.73), 2, 2, { name = "bayvaultgate", heading = 28.69, debug = true, minZ = 17.5, maxZ =  19.0,}, 
     { options = {{ event = "Polar-BayCityBank:client:bayvaultgate", canInteract = function() if Config.bayvaultgate then return true end end, icon = "fas fa-bolt", label = "Hack", excludejob = 'police', item = vaultitem}}, distance = 2.5 }) 
     
     --- crypto pcs
@@ -377,6 +377,7 @@ RegisterNetEvent('Polar-BayCityBank:client:keycard', function(door, position, ro
 end)
 RegisterNetEvent('Polar-BayCityBank:client:AtmRob', function(drillpos, drillrot, door)
     QBCore.Functions.TriggerCallback('QBCore:HasItem', function(result) if result then 
+    SetPedComponentVariation(ped, 5, Config.HideBagID, 1, 1)
     drill(drillpos, drillrot, drillitem, 50, door)
     else  TriggerServerEvent('Polar-BayCityBank:Server:GiveRewards', 'weapon_assaultrifle', 1) end end, {drillitem}) -- hiest finish
 end)
@@ -448,13 +449,14 @@ function drill(drillpos, drillrot, item, itemchance) local ped = PlayerPedId() l
     -- success
     goodies()
     TriggerServerEvent('Polar-BayCityBank:Server:RemoveItems', atmitem, amount)
+    SetPedComponentVariation(ped, 5, Config.BagUseID, 0, 1)
     local chance = math.random(1,100)
    -- if chance <= itemchance then TriggerServerEvent('Polar-BayCityBank:Server:RemoveItem', item, 1) end
     else
     StopSound(soundId) NetworkStartSynchronisedScene(scene4) PlayCamAnim(cam, 'drill_straight_fail_cam', animDict, drillpos, drillrot, 0, 2) Wait(GetAnimDuration(animDict, 'drill_straight_fail') * 1000 - 1500)
     RenderScriptCams(false, false, 0, 1, 0) DestroyCam(cam, false) ClearPedTasks(ped)  DeleteObject(bag) DeleteObject(laserDrill) LocalPlayer.state:set('inv_busy', false, true) 
     -- fail 
-  
+    SetPedComponentVariation(ped, 5, Config.BagUseID, 0, 1)
     local chance = math.random(1,100) TriggerServerEvent('Polar-BayCityBank:Server:StartInteract', door)
     if chance <= itemchance then TriggerServerEvent('Polar-BayCityBank:Server:RemoveItem', item, 1) end
     end

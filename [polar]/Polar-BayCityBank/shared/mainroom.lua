@@ -6,11 +6,12 @@ Config.baybutton2 = false     Config.baybutton3 = false   Config.baybutton4 = fa
 Config.baybutton25 = false   Config.baybutton26 = false   Config.baybutton27 = false     Config.baybutton28 = false     Config.baybutton29 = false    Config.baybutton30 = false     Config.baybutton31 = false     Config.baybutton32 = false 
 Config.baybutton33 = false    Config.baybutton34 = false     Config.baybutton35 = false   Config.baybutton36 = false     Config.baybutton37 = false    Config.baybutton38 = false     Config.baybutton39 = false 
 Config.baybutton40 = false     Config.baybutton41 = false   Config.baybutton42 = false    Config.baybutton43 = false     Config.baybutton44 = false    Config.baybutton45 = false    Config.baycomputer1 = false     Config.baycomputer2 = false 
-Config.baybutton46 = false    Config.baybutton47 = false   Config.baybutton48 = false    Config.baybutton49 = false     Config.baybutton50 = false   Config.bayvaultgate = false    Config.baycomputer3 = false     Config.baycomputer4 = false 
+Config.baybutton46 = false    Config.baybutton47 = false   Config.baybutton48 = false    Config.baybutton49 = false     Config.baybutton50 = false       Config.baycomputer3 = false     Config.baycomputer4 = false 
 
 Config.baystaffonlydoor = false 
 Config.bayvaultdoor = false
 Config.Vault = false
+Config.bayvaultgate = true
 
 Config.bayatmleft = false  Config.bayatmright = false 
 Config.bayatmright2 = false Config.bayatmleft2 = false
