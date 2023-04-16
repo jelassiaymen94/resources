@@ -777,6 +777,9 @@ function FormatItemInfo(itemData, dom) {
             itemData.name == "keepcompanionwesty" ||
             itemData.name == "keepcompanioncoyote" ||
             itemData.name == "keepcompanionrabbit" ||
+            itemData.name == "monkeypet" ||
+            itemData.name == "sharkpet" ||
+            itemData.name == "cranepet" ||
             itemData.name == "keepcompanionhen"
         ) {
             let gender = itemData.info.gender;

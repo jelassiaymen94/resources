@@ -5,6 +5,9 @@ QBShared.Items = {
 
 
 
+	["monkeypet"] = { ["name"] = "monkeypet", ["label"] = "Monkey", ["weight"] = 5000, ["type"] = "item", ["image"] = "A_C_Husky.png", ["unique"] = true, ["useable"] = true, ["shouldClose"] = true, ["combinable"] = nil, ["description"] = "Monkey is your royal companion!" },
+	["sharkpet"] = { ["name"] = "sharkpet", ["label"] = "Shark", ["weight"] = 5000, ["type"] = "item", ["image"] = "A_C_Husky.png", ["unique"] = true, ["useable"] = true, ["shouldClose"] = true, ["combinable"] = nil, ["description"] = "Shark is your royal companion!" },
+	["cranepet"] = { ["name"] = "cranepet", ["label"] = "Crane", ["weight"] = 5000, ["type"] = "item", ["image"] = "A_C_Husky.png", ["unique"] = true, ["useable"] = true, ["shouldClose"] = true, ["combinable"] = nil, ["description"] = "Crane is your royal companion!" },
 
 
 
@@ -1535,6 +1538,7 @@ QBShared.Items = {
 	["combinable"] = nil,
 	["description"] = "Husky is your royal companion!"
 },
+
 ["keepcompanionpoodle"] = {
 	["name"] = "keepcompanionpoodle",
 	["label"] = "Poodle",

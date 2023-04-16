@@ -1,7 +1,7 @@
 # Description
-Polar BayCityBank Script
+Polar Paleto Bank Robbery Script
 
--- MLO https://unclejust.tebex.io/package/4795890
+-- MLO GABS or GTA ONLINE
 
 * **EASY INSTALLATION**
 * QbCore Framework
@@ -11,7 +11,7 @@ Polar BayCityBank Script
 * **Install all dependencies**
 
 
-If you use qb-doorlock then just drag the baycitybank.lua file with the doors into your qb-doorlock>configs folder
+If you use qb-doorlock then just drag the paletobankdoors.lua file with the doors into your qb-doorlock>configs folder
 
 To edit your items they are at the top of the client>client.lua
 

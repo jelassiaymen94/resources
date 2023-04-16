@@ -10,7 +10,7 @@ config = {
         [1] = { -- Pacific Standard
             model = 'u_m_m_bankman',
             coords = vector4(241.44, 227.19, 106.29, 170.43),
-            createAccounts = true
+           -- createAccounts = true
         },
         [2] = {
             model = 'ig_barry',
@@ -38,8 +38,8 @@ config = {
         },
         [8] = { -- paleto
             model = 'u_m_m_bankman',
-            coords = vector4(-112.22, 6471.01, 31.63, 134.18),
-            createAccounts = true
+            coords = vector4(-110.77, 6469.91, 31.63, 219.54),
+           -- createAccounts = true
         }
     }
 }

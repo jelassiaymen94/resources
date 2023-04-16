@@ -347,6 +347,9 @@ local correctionList = {
     ['A_C_Panther'] = animationList.cougar,
     ['A_C_MtLion'] = animationList.cougar,
     ['A_C_Cat_01'] = animationList.cat,
+    ['a_c_chimp'] = animationList.PLAYER,
+    ['a_c_sharktiger'] = animationList.PLAYER,
+    ['a_c_cormorant'] = animationList.PLAYER,
     ['PLAYER'] = animationList.PLAYER
 }
 

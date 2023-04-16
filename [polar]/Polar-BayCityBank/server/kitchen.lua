@@ -79,12 +79,12 @@ local props = nil
 RegisterNetEvent('Polar-BayCityBank:Server:Set', function(prop) props = prop end)
 RegisterNetEvent('Polar-BayCityBank:Server:Synapse', function(prop)  local src = source local Player = QBCore.Functions.GetPlayer(src)
     hiya(props)
-   end)
+end)
 local props2 = nil
 RegisterNetEvent('Polar-BayCityBank:Server:Set2', function(prop) props2 = prop end)
 RegisterNetEvent('Polar-BayCityBank:Server:Synapse2', function(prop)  local src = source local Player = QBCore.Functions.GetPlayer(src)
     hiya(props2)
-   end)
+end)
 local props3 = nil
 RegisterNetEvent('Polar-BayCityBank:Server:Set3', function(prop) props3 = prop end)
 RegisterNetEvent('Polar-BayCityBank:Server:Synapse3', function(prop)  local src = source local Player = QBCore.Functions.GetPlayer(src)

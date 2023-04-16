@@ -630,20 +630,6 @@ end)
 --          Commands
 -- ============================
 
-QBCore.Commands.Add('addpet', 'add a pet to player inventory (Admin Only)', {}, false, function(source, args)
-    local PETname = args[1]
-    local src = source
-    local Player = QBCore.Functions.GetPlayer(src)
-
-    Player.Functions.AddItem(PETname, 1)
-    TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items[PETname], "add")
-end, 'admin')
-
-QBCore.Commands.Add('addItem', 'add item to player inventory (Admin Only)', {}, false, function(source, item)
-    local Player = QBCore.Functions.GetPlayer(source)
-    Player.Functions.AddItem(item[1], 1)
-    TriggerClientEvent("inventory:client:ItemBox", source, QBCore.Shared.Items[ item[1] ], "add")
-end, 'admin')
 
 QBCore.Commands.Add('renamePet', 'rename pet', { { "name", "new pet name" } }, false, function(source, args)
     TriggerClientEvent("keep-companion:client:rename_name_tag", source, args[1])

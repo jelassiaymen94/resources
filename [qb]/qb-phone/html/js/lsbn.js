@@ -1,7 +1,7 @@
 
 LoadLSBNEvent = function() {
     var PlayerJob = QB.Phone.Data.PlayerData.job.name;
-    if (PlayerJob == "reporter"){
+    if (PlayerJob == "weazelnews"){
         $(".lsbn-send-news-for-chat").css({"display":"block"});
     } else {
         $(".lsbn-send-news-for-chat").css({"display":"none"});

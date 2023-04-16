@@ -117,7 +117,25 @@ Config.pets = {
         model = 'A_C_Coyote',
         maxHealth = 350,
         distinct = 'no cat'
-    }
+    },
+    [14] = {
+        name = 'monkeypet',
+        model = 'a_c_chimp',
+        maxHealth = 350,
+        distinct = 'no cat'
+    },
+    [15] = {
+        name = 'sharkpet',
+        model = 'a_c_sharktiger',
+        maxHealth = 350,
+        distinct = 'no dog'
+    },
+    [16] = {
+        name = 'cranepet',
+        model = 'a_c_cormorant',
+        maxHealth = 350,
+        distinct = 'no cat'
+    },
 }
 
 Config.core_items = {
