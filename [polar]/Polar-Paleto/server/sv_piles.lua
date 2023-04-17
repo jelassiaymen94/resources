@@ -6,7 +6,7 @@ local QBCore = exports[Config.Core]:GetCoreObject()
 
 RegisterNetEvent('Polar-Paleto:Server:SetupPile1', function()
     paletoprop11()
-   -- paletoprop12()
+    paletoprop12()
    -- paletoprop13()
    -- paletoprop14()
    -- paletoprop15()

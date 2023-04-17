@@ -1,6 +1,4 @@
--- All Credits for this file go to meta-hub it is a mixture of -  
--- meta_libs - https://github.com/meta-hub/meta_libs/releases
--- fivem-drilling - https://github.com/meta-hub/fivem-drilling
+
 
 Scaleforms = {}
 

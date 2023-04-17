@@ -19,7 +19,6 @@ shared_scripts {
 }
 
 client_scripts {
-
 '@PolyZone/client.lua',
 '@PolyZone/BoxZone.lua',
 '@PolyZone/CircleZone.lua',
@@ -31,13 +30,14 @@ client_scripts {
 server_scripts {
 'server/*.lua',
 '@oxmysql/lib/MySQL.lua',
+'sv_escrowed.lua'
 }
 
 escrow_ignore {
     'client/*.lua',
     'server/*.lua',
     'shared/*.lua',
-    'baycitybank.lua',
+    'paletobankdoors.lua',
     '*.*'
   }
 

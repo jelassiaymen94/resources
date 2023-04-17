@@ -1,7 +1,7 @@
 # Description
-Polar Paleto Bank Robbery Script
+Paleto Bank Robbery Script
 
--- MLO GABS or GTA ONLINE
+-- GABZ PALETO BANK
 
 * **EASY INSTALLATION**
 * QbCore Framework
@@ -13,11 +13,13 @@ Polar Paleto Bank Robbery Script
 
 If you use qb-doorlock then just drag the paletobankdoors.lua file with the doors into your qb-doorlock>configs folder
 
-To edit your items they are at the top of the client>client.lua
+To change loot tables find loot.lua
 
-To edit random locations they are located in most of the shared folder files. 
+To edit random locations they are located in most of the sh_ files. 
 
-TO edit props they are located shared>kitchen.lua
+To edit props they are located sh_props.lua
+
+
 
 # Credits
 Made by Balake#0463 @ Polar Development

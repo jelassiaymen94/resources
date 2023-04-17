@@ -72,23 +72,6 @@ Config.DoorList['paletofalsedoor2'] = {
     --autoLock = 1000,
 }
 
--- door4 created by Blake
-Config.DoorList['paletodoor4'] = {
-    authorizedJobs = { ['police'] = 0 },
-    fixText = false,
-    pickable = false,
-    locked = true,
-    audioRemote = false,
-    objYaw = 225.00004577637,
-    objCoords = vec3(-92.232231, 6468.960449, 31.787979),
-    objName = -147325430,
-    doorRate = 1.0,
-    doorType = 'door',
-    distance = 1,
-    --audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
-    --audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    --autoLock = 1000,
-}
 
 -- doorcard1 created by Blake
 Config.DoorList['paletodoorcard1'] = {
@@ -145,7 +128,7 @@ Config.DoorList['paletodoorcard2'] = {
 }
 
 -- paletovault created by Blake
-Config.DoorList['paletovault'] = {
+Config.DoorList['paletovault'] = { 
     locked = true,
     distance = 1,
     doorType = 'door',

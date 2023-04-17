@@ -1,18 +1,15 @@
 local QBCore = exports[Config.Core]:GetCoreObject()
 
-
-
-
-
+RegisterNetEvent('Polar-Paleto:Server:VaultClose', function() TriggerClientEvent('QBCore:Notify', -1, "Vault Closes in 2 Minutes", 'error') SetTimeout(60000, function() TriggerClientEvent('QBCore:Notify', -1, "Vault Closes in 1 Minutes", 'error') SetTimeout(30000, function() TriggerClientEvent('QBCore:Notify', -1, "Vault Closes in 30 Seconds", 'error') SetTimeout(20000, function() TriggerClientEvent('QBCore:Notify', -1, "Vault Closes in 10 Seconds", 'error') SetTimeout(10000, function() TriggerClientEvent('Polar-Paleto:Client:Vault', -1, false) end) end) end) end) end)
 
 
 local paletostartname = 'paletostart'
 local paletodoor1name = 'paletodoor1'
 local paletodoor2name = 'paletodoor2'
 local paletodoor3name = 'paletodoor3'
-local paletodoor4name = 'paletodoor4'
 local paletodoorcard1name = 'paletodoorcard1'
 local paletodoorcard2name = 'paletodoorcard2'
+
 
 
 
@@ -25,7 +22,6 @@ local paletostart = true
 local paletodoor1 = false
 local paletodoor2 = false
 local paletodoor3 = false
-local paletodoor4 = false
 local paletodoorcard1 = false
 local paletodoorcard2 = false
 
@@ -119,13 +115,19 @@ QBCore.Functions.CreateCallback('Polar-Paleto:paletoprop39', function(source, cb
 local paletoprop40 = false
 QBCore.Functions.CreateCallback('Polar-Paleto:paletoprop40', function(source, cb) cb(paletoprop40) end) 
 
+local paletodrill1 = true
+QBCore.Functions.CreateCallback('Polar-Paleto:paletodrill1', function(source, cb) cb(paletodrill1) end) 
+local paletodrill2 = true
+QBCore.Functions.CreateCallback('Polar-Paleto:paletodrill2', function(source, cb) cb(paletodrill2) end) 
+
+local paletovault = true
+QBCore.Functions.CreateCallback('Polar-Paleto:VaultCheck', function(source, cb)  cb(paletovault) end) 
 
 RegisterNetEvent('Polar-Paleto:Server:StopInteract', function(door)
     if door == paletostartname then paletostart = false end
     if door == paletodoor1name then paletodoor1 = false end
     if door == paletodoor2name then paletodoor2 = false end
     if door == paletodoor3name then paletodoor3 = false end
-    if door == paletodoor4name then paletodoor4 = false end
     if door == paletodoorcard1name then paletodoorcard1 = false end
     if door == paletodoorcard2name then paletodoorcard2 = false end
 
@@ -180,13 +182,17 @@ RegisterNetEvent('Polar-Paleto:Server:StopInteract', function(door)
     if door == 'paletopc1' then paletopc1 = false end
     if door == 'paletopc2' then paletopc2 = false end
     if door == 'paletopc3' then paletopc3 = false end
+
+    if door == 'paletodrill1' then paletodrill1 = false end
+    if door == 'paletodrill2' then paletodrill2 = false end
+
+    if door == 'paletovault' then paletovault = false end
 end)
 RegisterNetEvent('Polar-Paleto:Server:StartInteract', function(door)
     if door == paletostartname then paletostart = true end
     if door == paletodoor1name then paletodoor1 = true end
     if door == paletodoor2name then paletodoor2 = true end
     if door == paletodoor3name then paletodoor3 = true end
-    if door == paletodoor4name then paletodoor4 = true end
     if door == paletodoorcard1name then paletodoorcard1 = true end
     if door == paletodoorcard2name then paletodoorcard2 = true end
 
@@ -241,6 +247,11 @@ RegisterNetEvent('Polar-Paleto:Server:StartInteract', function(door)
     if door == 'paletopc1' then paletopc1 = true end
     if door == 'paletopc2' then paletopc2 = true end
     if door == 'paletopc3' then paletopc3 = true end
+
+    if door == 'paletodrill1' then paletodrill1 = true end
+    if door == 'paletodrill2' then paletodrill2 = true end
+
+    if door == 'paletovault' then paletovault = true end
 end)
 
 
@@ -252,11 +263,11 @@ QBCore.Functions.CreateCallback('Polar-Paleto:Door2', function(source, cb)  cb(p
 
 QBCore.Functions.CreateCallback('Polar-Paleto:Door3', function(source, cb) cb(paletodoor3) end) 
 
-QBCore.Functions.CreateCallback('Polar-Paleto:Door4', function(source, cb)  cb(paletodoor4) end) 
-
 QBCore.Functions.CreateCallback('Polar-Paleto:Doorcard1', function(source, cb) cb(paletodoorcard1) end) 
 
 QBCore.Functions.CreateCallback('Polar-Paleto:Doorcard2', function(source, cb)  cb(paletodoorcard2) end) 
+
+local time = (Config.CooldownTime * 60000) RegisterNetEvent('Polar-Paleto:Server:StartCooldown', function(door) SetTimeout(time, function() reset() end) end)
 
 
 function reset()
@@ -264,7 +275,6 @@ function reset()
     paletodoor1 = false
     paletodoor2 = false
     paletodoor3 = false
-    paletodoor4 = false
     paletodoorcard1 = false
     paletodoorcard2 = false
 
@@ -320,5 +330,15 @@ function reset()
     paletopc2 = true
     paletopc3 = true
 
+    paletodrill1 = true
+    paletodrill1 = true
+
+    paletovault = true
+
+    TriggerClientEvent('Polar-Paleto:Client:ResetProps', -1)
+
+    TriggerClientEvent('Polar-Paleto:Client:ResetDoors', -1)
+
+    TriggerClientEvent('Polar-Paleto:Client:ResetPropsKeypads', -1)
     
 end
