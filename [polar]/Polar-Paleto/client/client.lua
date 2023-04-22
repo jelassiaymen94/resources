@@ -16,7 +16,7 @@ local open = 37.75
 local closed = -125.74
 local vaultloc = vector3(-1307.85, -816.5, 17.82)
 
-local hi = true
+local hi = false
 
 --- THERMITE
 local thermiteinfo = { time = 30, squares = 4, errors = 3}
