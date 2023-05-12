@@ -1,4 +1,3 @@
-print("Jim-Recycle - Recycling Script by Jimathy")
 
 Config = {}
 

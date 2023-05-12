@@ -1,4 +1,3 @@
-print("QB-DJBooth v1.1 by Jimathy")
 
 Config = {
 	Debug = false, -- Set to true to show target locations
