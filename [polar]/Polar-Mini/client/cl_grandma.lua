@@ -48,18 +48,13 @@ function SpawnGrandma()
     })
 end
 
-function DeleteGrandma()
-    if DoesEntityExist(grandma) then
-        DeletePed(grandma)
-    end
-end
 ----------------------
 -- RESOURCE START --
 ----------------------
 
 AddEventHandler('onResourceStart', function(resourceName)
     if GetCurrentResourceName() == resourceName then
-        SpawnGrandma()
+       -- SpawnGrandma()
     end
 end)
 
@@ -127,13 +122,3 @@ end)
 -- RESOURCE STOP --
 --------------------
 
-AddEventHandler('onResourceStop', function(resourceName) 
-	if GetCurrentResourceName() == resourceName then
-        DeleteGrandma()
-	end 
-end)
-
-RegisterNetEvent('QBCore:Client:OnPlayerUnload')
-AddEventHandler('QBCore:Client:OnPlayerUnload', function()
-    DeleteGrandma()
-end)
