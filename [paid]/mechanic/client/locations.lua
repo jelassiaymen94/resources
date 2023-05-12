@@ -164,7 +164,7 @@ Config.Locations = {
 		discordlink = "",
 		discordcolour = 23552,
 		discordimg = "https://static.wikia.nocookie.net/gtawiki/images/4/40/Beeker%27s_logo_GTA_V.png",
-	},]]
+	},
 	-- GABZ LS TUNER SHOP --
 	{	job = "tuner",
 		zones = {
@@ -190,7 +190,7 @@ Config.Locations = {
 		discordimg = "https://static.wikia.nocookie.net/gtawiki/images/f/f2/GTAV-LSCustoms-Logo.png",
 	},
 	-- AIRPORT LS CUSTOMS --
-	--[[{	job = "mechanic",
+	{	job = "mechanic",
 		zones = {
 			vector2(-1118.5782470703, -2017.4730224609),
 			vector2(-1143.9351806641, -2042.6685791016),
@@ -235,7 +235,7 @@ Config.Locations = {
 		discordlink = "",
 		discordcolour = 2571775,
 		discordimg = "https://static.wikia.nocookie.net/gtawiki/images/f/f2/GTAV-LSCustoms-Logo.png",
-	},]]
+	},
 	-- LOST MC MECH SHOP--
 	{   job = "mechanic",
 		zones = {
@@ -261,7 +261,7 @@ Config.Locations = {
 		discordlink = "",
 		discordcolour = 2571775,
 		discordimg = "https://static.wikia.nocookie.net/gtawiki/images/f/f2/GTAV-LSCustoms-Logo.png",
-	},
+	}, ]]
 	-- OTTOS AUTOS -- 
     {	job = "otto",
 		zones = {
