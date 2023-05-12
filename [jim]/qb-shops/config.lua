@@ -1,5 +1,3 @@
-print("^2Jim^7-^2Shops v^41^7.^47 ^7- ^2Shop Script by ^1Jimathy^7")
-
 -- If you need support I now have a discord available, it helps me keep track of issues and give better support.
 
 -- https://discord.gg/xKgQZ6wZvS
@@ -255,10 +253,6 @@ Config = {
 			{ name = "bandage", price = 100, amount = 25, },
 			{ name = "water_bottle", price = 100, amount = 50, },
 			{ name = "sandwich", price = 100, amount = 25, },
-		},
-		["extra"] = {
-			{ name = "weapon_fireworks", price = 250, amount = 25 },
-			
 		},
 		["preparedfood"] = {
 			--{ name = "pharmaceuticals", price = 250, amount = 25 },

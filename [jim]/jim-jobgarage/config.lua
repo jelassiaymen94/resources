@@ -1,4 +1,3 @@
-print("^2Jim^7-^2JobGarage ^7v^41^7.^43^7.^42 ^7- ^2Job Garage Script by ^1Jimathy^7") 
 
 --[[	LIST OF POSSIBLE VEHICLE MODIFIERS   ]]--
 -- Using these will change how each vehicle spawns

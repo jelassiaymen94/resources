@@ -2,9 +2,8 @@ fx_version 'cerulean'
 
 game 'gta5'
 
-author "JustLazzy & Lyy"
 
-description 'JL Multicharacter'
+description 'multicharacter'
 
 version '1.0.0'
 

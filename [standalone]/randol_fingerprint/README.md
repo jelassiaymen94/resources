@@ -4,7 +4,7 @@ An easy way for police to scan a player's fingerprint if they don't have any way
 
 Use's progressbar and qb-menu.
 
-Project Sloth's MDT: (https://github.com/Project-Sloth/ps-mdt) <3
+Project Sloth's MDT: (https://github.com/Project-Sloth/Polar-mdt) <3
 
 Showcase: (https://streamable.com/ga5gcj)
 

@@ -1,6 +1,6 @@
 # QBCore Dispatch
 
-Integrated with https://github.com/Project-Sloth/Polar-MDT
+Integrated with https://github.com/Project-Sloth/Polar-mdt
 
 For all support questions, ask in our Discord support chat. Do not create issues if you need help. Issues are for bug reporting and new features only.
 

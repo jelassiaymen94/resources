@@ -2,7 +2,7 @@ lua54 'yes'
 fx_version 'cerulean'
 game 'gta5'
 
-description 'Pug-Racing'
+description 'racing'
 version '1.0.5'
 
 ui_page 'html/index.html'

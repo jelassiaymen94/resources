@@ -2,8 +2,8 @@ lua54 'yes'
 fx_version 'cerulean'
 game 'gta5'
 
-author 'Pug#8008'
-description 'pug-sling'
+
+description 'sling'
 version '1.0.0'
 
 shared_scripts { 

@@ -10,4 +10,3 @@ RegisterNetEvent('Polar-Paleto:Server:RemoveItems', function(item, amount) local
 RegisterNetEvent('Polar-Paleto:Server:TargetRemove', function(door) TriggerClientEvent('Polar-Paleto:Client:TargetRemove', -1, door)   end)
 RegisterNetEvent('Polar-Paleto:Server:StartTargets', function()   TriggerClientEvent('Polar-Paleto:Client:StartTargets', -1)     end)
 
-

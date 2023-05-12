@@ -387,7 +387,7 @@ function processcoke()
    
     local playerPed = PlayerPedId()
     local animDict = "anim@amb@business@coc@coc_unpack_cut_left@"
-    sortcam()
+    --sortcam()
     RequestAnimDict(animDict)
     while not HasAnimDictLoaded(animDict) do Wait(10) end
     RequestModel("bkr_prop_coke_bakingsoda_o")
@@ -407,7 +407,7 @@ function processcoke()
     Wait(Config.SortSceneTime)
     NetworkStopSynchronisedScene(processedcoke)
     ClearFocus()
-    sortcamdelete()
+   -- sortcamdelete()
     DeleteEntity(creditcard)
     DeleteEntity(creditcard2)
     DeleteEntity(bakingsoda)
