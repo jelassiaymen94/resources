@@ -20,7 +20,6 @@ Config = {
 		"sleepypop",
 		"monkeypop",
 		"chapopop",
-		"mrsmonkeypop",
 		"funkopop_harrypotter",
 		"funkopop_draco",
 		"funkopop_hermione",
@@ -71,7 +70,7 @@ Config = {
 			},
 			garage = { spawn = vector4(-594.62, -1086.59, -221.76, 220.09),
 						out = vector4(-593.19, -1084.99, -222.33, 311.96),
-						list = { "panto", "burrito3", } },
+						list = { "panto" } },
 			blip = vector3(-581.06, -1066.22, 22.34),
 			blipcolor = 48,
 		},
@@ -173,19 +172,6 @@ Crafting = {
 		{ ['lambkebab'] = { ['cookedlamb'] = 1, ['tomato'] = 1 }, },
 	},
 
-	--Autograph Station
-	Monkeyman = {
-		{ ['01_monkeymansigned'] = { ['01_monkeyman'] = 1, }, },
-	},
-	Seymour = {
-		{ ['04_seymoursigned'] = { ['04_seymourbutts'] = 1, }, },
-	},
-	Mrsmonkey = {
-		{ ['02_mrsmonkeysigned'] = { ['02_mrsmonkey'] = 1, }, },
-	},
-	Reese = {
-		{ ['05_reesesigned'] = { ['05_reese'] = 1, }, },
-	},
 
 }
 

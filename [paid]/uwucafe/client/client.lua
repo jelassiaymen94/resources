@@ -114,45 +114,6 @@ CreateThread(function()
 	exports['qb-target']:AddBoxZone("vu", vector3(129.3, -1279.3, 29.5), 1.5, 0.6, { name="vu", heading = 0, debugPoly=Config.Debug, minZ = 28.184, maxZ = 30.184, },
 		{ options = { { event = "jim-catcafe:Crafting", icon = "fas fa-temperature-high", label = "Kebab Station" --[[Loc[Config.Lan].target["pizza"] ]], job = "vu", craftable = Crafting.Kebab, header = "Kebab Station"--[[Loc[Config.Lan].menu["header_pizza"] ]], coords = vector3(129.3, -1279.3, 29.), }, }, distance = 2.0 })
 
-	--Autograph Stations
-	Targets["monkeyman"] =
-	exports['qb-target']:AddBoxZone("monkeyman", vector3(-817.6043, -699.5162, 32.1740), 1.0, 1.0, { name="monkeyman", heading = 0, debugPoly=Config.Debug, minZ = 31.184, maxZ = 33.184, },
-	{ options = { { event = "jim-catcafe:Crafting", icon = "fas fa-temperature-high", label = "Autograph Station" --[[Loc[Config.Lan].target["pizza"] ]], citizenid = "19", craftable = Crafting.Monkeyman, header = "Autograph Station"--[[Loc[Config.Lan].menu["header_pizza"] ]], coords = vector3(-817.6043, -699.5162, 32.1740), }, }, distance = 2.0 })
-
-	Targets["seymour"] =
-	exports['qb-target']:AddBoxZone("seymour", vector3(10.7363, -1111.4432, 29.9972), 1.0, 1.0, { name="seymour", heading = 0, debugPoly=Config.Debug, minZ = 28.184, maxZ = 30.184, },
-	{ options = { { event = "jim-catcafe:Crafting", icon = "fas fa-temperature-high", label = "Autograph Station" --[[Loc[Config.Lan].target["pizza"] ]], citizenid = "653", craftable = Crafting.Seymour, header = "Autograph Station"--[[Loc[Config.Lan].menu["header_pizza"] ]], coords = vector3(10.8363, -1111.4432, 29.9972), }, }, distance = 2.0 })
-
-	Targets["mrsmonkey"] =
-	exports['qb-target']:AddBoxZone("mrsmonkey", vector3(385.7179, -776.4518, 0.3783), 1.0, 1.0, { name="mrsmonkey", heading = 0, debugPoly=Config.Debug, minZ = 0.0184, maxZ = 1.184, },
-	{ options = { { event = "jim-catcafe:Crafting", icon = "fas fa-temperature-high", label = "Autograph Station" --[[Loc[Config.Lan].target["pizza"] ]], citizenid = "5", craftable = Crafting.Mrsmonkey, header = "Autograph Station"--[[Loc[Config.Lan].menu["header_pizza"] ]], coords = vector3(385.7179, -776.4518, 0.3783), }, }, distance = 2.0 })
-
-	Targets["reese"] =
-	exports['qb-target']:AddBoxZone("reese", vector3(-778.6940, 325.4821, 223.0578), 1.0, 1.0, { name="reese", heading = 0, debugPoly=Config.Debug, minZ = 222.0184, maxZ = 224.184, },
-	{ options = { { event = "jim-catcafe:Crafting", icon = "fas fa-temperature-high", label = "Autograph Station" --[[Loc[Config.Lan].target["pizza"] ]], citizenid = "537", craftable = Crafting.Reese, header = "Autograph Station"--[[Loc[Config.Lan].menu["header_pizza"] ]], coords = vector3(-778.6940, 325.4821, 223.0578), }, }, distance = 2.0 })
-
-
-	--taco truck
-	Targets["tortilla"] =
-	exports['qb-target']:AddBoxZone("tortilla", vector3(14.8027, -1601.667, 0.58), 1.5, 0.6, { name="tortilla", heading = 0, debugPoly=Config.Debug, minZ = 0.0, maxZ = 1.84, },
-		{ options = { { event = "jim-catcafe:Crafting", icon = "fas fa-temperature-high", label = "tortilla Station" --[[Loc[Config.Lan].target["pizza"] ]], job = "taco", craftable = Crafting.Tortilla, header = "Vamos!"--[[Loc[Config.Lan].menu["header_pizza"] ]], coords = vector3(15.0027, -1601.3667, 0.38), }, }, distance = 2.0 })
-
-	Targets["tacomeat"] =
-	exports['qb-target']:AddBoxZone("tacomeat", vector3(14.8234, -1604.9037, 0.28), 1.5, 0.6, { name="tacomeat", heading = 0, debugPoly=Config.Debug, minZ = -0.84, maxZ = 1.84, },
-		{ options = { { event = "jim-catcafe:Crafting", icon = "fas fa-temperature-high", label = "Taco Meat Station" --[[Loc[Config.Lan].target["pizza"] ]], job = "taco", craftable = Crafting.Meat, header = "Aye corumba!"--[[Loc[Config.Lan].menu["header_pizza"] ]], coords = vector3(14.8234, -1604.93037, 0.28), }, }, distance = 2.0 })
-	
-
-
-	--Meth
-	Targets["meth"] =
-	exports['qb-target']:AddBoxZone("meth", vector3(3535.0767, 3661.8757, 28.1219), 1.5, 0.6, { name="meth", heading = 0, debugPoly=Config.Debug, minZ = 27.184, maxZ = 29.184, },
-		{ options = { { event = "jim-catcafe:Crafting", icon = "fas fa-temperature-high", label = "Meth Station" --[[Loc[Config.Lan].target["pizza"] ]], craftable = Crafting.Meth, header = "Meth Station"--[[Loc[Config.Lan].menu["header_pizza"] ]], coords = vector3(3535.0767, 3661.8757, 28.1219), }, }, distance = 2.0 })
-
-	Targets["meth2"] =
-	exports['qb-target']:AddBoxZone("meth2", vector3(-314.9395, -2436.4009, 2.2676), 1.5, 0.6, { name="meth2", heading = 225, debugPoly=Config.Debug, minZ = 1.184, maxZ = 3.184, },
-		{ options = { { event = "jim-catcafe:Crafting", icon = "fas fa-temperature-high", label = "Meth Station" --[[Loc[Config.Lan].target["pizza"] ]], craftable = Crafting.Meth, header = "Meth Station"--[[Loc[Config.Lan].menu["header_pizza"] ]], coords = vector3(-316.9395, -2435.9009, 2.2676), }, }, distance = 2.0 })
-
-
 	--Trays
 	Targets["CatCounter"] =
 	exports['qb-target']:AddBoxZone("CatCounter", vector3(-584.01, -1059.27, 22.34), 0.6, 1.0, { name="CatCounter", heading = 0, debugPoly=Config.Debug, minZ=22.0, maxZ=23.04 },

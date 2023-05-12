@@ -49,7 +49,7 @@ local QBCore = exports['qb-core']:GetCoreObject()
          BeginTextCommandSetBlipName("STRING")
          AddTextComponentSubstringPlayerName("Pawnshop")
          EndTextCommandSetBlipName(pawnshop)
- 
+         --[[
 
          -- weazle news
          local weazle = AddBlipForCoord(vector3(-566.9029, -932.2872, -36.8306))
@@ -126,7 +126,7 @@ local QBCore = exports['qb-core']:GetCoreObject()
          BeginTextCommandSetBlipName("STRING")
          AddTextComponentSubstringPlayerName("Dirt Bike Race by S.A.M.S.!")
          EndTextCommandSetBlipName(event)
-
+         ]]
          -- churhc of rockford
          local blip = AddBlipForCoord(vector3(-766.1784, -24.1005, 21.0794))
          SetBlipSprite (blip, 279)
@@ -138,7 +138,7 @@ local QBCore = exports['qb-core']:GetCoreObject()
          AddTextComponentString("Church of Rockford")
          EndTextCommandSetBlipName(blip)
 
-         -- wu chang
+         --[[
          local blip = AddBlipForCoord(vector3(-816.96, -702.77, 0.06))
          SetBlipSprite (blip, 671)
          SetBlipDisplay(blip, 6) 
@@ -148,7 +148,7 @@ local QBCore = exports['qb-core']:GetCoreObject()
          BeginTextCommandSetBlipName("STRING")
          AddTextComponentSubstringPlayerName("Wu Chang Records")
          EndTextCommandSetBlipName(blip)
-
+         
          -- Brick House Law
          local blip = AddBlipForCoord(vector3(-1039.6254, -758.0851, 19.8388))
          SetBlipSprite (blip, 408)
@@ -159,7 +159,7 @@ local QBCore = exports['qb-core']:GetCoreObject()
          BeginTextCommandSetBlipName("STRING")
          AddTextComponentSubstringPlayerName("Brick House Law")
          EndTextCommandSetBlipName(blip)
-
+         ]]
 
          -- davis pd
          local blip = AddBlipForCoord(vector3(382.32, -1618.85, 29.29))
@@ -171,20 +171,6 @@ local QBCore = exports['qb-core']:GetCoreObject()
          BeginTextCommandSetBlipName("STRING")
          AddTextComponentSubstringPlayerName("Davis Police Department")
          EndTextCommandSetBlipName(blip)
-
-
-
-         -- MrsMonkeyDelivery
-         local blip = AddBlipForCoord(vector3(385.7248, -772.6353, 29.2921))
-         SetBlipSprite (blip, 671)
-         SetBlipDisplay(blip, 6) 
-         SetBlipScale  (blip, 0.5)
-         SetBlipAsShortRange(blip, true)
-         SetBlipColour(blip, 8)
-         BeginTextCommandSetBlipName("STRING")
-         AddTextComponentSubstringPlayerName("Mrs. Monkey's Deliveries")
-         EndTextCommandSetBlipName(blip)
-
 
 
 
