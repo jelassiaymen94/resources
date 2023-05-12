@@ -1958,7 +1958,7 @@ Garages = {
             vector4(357.99, 286.45, 103.1, 248.69),
             vector4(356.98, 283.01, 103.0, 248.05),
         }
-    },
+    },]]
     ['airportp'] = {
         ['Zone'] = {
             ['Shape'] = { --polygon that surrounds the parking area
@@ -2031,7 +2031,7 @@ Garages = {
         vehicleCategories = {'car', 'motorcycle', 'other'},
         drawText = 'Parking',
         debug = false
-    },]]
+    },
     ['beachp'] = {
         ['Zone'] = {
             ['Shape'] = { --polygon that surrounds the parking area
