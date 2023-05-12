@@ -178,7 +178,7 @@ Garages = {
             vector4(-131.95, -1182.25, 23.14, 90.11),
         }
     },
-
+    --[[
     ['helilot'] = {
         ['Zone'] = {
             ['Shape'] = { --polygon that surrounds the parking area
@@ -322,7 +322,7 @@ Garages = {
             vector4(333.34, -616.15, 28.87, 160.22),
             vector4(269.97, -322.62, 44.5, 248.07),
         }
-    },
+    },]]
     ['mirrorpark'] = {
         ['Zone'] = {
             ['Shape'] = {
@@ -388,6 +388,7 @@ Garages = {
             vector4(1041.6, -791.45, 57.5, 0.97),
         }
     },
+    --[[
     ['casinop'] = {
         ['Zone'] = {
             ['Shape'] = {
@@ -823,7 +824,7 @@ Garages = {
             vector4(-275.18, -768.22, 33.54, 71.26)
         }
     },
-    --[[['spanishave'] = {
+    ['spanishave'] = {
         ['Zone'] = {
             ['Shape'] = { --polygon that surrounds the parking area
                 vector2(-1135.1311035156, -778.41644287109),
@@ -843,7 +844,7 @@ Garages = {
         vehicleCategories = {'car', 'motorcycle', 'other'},
         drawText = 'Parking',                 --car, air, sea
         debug = false
-    },]]
+    },
     ['fishinglot'] = {
         ['Zone'] = {
             ['Shape'] = { --polygon that surrounds the parking area
@@ -1614,7 +1615,7 @@ Garages = {
         }
     },
 
-
+]]
 
     ['churchlot'] = {
         ['Zone'] = {
@@ -1647,7 +1648,7 @@ Garages = {
         }
     },
 
-
+--[[
     ['churchemployeelot'] = {
         ['Zone'] = {
             ['Shape'] = { --polygon that surrounds the parking area
@@ -2030,7 +2031,7 @@ Garages = {
         vehicleCategories = {'car', 'motorcycle', 'other'},
         drawText = 'Parking',
         debug = false
-    },
+    },]]
     ['beachp'] = {
         ['Zone'] = {
             ['Shape'] = { --polygon that surrounds the parking area
@@ -2260,7 +2261,7 @@ Garages = {
             vector4(241.32, -782.41, 30.18, 69.19),
         }
     },
-
+--[[
     ['police'] = {
         ['Zone'] = {
             ['Shape'] = { --polygon that surrounds the parking area
@@ -2513,7 +2514,7 @@ Garages = {
             vector4(-499.21, -177.5, 37.3, 30.1),
         },
         debug = false
-    },
+    },]]
     --[[['pdfront'] = {
         ['Zone'] = {
             ['Shape'] = { --polygon that surrounds the parking area
