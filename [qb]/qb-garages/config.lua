@@ -2348,7 +2348,7 @@ Garages = {
         drawText = 'Parking',
         job = 'mechanic',
         debug = false
-    },
+    },]]
     ['apartments'] = {
         ['Zone'] = {
             ['Shape'] = { --polygon that surrounds the parking area
@@ -2487,6 +2487,7 @@ Garages = {
         debug = false
 
     },
+    
     ['cityhall'] = {
         ['Zone'] = {
             ['Shape'] = { --polygon that surrounds the parking area
@@ -2502,6 +2503,10 @@ Garages = {
         type = 'public',
         vehicleCategories = {'car', 'motorcycle', 'other'},
         drawText = 'Parking',
+        showBlip = true,
+        blipcoords = vector3(215.9499, -809.698, 30.731),
+        blipName = "Public Parking",
+        blipNumber = 357,
         ["ParkingSpots"] = {
             vector4(-475.26, -219.26, 36.05, 30.12),
             vector4(-478.26, -214.06, 36.21, 30.11),
@@ -2514,7 +2519,7 @@ Garages = {
             vector4(-499.21, -177.5, 37.3, 30.1),
         },
         debug = false
-    },]]
+    },
     --[[['pdfront'] = {
         ['Zone'] = {
             ['Shape'] = { --polygon that surrounds the parking area
