@@ -183,7 +183,7 @@ PedList = {
 	{ coords = vector4(-578.73, -1051.92, 22.35, 180.0), frozen = false },
 
 	-- PD Kitty
-	{ coords = vector4(360.0447, -1594.0315, 34.8775, 44.0272), animDict = "creatures@cat@amb@world_cat_sleeping_ground@base", animName = "base", clickable = true, frozen = true },
+	-- { coords = vector4(360.0447, -1594.0315, 34.8775, 44.0272), animDict = "creatures@cat@amb@world_cat_sleeping_ground@base", animName = "base", clickable = true, frozen = true },
 
 }
 

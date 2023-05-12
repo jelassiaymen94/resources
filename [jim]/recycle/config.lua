@@ -98,7 +98,8 @@ Config.Prices = {
 	['can'] = { name = 'bottle', amount = 5 },
 }
 
-Config.DumpItems = {"weapon_shoe","weapon_shoe","weapon_shoe","weapon_shoe","weapon_shoe",
+Config.DumpItems = {
+"weapon_shoe","weapon_shoe","weapon_shoe","weapon_shoe","weapon_shoe",
 "recyclablematerial",	"recyclablematerial",	"recyclablematerial",	"recyclablematerial",	"recyclablematerial",	"recyclablematerial",	"recyclablematerial",	"recyclablematerial",	"recyclablematerial",	"recyclablematerial",	"recyclablematerial",	"recyclablematerial",	"recyclablematerial",	"recyclablematerial",	"recyclablematerial",	"recyclablematerial",	"recyclablematerial",	"recyclablematerial",	"recyclablematerial",	"recyclablematerial",
 "plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic", "plastic",	"plastic",	"plastic",	"plastic",	"plastic", "plastic",	"plastic",	"plastic",	"plastic",	"plastic","plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic", "plastic",	"plastic",	"plastic",	"plastic",	"plastic", "plastic",	"plastic",	"plastic",	"plastic",	"plastic",
 "rubber",	"rubber",	"rubber",	"rubber",	"rubber",	"rubber",	"rubber",	"rubber",	"rubber",	"rubber",	"rubber",	"rubber",	"rubber",	"rubber",	"rubber",	"rubber",	"rubber",	"rubber",	"rubber",	"rubber",
@@ -154,11 +155,6 @@ Config.DumpItems = {"weapon_shoe","weapon_shoe","weapon_shoe","weapon_shoe","wea
 "microwave",	"microwave",	"microwave",	"microwave",	"microwave",															
 "television",	"television",	"television",	"television",	"television",															
 "megaphone",	"megaphone",	"megaphone",	"megaphone",	"megaphone",															
-"01_monkeyman",	"01_monkeyman",																		
-"02_mrsmonkey",	"02_mrsmonkey",	"02_mrsmonkey",
-"03_tommyscaletta", "03_tommyscaletta","03_tommyscaletta","03_tommyscaletta",
-"04_seymourbutts","04_seymourbutts","04_seymourbutts","04_seymourbutts",
-"05_reese", "05_reese", "05_reese", "05_reese", "05_reese", "05_reese",
 "randomgun", "randomgun",
 "washkey",	"washkey",															
 "craftingkey",	"craftingkey",																		

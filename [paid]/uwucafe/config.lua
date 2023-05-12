@@ -59,7 +59,7 @@ Config = {
 	Locations = {
 		{	zoneEnable = true,
 			job = "catcafe", -- Set this to the required job
-			label = "Cat Cafe",
+			label = "UwU Cafe",
 			zones = {
 				vector2(-591.15808105469, -1087.8620605469),
 				vector2(-563.33447265625, -1087.8508300781),

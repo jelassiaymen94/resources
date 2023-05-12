@@ -40,7 +40,7 @@ CreateThread(function()
 			JobLocation = PolyZone:Create(Config.Locations[k].zones, { name = Config.Locations[k].label, debugPoly = Config.Debug })
 			JobLocation:onPlayerInOut(function(isPointInside) if not isPointInside and onDuty and PlayerJob.name == "catcafe" then TriggerServerEvent("QBCore:ToggleDuty") end end)
 
-			Blips[#Blips+1] = makeBlip({coords = v.blip, sprite = 89, col = v.blipcolor, scale = 0.6, disp = 6, name = v.label})
+			Blips[#Blips+1] = makeBlip({coords = v.blip, sprite = 621, col = v.blipcolor, scale = 0.6, disp = 6, name = v.label})
 		end
 	end
 	--Stashes
