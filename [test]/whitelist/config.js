@@ -4,14 +4,14 @@ var botToken = "MTAyNzQyMDA1NDY3NTAwMTQwNA.GfB5A1.It3qyilGnJPG4JHNckbLBKGbRUq3ul
 var licenseKey = "MsXK1veEE_DHRURz4gdCY1nkVyR4jKD-trcNyzhRjBeaf"; // License key found at https://license.weblutions.com
 
 var whitelistRoles = [ // Roles by ID that are whitelisted.
-    ""
+    "1011780619258314842"
 ];
 var blacklistRoles = [ // Roles by Id that are blacklisted.
-    "Citizen"
+    // "1011780619258314842"
 ];
 
-var notWhitelistedMessage = "You're Not Whitelisted. Please wait <<CACHE>> before trying again.";
+var notWhitelistedMessage = "You need to join our Discord to be Allowlisted - Discord.gg/Avalanche";
 var noGuildMessage = "Guild Not Detected. It seems you're not in the guild for this community.";
-var blacklistMessage = "You're blacklisted from this server.";
+var blacklistMessage = "This Server is Only Open on Weekends or if You are a Supporter";
 var debugMode = false; // If you're experiencing issues. Contact Weblutions.
 var cacheMaxTime = "2m"; // This is the time it takes for refreshes (cache) to have to reload when fetching Discord roles.
