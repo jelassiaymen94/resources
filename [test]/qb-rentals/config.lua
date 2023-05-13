@@ -48,8 +48,8 @@ Config.Locations = {
     },
 }
 
-Config.Blips = {
-    {title= Lang:t("info.land_veh"), colour= 50, id= 56, x= -283.17, y= -989.61, z= 31.08},
+Config.Blips = { 
+    {title= Lang:t("info.land_veh"), colour= 50, id= 56, x= -295.67, y= -996.3, z= 29.25},
     {title= Lang:t("info.land_veh"), colour= 50, id= 56, x= 2009.5, y= 3050.4, z= 46.608},
     {title= Lang:t("info.land_veh"), colour= 50, id= 56, x= -131.8, y= 6332.7, z= 31.48},
     {title= Lang:t("info.air_veh"), colour= 32, id= 578, x= -1673.39, y= -3158.45, z= 13.99},
