@@ -1,39 +1,23 @@
-local QBCore = exports['qb-core']:GetCoreObject()
-
-
-
-
-
-
-
-
-
-
-
-
-
-local ropeEntity = nil
-local attachedEntity = nil
 local isRopeAttached = false
+local ropeObject = nil
 
-function AttachRopeToVehicle(vehicle)
+RegisterCommand('spawnrope', function(source, args, rawCommand)
+    SpawnRope()
+end)
+
+function SpawnRope()
     if isRopeAttached then
         return
     end
     
     local playerPed = PlayerPedId()
-    local vehiclePos = GetEntityCoords(vehicle)
     local playerPos = GetEntityCoords(playerPed)
-    local ropePos = vector3(vehiclePos.x, vehiclePos.y, playerPos.z)
+    local ropePos = playerPos + vector3(0.0, 0.0, -1.0) -- Adjust the position as desired
     
-    local ropeLength = #(playerPos - ropePos)
-    ropeEntity = AddRope(ropePos.x, ropePos.y, ropePos.z, 0.0, 0.0, 0.0, ropeLength, 1, ropeLength, 0.0, false, false, false, 5.0, false, 0)
+    local ropeLength = 5.0 -- Adjust the length as desired
+    ropeObject = CreateObject(GetHashKey("prop_mp_cone_01"), ropePos.x, ropePos.y, ropePos.z, true, true, true)
+    AttachEntityToEntity(ropeObject, playerPed, GetPedBoneIndex(playerPed, 60309), 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, false, false, false, false, 2, true)
     
-    AttachEntitiesToRope(ropeEntity, playerPed, GetEntityBoneIndexByName(playerPed, "SKEL_ROOT"), vehicle, GetEntityBoneIndexByName(vehicle, "chassis"))
-    
-    SetRopeLengthChangeRate(ropeEntity, -5.0) -- Adjust the rate as desired
-    
-    attachedEntity = vehicle
     isRopeAttached = true
 end
 
@@ -42,27 +26,19 @@ function DetachRope()
         return
     end
     
-    DeleteEntity(ropeEntity)
-    DetachRopeFromEntity(attachedEntity, ropeEntity)
+    DeleteEntity(ropeObject)
     
-    ropeEntity = nil
-    attachedEntity = nil
     isRopeAttached = false
 end
 
-CreateThread(function()
+Citizen.CreateThread(function()
     while true do
-        Wait(0)
+        Citizen.Wait(0)
         
         local playerPed = PlayerPedId()
-        local vehicle = GetVehiclePedIsIn(playerPed, false)
         
-        if IsControlJustPressed(0, 51) and DoesEntityExist(vehicle) and GetVehicleClass(vehicle) ~= 7 then -- Key: E
-            if isRopeAttached then
-                DetachRope()
-            else
-                AttachRopeToVehicle(vehicle)
-            end
+        if IsControlJustPressed(0, 51) and isRopeAttached then -- Key: E
+            DetachRope()
         end
     end
 end)
