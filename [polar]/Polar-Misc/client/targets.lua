@@ -70,7 +70,25 @@ end)
 
 CreateThread(function()
 
-
+    for k, v in pairs(Config.Locations["tattoshops"]) do
+        exports['qb-target']:AddBoxZone("tattoshops"..k, vector3(v.x, v.y, v.z), 1.5, 1.5, {
+            name = "tattoshops"..k,
+            heading = -72,
+            debugPoly = false,
+            minZ = v.z - 2,
+            maxZ = v.z + 2,
+        }, {
+            options = {
+                {
+                    type = "client",
+                    event = "qb-tatto:client:GoToMeno",
+                    icon = "fa-solid fa-bolt",
+                    label = "Tattoo Shop",
+                }
+            },
+            distance = 1.5
+        })
+    end
   
     exports['qb-target']:AddBoxZone("apartment", vector3(-271.01, -959.305, 32.692 - 1.12), 2.5, 2.3, {
         name = "apartment",
