@@ -140,7 +140,7 @@ RegisterNetEvent('Renewed-Deliveries:client:NewPlace', function(location, NetID,
     if NetID and plate then
         CachedNet = NetID
         local vehicle = NetToVeh(NetID)
-        exports['LegacyFuel']:SetFuel(vehicle, 100.0) end
+        exports['LegacyFuel']:SetFuel(vehicle, 100.0)
         TriggerServerEvent("qb-vehiclekeys:server:AcquireVehicleKeys", plate)
     end
 
@@ -285,7 +285,7 @@ RegisterNetEvent('Renewed-Deliveries:client:TakePackage', function()
         if result then
             prop = randomTable[math.random(1, #randomTable)]
             Wait(50)
-            exports['Polar-Sub']:carryProp(prop)
+            exports['weaponcarry']:carryProp(prop)
         end
     end, CachedNet)
 end)
