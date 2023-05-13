@@ -34,6 +34,14 @@ local function closeMenu()
         action = 'CLOSE_MENU'
     })
 end
+RegisterNetEvent('qb-menu:client:menuClosed', function()  closeMenu()        end)
+RegisterNUICallback('closeMenu', function(_, cb)
+    headerShown = false
+    sendData = nil
+    SetNuiFocus(false)
+    cb('ok')
+    TriggerEvent("qb-menu:client:menuClosed") 
+end)
 
 local function showHeader(data)
     if not data or not next(data) then return end
