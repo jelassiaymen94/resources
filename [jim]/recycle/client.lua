@@ -607,11 +607,13 @@ function PickupPackage()
         Citizen.Wait(7)
     end
     TaskPlayAnim(GetPlayerPed(-1), "anim@heists@box_carry@" ,"idle", 5.0, -1, -1, 50, 0, false, false, false)
-	local randommodel = math.random(1,3)
-	--if randommodel == 1 then model = GetHashKey("prop_cs_cardbox_01") rot1 = 300.0 rot2 = 250.0
-	--elseif randommodel == 2 then model = GetHashKey("prop_rub_scrap_06") rot1 = 300.0 rot2 = 130.0
-	--elseif randommodel == 3 then model = GetHashKey("v_ret_gc_bag01") rot1 = 300.0 rot2 = 130.0 end
-	model = GetHashKey("prop_rub_scrap_06")
+	local randommodel = math.random(1,4)
+	if randommodel == 1 then model = GetHashKey("prop_cs_cardbox_01") 
+	elseif randommodel == 2 then model = GetHashKey("prop_rub_scrap_06")
+	elseif randommodel == 3 then model = GetHashKey("v_ret_gc_bag01")
+	elseif randommodel == 4 then model = GetHashKey("v_serv_metro_metaljunk2")
+	end
+	--model = GetHashKey("prop_rub_scrap_06")
     RequestModel(model)
     while not HasModelLoaded(model) do Citizen.Wait(0) end
     local object = CreateObject(model, pos.x, pos.y, pos.z, true, true, true)

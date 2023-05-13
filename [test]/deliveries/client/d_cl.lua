@@ -140,7 +140,7 @@ RegisterNetEvent('Renewed-Deliveries:client:NewPlace', function(location, NetID,
     if NetID and plate then
         CachedNet = NetID
         local vehicle = NetToVeh(NetID)
-        if not Config.RenewedFuel then exports['LegacyFuel']:SetFuel(vehicle, 100.0) end
+        exports['LegacyFuel']:SetFuel(vehicle, 100.0) end
         TriggerServerEvent("qb-vehiclekeys:server:AcquireVehicleKeys", plate)
     end
 
@@ -304,7 +304,7 @@ RegisterNetEvent('Renewed-Deliveries:client:DeliverPackage', function()
     local shop = --GetShop()
     QBCore.Functions.TriggerCallback('Renewed-Deliveries:server:DeliverPackage', function(result)
         if result then
-            exports['Renewed-Weaponscarry']:removeProp(prop)
+            exports['weaponcarry']:removeProp(prop)
             prop = nil
         end
     end,shop) -- shop)

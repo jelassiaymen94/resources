@@ -30,7 +30,7 @@ Config.Language = 'English'
 
 --============== BANK BLIP -=============
 
-Config.UseBlip = true -- use a blip on the map?
+Config.UseBlip = false -- use a blip on the map?
 Config.BlipName = "Pacific Bank" -- blip name
 Config.BlipLocation = vector3(-106.67, 6466.64, 32.75) -- blip location
 Config.BlipSprite = 267 -- https://docs.fivem.net/docs/game-references/blips/ -- picture of blip

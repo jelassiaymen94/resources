@@ -200,7 +200,7 @@ RegisterNetEvent('Renewed-Garbage:client:NewPlace', function(location, NetID, pl
     if NetID and plate then
         CachedNet = NetID
         local vehicle = NetToVeh(NetID)
-        if not Config.RenewedFuel then exports['LegacyFuel']:SetFuel(vehicle, 100.0) end
+        exports['LegacyFuel']:SetFuel(vehicle, 100.0) end
         TriggerServerEvent("qb-vehiclekeys:server:AcquireVehicleKeys", plate)
     end
 
