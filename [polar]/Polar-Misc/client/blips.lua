@@ -208,67 +208,74 @@ local QBCore = exports['qb-core']:GetCoreObject()
 
 CreateThread(function()
 
-
-
-
-
-
-
-
 end)
 
 
-CreateThread(function()
-   Wait(1000)
-   if QBCore.Functions.GetPlayerData().job ~= nil and next(QBCore.Functions.GetPlayerData().job) then
-       PlayerJob = QBCore.Functions.GetPlayerData().job
-       if PlayerJob == 'police' then
-         
-         pd()
+RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function()
+   PlayerJob = QBCore.Functions.GetPlayerData().job
+   if PlayerJob.name ~= "police" then return end
+   policeblips()
+end)
+RegisterNetEvent('QBCore:Client:OnJobUpdate', function(JobInfo)
+   PlayerJob = QBCore.Functions.GetPlayerData().job
+   --PlayerJob = JobInfo
+     
+   if PlayerJob.name == "police" then
+       policeblips()
 
-       end
+   else
+      removepoliceblips()
+      exports['qb-core']:HideText()
    end
 end)
+function removepoliceblips()
 
-function pd()
+   RemoveBlip(blip1)
+   Wait(50)
+   RemoveBlip(blip2)
+   Wait(50)
+   RemoveBlip(blip3)
+
+end
+function policeblips()
 
 
 
 
 
-   local blip = AddBlipForCoord(vector3(643.17, -1828.23, 9.08))
-   SetBlipSprite (blip, 404)
-   SetBlipDisplay(blip, 6) 
-   SetBlipScale  (blip, 0.6)
-   SetBlipAsShortRange(blip, true)
-   SetBlipColour(blip, 3)
+   blip1 = AddBlipForCoord(vector3(643.17, -1828.23, 9.08))
+   SetBlipSprite (blip1, 404)
+   SetBlipDisplay(blip1, 6) 
+   SetBlipScale  (blip1, 0.6)
+   SetBlipAsShortRange(blip1, true)
+   SetBlipColour(blip1, 3)
    BeginTextCommandSetBlipName("STRING")
    AddTextComponentSubstringPlayerName("Police Boat")
-   EndTextCommandSetBlipName(blip)
+   EndTextCommandSetBlipName(blip1)
 
 
-   local blip = AddBlipForCoord(vector3(916.11, 3655.86, 32.49))
-   SetBlipSprite (blip, 404)
-   SetBlipDisplay(blip, 6) 
-   SetBlipScale  (blip, 0.6)
-   SetBlipAsShortRange(blip, true)
-   SetBlipColour(blip, 3)
+   blip2 = AddBlipForCoord(vector3(916.11, 3655.86, 32.49))
+   SetBlipSprite (blip2, 404)
+   SetBlipDisplay(blip2, 6) 
+   SetBlipScale  (blip2, 0.6)
+   SetBlipAsShortRange(blip2, true)
+   SetBlipColour(blip2, 3)
    BeginTextCommandSetBlipName("STRING")
    AddTextComponentSubstringPlayerName("Police Boat")
-   EndTextCommandSetBlipName(blip)
+   EndTextCommandSetBlipName(blip2)
 
 
 
 
-   local blip = AddBlipForCoord(vector3(-914.95, 5797.57, 0.41))
-   SetBlipSprite (blip, 404)
-   SetBlipDisplay(blip, 6) 
-   SetBlipScale  (blip, 0.6)
-   SetBlipAsShortRange(blip, true)
-   SetBlipColour(blip, 3)
+   blip3 = AddBlipForCoord(vector3(-914.95, 5797.57, 0.41))
+   SetBlipSprite (blip3, 404)
+   SetBlipDisplay(blip3, 6) 
+   SetBlipScale  (blip3, 0.6)
+   SetBlipAsShortRange(blip3, true)
+   SetBlipColour(blip3, 3)
    BeginTextCommandSetBlipName("STRING")
    AddTextComponentSubstringPlayerName("Police Boat")
-   EndTextCommandSetBlipName(blip)
+   EndTextCommandSetBlipName(blip3)
 
 
 

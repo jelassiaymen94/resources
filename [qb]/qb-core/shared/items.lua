@@ -1647,7 +1647,7 @@ QBShared.Items = {
 ---
 ["petfood"] = {
 	["name"] = "petfood",
-	["label"] = "pet food",
+	["label"] = "Pet Food",
 	["weight"] = 500,
 	["type"] = "item",
 	["image"] = "petfood.png",
@@ -1659,7 +1659,7 @@ QBShared.Items = {
 },
 ["collarpet"] = {
 	["name"] = "collarpet",
-	["label"] = "Pet collar",
+	["label"] = "Collar",
 	["weight"] = 500,
 	["type"] = "item",
 	["image"] = "collarpet.png",
@@ -1671,7 +1671,7 @@ QBShared.Items = {
 },
 ["firstaidforpet"] = {
 	["name"] = "firstaidforpet",
-	["label"] = "First aid for pet",
+	["label"] = "Pet First Aid",
 	["weight"] = 500,
 	["type"] = "item",
 	["image"] = "firstaidforpet.png",
@@ -1683,7 +1683,7 @@ QBShared.Items = {
 },
 ["petnametag"]              = {
 	["name"] = "petnametag",
-	["label"] = "Name tag",
+	["label"] = "Name Tag",
 	["weight"] = 500,
 	["type"] = "item",
 	["image"] = "petnametag.png",
@@ -1695,7 +1695,7 @@ QBShared.Items = {
 },
 ["petwaterbottleportable"]  = {
 	["name"] = "petwaterbottleportable",
-	["label"] = "Portable water bottle",
+	["label"] = "Portable Water Bottle",
 	["weight"] = 1000,
 	["type"] = "item",
 	["image"] = "petwaterbottleportable.png",

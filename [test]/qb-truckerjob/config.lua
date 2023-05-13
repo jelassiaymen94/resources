@@ -18,6 +18,12 @@ Config.TruckerJobLocations = {
         label = "Truck Storage",
         coords = vector4(141.12, -3204.31, 5.85, 267.5),
     },
+    ["stores"] = {
+       [1] = { coords = vec(1,2,3) },
+       [2] = { coords = vec(1,2,3) },
+      
+       
+    },
 }
 
 Config.TruckerJobVehicles = {
