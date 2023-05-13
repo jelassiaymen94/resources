@@ -1,7 +1,7 @@
 Translations = {
     ui = {
-        server_name = "Polar",
-        welcome_message = "Welcome To Polar",
+        server_name = "Avalanche",
+        welcome_message = "Welcome To Avalanche",
         select_char = "Select your character",
         govname = "Not a goverment",
         create_title = "Please fill all the information below before you go to the city",
