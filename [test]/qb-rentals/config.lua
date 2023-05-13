@@ -4,9 +4,9 @@ Config.FuelExport = 'LegacyFuel'
 
 Config.Locations = {
     vehicle = {
-        coords = vector4(-283.3026, -989.7184, 30.1824, 337.6400),
+        coords = vector4(-295.67, -996.3, 29.25, 206.46),
         pedhash = `a_m_y_business_03`,
-        spawnpoint = vector4(-275.7123, -989.8766, 30.5449, 250.4124),
+        spawnpoint = vector4(-301.97, -1004.54, 29.39, 248.97),
     },
 
     vehicle2 = {
