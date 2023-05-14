@@ -103,7 +103,7 @@ Config = {
 		["gearshop"] = {
 			{ name = "diving_gear", price = 2500, amount = 5, },
 			{ name = "fishingrod", price = 1000, amount = 30,},
-			{ name = "fishingbait", price = 25, amount = 500, },
+			{ name = "fishbait", price = 25, amount = 500, },
 			{ name = "jerry_can", price = 2500, amount = 3, },
 
 		},
@@ -1264,8 +1264,8 @@ Config.Locations = {
 		},
 		["products"] = Config.Products["coffeeplace"], -- example using coffeplace info
 		["hideblip"] = true,
-	},]]
-}
+	},
+}]]
 
 --if Gabz locations are enabled, override their coords with these
 if Config.Gabz247 then
@@ -1319,25 +1319,6 @@ if Config.BlackMarket then
 	}
 end
 
-if Config.VendOverride then
-	Config.Locations["vendingmachine"] = {
-		["label"] = "Newspaper Kiosk",
-		["targetIcon"] = "fas fa-calculator",
-		["targetLabel"] = "Newspaper Kiosk",
-		["type"] = "items",
-		["logo"] = "https://static.wikia.nocookie.net/gtawiki/images/8/83/Weazel_News.png",
-		["model"] = { -- You can add more models to this, but these make the most sense for the vending machine stuff
-			--[[`prop_vend_soda_01`,
-			`prop_vend_soda_02`,
-			`prop_vend_snak_01`,
-			`prop_vend_snak_01_tu`]]
-		--	`prop_news_disp_02a`		},
-		["coords"] = { -- If you want to place custom vending machine locations
-		--	vector4(131.13, -3007.16, 7.04, 0.0), -- GABZ LS Tuners
-		},
-		["products"] = Config.Products["vending"],
-	}
-end
 Config.ItemModels = {
 	["repairkit"] = `v_ind_cs_toolbox4`,
 	["advancedrepairkit"] = `v_ind_cs_toolbox4`,
