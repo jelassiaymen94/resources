@@ -2,17 +2,21 @@ local ped
 local isSelling = false
 
 local fish = {
-    fish = true,
-    fish2 = true,
+    cod = true,
+    ghol = true,
     catfish = true,
-    goldfish = true,
+    eel = true,
+    swordfish = true,
     largemouthbass = true,
+    bluefish = true,
     redfish = true,
+    goldfish = true,
     salmon = true,
+    rainbowtrout = true,
+    tunafish = true,
+    tigershark = true,
     stingray = true,
-    stripedbass = true,
-    whale = true,
-    whale2 = true
+    killerwhale = true
 }
 
 RegisterNetEvent('qb-fishing:client:OpenSale', function()
