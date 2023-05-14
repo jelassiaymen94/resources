@@ -80,7 +80,7 @@ RegisterNetEvent('qb-fishing:client:FishingRod', function()
 
 
     -- Check if player has fishbait
-    local hasItem = QBCore.Functions.HasItem("fishingbait")
+    local hasItem = QBCore.Functions.HasItem("fishbait")
     if hasItem then
         
         -- Start Fishing

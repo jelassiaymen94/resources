@@ -49,7 +49,7 @@ Polar Misc Script
 --Fishing--
 ['smallfish'] 				 	 	 = {['name'] = 'smallfish', 			  	  		['label'] = 'Very Small Fish', 			['weight'] = 250, 		['type'] = 'item', 		['image'] = 'smallfish.png', 			    ['unique'] = false, 	['useable'] = false, 	['shouldClose'] = true,	   ['combinable'] = nil,   ['description'] = 'A very small fish, the size of my hand'},
 
-['fishingbait'] 				 	 	 = {['name'] = 'fishingbait', 			  	  		['label'] = 'Worms Bait', 			['weight'] = 125, 		['type'] = 'item', 		['image'] = 'fishingbait.png', 			    ['unique'] = false, 	['useable'] = false, 	['shouldClose'] = true,	   ['combinable'] = nil,   ['description'] = 'Worm bait'},
+['fishbait'] 				 	 	 = {['name'] = 'fishbait', 			  	  		['label'] = 'Worms Bait', 			['weight'] = 125, 		['type'] = 'item', 		['image'] = 'fishbait.png', 			    ['unique'] = false, 	['useable'] = false, 	['shouldClose'] = true,	   ['combinable'] = nil,   ['description'] = 'Worm bait'},
 
 ['fishingrod'] 				 = {['name'] = 'fishingrod', 			  	  	['label'] = 'Fishing Rod', 			['weight'] = 1500, 		['type'] = 'item', 		['image'] = 'fishingrod.png', 		['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,	   ['combinable'] = nil,   ['description'] = 'A very durable fishing rod, used for catching fish.'},
 
@@ -79,7 +79,7 @@ Polar Misc Script
             slot = 1,
         },
         [2] = {
-            name = "fishingbait",
+            name = "fishbait",
             price = 25,
             amount = 100,
             info = {},
@@ -112,7 +112,7 @@ Polar Misc Script
 ```lua
 ["fishingshop"] = {
 			{ name = "fishingrod", price = 250, amount = 25, },
-			{ name = "fishingbait", price = 25, amount = 100, },
+			{ name = "fishbait", price = 25, amount = 100, },
 		},
 ```
 ## (Jim-Shops>config.lua) under Config.Locations = {
