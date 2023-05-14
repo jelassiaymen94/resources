@@ -13,12 +13,12 @@ local dkeypad3 = nil
 local dkeypad4 = nil
 
 function props()
-   local kp1 =  CreateObject(GetHashKey("ch_prop_fingerprint_scanner_error_01b"),Config.doorcard1Eye, false, false, false) SetEntityHeading(kp1, 315.93) -- left double
+   local kp1 =  CreateObject(GetHashKey("ch_prop_fingerprint_scanner_error_01b"),Config.doorcard1Eye, false, false, false) SetEntityHeading(kp1, 250.93) -- left double
    local kp2 =  CreateObject(GetHashKey("ch_prop_fingerprint_scanner_error_01b"),  Config.doorcard2Eye, false, false, false) SetEntityHeading(kp2, 45.7) -- right double
 
-   keypad1 =  CreateObject(GetHashKey("ch_prop_fingerprint_scanner_error_01b"),  Config.Door1Eye, false, false, false) SetEntityHeading(keypad1, 225.7) -- right double
+   keypad1 =  CreateObject(GetHashKey("ch_prop_fingerprint_scanner_error_01b"),  Config.Door1Eye, false, false, false) SetEntityHeading(keypad1, 340.7) -- right double
    keypad2 =  CreateObject(GetHashKey("ch_prop_fingerprint_scanner_error_01b"),  Config.Door2Eye, false, false, false) SetEntityHeading(keypad2, 225.7) -- right double
-   keypad3 =  CreateObject(GetHashKey("ch_prop_fingerprint_scanner_error_01b"),  Config.Door3Eye, false, false, false) SetEntityHeading(keypad3, 45.7) -- right double
+   keypad3 =  CreateObject(GetHashKey("ch_prop_fingerprint_scanner_error_01b"),  Config.Door3Eye, false, false, false) SetEntityHeading(keypad3, 340.7) -- right double
    
    
    Wait(50) FreezeEntityPosition(kp1, true)   
@@ -39,7 +39,7 @@ function switch(prop, location, number)
  
    if number == 1 then
       if DoesEntityExist(keypad1) then DeleteEntity(keypad1) end
-      local dkeypad1 =  CreateObject(GetHashKey("ch_prop_fingerprint_damaged_01"),  location, false, false, false) SetEntityHeading(dkeypad1, 225.7) -- right double
+      local dkeypad1 =  CreateObject(GetHashKey("ch_prop_fingerprint_damaged_01"),  location, false, false, false) SetEntityHeading(dkeypad1, 340.7) -- right double
       Wait(50) FreezeEntityPosition(dkeypad1, true)  
    elseif number == 2 then
       if DoesEntityExist(keypad2) then DeleteEntity(keypad2) end
@@ -47,7 +47,7 @@ function switch(prop, location, number)
       Wait(50) FreezeEntityPosition(dkeypad2, true)  
    elseif number == 3 then
       DeleteEntity(keypad3)
-      local dkeypad3 =  CreateObject(GetHashKey("ch_prop_fingerprint_damaged_01"),  location, false, false, false) SetEntityHeading(dkeypad3, 40.7) -- right double
+      local dkeypad3 =  CreateObject(GetHashKey("ch_prop_fingerprint_damaged_01"),  location, false, false, false) SetEntityHeading(dkeypad3, 340.7) -- right double
       Wait(50) FreezeEntityPosition(dkeypad3, true)  
    
    else print('no switch')
@@ -61,7 +61,9 @@ end
 
 
 RegisterNetEvent('Polar-Pacific:Client:ResetPropsKeypads', function()
-   
+   if DoesEntityExist(kp1) then DeleteEntity(kp1) end
+   if DoesEntityExist(kp2) then DeleteEntity(kp2) end
+
    if DoesEntityExist(keypad1) then DeleteEntity(keypad1) end
    if DoesEntityExist(keypad2) then DeleteEntity(keypad2) end
    if DoesEntityExist(keypad3) then DeleteEntity(keypad3) end

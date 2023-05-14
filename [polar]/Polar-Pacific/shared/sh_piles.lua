@@ -19,11 +19,12 @@ local z = 30.63
 
 
 Config.Pacificprop11 = {
-    vector4(-114.04, 6470.48, 31.63, 100.76),
-    vector4(-96.67, 6466.37, 31.63, 82.95)
+    vector4(252.8, 207.93, 106.29, 331.45),
+    vector4(247.99, 227.66, 106.29, 248.68),
 
 }
 function Pacificprop11()
+   
     local cashprops = {
         'ex_cash_pile_005',
     }
@@ -41,14 +42,16 @@ function Pacificprop11()
     end 
     TriggerEvent('Polar-Pacific:Server:SetPacificprop11', prop)
     local Pacificprop11 = true
-    TriggerClientEvent('Polar-Pacific:Client:AddPickupTarget', -1, 'Pacificprop11', Pacificprop11, prop, vec4(location.x, location.y, z, location.w), true)
-    TriggerClientEvent('Polar-Pacific:Client:Pacificprop11', -1, 'Pacificprop11', prop, vec4(location.x, location.y, z, location.w)) 
+    
+    TriggerClientEvent('Polar-Pacific:Client:AddPickupTarget', -1, 'Pacificprop11', Pacificprop11, prop, vec4(location.x, location.y,location.z -1.0, location.w), true)
+    TriggerClientEvent('Polar-Pacific:Client:Pacificprop11', -1, 'Pacificprop11', prop, vec4(location.x, location.y,location.z -1.0, location.w)) 
     
 
 end
 
 Config.Pacificprop12 = {
-    vector4(-97.96, 6463.83, 31.63, 1.53)
+    vector4(251.2, 228.12, 106.29, 65.62),
+    vector4(253.1, 222.94, 106.29, 158.34),
 
 }
 function Pacificprop12()
@@ -69,12 +72,39 @@ function Pacificprop12()
     end 
     TriggerEvent('Polar-Pacific:Server:SetPacificprop12', prop)
     local Pacificprop12 = true
-    TriggerClientEvent('Polar-Pacific:Client:AddPickupTarget', -1, 'Pacificprop12', Pacificprop12, prop, vec4(location.x, location.y, z, location.w), true)
-    TriggerClientEvent('Polar-Pacific:Client:Pacificprop12', -1, 'Pacificprop12', prop, vec4(location.x, location.y, z, location.w)) 
+    TriggerClientEvent('Polar-Pacific:Client:AddPickupTarget', -1, 'Pacificprop12', Pacificprop12, prop, vec4(location.x, location.y,location.z -1.0, location.w), true)
+    TriggerClientEvent('Polar-Pacific:Client:Pacificprop12', -1, 'Pacificprop12', prop, vec4(location.x, location.y,location.z -1.0, location.w)) 
     
 
 end
+Config.Pacificprop13 = {
+    vector4(264.78, 215.18, 101.68, 152.95),
+    vector4(253.77, 216.15, 101.68, 156.57),
 
+}
+function Pacificprop13()
+    local cashprops = {
+        'ex_cash_pile_005',
+    }
+    local goldprops = {
+        'h4_prop_h4_gold_stack_01a'
+    }
+    local pileprop = cashprops[math.random(1, #cashprops)]
+    local goldprop = goldprops[math.random(1, #goldprops)]
+    local special = Config.Special[math.random(1, #Config.Special)]
+    local location = Config.Pacificprop13[math.random(1, #Config.Pacificprop13)]
+   
+    local chance = math.random(1,100) 
+    if chance<=74 then   prop = pileprop 
+    elseif chance<=100 then  prop = goldprop
+    end 
+    TriggerEvent('Polar-Pacific:Server:SetPacificprop13', prop)
+    local Pacificprop13 = true
+    TriggerClientEvent('Polar-Pacific:Client:AddPickupTarget', -1, 'Pacificprop13', Pacificprop13, prop, vec4(location.x, location.y,location.z -1.0, location.w), true)
+    TriggerClientEvent('Polar-Pacific:Client:Pacificprop13', -1, 'Pacificprop13', prop, vec4(location.x, location.y,location.z -1.0, location.w)) 
+    
+
+end
 
 
 

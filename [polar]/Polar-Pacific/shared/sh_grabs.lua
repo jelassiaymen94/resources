@@ -7,7 +7,9 @@ local prop = nil
 
 
 Config.Pacificprop1 = {
-    vector4(-107.73, 6466.1, 32.7, 273.69),
+    vector4(253.36, 216.38, 107.28, 212.16),
+    vector4(264.73, 220.54, 102.58, 315.79),
+    vector4(264.2, 213.73, 102.53, 249.38),
 
 }
 function Pacificprop1()
@@ -30,7 +32,8 @@ end
 
 
 Config.Pacificprop2 = {
-    vector4(-106.81, 6466.9, 32.7, 187.03),
+    vector4(254.95, 215.8, 107.28, 104.32),
+    vector4(250.65, 230.66, 107.17, 344.88),
 
 }
 function Pacificprop2()
@@ -53,7 +56,10 @@ end
 
 
 Config.Pacificprop3 = {
-    vector4(-1070.19, 6467.78, 30.64, 117.29)
+
+    vector4(249.31, 216.53, 107.28, 343.13),
+    vector4(243.36, 225.66, 107.28, 177.23),
+    vector4(264.41, 213.47, 102.53, 20.64),
 }
 function Pacificprop3()
     local cash = Config.Cash[math.random(1, #Config.Cash)]
@@ -74,7 +80,10 @@ function Pacificprop3()
 end
 
 Config.Pacificprop4 = {
-    vector4(-1030.13, 6470.7, 31.7, 217.88),
+   
+    vector4(249.02, 219.15, 107.28, 196.01),
+    vector4(243.95, 229.69, 107.18, 245.55),
+
 
 }
 function Pacificprop4()
@@ -97,7 +106,8 @@ end
 
     
 Config.Pacificprop5 = {
-    vector4(-1050.04, 6468.01, 31.08, 225.57),
+   vector4(243.77, 219.62, 107.28, 285.62),
+   vector4(246.96, 224.4, 107.28, 155.26),
 
 }
 function Pacificprop5()
@@ -117,11 +127,11 @@ function Pacificprop5()
     TriggerClientEvent('Polar-Pacific:Client:Pacificprop5', -1, 'Pacificprop5', prop, vec4(location.x, location.y, location.z-1, location.w))
     
 end
-
+--------------------------------------------------------------------------------------------------------------
 
 Config.Pacificprop31 = {
-    vector4(-114.09, 6471.44, 32.69, 16.24),
-    vector4(-113.13, 6472.56, 32.69, 93.0),
+    vector4(245.2, 219.27, 107.28, 14.68),
+    vector4(252.14, 222.56, 107.28, 151.43),
 
 }
 function Pacificprop31()
@@ -143,8 +153,8 @@ function Pacificprop31()
 end
 
 Config.Pacificprop32 = {
-    vector4(-103.83, 6470.11, 32.69, 204.38),
-    vector4(-98.29, 6469.73, 32.68, 7.65),
+    vector4(248.08, 218.46, 107.28, 241.24),
+    vector4(264.62, 212.51, 111.18, 165.14),
 
 
 }
@@ -167,8 +177,8 @@ function Pacificprop32()
 end
 
 Config.Pacificprop33 = {
-    vector4(-94.65, 6467.59, 32.69, 231.38),
-    vector4(-106.41, 6461.34, 32.69, 80.23),
+    vector4(250.42, 217.07, 107.28, 57.77),
+    vector4(264.05, 212.05, 111.18, 316.27),
     
 
 }
@@ -191,9 +201,8 @@ function Pacificprop33()
 end
 
 Config.Pacificprop34 = {
-    vector4(-107.72, 6478.95, 32.68, 36.88),
-    vector4(-108.65, 6478.16, 32.69, 84.88),
-    vector4(-98.93, 6464.41, 32.27, 54.38),
+    vector4(245.5, 219.41, 107.28, 112.53),
+    vector4(262.94, 210.12, 111.17, 327.58),
 
 }
 function Pacificprop34()
@@ -215,9 +224,8 @@ function Pacificprop34()
 end
 
 Config.Pacificprop35 = {
-   vector4(-91.36, 6465.49, 32.42, 190.58),
-   vector4(-95.66, 6463.77, 32.43, 100.15),
-   vector4(-98.17, 6458.93, 32.27, 163.0),
+    vector4(243.8, 219.95, 107.28, 210.93),
+    vector4(261.04, 205.57, 111.18, 306.4),
 
 }
 function Pacificprop35()

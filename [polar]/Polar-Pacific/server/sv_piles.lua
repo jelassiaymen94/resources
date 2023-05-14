@@ -7,7 +7,7 @@ local QBCore = exports[Config.Core]:GetCoreObject()
 RegisterNetEvent('Polar-Pacific:Server:SetupPile1', function()
     Pacificprop11()
     Pacificprop12()
-   -- Pacificprop13()
+    Pacificprop13()
    -- Pacificprop14()
    -- Pacificprop15()
 end)
@@ -17,7 +17,7 @@ end)
 
 
 local Pacificprop11 = nil
-RegisterNetEvent('Polar-Pacific:Server:SetPacificprop11', function(prop) Pacificprop11 = prop end)
+RegisterNetEvent('Polar-Pacific:Server:SetPacificprop11', function(prop) Pacificprop11 = prop  end)
 RegisterNetEvent('Polar-Pacific:Server:SynapsePacificprop11', function(prop)  local src = source local Player = QBCore.Functions.GetPlayer(src)
     pile(Pacificprop11)
 end)

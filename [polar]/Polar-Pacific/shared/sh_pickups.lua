@@ -4,8 +4,7 @@ local prop = nil
 -- pickups are 6-10 and 21 - 25
 
 Config.Pacificprop6 = {
-    vector4(-99.41, 6471.49, 32.08, 95.21),
-    vector4(-99.03, 6472.54, 32.1, 276.78),
+    vector4(240.02, 217.44, 106.69, 68.43),
 
 
 }
@@ -29,8 +28,7 @@ function Pacificprop6()
 end
 
 Config.Pacificprop7 = {
-   vector4(-102.3, 6474.21, 32.08, 14.04),
-   vector4(-105.08, 6468.01, 32.08, 244.05),
+    vector4(239.33, 218.63, 106.69, 153.22),
 
 }
 function Pacificprop7()
@@ -53,10 +51,7 @@ function Pacificprop7()
 end
 
 Config.Pacificprop8 = {
-    vector4(-98.48, 6462.07, 31.63, 153.75),
-    vector4(-97.36, 6463.53, 31.63, 334.86),
-    vector4(-104.61, 6461.07, 32.1, 351.37),
-
+    vector4(238.69, 220.12, 106.69, 70.7),
 }
 function Pacificprop8()
     local cash = Config.Cash[math.random(1, #Config.Cash)]
@@ -78,8 +73,7 @@ function Pacificprop8()
 end
 
 Config.Pacificprop9 = {
-    vector4(-92.83, 6464.61, 32.13, 187.6),
-    vector4(-95.62, 6464.51, 31.63, 189.22),
+    vector4(250.77, 222.01, 106.29, 359.19),
    
 
 }
@@ -111,8 +105,7 @@ end
 
 --- shelf
 Config.Pacificprop10 = {
-    vector4(-106.4, 6480.79, 31.94, 23.65),
-    vector4(-95.78, 6465.86, 32.36, 223.99), 
+    vector4(254.23, 219.07, 106.29, 246.25),
 
     
 }
@@ -136,8 +129,7 @@ function Pacificprop10()
 end
 
 Config.Pacificprop21 = {
-    vector4(-107.35, 6479.68, 32.37, 66.21),
-   
+    vector4(257.84, 211.76, 106.69, 284.95),
 
     
 }
@@ -161,7 +153,7 @@ function Pacificprop21()
 end
 
 Config.Pacificprop22 = {
-    vector4(-102.56, 6459.26, 31.93, 267.8)
+    vector4(248.82, 209.48, 106.29, 12.31),
    
     
 }

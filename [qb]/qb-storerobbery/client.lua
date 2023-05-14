@@ -237,6 +237,12 @@ RegisterNetEvent('qb-storerobbery:client:hacksafe', function()
                     TriggerServerEvent("QBCore:Server:RemoveItem", "safecracker", 1)
                     TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items["safecracker"], "remove")
                     MemoryGame()
+                    Wait(120000)
+                    SafeCracked = true
+                    Cracked = false
+                    QBCore.Functions.Notify("Grab the loot", "success")
+                   
+
                 else
                     QBCore.Functions.Notify("HOW?! Contact a Staff Member", "error")
                 end
@@ -458,15 +464,11 @@ function MemoryGame()
                                     SetNuiFocus(true, true)
                                     Wait(1000)
                                     SetNuiFocus(false, false)
-                                        Wait(120000)
+                                       
                                     if dist < 50 then
-                                        SafeCracked = true
-                                        Cracked = false
-                                        QBCore.Functions.Notify("Grab the loot", "success")
+                                       
                                     else
-                                        SafeCracked = false
-                                        Cracked = false
-                                        QBCore.Functions.Notify("Moved too far from the safe!")
+                                     
                                     end
                                 end
                             end
@@ -525,6 +527,7 @@ function CollectSafeMoney()
                         -- // COLLECTION \\ --
                         if currentSafe ~= 0 then
                             if SafeCracked then
+                                exports['qb-target']:RemoveZone(Config.Safes[safe])
                                 TriggerServerEvent("qb-storerobbery:server:SafeReward", currentSafe)
                                 TriggerServerEvent("qb-storerobbery:server:setSafeStatus", currentSafe)
                                 currentSafe = 0
@@ -532,6 +535,7 @@ function CollectSafeMoney()
                                 takeAnim()
                                 SafeCracked = false
                                 Cracked = false
+                                
                             else
                                 QBCore.Functions.Notify("It's still locked!", "error")
                                 SafeCracked = false

@@ -9,12 +9,13 @@ local amount = nil
 local specialgrab = 'Pacificgrab'
 local vaultdoorname = Config.VaultDoorDoor
 local vaultanimloc = Config.VaultDoorThirdEye
-local fingerprintdoor = ''
+local fingerprintdoor = Config.FingerPrintDoorDoor
+
 -- vault stuff
-local vaultid = 1
-local open = 37.75
-local closed = -125.74
-local vaultloc = vector3(-1307.85, -816.5, 17.82)
+local vaultid = 961976194
+local open = -3.1
+local closed = 158.92
+local vaultloc = vector3(255.23, 223.98, 102.39)
 
 local hi = false
 
@@ -60,6 +61,10 @@ RegisterNetEvent('police:SetCopCount', function(amount) CurrentCops = amount end
 RegisterNetEvent("Polar-Pacific:Client:ThermitePtfx", function(coords) if not HasNamedPtfxAssetLoaded("scr_ornate_heist") then  RequestNamedPtfxAsset("scr_ornate_heist") end while not HasNamedPtfxAssetLoaded("scr_ornate_heist") do Wait(0) end SetPtfxAssetNextCall("scr_ornate_heist") local effect = StartParticleFxLoopedAtCoord("scr_heist_ornate_thermal_burn", coords, 0.0, 0.0, 0.0, 1.0, false, false, false, false)  Wait(thermitetime) StopParticleFxLooped(effect, 0) end)
 
 
+RegisterCommand('openvault', function(source, args, rawCommand)
+    TriggerEvent('Polar-Pacific:Client:Vault')
+    -- vaultdone()
+end)
 
 
 RegisterNetEvent('Polar-Pacific:client:ThermiteStart', function(pp, door, coords)
@@ -127,7 +132,7 @@ function PlantThermite(pp, door)
     RequestNamedPtfxAsset("scr_ornate_heist") while not HasAnimDictLoaded("anim@heists@ornate_bank@thermal_charge") or not HasModelLoaded("hei_p_m_bag_var22_arm_s") or not HasNamedPtfxAssetLoaded("scr_ornate_heist") do Wait(50) end
     local pos = pp SetEntityHeading(PlayerPedId(), pos.w) Wait(100) local rotx, roty, rotz = table.unpack(vector3(GetEntityRotation(PlayerPedId()))) local netscene = NetworkCreateSynchronisedScene(pos.x, pos.y, pos.z, rotx, roty, rotz, 2, false, false, 1065353216, 0, 1.3) local bag = CreateObject('hei_p_m_bag_var22_arm_s', pos.x, pos.y, pos.z,  true,  true, false)
     SetEntityCollision(bag, false, true) local x, y, z = table.unpack(GetEntityCoords(PlayerPedId())) local thermite = CreateObject('hei_prop_heist_thermite', x, y, z + 0.2,  true,  true, true) SetEntityCollision(thermite, false, true) AttachEntityToEntity(thermite, ped, GetPedBoneIndex(PlayerPedId(), 28422), 0, 0, 0, 0, 0, 200.0, true, true, false, true, 1, true) NetworkAddPedToSynchronisedScene(PlayerPedId(), netscene, "anim@heists@ornate_bank@thermal_charge", "thermal_charge", 1.5, -4.0, 1, 16, 1148846080, 0)
-    NetworkAddEntityToSynchronisedScene(bag, netscene, "anim@heists@ornate_bank@thermal_charge", "bag_thermal_charge", 4.0, -8.0, 1) SetPedComponentVariation(PlayerPedId(), 5, 0, 0, 0) NetworkStartSynchronisedScene(netscene) Wait(5000) DetachEntity(thermite, 1, 1) FreezeEntityPosition(thermite, true) DeleteObject(bag)  SetPedComponentVariation(PlayerPedId(), 5, Config.BagUseID, 1, 1) NetworkStopSynchronisedScene(netscene) CreateThread(function() Wait(15000) DeleteEntity(thermite) end)
+    NetworkAddEntityToSynchronisedScene(bag, netscene, "anim@heists@ornate_bank@thermal_charge", "bag_thermal_charge", 4.0, -8.0, 1) SetPedComponentVariation(PlayerPedId(), 5, 0, 0, 0) NetworkStartSynchronisedScene(netscene) Wait(5000) DetachEntity(thermite, 1, 1) FreezeEntityPosition(thermite, true) DeleteObject(bag)  SetPedComponentVariation(PlayerPedId(), 5, Config.BagUseID, 1, 1) NetworkStopSynchronisedScene(netscene) CreateThread(function() Wait(15000) delete(thermite) end)
 end
 function loadAnimDict(dict) while not HasAnimDictLoaded(dict) do RequestAnimDict(dict) Wait(50) end end
 function loadModel(model) if type(model) == 'number' then model = model else model = GetHashKey(model) end while not HasModelLoaded(model) do RequestModel(model) Wait(0) end end
@@ -177,48 +182,73 @@ function other()
     exports['qb-target']:AddBoxZone(vaultdoorname,  vaultanimloc, 0.5, 0.5, { name =  vaultdoorname, heading = 28.69, debug = false, minZ = vaultanimloc.z-0.5, maxZ =  vaultanimloc.z+0.5,}, 
     { options = {{ event = "Polar-Pacific:Client:VaultHack", icon = "fas fa-bolt", label = "Hack", excludejob = 'police', item = vaultitem}}, distance = 2.5 }) 
    
-    local k = 0
-    local p = 0
-    local distance1 = 0.22
-    local distance2 = 0.22
-    local space1 = nil
-    local space2 = nil
-    local chance = math.random(1,100) 
-    if chance<=10 then   space2 = k+distance1  space1 = k+distance2 
-    elseif chance<=25 then   space2 = k+distance2  space1 = k+distance1 
-    elseif chance<=30 then   space2 = k-distance1  space1 = k-distance2
-    elseif chance<=35 then   space2 = k-distance2  space1 = k-distance1  
-    elseif chance<=40 then   space2 = k  space1 = k+distance1  
-    elseif chance<=45 then   space2 = k space1 = k+distance2
-    elseif chance<=50 then   space2 = k+distance2 space1 = k
-    elseif chance<=55 then   space2 = k+distance1 space1 = k
-    elseif chance<=60 then   space2 = k  space1 = k-distance1  
-    elseif chance<=65 then   space2 = k space1 = k-distance2 
-    elseif chance<=70 then   space2 = k-distance2 space1 = k 
-    elseif chance<=75 then   space2 = k-distance1  space1 = k
-    elseif chance<=80 then   space2 = k+distance2  space1 = k-distance2 
-    elseif chance<=85 then   space2 = k-distance2  space1 = k+distance2
-    elseif chance<=90 then   space2 = k+distance1  space1 = k-distance1
-    elseif chance<=100 then   space2 = k-distance1  space1 = k+distance1 
-    end
+    exports['qb-target']:AddBoxZone(Config.FingerPrintDoorDoor,  Config.FingerEye, 0.5, 0.5, { name =  Config.FingerPrintDoorDoor, heading = 28.69, debug = false, minZ = Config.FingerEye.z-0.5, maxZ =  Config.FingerEye.z+0.5,}, 
+    { options = {{ event = "Polar-Pacific:Client:VaultFinger",  icon = "fas fa-bolt", label = "Hack Door", excludejob = 'police', item = vaultitem}}, distance = 2.5 }) 
+   
+    drill1()
 
-    local loc = vector4(-96.21, 6460.11, 31.63-space1, 226.61)  
-    local name = "Pacificdrill1"
-    exports['qb-target']:AddBoxZone(name,  vector3(loc.x, loc.y, loc.z), 0.25, 0.25, { name = name, heading = loc.w, debug = true, minZ = loc.z-1, maxZ =  loc.z+1,}, 
-    { options = {{ event = "Polar-Pacific:Client:Drill", door = name, head = loc.w, coords = vec3(loc.x, loc.y, loc.z), icon = "fas fa-bolt", label = "Drill Lockbox", excludejob = 'police', item = drillitem}}, distance = 1.5 }) 
-   
-    local loc = vector4(-96.85, 6463.54, 31.63-space2, 314.59) 
-    local name = "Pacificdrill2"
-    exports['qb-target']:AddBoxZone(name,  vector3(loc.x, loc.y, loc.z), 0.25, 0.25, { name = name, heading = loc.w, debug = true, minZ = loc.z-1, maxZ =  loc.z+1,}, 
-    { options = {{ event = "Polar-Pacific:Client:Drill", door = name, head = loc.w, coords = vec3(loc.x, loc.y, loc.z), icon = "fas fa-bolt", label = "Drill Lockbox", excludejob = 'police', item = drillitem}}, distance = 1.5 }) 
-   
+    drill2()
+
+    drill3()
    
 end 
 
 
+function drill1()
+    local k = 0 local p = 0 local distance1 = 0.22 local distance2 = 0.22 local space1 = nil local space2 = nil local chance = math.random(1,100)  if chance<=15 then   space2 = k+distance1  space1 = k-distance2  elseif chance<=30 then   space2 = k-distance2  space1 = k+distance1  elseif chance<=45 then   space2 = k  space1 = k+distance1   elseif chance<=60 then   space1 = k space2 = k+distance2 elseif chance<=75 then   space2 = k-distance2 space1 = k elseif chance<=90 then   space1 = k-distance1 space2 = k elseif chance<=100 then   space2 = k  space1 = k end 
+  
+    local loc =  vector4(258.67, 218.69, 102.27-space1, 339.88)
+    local name = "Pacificdrill1"
+    exports['qb-target']:AddBoxZone(name,  vector3(loc.x, loc.y, loc.z), 0.5, 0.5, { name = name, heading = loc.w, debug = true, minZ = loc.z-1, maxZ =  loc.z+1,}, 
+    { options = {{ event = "Polar-Pacific:Client:Drill", door = name, head = loc.w, coords = vec3(loc.x, loc.y, loc.z), icon = "fas fa-bolt", label = "Drill Lockbox", excludejob = 'police', item = drillitem}}, distance = 1.5 }) 
+
+    local loc =   vector4(260.44, 218.03, 102.27-space2, 333.66)
+    local name = "Pacificdrill2"
+    exports['qb-target']:AddBoxZone(name,  vector3(loc.x, loc.y, loc.z), 0.5, 0.5, { name = name, heading = loc.w, debug = true, minZ = loc.z-1, maxZ =  loc.z+1,}, 
+    { options = {{ event = "Polar-Pacific:Client:Drill", door = name, head = loc.w, coords = vec3(loc.x, loc.y, loc.z), icon = "fas fa-bolt", label = "Drill Lockbox", excludejob = 'police', item = drillitem}}, distance = 1.5 }) 
+end
 
 
+function drill2()
+    local k = 0 local p = 0 local distance1 = 0.22 local distance2 = 0.22 local space1 = nil local space2 = nil local chance = math.random(1,100)  if chance<=15 then   space2 = k+distance1  space1 = k-distance2  elseif chance<=30 then   space2 = k-distance2  space1 = k+distance1  elseif chance<=45 then   space2 = k  space1 = k+distance1   elseif chance<=60 then   space1 = k space2 = k+distance2 elseif chance<=75 then   space2 = k-distance2 space1 = k elseif chance<=90 then   space1 = k-distance1 space2 = k elseif chance<=100 then   space2 = k  space1 = k end 
+    
+    local loc =  vector4(259.13, 213.47, 102.27-space1, 161.43)
+    local name = "Pacificdrill3"
+    exports['qb-target']:AddBoxZone(name,  vector3(loc.x, loc.y, loc.z), 0.5, 0.5, { name = name, heading = loc.w, debug = true, minZ = loc.z-1, maxZ =  loc.z+1,}, 
+    { options = {{ event = "Polar-Pacific:Client:Drill", door = name, head = loc.w, coords = vec3(loc.x, loc.y, loc.z), icon = "fas fa-bolt", label = "Drill Lockbox", excludejob = 'police', item = drillitem}}, distance = 1.5 }) 
 
+    local loc =   vector4(256.97, 214.06, 102.27-space2, 164.85)
+    local name = "Pacificdrill4"
+    exports['qb-target']:AddBoxZone(name,  vector3(loc.x, loc.y, loc.z), 0.5, 0.5, { name = name, heading = loc.w, debug = true, minZ = loc.z-1, maxZ =  loc.z+1,}, 
+    { options = {{ event = "Polar-Pacific:Client:Drill", door = name, head = loc.w, coords = vec3(loc.x, loc.y, loc.z), icon = "fas fa-bolt", label = "Drill Lockbox", excludejob = 'police', item = drillitem}}, distance = 1.5 }) 
+end
+
+
+function drill3()
+    local k = 0 local p = 0 local distance1 = 0.22 local distance2 = 0.22 local space1 = nil local space2 = nil local chance = math.random(1,100)  if chance<=15 then   space2 = k+distance1  space1 = k-distance2  elseif chance<=30 then   space2 = k-distance2  space1 = k+distance1  elseif chance<=45 then   space2 = k  space1 = k+distance1   elseif chance<=60 then   space1 = k space2 = k+distance2 elseif chance<=75 then   space2 = k-distance2 space1 = k elseif chance<=90 then   space1 = k-distance1 space2 = k elseif chance<=100 then   space2 = k  space1 = k end 
+  
+    local loc = vector4(266.76, 213.43,  102.27-space1, 250.05)
+    local name = "Pacificdrill5"
+    exports['qb-target']:AddBoxZone(name,  vector3(loc.x, loc.y, loc.z), 0.5, 0.5, { name = name, heading = loc.w, debug = true, minZ = loc.z-1, maxZ =  loc.z+1,}, 
+    { options = {{ event = "Polar-Pacific:Client:Drill", door = name, head = loc.w, coords = vec3(loc.x, loc.y, loc.z), icon = "fas fa-bolt", label = "Drill Lockbox", excludejob = 'police', item = drillitem}}, distance = 1.5 }) 
+
+    local loc =   vector4(263.84, 217.06,  102.27-space2, 343.68)
+    local name = "Pacificdrill6"
+    exports['qb-target']:AddBoxZone(name,  vector3(loc.x, loc.y, loc.z), 0.5, 0.5, { name = name, heading = loc.w, debug = true, minZ = loc.z-1, maxZ =  loc.z+1,}, 
+    { options = {{ event = "Polar-Pacific:Client:Drill", door = name, head = loc.w, coords = vec3(loc.x, loc.y, loc.z), icon = "fas fa-bolt", label = "Drill Lockbox", excludejob = 'police', item = drillitem}}, distance = 1.5 }) 
+
+    local loc = vector4(263.72, 211.86,  102.27-space1, 161.47)
+    local name = "Pacificdrill7"
+    exports['qb-target']:AddBoxZone(name,  vector3(loc.x, loc.y, loc.z), 0.5, 0.5, { name = name, heading = loc.w, debug = true, minZ = loc.z-1, maxZ =  loc.z+1,}, 
+    { options = {{ event = "Polar-Pacific:Client:Drill", door = name, head = loc.w, coords = vec3(loc.x, loc.y, loc.z), icon = "fas fa-bolt", label = "Drill Lockbox", excludejob = 'police', item = drillitem}}, distance = 1.5 }) 
+
+    local loc =   vector4(262.46, 212.25,  102.27-space2, 161.2)
+    local name = "Pacificdrill8"
+    exports['qb-target']:AddBoxZone(name,  vector3(loc.x, loc.y, loc.z), 0.5, 0.5, { name = name, heading = loc.w, debug = true, minZ = loc.z-1, maxZ =  loc.z+1,}, 
+    { options = {{ event = "Polar-Pacific:Client:Drill", door = name, head = loc.w, coords = vec3(loc.x, loc.y, loc.z), icon = "fas fa-bolt", label = "Drill Lockbox", excludejob = 'police', item = drillitem}}, distance = 1.5 }) 
+
+
+end
 
 
 
@@ -363,10 +393,10 @@ end
 
 
 local zone = PolyZone:Create({
-    vector2(-95.45, 6557.95),
-    vector2(29.92, 6432.58),
-    vector2(-119.70, 6274.62),
-    vector2(-265.91, 6426.14)
+    vector2(204.55, 287.96),
+    vector2(168.94, 177.38),
+    vector2(369.70, 109.22),
+    vector2(393.94, 230.40)
   }, {
 	debugPoly=false,
     name="zone",
@@ -419,17 +449,18 @@ function VaultForceClose()
     end
     end
 end
-RegisterNetEvent('Polar-Pacific:Client:Vault', function(open)
-    if Config.Pacific then TriggerServerEvent('qb-doorlock:server:updateState',  vaultdoorname, false, false, false, true, false, false)   return end
-    if not open then
+RegisterNetEvent('Polar-Pacific:Client:Vault', function(opens)
+    if Config.DoorLock then TriggerServerEvent('qb-doorlock:server:updateState',  vaultdoorname, false, false, false, true, false, false)   return end
+    if not opens then
     local object = GetClosestObjectOfType(vaultloc, 20.0, vaultid, false, false, false)
     --print(object)
     local entHeading = closed
     FreezeEntityPosition(object, false)
     while true do
-        if entHeading < open then
-            SetEntityHeading(object, entHeading - 1)
-            entHeading = entHeading + 0.01
+        print('h')
+        if entHeading > open then
+            SetEntityHeading(object, entHeading + 1)
+            entHeading = entHeading - 0.01
         else
             FreezeEntityPosition(object, true)
           
@@ -551,7 +582,7 @@ end
 RegisterNetEvent('Polar-Pacific:Client:AddTarget', function(door, door2, prop, var) 
     exports['qb-target']:AddBoxZone(door, vec3(var.x, var.y, var.z), 0.5, 0.5, { name = door, heading = 28.69, debug = true, minZ = var.z - 1.5, maxZ =  var.z + 1.5,}, 
     { options = {{ event = "Polar-Pacific:Client:Target", type = door, canInteract = function() if door2 then return true end end, icon = "fas fa-bolt", label = "Grab", excludejob = 'police'}}, distance = 1.5 }) 
-
+  -- print(door)
 end)
 
 
@@ -599,8 +630,9 @@ RegisterNetEvent('Polar-Pacific:client:keycard', function(door, position, rot, i
     TriggerServerEvent('Polar-Pacific:Server:TargetRemove', door) 
     local chance = math.random(1,100) local pos = GetEntityCoords(PlayerPedId()) local animDict = "anim@heists@keycard@" loadAnimDict(animDict) local prop = 'vw_prop_vw_key_card_01a' loadModel(prop) local prop2 =  CreateObject(prop, pos.x, pos.y, pos.z + 0.2,  true,  true, true)
     FreezeEntityPosition(PlayerPedId(), true) AttachEntityToEntity(prop2, ped, GetPedBoneIndex(PlayerPedId(), 28422), 0, 0, 0, 0, 0, 180.0, true, true, false, true, 1, true) SetEntityHeading(PlayerPedId(), position.w) SetEntityCoords(PlayerPedId(), vector3(position.x, position.y,position.z-1)) if chance <= carditemchance then TriggerServerEvent('Polar-Pacific:Server:RemoveItem', item, 1) end 
-    TaskPlayAnim(PlayerPedId(), animDict, "enter", 5.0, 1.0, -1, 16, 0, 0, 0, 0) Wait(1000) TaskPlayAnim(PlayerPedId(), animDict, "idle_a", 5.0, 1.0, -1, 16, 0, 0, 0, 0) Wait(5000) TaskPlayAnim(PlayerPedId(), animDict, "exit", 5.0, 1.0, -1, 16, 0, 0, 0, 0) Wait(1000) StopAnimTask(PlayerPedId(), animDict, "exit", 16.0)  DeleteEntity(prop2) FreezeEntityPosition(PlayerPedId(), false) TriggerServerEvent('qb-doorlock:server:updateState', door, false, false, false, true, false, false) QBCore.Functions.Notify(text('doorunlock'), "success", 2500)
+    TaskPlayAnim(PlayerPedId(), animDict, "enter", 5.0, 1.0, -1, 16, 0, 0, 0, 0) Wait(1000) TaskPlayAnim(PlayerPedId(), animDict, "idle_a", 5.0, 1.0, -1, 16, 0, 0, 0, 0) Wait(5000) TaskPlayAnim(PlayerPedId(), animDict, "exit", 5.0, 1.0, -1, 16, 0, 0, 0, 0) Wait(1000) StopAnimTask(PlayerPedId(), animDict, "exit", 16.0)  delete(prop2) FreezeEntityPosition(PlayerPedId(), false) TriggerServerEvent('qb-doorlock:server:updateState', door, false, false, false, true, false, false) QBCore.Functions.Notify(text('doorunlock'), "success", 2500)
 end)
+
 
 
 
@@ -755,15 +787,21 @@ RegisterNetEvent('Polar-Pacific:Client:Drill', function(data)
  end)
 
  function vaultdone() TriggerServerEvent('Polar-Pacific:Server:Vault') end
-RegisterNetEvent('Polar-Pacific:Client:VaultHack', function() 
+RegisterNetEvent('Polar-Pacific:Client:VaultHack', function(data) 
     QBCore.Functions.TriggerCallback('Polar-Pacific:VaultCheck', function(result) if result then 
         hack(vaultdoorname)
     else
         QBCore.Functions.Notify(text('sometingelse'), "error")
     end end)
 end)
+RegisterNetEvent('Polar-Pacific:Client:VaultFinger', function(data) 
+    QBCore.Functions.TriggerCallback('Polar-Pacific:VaultCheck', function(result) if result then 
+        hack(fingerprintdoor)
+    else
+        QBCore.Functions.Notify(text('sometingelse'), "error")
+    end end)
+end)
 
-  
 
 
 
@@ -1118,7 +1156,7 @@ end)
 local Pacificprop16 = nil
 RegisterNetEvent('Polar-Pacific:Client:Pacificprop16', function(door, prop, var) loadModel(prop) prop16 = prop Pacificprop16 =  CreateObject(prop, var.x, var.y, var.z,  true,  true, true) SetEntityHeading(Pacificprop16, var.w) 
     TriggerServerEvent('Polar-Pacific:Server:StartInteract', door)
-
+   
 end)
 
 local Pacificprop17 = nil
@@ -1177,54 +1215,57 @@ RegisterNetEvent('Polar-Pacific:Client:Pacificprop30', function(door, prop, var)
 end)
 
 
-
+function delete(prop)
+    print(prop)
+    DeleteEntity(prop)
+end
 
 
 RegisterNetEvent('Polar-Pacific:Client:TargetRemove', function(door) 
-    if door == 'Pacificprop1' then DeleteEntity(Pacificprop1) end
-    if door == 'Pacificprop2' then DeleteEntity(Pacificprop2) end
-    if door == 'Pacificprop3' then DeleteEntity(Pacificprop3) end
-    if door == 'Pacificprop4' then DeleteEntity(Pacificprop4) end
-    if door == 'Pacificprop5' then DeleteEntity(Pacificprop5) end
-    if door == 'Pacificprop6' then DeleteEntity(Pacificprop6) end
-    if door == 'Pacificprop7' then DeleteEntity(Pacificprop7) end
-    if door == 'Pacificprop8' then DeleteEntity(Pacificprop8) end
-    if door == 'Pacificprop9' then DeleteEntity(Pacificprop9) end
-    if door == 'Pacificprop10' then DeleteEntity(Pacificprop10) end
+    if door == 'Pacificprop1' then delete(Pacificprop1) end
+    if door == 'Pacificprop2' then delete(Pacificprop2) end
+    if door == 'Pacificprop3' then delete(Pacificprop3) end
+    if door == 'Pacificprop4' then delete(Pacificprop4) end
+    if door == 'Pacificprop5' then delete(Pacificprop5) end
+    if door == 'Pacificprop6' then delete(Pacificprop6) end
+    if door == 'Pacificprop7' then delete(Pacificprop7) end
+    if door == 'Pacificprop8' then delete(Pacificprop8) end
+    if door == 'Pacificprop9' then delete(Pacificprop9) end
+    if door == 'Pacificprop10' then delete(Pacificprop10) end
 
-   -- if door == 'Pacificprop11' then DeleteEntity(Pacificprop11) end
-   -- if door == 'Pacificprop12' then DeleteEntity(Pacificprop12) end
-  --  if door == 'Pacificprop13' then DeleteEntity(Pacificprop13) end
-  --  if door == 'Pacificprop14' then DeleteEntity(Pacificprop14) end
-  --  if door == 'Pacificprop15' then DeleteEntity(Pacificprop15) end
+   -- if door == 'Pacificprop11' then delete(Pacificprop11) end
+   -- if door == 'Pacificprop12' then delete(Pacificprop12) end
+  --  if door == 'Pacificprop13' then delete(Pacificprop13) end
+  --  if door == 'Pacificprop14' then delete(Pacificprop14) end
+  --  if door == 'Pacificprop15' then delete(Pacificprop15) end
 
-   -- if door == 'Pacificprop16' then DeleteEntity(Pacificprop16) end
-  --  if door == 'Pacificprop17' then DeleteEntity(Pacificprop17) end
-  --  if door == 'Pacificprop18' then DeleteEntity(Pacificprop18) end
-  --  if door == 'Pacificprop19' then DeleteEntity(Pacificprop19) end
-   -- if door == 'Pacificprop20' then DeleteEntity(Pacificprop20) end
+   -- if door == 'Pacificprop16' then delete(Pacificprop16) end
+  --  if door == 'Pacificprop17' then delete(Pacificprop17) end
+  --  if door == 'Pacificprop18' then delete(Pacificprop18) end
+  --  if door == 'Pacificprop19' then delete(Pacificprop19) end
+   -- if door == 'Pacificprop20' then delete(Pacificprop20) end
 
-    if door == 'Pacificprop21' then DeleteEntity(Pacificprop21) end
-    if door == 'Pacificprop22' then DeleteEntity(Pacificprop22) end
-    if door == 'Pacificprop23' then DeleteEntity(Pacificprop23) end
-    if door == 'Pacificprop24' then DeleteEntity(Pacificprop24) end
-    if door == 'Pacificprop25' then DeleteEntity(Pacificprop25) end
-  --  if door == 'Pacificprop26' then DeleteEntity(Pacificprop26) end
-  --  if door == 'Pacificprop27' then DeleteEntity(Pacificprop27) end
-  --  if door == 'Pacificprop28' then DeleteEntity(Pacificprop28) end
-  --  if door == 'Pacificprop29' then DeleteEntity(Pacificprop29) end
-  --  if door == 'Pacificprop30' then DeleteEntity(Pacificprop30) end
+    if door == 'Pacificprop21' then delete(Pacificprop21) end
+    if door == 'Pacificprop22' then delete(Pacificprop22) end
+    if door == 'Pacificprop23' then delete(Pacificprop23) end
+    if door == 'Pacificprop24' then delete(Pacificprop24) end
+    if door == 'Pacificprop25' then delete(Pacificprop25) end
+  --  if door == 'Pacificprop26' then delete(Pacificprop26) end
+  --  if door == 'Pacificprop27' then delete(Pacificprop27) end
+  --  if door == 'Pacificprop28' then delete(Pacificprop28) end
+  --  if door == 'Pacificprop29' then delete(Pacificprop29) end
+  --  if door == 'Pacificprop30' then delete(Pacificprop30) end
 
-    if door == 'Pacificprop31' then DeleteEntity(Pacificprop31) end
-    if door == 'Pacificprop32' then DeleteEntity(Pacificprop32) end
-    if door == 'Pacificprop33' then DeleteEntity(Pacificprop33) end
-    if door == 'Pacificprop34' then DeleteEntity(Pacificprop34) end
-    if door == 'Pacificprop35' then DeleteEntity(Pacificprop35) end
-    if door == 'Pacificprop36' then DeleteEntity(Pacificprop36) end
-    if door == 'Pacificprop37' then DeleteEntity(Pacificprop37) end
-    if door == 'Pacificprop38' then DeleteEntity(Pacificprop38) end
-    if door == 'Pacificprop39' then DeleteEntity(Pacificprop39) end
-    if door == 'Pacificprop40' then DeleteEntity(Pacificprop40) end
+    if door == 'Pacificprop31' then delete(Pacificprop31) end
+    if door == 'Pacificprop32' then delete(Pacificprop32) end
+    if door == 'Pacificprop33' then delete(Pacificprop33) end
+    if door == 'Pacificprop34' then delete(Pacificprop34) end
+    if door == 'Pacificprop35' then delete(Pacificprop35) end
+    if door == 'Pacificprop36' then delete(Pacificprop36) end
+    if door == 'Pacificprop37' then delete(Pacificprop37) end
+    if door == 'Pacificprop38' then delete(Pacificprop38) end
+    if door == 'Pacificprop39' then delete(Pacificprop39) end
+    if door == 'Pacificprop40' then delete(Pacificprop40) end
 
 
     exports['qb-target']:RemoveZone(door) 
@@ -1270,46 +1311,46 @@ end)
 
 RegisterNetEvent('Polar-Pacific:Client:ResetProps', function()
     
-    if DoesEntityExist(Pacificprop1) then DeleteEntity(Pacificprop1) exports['qb-target']:RemoveZone('Pacificprop1') end
-    if DoesEntityExist(Pacificprop2) then DeleteEntity(Pacificprop2) exports['qb-target']:RemoveZone('Pacificprop2') end
-    if DoesEntityExist(Pacificprop3) then DeleteEntity(Pacificprop3) exports['qb-target']:RemoveZone('Pacificprop3') end
-    if DoesEntityExist(Pacificprop4) then DeleteEntity(Pacificprop4) exports['qb-target']:RemoveZone('Pacificprop4') end
-    if DoesEntityExist(Pacificprop5) then DeleteEntity(Pacificprop5) exports['qb-target']:RemoveZone('Pacificprop5') end
-    if DoesEntityExist(Pacificprop6) then DeleteEntity(Pacificprop6) exports['qb-target']:RemoveZone('Pacificprop6') end
-    if DoesEntityExist(Pacificprop7) then DeleteEntity(Pacificprop7) exports['qb-target']:RemoveZone('Pacificprop7') end
-    if DoesEntityExist(Pacificprop8) then DeleteEntity(Pacificprop8) exports['qb-target']:RemoveZone('Pacificprop8') end
-    if DoesEntityExist(Pacificprop9) then DeleteEntity(Pacificprop9) exports['qb-target']:RemoveZone('Pacificprop9') end
-    if DoesEntityExist(Pacificprop10) then DeleteEntity(Pacificprop10) exports['qb-target']:RemoveZone('Pacificprop10') end
-    if DoesEntityExist(Pacificprop11) then DeleteEntity(Pacificprop11) exports['qb-target']:RemoveZone('Pacificprop11') end
-    if DoesEntityExist(Pacificprop12) then DeleteEntity(Pacificprop12) exports['qb-target']:RemoveZone('Pacificprop12') end
-    if DoesEntityExist(Pacificprop13) then DeleteEntity(Pacificprop13) exports['qb-target']:RemoveZone('Pacificprop13') end
-    if DoesEntityExist(Pacificprop14) then DeleteEntity(Pacificprop14) exports['qb-target']:RemoveZone('Pacificprop14') end
-    if DoesEntityExist(Pacificprop15) then DeleteEntity(Pacificprop15) exports['qb-target']:RemoveZone('Pacificprop15') end
-    if DoesEntityExist(Pacificprop16) then DeleteEntity(Pacificprop16) exports['qb-target']:RemoveZone('Pacificprop16') end
-    if DoesEntityExist(Pacificprop17) then DeleteEntity(Pacificprop17) exports['qb-target']:RemoveZone('Pacificprop17') end
-    if DoesEntityExist(Pacificprop18) then DeleteEntity(Pacificprop18) exports['qb-target']:RemoveZone('Pacificprop18') end
-    if DoesEntityExist(Pacificprop19) then DeleteEntity(Pacificprop19) exports['qb-target']:RemoveZone('Pacificprop19') end
-    if DoesEntityExist(Pacificprop20) then DeleteEntity(Pacificprop20) exports['qb-target']:RemoveZone('Pacificprop20') end
-    if DoesEntityExist(Pacificprop21) then DeleteEntity(Pacificprop21) exports['qb-target']:RemoveZone('Pacificprop21') end
-    if DoesEntityExist(Pacificprop22) then DeleteEntity(Pacificprop22) exports['qb-target']:RemoveZone('Pacificprop22') end
-    if DoesEntityExist(Pacificprop23) then DeleteEntity(Pacificprop23) exports['qb-target']:RemoveZone('Pacificprop23') end
-    if DoesEntityExist(Pacificprop24) then DeleteEntity(Pacificprop24) exports['qb-target']:RemoveZone('Pacificprop24') end
-    if DoesEntityExist(Pacificprop25) then DeleteEntity(Pacificprop25) exports['qb-target']:RemoveZone('Pacificprop25') end
-    if DoesEntityExist(Pacificprop26) then DeleteEntity(Pacificprop26) exports['qb-target']:RemoveZone('Pacificprop26') end
-    if DoesEntityExist(Pacificprop27) then DeleteEntity(Pacificprop27) exports['qb-target']:RemoveZone('Pacificprop27') end
-    if DoesEntityExist(Pacificprop28) then DeleteEntity(Pacificprop28) exports['qb-target']:RemoveZone('Pacificprop28') end
-    if DoesEntityExist(Pacificprop29) then DeleteEntity(Pacificprop29) exports['qb-target']:RemoveZone('Pacificprop29') end
-    if DoesEntityExist(Pacificprop30) then DeleteEntity(Pacificprop30) exports['qb-target']:RemoveZone('Pacificprop30') end
-    if DoesEntityExist(Pacificprop31) then DeleteEntity(Pacificprop31) exports['qb-target']:RemoveZone('Pacificprop31') end
-    if DoesEntityExist(Pacificprop32) then DeleteEntity(Pacificprop32) exports['qb-target']:RemoveZone('Pacificprop32') end
-    if DoesEntityExist(Pacificprop33) then DeleteEntity(Pacificprop33) exports['qb-target']:RemoveZone('Pacificprop33') end
-    if DoesEntityExist(Pacificprop34) then DeleteEntity(Pacificprop34) exports['qb-target']:RemoveZone('Pacificprop34') end
-    if DoesEntityExist(Pacificprop35) then DeleteEntity(Pacificprop35) exports['qb-target']:RemoveZone('Pacificprop35') end
-    if DoesEntityExist(Pacificprop36) then DeleteEntity(Pacificprop36) exports['qb-target']:RemoveZone('Pacificprop36') end
-    if DoesEntityExist(Pacificprop37) then DeleteEntity(Pacificprop37) exports['qb-target']:RemoveZone('Pacificprop37') end
-    if DoesEntityExist(Pacificprop38) then DeleteEntity(Pacificprop38) exports['qb-target']:RemoveZone('Pacificprop38') end
-    if DoesEntityExist(Pacificprop39) then DeleteEntity(Pacificprop39) exports['qb-target']:RemoveZone('Pacificprop39') end
-    if DoesEntityExist(Pacificprop40) then DeleteEntity(Pacificprop40) exports['qb-target']:RemoveZone('Pacificprop40') end
+    if DoesEntityExist(Pacificprop1) then delete(Pacificprop1) exports['qb-target']:RemoveZone('Pacificprop1') end
+    if DoesEntityExist(Pacificprop2) then delete(Pacificprop2) exports['qb-target']:RemoveZone('Pacificprop2') end
+    if DoesEntityExist(Pacificprop3) then delete(Pacificprop3) exports['qb-target']:RemoveZone('Pacificprop3') end
+    if DoesEntityExist(Pacificprop4) then delete(Pacificprop4) exports['qb-target']:RemoveZone('Pacificprop4') end
+    if DoesEntityExist(Pacificprop5) then delete(Pacificprop5) exports['qb-target']:RemoveZone('Pacificprop5') end
+    if DoesEntityExist(Pacificprop6) then delete(Pacificprop6) exports['qb-target']:RemoveZone('Pacificprop6') end
+    if DoesEntityExist(Pacificprop7) then delete(Pacificprop7) exports['qb-target']:RemoveZone('Pacificprop7') end
+    if DoesEntityExist(Pacificprop8) then delete(Pacificprop8) exports['qb-target']:RemoveZone('Pacificprop8') end
+    if DoesEntityExist(Pacificprop9) then delete(Pacificprop9) exports['qb-target']:RemoveZone('Pacificprop9') end
+    if DoesEntityExist(Pacificprop10) then delete(Pacificprop10) exports['qb-target']:RemoveZone('Pacificprop10') end
+    if DoesEntityExist(Pacificprop11) then delete(Pacificprop11) exports['qb-target']:RemoveZone('Pacificprop11') end
+    if DoesEntityExist(Pacificprop12) then delete(Pacificprop12) exports['qb-target']:RemoveZone('Pacificprop12') end
+    if DoesEntityExist(Pacificprop13) then delete(Pacificprop13) exports['qb-target']:RemoveZone('Pacificprop13') end
+    if DoesEntityExist(Pacificprop14) then delete(Pacificprop14) exports['qb-target']:RemoveZone('Pacificprop14') end
+    if DoesEntityExist(Pacificprop15) then delete(Pacificprop15) exports['qb-target']:RemoveZone('Pacificprop15') end
+    if DoesEntityExist(Pacificprop16) then delete(Pacificprop16) exports['qb-target']:RemoveZone('Pacificprop16') end
+    if DoesEntityExist(Pacificprop17) then delete(Pacificprop17) exports['qb-target']:RemoveZone('Pacificprop17') end
+    if DoesEntityExist(Pacificprop18) then delete(Pacificprop18) exports['qb-target']:RemoveZone('Pacificprop18') end
+    if DoesEntityExist(Pacificprop19) then delete(Pacificprop19) exports['qb-target']:RemoveZone('Pacificprop19') end
+    if DoesEntityExist(Pacificprop20) then delete(Pacificprop20) exports['qb-target']:RemoveZone('Pacificprop20') end
+    if DoesEntityExist(Pacificprop21) then delete(Pacificprop21) exports['qb-target']:RemoveZone('Pacificprop21') end
+    if DoesEntityExist(Pacificprop22) then delete(Pacificprop22) exports['qb-target']:RemoveZone('Pacificprop22') end
+    if DoesEntityExist(Pacificprop23) then delete(Pacificprop23) exports['qb-target']:RemoveZone('Pacificprop23') end
+    if DoesEntityExist(Pacificprop24) then delete(Pacificprop24) exports['qb-target']:RemoveZone('Pacificprop24') end
+    if DoesEntityExist(Pacificprop25) then delete(Pacificprop25) exports['qb-target']:RemoveZone('Pacificprop25') end
+    if DoesEntityExist(Pacificprop26) then delete(Pacificprop26) exports['qb-target']:RemoveZone('Pacificprop26') end
+    if DoesEntityExist(Pacificprop27) then delete(Pacificprop27) exports['qb-target']:RemoveZone('Pacificprop27') end
+    if DoesEntityExist(Pacificprop28) then delete(Pacificprop28) exports['qb-target']:RemoveZone('Pacificprop28') end
+    if DoesEntityExist(Pacificprop29) then delete(Pacificprop29) exports['qb-target']:RemoveZone('Pacificprop29') end
+    if DoesEntityExist(Pacificprop30) then delete(Pacificprop30) exports['qb-target']:RemoveZone('Pacificprop30') end
+    if DoesEntityExist(Pacificprop31) then delete(Pacificprop31) exports['qb-target']:RemoveZone('Pacificprop31') end
+    if DoesEntityExist(Pacificprop32) then delete(Pacificprop32) exports['qb-target']:RemoveZone('Pacificprop32') end
+    if DoesEntityExist(Pacificprop33) then delete(Pacificprop33) exports['qb-target']:RemoveZone('Pacificprop33') end
+    if DoesEntityExist(Pacificprop34) then delete(Pacificprop34) exports['qb-target']:RemoveZone('Pacificprop34') end
+    if DoesEntityExist(Pacificprop35) then delete(Pacificprop35) exports['qb-target']:RemoveZone('Pacificprop35') end
+    if DoesEntityExist(Pacificprop36) then delete(Pacificprop36) exports['qb-target']:RemoveZone('Pacificprop36') end
+    if DoesEntityExist(Pacificprop37) then delete(Pacificprop37) exports['qb-target']:RemoveZone('Pacificprop37') end
+    if DoesEntityExist(Pacificprop38) then delete(Pacificprop38) exports['qb-target']:RemoveZone('Pacificprop38') end
+    if DoesEntityExist(Pacificprop39) then delete(Pacificprop39) exports['qb-target']:RemoveZone('Pacificprop39') end
+    if DoesEntityExist(Pacificprop40) then delete(Pacificprop40) exports['qb-target']:RemoveZone('Pacificprop40') end
 
 end)
 
@@ -1328,11 +1369,11 @@ RegisterNetEvent('Polar-Pacific:Client:PickupTarget', function(data)
         TaskPlayAnim(PlayerPedId(), 'anim@gangops@facility@servers@bodysearch@', 'player_search', 8.0, 8.0, -1, 48, 0, false, false, false)
         Wait(5000)
         ClearPedTasks(PlayerPedId())
-        if door == 'Pacificprop11' then DeleteEntity(Pacificprop11) end
-        if door == 'Pacificprop12' then DeleteEntity(Pacificprop12) end
-        if door == 'Pacificprop13' then DeleteEntity(Pacificprop13) end
-        if door == 'Pacificprop14' then DeleteEntity(Pacificprop14) end
-        if door == 'Pacificprop15' then DeleteEntity(Pacificprop15) end
+        if door == 'Pacificprop11' then delete(Pacificprop11) end
+        if door == 'Pacificprop12' then delete(Pacificprop12) end
+        if door == 'Pacificprop13' then delete(Pacificprop13) end
+        if door == 'Pacificprop14' then delete(Pacificprop14) end
+        if door == 'Pacificprop15' then delete(Pacificprop15) end
     else
         loadAnimDict(animDict) TaskPlayAnim(PlayerPedId(), animDict, 'pickup_low', 3.0, 3.0, -1, 0, 0, 0, 0, 0) 
     end

@@ -2685,7 +2685,7 @@
           <MinHeadShotDistancePlayer value="5.000000" />
           <MaxHeadShotDistancePlayer value="40.000000" />
           <HeadShotDamageModifierPlayer value="1.5" />
-          <Damage value="1.000000" />
+          <Damage value="0.500000" />
           <DamageTime value="0.000000" />
           <DamageTimeInVehicle value="0.000000" />
           <DamageTimeInVehicleHeadShot value="0.000000" />
@@ -2693,7 +2693,7 @@
           <NetworkHitLimbsDamageModifier value="0.800000" />
           <LightlyArmouredDamageModifier value="0.750000" />
           <Force value="0.000000" />
-          <ForceHitPed value="120.000000" />
+          <ForceHitPed value="10.000000" />
           <ForceHitVehicle value="0.000000" />
           <ForceHitFlyingHeli value="0.000000" />
           <OverrideForces>

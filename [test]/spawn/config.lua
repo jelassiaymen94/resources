@@ -5,7 +5,7 @@ Config.LastLocation = false -- Show Last Location Button
 Config.DefaultSpawn = vector3(-206.19,-1013.78,30.13) -- Default Spawn
 
 Config.Locations = {
-    {
+    --[[{
       top = 530, -- Margin from Top (in pixels)
       left = 1040, -- Margin from Left (in pixels)
       label = 'Courthouse', -- Pin Label
@@ -34,7 +34,7 @@ Config.Locations = {
       left = 744, -- Margin from Left (in pixels)
       label = 'Bolingbroke Penitentiary', -- Pin Label
       x = 1850.6030,y = 2585.9392,z = 44.6720, -- Spawn Coords
-    },
+    },]]
     {
       top = 290, -- Margin from Top (in pixels)
       left = 620, -- Margin from Left (in pixels)

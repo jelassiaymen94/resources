@@ -32,7 +32,7 @@ Config.Language = 'English'
 
 Config.UseBlip = false -- use a blip on the map?
 Config.BlipName = "Pacific Bank" -- blip name
-Config.BlipLocation = vector3(-106.67, 6466.64, 32.75) -- blip location
+Config.BlipLocation = vector3(236.69, 219.39, 106.29) -- blip location
 Config.BlipSprite = 267 -- https://docs.fivem.net/docs/game-references/blips/ -- picture of blip
 Config.BlipColor = 7  -- https://gtaforums.com/topic/864881-all-blip-color-ids-pictured/ -- color of blip
 
@@ -54,7 +54,7 @@ Config.FemaleGloves = { [0] = true, [1] = true, [2] = true, [3] = true, [4] = tr
 --============== POLICE ================
 
 function CallPolice() exports["qb-dispatch"]:CustomAlert({
-        coords = vector3(-1308.48, -827.52, 17.15), message = "Bank Robbery",
+        coords = vector3(236.69, 219.39, 106.29), message = "Bank Robbery",
         dispatchCode = "10-90", description = "", radius = 10,
         sprite = 304,  color = 75, scale = 1.0,  length = 1,
        
@@ -72,33 +72,35 @@ end
 --============== Vault ================
     
 Config.FingerPrintPercent = 85
-Config.FingerPrintDoor = vec4(1,2,3,4)
+Config.FingerPrintDoor = vector4(261.93, 223.1, 106.28, 254.91)
 Config.FingerPrintDoorDoor = 'Pacificfinger'
+Config.FingerEye = vector3(262.3, 223.04, 106.61)
 
-Config.Pacific = true
-Config.VaultDoorAnimation = vector4(252.72, 228.54, 101.68, 69.98)
+Config.Vault = true
+Config.DoorLock = false
+Config.VaultDoorAnimation = vector4(253.33, 228.43, 101.68, 69.96)
 Config.VaultDoorDoor = 'Pacificvault'
-Config.VaultDoorThirdEye = vector3(253.01, 228.51, 101.68)
+Config.VaultDoorThirdEye = vector3(252.97, 228.52, 102.01)
 
 
 
 --============== Thermite Locations ================
 
-Config.StartThirdEye = vector3(-109.33, 6483.19, 31.47)
-Config.StartThermite = vector4(-109.43, 6483.32, 31.47, 224.11)
-Config.StartPfx = vector3(-109.46, 6484.36, 31.27)
+Config.StartThirdEye = vector3(285.61, 264.62, 105.91)
+Config.StartThermite = vector4(285.72, 264.97, 105.59, 164.04)
+Config.StartPfx = vector3(286.54, 265.01, 105.59)
 
-Config.Door1Eye = vector3(-100.8, 6467.888, 31.63)
-Config.Door1Thermite = vector4(-100.85, 6467.98, 31.63, 227.15)
-Config.Door1Pfx = vector3(-100.84, 6468.97, 31.63)
+Config.Door1Eye = vector3(256.07, 220.6, 106.45)
+Config.Door1Thermite = vector4(255.88, 220.09, 106.29, 339.32)
+Config.Door1Pfx = vector3(256.07, 220.6, 106.45)
 
-Config.Door2Eye = vector3(-104.72, 6463.97, 31.63)
-Config.Door2Thermite = vector4(-104.79, 6464.00, 31.63, 229.82)
-Config.Door2Pfx = vector3(-104.76, 6465.0, 31.63)
+Config.Door2Eye = vector3(25400000.85, 220.88, 101.78)
+Config.Door2Thermite = vector4(2540000.6, 221.13, 101.68, 261.66)
+Config.Door2Pfx = vector3(254000.850000, 220.88, 101.78)
 
-Config.Door3Eye =  vector3(-103.561, 6474.922, 31.63)
-Config.Door3Thermite = vector4(-103.51, 6474.86, 31.63, 41.54)
-Config.Door3Pfx = vector3(-103.52, 6475.85, 31.63)
+Config.Door3Eye =  vector3(256.18, 219.11, 101.89)
+Config.Door3Thermite = vector4(256.09, 218.88, 101.68, 335.27)
+Config.Door3Pfx = vector3(256.18, 219.11, 101.89)
    
 
 
@@ -121,8 +123,8 @@ Config.Pc3 = vector3(-98.11, 6466.09, 31.47)
 
 --============== Key Card Locations ================
     
-Config.doorcard1Eye = vector3(-98.97, 6473.1, 31.63)
-Config.doorcard1swipe = vector4(-99.48, 6473.1, 31.63, 306.32)
+Config.doorcard1Eye = vector3(255.03, 221.33, 101.73)
+Config.doorcard1swipe = vector4(254.85, 221.39, 101.68, 249.57)
    
 Config.doorcard2Eye = vector3(-111.99, 6474.2, 31.63)
 Config.doorcard2swipe = vector4(-111.55, 6473.83, 31.63, 49.81)

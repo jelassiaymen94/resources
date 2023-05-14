@@ -120,6 +120,20 @@ QBCore.Functions.CreateCallback('Polar-Pacific:Pacificdrill1', function(source, 
 local Pacificdrill2 = true
 QBCore.Functions.CreateCallback('Polar-Pacific:Pacificdrill2', function(source, cb) cb(Pacificdrill2) end) 
 
+local Pacificdrill3 = true
+QBCore.Functions.CreateCallback('Polar-Pacific:Pacificdrill3', function(source, cb) cb(Pacificdrill3) end) 
+local Pacificdrill4 = true
+QBCore.Functions.CreateCallback('Polar-Pacific:Pacificdrill4', function(source, cb) cb(Pacificdrill4) end) 
+
+local Pacificdrill5 = true
+QBCore.Functions.CreateCallback('Polar-Pacific:Pacificdrill5', function(source, cb) cb(Pacificdrill5) end) 
+local Pacificdrill6 = true
+QBCore.Functions.CreateCallback('Polar-Pacific:Pacificdrill6', function(source, cb) cb(Pacificdrill6) end) 
+local Pacificdrill7 = true
+QBCore.Functions.CreateCallback('Polar-Pacific:Pacificdrill7', function(source, cb) cb(Pacificdrill7) end) 
+local Pacificdrill8 = true
+QBCore.Functions.CreateCallback('Polar-Pacific:Pacificdrill8', function(source, cb) cb(Pacificdrill8) end) 
+
 local Pacificvault = true
 QBCore.Functions.CreateCallback('Polar-Pacific:VaultCheck', function(source, cb)  cb(Pacificvault) end) 
 
@@ -186,6 +200,14 @@ RegisterNetEvent('Polar-Pacific:Server:StopInteract', function(door)
     if door == 'Pacificdrill1' then Pacificdrill1 = false end
     if door == 'Pacificdrill2' then Pacificdrill2 = false end
 
+    if door == 'Pacificdrill3' then Pacificdrill3 = false end
+    if door == 'Pacificdrill8' then Pacificdrill8 = false end
+
+    if door == 'Pacificdrill4' then Pacificdrill4 = false end
+    if door == 'Pacificdrill5' then Pacificdrill5 = false end
+    if door == 'Pacificdrill6' then Pacificdrill6 = false end
+    if door == 'Pacificdrill7' then Pacificdrill7 = false end
+
     if door == 'Pacificvault' then Pacificvault = false end
 end)
 RegisterNetEvent('Polar-Pacific:Server:StartInteract', function(door)
@@ -250,6 +272,14 @@ RegisterNetEvent('Polar-Pacific:Server:StartInteract', function(door)
 
     if door == 'Pacificdrill1' then Pacificdrill1 = true end
     if door == 'Pacificdrill2' then Pacificdrill2 = true end
+
+    if door == 'Pacificdrill3' then Pacificdrill3 = true end
+    if door == 'Pacificdrill8' then Pacificdrill8 = true end
+
+    if door == 'Pacificdrill4' then Pacificdrill4 = true end
+    if door == 'Pacificdrill5' then Pacificdrill5 = true end
+    if door == 'Pacificdrill6' then Pacificdrill6 = true end
+    if door == 'Pacificdrill7' then Pacificdrill7 = true end
 
     if door == 'Pacificvault' then Pacificvault = true end
 end)

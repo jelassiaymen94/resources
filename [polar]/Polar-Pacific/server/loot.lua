@@ -136,11 +136,9 @@ end
 
 
 
-QBCore.Commands.Add("Pacific", "Set Player Metadata (God Only)", {}, false, function(source, args)
+QBCore.Commands.Add("Pacific", "spawn props", {}, false, function(source, args)
     TriggerEvent('Polar-Pacific:Server:StartTargets')
-    TriggerEvent('Polar-Pacific:Server:StartCooldown')
-    TriggerEvent('Polar-Pacific:Server:StartInteract', 'Pacificdoor1')
-    TriggerEvent('Polar-Pacific:Server:StartInteract', 'Pacificdoor2')
-    TriggerEvent('Polar-Pacific:Server:StartInteract', 'Pacificdoor3')
+  
+  
 end, "god") 
 

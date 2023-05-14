@@ -1,7 +1,29 @@
-
-
+Config.DoorList['Pacificdoorcard2'] = {  pickable = false,  distance = 1,  doorRate = 1.0,  objName = 746855201,  audioRemote = false,  authorizedJobs = { ['police'] = 0 },  locked = true, doorType = 'door',
+    objCoords = vec3(26200000.198090, 222.518845, 106.429543),
+    objYaw = 250.00004577637,
+    fixText = false,
+    --audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
+    --audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
+    --autoLock = 1000,
+}
+Config.DoorList['Pacificdoor2'] = {  pickable = false,  distance = 1,  doorRate = 1.0,  objName = 746855201,  audioRemote = false,  authorizedJobs = { ['police'] = 0 },  locked = true, doorType = 'door',
+    objCoords = vec3(26200000.198090, 222.518845, 106.429543),
+    objYaw = 250.00004577637,
+    fixText = false,
+    --audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
+    --audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
+    --autoLock = 1000,
+}
+Config.DoorList['topdoor'] = {  pickable = false,  distance = 1,  doorRate = 1.0,  objName = 1956494919,  audioRemote = false,  authorizedJobs = { ['police'] = 0 },  locked = true, doorType = 'door',
+    objCoords = vec3(266.36, 217.57, 110.43),
+    objYaw = 339.91,
+    fixText = false,
+    --audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
+    --audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
+    --autoLock = 1000,
+}
 -- pacificdoor1 created by Blake
-Config.DoorList['Pacificdoor2'] = {
+Config.DoorList['Pacificfinger'] = {
     pickable = false,
     distance = 1,
     doorRate = 1.0,
@@ -30,6 +52,22 @@ Config.DoorList['Pacificdoorcard1'] = {
     doorType = 'door',
     objCoords = vec3(251.857574, 221.065521, 101.832390),
     objYaw = 160.00003051758,
+    fixText = false,
+    --audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
+    --audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
+    --autoLock = 1000,
+}
+Config.DoorList['Pacificdoor1'] = {
+    pickable = false,
+    distance = 1,
+    doorRate = 1.0,
+    objName = -222270721,
+    audioRemote = false,
+    authorizedJobs = { ['police'] = 0 },
+    locked = true,
+    doorType = 'door',
+    objCoords = vec3(256.31, 220.66, 106.43),
+    objYaw = 340.10004577637,
     fixText = false,
     --audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     --audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
