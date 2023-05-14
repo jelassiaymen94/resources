@@ -168,7 +168,7 @@ RegisterNetEvent('Renewed-Deliveries:client:NewPlace', function(location, NetID,
     pZone:onPlayerInOut(function(isPointInside)
         if isPointInside then
             inZone = true
-            if prop == nil then return end
+          --  if prop == nil then return end
             exports['qb-core']:DrawText("[E] Deliver Package",'left')
             Listen4Control()
         else

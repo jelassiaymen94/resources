@@ -1,16 +1,20 @@
 local moneyType = 'cash'
 local priceTable = {
-    fish = 50,
-    fish2 = 120,
+    cod = 35,
+    ghol = 3120,
     catfish = 132,
-    goldfish = 165,
-    largemouthbass = 193,
-    redfish = 220,
+    eel = 165,
+    swordfish = 193,
+    largemouthbass = 220,
+    bluefish = 220,
+    redfish = 240,
+    goldfish = 287,
     salmon = 220,
-    stingray = 440,
-    stripedbass = 440,
-    whale = 450,
-    whale2 = 500
+    rainbowtrout = 260,
+    tunafish = 300,
+    tigershark = 2750,
+    stingray = 1500,
+    killerwhale = 2500
 }
 
 RegisterNetEvent('qb-fishing:server:SellFish', function(fish, amount)
@@ -31,13 +35,14 @@ RegisterNetEvent('qb-fishing:server:SellFish', function(fish, amount)
     if item.amount >= amount then
         if exports['qb-inventory']:RemoveItem(Player.PlayerData.source, item.name, amount, false) then
             -- Item Box
+            local randomamountgiven = math.random(1,10)
             TriggerClientEvent('inventory:client:ItemBox', Player.PlayerData.source, QBCore.Shared.Items[item.name], 'remove', amount)
 
             -- Wait to sync with animation
             Wait(3500)
 
             -- Give Cash
-            Player.Functions.AddMoney(moneyType, amount * priceTable[item.name])
+            Player.Functions.AddMoney(moneyType, amount * priceTable[item.name] + randomamountgiven - 5)
 
             -- Log
             TriggerEvent('qb-log:server:CreateLog', 'fishing', 'Sale Fish', 'lightgreen', "**"..Player.PlayerData.name .. " (citizenid: "..Player.PlayerData.citizenid.." | id: "..Player.PlayerData.source..")** received $"..amount * priceTable[item.name].." for selling "..amount.."x "..QBCore.Shared.Items[item.name].label)

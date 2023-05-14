@@ -5,8 +5,8 @@ RegisterNetEvent('qb-fishing:server:RemoveBait', function()
     local Player = QBCore.Functions.GetPlayer(src)
     if not Player then return end
 
-    if exports['qb-inventory']:RemoveItem(Player.PlayerData.source, 'fishingbait', 1, false) then
-        TriggerClientEvent('inventory:client:ItemBox', Player.PlayerData.source, QBCore.Shared.Items['fishingbait'], 'remove', 1)
+    if exports['qb-inventory']:RemoveItem(Player.PlayerData.source, 'fishbait', 1, false) then
+        TriggerClientEvent('inventory:client:ItemBox', Player.PlayerData.source, QBCore.Shared.Items['fishbait'], 'remove', 1)
     end
 end)
 
@@ -16,32 +16,56 @@ RegisterNetEvent('qb-fishing:server:ReceiveFish', function()
     if not Player then return end
 
     local random = math.random(100) -- Random number from 1 to 100
-    local item
+    local item = nil
 
     if random >= 1 and random <= 30 then -- 30%
-        item = 'fish'
-    elseif random >= 30 and random <= 37 then -- 7%
-        item = 'fish2'
-    elseif random >= 37 and random <= 44 then -- 7%
+        item = 'cod'
+        TriggerClientEvent('fishing:client:spawnFish', src, item)
+    elseif random >= 30 and random <= 40 then -- 10%
         item = 'catfish'
-    elseif random >= 44 and random <= 51 then -- 7%
-        item = 'goldfish'
-    elseif random >= 51 and random <= 58 then -- 7%
+        TriggerClientEvent('fishing:client:spawnFish', src, item)
+    elseif random >= 40 and random <= 50 then -- 10%
+        item = 'eel'
+        TriggerClientEvent('fishing:client:spawnFish', src, item)
+    elseif random >= 50 and random <= 59 then -- 9%
+        item = 'swordfish'
+        TriggerClientEvent('fishing:client:spawnFish', src, item)
+    elseif random >= 60 and random <= 68 then -- 8%
         item = 'largemouthbass'
-    elseif random >= 58 and random <= 65 then -- 7%
+        TriggerClientEvent('fishing:client:spawnFish', src, item)
+    elseif random >= 68 and random <= 75 then -- 7%
+        item = 'bluefish'
+        TriggerClientEvent('fishing:client:spawnFish', src, item)
+    elseif random >= 75 and random <= 81 then -- 6%
         item = 'redfish'
-    elseif random >= 65 and random <= 72 then -- 7%
+        TriggerClientEvent('fishing:client:spawnFish', src, item)
+    elseif random >= 81 and random <= 86 then -- 5%
+        item = 'goldfish'
+        TriggerClientEvent('fishing:client:spawnFish', src, item)
+    elseif random >= 86 and random <= 90 then -- 4%
         item = 'salmon'
-    elseif random >= 72 and random <= 79 then -- 7%
-        item = 'stingray'
-    elseif random >= 79 and random <= 86 then -- 7%
-        item = 'stripedbass'
-    elseif random >= 86 and random <= 93 then -- 7%
-        item = 'whale'
-    elseif random >= 93 and random <= 100 then -- 7%
-        item = 'whale2'
+        TriggerClientEvent('fishing:client:spawnFish', src, item)
+    elseif random >= 91 and random <= 94 then -- 3%
+        item = 'rainbowtrout'
+        TriggerClientEvent('fishing:client:spawnFish', src, item)
+    elseif random >= 94 and random <= 97 then -- 2%
+        item = 'tunafish'
+        TriggerClientEvent('fishing:client:spawnFish', src, item)
+    elseif random >= 98 and random <= 99 then -- 2%
+        item = 'stingray' 
+        TriggerClientEvent('fishing:client:spawnFish', src, item)
+    elseif random >= 99 and random <= 100 then -- 1%
+        local chance = math.random(1,3)
+        if chance == 1 then
+            item = 'tigershark'
+        elseif chance == 2 then
+            item = 'killerwhale'
+        elseif chance == 3 then
+            item = 'ghol'
+        end
+        TriggerClientEvent('fishing:client:spawnFish', src, item)
     end
-
+    
     if exports['qb-inventory']:AddItem(Player.PlayerData.source, item, 1, false) then
         TriggerClientEvent('inventory:client:ItemBox', Player.PlayerData.source, QBCore.Shared.Items[item], 'add', 1)
         TriggerEvent('qb-log:server:CreateLog', 'fishing', 'Received Fish', 'blue', "**"..Player.PlayerData.name .. " (citizenid: "..Player.PlayerData.citizenid.." | id: "..Player.PlayerData.source..")** received 1x "..QBCore.Shared.Items[item].label)

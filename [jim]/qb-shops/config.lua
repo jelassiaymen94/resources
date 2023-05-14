@@ -483,11 +483,11 @@ Config.Locations = {
 	--	},
 		--["logo"] = "https://i.imgur.com/bPcM0TM.png",
         ["coords"] = {
-			vector4(-1576.8630, -3018.5583, -79.0059, 177.7386),
-			vector4(-1582.7583, -3013.9414, -76.0052, 267.4595),
-			vector4(813.8794, -749.3380, 26.9808, 268.8144),
-			vector4(-831.3847, -730.3113, 28.0601, 179.9212),
-			vector4(129.8545, -1285.3943, 29.0693, 115.9125),
+		--	vector4(-1576.8630, -3018.5583, -79.0059, 177.7386),
+		--	vector4(-1582.7583, -3013.9414, -76.0052, 267.4595),
+		--	vector4(813.8794, -749.3380, 26.9808, 268.8144),
+		--	vector4(-831.3847, -730.3113, 28.0601, 179.9212),
+		--	vector4(129.8545, -1285.3943, 29.0693, 115.9125),
 		},
         ["products"] = Config.Products["bar"],
         ["blipsprite"] = 525,
@@ -654,8 +654,8 @@ Config.Locations = {
 			`S_M_Y_Casino_01`,
 		},
 		["coords"] = {
-			vector4(990.08, 30.35, 71.47, 94.81),
-			vector4(990.96, 31.8, 71.47, 19.59),
+			--vector4(990.08, 30.35, 71.47, 94.81),
+			--vector4(990.96, 31.8, 71.47, 19.59),
 		},
 		["products"] = Config.Products["casino"],
 		["hideblip"] = true,
@@ -968,9 +968,9 @@ Config.Locations = {
 			`A_M_M_Tramp_01`,
 		},
         ["coords"] = { 
-			vector4(896.44, 3614.14, 32.82, 139.6),
-		    vector4(-1501.6445, 857.7659, 181.5947, 24.7322),
-			vector4(-1461.1973, 6768.1938, 7.8146, 69.7084),
+			--vector4(896.44, 3614.14, 32.82, 139.6),
+		   -- vector4(-1501.6445, 857.7659, 181.5947, 24.7322),
+			--vector4(-1461.1973, 6768.1938, 7.8146, 69.7084),
 		},
         ["products"] = Config.Products["meth"],
 		["hideblip"] = true,
@@ -985,7 +985,7 @@ Config.Locations = {
 			
 			'cs_casey',
 		},
-        ["coords"] = { vector4(417.6751, 4825.4043, -58.9997, 133.7803), },
+        ["coords"] = { --vector4(417.6751, 4825.4043, -58.9997, 133.7803), },
         ["products"] = Config.Products["gunparts"],
 		["hideblip"] = true,
     },
@@ -999,7 +999,7 @@ Config.Locations = {
 			`mp_m_boatstaff_01`,
 			`a_m_y_beach_01`,
 		},
-        ["coords"] = { vector4(-1600.5115, 5204.2109, 4.3101, 22.1793), },
+        ["coords"] = {--vector4(-1600.5115, 5204.2109, 4.3101, 22.1793), },
         ["products"] = Config.Products["FishingSupplies"],
 		["hideblip"] = true,
     },
@@ -1038,7 +1038,7 @@ Config.Locations = {
 		["model"] = {
 			`a_m_y_beach_01`,
 		},
-        ["coords"] = { vector4(-258.7618, -981.0064, 31.2198, 207.6516), },
+        ["coords"] = { --vector4(-258.7618, -981.0064, 31.2198, 207.6516), },
         ["products"] = Config.Products["InfoBooth"],
 		["blipsprite"] = 682,
 		["blipcolour"] = 5,
@@ -1053,7 +1053,7 @@ Config.Locations = {
 		["model"] = {
 			`u_f_y_mistress`,
 		},
-        ["coords"] = { vector4(-699.4282, 273.6716, 83.1078, 245.5334), },
+        ["coords"] = {-- vector4(-699.4282, 273.6716, 83.1078, 245.5334), },
         ["products"] = Config.Products["HouseInfo"],
 		["blipsprite"] = 350,
 		["blipcolour"] = 69,
@@ -1068,7 +1068,7 @@ Config.Locations = {
 		--["model"] = {
 		--	`a_m_y_beach_01`,
 		--},
-        ["coords"] = { vector4(838.2644, -826.7849, 26.826, 91.8974), },
+        ["coords"] = { --vector4(838.2644, -826.7849, 26.826, 91.8974), },
         ["products"] = Config.Products["ottoshop"],
 		["blipsprite"] = 682,
 		["blipcolour"] = 5,
@@ -1331,9 +1331,9 @@ if Config.VendOverride then
 			`prop_vend_soda_02`,
 			`prop_vend_snak_01`,
 			`prop_vend_snak_01_tu`]]
-			`prop_news_disp_02a`		},
+		--	`prop_news_disp_02a`		},
 		["coords"] = { -- If you want to place custom vending machine locations
-			vector4(131.13, -3007.16, 7.04, 0.0), -- GABZ LS Tuners
+		--	vector4(131.13, -3007.16, 7.04, 0.0), -- GABZ LS Tuners
 		},
 		["products"] = Config.Products["vending"],
 	}

@@ -65,14 +65,24 @@ end
 
 RegisterNetEvent('qb-fishing:client:FishingRod', function()
     -- Check if inside fishing zone
-    if not canFish then
-        QBCore.Functions.Notify('You can\'t fish over here..', 'error', 2500)
+    local pos = GetEntityCoords(PlayerPedId())
+	if not GetWaterHeight(pos.x, pos.y, pos.z-2, pos.z -3.0)  then
+        QBCore.Functions.Notify('Water isnt deep enough to fish', 'error')
+        return
+    elseif IsEntityDead(PlayerPedId())  then
+        
+        return
+    end
+    if not IsEntityInWater(PlayerPedId()) then
+        QBCore.Functions.Notify('You need to be closer to Water', 'error')
         return
     end
 
-    -- Check if player has fishingbait
+
+    -- Check if player has fishbait
     local hasItem = QBCore.Functions.HasItem("fishingbait")
     if hasItem then
+        
         -- Start Fishing
         startFishing()
     else
@@ -80,43 +90,67 @@ RegisterNetEvent('qb-fishing:client:FishingRod', function()
     end
 end)
 
-CreateThread(function()
-    -- Start with empty array (for ComboZone)
-    local zones = {}
 
-    -- Create individual fishing zones and add them to the array
-    for k, v in pairs(Shared.FishingZones) do
-        if v.box then -- BoxZone
-            zones[#zones+1] = BoxZone:Create(v.coords, v.length, v.width, {
-                name = "FishingZones"..k,
-                minZ = v.minZ,
-                maxZ = v.maxZ,
-                debugPoly = false
-            })
-        else -- PolyZone
-            zones[#zones+1] = PolyZone:Create(v.points, {
-                name = "FishingZones"..k,
-                minZ = v.minZ,
-                maxZ = v.maxZ,
-                debugGrid = false,
-            })
-        end
-    end
 
-    -- Create ComboZone
-    local fishingCombo = ComboZone:Create(zones, {
-        name = "fishingCombo", 
-        debugPoly = false
-    })
 
-    -- Enter/Exit Fishing Zone
-    fishingCombo:onPlayerInOut(function(isPointInside, point, zone)
-        if isPointInside then
-            exports['qb-core']:DrawText('Fishing', 'left')
-            canFish = true
-        else
-            exports['qb-core']:HideText()
-            canFish = false
-        end
-    end)
+
+
+RegisterNetEvent('fishing:client:spawnFish', function(item)
+	local time = 10000
+	local args = tonumber(args)
+	if item == 'killerwhale' then 
+		RequestModel("A_C_KillerWhale")
+		local pos = GetEntityCoords(PlayerPedId())
+		local ped = CreatePed(29, `A_C_KillerWhale`, pos.x, pos.y, pos.z, 90.0, true, false)
+		SetEntityHealth(ped, 0)
+		DecorSetInt(ped, "propHack", 74)
+		SetModelAsNoLongerNeeded(`A_C_KillerWhale`)
+		Wait(time)
+		DeletePed(ped)	
+	--[[elseif item == 'eel' then 
+		RequestModel("A_C_dolphin")
+		local pos = GetEntityCoords(PlayerPedId())
+		local ped = CreatePed(29, `A_C_dolphin`, pos.x, pos.y, pos.z, 90.0, true, false)
+		SetEntityHealth(ped, 0)
+		DecorSetInt(ped, "propHack", 74)
+		SetModelAsNoLongerNeeded(`A_C_dolphin`)
+		Wait(time)
+		DeletePed(ped)]]
+	elseif item == 'ghol' then
+		RequestModel("A_C_sharkhammer")
+		local pos = GetEntityCoords(PlayerPedId())
+		local ped = CreatePed(29, `A_C_sharkhammer`, pos.x, pos.y, pos.z, 90.0, true, false)
+		SetEntityHealth(ped, 0)
+		DecorSetInt(ped, "propHack", 74)
+		SetModelAsNoLongerNeeded(`A_C_sharkhammer`)
+		Wait(time)
+		DeletePed(ped)
+	elseif item == 'tigershark' then
+		RequestModel("A_C_SharkTiger")
+		local pos = GetEntityCoords(PlayerPedId())
+		local ped = CreatePed(29, `A_C_SharkTiger`, pos.x, pos.y, pos.z, 90.0, true, false)
+		SetEntityHealth(ped, 0)
+		DecorSetInt(ped, "propHack", 74)
+		SetModelAsNoLongerNeeded(`A_C_SharkTiger`)
+		Wait(time)
+		DeletePed(ped)
+	elseif item == 'stingray' then
+		RequestModel("A_C_stingray")
+		local pos = GetEntityCoords(PlayerPedId())
+		local ped = CreatePed(29, `A_C_stingray`, pos.x, pos.y, pos.z, 90.0, true, false)
+		SetEntityHealth(ped, 0)
+		DecorSetInt(ped, "propHack", 74)
+		SetModelAsNoLongerNeeded(`A_C_stingray`)
+		Wait(time)
+		DeletePed(ped)
+	else
+		RequestModel("a_c_fish")
+		local pos = GetEntityCoords(PlayerPedId())
+		local ped = CreatePed(29, `a_c_fish`, pos.x, pos.y, pos.z, 90.0, true, false)
+		SetEntityHealth(ped, 0)
+		DecorSetInt(ped, "propHack", 74)
+		SetModelAsNoLongerNeeded(`a_c_fish`)
+		Wait(time)
+		DeletePed(ped)
+	end
 end)
