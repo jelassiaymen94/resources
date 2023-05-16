@@ -204,7 +204,7 @@ Config.Elevators = {
         }
     },
 
-	["weedlab"] = {
+	--[[["weedlab"] = {
         Sound = "liftSoundBellRing",
         Name = "Weed Lab",
         Floors = {
@@ -222,7 +222,7 @@ Config.Elevators = {
             },
 		
         }
-    },
+    },]]
 	
 	["Corporation1"] = {
         Sound = "liftSoundBellRing",

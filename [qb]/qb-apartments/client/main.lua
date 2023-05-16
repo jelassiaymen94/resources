@@ -506,30 +506,26 @@ RegisterNetEvent('apartments:client:setupSpawnUI', function(cData)
     QBCore.Functions.TriggerCallback('apartments:GetOwnedApartment', function(result)
       
         if result then
-            
+            if Apartments.Starting then
+                TriggerEvent("apartments:client:SetHomeBlip", result.type)
+                TriggerEvent('ivs_spawns:openMenu', lastLocation)
+
+                
+            else
            -- TriggerEvent('qb-spawn:client:setupSpawns', cData, false, nil)
            -- TriggerEvent('qb-spawn:client:openUI', true)
-            
-            TriggerEvent("apartments:client:SetHomeBlip", result.type)
-            TriggerEvent('ivs_spawns:openMenu', lastLocation)
-        else
-            if Apartments.Starting then
-              --  TriggerEvent('qb-spawn:client:setupSpawns', cData, true, Apartments.Locations)
-              --  TriggerEvent('qb-spawn:client:openUI', true)
-              
-               --TriggerEvent('ivs_spawns:openMenu', lastLocation)
-               --TriggerEvent('ivs_spawns:openMenu', lastLocation)
-                TriggerServerEvent("apartments:server:CreateApartment", 'apartment3', 'Alta Street Apartment')
-                TriggerServerEvent('QBCore:Server:OnPlayerLoaded')
-                TriggerEvent('QBCore:Client:OnPlayerLoaded')
-               --TriggerServerEvent("apartments:server:CreateApartment", 'apartment3', 'Alta Street Apartment')
+           TriggerServerEvent("apartments:server:CreateApartment", 'apartment3', 'Alta Street Apartment')
+           TriggerServerEvent('QBCore:Server:OnPlayerLoaded')
+           TriggerEvent('QBCore:Client:OnPlayerLoaded')
 
-            else
-                
-               -- TriggerEvent('qb-spawn:client:setupSpawns', cData, false, nil)
-               -- TriggerEvent('qb-spawn:client:openUI', true)
-               TriggerEvent('ivs_spawns:openMenu', lastLocation)
+
+
+               
             end
+        else
+            TriggerServerEvent("apartments:server:CreateApartment", 'apartment3', 'Alta Street Apartment')
+            TriggerServerEvent('QBCore:Server:OnPlayerLoaded')
+            TriggerEvent('QBCore:Client:OnPlayerLoaded')
         end
     end, cData.citizenid)
 end)

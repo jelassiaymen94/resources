@@ -259,9 +259,13 @@ Config.Items = {
     ["goldbar"] = {
         name = "goldbar",
         wait = 1500,
-        reward = 10000,
+        reward = 1000,
     },
-
+    ["band"] = {
+        name = "band",
+        wait = 1500,
+        reward = 450,
+    },
 -- Garbage Loot
 
 ["microwave"] = {

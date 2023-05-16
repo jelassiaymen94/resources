@@ -41,7 +41,7 @@ Config.PlacementThird = {
 
 
 Config.WeaponsOnBack = {
-
+    
  ["weapon_m4"] = { model = "w_ar_m4", hash = GetHashKey("weapon_m4")},
      ["weapon_mossberg"] = { model = "w_sg_mossberg", hash = GetHashKey("weapon_mossberg")},
      ["weapon_mk14"] = { model = "w_sr_mk14", hash = GetHashKey("weapon_mk14")},
@@ -62,5 +62,12 @@ Config.WeaponsOnBack = {
      ["weapon_microsmg3"] = { model = "w_sb_microsmg3", hash = GetHashKey("weapon_microsmg3")},
     ["weapon_groza"] = { model = "w_ar_groza", hash = GetHashKey("weapon_groza")},
     ["weapon_gepard"] = { model = "w_ar_gepard", hash = GetHashKey("weapon_gepard")},
-   
+    ["weapon_mp5"] = { model = "w_sb_mp5", hash = GetHashKey("weapon_mp5")},
+ 
+    ["weapon_minismg"] = { model = "w_sb_minismg", hash = GetHashKey("weapon_minismg")},
+    ["weapon_machinepistol"] = { model = "w_sb_machinepistol", hash = GetHashKey("weapon_machinepistol")},
+    ["weapon_sword"] = { model = "w_me_sword", hash = GetHashKey("weapon_sword")},
+ 
+
+    
 }

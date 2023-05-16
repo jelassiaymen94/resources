@@ -57,7 +57,7 @@ local function InitiateSell(ped)
 					PlayGiveAnim(ped)
 					AlreadySold = true
 					TriggerServerEvent('Polar-Drugsales:initiatedrug', v)
-					PoliceAlert()
+					-- PoliceAlert()
 				else
 					if Config.Debug then print('You dont have ['..v.item..'] to sell') end
 				end

@@ -41,11 +41,11 @@ Config.Locations = {
     type = 'explosives',
     name = '4',
     },
-    [5] = {
+   --[[ [5] = {
     Table =  vector4(18.2827, -1100.2949, 29.7972, 340.9893),
     type = 'store',
     name = '5',
-    },
+    },]]
 
 }
  
@@ -243,7 +243,7 @@ Config.ExplosivesBench = {
       
     },
     [6] = {
-        item = 'weapon_m67',
+        item = 'weapon_grenade',
         icon = "",
         txt = "Required: ".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['metalscrap'].image.." width=25px onerror='this.onerror=null; this.remove();'> 6 Metal Scrap".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['refined_aluminum'].image.." width=25px onerror='this.onerror=null; this.remove();'> 2 Refined Aluminum".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['thermitepowder'].image.." width=25px onerror='this.onerror=null; this.remove();'> 2 Highly Explosive Powder".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['refined_iron'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Refined Iron",
         exp = 19500,

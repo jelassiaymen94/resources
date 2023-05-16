@@ -86,7 +86,8 @@ RegisterServerEvent('jim-mechanic:Crafting:GetItem', function(ItemMake, craftabl
 	--This should give the item, while the rest removes the requirements
 	Player.Functions.AddItem(ItemMake, amount)
 	TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[ItemMake], "add", amount)
-	TriggerEvent("qb-log:server:CreateLog", "mechanicitems", "JIM MECHANIC", "black", "**" .. src .. "** Add" .. amount .. "" .. ItemMake .. "")
+
+	TriggerEvent("qb-log:server:CreateLog", "mechanicitems", "mechanic", "black", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' got ' .. amount .. ' ' .. ItemMake .. )
 end)
 
 ---ITEM REQUIREMENT CHECKS

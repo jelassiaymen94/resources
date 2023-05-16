@@ -188,7 +188,8 @@ RegisterServerEvent("jim-payments:server:PolCharge", function(citizen, price)
 			if Config.ApGov then exports['ap-government']:chargeCityTax(billed.PlayerData.source, "Item", price) end
 			TriggerEvent("qb-log:server:CreateLog", "moneyremove", "JIM PAYMENTS", "black", "**" .. src .. "** Removed " .. price .. " For a Ticket")
 			if biller.Functions.AddMoney("bank", commission) then if Config.Debug then print("^5Debug^7: ^3PolCharge^7 - ^2Commission of ^7$^6"..commission.." ^2sent to Player^7(^6"..biller.PlayerData.source.."^7)") end end
-			TriggerEvent("qb-log:server:CreateLog", "policeticket", "JIM PAYMENTS", "black", "**" .. src .. "** Got " .. commission .. " from a Ticket")
+		
+			TriggerEvent("qb-log:server:CreateLog", "policeticket", "ticket payment", "black", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' got ' .. commission .. ' from a ticket')
 			if Config.RenewedBanking then exports['Renewed-Banking']:addAccountMoney(tostring(biller.PlayerData.job.name), (price - commission))
 				if Config.Debug then print("^5Debug^7: ^3Renewed-Banking^7(^3Job^7): ^2Adding ^7$^6"..(price - commission).." ^2to account ^7'^6"..tostring(biller.PlayerData.job.name).."^7' ($^6"..exports['Renewed-Banking']:getAccountMoney((biller.PlayerData.job.name).."^7)")) end
 			else

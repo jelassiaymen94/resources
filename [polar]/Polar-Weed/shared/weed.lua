@@ -31,7 +31,7 @@ Config.Distance = 7.0
 
 --------- GENERAL ----------
 Config.RestartPlantRemoval = false -- remove dead plants on restart
-Config.TimeToGrow = 20 -- Time in minutes for a plant to grow from 0 to 100
+Config.TimeToGrow = 120 -- Time in minutes for a plant to grow from 0 to 100
 Config.Updates = 15 -- Time in minutes to update everything
 Config.HealthRemoved = {7, 10} -- Min/Max Amount of health decay when the plant is below the above thresholds for water and nutrition
 Config.PlaceTime = 2000 -- progressbar time to place plant
@@ -39,7 +39,7 @@ Config.RemovePlantTime = 8500
 
 --------- MALE SEED --------------
 Config.MaleSeed = 'male_seed' -- item that makes plants pregnant
-Config.GiveMaleSeed = true -- do you want to get more male seeds from 1 male seed?
+Config.GiveMaleSeed = false -- do you want to get more male seeds from 1 male seed?
 Config.GiveMaleSeedAmount = 1 -- use if Config.GiveMaleSeedOverHealth = False
 Config.GiveMaleSeedOverHealth = true -- use if you want to do Health / Config.HealthMaleRateSeed
 Config.HealthMaleRateSeed = 50 -- Divider over Health EX. 100 / 50 = 2

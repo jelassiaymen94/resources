@@ -53,6 +53,11 @@ Config = {
 			{ name = "sprunk", price = 600, amount = 50, },
 			{ name = "sprunklight", price = 600, amount = 25, },
 		},
+		["weedseed"] = {
+			{ name = "male_seed", price = 600, amount = 50, },
+			{ name = "female_seed", price = 100, amount = 50, },
+			
+		},
 		["hardware"] = {
 			{ name = "lockpick", price = 500, amount = 25, },
 			{ name = "ducttape", price = 100, amount = 25, },
@@ -83,8 +88,10 @@ Config = {
 			{ name = "backwoods_honey", price = 100, amount = 15, },
 			{ name = "banana_backwoods", price = 100, amount = 15, },
 			{ name = "backwoods_grape", price = 100, amount = 15, },
+			{ name = "male_seed", price = 8500, amount = 50, },
+			{ name = "female_seed", price = 2500, amount = 50, },
 			--{ name = "smalljoint", price = 100, amount = 25, },
-		
+			
 			
 		},
 		["gearshop"] = {
@@ -92,7 +99,7 @@ Config = {
 			{ name = "fishingrod", price = 1000, amount = 30,},
 			{ name = "fishbait", price = 25, amount = 500, },
 			{ name = "jerry_can", price = 2500, amount = 3, },
-
+			{ name = "screwdriverset", price = 2500, amount = 20, },
 		},
 		
 		["leisureshop"] = {

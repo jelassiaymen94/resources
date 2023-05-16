@@ -16,7 +16,7 @@ Config.DebugChance = false
 
 -- Explosion Alert Types (Gas Pumps by default)
 -- Ex.  Config.ExplosionTypes = {1, 2, 3, 4, 5}
-Config.ExplosionTypes = {1,2,3,4,5,6,7,8,9}
+Config.ExplosionTypes = {1,2,3,4,5,6,7,8,9, 10, 11, 12, 13, 14, 15, 16}
 
 -- enable default alerts
 Config.Enable.Speeding = true

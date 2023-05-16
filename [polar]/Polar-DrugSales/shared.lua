@@ -2,13 +2,13 @@ Config = {} or Config
 
 
 
-Config.MinimumCops = 0 -- how many cops min to start corner selling
+Config.MinimumCops = 1 -- how many cops min to start corner selling
 
 --------------- THIRD EYE CORNER SELLING
 
 
 Config.GiveBonusOnPolice = true -- \ Give bonus on selling drugs to police (Edit on server side)
-Config.ChanceSell = 85 -- \ Chance to sell drug (in %)
+Config.ChanceSell = 70 -- \ Chance to sell drug (in %)
 Config.Zones = { -- \ Sell zones (these zones are linked with the certain drugs check below)
     ['groove'] = {        
         points = {
@@ -69,22 +69,22 @@ Config.ZoneDrugs = { -- \ Names should be same as zone names
     -- Multiple drugs can be added to a zone like shown below
     [1] = {zone="sellzonegroove", item = 'cokebag', price = math.random(399,1251)},
     [2] = {zone="sellzonegroove", item = 'meth', price =math.random(499,1499)},  
-    [3] = {zone="sellzonegroove", item = '1ozhigh', price = math.random(400,600)},   
-    --[[[3] = {zone="sellzonegroove", item = '35weedlow', price = math.random(100,400)}, 
-    [4] = {zone="sellzonegroove", item = '35weedmid', price = math.random(451,851)}, 
-    [5] = {zone="sellzonegroove", item = '35weedhigh', price = math.random(851,1251)},]] 
+    [3] = {zone="sellzonegroove", item = '1ozlow', price = math.random(75,150)},   
+    [10] = {zone="sellzonegroove", item = '1ozmid', price = math.random(150,220)}, 
+    [13] = {zone="sellzonegroove", item = '1ozhigh', price = math.random(220,350)}, 
+  --  [5] = {zone="sellzonegroove", item = '35weedhigh', price = math.random(851,1251)},
     [4] = {zone="sellzonevinewood", item = 'cokebag', price = math.random(399,1251)},
     [5] = {zone="sellzonevinewood", item = 'meth', price = math.random(499,1499)},   
-    [6] = {zone="sellzonevinewood", item = '1ozhigh', price = math.random(400,600)},  
-    --[[[9] = {zone="sellzonevinewood", item = '35weedlow', price = math.random(100,400)},
-    [10] = {zone="sellzonevinewood", item = '35weedmid', price = math.random(451,851)},
-    [11] = {zone="sellzonevinewood", item = '35weedhigh', price = math.random(851,1251)},]]
+    [6] = {zone="sellzonevinewood", item = '1ozlow', price = math.random(75,150)},   
+    [12] = {zone="sellzonevinewood", item = '1ozmid', price = math.random(150,220)}, 
+    [14] = {zone="sellzonevinewood", item = '1ozhigh', price = math.random(220,350)}, 
+    --[11] = {zone="sellzonevinewood", item = '35weedhigh', price = math.random(851,1251)},
     [7] = {zone="sellzoneforumdr", item = 'cokebag', price = math.random(399,1251)},
     [8] = {zone="sellzoneforumdr", item = 'meth', price = math.random(499,1499)}, 
-    [9] = {zone="sellzoneforumdr", item = '1ozhigh', price = math.random(400,600)},     
-    --[[[15] = {zone="sellzoneforumdr", item = '35weedlow', price = math.random(100,400)}, 
-    [16] = {zone="sellzoneforumdr", item = '35weedmid', price = math.random(451,851)},  
-    [17] = {zone="sellzoneforumdr", item = '35weedhigh', price = math.random(851,1251)},]]  
+    [9] = {zone="sellzoneforumdr", item = '1ozlow', price = math.random(75,150)},     
+    [11] = {zone="sellzoneforumdr", item = '1ozmid', price = math.random(150,220)}, 
+    [15] = {zone="sellzoneforumdr", item = '1ozhigh', price = math.random(220,350)}, 
+   -- [16] = {zone="sellzoneforumdr", item = '35weedhigh', price = math.random(851,1251)},  
 
 
 --[[

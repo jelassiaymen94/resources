@@ -167,15 +167,15 @@ RegisterNetEvent('qb-admin:server:setPermissions', function(targetId, group)
 end)
 
 RegisterNetEvent('qb-admin:server:SendReport', function(name, targetSrc, msg)
-    local src = source
+    local src = source 
     if QBCore.Functions.HasPermission(src, 'admin') or IsPlayerAceAllowed(src, 'command') then
-        if QBCore.Functions.IsOptin(src) then
+       -- if QBCore.Functions.IsOptin(src) then
             TriggerClientEvent('chat:addMessage', src, {
                 color = {255, 0, 0},
                 multiline = true,
                 args = {Lang:t("info.admin_report")..name..' ('..targetSrc..')', msg}
             })
-        end
+       -- end
     end
 end)
 
@@ -265,7 +265,7 @@ QBCore.Commands.Add('report', Lang:t("info.admin_report"), {{name='message', hel
     local Player = QBCore.Functions.GetPlayer(source)
     TriggerClientEvent('qb-admin:client:SendReport', -1, GetPlayerName(src), src, msg)
     TriggerEvent('qb-log:server:CreateLog', 'report', 'Report', 'pink', '**'..GetPlayerName(source)..'** (CitizenID: '..Player.PlayerData.citizenid..' | ID: '..source..') **Report:** ' ..msg, false)
-    TriggerEvent('qb-log:server:CreateLog', 'report', 'Report', 'black', '* @everyone *' , false)
+   -- TriggerEvent('qb-log:server:CreateLog', 'report', 'Report', 'black', ' @everyone ' , false)
 end)
 
 QBCore.Commands.Add('staffchat', Lang:t("commands.staffchat_message"), {{name='message', help='Message'}}, true, function(source, args)

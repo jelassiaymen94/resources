@@ -20,7 +20,7 @@ window.addEventListener("load", () => {
     playMusic();
     playingSong();
     setVolume();
-    console.info("THANKS FOR USE MY LOADING SCREEN JOIN THE DISCORD PLEASE :(")
+    console.info("")
 });
 
 function loadMusic(indexNumb) {

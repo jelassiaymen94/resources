@@ -16,7 +16,7 @@ RegisterNetEvent('qb-rental:client:LicenseCheck', function(data)
                 TriggerEvent('qb-rental:client:openMenu', data)
                 MenuType = "vehicle"
             else
-                QBCore.Functions.Notify(Lang:t("error.no_driver_license"), "error", 4500)
+                QBCore.Functions.Notify("You do not have a driver license!", "error", 4500)
             end
         end)
     elseif license == "pilot" then
@@ -27,7 +27,7 @@ RegisterNetEvent('qb-rental:client:LicenseCheck', function(data)
             else
                 TriggerEvent('qb-rental:client:openMenu', data)
                 MenuType = "aircraft"
-                --QBCore.Functions.Notify(Lang:t("error.no_pilot_license"), "error", 4500)
+               
             end
         end)
     end
@@ -45,7 +45,7 @@ RegisterNetEvent('qb-rental:client:openMenu', function(data)
         [2] = {
             id = 1,
             header = "Return Vehicle ",
-            txt = Lang:t("task.return_veh"),
+            txt = "Return your rented vehicle.",
             params = {
                 event = "qb-rental:client:return",
             }
@@ -269,7 +269,7 @@ RegisterNetEvent('qb-rental:client:spawncar', function(data)
     local player = PlayerPedId()
     local money = data.money
     local model = data.model
-    local label = Lang:t("error.not_enough_space", {vehicle = menu:sub(1,1):upper()..menu:sub(2)})
+    local label = "A vehicle is in the way", {vehicle = menu:sub(1,1):upper()..menu:sub(2)}
     if menu == "vehicle" then
         if IsAnyVehicleNearPoint(Config.Locations.vehicle.spawnpoint.x, Config.Locations.vehicle.spawnpoint.y, Config.Locations.vehicle.spawnpoint.z, 2.0) then
             QBCore.Functions.Notify(label, "error", 4500)
@@ -390,7 +390,7 @@ RegisterNetEvent('qb-rental:client:spawncar', function(data)
             local plate = GetVehicleNumberPlateText(vehicle)
             TriggerServerEvent('qb-rental:server:rentalpapers', plate, vehicleLabel)
         else
-            QBCore.Functions.Notify(Lang:t("error.not_enough_money"), "error", 4500)
+            QBCore.Functions.Notify("You do not have enough money!", "error", 4500)
         end
     end, money)
 end)
@@ -398,14 +398,14 @@ end)
 RegisterNetEvent('qb-rental:client:return', function()
     if SpawnVehicle then
         local Player = QBCore.Functions.GetPlayerData()
-        QBCore.Functions.Notify(Lang:t("task.veh_returned"), 'success')
+        QBCore.Functions.Notify('Vehicle Returned!', 'success')
         TriggerServerEvent('qb-rental:server:removepapers')
         local car = GetVehiclePedIsIn(PlayerPedId(),true)
         NetworkFadeOutEntity(car, true,false)
         Citizen.Wait(2000)
         QBCore.Functions.DeleteVehicle(car)
     else 
-        QBCore.Functions.Notify(Lang:t("error.no_vehicle"), "error")
+        QBCore.Functions.Notify("No vehicle to return!", "error")
     end
     SpawnVehicle = false
 end)

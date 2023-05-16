@@ -121,6 +121,8 @@ RegisterNetEvent('qb-houserobbery:server:searchCabin', function(cabin, house)
                     end
                 end
                 TriggerClientEvent('inventory:client:ItemBox', src, itemInfo, "add")
+                TriggerEvent("qb-log:server:CreateLog", "houserobbery", "House Rob", "green", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' Got ' .. itemInfo .. '')
+			  
             end
             Wait(500)
             -- local weaponChance = math.random(1, 100)

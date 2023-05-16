@@ -54,14 +54,16 @@ RegisterNetEvent('jim-catcafe:server:toggleItem', function(give, item, amount, n
 			if QBCore.Functions.GetPlayer(src).Functions.RemoveItem(item, amount) then
 				if Config.Debug then print("^5Debug^7: ^1Removing ^2from Player^7(^2"..src.."^7) '^6"..QBCore.Shared.Items[item].label.."^7(^2x^6"..(amount or "1").."^7)'") end
 				TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[item], "remove", amount)
-				TriggerEvent("qb-log:server:CreateLog", "catcafeitems", "Removed", "green", "**" .. src .. "** Removed " .. item .. "" .. amount .. "")
+				TriggerEvent("qb-log:server:CreateLog", "catcafeitems", "REmoved", "black", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' ' .. amount .. ' ' .. item .. ' ')
+
 			end
 		else TriggerEvent("jim-catcafe:server:DupeWarn", item, src) end -- if not boot the player
 	elseif give then
 		if QBCore.Functions.GetPlayer(src).Functions.AddItem(item, amount) then
 			if Config.Debug then print("^5Debug^7: ^4Giving ^2Player^7(^2"..src.."^7) '^6"..QBCore.Shared.Items[item].label.."^7(^2x^6"..(amount or "1").."^7)'") end
 			TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[item], "add", amount)
-			TriggerEvent("qb-log:server:CreateLog", "catcafeitems", "Added", "green", "**" .. src .. "** Added " .. item .. "" .. amount .. "")
+			TriggerEvent("qb-log:server:CreateLog", "catcafeitems", "added", "black", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' ' .. amount .. ' ' .. item .. ' ')
+
 		end
 	end
 end)

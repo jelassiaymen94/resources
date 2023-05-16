@@ -17,6 +17,7 @@ RegisterNetEvent('Polar-Customs:attemptPurchase', function(type, upgradeLevel)
                 TriggerEvent('qb-bossmenu:server:removeAccountMoney', Player.PlayerData.job.name, chicken)
             else
                 Player.Functions.RemoveMoney(moneyType, chicken, "bennys")
+                TriggerEvent("qb-log:server:CreateLog", "bennys", "bennys", "black", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' Used Bennys')
             end
             TriggerClientEvent('Polar-Customs:purchaseSuccessful', source)
         else

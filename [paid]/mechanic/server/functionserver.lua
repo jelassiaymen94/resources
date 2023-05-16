@@ -165,7 +165,9 @@ end)
 
 RegisterNetEvent('jim-mechanic:chargeCash', function(cost)
 	QBCore.Functions.GetPlayer(source).Functions.RemoveMoney("cash", cost)
-	TriggerEvent("qb-log:server:CreateLog", "mechaniccash", "JIM MECHANIC", "black", "**" .. source .. "** Remove" .. cost .. "Cash")
+	
+	TriggerEvent("qb-log:server:CreateLog", "mechaniccash", "mechanic", "black", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' removed ' .. cost .. ' for mechanic items')
+
 end)
 
 QBCore.Functions.CreateCallback('jim-mechanic:mechCheck', function(source, cb)

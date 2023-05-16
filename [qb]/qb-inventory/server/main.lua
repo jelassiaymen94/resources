@@ -2141,11 +2141,11 @@ QBCore.Commands.Add("resetinv", "Reset Inventory (Admin Only)", {{name="type", h
 		QBCore.Functions.Notify(source,  Lang:t("notify.anfoc"), "error")
 	end
 end, "admin")
-
+--[[
 QBCore.Commands.Add("rob", "Rob Player", {}, false, function(source, _)
 	TriggerClientEvent("police:client:RobPlayer", source)
 end)
-
+]]
 QBCore.Commands.Add("giveitem", "Give An Item (Admin Only)", {{name="id", help="Player ID"},{name="item", help="Name of the item (not a label)"}, {name="amount", help="Amount of items"}}, false, function(source, args)
 	local id = tonumber(args[1])
 	local Player = QBCore.Functions.GetPlayer(id)

@@ -12,27 +12,27 @@ RegisterNetEvent("Pug:server:GetRacingRewards", function(src, TotalLaps, AmountO
             if AmountOfRacers < 4 then
                 if PlayersFinished == 1 then
                     exports['qb-phone']:AddCrypto(src, "shung", 6)
-                    TriggerEvent("qb-log:server:CreateLog", "racing", "RACING Crypto Added", "green", "**" .. src .. "** Added Shung")
+                                        TriggerEvent("qb-log:server:CreateLog", "racing", "Racing", "black", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' Got Racing Rewards (Shung)')
                     
                 elseif PlayersFinished == 2 then
                     exports['qb-phone']:AddCrypto(src, "shung", 4, "second place")
-                    TriggerEvent("qb-log:server:CreateLog", "racing", "RACING Crypto Added", "green", "**" .. src .. "** Added Shung")
+                                        TriggerEvent("qb-log:server:CreateLog", "racing", "Racing", "black", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' Got Racing Rewards (Shung)')
                 print "rewards given 2-3 racers"
             end
         elseif AmountOfRacers >= 4 and AmountOfRacers < 6 then
                 if PlayersFinished == 1 then
                     exports['qb-phone']:AddCrypto(src, "gne", math.random(1, 3))
                     exports['qb-phone']:AddCrypto(src, "shung", math.random(13, 18))
-                    TriggerEvent("qb-log:server:CreateLog", "racing", "RACING Crypto Added", "green", "**" .. src .. "** Added Shung & GNE")
+                                       TriggerEvent("qb-log:server:CreateLog", "racing", "Racing", "black", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' Got Racing Rewards (Shung & GNE)')
                 elseif PlayersFinished == 2 then
                     exports['qb-phone']:AddCrypto(src, "shung", math.random(11, 16))
-                    TriggerEvent("qb-log:server:CreateLog", "racing", "RACING Crypto Added", "green", "**" .. src .. "** Added Shung")
+                                        TriggerEvent("qb-log:server:CreateLog", "racing", "Racing", "black", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' Got Racing Rewards (Shung)')
                 elseif PlayersFinished == 3 then
                     exports['qb-phone']:AddCrypto(src, "shung", math.random(9, 14))
-                    TriggerEvent("qb-log:server:CreateLog", "racing", "RACING Crypto Added", "green", "**" .. src .. "** Added Shung")
+                                        TriggerEvent("qb-log:server:CreateLog", "racing", "Racing", "black", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' Got Racing Rewards (Shung)')
                 else
                     exports['qb-phone']:AddCrypto(src, "shung", math.random(5, 10))
-                    TriggerEvent("qb-log:server:CreateLog", "racing", "RACING Crypto Added", "green", "**" .. src .. "** Added Shung")
+                                        TriggerEvent("qb-log:server:CreateLog", "racing", "Racing", "black", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' Got Racing Rewards (Shung)')
                     print "rewards given 4-6 racers"
                 end
                 
@@ -40,81 +40,83 @@ RegisterNetEvent("Pug:server:GetRacingRewards", function(src, TotalLaps, AmountO
                 if PlayersFinished == 1 then
                     exports['qb-phone']:AddCrypto(src, "gne", math.random(7, 10))
                     exports['qb-phone']:AddCrypto(src, "shung", math.random(17, 22))
-                    TriggerEvent("qb-log:server:CreateLog", "racing", "RACING Crypto Added", "green", "**" .. src .. "** Added Shung & GNE")
+                                       TriggerEvent("qb-log:server:CreateLog", "racing", "Racing", "black", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' Got Racing Rewards (Shung & GNE)')
                 elseif PlayersFinished == 2 then
                    exports['qb-phone']:AddCrypto(src, "gne", math.random(4, 7))
                    exports['qb-phone']:AddCrypto(src, "shung", math.random(15, 20))
-                   TriggerEvent("qb-log:server:CreateLog", "racing", "RACING Crypto Added", "green", "**" .. src .. "** Added Shung & GNE")
+                                      TriggerEvent("qb-log:server:CreateLog", "racing", "Racing", "black", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' Got Racing Rewards (Shung & GNE)')
                 elseif PlayersFinished == 3 then
                     exports['qb-phone']:AddCrypto(src, "gne", math.random(1, 3))
                     exports['qb-phone']:AddCrypto(src, "shung", math.random(13, 18))
-                    TriggerEvent("qb-log:server:CreateLog", "racing", "RACING Crypto Added", "green", "**" .. src .. "** Added Shung & GNE")
+                                       TriggerEvent("qb-log:server:CreateLog", "racing", "Racing", "black", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' Got Racing Rewards (Shung & GNE)')
                 elseif PlayersFinished == 4 then
                     exports['qb-phone']:AddCrypto(src, "shung", math.random(11, 16))
-                    TriggerEvent("qb-log:server:CreateLog", "racing", "RACING Crypto Added", "green", "**" .. src .. "** Added Shung")
+                                        TriggerEvent("qb-log:server:CreateLog", "racing", "Racing", "black", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' Got Racing Rewards (Shung)')
+                    TriggerEvent("qb-log:server:CreateLog", "racing", "Racing", "black", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' Got Racing Rewards (Shung)')
+			  
                 elseif PlayersFinished == 5 then
                     exports['qb-phone']:AddCrypto(src, "shung", math.random(9, 14))
-                    TriggerEvent("qb-log:server:CreateLog", "racing", "RACING Crypto Added", "green", "**" .. src .. "** Added Shung")
+                                        TriggerEvent("qb-log:server:CreateLog", "racing", "Racing", "black", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' Got Racing Rewards (Shung)')
                 elseif PlayersFinished == 6 then
                     exports['qb-phone']:AddCrypto(src, "shung", math.random(7, 12))
-                    TriggerEvent("qb-log:server:CreateLog", "racing", "RACING Crypto Added", "green", "**" .. src .. "** Added Shung")
+                                        TriggerEvent("qb-log:server:CreateLog", "racing", "Racing", "black", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' Got Racing Rewards (Shung)')
                 else
                     exports['qb-phone']:AddCrypto(src, "shung", math.random(5, 10))
-                    TriggerEvent("qb-log:server:CreateLog", "racing", "RACING Crypto Added", "green", "**" .. src .. "** Added Shung")
+                                        TriggerEvent("qb-log:server:CreateLog", "racing", "Racing", "black", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' Got Racing Rewards (Shung)')
                     print "rewards given 6-8 racers"
                 end
             elseif AmountOfRacers >= 8 and AmountOfRacers < 10 then
                if PlayersFinished == 1 then
                     exports['qb-phone']:AddCrypto(src, "gne", math.random(9, 13))
                     exports['qb-phone']:AddCrypto(src, "shung", math.random(21, 26))
-                    TriggerEvent("qb-log:server:CreateLog", "racing", "RACING Crypto Added", "green", "**" .. src .. "** Added Shung & GNE")
+                                       TriggerEvent("qb-log:server:CreateLog", "racing", "Racing", "black", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' Got Racing Rewards (Shung & GNE)')
                 elseif PlayersFinished == 2 then
                    exports['qb-phone']:AddCrypto(src, "gne", math.random(6, 9))
                    exports['qb-phone']:AddCrypto(src, "shung", math.random(19, 24))
-                   TriggerEvent("qb-log:server:CreateLog", "racing", "RACING Crypto Added", "green", "**" .. src .. "** Added Shung & GNE")
+                                      TriggerEvent("qb-log:server:CreateLog", "racing", "Racing", "black", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' Got Racing Rewards (Shung & GNE)')
                 elseif PlayersFinished == 3 then
                     exports['qb-phone']:AddCrypto(src, "gne", math.random(3, 6))
                     exports['qb-phone']:AddCrypto(src, "shung", math.random(17, 22))
-                    TriggerEvent("qb-log:server:CreateLog", "racing", "RACING Crypto Added", "green", "**" .. src .. "** Added Shung & GNE")
+                                       TriggerEvent("qb-log:server:CreateLog", "racing", "Racing", "black", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' Got Racing Rewards (Shung & GNE)')
                 elseif PlayersFinished == 4 then
                     exports['qb-phone']:AddCrypto(src, "shung", math.random(15, 20))
-                    TriggerEvent("qb-log:server:CreateLog", "racing", "RACING Crypto Added", "green", "**" .. src .. "** Added Shung")
+                                        TriggerEvent("qb-log:server:CreateLog", "racing", "Racing", "black", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' Got Racing Rewards (Shung)')
                 elseif PlayersFinished == 5 then
                     exports['qb-phone']:AddCrypto(src, "shung", math.random(13, 18))
-                    TriggerEvent("qb-log:server:CreateLog", "racing", "RACING Crypto Added", "green", "**" .. src .. "** Added Shung")
+                                        TriggerEvent("qb-log:server:CreateLog", "racing", "Racing", "black", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' Got Racing Rewards (Shung)')
                 elseif PlayersFinished == 6 then
                     exports['qb-phone']:AddCrypto(src, "shung", math.random(11, 16))
-                    TriggerEvent("qb-log:server:CreateLog", "racing", "RACING Crypto Added", "green", "**" .. src .. "** Added Shung")
+                                        TriggerEvent("qb-log:server:CreateLog", "racing", "Racing", "black", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' Got Racing Rewards (Shung)')
                 else
                     exports['qb-phone']:AddCrypto(src, "shung", math.random(9, 14))
-                    TriggerEvent("qb-log:server:CreateLog", "racing", "RACING Crypto Added", "green", "**" .. src .. "** Added Shung")
+                                        TriggerEvent("qb-log:server:CreateLog", "racing", "Racing", "black", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' Got Racing Rewards (Shung)')
                     print "rewards given 8-10 racers"
                 end
             elseif AmountOfRacers >= 10 then
                 if PlayersFinished == 1 then
                     exports['qb-phone']:AddCrypto(src, "gne", math.random(11, 16))
                     exports['qb-phone']:AddCrypto(src, "shung", math.random(25, 30))
-                    TriggerEvent("qb-log:server:CreateLog", "racing", "RACING Crypto Added", "green", "**" .. src .. "** Added Shung & GNE")
+                                       TriggerEvent("qb-log:server:CreateLog", "racing", "Racing", "black", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' Got Racing Rewards (Shung & GNE)')
                 elseif PlayersFinished == 2 then
                    exports['qb-phone']:AddCrypto(src, "gne", math.random(8, 11))
                    exports['qb-phone']:AddCrypto(src, "shung", math.random(23, 28))
-                   TriggerEvent("qb-log:server:CreateLog", "racing", "RACING Crypto Added", "green", "**" .. src .. "** Added Shung & GNE")
+                                      TriggerEvent("qb-log:server:CreateLog", "racing", "Racing", "black", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' Got Racing Rewards (Shung & GNE)')
                 elseif PlayersFinished == 3 then
                     exports['qb-phone']:AddCrypto(src, "gne", math.random(6, 8))
                     exports['qb-phone']:AddCrypto(src, "shung", math.random(21, 26))
-                    TriggerEvent("qb-log:server:CreateLog", "racing", "RACING Crypto Added", "green", "**" .. src .. "** Added Shung & GNE")
+                                       TriggerEvent("qb-log:server:CreateLog", "racing", "Racing", "black", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' Got Racing Rewards (Shung & GNE)')
                 elseif PlayersFinished == 4 then
                     exports['qb-phone']:AddCrypto(src, "shung", math.random(19, 24))
-                    TriggerEvent("qb-log:server:CreateLog", "racing", "RACING Crypto Added", "green", "**" .. src .. "** Added Shung")
+                                        TriggerEvent("qb-log:server:CreateLog", "racing", "Racing", "black", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' Got Racing Rewards (Shung)')
                 elseif PlayersFinished == 5 then
                     exports['qb-phone']:AddCrypto(src, "shung", math.random(17, 22))
-                    TriggerEvent("qb-log:server:CreateLog", "racing", "RACING Crypto Added", "green", "**" .. src .. "** Added Shung")
+                                        TriggerEvent("qb-log:server:CreateLog", "racing", "Racing", "black", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' Got Racing Rewards (Shung)')
                 elseif PlayersFinished == 6 then
                     exports['qb-phone']:AddCrypto(src, "shung", math.random(15, 20))
-                    TriggerEvent("qb-log:server:CreateLog", "racing", "RACING Crypto Added", "green", "**" .. src .. "** Added Shung")
+                                        TriggerEvent("qb-log:server:CreateLog", "racing", "Racing", "black", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' Got Racing Rewards (Shung)')
                 else
                     exports['qb-phone']:AddCrypto(src, "shung", math.random(13, 18))
-                    TriggerEvent("qb-log:server:CreateLog", "racing", "RACING Crypto Added", "green", "**" .. src .. "** Added Shung")
+                                        TriggerEvent("qb-log:server:CreateLog", "racing", "Racing", "black", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' Got Racing Rewards (Shung)')
                 
                 end
                 print "rewards given 10+ racers"
@@ -127,106 +129,106 @@ RegisterNetEvent("Pug:server:GetRacingRewards", function(src, TotalLaps, AmountO
                 if PlayersFinished == 1 then
                     --exports['qb-phone']:AddCrypto(src, "gne", math.random(7, 10))
                     exports['qb-phone']:AddCrypto(src, "shung", math.random(17, 22))
-                    TriggerEvent("qb-log:server:CreateLog", "racing", "RACING Crypto Added", "green", "**" .. src .. "** Added Shung")
+                                        TriggerEvent("qb-log:server:CreateLog", "racing", "Racing", "black", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' Got Racing Rewards (Shung)')
                 elseif PlayersFinished == 2 then
                    --exports['qb-phone']:AddCrypto(src, "gne", math.random(4, 7))
                    exports['qb-phone']:AddCrypto(src, "shung", math.random(15, 20))
-                   TriggerEvent("qb-log:server:CreateLog", "racing", "RACING Crypto Added", "green", "**" .. src .. "** Added Shung")
+                                       TriggerEvent("qb-log:server:CreateLog", "racing", "Racing", "black", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' Got Racing Rewards (Shung)')
                 elseif PlayersFinished == 3 then
                     --exports['qb-phone']:AddCrypto(src, "gne", math.random(1, 3))
                     exports['qb-phone']:AddCrypto(src, "shung", math.random(13, 18))
-                    TriggerEvent("qb-log:server:CreateLog", "racing", "RACING Crypto Added", "green", "**" .. src .. "** Added Shung")
+                                        TriggerEvent("qb-log:server:CreateLog", "racing", "Racing", "black", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' Got Racing Rewards (Shung)')
                 elseif PlayersFinished == 4 then
                     exports['qb-phone']:AddCrypto(src, "shung", math.random(11, 16))
-                    TriggerEvent("qb-log:server:CreateLog", "racing", "RACING Crypto Added", "green", "**" .. src .. "** Added Shung")
+                                        TriggerEvent("qb-log:server:CreateLog", "racing", "Racing", "black", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' Got Racing Rewards (Shung)')
                 elseif PlayersFinished == 5 then
                     exports['qb-phone']:AddCrypto(src, "shung", math.random(9, 14))
-                    TriggerEvent("qb-log:server:CreateLog", "racing", "RACING Crypto Added", "green", "**" .. src .. "** Added Shung")
+                                        TriggerEvent("qb-log:server:CreateLog", "racing", "Racing", "black", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' Got Racing Rewards (Shung)')
                 elseif PlayersFinished == 6 then
                     exports['qb-phone']:AddCrypto(src, "shung", math.random(7, 12))
-                    TriggerEvent("qb-log:server:CreateLog", "racing", "RACING Crypto Added", "green", "**" .. src .. "** Added Shung")
+                                        TriggerEvent("qb-log:server:CreateLog", "racing", "Racing", "black", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' Got Racing Rewards (Shung)')
                 else
                     exports['qb-phone']:AddCrypto(src, "shung", math.random(5, 10))
-                    TriggerEvent("qb-log:server:CreateLog", "racing", "RACING Crypto Added", "green", "**" .. src .. "** Added Shung")
+                                        TriggerEvent("qb-log:server:CreateLog", "racing", "Racing", "black", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' Got Racing Rewards (Shung)')
                 end
             elseif AmountOfRacers >= 6 and AmountOfRacers < 8 then
                 if PlayersFinished == 1 then
                     --exports['qb-phone']:AddCrypto(src, "gne", math.random(9, 13))
                     exports['qb-phone']:AddCrypto(src, "shung", math.random(21, 26))
-                    TriggerEvent("qb-log:server:CreateLog", "racing", "RACING Crypto Added", "green", "**" .. src .. "** Added Shung")
+                                        TriggerEvent("qb-log:server:CreateLog", "racing", "Racing", "black", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' Got Racing Rewards (Shung)')
                 elseif PlayersFinished == 2 then
                    --exports['qb-phone']:AddCrypto(src, "gne", math.random(6, 9))
                    exports['qb-phone']:AddCrypto(src, "shung", math.random(19, 24))
-                   TriggerEvent("qb-log:server:CreateLog", "racing", "RACING Crypto Added", "green", "**" .. src .. "** Added Shung")
+                                       TriggerEvent("qb-log:server:CreateLog", "racing", "Racing", "black", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' Got Racing Rewards (Shung)')
                 elseif PlayersFinished == 3 then
                    -- exports['qb-phone']:AddCrypto(src, "gne", math.random(3, 6))
                     exports['qb-phone']:AddCrypto(src, "shung", math.random(17, 22))
-                    TriggerEvent("qb-log:server:CreateLog", "racing", "RACING Crypto Added", "green", "**" .. src .. "** Added Shung")
+                                        TriggerEvent("qb-log:server:CreateLog", "racing", "Racing", "black", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' Got Racing Rewards (Shung)')
                 elseif PlayersFinished == 4 then
                     exports['qb-phone']:AddCrypto(src, "shung", math.random(15, 20))
-                    TriggerEvent("qb-log:server:CreateLog", "racing", "RACING Crypto Added", "green", "**" .. src .. "** Added Shung")
+                                        TriggerEvent("qb-log:server:CreateLog", "racing", "Racing", "black", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' Got Racing Rewards (Shung)')
                 elseif PlayersFinished == 5 then
                     exports['qb-phone']:AddCrypto(src, "shung", math.random(13, 18))
-                    TriggerEvent("qb-log:server:CreateLog", "racing", "RACING Crypto Added", "green", "**" .. src .. "** Added Shung")
+                                        TriggerEvent("qb-log:server:CreateLog", "racing", "Racing", "black", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' Got Racing Rewards (Shung)')
                 elseif PlayersFinished == 6 then
                     exports['qb-phone']:AddCrypto(src, "shung", math.random(11, 16))
-                    TriggerEvent("qb-log:server:CreateLog", "racing", "RACING Crypto Added", "green", "**" .. src .. "** Added Shung")
+                                        TriggerEvent("qb-log:server:CreateLog", "racing", "Racing", "black", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' Got Racing Rewards (Shung)')
                 else
                     exports['qb-phone']:AddCrypto(src, "shung", math.random(9, 14))
-                    TriggerEvent("qb-log:server:CreateLog", "racing", "RACING Crypto Added", "green", "**" .. src .. "** Added Shung")
+                                        TriggerEvent("qb-log:server:CreateLog", "racing", "Racing", "black", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' Got Racing Rewards (Shung)')
                 end
             elseif AmountOfRacers >= 8 and AmountOfRacers < 10 then
                 if PlayersFinished == 1 then
                   --  exports['qb-phone']:AddCrypto(src, "gne", math.random(11, 16))
                     exports['qb-phone']:AddCrypto(src, "shung", math.random(25, 30))
-                    TriggerEvent("qb-log:server:CreateLog", "racing", "RACING Crypto Added", "green", "**" .. src .. "** Added Shung")
+                                        TriggerEvent("qb-log:server:CreateLog", "racing", "Racing", "black", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' Got Racing Rewards (Shung)')
                 elseif PlayersFinished == 2 then
                  --  exports['qb-phone']:AddCrypto(src, "gne", math.random(8, 11))
                    exports['qb-phone']:AddCrypto(src, "shung", math.random(23, 28))
-                   TriggerEvent("qb-log:server:CreateLog", "racing", "RACING Crypto Added", "green", "**" .. src .. "** Added Shung")
+                                       TriggerEvent("qb-log:server:CreateLog", "racing", "Racing", "black", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' Got Racing Rewards (Shung)')
                 elseif PlayersFinished == 3 then
                  --   exports['qb-phone']:AddCrypto(src, "gne", math.random(6, 8))
                     exports['qb-phone']:AddCrypto(src, "shung", math.random(21, 26))
-                    TriggerEvent("qb-log:server:CreateLog", "racing", "RACING Crypto Added", "green", "**" .. src .. "** Added Shung")
+                                        TriggerEvent("qb-log:server:CreateLog", "racing", "Racing", "black", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' Got Racing Rewards (Shung)')
                 elseif PlayersFinished == 4 then
                     exports['qb-phone']:AddCrypto(src, "shung", math.random(19, 24))
-                    TriggerEvent("qb-log:server:CreateLog", "racing", "RACING Crypto Added", "green", "**" .. src .. "** Added Shung")
+                                        TriggerEvent("qb-log:server:CreateLog", "racing", "Racing", "black", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' Got Racing Rewards (Shung)')
                 elseif PlayersFinished == 5 then
                     exports['qb-phone']:AddCrypto(src, "shung", math.random(17, 22))
-                    TriggerEvent("qb-log:server:CreateLog", "racing", "RACING Crypto Added", "green", "**" .. src .. "** Added Shung")
+                                        TriggerEvent("qb-log:server:CreateLog", "racing", "Racing", "black", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' Got Racing Rewards (Shung)')
                 elseif PlayersFinished == 6 then
                     exports['qb-phone']:AddCrypto(src, "shung", math.random(15, 20))
-                    TriggerEvent("qb-log:server:CreateLog", "racing", "RACING Crypto Added", "green", "**" .. src .. "** Added Shung")
+                                        TriggerEvent("qb-log:server:CreateLog", "racing", "Racing", "black", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' Got Racing Rewards (Shung)')
                 else
                     exports['qb-phone']:AddCrypto(src, "shung", math.random(13, 18))
-                    TriggerEvent("qb-log:server:CreateLog", "racing", "RACING Crypto Added", "green", "**" .. src .. "** Added Shung")
+                                        TriggerEvent("qb-log:server:CreateLog", "racing", "Racing", "black", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' Got Racing Rewards (Shung)')
                 
                 end
             elseif AmountOfRacers >= 10 then
                 if PlayersFinished == 1 then
                   --  exports['qb-phone']:AddCrypto(src, "gne", math.random(11, 16))
                     exports['qb-phone']:AddCrypto(src, "shung", math.random(29, 34))
-                    TriggerEvent("qb-log:server:CreateLog", "racing", "RACING Crypto Added", "green", "**" .. src .. "** Added Shung")
+                                        TriggerEvent("qb-log:server:CreateLog", "racing", "Racing", "black", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' Got Racing Rewards (Shung)')
                 elseif PlayersFinished == 2 then
                  --  exports['qb-phone']:AddCrypto(src, "gne", math.random(8, 11))
                    exports['qb-phone']:AddCrypto(src, "shung", math.random(27, 32))
-                   TriggerEvent("qb-log:server:CreateLog", "racing", "RACING Crypto Added", "green", "**" .. src .. "** Added Shung")
+                                       TriggerEvent("qb-log:server:CreateLog", "racing", "Racing", "black", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' Got Racing Rewards (Shung)')
                 elseif PlayersFinished == 3 then
                   --  exports['qb-phone']:AddCrypto(src, "gne", math.random(8, 11))
                     exports['qb-phone']:AddCrypto(src, "shung", math.random(25, 30))
-                       TriggerEvent("qb-log:server:CreateLog", "racing", "RACING Crypto Added", "green", "**" .. src .. "** Added Shung")
+                                           TriggerEvent("qb-log:server:CreateLog", "racing", "Racing", "black", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' Got Racing Rewards (Shung)')
                 elseif PlayersFinished == 4 then
                     exports['qb-phone']:AddCrypto(src, "shung", math.random(23, 28))
-                    TriggerEvent("qb-log:server:CreateLog", "racing", "RACING Crypto Added", "green", "**" .. src .. "** Added Shung")
+                                        TriggerEvent("qb-log:server:CreateLog", "racing", "Racing", "black", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' Got Racing Rewards (Shung)')
                 elseif PlayersFinished == 5 then
                     exports['qb-phone']:AddCrypto(src, "shung", math.random(21, 26))
-                    TriggerEvent("qb-log:server:CreateLog", "racing", "RACING Crypto Added", "green", "**" .. src .. "** Added Shung")
+                                        TriggerEvent("qb-log:server:CreateLog", "racing", "Racing", "black", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' Got Racing Rewards (Shung)')
                 elseif PlayersFinished == 6 then
                     exports['qb-phone']:AddCrypto(src, "shung", math.random(19, 24))
-                    TriggerEvent("qb-log:server:CreateLog", "racing", "RACING Crypto Added", "green", "**" .. src .. "** Added Shung")
+                                        TriggerEvent("qb-log:server:CreateLog", "racing", "Racing", "black", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' Got Racing Rewards (Shung)')
                 else
                     exports['qb-phone']:AddCrypto(src, "shung", math.random(17, 22))
-                    TriggerEvent("qb-log:server:CreateLog", "racing", "RACING Crypto Added", "green", "**" .. src .. "** Added Shung")
+                                        TriggerEvent("qb-log:server:CreateLog", "racing", "Racing", "black", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' Got Racing Rewards (Shung)')
                 
                 end
             end
