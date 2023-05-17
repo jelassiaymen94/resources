@@ -852,7 +852,8 @@ AddEventHandler('jim-recycle:Dumpsters:Reward', function(listKey)
             Player.Functions.AddItem(item, amount, false, {["quality"] = nil})
             TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[item], 'add', amount)
             Citizen.Wait(500)
-			TriggerEvent("qb-log:server:CreateLog", "dumpster", "JIM RECYCLE", "red", "**" .. src .. "** ADDED " .. amount .. "" .. item .. "")
+			TriggerEvent("qb-log:server:CreateLog", "shopbuy", "SHOPS", "green", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' Got ' .. item .. ' for ' .. amount .. '')
+			  
 			else
 				TriggerClientEvent("QBCore:Notify", src, "You found Nothing!", "error")
 			end
