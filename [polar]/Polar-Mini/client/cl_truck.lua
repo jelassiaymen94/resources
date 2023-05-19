@@ -10,6 +10,8 @@ local TruckPeds = {
 
 }
 
+local xpp = nil local loc = nil local amount = nil local pickloc = nil
+local trailervehicle = nil local pickupb = nil local trailermod = nil
 local lastjob = nil
 local hide = true
 local playeramount = 0
@@ -136,8 +138,8 @@ function getexp()
     
 
 end
-function finish()
-    local xxp = 1
+function finish(xxp)
+  
     TriggerServerEvent('Polar-Mini:Server:SetTruckerExp', xxp)
 
 
@@ -154,8 +156,9 @@ function getmenu()
                 text = 'Required: A Truck',
                 loc = vector4(281.14, -589.6, 17.91, 171.16),
                 amount = math.random(500,1000),
-                xp = math.random(1,25)
-        
+                xp = math.random(1,25),
+                pickloc = vector4(-1243.13, -1508.28, 4.45, 199.23),
+                trailer = 'trailers'
             },
             [2] = {
                 name = 'Smoke On The Water Route',
@@ -163,7 +166,9 @@ function getmenu()
                 text = 'Required: A Truck',
                 loc = vector4(-1227.31, -1504.08, 4.27, 171.16),
                 amount = math.random(500,1000),
-                xp = math.random(1,25)
+                xp = math.random(1,25),
+                pickloc = vector4(-1243.13, -1508.28, 4.45, 199.23),
+                trailer = 'tvtrailer'
             },
 
 
@@ -177,28 +182,31 @@ function getmenu()
       
     end
 end
-local xpp = nil local loc = nil local amount = nil
+
 RegisterNetEvent('Polar-Mini:Client:Transfer', function(data)
     
-    
+    trailermod = data.trailermod
     xpp = data.xp
+    pickloc = data.pickloc
     loc = data.location
     amount = data.payamount
-    print(xpp) -- xp amount given
-    print(loc) -- pickup location
-    print(amount) -- pay amount
+  --  print(xpp) -- xp amount given
+  --  print(loc) -- pickup location
+ --   print(amount) -- pay amount
     getjob()
     onRoute = true
     hide = false
     TriggerServerEvent('Polar-Mini:Server:SetPlayerUp', 1)
     TriggerServerEvent('Polar-Mini:Server:GiveJob')
+    startjob(loc, pickloc, amount, xpp, trailermod)
 end)
 RegisterNetEvent('Polar-Mini:Client:Cancel', function()
     if hide then return
     else hide = true onRoute = false end
     TriggerServerEvent('Polar-Mini:Server:SetPlayerDown', 1)
     TriggerServerEvent('Polar-Mini:Server:RemoveJob', lastjob)
-
+    DeleteEntity(trailervehicle)
+    RemoveBlip(pickupb)
 end)
 
 RegisterNetEvent('Polar-Mini:Client:TruckMenu', function()
@@ -217,7 +225,7 @@ RegisterNetEvent('Polar-Mini:Client:TruckMenu', function()
 		local setheader = "" .. Menus[i].name .. ""
 		local disable = false
         local hide = false
-        menu[#menu+1] = { hidden = hide, disabled = disable, icon = Menus[i].icon, header = setheader, txt =" Distance: " .. math.floor(distance) .. "m Away " .. "<p>" .. "Payout $" .. Menus[i].amount .. "<p> Potential Exp " .. Menus[i].xp .. "", params = { event = "Polar-Mini:Client:Transfer", args = { location = Menus[i].loc, payamount = Menus[i].amount, xp = Menus[i].xp} } }
+        menu[#menu+1] = { hidden = hide, disabled = disable, icon = Menus[i].icon, header = setheader, txt =" Distance: " .. math.floor(distance) .. " Miles Away " .. "<p>" .. "Payout $" .. Menus[i].amount .. "<p> Potential Exp " .. Menus[i].xp .. "", params = { event = "Polar-Mini:Client:Transfer", args = { location = Menus[i].loc, payamount = Menus[i].amount, xp = Menus[i].xp, pickloc = Menus[i].pickloc, trailermod = Menus[i].trailer} } }
 		Wait(0)
 	
 	exports['qb-menu']:openMenu(menu)
@@ -240,3 +248,80 @@ RegisterNetEvent('Polar-Mini:Client:CancelTruckMenu', function()
     
 
 end)
+
+
+
+function startjob(loc, pickloc, amount, xpp, trailermod)
+    -- loc is deliver
+    -- pickloc is pickup location
+    -- amount is Payout $
+    -- xpp is xp you get
+   -- pickup(loc, pickloc, amount, xpp, trailermod)
+   local success = exports['qb-phone']:PhoneNotification("Trucking", 'Trucking Job', 'fas fa-file-invoice-dollar', '#b3e0f2', "NONE", 'fas fa-check-circle', 'fas fa-times-circle')
+   if success then
+    pickup(loc, pickloc, amount, xpp, trailermod)
+   else
+      print('declined')
+   end
+    
+
+  --  finish(xpp)
+end
+
+function pickup(loc, pickloc, amount, xpp, trailer)
+    RequestModel(trailer) while not HasModelLoaded(trailer) do  Wait(500) end
+   
+    trailervehicle = CreateVehicle(trailer, pickloc.x, pickloc.y, pickloc.z, pickloc.w, true, false)
+   
+    Wait(150)
+   
+    pickupb = AddBlipForEntity(trailervehicle)
+    SetBlipSprite (pickupb, 479)
+    SetBlipDisplay(pickupb, 6) 
+    SetBlipScale  (pickupb, 0.6)
+    SetBlipAsShortRange(pickupb, true)
+    SetBlipColour(pickupb, 46)
+    BeginTextCommandSetBlipName("STRING")
+    AddTextComponentSubstringPlayerName("Trailer")
+    EndTextCommandSetBlipName(pickupb)
+    Wait(100)
+    SetBlipRoute(pickupb, true)
+    SetBlipRouteColour(pickupb, 46)
+
+    attachcheck()
+  
+    
+end
+
+function attachcheck()
+    CreateThread(function()
+        while true do
+            Wait(1000)
+            local trailercoords = GetEntityCoords(trailervehicle)
+            local coords = GetEntityCoords(PlayerPedId())
+            local distance = GetDistanceBetweenCoords(coords.x, coords.y, coords.z, trailercoords.x, trailercoords.y, trailercoords.z)
+           -- print(distance)
+            if distance < 8 then
+                local car = GetVehiclePedIsIn(PlayerPedId(), false)
+                local mod = GetEntityModel(car)
+             --   print(mod)
+               
+                startdrive(mod)
+                QBCore.Functions.Notify('Head to the Drop Off', 'success', 2500)
+            end
+        end
+    end)
+    if IsVehicleAttachedToTrailer(GetVehiclePedIsIn(PlayerPedId(), false)) then
+        print('attached')
+    else
+
+
+    end
+end
+
+function startdrive(loc, amount, xpp)
+    
+
+
+
+end
