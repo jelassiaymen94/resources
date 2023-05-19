@@ -2,17 +2,19 @@ local QBCore = exports['qb-core']:GetCoreObject()
 
 CreateThread(function()
     --start()
+    -- getmenu()
 end)
 AddEventHandler('onResourceStart', function(resource)
     if resource == GetCurrentResourceName() then
         Wait(100)
         start()
+        getmenu()
     end
 end)
 RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function()
     Wait(100)
     start()
-    
+    getmenu()
 end)
 
 
@@ -54,14 +56,13 @@ local Menus = {}
 
 
 RegisterNetEvent('Polar-Mini:Client:TruckMenu2', function()
-    getmenu()
     TriggerEvent('Polar-Mini:Client:TruckMenu')
 
 end)
 
 function getmenu()
     local chance = math.random(1,100)
-    if chance < 101 then
+    if chance < 25 then
         Menus = {
             [1] = {
                 name = 'Pillbox Medical',
@@ -79,14 +80,42 @@ function getmenu()
 
         }
 
-    elseif chance < 50 then
+   -- elseif chance < 50 then
         
 
-    elseif chance < 75 then
+ --   elseif chance < 75 then
         
 
     else
+        Menus = {
+            [1] = {
+                name = 'Pillbox Medical',
+                icon = "",
+                text = 'Required: A Truck',
+                loc = vec(),
+                amount = 55,
+        
+            },
+            [2] = {
+                name = 'Pillbox Medical',
+                icon = "",
+                text = 'Required: A Truck',
+                loc = vec(),
+                amount = 55,
+        
+            },
+            [3] = {
+                name = 'Pillbox Medical',
+                icon = "",
+                text = 'Required: A Truck',
+                loc = vec(),
+                amount = 55,
+        
+            },
 
+
+
+        }
 
     end
 end
