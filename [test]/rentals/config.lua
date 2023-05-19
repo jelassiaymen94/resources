@@ -60,20 +60,24 @@ Config.Blips = {
 Config.Vehicles = {
     land = {
         [1] = {
-            model = 'bmx', --DONT CHANGE PLEASE
-            money = 200,
+            model = 'bmx', 
+            money = 100,
         },
         [2] = {
-            model = 'tornado', --DONT CHANGE PLEASE
+            model = 'futo', 
             money = 500,
         },
         [3] = {
-            model = 'ratbike', --DONT CHANGE PLEASE
-            money = 700,
+            model = 'sanchez', 
+            money = 2500,
         },
         [4] = {
-            model = 'speedo', --DONT CHANGE PLEASE
+            model = 'burrito', 
             money = 1200,
+        },
+        [4] = {
+            model = 'hauler', 
+            money = 1500,
         },
     },
     air = {
