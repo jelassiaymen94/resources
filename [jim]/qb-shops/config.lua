@@ -85,9 +85,6 @@ Config = {
 			{ name = "drugbag", price = 100, amount = 1500, },
 			{ name = "purifiedwater", price = 100, amount = 150, },
 			{ name = "rolling_paper", price = 50, amount = 15, },
-			{ name = "backwoods_honey", price = 100, amount = 15, },
-			{ name = "banana_backwoods", price = 100, amount = 15, },
-			{ name = "backwoods_grape", price = 100, amount = 15, },
 			{ name = "male_seed", price = 8500, amount = 50, },
 			{ name = "female_seed", price = 2500, amount = 50, },
 			--{ name = "smalljoint", price = 100, amount = 25, },
@@ -141,23 +138,25 @@ Config = {
 			--{ name = "laptop", price = 10000, amount = 15 },
 			{ name = "drill", price = 15000, amount = 1 },
 			{ name = "aluminumoxide", price = 1250, amount = 5 },
-			{ name = "scissors", price = 2500, amount = 1 },
+		--	{ name = "scissors", price = 2500, amount = 1 },
 			{ name = "metalscratchy", price = 2500, amount = 2 },
-			--{ name = "thermite", price = 15000, amount = 2 },
-			--{ name = "chemicals", price = 125, amount = 10 },
+			{ name = "thermite", price = 125, amount = 2 },
+			{ name = "hacking_device", price = 16750, amount = 1 },
+			{ name = "laptop_green", price = 12250, amount = 1 },
+			{ name = "head_bag", price = 5000, amount = 5 },
 		},
 		["bm2"] = {
 		
-			{ name = "sodium_hydroxide", price = 125, amount = 2 },
+			{ name = "thermite", price = 125, amount = 2 },
 			{ name = "hacking_device", price = 16750, amount = 1 },
-			--{ name = "noscan", price = 12250, amount = 1 },
+			{ name = "laptop_green", price = 12250, amount = 1 },
 			{ name = "head_bag", price = 5000, amount = 5 },
 			--{ name = "cocainekey", price = 5000, amount = 5 },
 		},
 		["bm3"] = {
 		
-			{ name = "thermite", price = 9000, amount = 2 },
-			{ name = "screwdriverset", price = 1750, amount = 5 },
+		--	{ name = "thermite", price = 9000, amount = 2 },
+		--	{ name = "screwdriverset", price = 1750, amount = 5 },
 			--{ name = "noscan", price = 12000, amount = 15 },
 			--{ name = "vpn", price = 3500, amount = 15 },
 			--{ name = "cocainekey", price = 5000, amount = 5 },
@@ -188,7 +187,8 @@ Config = {
 		--	{ name = "shotgun_ammo", price = 200, amount = 25, },
 			{ name = "smg_ammo", price = 250, amount = 25, },
 			{ name = "mg_ammo", price = 600, amount = 25, },
-			{ name = "weapon_m4", price = 2650, amount = 25,},
+		--	{ name = "weapon_m4", price = 2650, amount = 15,},
+			{ name = "weapon_scarh", price = 4650, amount = 15,},
 			--{ name = "weapon_ar15", price = 500, amount = 25,requiresLicense = true },
 			--{ name = "weapon_remington", price = 1000, amount = 25,requiresLicense = true  },
 			--{ name = "weapon_scarh", price = 750, amount = 25, requiresLicense = true },
@@ -411,7 +411,7 @@ Config.Locations = {
 		["blipsprite"] = 617,
 		["blipcolour"] = 0,
 	},
-    ["bm2"] = {
+    --[[["bm2"] = {
 		["label"] = "Black Market",
 		["coords"] = { vector4(-1507.0, -3006.09, -81.56, 327.43), },
 		["type"] = "items",
@@ -451,7 +451,7 @@ Config.Locations = {
 		["blipsprite"] = 52,
 		["blipcolour"] = 0,
 		["hideblip"] = true,
-	},
+	},]]
 	
 	
     -- Weedshop Locations

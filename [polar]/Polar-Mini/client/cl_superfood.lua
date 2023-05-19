@@ -12,6 +12,8 @@ RegisterNetEvent('superfood:client:Eat', function(itemName)
         TriggerEvent('animations:client:EmoteCommandStart', {"snikkel_candy"})
     elseif itemName == "tosti" then
         TriggerEvent('animations:client:EmoteCommandStart', {"sandwich"})
+    elseif itemName == "nekodonut" then
+        TriggerEvent('animations:client:EmoteCommandStart', {"donut"})
   
 
 
@@ -32,7 +34,7 @@ RegisterNetEvent('superfood:client:Eat', function(itemName)
 			TriggerServerEvent("QBCore:Server:SetMetaData", "hunger", QBCore.Functions.GetPlayerData().metadata["hunger"] + math.random(30,55))
 		end
        -- TriggerServerEvent('hud:server:RelieveStress', math.random(2, 4))
-		if Config.RewardItem == itemName then toggleItem(true, Config.RewardPool[math.random(1, #Config.RewardPool)], 1) end
+        TriggerServerEvent('superfood:server:removeitem', itemName)
 		if itemName == "bmochi" or itemName == "gmochi" or itemName == "omochi" or itemName == "pmochi" then exports['qb-buffs']:AddBuff("hacking", 15000)
 		elseif itemName == "miso" then exports['qb-buffs']:AddBuff("luck", 15000) 
 		elseif itemName == "nekodonut" then exports['qb-buffs']:AddBuff("stamina", 15000) exports['qb-buffs']:StaminaBuffEffect(15000, 1.4)
@@ -79,7 +81,7 @@ RegisterNetEvent('superfood:client:smoke', function(itemName)
 			TriggerServerEvent("QBCore:Server:SetMetaData", "hunger", QBCore.Functions.GetPlayerData().metadata["hunger"] + math.random(30,55))
 		end
        -- TriggerServerEvent('hud:server:RelieveStress', math.random(2, 4))
-		if Config.RewardItem == itemName then toggleItem(true, Config.RewardPool[math.random(1, #Config.RewardPool)], 1) end
+       TriggerServerEvent('superfood:server:removeitem', itemName)
 		if itemName == "bmochi" or itemName == "gmochi" or itemName == "omochi" or itemName == "pmochi" then exports['qb-buffs']:AddBuff("hacking", 15000)
 		elseif itemName == "miso" then exports['qb-buffs']:AddBuff("luck", 15000) 
 		elseif itemName == "nekodonut" then exports['qb-buffs']:AddBuff("stamina", 15000) exports['qb-buffs']:StaminaBuffEffect(15000, 1.4)
@@ -120,8 +122,8 @@ RegisterNetEvent('superfood:client:DrinkAlcohol', function(itemName)
         disableMouse = false,
         disableCombat = true,
     }, {}, {}, {}, function() -- Done
+        TriggerServerEvent('superfood:server:removeitem', itemName)
         TriggerEvent('animations:client:EmoteCommandStart', {"c"})
-        toggleItem(false, itemName, 1)
 		if QBCore.Shared.Items[itemName].thirst then TriggerServerEvent("QBCore:Server:SetMetaData", "thirst", QBCore.Functions.GetPlayerData().metadata["thirst"] + QBCore.Shared.Items[itemName].thirst) end
 		if QBCore.Shared.Items[itemName].hunger then TriggerServerEvent("QBCore:Server:SetMetaData", "hunger", QBCore.Functions.GetPlayerData().metadata["hunger"] + QBCore.Shared.Items[itemName].hunger) end
         alcoholCount = alcoholCount + 1
@@ -190,6 +192,7 @@ RegisterNetEvent('superfood:client:Drink', function(itemName)
 		disableMouse = false,
 		disableCombat = true,
     }, {}, {}, {}, function() -- Done
+        TriggerServerEvent('superfood:server:removeitem', itemName)
         TriggerEvent('animations:client:EmoteCommandStart', {"c"})
 		toggleItem(false, itemName, 1)
 		if QBCore.Shared.Items[itemName].thirst then TriggerServerEvent("QBCore:Server:SetMetaData", "thirst", QBCore.Functions.GetPlayerData().metadata["thirst"] + QBCore.Shared.Items[itemName].thirst) end

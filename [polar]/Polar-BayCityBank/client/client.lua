@@ -22,7 +22,7 @@ function goodies()  local chance = math.random(1,100) if chance <= 25 then atmit
 local kitcheddooritem = 'advancedlockpick'
 local pcitem = 'btc' -- crypto or sum
 local thermiteitem = "thermite"
-local vaultitem = 'hacking_device' -- bluelaptop
+local vaultitem = 'laptop_green' -- bluelaptop
 local drillitem = 'drill' 
 local carditem = 'keycard' -- vaultkeycard
 local computeritem = 'hacking_device' -- hacking_device

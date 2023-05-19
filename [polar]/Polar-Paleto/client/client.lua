@@ -35,7 +35,7 @@ function goodies()  local chance = math.random(1,100) if chance <= 25 then drill
 
 local pcitem = 'btc' -- crypto or sum
 local thermiteitem = "thermite"
-local vaultitem = 'hacking_device' -- bluelaptop
+local vaultitem = 'laptop_blue' -- bluelaptop
 local vaultitemchance = 50
 local drillitem = 'drill' 
 local drillitemchance = 50

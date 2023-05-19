@@ -32,7 +32,7 @@ Config.Language = 'English'
 
 Config.UseBlip = false -- use a blip on the map?
 Config.BlipName = "Pacific Bank" -- blip name
-Config.BlipLocation = vector3(236.69, 219.39, 106.29) -- blip location
+Config.BlipLocation = vector3(225.89, 199.04, 105.36) -- blip location
 Config.BlipSprite = 267 -- https://docs.fivem.net/docs/game-references/blips/ -- picture of blip
 Config.BlipColor = 7  -- https://gtaforums.com/topic/864881-all-blip-color-ids-pictured/ -- color of blip
 
@@ -54,9 +54,9 @@ Config.FemaleGloves = { [0] = true, [1] = true, [2] = true, [3] = true, [4] = tr
 --============== POLICE ================
 
 function CallPolice() exports["qb-dispatch"]:CustomAlert({
-        coords = vector3(236.69, 219.39, 106.29), message = "Bank Robbery",
+        coords = vector3(225.89, 199.04, 105.36), message = "Bank Robbery",
         dispatchCode = "10-90", description = "", radius = 10,
-        sprite = 304,  color = 75, scale = 1.0,  length = 1,
+        sprite = 304,  color = 46, scale = 1.0,  length = 1,
        
         })         
      --   TriggerServerEvent('InteractSound_SV:PlayAtCoord', vector3(-106.67, 6466.64, 32.75), 50, 'warehousealert', 0.35) 

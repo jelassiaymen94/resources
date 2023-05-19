@@ -53,4 +53,14 @@ Config.Locations = {
       label = 'Alta Apartments', -- Pin Label
       x = -256.21,y = -984.48,z = 30.22, -- Spawn Coords         
     }, -- vector3(-256.21, -984.48, 31.22)
+
+    {
+      top = 429, -- Margin from Top (in pixels)
+      left = 1195, -- Margin from Left (in pixels)
+      label = 'Bilinsgate Motel', -- Pin Label
+      x = 562.01, y = -1771.42, z = 29.36, -- Spawn Coords         
+    }, --  vector4(562.0, -1771.42, 29.36, 342.12)
+
+
+   
 }

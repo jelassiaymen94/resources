@@ -26,7 +26,7 @@ Config.Items = {                     -- Add and create here your items, Your ima
     },
     ['welcomeguide'] = {
         name = 'Welcome Guide',
-        numberOfPages = 5,
+        numberOfPages = 4,
     },
     ['cluea'] = {
         name = 'Treasure Hunt Clue 1',
