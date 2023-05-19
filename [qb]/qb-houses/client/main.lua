@@ -1451,7 +1451,7 @@ end)
 
 RegisterNetEvent('qb-houses:client:OpenStash', function()
     local stashLoc = vector3(stashLocation.x, stashLocation.y, stashLocation.z)
-    if CheckDistance(stashLoc, 1.5) then
+    if CheckDistance(stashLoc, 2.5) then
         TriggerServerEvent("inventory:server:OpenInventory", "stash", CurrentHouse)
         TriggerServerEvent("InteractSound_SV:PlayOnSource", "StashOpen", 0.4)
         TriggerEvent("inventory:client:SetCurrentStash", CurrentHouse)
