@@ -12,7 +12,7 @@ local TruckPeds = {
 
 local xpp = nil local loc = nil local amount = nil local pickloc = nil
 local trailervehicle = nil local pickupb = nil local trailermod = nil
-local lastjob = nil
+local lastjob = nil local dropoff = nil
 local hide = true
 local playeramount = 0
 local onjob = false
@@ -138,10 +138,14 @@ function getexp()
     
 
 end
-function finish(xxp)
-  
+function finish(amount, xxp)
+    print(amount)
+    print(xxp)
+    SetEntityAsNoLongerNeeded(trailervehicle)
+    RemoveBlip(pickupb)
+    RemoveBlip(dropoff)
     TriggerServerEvent('Polar-Mini:Server:SetTruckerExp', xxp)
-
+    TriggerServerEvent('Polar-Mini:Server:Amount', amount)
 
 
 end
@@ -207,6 +211,7 @@ RegisterNetEvent('Polar-Mini:Client:Cancel', function()
     TriggerServerEvent('Polar-Mini:Server:RemoveJob', lastjob)
     DeleteEntity(trailervehicle)
     RemoveBlip(pickupb)
+    RemoveBlip(dropoff)
 end)
 
 RegisterNetEvent('Polar-Mini:Client:TruckMenu', function()
@@ -288,12 +293,12 @@ function pickup(loc, pickloc, amount, xpp, trailer)
     SetBlipRoute(pickupb, true)
     SetBlipRouteColour(pickupb, 46)
 
-    attachcheck()
+    attachcheck(loc, amount, xpp)
   
     
 end
 
-function attachcheck()
+function attachcheck(loc, amount, xpp)
     CreateThread(function()
         while true do
             Wait(1000)
@@ -306,22 +311,46 @@ function attachcheck()
                 local mod = GetEntityModel(car)
              --   print(mod)
                
-                startdrive(mod)
+                startdrive(loc, amount, xpp)
                 QBCore.Functions.Notify('Head to the Drop Off', 'success', 2500)
+                break
             end
         end
     end)
-    if IsVehicleAttachedToTrailer(GetVehiclePedIsIn(PlayerPedId(), false)) then
-        print('attached')
-    else
-
-
-    end
 end
 
 function startdrive(loc, amount, xpp)
-    
 
+    dropoff = AddBlipForCoord(vec3(loc.x, loc.y, loc.z))
+    SetBlipSprite (dropoff, 615)
+    SetBlipDisplay(dropoff, 6) 
+    SetBlipScale  (dropoff, 0.6)
+    SetBlipAsShortRange(dropoff, true)
+    SetBlipColour(dropoff, 46)
+    BeginTextCommandSetBlipName("STRING")
+    AddTextComponentSubstringPlayerName("Dropoff")
+    EndTextCommandSetBlipName(dropoff)
+    Wait(100)
+    SetBlipRoute(dropoff, true)
+    SetBlipRouteColour(dropoff, 46)
 
-
+    CreateThread(function()
+        while true do
+            Wait(1000)
+            local trailercoords = GetEntityCoords(trailervehicle)
+            local distance = GetDistanceBetweenCoords(loc.x, loc.y, loc.z, trailercoords.x, trailercoords.y, trailercoords.z)
+            --print(distance)
+            if distance < 8 then
+            
+               
+               
+                exports['qb-core']:DrawText('[H] Drop Off Cargo', 'left')
+                if IsControlPressed(0, 74) then
+                    finish(amount, xpp)
+                    exports['qb-core']:HideText()
+                end
+                break
+            end
+        end
+    end)
 end

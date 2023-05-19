@@ -24,6 +24,14 @@ QBCore.Functions.CreateCallback('Polar-Mini:Server:CheckPlayers', function(sourc
 	local amount2 = players or 0
     cb(amount2)
 end)
+RegisterNetEvent('Polar-Mini:Server:Amount', function(amount)
+    
+    local src = source
+	local Player = QBCore.Functions.GetPlayer(src)
+    local amount2 = amount + math.random(2,10)
+    Player.Functions.AddMoney("cash", amount2)
+
+end)
 
 RegisterNetEvent('Polar-Mini:Server:RemoveJob', function(latest)
     local src = source
