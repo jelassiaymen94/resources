@@ -8,5 +8,5 @@ RegisterNetEvent('Polar-Paleto:Server:GiveRewards', function(item, amount)  loca
 RegisterNetEvent('Polar-Paleto:Server:Vault', function() TriggerClientEvent('Polar-Paleto:Client:Vault', -1, true) end)
 RegisterNetEvent('Polar-Paleto:Server:RemoveItems', function(item, amount) local src = source local Player = QBCore.Functions.GetPlayer(src) Wait(150) if amount == nil then Player.Functions.AddItem(item, 1) TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[item], "add", 1) else Player.Functions.AddItem(item, amount) TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[item], "add", amount) end end)
 RegisterNetEvent('Polar-Paleto:Server:TargetRemove', function(door) TriggerClientEvent('Polar-Paleto:Client:TargetRemove', -1, door)   end)
-RegisterNetEvent('Polar-Paleto:Server:StartTargets', function()   TriggerClientEvent('Polar-Paleto:Client:StartTargets', -1)     end)
+RegisterNetEvent('Polar-Paleto:Server:StartTargets', function()   TriggerClientEvent('Polar-Paleto:Client:StartTargets', source)     end)
 

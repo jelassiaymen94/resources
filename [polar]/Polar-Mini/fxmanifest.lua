@@ -31,3 +31,4 @@ server_scripts {
 
 
 lua54 'yes'
+

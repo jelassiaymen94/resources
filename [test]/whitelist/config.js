@@ -10,8 +10,8 @@ var blacklistRoles = [ // Roles by Id that are blacklisted.
     // "1011780619258314842"
 ];
 
-var notWhitelistedMessage = "You need to join our Discord to be Allowlisted - Discord.gg/Avalanche";
+var notWhitelistedMessage = "You need to join our Discord to be Allowlisted - Discord.gg/AvalancheRP";
 var noGuildMessage = "Guild Not Detected. It seems you're not in the guild for this community.";
-var blacklistMessage = "This Server is Only Open on Weekends or if You are a Supporter";
+var blacklistMessage = "You are Blacklisted - Discord.gg/AvalancheRP";
 var debugMode = false; // If you're experiencing issues. Contact Weblutions.
-var cacheMaxTime = "2m"; // This is the time it takes for refreshes (cache) to have to reload when fetching Discord roles.
+var cacheMaxTime = "1m"; // This is the time it takes for refreshes (cache) to have to reload when fetching Discord roles.

@@ -355,19 +355,10 @@ RegisterNetEvent('jim-catcafe:client:Drink', function(itemName)
 end)
 
 RegisterNetEvent('jim-catcafe:client:Eat', function(itemName)
-	if itemName == "bmochi" or itemName == "gmochi" or itemName == "omochi" or itemName == "pmochi" then TriggerEvent('animations:client:EmoteCommandStart', {"eat"})
-	elseif itemName == "miso" then TriggerEvent('animations:client:EmoteCommandStart', {"eat"})
-	elseif itemName == "nekodonut" then TriggerEvent('animations:client:EmoteCommandStart', {"eat"})
-	elseif itemName == "purrito" then TriggerEvent('animations:client:EmoteCommandStart', {"eat"})
-	elseif itemName == "noodlebowl" then TriggerEvent('animations:client:EmoteCommandStart', {"eat"})
-	elseif itemName == "mozzarellasticks" then TriggerEvent('animations:client:EmoteCommandStart', {"eat"})	
-	elseif itemName == "ramen" then TriggerEvent('animations:client:EmoteCommandStart', {"eat"})
-	elseif itemName == "bento" then TriggerEvent('animations:client:EmoteCommandStart', {"eat"})
-	elseif itemName == "nekocookie" then TriggerEvent('animations:client:EmoteCommandStart', {"eat"})
-	elseif itemName == "pikachusoup" then TriggerEvent('animations:client:EmoteCommandStart', {"eat"})
-	elseif itemName == "ernadotaco" then TriggerEvent('animations:client:EmoteCommandStart', {"eat"})
-	else TriggerEvent('animations:client:EmoteCommandStart', {"eat"}) end
-	QBCore.Functions.Progressbar("eat_something", Loc[Config.Lan].progressbar["progress_eat"]..QBCore.Shared.Items[itemName].label.."..", 5000, false, true, {
+	
+	 TriggerEvent('animations:client:EmoteCommandStart', {"eat"})
+
+	QBCore.Functions.Progressbar("eat_something", 'Eating '..QBCore.Shared.Items[itemName].label.."..", 5000, false, true, {
         disableMovement = false,
         disableCarMovement = false,
 		disableMouse = false,
@@ -380,8 +371,23 @@ RegisterNetEvent('jim-catcafe:client:Eat', function(itemName)
 		if not QBCore.Shared.Items[itemName].thirst and not QBCore.Shared.Items[itemName].hunger then
 			TriggerServerEvent("QBCore:Server:SetMetaData", "hunger", QBCore.Functions.GetPlayerData().metadata["hunger"] + math.random(30,55))
 		end
-        TriggerServerEvent('hud:server:RelieveStress', math.random(2, 4))
+       -- TriggerServerEvent('hud:server:RelieveStress', math.random(2, 4))
 		if Config.RewardItem == itemName then toggleItem(true, Config.RewardPool[math.random(1, #Config.RewardPool)], 1) end
+		if itemName == "bmochi" or itemName == "gmochi" or itemName == "omochi" or itemName == "pmochi" then exports['qb-buffs']:AddBuff("hacking", 15000)
+		elseif itemName == "miso" then exports['qb-buffs']:AddBuff("luck", 15000) 
+		elseif itemName == "nekodonut" then exports['qb-buffs']:AddBuff("stamina", 15000) exports['qb-buffs']:StaminaBuffEffect(15000, 1.4)
+		elseif itemName == "purrito" then exports['qb-buffs']:AddBuff("intelligence", 15000)
+		elseif itemName == "noodlebowl" then exports['qb-buffs']:AddBuff("strength", 15000)
+		elseif itemName == "mozzarellasticks" then exports['qb-buffs']:AddBuff("swimming", 15000)   exports['qb-buffs']:SwimmingBuffEffect(15000, 1.4)
+		elseif itemName == "ramen" then  exports['qb-buffs']:AddBuff("super-hunger", 15000)
+		elseif itemName == "bento" then    exports['qb-buffs']:AddBuff("super-health", 15000) exports['qb-buffs']:AddHealthBuff(15000, 10)
+		elseif itemName == "nekocookie" then   exports['qb-buffs']:AddBuff("super-armor", 15000)  exports['qb-buffs']:AddArmorBuff(15000, 10)
+		elseif itemName == "pikachusoup" then  exports['qb-buffs']:AddBuff("super-stress", 15000) exports['qb-buffs']:AddStressBuff(15000, 10)
+		elseif itemName == "ernadotaco" then  exports['qb-buffs']:AddBuff("super-thirst", 15000)
+		end
+
+
+		
 	end, function() -- Cancel
 		TriggerEvent('animations:client:EmoteCommandStart', {"c"})
     end, itemName)
