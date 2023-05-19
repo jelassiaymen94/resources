@@ -96,7 +96,11 @@ Config = {
 			{ name = "fishingrod", price = 1000, amount = 30,},
 			{ name = "fishbait", price = 25, amount = 500, },
 			{ name = "jerry_can", price = 2500, amount = 3, },
+<<<<<<< Updated upstream
 			{ name = "screwdriverset", price = 2500, amount = 20, },
+=======
+
+>>>>>>> Stashed changes
 		},
 		
 		["leisureshop"] = {
