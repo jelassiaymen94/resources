@@ -78,7 +78,7 @@ bankAuth = true,
             },
             ['6'] = {
                 name = 'State Prosecutor',
-                payment = 8000
+                payment = 4000
             },
             ['7'] = {
                 name = 'Interceptor Driver',

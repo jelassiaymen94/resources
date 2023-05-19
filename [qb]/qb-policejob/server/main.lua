@@ -116,7 +116,7 @@ QBCore.Commands.Add("spikestrip", Lang:t("commands.place_spike"), {}, false, fun
         TriggerClientEvent('police:client:SpawnSpikeStrip', src)
     end
 end)
-
+]]
 QBCore.Commands.Add("grantlicense", Lang:t("commands.license_grant"), {{name = "id", help = Lang:t('info.player_id')}, {name = "license", help = Lang:t('info.license_type')}}, true, function(source, args)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
@@ -125,11 +125,11 @@ QBCore.Commands.Add("grantlicense", Lang:t("commands.license_grant"), {{name = "
             local SearchedPlayer = QBCore.Functions.GetPlayer(tonumber(args[1]))
             if not SearchedPlayer then return end
             local licenseTable = SearchedPlayer.PlayerData.metadata["licences"]
-            if licenseTable[args[2]] --[[then --[[
+            if licenseTable[args[2]] then
                 TriggerClientEvent('QBCore:Notify', src, Lang:t("error.license_already"), "error")
                 return
             end
-            licenseTable[args[2]] --[[= --[[true --[[
+            licenseTable[args[2]] = true 
             SearchedPlayer.Functions.SetMetaData("licences", licenseTable)
             TriggerClientEvent('QBCore:Notify', SearchedPlayer.PlayerData.source, Lang:t("success.granted_license"), "success")
             TriggerClientEvent('QBCore:Notify', src, Lang:t("success.grant_license"), "success")
@@ -140,7 +140,7 @@ QBCore.Commands.Add("grantlicense", Lang:t("commands.license_grant"), {{name = "
         TriggerClientEvent('QBCore:Notify', src, Lang:t("error.rank_license"), "error")
     end
 end)
-
+--[[
 QBCore.Commands.Add("revokelicense", Lang:t("commands.license_revoke"), {{name = "id", help = Lang:t('info.player_id')}, {name = "license", help = Lang:t('info.license_type')}}, true, function(source, args)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
