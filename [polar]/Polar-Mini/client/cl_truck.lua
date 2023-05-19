@@ -23,9 +23,14 @@ local TruckPeds = {
 }
 
 function getmenu()
-    local set = Config.RegularTrucking[math.random(1, #Config.RegularTrucking)]
+    local set = Config.PickupLoc[math.random(1, #Config.PickupLoc)]
     print(set)
-    
+    local set2 = Config.Trailers[math.random(1, #Config.Trailers)]
+    print(set2)
+    local set3 = Config.Dropoff[math.random(1, #Config.Dropoff)]
+    print(set3)
+    xp = math.random(5,15)
+    amount = math.random(500,1000)
 end
 
 

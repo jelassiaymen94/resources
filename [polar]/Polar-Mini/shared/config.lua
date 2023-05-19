@@ -17,306 +17,63 @@ Config.TruckBlipSprite = 477 -- https://docs.fivem.net/docs/game-references/blip
 Config.TruckBlipColor = 39  -- https://gtaforums.com/topic/864881-all-blip-color-ids-pictured/ -- color of blip
 
 
+Config.PickupLoc = {
 
+    vector4(-985.67, -2941.83, 13.95, 146.56),
+    vector4(233.1, -3114.72, 5.79, 354.99),
+    vector4(853.02, -3127.8, 5.9, 90.58),
+    vector4(853.01, -3143.86, 5.9, 91.18),
+    vector4(473.82, -2992.51, 6.04, 85.94),
+    vector4(-206.57, -1978.1, 27.62, 180.86),
+    vector4(-1803.93, 799.54, 138.51, 38.93),
+    vector4(211.06, 2747.4, 43.43, 95.55),
+    vector4(1854.13, 2625.45, 45.67, 357.95),
+    vector4(-3146.63, 1043.02, 20.76, 336.96),
+    vector4(-1051.42, -1566.17, 4.81, 304.45),
+    vector4(-1097.89, -2398.09, 13.95, 63.3),
+    vector4(-1051.42, -1566.17, 4.81, 304.45),
+    vector4(-1392.11, 83.84, 53.99, 0.8),
+    vector4(1043.83, -2491.49, 28.51, 153.18),
+    vector4(1151.86, -3017.54, 5.9, 88.19),
 
-Config.RegularTrucking = {
-
-    [1] = {
-        name = 'Sandy Shores Repair', -- done
-        loc = vector4(258.25, 2578.75, 45.15, 278.74),
-        amount = math.random(1000,3000),
-        xp = math.random(5,15),
-        pickloc = vector4(853.02, -3127.8, 5.9, 90.58),
-        trailer = 'docktrailer',
-          
-
-
-    },
-    [2] = {
-        name = 'Tennis Court Rental', -- done
-        loc = vector4(-1028.54, -493.36, 36.94, 114.5),
-        amount = math.random(500,1000),
-        xp = math.random(5,15),
-        pickloc = vector4(853.01, -3143.86, 5.9, 91.18),
-        trailer = 'trailers3',
-
-
-    },
-    [3] = {
-
-        name = 'Damned Damn', -- done
-        loc = vector4(1794.73, 107.68, 169.52, 300.82),
-        amount = math.random(500,1000),
-        xp = math.random(5,15),
-        pickloc = vector4(473.82, -2992.51, 6.04, 85.94),
-        trailer = 'trailerlogs',
-
-    },
-    [4] = {
-
-        name = 'Fame or Shame Route', -- done
-        loc = vector4(-1044.46, -522.1, 36.04, 28.73),
-        amount = math.random(500,1000),
-        xp = math.random(5,15),
-        pickloc = vector4(-206.57, -1978.1, 27.62, 180.86),
-        trailer = 'tvtrailer',
-
-    },
-    [5] = {
-
-        name = 'Gas Hog',
-        loc = vector4(2683.58, 3292.73, 55.24, 238.18),
-        amount = math.random(500,1000),
-        xp = math.random(5,15),
-        pickloc = vector4(-1803.93, 799.54, 138.51, 38.93),
-        trailer = 'tanker',
-
-    },
-    [6] = {
-
-        name = 'Prisoner Garbage Dump',
-        loc = vector4(1032.41, -2492.01, 28.51, 153.41),
-        amount = math.random(500,1000),
-        xp = math.random(5,15),
-        pickloc = vector4(1854.13, 2625.45, 45.67, 357.95),
-        trailer = 'trailers4',
-
-    },
-    [7] = {
-
-        name = 'Construction Supplies',
-        loc = vector4(1549.47, 3561.8, 35.36, 42.65),
-        amount = math.random(500,1000),
-        xp = math.random(5,15),
-        pickloc = vector4(211.06, 2747.4, 43.43, 95.55),
-        trailer = 'trailers',
-
-
-    },
-    [8] = {
-        name = 'Up N Atom Burger', -- done
-        loc = vector4(-1181.6, -904.75, 13.77, 302.18),
-        amount = math.random(500,1000),
-        xp = math.random(5,15),
-        pickloc = vector4(-1051.42, -1566.17, 4.81, 304.45),
-        trailer = 'trailers2',
-
-
-
-
-    },
-    [9] = {
-
-        name = 'Casino Vending Machines', -- done
-        loc = vector4(972.42, 3.15, 81.04, 145.91),
-        amount = math.random(500,1000),
-        xp = math.random(5,15),
-        pickloc = vector4(-3146.63, 1043.02, 20.76, 336.96),
-        trailer = 'trailers3',
-
-        
-
-    },
-    [10] = {
-
-        name = 'Dealership Resupply', -- done
-        loc = vector4(103.55, -129.25, 54.75, 157.09),
-        amount = math.random(500,1000),
-        xp = math.random(5,15),
-        pickloc = vector4(-1097.89, -2398.09, 13.95, 63.3),
-        trailer = 'tr2',
-
-        
-
-    },
-    [11] = {
-
-
-
-        name = 'Sandy Shores Repair',-- done
-        loc = vector4(258.25, 2578.75, 45.15, 278.74),
-        amount = math.random(1000,3000),
-        xp = math.random(5,15),
-        pickloc = vector4(853.02, -3127.8, 5.9, 90.58),
-        trailer = 'docktrailer',
-
-    },
-    [12] = {
-
-
-        name = 'Tennis Court Rental', -- done
-        loc = vector4(-1028.54, -493.36, 36.94, 114.5),
-        amount = math.random(500,1000),
-        xp = math.random(5,15),
-        pickloc = vector4(853.01, -3143.86, 5.9, 91.18),
-        trailer = 'trailers3',
-        
-
-    },
-    [13] = {
-
-
-        name = 'Damned Damn', -- done
-        loc = vector4(1794.73, 107.68, 169.52, 300.82),
-        amount = math.random(500,1000),
-        xp = math.random(5,15),
-        pickloc = vector4(473.82, -2992.51, 6.04, 85.94),
-        trailer = 'trailerlogs',
-        
-
-    },
-    [14] = {
-
-
-        name = 'Fame or Shame Route', -- done
-            loc = vector4(-1044.46, -522.1, 36.04, 28.73),
-            amount = math.random(500,1000),
-            xp = math.random(5,15),
-            pickloc = vector4(-206.57, -1978.1, 27.62, 180.86),
-            trailer = 'tvtrailer',
-
-    },
-    [15] = {
-
-        name = 'Gas Hog',
-        loc = vector4(2683.58, 3292.73, 55.24, 238.18),
-        amount = math.random(500,1000),
-        xp = math.random(5,15),
-        pickloc = vector4(-1803.93, 799.54, 138.51, 38.93),
-        trailer = 'tanker',
-
-    },
-    [16] = {
-
-
-        name = 'Prisoner Garbage Dump',
-        loc = vector4(1032.41, -2492.01, 28.51, 153.41),
-        amount = math.random(500,1000),
-        xp = math.random(5,15),
-        pickloc = vector4(1854.13, 2625.45, 45.67, 357.95),
-        trailer = 'trailers4',
-        
-
-    },
-    [17] = {
-
-
-        name = 'Construction Supplies',
-        loc = vector4(1549.47, 3561.8, 35.36, 42.65),
-        amount = math.random(500,1000),
-        xp = math.random(5,15),
-        pickloc = vector4(211.06, 2747.4, 43.43, 95.55),
-        trailer = 'trailers',
-
-
-    },
-    [18] = {
-
-
-        name = 'Up N Atom Burger', -- done
-        loc = vector4(-1181.6, -904.75, 13.77, 302.18),
-        amount = math.random(500,1000),
-        xp = math.random(5,15),
-        pickloc = vector4(-1051.42, -1566.17, 4.81, 304.45),
-        trailer = 'trailers2',
-        
-
-    },
-    [19] = {
-        name = 'Casino Vending Machines', -- done
-        loc = vector4(972.42, 3.15, 81.04, 145.91),
-        amount = math.random(500,1000),
-        xp = math.random(5,15),
-        pickloc = vector4(-3146.63, 1043.02, 20.76, 336.96),
-        trailer = 'trailers3',
-
-    },
 }
-Config.Special = {
-    [1] = {
+Config.Trailers = {
+    'docktrailer',
+    'trailers3',
+    'trailerlogs',
+    'tvtrailer',
+    'tanker',
+    'trailers4',
+    'trailers',
+    'trailers2',
+    'tr2',
+    'docktrailer',
+    'tr4',
+    'tr3',
+}
 
-        name = 'Dealership Resupply', -- done
-        loc = vector4(103.55, -129.25, 54.75, 157.09),
-        amount = math.random(500,1000),
-        xp = math.random(5,15),
-        pickloc = vector4(-1097.89, -2398.09, 13.95, 63.3),
-        trailer = 'tr2',
+Config.Dropoff = {
 
-        
+    vector4(803.32, -764.96, 26.73, 88.6),
+    vector4(-1921.37, 2085.64, 137.03, 172.67),
+    vector4(-1526.96, 83.48, 56.59, 273.54),
+    vector4(103.55, -129.25, 54.75, 157.09),
+    vector4(-886.61, -1488.29, 5.02, 107.36),
+    vector4(258.25, 2578.75, 45.15, 278.74),
+    vector4(-1028.54, -493.36, 36.94, 114.5),
+    vector4(1794.73, 107.68, 169.52, 300.82),
+    vector4(-1044.46, -522.1, 36.04, 28.73),
+    vector4(2683.58, 3292.73, 55.24, 238.18),
+    vector4(1032.41, -2492.01, 28.51, 153.41),
+    vector4(1549.47, 3561.8, 35.36, 42.65),
+    vector4(-1181.6, -904.75, 13.77, 302.18),
+    vector4(972.42, 3.15, 81.04, 145.91),
+    vector4(103.55, -129.25, 54.75, 157.09),
+    vector4(258.25, 2578.75, 45.15, 278.74),
+    vector4(1794.73, 107.68, 169.52, 300.82),
+    vector4(-96.01, -2682.36, 6.01, 358.93),
+    vector4(-1816.56, -1234.23, 13.02, 109.54),
 
-    },
-    [2] = {
-
-
-
-        name = 'Richmans Boat',
-        loc = vector4(-886.61, -1488.29, 5.02, 107.36),
-        amount = math.random(500,3000),
-        xp = math.random(5,15),
-        pickloc = vector4(-1392.11, 83.84, 53.99, 0.8),
-        trailer = 'tr3',
-
-    },
-    [3] = {
-
-
-        name = 'Playboy Vehicles Special',
-        loc = vector4(-1526.96, 83.48, 56.59, 273.54),
-        amount = math.random(500,3000),
-        xp = math.random(5,15),
-        pickloc = vector4(233.1, -3114.72, 5.79, 354.99),
-        trailer = 'tr4',
-
-    },
-    [4] = {
-
-
-        name = 'Army Special Delivery', -- done
-        loc = vector4(-96.01, -2682.36, 6.01, 358.93),
-        amount = math.random(500,3000),
-        xp = math.random(5,15),
-        pickloc = vector4(1043.83, -2491.49, 28.51, 153.18),
-        trailer = 'armytrailer2',
-
-    },
-    [5] = {
-
-
-        name = 'Freight Liner', -- done
-        loc = vector4(-1921.37, 2085.64, 137.03, 172.67),
-        amount = math.random(500,1000),
-        xp = math.random(5,15),
-        pickloc = vector4(-985.67, -2941.83, 13.95, 146.56),
-        trailer = 'freighttrailer',
-
-        
-
-    },
-    [6] = {
-
-
-        name = 'Army Base Supply CO.', -- done
-        loc = vector4(2683.58, 3292.73, 55.24, 238.18),
-        amount = math.random(500,1000),
-        xp = math.random(5,15),
-        pickloc = vector4(1151.86, -3017.54, 5.9, 88.19),
-        trailer = 'armytanker',
-
-
-    },
-    [7] = {
-
-
-        name = 'Seafood Delight', -- done
-        loc = vector4(-1816.56, -1234.23, 13.02, 109.54),
-        amount = math.random(500,1000),
-        xp = math.random(5,15),
-        pickloc = vector4(803.32, -764.96, 26.73, 88.6),
-        trailer = 'trflat',
-        
-
-    },
-  
 }
 
 
