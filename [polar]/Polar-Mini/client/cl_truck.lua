@@ -1,24 +1,6 @@
 local QBCore = exports['qb-core']:GetCoreObject()
 
-CreateThread(function()
-    start()
-    getmenu()
-end)
-AddEventHandler('onResourceStart', function(resource)
-    if resource == GetCurrentResourceName() then
-        Wait(100)
-        start()
-        getmenu()
-    end
-end)
-RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function()
-    Wait(100)
-    start()
-    getmenu()
-end)
-
-
-TruckPeds = {
+local TruckPeds = {
     [1] = {
         coords = vector4(-118.74, 6455.69, 31.39, 315.65),
         model = "a_m_m_genfat_01",
@@ -27,6 +9,72 @@ TruckPeds = {
     },
 
 }
+
+local lastjob = nil
+local hide = true
+local playeramount = 0
+local onjob = false
+local onRoute = false
+
+function blip()
+  
+    local blip = AddBlipForCoord(vec3(TruckPeds[1].coords.x, TruckPeds[1].coords.y, TruckPeds[1].coords.z)) SetBlipSprite (blip, 477) SetBlipDisplay(blip, 6) SetBlipScale (blip, 0.6) SetBlipAsShortRange(blip, true)
+    SetBlipColour(blip, 39) BeginTextCommandSetBlipName("STRING") AddTextComponentSubstringPlayerName('Los Santos Trucking') EndTextCommandSetBlipName(blip)
+ 
+end
+ 
+CreateThread(function()
+    start()
+    getmenu()
+  --  blip()
+end)
+AddEventHandler('onResourceStart', function(resource)
+    if resource == GetCurrentResourceName() then
+        Wait(100)
+        start()
+        getmenu()
+        blip()
+    end
+end)
+RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function()
+    Wait(100)
+    start()
+    getmenu()
+    blip()
+    if QBCore.Functions.GetPlayerData().job and QBCore.Functions.GetPlayerData().job.name == 'trucker' then
+        onjob = true
+        TriggerServerEvent('Polar-Mini:Server:SetPlayerUp', 1)
+    else
+        onjob = false
+    end    
+end)
+
+RegisterNetEvent('QBCore:Client:OnPlayerUnload', function()
+    if QBCore.Functions.GetPlayerData().job and QBCore.Functions.GetPlayerData().job.name == 'trucker' then
+
+    TriggerServerEvent('Polar-Mini:Server:SetPlayerDown', 1)
+    TriggerServerEvent('Polar-Mini:Server:RemoveJob', lastjob)
+    end
+end)
+
+
+
+function check()
+    QBCore.Functions.TriggerCallback('Polar-Mini:Server:CheckPlayers', function(amount)
+        playeramount = amount
+      
+    end)
+   
+
+
+end
+
+
+
+
+
+
+
 
 function start()
 
@@ -62,60 +110,59 @@ function start()
 
 local Menus = {}
 
+function getjob()
 
+    local PlayerJob = QBCore.Functions.GetPlayerData().job
+    lastjob = PlayerJob.name
+    
+  
+end
 RegisterNetEvent('Polar-Mini:Client:TruckMenu2', function()
     getexp()
-    TriggerEvent('Polar-Mini:Client:TruckMenu')
+    check()
+    if onRoute then
+        TriggerEvent('Polar-Mini:Client:CancelTruckMenu')
+    else
 
+    
+    TriggerEvent('Polar-Mini:Client:TruckMenu')
+    end
 end)
 local exp = nil
 function getexp()
 
     local PlayerData = QBCore.Functions.GetPlayerData()
     exp = PlayerData.metadata["trucker"] or 0
+    
+
+end
+function finish()
+    local xxp = 1
     TriggerServerEvent('Polar-Mini:Server:SetTruckerExp', xxp)
+
 
 
 end
 
-
 function getmenu()
     local chance = math.random(1,100)
-    if chance < 25 then
+    if chance < 101 then
         Menus = {
             [1] = {
-                name = 'Pillbox Medical',
+                name = 'Pillbox Medical Delivery',
                 icon = "",
                 text = 'Required: A Truck',
-                loc = vector4(-1279.64, 5251.13, 51.87, 148.89),
-                amount = 55,
-                xp = math.random(1,25)
-            },
-
-
-
-
-
-
-        }
-
-    elseif chance < 50 then
-        Menus = {
-            [1] = {
-                name = 'Pillbox Medical',
-                icon = "",
-                text = 'Required: A Truck',
-                loc = vector4(-1279.64, 5251.13, 51.87, 148.89),
-                amount = 55,
+                loc = vector4(281.14, -589.6, 17.91, 171.16),
+                amount = math.random(500,1000),
                 xp = math.random(1,25)
         
             },
             [2] = {
-                name = 'Pillbox Medical',
+                name = 'Smoke On The Water Route',
                 icon = "",
                 text = 'Required: A Truck',
-                loc = vector4(-1279.64, 5251.13, 51.87, 148.89),
-                amount = 55,
+                loc = vector4(-1227.31, -1504.08, 4.27, 171.16),
+                amount = math.random(500,1000),
                 xp = math.random(1,25)
             },
 
@@ -125,85 +172,14 @@ function getmenu()
 
         }
 
-    elseif chance < 75 then
-        Menus = {
-            [1] = {
-                name = 'Pillbox Medical',
-                icon = "",
-                text = 'Required: A Truck',
-                loc = vector4(-1279.64, 5251.13, 51.87, 148.89),
-                amount = 55,
-                xp = math.random(1,25)
-            },
-            [2] = {
-                name = 'Pillbox Medical',
-                icon = "",
-                text = 'Required: A Truck',
-                loc = vector4(-1279.64, 5251.13, 51.87, 148.89),
-                amount = 55,
-                xp = math.random(1,25)
-        
-            },
-            [3] = {
-                name = 'Pillbox Medical',
-                icon = "",
-                text = 'Required: A Truck',
-                loc = vector4(-1279.64, 5251.13, 51.87, 148.89),
-                amount = 55,
-                xp = math.random(1,25)
-        
-            },
-
-
-
-
-
-        }
-
+    
     else
-        Menus = {
-            [1] = {
-                name = 'Pillbox Medical',
-                icon = "",
-                text = 'Required: A Truck',
-                loc = vector4(-1279.64, 5251.13, 51.87, 148.89),
-                amount = 55,
-        
-            },
-            [2] = {
-                name = 'Pillbox Medical',
-                icon = "",
-                text = 'Required: A Truck',
-                loc = vector4(-1279.64, 5251.13, 51.87, 148.89),
-                amount = 55,
-        
-            },
-            [3] = {
-                name = 'Pillbox Medical',
-                icon = "",
-                text = 'Required: A Truck',
-                loc = vector4(-1279.64, 5251.13, 51.87, 148.89),
-                amount = 55,
-        
-            },
-            [4] = {
-                name = 'Pillbox Medical',
-                icon = "",
-                text = 'Required: A Truck',
-                loc = vector4(-1279.64, 5251.13, 51.87, 148.89),
-                amount = 55,
-        
-            },
-
-
-
-        }
-
+      
     end
 end
 local xpp = nil local loc = nil local amount = nil
 RegisterNetEvent('Polar-Mini:Client:Transfer', function(data)
-
+    
     
     xpp = data.xp
     loc = data.location
@@ -211,28 +187,56 @@ RegisterNetEvent('Polar-Mini:Client:Transfer', function(data)
     print(xpp) -- xp amount given
     print(loc) -- pickup location
     print(amount) -- pay amount
+    getjob()
+    onRoute = true
+    hide = false
+    TriggerServerEvent('Polar-Mini:Server:SetPlayerUp', 1)
+    TriggerServerEvent('Polar-Mini:Server:GiveJob')
+end)
+RegisterNetEvent('Polar-Mini:Client:Cancel', function()
+    if hide then return
+    else hide = true onRoute = false end
+    TriggerServerEvent('Polar-Mini:Server:SetPlayerDown', 1)
+    TriggerServerEvent('Polar-Mini:Server:RemoveJob', lastjob)
 
 end)
-
 
 RegisterNetEvent('Polar-Mini:Client:TruckMenu', function()
 
 	local coords = GetEntityCoords(PlayerPedId())
    
 	local menu = {
-		{ header = " EXP : " .. exp .. "" , txt = "", icon = "fa-solid fa-bolt", isMenuHeader = true },
-		{ icon = "fas fa-circle-xmark", header = "", txt = "Close", params = { event = "Menu:Close" } } }
+		{ header ="Current Truckers " .. playeramount .. "", txt =  "" .. exp .. " Trucking EXP" , icon = "fa-solid fa-truck", isMenuHeader = true },
+		{ icon = "fas fa-circle-xmark", header = "", txt = "Close", params = { event = "Menu:Close" } }}
+       -- { icon = "fa-solid fa-ban", hidden = hide, header = "", txt = "Cancel Route", params = { event = "Polar-Mini:Client:Cancel" } } }
 
+  
     for i = 1, #Menus do
         local distance1 = GetDistanceBetweenCoords(Menus[i].loc.x, Menus[i].loc.y, Menus[i].loc.z, coords.x, coords.y, coords.z, false)
-        local distance = distance1 / 1000
+        local distance = distance1 * 0.0006
 		local setheader = "" .. Menus[i].name .. ""
 		local disable = false
         local hide = false
-        menu[#menu+1] = { hidden = hide, disabled = disable, icon = Menus[i].icon, header = setheader, txt = " Distance: " .. math.floor(distance) .. "m away " .. "<p>" .. "Payout $" .. Menus[i].amount .. " ", params = { event = "Polar-Mini:Client:Transfer", args = { location = Menus[i].loc, payamount = Menus[i].amount, xp = Menus[i].xp} } }
+        menu[#menu+1] = { hidden = hide, disabled = disable, icon = Menus[i].icon, header = setheader, txt =" Distance: " .. math.floor(distance) .. "m Away " .. "<p>" .. "Payout $" .. Menus[i].amount .. "<p> Potential Exp " .. Menus[i].xp .. "", params = { event = "Polar-Mini:Client:Transfer", args = { location = Menus[i].loc, payamount = Menus[i].amount, xp = Menus[i].xp} } }
 		Wait(0)
 	
 	exports['qb-menu']:openMenu(menu)
     end
+
+end)
+
+RegisterNetEvent('Polar-Mini:Client:CancelTruckMenu', function()
+
+
+    local menu = {
+		{ header ="Current Truckers " .. playeramount .. "", txt =  "" .. exp .. " Trucking EXP" , icon = "fa-solid fa-truck", isMenuHeader = true },
+		{ icon = "fas fa-circle-xmark", header = "", txt = "Close", params = { event = "Menu:Close" } },
+        { icon = "fa-solid fa-ban", hidden = hide, header = "", txt = "Cancel Route", params = { event = "Polar-Mini:Client:Cancel" } } }
+
+  
+   
+	
+	exports['qb-menu']:openMenu(menu)
+    
 
 end)
