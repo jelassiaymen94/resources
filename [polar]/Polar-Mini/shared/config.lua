@@ -31,7 +31,7 @@ Config.TruckPeds = {
         model = "a_m_m_genfat_01",
         icon = 'fa-solid fa-bolt',
         label = 'Talk to Amir',
-    }
+    },
 
 
 

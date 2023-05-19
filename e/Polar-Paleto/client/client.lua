@@ -819,9 +819,8 @@ function starttarget()
 
 end
 
+RegisterNetEvent('Polar-Paleto:Client:StartLoot', function()
 
-RegisterNetEvent('Polar-Paleto:Client:StartTargets', function()
-    
     TriggerServerEvent('Polar-Paleto:Server:SetupGrab1')
 
     TriggerServerEvent('Polar-Paleto:Server:SetupPickup1')
@@ -829,6 +828,13 @@ RegisterNetEvent('Polar-Paleto:Client:StartTargets', function()
     TriggerServerEvent('Polar-Paleto:Server:SetupPile1')
 
     TriggerServerEvent('Polar-Paleto:Server:SetupTrolly1')
+
+
+end)
+
+RegisterNetEvent('Polar-Paleto:Client:StartTargets', function()
+    
+  
    
     exports['qb-target']:AddBoxZone(paletodoor1name, vec3(Config.Door1Eye.x, Config.Door1Eye.y, Config.Door1Eye.z + 0.2), 1, 1, { name = paletodoor1name, heading = 0.0, debug = Config.Debug, minZ = Config.Door1Eye.z-1, maxZ =  Config.Door1Eye.z+1,}, 
     { options = {{ event = "Polar-Paleto:Client:Door1", icon = "fas fa-fire", label = "Thermite", excludejob = 'police', item = thermiteitem}}, distance = 2.5 }) 
