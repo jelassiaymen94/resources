@@ -87,7 +87,7 @@ RegisterServerEvent('jim-mechanic:Crafting:GetItem', function(ItemMake, craftabl
 	Player.Functions.AddItem(ItemMake, amount)
 	TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[ItemMake], "add", amount)
 
-	TriggerEvent("qb-log:server:CreateLog", "mechanicitems", "mechanic", "black", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' got ' .. amount .. ' ' .. ItemMake .. )
+	--TriggerEvent("qb-log:server:CreateLog", "mechanicitems", "mechanic", "black", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' got ' .. amount .. ' ' .. ItemMake .. )
 end)
 
 ---ITEM REQUIREMENT CHECKS
