@@ -12,7 +12,7 @@ CreateThread(function()
         SetDiscordRichPresenceAssetText('Avalanche')
        
         -- Here you will have to put the image name for the "small" icon.
-        SetDiscordRichPresenceAssetSmall('avalanche')
+       -- SetDiscordRichPresenceAssetSmall('avalanche')
 
         -- Here you can add hover text for the "small" icon.
         SetDiscordRichPresenceAssetSmallText('Avalanche')
