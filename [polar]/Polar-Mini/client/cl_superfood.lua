@@ -103,6 +103,7 @@ RegisterNetEvent('superfood:client:smoke', function(itemName)
 end)
 
 
+local alcoholCount = 0
 
 RegisterNetEvent('superfood:client:DrinkAlcohol', function(itemName)
     if itemName == "vodka" then
