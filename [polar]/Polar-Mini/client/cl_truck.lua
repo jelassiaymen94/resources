@@ -1,5 +1,17 @@
 local QBCore = exports['qb-core']:GetCoreObject()
 
+
+local xpp = nil local loc = nil local amount = nil local pickloc = nil
+local trailervehicle = nil local pickupb = nil local trailermod = nil local trailer = nil
+local lastjob = nil local dropoff = nil
+local hide = true
+local playeramount = 0
+local onjob = false
+local onRoute = false
+local text = nil local icon = nil local name = nil local xp = nil
+local Menus = {}
+
+
 local TruckPeds = {
     [1] = {
         coords = vector4(-118.74, 6455.69, 31.39, 315.65),
@@ -10,21 +22,36 @@ local TruckPeds = {
 
 }
 
-local xpp = nil local loc = nil local amount = nil local pickloc = nil
-local trailervehicle = nil local pickupb = nil local trailermod = nil local trailer = nil
-local lastjob = nil local dropoff = nil
-local hide = true
-local playeramount = 0
-local onjob = false
-local onRoute = false
-local text = nil local icon = nil local name = nil local xp = nil
+function getmenu()
+    if math.random(1,100) < 25 then
+    
+        name = 'Pillbox Medical Delivery'
+        icon = ""
+        text = 'Required: A Truck'
+        loc = vector4(281.14, -589.6, 17.91, 171.16)
+        amount = math.random(500,1000)
+        xp = math.random(1,25)
+        pickloc = vector4(-1243.13, -1508.28, 4.45, 199.23)
+        trailer = 'trailers'
+        
+    
+    else
 
-function blip()
-  
-    local blip = AddBlipForCoord(vec3(TruckPeds[1].coords.x, TruckPeds[1].coords.y, TruckPeds[1].coords.z)) SetBlipSprite (blip, 477) SetBlipDisplay(blip, 6) SetBlipScale (blip, 0.6) SetBlipAsShortRange(blip, true)
-    SetBlipColour(blip, 39) BeginTextCommandSetBlipName("STRING") AddTextComponentSubstringPlayerName('Los Santos Trucking') EndTextCommandSetBlipName(blip)
- 
+        name = 'Smoke On The Water Route'
+        icon = ""
+        text = 'Required: A Truck'
+        loc = vector4(-1227.31, -1504.08, 4.27, 171.16)
+        amount = math.random(500,1000)
+        xp = math.random(1,25)
+        pickloc = vector4(-1243.13, -1508.28, 4.45, 199.23)
+        trailer = 'tvtrailer'
+     
+    end
 end
+
+
+
+
 
 CreateThread(function()
     start()
@@ -51,7 +78,6 @@ RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function()
         onjob = false
     end    
 end)
-
 RegisterNetEvent('QBCore:Client:OnPlayerUnload', function()
     if QBCore.Functions.GetPlayerData().job and QBCore.Functions.GetPlayerData().job.name == 'trucker' then
 
@@ -59,26 +85,15 @@ RegisterNetEvent('QBCore:Client:OnPlayerUnload', function()
     TriggerServerEvent('Polar-Mini:Server:RemoveJob', lastjob)
     end
 end)
-
-
-
 function check()
     QBCore.Functions.TriggerCallback('Polar-Mini:Server:CheckPlayers', function(amount)
         playeramount = amount
-      
     end)
-   
-
-
 end
-
-
-
-
-
-
-
-
+function blip()
+    local blip = AddBlipForCoord(vec3(TruckPeds[1].coords.x, TruckPeds[1].coords.y, TruckPeds[1].coords.z)) SetBlipSprite (blip, 477) SetBlipDisplay(blip, 6) SetBlipScale (blip, 0.6) SetBlipAsShortRange(blip, true)
+    SetBlipColour(blip, 39) BeginTextCommandSetBlipName("STRING") AddTextComponentSubstringPlayerName('Los Santos Trucking') EndTextCommandSetBlipName(blip)
+end
 function start()
 
     for i = 1, #TruckPeds do
@@ -109,10 +124,7 @@ function start()
         })
     
     end
-    end
-
-local Menus = {}
-
+end
 function getjob()
 
     local PlayerJob = QBCore.Functions.GetPlayerData().job
@@ -151,43 +163,14 @@ function finish(amount, xxp)
 
 end
 
-function getmenu()
-    if math.random(1,100) < 25 then
-    
-        name = 'Pillbox Medical Delivery'
-        icon = ""
-        text = 'Required: A Truck'
-        loc = vector4(281.14, -589.6, 17.91, 171.16)
-        amount = math.random(500,1000)
-        xp = math.random(1,25)
-        pickloc = vector4(-1243.13, -1508.28, 4.45, 199.23)
-        trailer = 'trailers'
-        
-    
-    else
 
-            name = 'Smoke On The Water Route'
-            icon = ""
-            text = 'Required: A Truck'
-            loc = vector4(-1227.31, -1504.08, 4.27, 171.16)
-            amount = math.random(500,1000)
-            xp = math.random(1,25)
-            pickloc = vector4(-1243.13, -1508.28, 4.45, 199.23)
-            trailer = 'tvtrailer'
-     
-    end
-end
-
-RegisterNetEvent('Polar-Mini:Client:Transfer', function(data)
+RegisterNetEvent('Polar-Mini:Client:Transfer', function()
     
-    trailermod = data.trailermod
-    xpp = data.xp
-    pickloc = data.pickloc
-    loc = data.location
-    amount = data.payamount
-  --  print(xpp) -- xp amount given
-  --  print(loc) -- pickup location
- --   print(amount) -- pay amount
+   -- trailermod = data.trailermod
+  --  xpp = data.xp
+  --  pickloc = data.pickloc
+  --  loc = data.location
+   -- amount = data.payamount
     getjob()
     onRoute = true
     hide = false
@@ -214,7 +197,7 @@ RegisterNetEvent('Polar-Mini:Client:TruckMenu', function()
 		{ icon = "fas fa-circle-xmark", header = "", txt = "Close", params = { event = "Menu:Close" } },
        -- { icon = "fa-solid fa-ban", hidden = hide, header = "", txt = "Cancel Route", params = { event = "Polar-Mini:Client:Cancel" } } }
 
-       { icon = "fa-solid fa-user", header = "Los Santos Trucking", txt = "Join Que", params = { event = "Polar-Mini:Client:Transfer", args = { location = Menus[i].loc, payamount = Menus[i].amount, xp = Menus[i].xp, pickloc = Menus[i].pickloc, trailermod = Menus[i].trailer} } } }
+       { icon = "fa-solid fa-user", header = "Los Santos Trucking", txt = "Join Que", params = { event = "Polar-Mini:Client:Transfer"} } }
     --[[for i = 1, #Menus do
         local distance1 = GetDistanceBetweenCoords(Menus[i].loc.x, Menus[i].loc.y, Menus[i].loc.z, coords.x, coords.y, coords.z, false)
         local distance = distance1 * 0.0006
@@ -304,7 +287,7 @@ function attachcheck(loc, amount, xpp)
                
                 startdrive(loc, amount, xpp)
                 QBCore.Functions.Notify('Head to the Drop Off', 'success', 2500)
-                TriggerEvent('qb-phone:client:CustomNotification', 'Los Santos Trucking', 'Head to the Drop Off', 'fas fa-map-pin', '#b3e0f2', '1000')
+                TriggerEvent('qb-phone:client:CustomNotification', 'Los Santos Trucking', 'Head to the Drop Off', 'fas fa-map-pin', '#b3e0f2', '10000')
                 break
             end
         end
@@ -337,7 +320,7 @@ function startdrive(loc, amount, xpp)
                
                
                 exports['qb-core']:DrawText('[H] Drop Off Cargo', 'left')
-                if IsControlPressed(0, 74) then
+                if IsControlReleased(0, 74) then
                     finish(amount, xpp)
                     exports['qb-core']:HideText()
                 end
