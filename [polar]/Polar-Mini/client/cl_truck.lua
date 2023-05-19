@@ -73,10 +73,12 @@ function getexp()
 
     local PlayerData = QBCore.Functions.GetPlayerData()
     exp = PlayerData.metadata["trucker"] or 0
- 
+    TriggerServerEvent('Polar-Mini:Server:SetTruckerExp', xxp)
 
 
 end
+
+
 function getmenu()
     local chance = math.random(1,100)
     if chance < 25 then
@@ -87,7 +89,7 @@ function getmenu()
                 text = 'Required: A Truck',
                 loc = vector4(-1279.64, 5251.13, 51.87, 148.89),
                 amount = 55,
-        
+                xp = math.random(1,25)
             },
 
 
@@ -105,6 +107,7 @@ function getmenu()
                 text = 'Required: A Truck',
                 loc = vector4(-1279.64, 5251.13, 51.87, 148.89),
                 amount = 55,
+                xp = math.random(1,25)
         
             },
             [2] = {
@@ -113,7 +116,7 @@ function getmenu()
                 text = 'Required: A Truck',
                 loc = vector4(-1279.64, 5251.13, 51.87, 148.89),
                 amount = 55,
-        
+                xp = math.random(1,25)
             },
 
 
@@ -130,7 +133,7 @@ function getmenu()
                 text = 'Required: A Truck',
                 loc = vector4(-1279.64, 5251.13, 51.87, 148.89),
                 amount = 55,
-        
+                xp = math.random(1,25)
             },
             [2] = {
                 name = 'Pillbox Medical',
@@ -138,6 +141,7 @@ function getmenu()
                 text = 'Required: A Truck',
                 loc = vector4(-1279.64, 5251.13, 51.87, 148.89),
                 amount = 55,
+                xp = math.random(1,25)
         
             },
             [3] = {
@@ -146,6 +150,7 @@ function getmenu()
                 text = 'Required: A Truck',
                 loc = vector4(-1279.64, 5251.13, 51.87, 148.89),
                 amount = 55,
+                xp = math.random(1,25)
         
             },
 
@@ -196,15 +201,18 @@ function getmenu()
 
     end
 end
+local xpp = nil local loc = nil local amount = nil
+RegisterNetEvent('Polar-Mini:Client:Transfer', function(data)
 
-
-
-RegisterNetEvent('Polar-Mini:Client:Transfer', function(args)
-
-
+    
+    xpp = data.xp
+    loc = data.location
+    amount = data.payamount
+    print(xpp) -- xp amount given
+    print(loc) -- pickup location
+    print(amount) -- pay amount
 
 end)
-
 
 
 RegisterNetEvent('Polar-Mini:Client:TruckMenu', function()
@@ -212,7 +220,7 @@ RegisterNetEvent('Polar-Mini:Client:TruckMenu', function()
 	local coords = GetEntityCoords(PlayerPedId())
    
 	local menu = {
-		{ header = "Truck Missions <p> " .. " EXP : " .. exp .. "" , txt = "", icon = "fa-solid fa-bolt", isMenuHeader = true },
+		{ header = " EXP : " .. exp .. "" , txt = "", icon = "fa-solid fa-bolt", isMenuHeader = true },
 		{ icon = "fas fa-circle-xmark", header = "", txt = "Close", params = { event = "Menu:Close" } } }
 
     for i = 1, #Menus do
@@ -221,7 +229,7 @@ RegisterNetEvent('Polar-Mini:Client:TruckMenu', function()
 		local setheader = "" .. Menus[i].name .. ""
 		local disable = false
         local hide = false
-        menu[#menu+1] = { hidden = hide, disabled = disable, icon = Menus[i].icon, header = setheader, txt = " Distance: " .. math.floor(distance) .. "m away " .. "<p>" .. "Payout $" .. Menus[i].amount .. " ", params = { event = "Polar-Mini:Client:Transfer", args = { location = Menus[i].loc, payamount = Menus[i].amount} } }
+        menu[#menu+1] = { hidden = hide, disabled = disable, icon = Menus[i].icon, header = setheader, txt = " Distance: " .. math.floor(distance) .. "m away " .. "<p>" .. "Payout $" .. Menus[i].amount .. " ", params = { event = "Polar-Mini:Client:Transfer", args = { location = Menus[i].loc, payamount = Menus[i].amount, xp = Menus[i].xp} } }
 		Wait(0)
 	
 	exports['qb-menu']:openMenu(menu)
