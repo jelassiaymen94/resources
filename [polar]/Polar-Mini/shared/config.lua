@@ -13,6 +13,87 @@ Config.MoneyType = 'cash'
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+Config.TruckPeds = {
+
+    [1] = {
+        coords = vector4(-118.74, 6455.69, 31.39, 315.65),
+        model = "a_m_m_genfat_01",
+        icon = 'fa-solid fa-bolt',
+        label = 'Talk to Amir',
+    }
+
+
+
+}
+
+
+
+
+Config.TruckMenu = {
+    
+    [1] = {
+        item = 'nos',
+        icon = "",
+        text = 'Required: 5 GNE',
+        crypto = 'gne',
+        amount = 5,
+       
+    },
+    [2] = {
+        item = 'engine5',
+        icon = "",
+        text = 'Required: 65 Shungnite',
+        crypto = 'shung',
+        amount = 65,
+       
+    },
+    [3] = {
+        item = 'transmission4',
+        icon = "",
+        text = 'Required: 55 Shungnite',
+        crypto = 'shung',
+        amount = 55,
+
+    },
+    [4] = {
+        item = 'brakes3',
+        icon = "",
+        text = 'Required: 45 Shungnite',
+        crypto = 'shung',
+        amount = 45,
+
+    },
+    [5] = {
+        item = 'suspension5',
+        icon = "",
+        text = 'Required: 40 Shungnite',
+        crypto = 'shung',
+        amount = 40,
+       
+    },
+
+}
+
+
+
+
+
+
+
+
+
+
 Config.FuelExport = 'LegacyFuel'
 
 Config.Locations = {
