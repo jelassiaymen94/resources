@@ -116,7 +116,7 @@ RegisterNetEvent('superfood:client:DrinkAlcohol', function(itemName)
     else
 	TriggerEvent('animations:client:EmoteCommandStart', {"wine"})
 	end
-    QBCore.Functions.Progressbar("snort_coke", "Drinking ", math.random(3000, 6000), false, true, {
+    QBCore.Functions.Progressbar("snort_coke", "Drinking "..QBCore.Shared.Items[itemName].label.."..", math.random(3000, 6000), false, true, {
         disableMovement = false,
         disableCarMovement = false,
         disableMouse = false,
