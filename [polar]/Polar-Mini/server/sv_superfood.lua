@@ -15,7 +15,7 @@ AddEventHandler('onResourceStart', function(r) if GetCurrentResourceName() ~= r 
 		for _, v in pairs(alcohol) do QBCore.Functions.CreateUseableItem(v, function(source, item) TriggerClientEvent('superfood:client:DrinkAlcohol', source, item.name) end) end
 	
         local smoke = { "cig", "cigar" }
-		for _, v in pairs(alcohol) do QBCore.Functions.CreateUseableItem(v, function(source, item) TriggerClientEvent('superfood:client:smoke', source, item.name) end) end
+		for _, v in pairs(smoke) do QBCore.Functions.CreateUseableItem(v, function(source, item) TriggerClientEvent('superfood:client:smoke', source, item.name) end) end
 	
 end)
 
