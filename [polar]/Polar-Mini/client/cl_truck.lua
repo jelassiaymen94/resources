@@ -1,7 +1,7 @@
 local QBCore = exports['qb-core']:GetCoreObject()
 
 
-local xpp = nil local loc = nil local amount = nil local pickloc = nil
+local xpp = nil local loc = nil local amount = nil local pickloc = nil local exp = 0
 local trailervehicle = nil local pickupb = nil local trailermod = nil local trailer = nil
 local lastjob = nil local dropoff = nil
 local hide = true
@@ -9,7 +9,7 @@ local playeramount = 0
 local onjob = false
 local onRoute = false
 local text = nil local icon = nil local name = nil local xp = nil
-
+local random = nil
 
 
 local TruckPeds = {
@@ -23,30 +23,9 @@ local TruckPeds = {
 }
 
 function getmenu()
-    if math.random(1,100) < 25 then
+    local set = Config.RegularTrucking[math.random(1, #Config.RegularTrucking)]
+    print(set)
     
-        name = 'Pillbox Medical Delivery'
-        icon = ""
-        text = 'Required: A Truck'
-        loc = vector4(281.14, -589.6, 17.91, 171.16)
-        amount = math.random(500,1000)
-        xp = math.random(1,25)
-        pickloc = vector4(-1243.13, -1508.28, 4.45, 199.23)
-        trailer = 'trailers'
-        
-    
-    else
-
-        name = 'Smoke On The Water Route'
-        icon = ""
-        text = 'Required: A Truck'
-        loc = vector4(-1227.31, -1504.08, 4.27, 171.16)
-        amount = math.random(500,1000)
-        xp = math.random(1,25)
-        pickloc = vector4(-1243.13, -1508.28, 4.45, 199.23)
-        trailer = 'tvtrailer'
-     
-    end
 end
 
 
@@ -54,22 +33,20 @@ end
 
 
 CreateThread(function()
-    start()
-    getmenu()
+  --  start()
+   -- getmenu()
   --  blip()
 end)
 AddEventHandler('onResourceStart', function(resource)
     if resource == GetCurrentResourceName() then
         Wait(100)
         start()
-        getmenu()
         blip()
     end
 end)
 RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function()
     Wait(100)
     start()
-    getmenu()
     blip()
     if QBCore.Functions.GetPlayerData().job and QBCore.Functions.GetPlayerData().job.name == 'trucker' then
         onjob = true
@@ -133,7 +110,6 @@ function getjob()
   
 end
 RegisterNetEvent('Polar-Mini:Client:TruckMenu2', function()
-    getexp()
     check()
     if onRoute then
         TriggerEvent('Polar-Mini:Client:CancelTruckMenu')
@@ -165,7 +141,7 @@ end
 
 
 RegisterNetEvent('Polar-Mini:Client:Transfer', function()
-    
+    TriggerEvent('qb-phone:client:CustomNotification', 'Los Santos Trucking', 'Wait for A Contract', 'fa-solid fa-truck', '#b3e0f2', '10000')
    -- trailermod = data.trailermod
   --  xpp = data.xp
   --  pickloc = data.pickloc
@@ -189,7 +165,7 @@ RegisterNetEvent('Polar-Mini:Client:Cancel', function()
 end)
 
 RegisterNetEvent('Polar-Mini:Client:TruckMenu', function()
-
+    getexp()
 	local coords = GetEntityCoords(PlayerPedId())
    
 	local menu = {
@@ -213,7 +189,7 @@ RegisterNetEvent('Polar-Mini:Client:TruckMenu', function()
 end)
 
 RegisterNetEvent('Polar-Mini:Client:CancelTruckMenu', function()
-
+    getexp()
 
     local menu = {
 		{ header ="Current Truckers " .. playeramount .. "", txt =  "" .. exp .. " Trucking EXP" , icon = "fa-solid fa-truck", isMenuHeader = true },
@@ -231,21 +207,35 @@ end)
 
 
 function startjob()
+    getexp()
+    getmenu()
+    if exports['qb-buffs']:HasBuff("luck") then
+    random = math.random(15000,30000)
+    else
+    random = math.random(30000,120000)
+    end
+    Wait(1000)
+    Wait(random)
+    local coords = GetEntityCoords(PlayerPedId())
+    
+    local distance1 = GetDistanceBetweenCoords(loc.x, loc.y, loc.z, coords.x, coords.y, coords.z, false)
+    local distance = distance1 * 0.0006
     -- loc is deliver
     -- pickloc is pickup location
     -- amount is Payout $
     -- xpp is xp you get
    -- pickup(loc, pickloc, amount, xpp, trailermod)
-   local success = exports['qb-phone']:PhoneNotification("Los Santos Trucking", name, 'fas fa-file-invoice-dollar', '#b3e0f2', "NONE", 'fas fa-check-circle', 'fas fa-times-circle')
+   local success = exports['qb-phone']:PhoneNotification("Los Santos Trucking","" .. name .. " - " .. math.floor(distance) .. " Miles - $ " .. amount .. " " , 'fas fa-file-invoice-dollar', '#b3e0f2', "NONE", 'fas fa-check-circle', 'fas fa-times-circle')
    if success then
     pickup()
-    TriggerEvent('qb-phone:client:CustomNotification', 'Los Santos Trucking', 'Head to Pickup The Trailer', 'fas fa-map-pin', '#b3e0f2', '10000')
+    Wait(3000)
+    TriggerEvent('qb-phone:client:CustomNotification', 'Los Santos Trucking', 'Head to Pickup The Trailer', 'fa-solid fa-truck', '#b3e0f2', '10000')
    else
-      print('declined')
+        startjob()
    end
 
 
-  --  finish(xpp)
+  
 end
 
 function pickup()
@@ -288,7 +278,7 @@ function attachcheck()
                
                 startdrive()
                 
-                TriggerEvent('qb-phone:client:CustomNotification', 'Los Santos Trucking', 'Head to the Drop Off', 'fas fa-map-pin', '#b3e0f2', '10000')
+                TriggerEvent('qb-phone:client:CustomNotification', 'Los Santos Trucking', 'Head to the Drop Off', 'fa-solid fa-truck', '#b3e0f2', '10000')
                 break
             end
         end
@@ -320,11 +310,11 @@ function startdrive()
             
                
                
-                exports['qb-core']:DrawText('[H] Drop Off Cargo', 'left')
+              --  exports['qb-core']:DrawText('[H] Drop Off Cargo', 'left')
                 if IsControlReleased(0, 74) then
                     finish(amount, xpp)
                     exports['qb-core']:HideText()
-                    TriggerEvent('qb-phone:client:CustomNotification', 'Los Santos Trucking', 'Head Back to the Depot', 'fas fa-map-pin', '#b3e0f2', '10000')
+                    TriggerEvent('qb-phone:client:CustomNotification', 'Los Santos Trucking', 'Head Back to the Depot', 'fa-solid fa-truck', '#b3e0f2', '10000')
                 end
                 break
             end

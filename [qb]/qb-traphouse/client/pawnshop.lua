@@ -64,7 +64,7 @@ function targets()
                     event = "Polar-Pawnshop:client:Startup",
                     icon = "fa-solid fa-bolt",
                     label = "Open",
-                    job = 'pawnshop',
+                 --   job = 'pawnshop',
                    -- excludejob = 'police'
                 },
                 {
@@ -72,7 +72,7 @@ function targets()
                     event = "Polar-Pawnshop:client:Grab",
                     icon = "fa-solid fa-dollar",
                     label = " Grab Money ",
-                    job = 'pawnshop',
+                 --   job = 'pawnshop',
                    -- excludejob = 'police'
                 }
             },
