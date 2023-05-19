@@ -262,7 +262,7 @@ function startjob(loc, pickloc, amount, xpp, trailermod)
     -- amount is Payout $
     -- xpp is xp you get
    -- pickup(loc, pickloc, amount, xpp, trailermod)
-   local success = exports['qb-phone']:PhoneNotification("Trucking", 'Trucking Job', 'fas fa-file-invoice-dollar', '#b3e0f2', "NONE", 'fas fa-check-circle', 'fas fa-times-circle')
+   local success = exports['qb-phone']:PhoneNotification("Los Santos Trucking", 'Trucking Job', 'fas fa-file-invoice-dollar', '#b3e0f2', "NONE", 'fas fa-check-circle', 'fas fa-times-circle')
    if success then
     pickup(loc, pickloc, amount, xpp, trailermod)
    else
@@ -313,6 +313,7 @@ function attachcheck(loc, amount, xpp)
                
                 startdrive(loc, amount, xpp)
                 QBCore.Functions.Notify('Head to the Drop Off', 'success', 2500)
+                TriggerEvent('qb-phone:client:CustomNotification', 'Los Santos Trucking', 'Head to the Drop Off', 'fas fa-map-pin', '#b3e0f2', '1000')
                 break
             end
         end
