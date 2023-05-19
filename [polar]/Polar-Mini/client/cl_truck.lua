@@ -220,11 +220,11 @@ RegisterNetEvent('Polar-Mini:Client:TruckMenu', function()
    
 	local menu = {
 		{ header ="Current Truckers " .. playeramount .. "", txt =  "" .. exp .. " Trucking EXP" , icon = "fa-solid fa-truck", isMenuHeader = true },
-		{ icon = "fas fa-circle-xmark", header = "", txt = "Close", params = { event = "Menu:Close" } }}
+		{ icon = "fas fa-circle-xmark", header = "", txt = "Close", params = { event = "Menu:Close" } },
        -- { icon = "fa-solid fa-ban", hidden = hide, header = "", txt = "Cancel Route", params = { event = "Polar-Mini:Client:Cancel" } } }
 
-  
-    for i = 1, #Menus do
+       { icon = "fa-solid fa-user", header = "Los Santos Trucking", txt = "Join Que", params = { event = "Polar-Mini:Client:Transfer", args = { location = Menus[i].loc, payamount = Menus[i].amount, xp = Menus[i].xp, pickloc = Menus[i].pickloc, trailermod = Menus[i].trailer} } } }
+    --[[for i = 1, #Menus do
         local distance1 = GetDistanceBetweenCoords(Menus[i].loc.x, Menus[i].loc.y, Menus[i].loc.z, coords.x, coords.y, coords.z, false)
         local distance = distance1 * 0.0006
 		local setheader = "" .. Menus[i].name .. ""
@@ -232,9 +232,9 @@ RegisterNetEvent('Polar-Mini:Client:TruckMenu', function()
         local hide = false
         menu[#menu+1] = { hidden = hide, disabled = disable, icon = Menus[i].icon, header = setheader, txt =" Distance: " .. math.floor(distance) .. " Miles Away " .. "<p>" .. "Payout $" .. Menus[i].amount .. "<p> Potential Exp " .. Menus[i].xp .. "", params = { event = "Polar-Mini:Client:Transfer", args = { location = Menus[i].loc, payamount = Menus[i].amount, xp = Menus[i].xp, pickloc = Menus[i].pickloc, trailermod = Menus[i].trailer} } }
 		Wait(0)
-	
+	]]
 	exports['qb-menu']:openMenu(menu)
-    end
+    ---end
 
 end)
 
@@ -262,7 +262,7 @@ function startjob(loc, pickloc, amount, xpp, trailermod)
     -- amount is Payout $
     -- xpp is xp you get
    -- pickup(loc, pickloc, amount, xpp, trailermod)
-   local success = exports['qb-phone']:PhoneNotification("Los Santos Trucking", 'Trucking Job', 'fas fa-file-invoice-dollar', '#b3e0f2', "NONE", 'fas fa-check-circle', 'fas fa-times-circle')
+   local success = exports['qb-phone']:PhoneNotification("Los Santos Trucking", 'Contract', 'fas fa-file-invoice-dollar', '#b3e0f2', "NONE", 'fas fa-check-circle', 'fas fa-times-circle')
    if success then
     pickup(loc, pickloc, amount, xpp, trailermod)
    else
