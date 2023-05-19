@@ -150,19 +150,32 @@ function finish(amount, xxp)
 
 
 end
-local heat = nil
+
 function getmenu()
-    heat = Config.TruckSpots[math.random(1, #Config.TruckSpots)]
+    if math.random(1,100) < 25 then
     
-    name = heat.name
-    icon = heat.icon
-    text = heat.text
-    loc = heat.loc
-    amount = heat.amount
-    xp = heat.xp
-    pickloc = heat.pickloc
-    trailer = heat.trailer
+        name = 'Pillbox Medical Delivery'
+        icon = ""
+        text = 'Required: A Truck'
+        loc = vector4(281.14, -589.6, 17.91, 171.16)
+        amount = math.random(500,1000)
+        xp = math.random(1,25)
+        pickloc = vector4(-1243.13, -1508.28, 4.45, 199.23)
+        trailer = 'trailers'
+        
     
+    else
+
+            name = 'Smoke On The Water Route'
+            icon = ""
+            text = 'Required: A Truck'
+            loc = vector4(-1227.31, -1504.08, 4.27, 171.16)
+            amount = math.random(500,1000)
+            xp = math.random(1,25)
+            pickloc = vector4(-1243.13, -1508.28, 4.45, 199.23)
+            trailer = 'tvtrailer'
+     
+    end
 end
 
 RegisterNetEvent('Polar-Mini:Client:Transfer', function(data)
