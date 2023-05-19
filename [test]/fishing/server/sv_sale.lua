@@ -1,20 +1,20 @@
 local moneyType = 'cash'
 local priceTable = {
-    cod = 35,
-    ghol = 3120,
-    catfish = 132,
-    eel = 165,
-    swordfish = 193,
-    largemouthbass = 220,
-    bluefish = 220,
-    redfish = 240,
-    goldfish = 287,
-    salmon = 220,
-    rainbowtrout = 260,
-    tunafish = 300,
-    tigershark = 2750,
-    stingray = 1500,
-    killerwhale = 2500
+    cod = 15,
+    ghol = 1120,
+    catfish = 32,
+    eel = 65,
+    swordfish = 93,
+    largemouthbass = 120,
+    bluefish = 120,
+    redfish = 140,
+    goldfish = 187,
+    salmon = 120,
+    rainbowtrout = 160,
+    tunafish = 200,
+    tigershark = 950,
+    stingray = 650,
+    killerwhale = 1500
 }
 
 RegisterNetEvent('qb-fishing:server:SellFish', function(fish, amount)
