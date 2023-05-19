@@ -9,12 +9,12 @@ local playeramount = 0
 local onjob = false
 local onRoute = false
 local text = nil local icon = nil local name = nil local xp = nil
-local Menus = {}
+
 
 
 local TruckPeds = {
     [1] = {
-        coords = vector4(-118.74, 6455.69, 31.39, 315.65),
+        coords = vector4(1741.23, -1608.02, 112.48, 56.29),
         model = "a_m_m_genfat_01",
         icon = 'fa-solid fa-bolt',
         label = 'Talk to Amir',
@@ -151,13 +151,13 @@ function getexp()
     
 
 end
-function finish(amount, xxp)
+function finish()
     print(amount)
-    print(xxp)
+    print(xpp)
     SetEntityAsNoLongerNeeded(trailervehicle)
     RemoveBlip(pickupb)
     RemoveBlip(dropoff)
-    TriggerServerEvent('Polar-Mini:Server:SetTruckerExp', xxp)
+    TriggerServerEvent('Polar-Mini:Server:SetTruckerExp', xpp)
     TriggerServerEvent('Polar-Mini:Server:Amount', amount)
 
 
@@ -176,7 +176,7 @@ RegisterNetEvent('Polar-Mini:Client:Transfer', function()
     hide = false
     TriggerServerEvent('Polar-Mini:Server:SetPlayerUp', 1)
     TriggerServerEvent('Polar-Mini:Server:GiveJob')
-    startjob(loc, pickloc, amount, xpp, trailermod)
+    startjob()
 end)
 RegisterNetEvent('Polar-Mini:Client:Cancel', function()
     if hide then return
@@ -230,24 +230,25 @@ end)
 
 
 
-function startjob(loc, pickloc, amount, xpp, trailermod)
+function startjob()
     -- loc is deliver
     -- pickloc is pickup location
     -- amount is Payout $
     -- xpp is xp you get
    -- pickup(loc, pickloc, amount, xpp, trailermod)
-   local success = exports['qb-phone']:PhoneNotification("Los Santos Trucking", 'Contract', 'fas fa-file-invoice-dollar', '#b3e0f2', "NONE", 'fas fa-check-circle', 'fas fa-times-circle')
+   local success = exports['qb-phone']:PhoneNotification("Los Santos Trucking", name, 'fas fa-file-invoice-dollar', '#b3e0f2', "NONE", 'fas fa-check-circle', 'fas fa-times-circle')
    if success then
-    pickup(loc, pickloc, amount, xpp, trailermod)
+    pickup()
+    TriggerEvent('qb-phone:client:CustomNotification', 'Los Santos Trucking', 'Head to Pickup The Trailer', 'fas fa-map-pin', '#b3e0f2', '10000')
    else
       print('declined')
    end
-    
+
 
   --  finish(xpp)
 end
 
-function pickup(loc, pickloc, amount, xpp, trailer)
+function pickup()
     RequestModel(trailer) while not HasModelLoaded(trailer) do  Wait(500) end
    
     trailervehicle = CreateVehicle(trailer, pickloc.x, pickloc.y, pickloc.z, pickloc.w, true, false)
@@ -267,12 +268,12 @@ function pickup(loc, pickloc, amount, xpp, trailer)
     SetBlipRoute(pickupb, true)
     SetBlipRouteColour(pickupb, 46)
 
-    attachcheck(loc, amount, xpp)
+    attachcheck()
   
     
 end
 
-function attachcheck(loc, amount, xpp)
+function attachcheck()
     CreateThread(function()
         while true do
             Wait(1000)
@@ -285,8 +286,8 @@ function attachcheck(loc, amount, xpp)
                 local mod = GetEntityModel(car)
              --   print(mod)
                
-                startdrive(loc, amount, xpp)
-                QBCore.Functions.Notify('Head to the Drop Off', 'success', 2500)
+                startdrive()
+                
                 TriggerEvent('qb-phone:client:CustomNotification', 'Los Santos Trucking', 'Head to the Drop Off', 'fas fa-map-pin', '#b3e0f2', '10000')
                 break
             end
@@ -294,7 +295,7 @@ function attachcheck(loc, amount, xpp)
     end)
 end
 
-function startdrive(loc, amount, xpp)
+function startdrive()
 
     dropoff = AddBlipForCoord(vec3(loc.x, loc.y, loc.z))
     SetBlipSprite (dropoff, 615)
@@ -323,6 +324,7 @@ function startdrive(loc, amount, xpp)
                 if IsControlReleased(0, 74) then
                     finish(amount, xpp)
                     exports['qb-core']:HideText()
+                    TriggerEvent('qb-phone:client:CustomNotification', 'Los Santos Trucking', 'Head Back to the Depot', 'fas fa-map-pin', '#b3e0f2', '10000')
                 end
                 break
             end
