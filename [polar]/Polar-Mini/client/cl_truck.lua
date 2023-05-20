@@ -47,9 +47,9 @@ TrailersTruck = {
 }
 SpecialTrailers = {
     'tr4',
-    'tr3',
+   -- 'armytrailer2',
     'tr4',
-    'tr3',
+    'trailerlarge',
 }
 DropoffTruck = {
 

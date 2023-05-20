@@ -6515,10 +6515,6 @@
     <Item>
       <Name>VEH_MID</Name>
       <models>
-        <Item>
-          <Name>stockade</Name>
-          <Variations type="NULL"/>
-        </Item>
 		<Item>
           <Name>sultan</Name>
           <Variations type="NULL"/>
@@ -7500,6 +7496,10 @@
       <models>
         <Item>
           <Name>pounder</Name>
+          <Variations type="NULL"/>
+        </Item>
+         <Item>
+          <Name>stockade</Name>
           <Variations type="NULL"/>
         </Item>
         <Item>

@@ -1,7 +1,7 @@
 Config = {}
 ---Box and Case Can have completely different items within them. they do not inteferre with each other at all.
 local two = math.random(3,6)
-local bagamount = math.random(10,15)
+local bagamount = math.random(8,10)
 Config.NumberOfItemsBox = 6  --amount of different items to receive from 1 (box) 
 Config.NumberOfItemsCase = 5  --amount of different items to receive from 1 (Case) 
 Config.NumberOfItemsBag = bagamount -- starter bag
@@ -110,32 +110,44 @@ Config.CaseItems = {   --place whatever items you want in here. theres no limit
 Config.BagItemList = {}
 
 Config.BagItems = {   --place whatever items you want in here. theres no limit
-    "coffee",
-    "coffee",
+    "largejoint", "largejoint",
+    "smalljoint",
+    "largejoint",
+    "smalljoint",
+    "largejoint",
+    "gbobatea",
+    "riceball",  "gbobatea",
+    "riceball",
+    "bmochi",
+    "catcoffee",  "catcoffee",
+    "nekolatte",  "nekolatte", "catcoffee",  "catcoffee",
+    "nekolatte",  "nekolatte",
+    "cake",  "cake",
+    "nekocookie", "nekocookie",
+    "bento","bento",
     "coffee",
     "twerks_candy",
-    "newsissueone",
+   -- "newsissueone",
     "lockpick",
+    "lockpick", "lockpick",
     "lockpick",
     "bandage",
     "weapon_knife",
     "bandage",
     "bandage",
+    "bandage", "bandage",
     "bandage",
-    "monkeykush_blunt",
-    "ogscar_blunt",
-    "1ozhigh",
+    "bandage",
     "beer",
+    "band",
+    "weedkey",
+    "advancedlockpick",
     "whiskey",
     "ducttape",
     "ducttape",
-    "snikkel_candy",
-    "snikkel_candy",
     "flower",
     "rolex",
     "coffee",
-    "twerks_candy",
-    "twerks_candy",
     "twerks_candy",
     "lockpick",
     "lockpick",
@@ -146,6 +158,7 @@ Config.BagItems = {   --place whatever items you want in here. theres no limit
     "beer",
     "whiskey",
     "ducttape",
+    "ducttape",  "ducttape",
     "ducttape",
     "snikkel_candy",
     "snikkel_candy",

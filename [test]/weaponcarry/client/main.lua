@@ -50,7 +50,8 @@ local props = {
   ["markedbills"]               = { model = "prop_money_bag_01",  hash = joaat("prop_money_bag_01"), tier = 3, x = -0.47, zr = 0}, -- If you put any x,y,z,xr,yr,zr it will offset it from the slots to make it fit perfectly
   ["band"]               = { model = "prop_money_bag_01",  hash = joaat("prop_money_bag_01"), tier = 3, x = -0.47, zr = 0}, -- If you put any x,y,z,xr,yr,zr it will offset it from the slots to make it fit perfectly
 
-  
+ -- ["weapon_bat"]                    = { model = "p_cs_bbbat_01", hash = joaat("p_cs_bbbat_01"), tier = 1, yr = 270.0, blockAttack = false, blockCar = false, blockRun = false, }, -- This is more of an item that deserves a
+
   -- Custom Weapons Tier 1
   
   -- These Utilize the NoPixel pelts from their packages get them here: https://3dstore.nopixel.net/package/5141816 --

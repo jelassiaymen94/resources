@@ -68,6 +68,8 @@ Config.WeaponsOnBack = {
     ["weapon_machinepistol"] = { model = "w_sb_machinepistol", hash = GetHashKey("weapon_machinepistol")},
     ["weapon_sword"] = { model = "w_me_sword", hash = GetHashKey("weapon_sword")},
  
+ --   ["weapon_bat"] = { model = "p_cs_bbbat_01", hash = GetHashKey("weapon_bat")},
+ 
 
     
 }

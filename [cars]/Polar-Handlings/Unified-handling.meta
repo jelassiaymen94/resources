@@ -38975,7 +38975,7 @@
 		</Item>
 		<Item type="CHandlingData">
 			<handlingName>TANKER</handlingName>
-			<fMass value="5000.000000" />
+			<fMass value="15000.000000" />
 			<fInitialDragCoeff value="4.000000" />
 			<fPercentSubmerged value="80.000000" />
 			<vecCentreOfMassOffset x="0.000000" y="-1.500000" z="-1.350000" />
@@ -39377,7 +39377,7 @@
 		</Item>
 		<Item type="CHandlingData">
 			<handlingName>TRAILERLARGE</handlingName>
-			<fMass value="13500.000000" />
+			<fMass value="53500.000000" />
 			<fInitialDragCoeff value="10.000000" />
 			<fPercentSubmerged value="80.000000" />
 			<vecCentreOfMassOffset x="0.000000" y="-1.000000" z="-2.000000" />

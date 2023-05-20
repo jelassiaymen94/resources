@@ -186,6 +186,7 @@ CreateThread(function()
 				loadAnimDict('weapons@pistol@')
 
 				local HolsterVariant = GetPedDrawableVariation(ped, 7)
+				if QBCore.Functions.GetPlayerData().job and QBCore.Functions.GetPlayerData().job.name == 'police' then
 				if HolsterVariant == 8 then
 					WearingHolster = true
 				elseif HolsterVariant == 1 then
@@ -222,6 +223,7 @@ CreateThread(function()
 					WearingHolster = true
 				elseif HolsterVariant == 162 then --Replace to match config
 					WearingHolster = true
+				end
 				end
 				if CheckWeapon(newWeap) then
 					if holstered then

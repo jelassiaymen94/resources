@@ -28,12 +28,12 @@ function button()
   
         if PlayerJob == "police" and PlayerJobDuty == true then
             exports['qb-dispatch']:OfficerDown()
-            TriggerServerEvent("InteractSound_SV:PlayWithinDistance", 50.0, "panicbutton", 0.35)
+            TriggerServerEvent("InteractSound_SV:PlayWithinDistance", 25.0, "panicbutton", 0.15)
             --TriggerServerEvent('InteractSound_SV:PlayAtCoord', vec3(1878.16, 3721.33, 33.0), 50, 'warehousealert', 0.35)
         end
         if PlayerJob == "ambulance" and PlayerJobDuty == true then
             exports['qb-dispatch']:EmsDown()
-            TriggerServerEvent("InteractSound_SV:PlayWithinDistance", 50.0, "panicbutton", 0.35)
+            TriggerServerEvent("InteractSound_SV:PlayWithinDistance", 25.0, "panicbutton", 0.15)
         end
 
 
