@@ -80,7 +80,7 @@ local TruckPeds = {
     [1] = {
         coords = vector4(1741.23, -1608.02, 112.48, 56.29),
         model = "a_m_m_genfat_01",
-        icon = 'fa-solid fa-bolt',
+        icon = 'fas fa-file-invoice-dollar',
         label = 'Talk to Amir',
     },
 
@@ -117,17 +117,23 @@ function getmenu()
         elseif distance > 3 then
             amount = math.random(3500,6000)
             xp = math.random(30,40)
+        elseif distance < 1 then
+            amount = math.random(750,1000)
+            xp = math.random(5,10)
         else
             amount = math.random(1500,2500)
             xp = math.random(20,30)
         end
     else
         if distance > 5 then 
-            amount = math.random(3500,5500)
+            amount = math.random(2150,2550)
             xp = math.random(30,40)
         elseif distance > 3 then
-            amount = math.random(2500,3500)
+            amount = math.random(1350,2000)
             xp = math.random(20,30)
+        elseif distance < 1 then
+            amount = math.random(250,650)
+            xp = math.random(5,10)
         else
             amount = math.random(500,1200)
             xp = math.random(5,10)
@@ -193,7 +199,7 @@ function start()
                 options = {
                 {
                     type = "Client",
-                    icon = 'fa-solid fa-bolt',
+                    icon = 'fas fa-file-invoice-dollar',
                     label = 'Talk to Amir',
                     -- job = {"mechanic", "tuner", "otto"},
                    -- action = function()
@@ -248,7 +254,7 @@ end
 
 
 RegisterNetEvent('Polar-Mini:Client:Transfer', function()
-    TriggerEvent('qb-phone:client:CustomNotification', 'Los Santos Trucking', 'Wait for A Contract', 'fa-solid fa-truck', '#b3e0f2', '10000')
+    TriggerEvent('qb-phone:client:CustomNotification', 'Los Santos Trucking', 'Wait for A Contract', 'fas fa-file-invoice-dollar', '#b3e0f2', '10000')
    -- trailermod = data.trailermod
   --  xpp = data.xp
   --  pickloc = data.pickloc
@@ -276,7 +282,7 @@ RegisterNetEvent('Polar-Mini:Client:TruckMenu', function()
 	local coords = GetEntityCoords(PlayerPedId())
    
 	local menu = {
-		{ header ="Current Truckers " .. playeramount .. "", txt =  "" .. exp .. " Trucking EXP" , icon = "fa-solid fa-truck", isMenuHeader = true },
+		{ header ="Current Truckers " .. playeramount .. "", txt =  "" .. exp .. " Trucking EXP" , icon = "fas fa-file-invoice-dollar", isMenuHeader = true },
 		{ icon = "fas fa-circle-xmark", header = "", txt = "Close", params = { event = "Menu:Close" } },
        -- { icon = "fa-solid fa-ban", hidden = hide, header = "", txt = "Cancel Route", params = { event = "Polar-Mini:Client:Cancel" } } }
 
@@ -299,7 +305,7 @@ RegisterNetEvent('Polar-Mini:Client:CancelTruckMenu', function()
     getexp()
 
     local menu = {
-		{ header ="Current Truckers " .. playeramount .. "", txt =  "" .. exp .. " Trucking EXP" , icon = "fa-solid fa-truck", isMenuHeader = true },
+		{ header ="Current Truckers " .. playeramount .. "", txt =  "" .. exp .. " Trucking EXP" , icon = "fas fa-file-invoice-dollar", isMenuHeader = true },
 		{ icon = "fas fa-circle-xmark", header = "", txt = "Close", params = { event = "Menu:Close" } },
         { icon = "fa-solid fa-ban", hidden = hide, header = "", txt = "Cancel Route", params = { event = "Polar-Mini:Client:Cancel" } } }
 
@@ -339,7 +345,7 @@ function startjob()
    if success then
     pickup()
     Wait(3000)
-    TriggerEvent('qb-phone:client:CustomNotification', 'Los Santos Trucking', 'Head to Pickup The Trailer', 'fa-solid fa-truck', '#b3e0f2', '10000')
+    TriggerEvent('qb-phone:client:CustomNotification', 'Los Santos Trucking', 'Head to Pickup The Trailer', 'fas fa-file-invoice-dollar', '#b3e0f2', '10000')
    else
         startjob()
    end
@@ -380,15 +386,16 @@ function attachcheck()
             local trailercoords = GetEntityCoords(trailervehicle)
             local coords = GetEntityCoords(PlayerPedId())
             local distance = GetDistanceBetweenCoords(coords.x, coords.y, coords.z, trailercoords.x, trailercoords.y, trailercoords.z)
-           -- print(distance)
-            if distance < 8 then
+            print(distance)
+
+            if distance < 10 then
                 local car = GetVehiclePedIsIn(PlayerPedId(), false)
                 local mod = GetEntityModel(car)
              --   print(mod)
                
                 startdrive()
                 
-                TriggerEvent('qb-phone:client:CustomNotification', 'Los Santos Trucking', 'Head to the Drop Off', 'fa-solid fa-truck', '#b3e0f2', '10000')
+                TriggerEvent('qb-phone:client:CustomNotification', 'Los Santos Trucking', 'Head to the Drop Off', 'fas fa-file-invoice-dollar', '#b3e0f2', '10000')
                 break
             end
         end
@@ -415,8 +422,8 @@ function startdrive()
             Wait(1000)
             local trailercoords = GetEntityCoords(trailervehicle)
             local distance = GetDistanceBetweenCoords(loc.x, loc.y, loc.z, trailercoords.x, trailercoords.y, trailercoords.z)
-            --print(distance)
-            if distance < 8 then
+            print(distance)
+            if distance < 10 then
             
                
                
@@ -424,7 +431,7 @@ function startdrive()
                 if IsControlReleased(0, 74) then
                     finish(amount, xpp)
                     exports['qb-core']:HideText()
-                    TriggerEvent('qb-phone:client:CustomNotification', 'Los Santos Trucking', 'Head Back to the Depot', 'fa-solid fa-truck', '#b3e0f2', '10000')
+                    TriggerEvent('qb-phone:client:CustomNotification', 'Los Santos Trucking', 'Head Back to the Depot', 'fas fa-file-invoice-dollar', '#b3e0f2', '10000')
                 end
                 break
             end
