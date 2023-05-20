@@ -88,11 +88,36 @@ local TruckPeds = {
 function math2()
     local chance2 = math.random(1,100)
     Wait(50)
-    
-    if chance2 < 95 then 
-        type = 'Delivery'
+    if exp > 100 then
+        if chance2 < 90 then 
+            type = 'Delivery'
+        else
+            type = 'Special'
+        end
+    elseif exp > 250 then
+        if chance2 < 85 then 
+            type = 'Delivery'
+        else
+            type = 'Special'
+        end
+    elseif exp > 350 then
+        if chance2 < 75 then 
+            type = 'Delivery'
+        else
+            type = 'Special'
+        end
+    elseif exp > 500 then
+        if chance2 < 50 then 
+            type = 'Delivery'
+        else
+            type = 'Special'
+        end
     else
-        type = 'Special'
+        if chance2 < 95 then 
+            type = 'Delivery'
+        else
+            type = 'Special'
+        end
     end
 end
 function getmenu()
@@ -320,8 +345,8 @@ end)
 
 
 function startjob()
-    math2()
     getexp()
+    math2()
     getmenu()
     if exports['qb-buffs']:HasBuff("luck") then
     random = math.random(15000,30000)
