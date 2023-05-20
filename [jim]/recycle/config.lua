@@ -61,8 +61,8 @@ Config['delivery'] = {
 	},
 }
 -- vector4(1211.97, -3271.34, 5.5, 81.37)
-Config.Locations =  {
-	['Recycle'] = { name = "Recycle Center", location = vector3(1211.97, -3271.34 , 5.5 - 1.0), heading = 81.37, blipTrue = true, Sprite = 365, Scale = 0.8, Colour = 2, }, -- The location where you enter the mine 
+Config.Locations =  { -- vector3(1211.97, -3271.34 , 5.5 - 1.0)
+	['Recycle'] = { name = "Recycle Center", location = vector3(0, 0 , 0 - 1.0), heading = 81.37, blipTrue = true, Sprite = 365, Scale = 0.8, Colour = 2, }, -- The location where you enter the mine 
 	['Trade'] = { name = "Recyclable Trader", location = vector3(1211.93, -3267.02, 5.5-1.0), heading = 81.37, blipTrue = false, Sprite = 365, Scale = 0.8, Colour = 2, }, -- The location where you enter the mine 
 	['BottleBank'] = { name = "Bottle Bank", location = vector3(0,0,0-1.0), heading = 2.86, blipTrue = false, Sprite = 642, Scale = 0.8, Colour = 2,}, -- The location where you enter the mine 
 	['BottleBank2'] = { name = "Bottle Bank", location = vector3(0,0,0-1.0), heading = 337.89, blipTrue = false, Sprite = 642, Scale = 0.8, Colour = 2,}, -- The location where you enter the mine 
