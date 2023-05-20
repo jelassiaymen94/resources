@@ -8,7 +8,7 @@ QBShared.Jobs = {
 		grades = {
             ['0'] = {
                 name = 'Unemployed',
-                payment = 1500
+                payment = 150
             },
         },
 	},

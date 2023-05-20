@@ -7,14 +7,14 @@ local priceTable = {
     swordfish = 93,
     largemouthbass = 120,
     bluefish = 120,
-    redfish = 140,
-    goldfish = 187,
-    salmon = 120,
-    rainbowtrout = 160,
-    tunafish = 200,
-    tigershark = 950,
+    redfish = 120,
+    goldfish = 147,
+    salmon = 110,
+    rainbowtrout = 120,
+    tunafish = 180,
+    tigershark = 750,
     stingray = 650,
-    killerwhale = 1500
+    killerwhale = 1100
 }
 
 RegisterNetEvent('qb-fishing:server:SellFish', function(fish, amount)
