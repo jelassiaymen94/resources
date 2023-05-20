@@ -43,13 +43,19 @@ TrailersTruck = {
     'trailers2',
     'tr2',
     'docktrailer',
-   
-}
-SpecialTrailers = {
     'tr4',
    -- 'armytrailer2',
     'tr4',
     'trailerlarge',
+    
+  
+}
+SpecialTrailers = {
+    'boxville2',
+    'mule',
+    'benson',
+    'pounder',
+    'pounder2',
 }
 DropoffTruck = {
 
@@ -268,13 +274,15 @@ end
 function finish()
    -- print(amount)
   --  print(xpp)
+    trailer = nil
     SetEntityAsNoLongerNeeded(trailervehicle)
     RemoveBlip(pickupb)
     RemoveBlip(dropoff)
     TriggerServerEvent('Polar-Mini:Server:SetTruckerExp', xpp)
     TriggerServerEvent('Polar-Mini:Server:Amount', amount)
-    onRoute = false
-    onjob = false
+    TriggerEvent('Polar-Mini:Client:Transfer')
+    --onRoute = false
+    --onjob = false
 end
 
 
@@ -360,7 +368,9 @@ function startjob()
     local coords = GetEntityCoords(PlayerPedId())
     
     local distance1 = GetDistanceBetweenCoords(loc.x, loc.y, loc.z, coords.x, coords.y, coords.z, false)
-    local distance = distance1 * 0.0006
+    local distance3 = GetDistanceBetweenCoords(loc.x, loc.y, loc.z, pickloc.x, pickloc.y, pickloc.z, false)
+    local distance2 = distance1 + distance3
+    local distance = distance2 * 0.0006
     -- loc is deliver
     -- pickloc is pickup location
     -- amount is Payout $
@@ -456,7 +466,7 @@ function startdrive()
                 if IsControlReleased(0, 74) then
                     finish(amount, xpp)
                     exports['qb-core']:HideText()
-                    TriggerEvent('qb-phone:client:CustomNotification', 'Los Santos Trucking', 'Head Back to the Depot', 'fas fa-file-invoice-dollar', '#b3e0f2', '10000')
+                    TriggerEvent('qb-phone:client:CustomNotification', 'Los Santos Trucking', 'Wait for Another Contract', 'fas fa-file-invoice-dollar', '#b3e0f2', '10000')
                 end
                 break
             end

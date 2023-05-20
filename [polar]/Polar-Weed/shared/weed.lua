@@ -30,10 +30,10 @@ Config.Offset = - 0.5
 Config.Distance = 7.0
 
 --------- GENERAL ----------
-Config.RestartPlantRemoval = false -- remove dead plants on restart
-Config.TimeToGrow = 120 -- Time in minutes for a plant to grow from 0 to 100
-Config.Updates = 15 -- Time in minutes to update everything
-Config.HealthRemoved = {7, 10} -- Min/Max Amount of health decay when the plant is below the above thresholds for water and nutrition
+Config.RestartPlantRemoval = true -- remove dead plants on restart
+Config.TimeToGrow = math.random(180, 240) -- Time in minutes for a plant to grow from 0 to 100
+Config.Updates = 10 -- Time in minutes to update everything
+Config.HealthRemoved = {2, 6} -- Min/Max Amount of health decay when the plant is below the above thresholds for water and nutrition
 Config.PlaceTime = 2000 -- progressbar time to place plant
 Config.RemovePlantTime = 8500
 
