@@ -94,7 +94,7 @@ Config = {
 		["gearshop"] = {
 			{ name = "diving_gear", price = 2500, amount = 5, },
 			{ name = "fishingrod", price = 1000, amount = 30,},
-			{ name = "fishbait", price = 25, amount = 500, },
+			{ name = "fishbait", price = 25, amount = math.random(250,500)},
 			{ name = "jerry_can", price = 2500, amount = 3, },
 			{ name = "screwdriverset", price = 2500, amount = 20, },
 		},
