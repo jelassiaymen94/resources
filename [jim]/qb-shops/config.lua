@@ -61,7 +61,7 @@ Config = {
 		["hardware"] = {
 			{ name = "lockpick", price = 500, amount = math.random(30,45), },
 			{ name = "ducttape", price = 100, amount = math.random(15,30), },
-			{ name = "powersaw", price = 2500, amount = 10,} ,
+			--{ name = "powersaw", price = 2500, amount = 10,} ,
 			{ name = "goldpan", price = 750, amount = 10, },
 			{ name = "pickaxe", price = 1500, amount = math.random(15,20), },
 			{ name = "miningdrill", price = 22000, amount = math.random(5,10), },
@@ -69,11 +69,11 @@ Config = {
 			{ name = "drillbit", price = 150, amount = 50, },
 			{ name = "binoculars", price = 150, amount = 10, },
 		--	{ name = "bakingsoda", price = 550, amount = 2, },
-			{ name = "petfood", price = 50, amount = 50 },
-			{ name = "collarpet", price = 1500, amount = 50 },
-			{ name = "firstaidforpet", price = 250, amount = 50 },
-			{ name = "petwaterbottleportable", price = 500, amount = 50 },
-			{ name = "petnametag", price = 1500, amount = 50 },
+		--	{ name = "petfood", price = 50, amount = 50 },
+		--	{ name = "collarpet", price = 1500, amount = 50 },
+		--	{ name = "firstaidforpet", price = 250, amount = 50 },
+		--	{ name = "petwaterbottleportable", price = 500, amount = 50 },
+		--	{ name = "petnametag", price = 1500, amount = 50 },
 		--	{ name = "scissors", price = 1000, amount = 5, },
 			{ name = "cleaningkit", price = 5, amount = 50, },
 			
@@ -271,7 +271,7 @@ Config.Locations = {
 		},
 		["logo"] = "https://i.imgur.com/bPcM0TM.png",
         ["coords"] = {
-			vector4(-1206.1, -1460.67, 4.37, 308.72),
+		--	vector4(-1206.1, -1460.67, 4.37, 308.72),
 			
 		},
         ["products"] = Config.Products["normal"],
