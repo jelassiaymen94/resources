@@ -34,12 +34,12 @@
 					<AmmoInfo ref="AMMO_SMG"/>
 					<AimingInfo ref="RIFLE_LO_BASE_STRAFE"/>
 					<ClipSize value="30"/>
-					<AccuracySpread value="3.500000"/>
+					<AccuracySpread value="2.500000"/>
 					<AccurateModeAccuracyModifier value="0.500000"/>
 					<RunAndGunAccuracyModifier value="2.000000"/>
 					<RunAndGunAccuracyMaxModifier value="1.000000"/>
 					<RecoilAccuracyMax value="0.500000"/>
-					<RecoilErrorTime value="1.500000"/>
+					<RecoilErrorTime value="3.000000"/>
 					<RecoilRecoveryRate value="1.000000"/>
 					<RecoilAccuracyToAllowHeadShotAI value="1000.000000"/>
 					<MinHeadShotDistanceAI value="1000.000000"/>
@@ -48,7 +48,7 @@
 					<RecoilAccuracyToAllowHeadShotPlayer value="0.175000"/>
 					<MinHeadShotDistancePlayer value="5.000000"/>
 					<MaxHeadShotDistancePlayer value="300.000000"/>
-					<HeadShotDamageModifierPlayer value="1.5000000"/>
+					<HeadShotDamageModifierPlayer value="1.500000"/>
 					<Damage value="22.000000"/>
 					<DamageTime value="0.000000"/>
 					<DamageTimeInVehicle value="0.000000"/>

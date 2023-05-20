@@ -154,7 +154,7 @@ RegisterNetEvent("jim-jobgarage:client:SpawnList", function(data)
 			end
 			if data.list.trunkItems then TriggerServerEvent("inventory:server:addTrunkItems", QBCore.Functions.GetPlate(veh), data.list.trunkItems) end
 			TriggerEvent("vehiclekeys:client:SetOwner", QBCore.Functions.GetPlate(veh))
-			exports['ps-fuel']:SetFuel(veh, 100.0)
+			exports['LegacyFuel']:SetFuel(veh, 100.0)
 			SetVehicleEngineOn(veh, true, true)
 			Wait(250)
 			SetVehicleDirtLevel(veh, 0.0)
