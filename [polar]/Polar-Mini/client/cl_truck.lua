@@ -388,7 +388,7 @@ function attachcheck()
             local distance = GetDistanceBetweenCoords(coords.x, coords.y, coords.z, trailercoords.x, trailercoords.y, trailercoords.z)
             print(distance)
 
-            if distance < 10 then
+            if distance < 8 then
                 local car = GetVehiclePedIsIn(PlayerPedId(), false)
                 local mod = GetEntityModel(car)
              --   print(mod)
@@ -423,7 +423,7 @@ function startdrive()
             local trailercoords = GetEntityCoords(trailervehicle)
             local distance = GetDistanceBetweenCoords(loc.x, loc.y, loc.z, trailercoords.x, trailercoords.y, trailercoords.z)
             print(distance)
-            if distance < 10 then
+            if distance < 8 then
             
                
                
