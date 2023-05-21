@@ -64,10 +64,10 @@ Config = {
 		['bakery'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.10, },
 		['burgershot'] = { MinAmountforTicket = 50, PayPerTicket = 50 , Commission = 0.10, },
 		['catcafe'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.10, },
-		['henhouse'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.10, },
+	--['henhouse'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.10, },
 		['pizzathis'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 1.0, },
-		['popsdiner'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.10, },
-		['tequilala'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.10, },
+		--['popsdiner'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.10, },
+		--['tequilala'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.10, },
 		['vu'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 1.0, },
 		['tuner'] = { MinAmountforTicket = 0, PayPerTicket = 0, Commission = 0.10, },
 		['lostmc'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.10, gang = true, }, -- Example of a gang being supported

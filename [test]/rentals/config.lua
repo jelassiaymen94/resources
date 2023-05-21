@@ -48,7 +48,7 @@ Config.Locations = {
     },
 }
 
-Config.Blips = { 
+Config.Blips = {
     {title= Lang:t("info.land_veh"), colour= 50, id= 56, x= -295.67, y= -996.3, z= 29.25},
     {title= Lang:t("info.land_veh"), colour= 50, id= 56, x= 2009.5, y= 3050.4, z= 46.608},
     {title= Lang:t("info.land_veh"), colour= 50, id= 56, x= -131.8, y= 6332.7, z= 31.48},
@@ -60,24 +60,20 @@ Config.Blips = {
 Config.Vehicles = {
     land = {
         [1] = {
-            model = 'bmx', 
+            model = 'bmx', --DONT CHANGE PLEASE
             money = 100,
         },
         [2] = {
-            model = 'futo', 
+            model = 'futo', --DONT CHANGE PLEASE
             money = 500,
         },
         [3] = {
-            model = 'sanchez', 
-            money = 2500,
+            model = 'hauler', --DONT CHANGE PLEASE
+            money = 3200,
         },
         [4] = {
-            model = 'burrito', 
+            model = 'speedo', --DONT CHANGE PLEASE
             money = 1200,
-        },
-        [4] = {
-            model = 'hauler', 
-            money = 1500,
         },
     },
     air = {

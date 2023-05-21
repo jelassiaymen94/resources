@@ -62,14 +62,14 @@ Config['delivery'] = {
 }
 -- vector4(1211.97, -3271.34, 5.5, 81.37)
 Config.Locations =  { -- vector3(1211.97, -3271.34 , 5.5 - 1.0)
-	['Recycle'] = { name = "Recycle Center", location = vector3(0, 0 , 0 - 1.0), heading = 81.37, blipTrue = true, Sprite = 365, Scale = 0.8, Colour = 2, }, -- The location where you enter the mine 
-	['Trade'] = { name = "Recyclable Trader", location = vector3(1211.93, -3267.02, 5.5-1.0), heading = 81.37, blipTrue = false, Sprite = 365, Scale = 0.8, Colour = 2, }, -- The location where you enter the mine 
-	['BottleBank'] = { name = "Bottle Bank", location = vector3(0,0,0-1.0), heading = 2.86, blipTrue = false, Sprite = 642, Scale = 0.8, Colour = 2,}, -- The location where you enter the mine 
-	['BottleBank2'] = { name = "Bottle Bank", location = vector3(0,0,0-1.0), heading = 337.89, blipTrue = false, Sprite = 642, Scale = 0.8, Colour = 2,}, -- The location where you enter the mine 
-	['BottleBank3'] = { name = "Bottle Bank", location = vector3(0,0,0-1.0), heading = 357.19, blipTrue = false, Sprite = 642, Scale = 0.8, Colour = 2,}, -- The location where you enter the mine 
-	['BottleBank4'] = { name = "Bottle Bank", location = vector3(0,0,0-1.0), heading = 50.0, blipTrue = false, Sprite = 642, Scale = 0.8, Colour = 2,}, -- The location where you enter the mine 
-	['BottleBank5'] = { name = "Bottle Bank", location = vector3(0,0,0-1.0), heading = 310.12, blipTrue = false, Sprite = 642, Scale = 0.8, Colour = 2,}, -- The location where you enter the mine 
-	['BottleBank6'] = { name = "Bottle Bank", location = vector3(0,0,0-1.0), heading = 128.12, blipTrue = false, Sprite = 642, Scale = 0.8, Colour = 2,}, -- The location where you enter the mine 
+['Recycle'] = { name = "Recycle Center", location = vector3(1211.97, -3271.34 , 5.5 - 1.0), heading = 81.37, blipTrue = true, Sprite = 365, Scale = 0.8, Colour = 2, }, -- The location where you enter the mine 
+['Trade'] = { name = "Recyclable Trader", location = vector3(1211.93, -3267.02, 5.5-1.0), heading = 81.37, blipTrue = false, Sprite = 365, Scale = 0.8, Colour = 2, }, -- The location where you enter the mine 
+['BottleBank'] = { name = "Bottle Bank", location = vector3(0,0,0-1.0), heading = 2.86, blipTrue = false, Sprite = 642, Scale = 0.8, Colour = 2,}, -- The location where you enter the mine 
+['BottleBank2'] = { name = "Bottle Bank", location = vector3(0,0,0-1.0), heading = 337.89, blipTrue = false, Sprite = 642, Scale = 0.8, Colour = 2,}, -- The location where you enter the mine 
+['BottleBank3'] = { name = "Bottle Bank", location = vector3(0,0,0-1.0), heading = 357.19, blipTrue = false, Sprite = 642, Scale = 0.8, Colour = 2,}, -- The location where you enter the mine 
+['BottleBank4'] = { name = "Bottle Bank", location = vector3(0,0,0-1.0), heading = 50.0, blipTrue = false, Sprite = 642, Scale = 0.8, Colour = 2,}, -- The location where you enter the mine 
+['BottleBank5'] = { name = "Bottle Bank", location = vector3(0,0,0-1.0), heading = 310.12, blipTrue = false, Sprite = 642, Scale = 0.8, Colour = 2,}, -- The location where you enter the mine 
+['BottleBank6'] = { name = "Bottle Bank", location = vector3(0,0,0-1.0), heading = 128.12, blipTrue = false, Sprite = 642, Scale = 0.8, Colour = 2,}, -- The location where you enter the mine 
 
 }
 
@@ -115,12 +115,12 @@ Config.DumpItems = {
 "carbon",	"carbon",	"carbon",	"carbon",	"carbon",	"carbon",	"carbon",	"carbon",	"carbon",	"carbon",	"carbon",	"carbon",	"carbon",	"carbon",	"carbon",	"carbon",	"carbon",	"carbon",	"carbon",	"carbon",
 "charcoal",	"charcoal",	"charcoal",	"charcoal",	"charcoal",	"charcoal",	"charcoal",	"charcoal",	"charcoal",	"charcoal",	"charcoal",	"charcoal",	"charcoal",	"charcoal",	"charcoal",	"charcoal",	"charcoal",	"charcoal",	"charcoal",	"charcoal",
 "stone",	"stone",	"stone",	"stone",	"stone",	"stone",	"stone",	"stone",	"stone",	"stone",	"stone",	"stone",	"stone",	"stone",	"stone",	"stone",	"stone",	"stone",	"stone",	"stone",
-"hydrochloric_acid",	"hydrochloric_acid",	"hydrochloric_acid",	"hydrochloric_acid",	"hydrochloric_acid",	"hydrochloric_acid",	"hydrochloric_acid",													
+--"hydrochloric_acid",	"hydrochloric_acid",	"hydrochloric_acid",	"hydrochloric_acid",	"hydrochloric_acid",	"hydrochloric_acid",	"hydrochloric_acid",													
 "weed_nutrition",	"weed_nutrition",	"weed_nutrition",	"weed_nutrition",	"weed_nutrition",	"weed_nutrition",	"weed_nutrition",	"weed_nutrition",	"weed_nutrition",	"weed_nutrition",										
 "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", 
 "male_seed", "male_seed", "male_seed", 
 "purifiedwater",	"purifiedwater",	"purifiedwater",	"purifiedwater",	"purifiedwater",	"purifiedwater",	"purifiedwater",	"purifiedwater",	"purifiedwater",	"purifiedwater",																								
-"sodium_hydroxide",	"sodium_hydroxide",	"sodium_hydroxide",	"sodium_hydroxide",	"sodium_hydroxide",	"sodium_hydroxide",	"sodium_hydroxide",													
+--"sodium_hydroxide",	"sodium_hydroxide",	"sodium_hydroxide",	"sodium_hydroxide",	"sodium_hydroxide",	"sodium_hydroxide",	"sodium_hydroxide",													
 "weapon_switchblade", "weapon_switchblade", "weapon_switchblade", "weapon_switchblade",	"weapon_knife",	"weapon_knife",	"weapon_knife",	"weapon_knife",															
 "weapon_crowbar",	"weapon_crowbar",	"weapon_crowbar",	"weapon_crowbar",	"weapon_crowbar",															
 "weapon_hammer",	"weapon_hammer",	"weapon_hammer",																	
@@ -157,7 +157,7 @@ Config.DumpItems = {
 "megaphone",	"megaphone",	"megaphone",	"megaphone",	"megaphone",															
 "randomgun", "randomgun",
 "washkey",	"washkey",															
-"craftingkey",	"craftingkey",																		
+--"craftingkey",	"craftingkey",																		
 "apple_juice",	"apple_juice",	"apple_juice",	"apple_juice",	"apple_juice",	"apple_juice",	"apple_juice",	"apple_juice",	"apple_juice",	"apple_juice",	"apple_juice",	"apple_juice",								
 "raw_ham",	"raw_ham",	"raw_ham",	"raw_ham",	"raw_ham",	"raw_ham",	"raw_ham",	"raw_ham",	"raw_ham",	"raw_ham",	"raw_ham",	"raw_ham",								
 "raw_bacon",	"raw_bacon",	"raw_bacon",	"raw_bacon",	"raw_bacon",	"raw_bacon",	"raw_bacon",	"raw_bacon",	"raw_bacon",	"raw_bacon",	"raw_bacon",	"raw_bacon",								
