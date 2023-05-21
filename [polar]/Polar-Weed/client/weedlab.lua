@@ -67,7 +67,7 @@ RegisterNetEvent('Polar-Weed:Client:Process', function()
 end)
 function pp()
     FreezeEntityPosition(PlayerPedId(), true)
-    local drugbatitem = QBCore.Functions.HasItem(drugbagitem, drugbagitemamount) if drugbatitem then if Config.Debug then print('are you in chair?') end
+   -- local drugbatitem = QBCore.Functions.HasItem(drugbagitem, drugbagitemamount) if drugbatitem then if Config.Debug then print('are you in chair?') end
     QBCore.Functions.TriggerCallback('Polar-Weed:Server:Check', function(Check) ForceCheck = Check end) Wait(100) if not ForceCheck then if Config.Debug then print('not in chair') end 
     TriggerServerEvent('Polar-Weed:Server:ForceCheck')
     local heading = 270 local coord =  vector3(1037.4, -3205.92, -37.69) local rotx =  0.85 local roty = 0 local rotz = -1.4 local playerPed = PlayerPedId()
@@ -89,7 +89,7 @@ function pp()
     TriggerServerEvent('Polar-Weed:Server:UnDoCheck')
     TriggerServerEvent('Polar-Weed:Server:Process', 3)   
     else QBCore.Functions.Notify('This Seat is Taken', red, alerttime) if Config.Debug then print('This Seat is Taken') end end
-    else QBCore.Functions.Notify('You dont have enough bags', red, alerttime) if Config.Debug then print('You dont have enough bags') end end
+  --  else QBCore.Functions.Notify('You dont have enough bags', red, alerttime) if Config.Debug then print('You dont have enough bags') end end
     FreezeEntityPosition(PlayerPedId(), false)
 end
 RegisterNetEvent('Polar-Weed:Client:Joint', function()

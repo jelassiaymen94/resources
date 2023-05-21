@@ -412,7 +412,7 @@ RegisterNetEvent('qb-vehicleshop:client:showVehOptions', function()
 end)
 
 RegisterNetEvent('qb-vehicleshop:client:TestDrive', function()
-    if not inTestDrive and ClosestVehicle ~= 0 then
+   --[[ if not inTestDrive and ClosestVehicle ~= 0 then
         inTestDrive = true
         local prevCoords = GetEntityCoords(PlayerPedId())
         tempShop = insideShop -- temp hacky way of setting the shop because it changes after the callback has returned since you are outside the zone
@@ -429,7 +429,8 @@ RegisterNetEvent('qb-vehicleshop:client:TestDrive', function()
         startTestDriveTimer(Config.Shops[tempShop]["TestDriveTimeLimit"] * 60, prevCoords)
     else
         QBCore.Functions.Notify(Lang:t('error.testdrive_alreadyin'), 'error')
-    end
+    end]]
+    QBCore.Functions.Notify("Test Drives are not Available Right Now", 'error')
 end)
 
 RegisterNetEvent('qb-vehicleshop:client:customTestDrive', function(data)

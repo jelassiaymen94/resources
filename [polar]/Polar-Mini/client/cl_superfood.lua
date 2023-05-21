@@ -181,7 +181,7 @@ RegisterNetEvent('superfood:client:Drink', function(itemName)
     elseif itemName == "water_bottle" then
         TriggerEvent('animations:client:EmoteCommandStart', {"water_bottle"})
     elseif itemName == "kurkakola" then
-        TriggerEvent('animations:client:EmoteCommandStart', {"kurkakola"})
+        TriggerEvent('animations:client:EmoteCommandStart', {"ecola"})
   
 
     else

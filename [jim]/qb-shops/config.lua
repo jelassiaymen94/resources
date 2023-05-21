@@ -12,7 +12,7 @@ Config = {
 	Gabz247 = true,  -- Enable if using gabz 247 stores
 	GabzAmmu = true, -- Enable if using gabz Ammunation stores
 	VendOverride = true, -- Enable this if you want all the vending machines to use this script
-	RandomAmount = true, -- Sets wether a stash should have a "random" amount of stock or full.
+	RandomAmount = false, -- Sets wether a stash should have a "random" amount of stock or full.
 
 	Scenarios = { -- List of scenarios the peds do, This is called "fun", much better than standing staring at the void.
 		"WORLD_HUMAN_GUARD_PATROL",
