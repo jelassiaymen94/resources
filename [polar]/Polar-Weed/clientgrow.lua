@@ -41,6 +41,12 @@ AddEventHandler('onResourceStop', function(resource)
    
 end)
 
+function GetGroundHash(ped)
+    local posped = GetEntityCoords(ped)
+    local num = StartShapeTestCapsule(posped.x, posped.y, posped.z + 4, posped.x, posped.y, posped.z - 2.0, 2, 1, ped, 7)
+    local arg1, arg2, arg3, arg4, arg5 = GetShapeTestResultEx(num)
+    return arg5
+end
 
 
 RegisterNetEvent('Polar-Weed:Client:PlaceSeed', function()
