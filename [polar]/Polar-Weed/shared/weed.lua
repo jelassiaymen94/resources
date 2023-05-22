@@ -40,15 +40,15 @@ Config.RemovePlantTime = 8500
 --------- MALE SEED --------------
 Config.MaleSeed = 'male_seed' -- item that makes plants pregnant
 Config.GiveMaleSeed = false -- do you want to get more male seeds from 1 male seed?
-Config.GiveMaleSeedAmount = 1 -- use if Config.GiveMaleSeedOverHealth = False
-Config.GiveMaleSeedOverHealth = true -- use if you want to do Health / Config.HealthMaleRateSeed
+Config.GiveMaleSeedAmount = 0 -- use if Config.GiveMaleSeedOverHealth = False
+Config.GiveMaleSeedOverHealth = false -- use if you want to do Health / Config.HealthMaleRateSeed
 Config.HealthMaleRateSeed = 50 -- Divider over Health EX. 100 / 50 = 2
 
 
 --------- FEMALE SEED ------------
 Config.FemaleSeed = 'female_seed' -- usable item to place plants
-Config.GiveFemaleSeedAmount = 1 -- use if Config.GiveMaleSeedOverHealth = False
-Config.GiveFemaleSeedOverHealth = true
+Config.GiveFemaleSeedAmount = 6 -- use if Config.GiveMaleSeedOverHealth = False
+Config.GiveFemaleSeedOverHealth = false
 Config.HealthFemaleRateSeed = 20 -- Divider over Health EX. 100 / 20 = 5
 
 

@@ -70,7 +70,7 @@ Config.DoorList['pawnshopbackoffice'] = {
     distance = 3,
     objYaw = 242.35208129883,
     objCoords = vec3(163.831772, -1318.426392, 29.504614),
-    locked = true
+    locked = false
     -- {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     --audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
     --autoLock = 1000,

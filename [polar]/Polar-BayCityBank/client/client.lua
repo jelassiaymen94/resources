@@ -299,7 +299,7 @@ function hack(door)
         Wait(6300)
         NetworkStartSynchronisedScene(netScene2)
         Wait(2000)
-        if door == 'bayvaultdoor' then
+        --if door == 'bayvaultdoor' then
             LocalPlayer.state:set('inv_busy', true, true) 
         exports[hackname]:OpenHackingGame(10, 5, 3, function(Success) local chance = math.random(1,100)
             if Success then
@@ -329,11 +329,8 @@ function hack(door)
                 TriggerServerEvent('Polar-BayCityBank:Server:StartInteract', door)
             end
         end)
-        elseif door == 'bayvaultgate' then
-        -- levels is how many levels you want. Max is 4, Min is 1
-        -- lifes is how many life player has, Max is 6, Min is 1
-        -- time is how much time player has in minutes, Max is 9, min is 1 (I highly recommend to set it between 3-1)
-        -- callback is the callback function to catch the outcome
+       --[[ elseif door == 'bayvaultgate' then
+
             LocalPlayer.state:set('inv_busy', true, true) 
         TriggerEvent("".. fingerhack ..":Start", 4, 1, 1, function(outcome, reason) local chance = math.random(1,100)
         if outcome == true then -- success
@@ -362,7 +359,7 @@ function hack(door)
             LocalPlayer.state:set('inv_busy', false, true)
             TriggerServerEvent('Polar-BayCityBank:Server:StartInteract', door) 
         end end)
-        end
+        end]]
        
     end, function() StopAnimTask(ped, "anim@gangops@facility@servers@", "hotwire", 1.0)
         TriggerServerEvent('Polar-BayCityBank:Server:StartInteract', door)
