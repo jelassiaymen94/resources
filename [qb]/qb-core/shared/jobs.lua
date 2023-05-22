@@ -3,7 +3,7 @@ QBShared.ForceJobDefaultDutyAtLogin = true -- true: Force duty state to jobdefau
 QBShared.Jobs = {
 	['unemployed'] = {
 		label = 'Civilian',
-		defaultDuty = true,
+		defaultDuty = false,
 		offDutyPay = false,
 		grades = {
             ['0'] = {
@@ -14,7 +14,7 @@ QBShared.Jobs = {
 	},
     ["gotur"] = {
 		label = "Götür",
-		defaultDuty = true,
+		defaultDuty = false,
 		grades = {
             ['0'] = {
                 name = "Messenger",
@@ -30,7 +30,7 @@ bankAuth = true,
 	},
     ['bakery'] = {
 		label = 'Baker',
-		defaultDuty = true,
+		defaultDuty = false,
 		grades = {
             ['0'] = { name = 'Recruit', payment = 100 },
 			['1'] = { name = 'Novice', payment = 125 },
@@ -43,7 +43,7 @@ bankAuth = true, payment = 50 },
 	},
 	['police'] = {
 		label = 'Law Enforcement',
-		defaultDuty = true,
+		defaultDuty = false,
 		offDutyPay = false,
 		grades = {
             ['0'] = {
@@ -95,7 +95,7 @@ bankAuth = true,
 	},
     ['taxi'] = {
         label = 'Los Santos Taxi',
-        defaultDuty = true,
+        defaultDuty = false,
         offDutyPay = false,
         grades = {
             ['0'] = {
@@ -120,7 +120,7 @@ bankAuth = true,
     },
     ["vineyard"] = {
         label = "Vineyard", 
-        defaultDuty = true,
+        defaultDuty = false,
         grades = {
             ['0'] = {
                 name = "Vineyard Worker",
@@ -147,7 +147,7 @@ bankAuth = true,
     },
 	['ambulance'] = {
 		label = 'Emergency Medical Service',
-		defaultDuty = true,
+		defaultDuty = false,
 		offDutyPay = false,
 		grades = {
             ['0'] = {
@@ -323,7 +323,7 @@ bankAuth = true,
     
     ['taco'] = {
         label = 'Taco Truck',
-        defaultDuty = true,
+        defaultDuty = false,
         grades = {
             ['0'] = {
                 name = 'Trainee',
@@ -349,7 +349,7 @@ bankAuth = true,
     },
 	['realestate'] = {
 		label = 'Real Estate',
-		defaultDuty = true,
+		defaultDuty = false,
 		offDutyPay = false,
 		grades = {
             ['0'] = {
@@ -376,7 +376,7 @@ bankAuth = true,
 	},
 	['cardealer'] = {
 		label = 'Vehicle Salesman',
-		defaultDuty = true,
+		defaultDuty = false,
 		offDutyPay = false,
 		grades = {
             ['0'] = {
@@ -416,7 +416,7 @@ bankAuth = true,
 	},
     ['redline'] = {
 		label = 'Redline Salesman',
-		defaultDuty = true,
+		defaultDuty = false,
 		offDutyPay = false,
 		grades = {
             ['0'] = {
@@ -681,7 +681,7 @@ bankAuth = true,
 	
         ['pawnshop'] = {
             label = 'Pawn Shop',
-            defaultDuty = true,
+            defaultDuty = false,
             grades = {
                 ['0'] = { name = 'Recruit', payment = 2000 },
                 ['1'] = { name = 'Employee', payment = 2200 },
@@ -692,7 +692,7 @@ bankAuth = true,
         },
 	--[[['judge'] = {
 		label = 'Honorary',
-		defaultDuty = true,
+		defaultDuty = false,
 		offDutyPay = false,
 		grades = {
             ['0'] = {
@@ -705,7 +705,7 @@ bankAuth = true,
 	},]]
     ['council'] = {
 		label = 'City Council',
-		defaultDuty = true,
+		defaultDuty = false,
 		offDutyPay = true,
 		grades = {
             ['0'] = {
@@ -736,20 +736,20 @@ bankAuth = true,
 	},
 	['lawyer'] = {
 		label = 'Law Firm',
-		defaultDuty = true,
+		defaultDuty = false,
 		offDutyPay = false,
 		grades = {
             ['0'] = {
                 name = 'Lawyer',
                 isboss = true,
 bankAuth = true,
-                payment = 6000
+                payment = 3000
             },
         },
 	},
 	['trucker'] = {
 		label = 'Trucker',
-		defaultDuty = true,
+		defaultDuty = false,
 		offDutyPay = false,
 		grades = {
             ['0'] = {
@@ -778,7 +778,7 @@ bankAuth = true,
 	},
     ['wuchang'] = {
 		label = 'Wu Chang Records',
-		defaultDuty = true,
+		defaultDuty = false,
 		offDutyPay = false,
 		grades = {
             ['0'] = {
@@ -822,7 +822,7 @@ bankAuth = true,
 	},
     ['church'] = {
 		label = 'Church of Rockford',
-		defaultDuty = true,
+		defaultDuty = false,
 		offDutyPay = true,
 		grades = {
             ['0'] = {
@@ -855,7 +855,7 @@ bankAuth = true,
 
 ['weazelnews'] = {
     label = 'Weazel News',
-    defaultDuty = true,
+    defaultDuty = false,
     offDutyPay = true,
     grades = {
         ['0'] = {
@@ -894,7 +894,7 @@ bankAuth = true,
 
 ['pizzathis'] = {
     label = 'Pizza This!',
-    defaultDuty = true,
+    defaultDuty = false,
     offDutyPay = true,
     grades = {
         ['0'] = {
