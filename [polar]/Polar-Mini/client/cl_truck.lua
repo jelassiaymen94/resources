@@ -185,7 +185,7 @@ AddEventHandler('onResourceStart', function(resource)
     if resource == GetCurrentResourceName() then
         Wait(100)
         start()
-        blip()
+      --  blip()
     end
 end)
 RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function()

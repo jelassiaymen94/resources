@@ -166,7 +166,7 @@ Config.TrimItem9 = 'crophigh'
 Config.TrimItem10 = 'crophigh'
 Config.TrimItemAmount = 1
 
-Config.UseProps = true
+Config.UseProps = false
 Config.TableHeight = -40
 Config.Floor = -39.16
 
