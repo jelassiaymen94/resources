@@ -47,7 +47,7 @@ RegisterNetEvent('Polar-Weed:Client:PlaceSeed', function()
     if Config.QuickPlant then
                 local planted = true
                 local ped = PlayerPedId()
-               
+                if GetGroundHash(ped) == -1286696947 or GetGroundHash(ped) == -1885547121 or GetGroundHash(ped) == 223086562 or GetGroundHash(ped) == -461750719 then
                 RequestAnimDict('amb@medic@standing@kneel@base')
                 RequestAnimDict('anim@gangops@facility@servers@bodysearch@')
                 while 
@@ -80,6 +80,9 @@ RegisterNetEvent('Polar-Weed:Client:PlaceSeed', function()
                     RemoveAnimDict('amb@medic@standing@kneel@base')
                     RemoveAnimDict('anim@gangops@facility@servers@bodysearch@')
                 end)
+                else
+                    QBCore.Functions.Notify("This dirt sucks, find some better", 'error', 2500)
+                end
     else
     if GetVehiclePedIsIn(PlayerPedId(), false) ~= 0 then return end
     if seedUsed then return end
