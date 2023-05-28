@@ -580,7 +580,7 @@ end)
 
 
 
-RegisterNetEvent('Polar-Paleto:client:start', function()  pp = Config.StartThermite door = paletostartname coords = Config.StartPfx
+RegisterNetEvent('Polar-Paleto:client:start', function()  pp = vector4(-109.43, 6483.32, 31.47, 224.11) door = paletostartname coords = vector3(-109.46, 6484.36, 31.27)
     QBCore.Functions.TriggerCallback('Polar-Paleto:DoorCheckstart', function(result) if result then
     TriggerServerEvent('Polar-Paleto:Server:StopInteract', door)
     Wait(50)

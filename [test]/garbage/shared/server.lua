@@ -3,9 +3,9 @@ Config = Config or {}
 Config.RenewedBanking = true
 
 Config.PriceBrackets = {
-    ["small"] = 80,
-    ["medium"] = 90,
-    ["large"] = 100,
+    ["small"] = 160,
+    ["medium"] = 180,
+    ["large"] = 200,
 }
 
 -- The amount of groups stacks the Config.Deliver so if its a 2 man job its then 8, 16 per location 3 would be 16, 32 etc.

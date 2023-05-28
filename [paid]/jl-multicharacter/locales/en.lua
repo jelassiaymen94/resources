@@ -19,8 +19,8 @@ Translations = {
         nationality_fail = "Please fill your nationality",
         dob_fail = "Please fill your date of birth",
         dob_fail2 = "Your date of birth can't be below 1970-01-01 or higher than 2017-12-01",
-        firstname_char = "First name needs to be at least 6 characters",
-        lastname_char = "Last name needs to be at least 6 characters"
+        firstname_char = "First name needs to be at least 2 characters",
+        lastname_char = "Last name needs to be at least 3 characters"
 
     },
     placeholders = {

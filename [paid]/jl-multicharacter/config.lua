@@ -3,7 +3,7 @@ Config = Config or {}
 Config.DebugMode = false
 
 Config.Data = {
-    firstname_char = 3,
+    firstname_char = 2,
     lastname_char = 3,
     minimum_dob = "1970-01-01",
     max_dob = "2017-12-01",

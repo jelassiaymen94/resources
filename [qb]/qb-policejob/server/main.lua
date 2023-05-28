@@ -27,8 +27,11 @@ local function UpdateBlips()
                     w = heading
                 }
             }
+           
         end
+      
     end
+  --  print(dutyPlayers)
     TriggerClientEvent("police:client:UpdateBlips", -1, dutyPlayers)
 end
 
@@ -1022,6 +1025,7 @@ CreateThread(function()
         Wait(1000 * 60 * 10)
         local curCops = GetCurrentCops()
         TriggerClientEvent("police:SetCopCount", -1, curCops)
+        --print(curCops)
     end
 end)
 
@@ -1029,5 +1033,6 @@ CreateThread(function()
     while true do
         Wait(5000)
         UpdateBlips()
+      
     end
 end)
