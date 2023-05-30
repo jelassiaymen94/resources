@@ -356,7 +356,7 @@ end
 
 Citizen.CreateThread(function()
     for k, _ in pairs (Config.Stores) do
-        if Config.Stores[k].shopType == "clothing" then
+       --[[ if Config.Stores[k].shopType == "clothing" then
             local clothingShop = AddBlipForCoord(Config.Stores[k].coords)
             SetBlipSprite(clothingShop, 366)
             SetBlipColour(clothingShop, 47)
@@ -365,7 +365,7 @@ Citizen.CreateThread(function()
             BeginTextCommandSetBlipName("STRING")
             AddTextComponentString("Clothing store")
             EndTextCommandSetBlipName(clothingShop)
-        end
+        end]]
 
         if Config.Stores[k].shopType == "barber" then
             local barberShop = AddBlipForCoord(Config.Stores[k].coords)

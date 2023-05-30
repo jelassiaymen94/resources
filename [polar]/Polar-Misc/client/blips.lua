@@ -206,15 +206,19 @@ local QBCore = exports['qb-core']:GetCoreObject()
 
 
 
-CreateThread(function()
 
-end)
+   
+
 
 
 RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function()
    PlayerJob = QBCore.Functions.GetPlayerData().job
-   if PlayerJob.name ~= "police" then return end
+   if PlayerJob.name ~= "police" then 
+   else
    policeblips()
+   end
+   supermarket()
+   clothing()
 end)
 RegisterNetEvent('QBCore:Client:OnJobUpdate', function(JobInfo)
    PlayerJob = QBCore.Functions.GetPlayerData().job
@@ -228,56 +232,170 @@ RegisterNetEvent('QBCore:Client:OnJobUpdate', function(JobInfo)
       exports['qb-core']:HideText()
    end
 end)
+
 function removepoliceblips()
 
-   RemoveBlip(blip1)
-   Wait(50)
-   RemoveBlip(blip2)
-   Wait(50)
-   RemoveBlip(blip3)
+   RemoveBlip(currentblip)
+
 
 end
+
 function policeblips()
+CreateThread(function()
+   local currentblip = 0
+   while true do
+      local coords = GetEntityCoords(PlayerPedId())
+      local closest = 1000
+      local closestCoords 
+      
+      for i = 1, #Config.BoatBlips do
+         local cads = Config.BoatBlips[i].coords
+         local dstcheck = GetDistanceBetweenCoords(coords.x, coords.y, coords.z, cads.x, cads.y, cads.z, false)
+
+         if dstcheck < closest then
+            closest = dstcheck
+            closestCoords = cads
+          
+         end
+      end
+      if DoesBlipExist(currentblip) then
+         RemoveBlip(currentblip)
+      end
+      currentblip = CreateBlip(closestCoords)
+      Wait(10000)
+    end
+end)
+end
+function CreateBlip(coords)
+	local blip = AddBlipForCoord(coords)
+	SetBlipSprite(blip, 404)
+	SetBlipScale(blip, 0.6)
+	SetBlipColour(blip, 3)
+	SetBlipDisplay(blip, 6)
+	SetBlipAsShortRange(blip, true)
+	BeginTextCommandSetBlipName("STRING")
+	AddTextComponentString("Police Boat")
+	EndTextCommandSetBlipName(blip)
+	return blip
+end
 
 
 
 
 
-   blip1 = AddBlipForCoord(vector3(643.17, -1828.23, 9.08))
-   SetBlipSprite (blip1, 404)
-   SetBlipDisplay(blip1, 6) 
-   SetBlipScale  (blip1, 0.6)
-   SetBlipAsShortRange(blip1, true)
-   SetBlipColour(blip1, 3)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function supermarket()
+CreateThread(function()
+      
+      local currentblip = 0
+      while true do
+         local coords = GetEntityCoords(PlayerPedId())
+         local closest = 1000
+         local closestCoords 
+         
+         for i = 1, #Config.SuperMarket do
+            local cads = Config.SuperMarket[i].coords
+            local dstcheck = GetDistanceBetweenCoords(coords.x, coords.y, coords.z, cads.x, cads.y, cads.z, false)
+            --print(cads)
+            if dstcheck < closest then
+               closest = dstcheck
+               closestCoords = cads
+               --print(closestCoords)
+            end
+         end
+         if DoesBlipExist(currentblip) then
+            RemoveBlip(currentblip)
+         end
+         currentblip = CreateBlip2(closestCoords)
+         Wait(10000)
+       end
+   end)
+end
+   function CreateBlip2(coords)
+      local blip = AddBlipForCoord(coords)
+      SetBlipSprite(blip, 628)
+      SetBlipScale(blip, 0.6)
+      SetBlipColour(blip, 2)
+      SetBlipDisplay(blip, 6)
+      SetBlipAsShortRange(blip, true)
+      BeginTextCommandSetBlipName("STRING")
+      AddTextComponentString("24/7 Supermarket")
+      EndTextCommandSetBlipName(blip)
+      return blip
+   end
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+
+function clothing()
+   CreateThread(function()
+      
+      local currentblip = 0
+      while true do
+         local coords = GetEntityCoords(PlayerPedId())
+         local closest = 1000
+         local closestCoords 
+         
+         for i = 1, #Config.Clothing do
+            local cads = Config.Clothing[i].coords
+            local dstcheck = GetDistanceBetweenCoords(coords.x, coords.y, coords.z, cads.x, cads.y, cads.z, false)
+            --print(cads)
+            if dstcheck < closest then
+               closest = dstcheck
+               closestCoords = cads
+               --print(closestCoords)
+            end
+         end
+         if DoesBlipExist(currentblip) then
+            RemoveBlip(currentblip)
+         end
+         currentblip = CreateBlip3(closestCoords)
+         Wait(10000)
+       end
+   end)
+
+
+
+
+end
+function CreateBlip3(coords)
+   local blip = AddBlipForCoord(coords)
+   SetBlipSprite(blip, 366)
+   SetBlipScale(blip, 0.6)
+   SetBlipColour(blip, 47)
+   SetBlipDisplay(blip, 6)
+   SetBlipAsShortRange(blip, true)
    BeginTextCommandSetBlipName("STRING")
-   AddTextComponentSubstringPlayerName("Police Boat")
-   EndTextCommandSetBlipName(blip1)
-
-
-   blip2 = AddBlipForCoord(vector3(916.11, 3655.86, 32.49))
-   SetBlipSprite (blip2, 404)
-   SetBlipDisplay(blip2, 6) 
-   SetBlipScale  (blip2, 0.6)
-   SetBlipAsShortRange(blip2, true)
-   SetBlipColour(blip2, 3)
-   BeginTextCommandSetBlipName("STRING")
-   AddTextComponentSubstringPlayerName("Police Boat")
-   EndTextCommandSetBlipName(blip2)
-
-
-
-
-   blip3 = AddBlipForCoord(vector3(-914.95, 5797.57, 0.41))
-   SetBlipSprite (blip3, 404)
-   SetBlipDisplay(blip3, 6) 
-   SetBlipScale  (blip3, 0.6)
-   SetBlipAsShortRange(blip3, true)
-   SetBlipColour(blip3, 3)
-   BeginTextCommandSetBlipName("STRING")
-   AddTextComponentSubstringPlayerName("Police Boat")
-   EndTextCommandSetBlipName(blip3)
-
-
-
-
+   AddTextComponentString("Clothing Store")
+   EndTextCommandSetBlipName(blip)
+   return blip
 end

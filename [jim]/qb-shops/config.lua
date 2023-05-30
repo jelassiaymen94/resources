@@ -232,6 +232,7 @@ Config.Locations = {
         ["products"] = Config.Products["normal"],
         ["blipsprite"] = 628,
 		["blipcolour"] = 2,
+		["hideblip"] = true,
     },
     -- LTD Gasoline Locations
     --[[["shops"] = {
