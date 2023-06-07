@@ -29,6 +29,12 @@ local fingerhack = 'utk_fingerprint' -- https://github.com/utkuali/Finger-Print-
 local memorygame = 'memory' 
 local voltgame = 'ultra-voltlab' -- https://forum.cfx.re/t/release-voltlab-hacking-minigame-cayo-perico-mission/3933171
 
+--- QBCORE MEMORY GAME ----------------
+local memgame = false -- if using default qbcore memorygame then set to true
+local memname = "memorygame"
+
+
+----------------------
 local drillreward = nil
 function goodies()  local chance = math.random(1,100) if chance <= 25 then drillreward = 'band' amount = 3 elseif chance <= 50 then drillreward = 'band' amount = 2 elseif chance <=100 then drillreward = 'band' amount = 1 end end
 
@@ -76,6 +82,23 @@ RegisterNetEvent('Polar-Paleto:client:ThermiteStart', function(pp, door, coords)
                         TriggerServerEvent('Polar-Paleto:Server:StartInteract', 'paletodoor3')
                         TriggerServerEvent('Polar-Paleto:Server:StartTargets')
                     else
+                    if memgame then 
+                        exports[memname]:thermiteminigame(10, 3, 3, 10,
+                        function() -- success
+                            LocalPlayer.state:set('inv_busy', false, true)
+                            TriggerServerEvent('Polar-Paleto:Server:StartCooldown')
+                            ThermiteEffect(door, coords) 
+                            TriggerServerEvent('Polar-Paleto:Server:StartInteract', 'paletodoor1')
+                            TriggerServerEvent('Polar-Paleto:Server:StartInteract', 'paletodoor2')
+                            TriggerServerEvent('Polar-Paleto:Server:StartInteract', 'paletodoor3')
+                            TriggerServerEvent('Polar-Paleto:Server:StartTargets')
+                        end,
+                        function() -- failure
+                            TriggerServerEvent('Polar-Paleto:Server:StartInteract', door)
+                            LocalPlayer.state:set('inv_busy', false, true)
+                            QBCore.Functions.Notify(text('thermitefail'), "error") 
+                        end)
+                    else
                     exports[thermiteexport]:Thermite(function(success) 
                     if success then
                     LocalPlayer.state:set('inv_busy', false, true)
@@ -91,11 +114,11 @@ RegisterNetEvent('Polar-Paleto:client:ThermiteStart', function(pp, door, coords)
                     QBCore.Functions.Notify(text('thermitefail'), "error") end
                     end, thermiteinfo.time, thermiteinfo.squares, thermiteinfo.errors)
                     end
+                    end
             else QBCore.Functions.Notify(text('nopolice'), "error")  TriggerServerEvent('Polar-Paleto:Server:StartInteract', door) end
         else TriggerServerEvent('Polar-Paleto:Server:GiveRewards', 'markedbills', math.random(2,4)) end  -- cart finish
     end,  {thermiteitem})
 end)
-
 
 
 
@@ -106,12 +129,24 @@ RegisterNetEvent('Polar-Paleto:client:Thermite', function(pp, door, coords)
     QBCore.Functions.TriggerCallback('QBCore:HasItem', function(result) if result then 
     TriggerServerEvent('Polar-Paleto:Server:StopInteract', door)
     if math.random(1, 100) <= Config.FingerPrintPercent and not gloves() then TriggerServerEvent("evidence:server:CreateFingerDrop", GetEntityCoords(PlayerPedId())) end PlantThermite(pp, door)
+    if memgame then 
+        exports[memname]:thermiteminigame(10, 3, 3, 10,
+        function() -- success
+            TriggerServerEvent('Polar-Paleto:Server:TargetRemove', door) ThermiteEffect(door, coords)
+            TriggerServerEvent('qb-doorlock:server:updateState', door, false, false, false, true, false, false)
+        end,
+        function() -- failure
+            TriggerServerEvent('Polar-Paleto:Server:StartInteract', door) 
+            QBCore.Functions.Notify(text('thermitefail'), "error") 
+        end)
+    else
     exports[thermiteexport]:Thermite(function(success)
     if success then TriggerServerEvent('Polar-Paleto:Server:TargetRemove', door) ThermiteEffect(door, coords)
     TriggerServerEvent('qb-doorlock:server:updateState', door, false, false, false, true, false, false)
     else TriggerServerEvent('Polar-Paleto:Server:StartInteract', door) 
         QBCore.Functions.Notify(text('thermitefail'), "error") end
     end, thermiteinfo.time, thermiteinfo.squares, thermiteinfo.errors) -- Time, Gridsize (5, 6, 7, 8, 9, 10), IncorrectBlocks
+    end
     else 
          TriggerServerEvent('Polar-Paleto:Server:GiveRewards', 'markedbills', 3) 
     end end, {thermiteitem}) end
