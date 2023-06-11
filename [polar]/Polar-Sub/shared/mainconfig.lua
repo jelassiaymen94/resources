@@ -45,29 +45,13 @@ Config.MissionPeds = {
 Config.Stashes = {
     
     [1] = {
-        coords = vector3(1277.91, -2059.55, 16.66),
-        min = 16.3,
-        max = 18.3,
+        coords = vector3(144.86, 6655.93, 32.76),
+        min = 31.3,
+        max = 34.3,
         slots = 5,
         weight = 5,
         numba = '1',
     },
-    --[[[2] = {--triads subway stash 1
-        coords = vector3(-805.4885, -717.9180, -16.8630),
-        min = -16.3,
-        max = -18.3,
-        slots = 100,
-        weight = 2000,
-        numba = 'container_large_5900',
-    },]]
-    
-
-
-
-
-
-
-
 
 
 }
@@ -83,25 +67,30 @@ Config.GangStashes = {
         gang = 'aod',
         numba = '1',
     },
-    --[[[2] = {--triads subway stash 1
-        coords = vector3(-805.4885, -717.9180, -16.8630),
-        min = -16.3,
-        max = -18.3,
-        slots = 100,
-        weight = 2000,
-        numba = 'container_large_5900',
-    },]]
     
 
+}
 
-
-
-
-
-
+Config.JobStashes = {
+    
+    [1] = {
+        coords = vector3(-24700000.0, 6266.92, 35.07),
+        min = 34.3,
+        max = 36.3,
+        slots = 50,
+        weight = 500,
+        job = 'mechanic',
+        numba = '1',
+    },
+  
 
 
 }
+
+
+
+
+
 
 Config.Menu = {
     

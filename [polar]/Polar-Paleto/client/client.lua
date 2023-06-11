@@ -513,9 +513,11 @@ end)
 
 RegisterNetEvent('Polar-Paleto:Client:AddPickupTarget', function(door, door2, prop, var, pile) 
     if oxt then
-        boxzone = exports.ox_target:addBoxZone({ coords = vec3(var.x, var.y, var.z), size = vec3(1, 1, 1), rotation = 1, debug = Config.Debug,
-        options = {{  event = "Polar-Paleto:Client:PickupTarget", type = door, piles = pile, canInteract = function() if door2 then return true end end, icon = "fas fa-bolt", label = "Grab" }, } })
-        
+       -- boxzone = exports.ox_target:addBoxZone({ coords = vec3(var.x, var.y, var.z), size = vec3(1, 1, 1), rotation = 1, debug = Config.Debug,
+      --  options = {{  event = "Polar-Paleto:Client:PickupTarget", type = door, piles = pile, canInteract = function() if door2 then return true end end, icon = "fas fa-bolt", label = "Grab" }, } })
+        exports['ox-target']:AddBoxZone(door, vec3(var.x, var.y, var.z), 0.5, 0.5, { name = door, heading = 28.69, debug = Config.Debug, minZ = var.z  - 0.5, maxZ =  var.z + 0.5,}, 
+        { options = {{ event = "Polar-Paleto:Client:PickupTarget", type = door, piles = pile, canInteract = function() if door2 then return true end end, icon = "fas fa-bolt", label = "Grab", excludejob = 'police'}}, distance = 1.5 }) 
+  
     else
         exports['qb-target']:AddBoxZone(door, vec3(var.x, var.y, var.z), 0.5, 0.5, { name = door, heading = 28.69, debug = Config.Debug, minZ = var.z  - 0.5, maxZ =  var.z + 0.5,}, 
         { options = {{ event = "Polar-Paleto:Client:PickupTarget", type = door, piles = pile, canInteract = function() if door2 then return true end end, icon = "fas fa-bolt", label = "Grab", excludejob = 'police'}}, distance = 1.5 }) 
