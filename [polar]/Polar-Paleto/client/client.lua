@@ -1,6 +1,6 @@
-local QBCore = exports[Config.Core]:GetCoreObject()
+ local QBCore = exports[Config.Core]:GetCoreObject()
 
-
+local oxt = Config.OxTarget -- ox target
 
 local ped = PlayerPedId()
 local animDict = nil local model = nil local prop = nil local var = nil local drillpos = nil local drillrot = nil local door = nil local pp = nil local coords = nil local rot = nil local position = nil local item = nil local CurrentCops = 0
@@ -67,11 +67,22 @@ RegisterNetEvent("Polar-Paleto:Client:ThermitePtfx", function(coords) if not Has
 
 
 
+RegisterNetEvent('Polar-Paleto:client:start', function()  pp = vector4(-109.43, 6483.32, 31.47, 224.11) door = paletostartname coords = vector3(-109.46, 6484.36, 31.27)
+    QBCore.Functions.TriggerCallback('Polar-Paleto:DoorCheckstart', function(result) if result then
+    TriggerServerEvent('Polar-Paleto:Server:StopInteract', door)
+    Wait(50)
+    TriggerEvent('Polar-Paleto:client:ThermiteStart', pp, door, coords)
+    
+    
+    else
+        QBCore.Functions.Notify(text('cooldown'), "error")
+    end end)
+end)
 
 RegisterNetEvent('Polar-Paleto:client:ThermiteStart', function(pp, door, coords)
     QBCore.Functions.TriggerCallback('QBCore:HasItem', function(result) if result then if math.random(1, 100) <= Config.FingerPrintPercent and not gloves() then TriggerServerEvent("evidence:server:CreateFingerDrop", GetEntityCoords(PlayerPedId())) end
             if CurrentCops >= Config.RequiredCops then
-                LocalPlayer.state:set('inv_busy', true, true)
+                    LocalPlayer.state:set('inv_busy', true, true)
                     PlantThermite(pp, door)
                     if hi then
                         LocalPlayer.state:set('inv_busy', false, true)
@@ -116,7 +127,7 @@ RegisterNetEvent('Polar-Paleto:client:ThermiteStart', function(pp, door, coords)
                     end
                     end
             else QBCore.Functions.Notify(text('nopolice'), "error")  TriggerServerEvent('Polar-Paleto:Server:StartInteract', door) end
-        else TriggerServerEvent('Polar-Paleto:Server:GiveRewards', 'markedbills', math.random(2,4)) end  -- cart finish
+        else QBCore.Functions.Notify(text('nothermite'), "error") end 
     end,  {thermiteitem})
 end)
 
@@ -148,7 +159,7 @@ RegisterNetEvent('Polar-Paleto:client:Thermite', function(pp, door, coords)
     end, thermiteinfo.time, thermiteinfo.squares, thermiteinfo.errors) -- Time, Gridsize (5, 6, 7, 8, 9, 10), IncorrectBlocks
     end
     else 
-         TriggerServerEvent('Polar-Paleto:Server:GiveRewards', 'markedbills', 3) 
+        QBCore.Functions.Notify(text('nothermite'), "error")
     end end, {thermiteitem}) end
 end)
 function ThermiteEffect(door, coords)
@@ -158,7 +169,7 @@ function ThermiteEffect(door, coords)
  end 
 function PlantThermite(pp, door)
     SetPedComponentVariation(PlayerPedId(), 5, Config.HideBagID, 1, 1)
-    TriggerServerEvent('Polar-Paleto:Server:StopInteract', door) TriggerServerEvent("QBCore:Server:RemoveItem", thermiteitem, 1)  TriggerEvent('inventory:client:ItemBox', QBCore.Shared.Items[thermiteitem], "remove") RequestAnimDict("anim@heists@ornate_bank@thermal_charge") RequestModel("hei_p_m_bag_var22_arm_s")
+    TriggerServerEvent('Polar-Paleto:Server:StopInteract', door) TriggerServerEvent('Polar-Paleto:Server:RemoveItem', thermiteitem, 1) RequestAnimDict("anim@heists@ornate_bank@thermal_charge") RequestModel("hei_p_m_bag_var22_arm_s")
     RequestNamedPtfxAsset("scr_ornate_heist") while not HasAnimDictLoaded("anim@heists@ornate_bank@thermal_charge") or not HasModelLoaded("hei_p_m_bag_var22_arm_s") or not HasNamedPtfxAssetLoaded("scr_ornate_heist") do Wait(50) end
     local pos = pp SetEntityHeading(PlayerPedId(), pos.w) Wait(100) local rotx, roty, rotz = table.unpack(vector3(GetEntityRotation(PlayerPedId()))) local netscene = NetworkCreateSynchronisedScene(pos.x, pos.y, pos.z, rotx, roty, rotz, 2, false, false, 1065353216, 0, 1.3) local bag = CreateObject('hei_p_m_bag_var22_arm_s', pos.x, pos.y, pos.z,  true,  true, false)
     SetEntityCollision(bag, false, true) local x, y, z = table.unpack(GetEntityCoords(PlayerPedId())) local thermite = CreateObject('hei_prop_heist_thermite', x, y, z + 0.2,  true,  true, true) SetEntityCollision(thermite, false, true) AttachEntityToEntity(thermite, ped, GetPedBoneIndex(PlayerPedId(), 28422), 0, 0, 0, 0, 0, 200.0, true, true, false, true, 1, true) NetworkAddPedToSynchronisedScene(PlayerPedId(), netscene, "anim@heists@ornate_bank@thermal_charge", "thermal_charge", 1.5, -4.0, 1, 16, 1148846080, 0)
@@ -561,6 +572,10 @@ function Animation(door, props, model, animDict, sped)
         LocalPlayer.state:set('inv_busy', false, true) 
         TriggerServerEvent('Polar-Paleto:Server:Synapse' .. door .. '', sped)  
     else
+        rottt = GetEntityRotation(props)
+        if rottt == nil then  
+            print('error')
+        else
     TriggerServerEvent('Polar-Paleto:Server:TargetRemove', door)
     SetPedComponentVariation(PlayerPedId(), 5, Config.HideBagID, 1, 1)
     LocalPlayer.state:set('inv_busy', true, true) -- Busy
@@ -581,6 +596,7 @@ function Animation(door, props, model, animDict, sped)
     NetworkStartSynchronisedScene(scene3) Wait(1000) ClearPedTasks(PlayerPedId()) DeleteObject(bag) SetPedComponentVariation(PlayerPedId(), 5, Config.BagUseID, 0, 1)
     LocalPlayer.state:set('inv_busy', false, true)  
     TriggerServerEvent('Polar-Paleto:Server:Synapse' .. door .. '', sped)  
+        end
     end
 end 
 RegisterNetEvent('Polar-Paleto:Client:AddTarget', function(door, door2, prop, var) 
@@ -615,28 +631,19 @@ end)
 
 
 
-RegisterNetEvent('Polar-Paleto:client:start', function()  pp = vector4(-109.43, 6483.32, 31.47, 224.11) door = paletostartname coords = vector3(-109.46, 6484.36, 31.27)
-    QBCore.Functions.TriggerCallback('Polar-Paleto:DoorCheckstart', function(result) if result then
-    TriggerServerEvent('Polar-Paleto:Server:StopInteract', door)
-    Wait(50)
-    TriggerEvent('Polar-Paleto:client:ThermiteStart', pp, door, coords)
-    
-    
-    else
-        QBCore.Functions.Notify(text('cooldown'), "error")
-    end end)
-end)
 
 
 
 
 RegisterNetEvent('Polar-Paleto:client:keycard', function(door, position, rot, item) TriggerServerEvent('Polar-Paleto:Server:StopInteract', door) 
+    QBCore.Functions.TriggerCallback('QBCore:HasItem', function(result) if result then 
     TriggerServerEvent('Polar-Paleto:Server:TargetRemove', door) 
     local chance = math.random(1,100) local pos = GetEntityCoords(PlayerPedId()) local animDict = "anim@heists@keycard@" loadAnimDict(animDict) local prop = 'vw_prop_vw_key_card_01a' loadModel(prop) local prop2 =  CreateObject(prop, pos.x, pos.y, pos.z + 0.2,  true,  true, true)
     FreezeEntityPosition(PlayerPedId(), true) AttachEntityToEntity(prop2, ped, GetPedBoneIndex(PlayerPedId(), 28422), 0, 0, 0, 0, 0, 180.0, true, true, false, true, 1, true) SetEntityHeading(PlayerPedId(), position.w) SetEntityCoords(PlayerPedId(), vector3(position.x, position.y,position.z-1)) if chance <= carditemchance then TriggerServerEvent('Polar-Paleto:Server:RemoveItem', item, 1) end 
     TaskPlayAnim(PlayerPedId(), animDict, "enter", 5.0, 1.0, -1, 16, 0, 0, 0, 0) Wait(1000) TaskPlayAnim(PlayerPedId(), animDict, "idle_a", 5.0, 1.0, -1, 16, 0, 0, 0, 0) Wait(5000) TaskPlayAnim(PlayerPedId(), animDict, "exit", 5.0, 1.0, -1, 16, 0, 0, 0, 0) Wait(1000) StopAnimTask(PlayerPedId(), animDict, "exit", 16.0)  DeleteEntity(prop2) FreezeEntityPosition(PlayerPedId(), false) TriggerServerEvent('qb-doorlock:server:updateState', door, false, false, false, true, false, false) QBCore.Functions.Notify(text('doorunlock'), "success", 2500)
+    else  QBCore.Functions.Notify(text('nokeycard'), "error") end
+    end, {carditem})
 end)
-
 
 
 
@@ -776,7 +783,8 @@ RegisterNetEvent('Polar-Paleto:client:DrillStart', function(drillpos, drillrot, 
     SetPedComponentVariation(ped, 5, Config.HideBagID, 1, 1)
     TriggerServerEvent('Polar-Paleto:Server:StopInteract', door)
     drill(drillpos, drillrot, drillitem, door)
-    else  TriggerServerEvent('Polar-Paleto:Server:GiveRewards', 'weapon_assaultrifle', 1) end end, {drillitem}) -- hiest finish
+    else  QBCore.Functions.Notify(text('nodrill'), "error") end
+    end, {drillitem})
 end)
 
 RegisterNetEvent('Polar-Paleto:Client:Drill', function(data)
@@ -846,10 +854,16 @@ local prop30 = nil
 
 function starttarget()
     ------ DOOR THERMITE
+    if oxt then
+        exports.ox_target:addBoxZone({ coords = Config.StartThirdEye, size = vec3(1, 1, 1), rotation = 1, debug = Config.Debug,
+        options = {{  name = paletostartname, icon = "fas fa-fire", label = "Thermite", event = 'Polar-Paleto:client:start' }, } })
+
+    else
+    
     exports['qb-target']:AddBoxZone(paletostartname, Config.StartThirdEye, 1, 1, { name = paletostartname, heading = 0.0, debug = Config.Debug, minZ = Config.StartThirdEye.z-1, maxZ =  Config.StartThirdEye.z+1,}, 
     { options = {{ event = "Polar-Paleto:client:start", icon = "fas fa-fire", label = "Thermite", excludejob = 'police', item = thermiteitem}}, distance = 2.5 }) 
 
-
+    end
 end
 
 RegisterNetEvent('Polar-Paleto:Client:StartLoot', function()
@@ -867,32 +881,54 @@ end)
 
 RegisterNetEvent('Polar-Paleto:Client:StartTargets', function()
     
-  
+    if oxt then
+
+        exports.ox_target:addBoxZone({ coords = vec3(Config.Door1Eye.x, Config.Door1Eye.y, Config.Door1Eye.z + 0.2), size = vec3(1, 1, 1), rotation = 1, debug = Config.Debug,
+        options = {{  name = paletodoor1name, icon = "fas fa-fire", label = "Thermite", event = 'Polar-Paleto:Client:Door1' }, } })
+        exports.ox_target:addBoxZone({ coords = vec3(Config.Door2Eye.x, Config.Door2Eye.y, Config.Door2Eye.z + 0.2), size = vec3(1, 1, 1), rotation = 1, debug = Config.Debug,
+        options = {{  name = paletodoor2name, icon = "fas fa-fire", label = "Thermite", event = 'Polar-Paleto:Client:Door2' }, } })
+        exports.ox_target:addBoxZone({ coords = vec3(Config.Door3Eye.x, Config.Door3Eye.y, Config.Door3Eye.z + 0.2), size = vec3(1, 1, 1), rotation = 1, debug = Config.Debug,
+        options = {{  name = paletodoor3name, icon = "fas fa-fire", label = "Thermite", event = 'Polar-Paleto:Client:Door3' }, } })
+
+        exports.ox_target:addBoxZone({ coords = vec3(Config.doorcard1Eye.x, Config.doorcard1Eye.y, Config.doorcard1Eye.z + 0.2), size = vec3(1, 1, 1), rotation = 1, debug = Config.Debug,
+        options = {{  name = paletodoorcard1name, icon = "fas fa-bolt", label = "Insert Card", event = 'Polar-Paleto:Client:doorcard1' }, } })
+        exports.ox_target:addBoxZone({ coords = vec3(Config.doorcard2Eye.x, Config.doorcard2Eye.y, Config.doorcard2Eye.z + 0.2), size = vec3(1, 1, 1), rotation = 1, debug = Config.Debug,
+        options = {{  name = paletodoorcard2name, icon = "fas fa-bolt", label = "Insert Card", event = 'Polar-Paleto:Client:doorcard2' }, } })
+      
+        exports.ox_target:addBoxZone({ coords = Config.Pc1, size = vec3(1, 1, 1), rotation = 1, debug = Config.Debug,
+        options = {{  name = Config.Pc1name, icon = "fas fa-bolt", label = "Hack", event = 'Polar-Paleto:Client:HackComputer' }, } })
+        exports.ox_target:addBoxZone({ coords = Config.Pc2, size = vec3(1, 1, 1), rotation = 1, debug = Config.Debug,
+        options = {{  name = Config.Pc2name, icon = "fas fa-bolt", label = "Hack", event = 'Polar-Paleto:Client:HackComputer' }, } })
+        exports.ox_target:addBoxZone({ coords = Config.Pc3, size = vec3(1, 1, 1), rotation = 1, debug = Config.Debug,
+        options = {{  name = Config.Pc3name, icon = "fas fa-bolt", label = "Hack", event = 'Polar-Paleto:Client:HackComputer' }, } })
+      
+
+        
+
+    else
+    
    
     exports['qb-target']:AddBoxZone(paletodoor1name, vec3(Config.Door1Eye.x, Config.Door1Eye.y, Config.Door1Eye.z + 0.2), 1, 1, { name = paletodoor1name, heading = 0.0, debug = Config.Debug, minZ = Config.Door1Eye.z-1, maxZ =  Config.Door1Eye.z+1,}, 
     { options = {{ event = "Polar-Paleto:Client:Door1", icon = "fas fa-fire", label = "Thermite", excludejob = 'police', item = thermiteitem}}, distance = 2.5 }) 
-    
     exports['qb-target']:AddBoxZone(paletodoor2name, vec3(Config.Door2Eye.x, Config.Door2Eye.y, Config.Door2Eye.z + 0.2), 1, 1, { name = paletodoor2name, heading = 0.0, debug = Config.Debug, minZ = Config.Door2Eye.z-1, maxZ =  Config.Door2Eye.z+1,}, 
     { options = {{ event = "Polar-Paleto:Client:Door2", icon = "fas fa-fire", label = "Thermite", excludejob = 'police', item = thermiteitem}}, distance = 2.5 }) 
-   
     exports['qb-target']:AddBoxZone(paletodoor3name, vec3(Config.Door3Eye.x, Config.Door3Eye.y, Config.Door3Eye.z + 0.2), 1, 1, { name = paletodoor3name, heading = 0.0, debug = Config.Debug, minZ = Config.Door3Eye.z-1, maxZ =  Config.Door3Eye.z+1,}, 
     { options = {{ event = "Polar-Paleto:Client:Door3", icon = "fas fa-fire", label = "Thermite", excludejob = 'police', item = thermiteitem}}, distance = 2.5 }) 
     
     exports['qb-target']:AddBoxZone(paletodoorcard1name, vec3(Config.doorcard1Eye.x, Config.doorcard1Eye.y, Config.doorcard1Eye.z + 0.2), 1, 1, { name = paletodoorcard1name, heading = 0.0, debug = Config.Debug, minZ = Config.doorcard1Eye.z-1, maxZ =  Config.doorcard1Eye.z+1,}, 
     { options = {{ event = "Polar-Paleto:Client:doorcard1", icon = "fas fa-bolt", label = "Insert Card", excludejob = 'police', item = carditem}}, distance = 2.5 }) 
-   
     exports['qb-target']:AddBoxZone(paletodoorcard2name, vec3(Config.doorcard2Eye.x, Config.doorcard2Eye.y, Config.doorcard2Eye.z + 0.2), 1, 1, { name = paletodoorcard2name, heading = 0.0, debug = Config.Debug, minZ = Config.doorcard2Eye.z-1, maxZ =  Config.doorcard2Eye.z+1,}, 
     { options = {{ event = "Polar-Paleto:Client:doorcard2", icon = "fas fa-bolt", label = "Insert Card", excludejob = 'police', item = carditem}}, distance = 2.5 }) 
    
     exports['qb-target']:AddBoxZone(Config.Pc1name, Config.Pc1, 2, 2, { name = Config.Pc1name, heading = 28.69, debug = true, minZ = Config.Pc1-1, maxZ =  Config.Pc1+1,}, 
     { options = {{ event = "Polar-Paleto:client:HackComputer", door = Config.Pc1name, icon = "fas fa-bolt", label = "Hack", excludejob = 'police', item = computeritem}}, distance = 2.5 }) 
-   
     exports['qb-target']:AddBoxZone(Config.Pc2name, Config.Pc1, 2, 2, { name = Config.Pc2name, heading = 28.69, debug = true, minZ = Config.Pc2-1, maxZ =  Config.Pc2+1,}, 
     { options = {{ event = "Polar-Paleto:client:HackComputer", door = Config.Pc2name, icon = "fas fa-bolt", label = "Hack", excludejob = 'police', item = computeritem}}, distance = 2.5 }) 
-   
     exports['qb-target']:AddBoxZone(Config.Pc3name, Config.Pc3, 2, 2, { name = Config.Pc3name, heading = 28.69, debug = true, minZ = Config.Pc3-1, maxZ =  Config.Pc3+1,}, 
     { options = {{ event = "Polar-Paleto:client:HackComputer", door = Config.Pc3name, icon = "fas fa-bolt", label = "Hack", excludejob = 'police', item = computeritem}}, distance = 2.5 }) 
-  
+    
+    end
+
     other()
 
 end)
@@ -1265,8 +1301,11 @@ RegisterNetEvent('Polar-Paleto:Client:TargetRemove', function(door)
     if door == 'paletoprop39' then DeleteEntity(paletoprop39) end
     if door == 'paletoprop40' then DeleteEntity(paletoprop40) end
 
-
-    exports['qb-target']:RemoveZone(door) 
+    if oxt then
+        exports.ox_target:removeZone(door)
+    else
+        exports['qb-target']:RemoveZone(door) 
+    end
 end)
 
 
@@ -1309,47 +1348,53 @@ end)
 
 RegisterNetEvent('Polar-Paleto:Client:ResetProps', function()
     
-    if DoesEntityExist(paletoprop1) then DeleteEntity(paletoprop1) exports['qb-target']:RemoveZone('paletoprop1') end
-    if DoesEntityExist(paletoprop2) then DeleteEntity(paletoprop2) exports['qb-target']:RemoveZone('paletoprop2') end
-    if DoesEntityExist(paletoprop3) then DeleteEntity(paletoprop3) exports['qb-target']:RemoveZone('paletoprop3') end
-    if DoesEntityExist(paletoprop4) then DeleteEntity(paletoprop4) exports['qb-target']:RemoveZone('paletoprop4') end
-    if DoesEntityExist(paletoprop5) then DeleteEntity(paletoprop5) exports['qb-target']:RemoveZone('paletoprop5') end
-    if DoesEntityExist(paletoprop6) then DeleteEntity(paletoprop6) exports['qb-target']:RemoveZone('paletoprop6') end
-    if DoesEntityExist(paletoprop7) then DeleteEntity(paletoprop7) exports['qb-target']:RemoveZone('paletoprop7') end
-    if DoesEntityExist(paletoprop8) then DeleteEntity(paletoprop8) exports['qb-target']:RemoveZone('paletoprop8') end
-    if DoesEntityExist(paletoprop9) then DeleteEntity(paletoprop9) exports['qb-target']:RemoveZone('paletoprop9') end
-    if DoesEntityExist(paletoprop10) then DeleteEntity(paletoprop10) exports['qb-target']:RemoveZone('paletoprop10') end
-    if DoesEntityExist(paletoprop11) then DeleteEntity(paletoprop11) exports['qb-target']:RemoveZone('paletoprop11') end
-    if DoesEntityExist(paletoprop12) then DeleteEntity(paletoprop12) exports['qb-target']:RemoveZone('paletoprop12') end
-    if DoesEntityExist(paletoprop13) then DeleteEntity(paletoprop13) exports['qb-target']:RemoveZone('paletoprop13') end
-    if DoesEntityExist(paletoprop14) then DeleteEntity(paletoprop14) exports['qb-target']:RemoveZone('paletoprop14') end
-    if DoesEntityExist(paletoprop15) then DeleteEntity(paletoprop15) exports['qb-target']:RemoveZone('paletoprop15') end
-    if DoesEntityExist(paletoprop16) then DeleteEntity(paletoprop16) exports['qb-target']:RemoveZone('paletoprop16') end
-    if DoesEntityExist(paletoprop17) then DeleteEntity(paletoprop17) exports['qb-target']:RemoveZone('paletoprop17') end
-    if DoesEntityExist(paletoprop18) then DeleteEntity(paletoprop18) exports['qb-target']:RemoveZone('paletoprop18') end
-    if DoesEntityExist(paletoprop19) then DeleteEntity(paletoprop19) exports['qb-target']:RemoveZone('paletoprop19') end
-    if DoesEntityExist(paletoprop20) then DeleteEntity(paletoprop20) exports['qb-target']:RemoveZone('paletoprop20') end
-    if DoesEntityExist(paletoprop21) then DeleteEntity(paletoprop21) exports['qb-target']:RemoveZone('paletoprop21') end
-    if DoesEntityExist(paletoprop22) then DeleteEntity(paletoprop22) exports['qb-target']:RemoveZone('paletoprop22') end
-    if DoesEntityExist(paletoprop23) then DeleteEntity(paletoprop23) exports['qb-target']:RemoveZone('paletoprop23') end
-    if DoesEntityExist(paletoprop24) then DeleteEntity(paletoprop24) exports['qb-target']:RemoveZone('paletoprop24') end
-    if DoesEntityExist(paletoprop25) then DeleteEntity(paletoprop25) exports['qb-target']:RemoveZone('paletoprop25') end
-    if DoesEntityExist(paletoprop26) then DeleteEntity(paletoprop26) exports['qb-target']:RemoveZone('paletoprop26') end
-    if DoesEntityExist(paletoprop27) then DeleteEntity(paletoprop27) exports['qb-target']:RemoveZone('paletoprop27') end
-    if DoesEntityExist(paletoprop28) then DeleteEntity(paletoprop28) exports['qb-target']:RemoveZone('paletoprop28') end
-    if DoesEntityExist(paletoprop29) then DeleteEntity(paletoprop29) exports['qb-target']:RemoveZone('paletoprop29') end
-    if DoesEntityExist(paletoprop30) then DeleteEntity(paletoprop30) exports['qb-target']:RemoveZone('paletoprop30') end
-    if DoesEntityExist(paletoprop31) then DeleteEntity(paletoprop31) exports['qb-target']:RemoveZone('paletoprop31') end
-    if DoesEntityExist(paletoprop32) then DeleteEntity(paletoprop32) exports['qb-target']:RemoveZone('paletoprop32') end
-    if DoesEntityExist(paletoprop33) then DeleteEntity(paletoprop33) exports['qb-target']:RemoveZone('paletoprop33') end
-    if DoesEntityExist(paletoprop34) then DeleteEntity(paletoprop34) exports['qb-target']:RemoveZone('paletoprop34') end
-    if DoesEntityExist(paletoprop35) then DeleteEntity(paletoprop35) exports['qb-target']:RemoveZone('paletoprop35') end
-    if DoesEntityExist(paletoprop36) then DeleteEntity(paletoprop36) exports['qb-target']:RemoveZone('paletoprop36') end
-    if DoesEntityExist(paletoprop37) then DeleteEntity(paletoprop37) exports['qb-target']:RemoveZone('paletoprop37') end
-    if DoesEntityExist(paletoprop38) then DeleteEntity(paletoprop38) exports['qb-target']:RemoveZone('paletoprop38') end
-    if DoesEntityExist(paletoprop39) then DeleteEntity(paletoprop39) exports['qb-target']:RemoveZone('paletoprop39') end
-    if DoesEntityExist(paletoprop40) then DeleteEntity(paletoprop40) exports['qb-target']:RemoveZone('paletoprop40') end
-
+    if DoesEntityExist(paletoprop1) then DeleteEntity(paletoprop1) targetname = 'paletoprop1' end
+    if DoesEntityExist(paletoprop2) then DeleteEntity(paletoprop2) targetname = 'paletoprop2' end
+    if DoesEntityExist(paletoprop3) then DeleteEntity(paletoprop3) targetname = 'paletoprop3' end
+    if DoesEntityExist(paletoprop4) then DeleteEntity(paletoprop4) targetname = 'paletoprop4' end
+    if DoesEntityExist(paletoprop5) then DeleteEntity(paletoprop5) targetname = 'paletoprop5' end
+    if DoesEntityExist(paletoprop6) then DeleteEntity(paletoprop6) targetname = 'paletoprop6' end
+    if DoesEntityExist(paletoprop7) then DeleteEntity(paletoprop7) targetname = 'paletoprop7' end
+    if DoesEntityExist(paletoprop8) then DeleteEntity(paletoprop8) targetname = 'paletoprop8' end
+    if DoesEntityExist(paletoprop9) then DeleteEntity(paletoprop9) targetname = 'paletoprop9' end
+    if DoesEntityExist(paletoprop10) then DeleteEntity(paletoprop10) targetname = 'paletoprop10' end
+    if DoesEntityExist(paletoprop11) then DeleteEntity(paletoprop11) targetname = 'paletoprop11' end
+    if DoesEntityExist(paletoprop12) then DeleteEntity(paletoprop12) targetname = 'paletoprop12' end
+    if DoesEntityExist(paletoprop13) then DeleteEntity(paletoprop13) targetname = 'paletoprop13' end
+    if DoesEntityExist(paletoprop14) then DeleteEntity(paletoprop14) targetname = 'paletoprop14' end
+    if DoesEntityExist(paletoprop15) then DeleteEntity(paletoprop15) targetname = 'paletoprop15' end
+    if DoesEntityExist(paletoprop16) then DeleteEntity(paletoprop16) targetname = 'paletoprop16' end
+    if DoesEntityExist(paletoprop17) then DeleteEntity(paletoprop17) targetname = 'paletoprop17' end
+    if DoesEntityExist(paletoprop18) then DeleteEntity(paletoprop18) targetname = 'paletoprop18' end
+    if DoesEntityExist(paletoprop19) then DeleteEntity(paletoprop19) targetname = 'paletoprop19' end
+    if DoesEntityExist(paletoprop20) then DeleteEntity(paletoprop20) targetname = 'paletoprop20' end
+    if DoesEntityExist(paletoprop21) then DeleteEntity(paletoprop21) targetname = 'paletoprop21' end
+    if DoesEntityExist(paletoprop22) then DeleteEntity(paletoprop22) targetname = 'paletoprop22' end
+    if DoesEntityExist(paletoprop23) then DeleteEntity(paletoprop23) targetname = 'paletoprop23' end
+    if DoesEntityExist(paletoprop24) then DeleteEntity(paletoprop24) targetname = 'paletoprop24' end
+    if DoesEntityExist(paletoprop25) then DeleteEntity(paletoprop25) targetname = 'paletoprop25' end
+    if DoesEntityExist(paletoprop26) then DeleteEntity(paletoprop26) targetname = 'paletoprop26' end
+    if DoesEntityExist(paletoprop27) then DeleteEntity(paletoprop27) targetname = 'paletoprop27' end
+    if DoesEntityExist(paletoprop28) then DeleteEntity(paletoprop28) targetname = 'paletoprop28' end
+    if DoesEntityExist(paletoprop29) then DeleteEntity(paletoprop29) targetname = 'paletoprop29' end
+    if DoesEntityExist(paletoprop30) then DeleteEntity(paletoprop30) targetname = 'paletoprop30' end
+    if DoesEntityExist(paletoprop31) then DeleteEntity(paletoprop31) targetname = 'paletoprop31' end
+    if DoesEntityExist(paletoprop32) then DeleteEntity(paletoprop32) targetname = 'paletoprop32' end
+    if DoesEntityExist(paletoprop33) then DeleteEntity(paletoprop33) targetname = 'paletoprop33' end
+    if DoesEntityExist(paletoprop34) then DeleteEntity(paletoprop34) targetname = 'paletoprop34' end
+    if DoesEntityExist(paletoprop35) then DeleteEntity(paletoprop35) targetname = 'paletoprop35' end
+    if DoesEntityExist(paletoprop36) then DeleteEntity(paletoprop36) targetname = 'paletoprop36' end
+    if DoesEntityExist(paletoprop37) then DeleteEntity(paletoprop37) targetname = 'paletoprop37' end
+    if DoesEntityExist(paletoprop38) then DeleteEntity(paletoprop38) targetname = 'paletoprop38' end
+    if DoesEntityExist(paletoprop39) then DeleteEntity(paletoprop39) targetname = 'paletoprop39' end
+    if DoesEntityExist(paletoprop40) then DeleteEntity(paletoprop40) targetname = 'paletoprop40' end
+    if targetname == nil then else
+        if oxt then
+            exports.ox_target:removeZone(targetname)
+        else
+            exports['qb-target']:RemoveZone(targetname)
+        end
+    end
 end)
 
 

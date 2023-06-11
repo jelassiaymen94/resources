@@ -1,18 +1,23 @@
----@class CPoint
----@field id number
+---@class PointProperties
 ---@field coords vector3
 ---@field distance number
----@field currentDistance number
----@field isClosest? boolean
----@field remove fun()
 ---@field onEnter? fun(self: CPoint)
 ---@field onExit? fun(self: CPoint)
 ---@field nearby? fun(self: CPoint)
 ---@field [string] any
 
+---@class CPoint : PointProperties
+---@field id number
+---@field currentDistance number
+---@field isClosest? boolean
+---@field remove fun()
+
+---@type table<number, CPoint>
 local points = {}
+---@type CPoint[]
 local nearbyPoints = {}
 local nearbyCount = 0
+---@type CPoint?
 local closestPoint
 local tick
 
@@ -75,7 +80,11 @@ CreateThread(function()
 			if nearbyCount ~= 0 then
 				tick = SetInterval(function()
 					for i = 1, nearbyCount do
-						nearbyPoints[i]:nearby()
+                        local point = nearbyPoints[i]
+
+                        if point then
+                            point:nearby()
+                        end
 					end
 				end)
 			end
@@ -87,8 +96,24 @@ CreateThread(function()
 	end
 end)
 
+local function toVector(coords)
+    local _type = type(coords)
+
+    if _type ~= 'vector3' then
+        if _type == 'table' or _type == 'vector4' then
+            return vec3(coords[1] or coords.x, coords[2] or coords.y, coords[3] or coords.z)
+        end
+
+        error(("expected type 'vector3' or 'table' (received %s)"):format(_type))
+    end
+
+    return coords
+end
+
 lib.points = {
     ---@return CPoint
+    ---@overload fun(data: PointProperties): CPoint
+    ---@overload fun(coords: vector3, distance: number, data?: PointProperties): CPoint
 	new = function(...)
 		local args = {...}
 		local id = #points + 1
@@ -108,7 +133,7 @@ lib.points = {
 			}
 		end
 
-
+        self.coords = toVector(self.coords)
 		self.distance = self.distance or args[2]
 
 		if args[3] then
@@ -122,10 +147,15 @@ lib.points = {
 		return self
 	end,
 
-    ---@return CPoint
-	closest = function()
-		return closestPoint
-	end
+    getAllPoints = function() return points end,
+
+    getNearbyPoints = function() return nearbyPoints end,
+
+    ---@return CPoint?
+	getClosestPoint = function() return closestPoint end,
 }
+
+---@deprecated
+lib.points.closest = lib.points.getClosestPoint
 
 return lib.points

@@ -23,9 +23,12 @@ Config.Debug = false -- debug for checks
 Config.UseProps = true -- use props?
 Config.RequiredCops = 0
 Config.CooldownTime = 30 -- minutes in between robberies
-Config.Language = 'English'
+Config.Language = 'English' -- change with languages EX. 'French'
 
 
+--============== OX ================
+Config.OxIventory = false
+Config.OxTarget = true
 
 
 --============== BANK BLIP -=============

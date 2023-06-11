@@ -3,16 +3,34 @@ local hostname = GetConvar('sv_projectName', 'fxserver')
 local buffer
 local bufferSize = 0
 
-local function badResponse(endpoint, response)
-    print(('unable to submit logs to %s\n%s'):format(endpoint, json.encode(response, { indent = true })))
+local b = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
+
+local function base64encode(data)
+    return ((data:gsub(".", function(x)
+        local r, b = "", x:byte()
+        for i = 8, 1, -1 do
+            r = r .. (b % 2 ^ i - b % 2 ^ (i - 1) > 0 and "1" or "0")
+        end
+        return r;
+    end) .. "0000"):gsub("%d%d%d?%d?%d?%d?", function(x)
+        if (#x < 6) then
+            return ""
+        end
+        local c = 0
+        for i = 1, 6 do
+            c = c + (x:sub(i, i) == "1" and 2 ^ (6 - i) or 0)
+        end
+        return b:sub(c + 1, c + 1)
+    end) .. ({"", "==", "="})[#data % 3 + 1])
 end
 
--- idk where to put this?
+local function getAuthorizationHeader(user, password)
+    return "Basic " .. base64encode(user .. ":" .. password)
+end
 
-local function split(str,pat)
-    local tbl = {}
-    str:gsub(pat, function(x) tbl[#tbl+1]=x end)
-    return tbl
+
+local function badResponse(endpoint, status, response)
+    warn(('unable to submit logs to %s (status: %s)\n%s'):format(endpoint, status, json.encode(response, { indent = true })))
 end
 
 local playerData = {}
@@ -70,7 +88,10 @@ if service == 'datadog' then
                 SetTimeout(500, function()
                     PerformHttpRequest(endpoint, function(status, _, _, response)
                         if status ~= 202 then
-                            badResponse(endpoint, json.decode(response:sub(10)).errors[1])
+                            if type(response) == 'string' then
+                                response = json.decode(response:sub(10)) or response
+                                badResponse(endpoint, status, type(response) == 'table' and response.errors[1] or response)
+                            end
                         end
                     end, 'POST', json.encode(buffer), headers)
 
@@ -94,12 +115,29 @@ end
 
 if service == 'loki' then
     local lokiUser = GetConvar('loki:user', '')
-    local lokiKey = GetConvar('loki:key', '')
-    local endpoint = ('https://%s:%s@%s/loki/api/v1/push'):format(lokiUser, lokiKey, GetConvar('loki:endpoint', ''))
+    local lokiPassword = GetConvar('loki:password', GetConvar('loki:key', ''))
+    local lokiEndpoint = GetConvar('loki:endpoint', '')
+    local startingPattern = '^http[s]?://'
+    local headers = {
+        ['Content-Type'] = 'application/json'
+    }
+
+    if lokiUser ~= '' then
+        headers['Authorization'] = getAuthorizationHeader(lokiUser, lokiPassword)
+    end
+
+    if not lokiEndpoint:find(startingPattern) then
+        lokiEndpoint = 'https://' .. lokiEndpoint
+    end
+
+    local endpoint = ('%s/loki/api/v1/push'):format(lokiEndpoint)
 
     -- Converts a string of comma seperated kvp string to a table of kvps
     -- example `discord:blahblah,fivem:blahblah,license:blahblah` -> `{discord="blahblah",fivem="blahblah",license="blahblah"}`
     local function convertDDTagsToKVP(tags)
+        if not tags or type(tags) ~= 'string' then
+            return {}
+        end
         local tempTable = { string.strsplit(',', tags) } -- outputs a number index table wth k:v strings as values
         local bTable = table.create(0, #tempTable) -- buffer table
 
@@ -126,24 +164,23 @@ if service == 'loki' then
                 local postBody = json.encode({streams = tempBuffer})
                 PerformHttpRequest(endpoint, function(status, _, _, _)
                     if status ~= 204 then
-                        badResponse(endpoint, ("Error Code: %s\n%s"):format(status, postBody))
+                        badResponse(endpoint, status, ("%s"):format(status, postBody))
                     end
-                end, 'POST', postBody, {
-                    ['Content-Type'] = 'application/json',
-                })
+                end, 'POST', postBody, headers)
 
                 buffer = nil
             end)
         end
 
         -- Generates a nanosecond unix timestamp
+        ---@diagnostic disable-next-line: param-type-mismatch
         local timestamp = ('%s000000000'):format(os.time(os.date('*t')))
 
         -- Initializes values table with the message
         local values = {message = message}
 
         -- Format the args into strings
-        local tags = formatTags(source, ... and string.strjoin(',', string.tostringall(...)) or {})
+        local tags = formatTags(source, ... and string.strjoin(',', string.tostringall(...)) or nil)
         local tagsTable = convertDDTagsToKVP(tags)
 
         -- Concatenates tags kvp table to the values table
@@ -154,8 +191,9 @@ if service == 'loki' then
         -- initialise stream payload
         local payload = {
             stream = {
-                hostname = cache.resource,
-                service = event
+                server = hostname,
+                resource = cache.resource,
+                event = event
             },
             values = {
                 {

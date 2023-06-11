@@ -1,12 +1,14 @@
 {
   "language": "Deutsch",
   "ui": {
-    "settings": {
-      "title": "Einstellungen",
-      "language": "Sprache"
-    },
     "cancel": "Abbrechen",
     "close": "Schließen",
-    "confirm": "Bestätigen"
-  }
+    "confirm": "Bestätigen",
+    "more": "Mehr..."
+  },
+  "txadmin_announcement": "Server announcement by %s",
+  "txadmin_dm": "Direct Message from %s",
+  "txadmin_warn": "You have been warned by %s",
+  "txadmin_warn_content": "%s  \nAction ID: %s",
+  "txadmin_scheduledrestart": "Scheduled Restart"
 }

@@ -4,12 +4,13 @@ local openContextMenu = nil
 ---@class ContextMenuItem
 ---@field title? string
 ---@field menu? string
----@field icon? string
+---@field icon? string | {[1]: IconProp, [2]: string};
 ---@field iconColor? string
 ---@field onSelect? fun(args: any)
 ---@field arrow? boolean
 ---@field description? string
 ---@field metadata? string | { [string]: any } | string[]
+---@field disabled? boolean
 ---@field event? string
 ---@field serverEvent? string
 ---@field args? any
@@ -28,18 +29,27 @@ local openContextMenu = nil
 
 local function closeContext(_, cb, onExit)
     if cb then cb(1) end
+
+    lib.resetNuiFocus()
+
+    if not openContextMenu then return end
+
     if (cb or onExit) and contextMenus[openContextMenu].onExit then contextMenus[openContextMenu].onExit() end
-    SetNuiFocus(false, false)
+
     if not cb then SendNUIMessage({ action = 'hideContext' }) end
+
     openContextMenu = nil
 end
 
 ---@param id string
 function lib.showContext(id)
     if not contextMenus[id] then error('No context menu of such id found.') end
+
     local data = contextMenus[id]
     openContextMenu = id
-    SetNuiFocus(true, true)
+
+    lib.setNuiFocus(false)
+
     SendNuiMessage(json.encode({
         action = 'showContext',
         data = {
@@ -77,21 +87,28 @@ end)
 
 RegisterNUICallback('clickContext', function(id, cb)
     cb(1)
+
     if math.type(tonumber(id)) == 'float' then
         id = math.tointeger(id)
     elseif tonumber(id) then
         id += 1
     end
+
     local data = contextMenus[openContextMenu].options[id]
+
     if not data.event and not data.serverEvent and not data.onSelect then return end
+
     openContextMenu = nil
-    SetNuiFocus(false, false)
+
+    SendNUIMessage({ action = 'hideContext' })
+    lib.resetNuiFocus()
+
     if data.onSelect then data.onSelect(data.args) end
     if data.event then TriggerEvent(data.event, data.args) end
     if data.serverEvent then TriggerServerEvent(data.serverEvent, data.args) end
-    SendNUIMessage({
-        action = 'hideContext'
-    })
 end)
 
 RegisterNUICallback('closeContext', closeContext)
+
+
+

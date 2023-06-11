@@ -5,7 +5,9 @@ local English = {
     ['vaultopen'] = 'Vault Unlocked',
     ['nopolice'] = 'There are not enough Police',
     ['doorunlock'] = 'Door Unlocked!',
-
+    ['nodrill'] = 'You dont have a Drill',
+    ['nothermite'] = 'You dont have Thermite',
+    ['nokeycard'] = 'You dont have a Keycard',
 }
 local French = {
     ['cooldown'] = 'You Cannot Thermite Right Now..',
@@ -14,7 +16,9 @@ local French = {
     ['vaultopen'] = 'Vault Unlocked',
     ['nopolice'] = 'There are not enough Police',
     ['doorunlock'] = 'Door Unlocked!',
-
+    ['nodrill'] = 'You dont have a Drill',
+    ['nothermite'] = 'You dont have Thermite',
+    ['nokeycard'] = 'You dont have a Keycard',
 }
 
 

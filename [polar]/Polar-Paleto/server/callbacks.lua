@@ -1,7 +1,36 @@
 local QBCore = exports[Config.Core]:GetCoreObject()
-
+local oxinv = Config.OxIventory
 RegisterNetEvent('Polar-Paleto:Server:VaultClose', function() TriggerClientEvent('QBCore:Notify', -1, "Vault Closes in 2 Minutes", 'error') SetTimeout(60000, function() TriggerClientEvent('QBCore:Notify', -1, "Vault Closes in 1 Minutes", 'error') SetTimeout(30000, function() TriggerClientEvent('QBCore:Notify', -1, "Vault Closes in 30 Seconds", 'error') SetTimeout(20000, function() TriggerClientEvent('QBCore:Notify', -1, "Vault Closes in 10 Seconds", 'error') SetTimeout(10000, function() TriggerClientEvent('Polar-Paleto:Client:Vault', -1, false) end) end) end) end) end)
 
+
+RegisterNetEvent('Polar-Paleto:Server:RemoveItem', function(item, amount) 
+    local src = source 
+    local Player = QBCore.Functions.GetPlayer(src) 
+    Player.Functions.RemoveItem(item, amount) 
+    if oxinv then
+        exports.ox_inventory:RemoveItem(src, QBCore.Shared.Items[item], amount)
+    else
+        TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[item], "remove", amount) 
+    end
+end)
+
+RegisterNetEvent('Polar-Paleto:Server:RemoveItems', function(item, amount) 
+    local src = source 
+    local Player = QBCore.Functions.GetPlayer(src) Wait(150) 
+    if amount == nil then Player.Functions.AddItem(item, 1) 
+        if oxinv then
+            exports.ox_inventory:AddItem(src, QBCore.Shared.Items[item], amount)
+        else
+        TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[item], "add", 1) 
+        end
+    else Player.Functions.AddItem(item, amount)
+        if oxinv then
+            exports.ox_inventory:AddItem(src, QBCore.Shared.Items[item], amount)
+        else
+        TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[item], "add", amount) 
+        end
+    end 
+end)
 
 local paletostartname = 'paletostart'
 local paletodoor1name = 'paletodoor1'
