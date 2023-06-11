@@ -72,6 +72,37 @@ Config.Stashes = {
 
 }
 
+Config.GangStashes = {
+    
+    [1] = {
+        coords = vector3(-247.0, 6266.92, 35.07),
+        min = 34.3,
+        max = 36.3,
+        slots = 50,
+        weight = 500,
+        gang = 'aod',
+        numba = '1',
+    },
+    --[[[2] = {--triads subway stash 1
+        coords = vector3(-805.4885, -717.9180, -16.8630),
+        min = -16.3,
+        max = -18.3,
+        slots = 100,
+        weight = 2000,
+        numba = 'container_large_5900',
+    },]]
+    
+
+
+
+
+
+
+
+
+
+}
+
 Config.Menu = {
     
     [1] = {

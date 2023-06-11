@@ -70,47 +70,17 @@ Config.BossMenuZones = {
 }
 -- vector3(988.88, -135.67, 74.88)
 Config.GangMenus = {
-    ['lostmc'] = {
-        vector3(975.6773, -99.9515, 74.6541),
+    ['aod'] = {
+        vector3(-237.63, 6248.29, 35.02),
     },
-    ['ballas'] = {
-        vector3(0, 0, 0),
-    },
-    ['triads'] = {
-        vector3(-645.9340, -1242.7471, 10.5516),
-    },
-    ['cartel'] = {
-        vector3(484.7737, -1536.0708, 29.1545),
-    },
-    ['family'] = {
-        vector3(-325.26, -2432.27, 7.11),
-    },
-    ['gsf'] = {
-        vector3(-165.2283, -1616.7988, 33.5),
-    },
-    ['scrappgang'] = {
-        vector3(1247.8715, -1581.9985, 59.1745),
-    },
+ 
+   
 }
 
 Config.GangMenuZones = {
     
-    ['triads'] = {
-        { coords = vector3(-645.9340, -1242.7471, 11.5516), length = 1.05, width = 1.05, heading = 119.0, minZ = 10.0, maxZ = 12.0 },
+    ['aod'] = {
+        { coords = vector3(-237.63, 6248.29, 35.02), length = 1.05, width = 1.05, heading = 119.0, minZ = 34.0, maxZ = 36.0 },
     },
-    ['family'] = {
-        { coords = vector3(-325.26, -2432.27, 7.11), length = 1.05, width = 1.05, heading = 119.0, minZ = 6.0, maxZ = 8.0 },
-    },
-    ['lostmc'] = {
-        { coords = vector3(975.6773, -99.9515, 74.6541), length = 1.05, width = 1.05, heading = 119.0, minZ = 74.0, maxZ = 76.0 },
-    },
-    ['cartel'] = {
-        { coords = vector3(484.7737, -1536.0708, 29.1545), length = 1.05, width = 1.05, heading = 119.0, minZ = 29.0, maxZ = 31.0 },
-    },
-    ['gsf'] = {
-        { coords = vector3(-165.2283, -1616.7988, 33.5), length = 1.05, width = 1.05, heading = 216.0, minZ = 33.0, maxZ = 35.0 },
-    },
-    ['scrappgang'] = {
-        { coords = vector3(1247.8695, -1582.1065, 58.1745), length = 1.05, width = 1.05, heading = 117.0, minZ = 57.0, maxZ = 59.0 },
-    },
+   
 }

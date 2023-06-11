@@ -1,6 +1,7 @@
  local QBCore = exports[Config.Core]:GetCoreObject()
 
 local oxt = Config.OxTarget -- ox target
+local oxdoorname = nil
 
 local ped = PlayerPedId()
 local animDict = nil local model = nil local prop = nil local var = nil local drillpos = nil local drillrot = nil local door = nil local pp = nil local coords = nil local rot = nil local position = nil local item = nil local CurrentCops = 0
@@ -250,12 +251,12 @@ function other()
 
     local loc = vector4(-96.21, 6460.11, 31.63-space1, 226.61)  
     local name = "paletodrill1"
-    exports['qb-target']:AddBoxZone(name,  vector3(loc.x, loc.y, loc.z), 0.25, 0.25, { name = name, heading = loc.w, debug = true, minZ = loc.z-1, maxZ =  loc.z+1,}, 
+    exports['qb-target']:AddBoxZone(name,  vector3(loc.x, loc.y, loc.z), 0.25, 0.25, { name = name, heading = loc.w, debug = Config.Debug, minZ = loc.z-1, maxZ =  loc.z+1,}, 
     { options = {{ event = "Polar-Paleto:Client:Drill", door = name, head = loc.w, coords = vec3(loc.x, loc.y, loc.z), icon = "fas fa-bolt", label = "Drill Lockbox", excludejob = 'police', item = drillitem}}, distance = 1.5 }) 
    
     local loc = vector4(-96.85, 6463.54, 31.63-space2, 314.59) 
     local name = "paletodrill2"
-    exports['qb-target']:AddBoxZone(name,  vector3(loc.x, loc.y, loc.z), 0.25, 0.25, { name = name, heading = loc.w, debug = true, minZ = loc.z-1, maxZ =  loc.z+1,}, 
+    exports['qb-target']:AddBoxZone(name,  vector3(loc.x, loc.y, loc.z), 0.25, 0.25, { name = name, heading = loc.w, debug = Config.Debug, minZ = loc.z-1, maxZ =  loc.z+1,}, 
     { options = {{ event = "Polar-Paleto:Client:Drill", door = name, head = loc.w, coords = vec3(loc.x, loc.y, loc.z), icon = "fas fa-bolt", label = "Drill Lockbox", excludejob = 'police', item = drillitem}}, distance = 1.5 }) 
    
    
@@ -511,9 +512,14 @@ end)
 
 
 RegisterNetEvent('Polar-Paleto:Client:AddPickupTarget', function(door, door2, prop, var, pile) 
-    exports['qb-target']:AddBoxZone(door, vec3(var.x, var.y, var.z), 0.5, 0.5, { name = door, heading = 28.69, debug = true, minZ = var.z  - 0.5, maxZ =  var.z + 0.5,}, 
-    { options = {{ event = "Polar-Paleto:Client:PickupTarget", type = door, piles = pile, canInteract = function() if door2 then return true end end, icon = "fas fa-bolt", label = "Grab", excludejob = 'police'}}, distance = 1.5 }) 
-
+    if oxt then
+        boxzone = exports.ox_target:addBoxZone({ coords = vec3(var.x, var.y, var.z), size = vec3(1, 1, 1), rotation = 1, debug = Config.Debug,
+        options = {{  event = "Polar-Paleto:Client:PickupTarget", type = door, piles = pile, canInteract = function() if door2 then return true end end, icon = "fas fa-bolt", label = "Grab" }, } })
+        
+    else
+        exports['qb-target']:AddBoxZone(door, vec3(var.x, var.y, var.z), 0.5, 0.5, { name = door, heading = 28.69, debug = Config.Debug, minZ = var.z  - 0.5, maxZ =  var.z + 0.5,}, 
+        { options = {{ event = "Polar-Paleto:Client:PickupTarget", type = door, piles = pile, canInteract = function() if door2 then return true end end, icon = "fas fa-bolt", label = "Grab", excludejob = 'police'}}, distance = 1.5 }) 
+    end
 end)
 
 
@@ -600,7 +606,7 @@ function Animation(door, props, model, animDict, sped)
     end
 end 
 RegisterNetEvent('Polar-Paleto:Client:AddTarget', function(door, door2, prop, var) 
-    exports['qb-target']:AddBoxZone(door, vec3(var.x, var.y, var.z), 0.5, 0.5, { name = door, heading = 28.69, debug = true, minZ = var.z - 1.5, maxZ =  var.z + 1.5,}, 
+    exports['qb-target']:AddBoxZone(door, vec3(var.x, var.y, var.z), 0.5, 0.5, { name = door, heading = 28.69, debug = Config.Debug, minZ = var.z - 1.5, maxZ =  var.z + 1.5,}, 
     { options = {{ event = "Polar-Paleto:Client:Target", type = door, canInteract = function() if door2 then return true end end, icon = "fas fa-bolt", label = "Grab", excludejob = 'police'}}, distance = 1.5 }) 
 
 end)
@@ -883,23 +889,23 @@ RegisterNetEvent('Polar-Paleto:Client:StartTargets', function()
     
     if oxt then
 
-        exports.ox_target:addBoxZone({ coords = vec3(Config.Door1Eye.x, Config.Door1Eye.y, Config.Door1Eye.z + 0.2), size = vec3(1, 1, 1), rotation = 1, debug = Config.Debug,
+        paletodoor1 = exports.ox_target:addBoxZone({ coords = vec3(Config.Door1Eye.x, Config.Door1Eye.y, Config.Door1Eye.z + 0.2), size = vec3(1, 1, 1), rotation = 1, debug = Config.Debug,
         options = {{  name = paletodoor1name, icon = "fas fa-fire", label = "Thermite", event = 'Polar-Paleto:Client:Door1' }, } })
-        exports.ox_target:addBoxZone({ coords = vec3(Config.Door2Eye.x, Config.Door2Eye.y, Config.Door2Eye.z + 0.2), size = vec3(1, 1, 1), rotation = 1, debug = Config.Debug,
+        paletodoor2 = exports.ox_target:addBoxZone({ coords = vec3(Config.Door2Eye.x, Config.Door2Eye.y, Config.Door2Eye.z + 0.2), size = vec3(1, 1, 1), rotation = 1, debug = Config.Debug,
         options = {{  name = paletodoor2name, icon = "fas fa-fire", label = "Thermite", event = 'Polar-Paleto:Client:Door2' }, } })
-        exports.ox_target:addBoxZone({ coords = vec3(Config.Door3Eye.x, Config.Door3Eye.y, Config.Door3Eye.z + 0.2), size = vec3(1, 1, 1), rotation = 1, debug = Config.Debug,
+        paletodoor3 = exports.ox_target:addBoxZone({ coords = vec3(Config.Door3Eye.x, Config.Door3Eye.y, Config.Door3Eye.z + 0.2), size = vec3(1, 1, 1), rotation = 1, debug = Config.Debug,
         options = {{  name = paletodoor3name, icon = "fas fa-fire", label = "Thermite", event = 'Polar-Paleto:Client:Door3' }, } })
 
-        exports.ox_target:addBoxZone({ coords = vec3(Config.doorcard1Eye.x, Config.doorcard1Eye.y, Config.doorcard1Eye.z + 0.2), size = vec3(1, 1, 1), rotation = 1, debug = Config.Debug,
+        card1 = exports.ox_target:addBoxZone({ coords = vec3(Config.doorcard1Eye.x, Config.doorcard1Eye.y, Config.doorcard1Eye.z + 0.2), size = vec3(1, 1, 1), rotation = 1, debug = Config.Debug,
         options = {{  name = paletodoorcard1name, icon = "fas fa-bolt", label = "Insert Card", event = 'Polar-Paleto:Client:doorcard1' }, } })
-        exports.ox_target:addBoxZone({ coords = vec3(Config.doorcard2Eye.x, Config.doorcard2Eye.y, Config.doorcard2Eye.z + 0.2), size = vec3(1, 1, 1), rotation = 1, debug = Config.Debug,
+        card2 = exports.ox_target:addBoxZone({ coords = vec3(Config.doorcard2Eye.x, Config.doorcard2Eye.y, Config.doorcard2Eye.z + 0.2), size = vec3(1, 1, 1), rotation = 1, debug = Config.Debug,
         options = {{  name = paletodoorcard2name, icon = "fas fa-bolt", label = "Insert Card", event = 'Polar-Paleto:Client:doorcard2' }, } })
       
-        exports.ox_target:addBoxZone({ coords = Config.Pc1, size = vec3(1, 1, 1), rotation = 1, debug = Config.Debug,
+        pc1 = exports.ox_target:addBoxZone({ coords = Config.Pc1, size = vec3(1, 1, 1), rotation = 1, debug = Config.Debug,
         options = {{  name = Config.Pc1name, icon = "fas fa-bolt", label = "Hack", event = 'Polar-Paleto:Client:HackComputer' }, } })
-        exports.ox_target:addBoxZone({ coords = Config.Pc2, size = vec3(1, 1, 1), rotation = 1, debug = Config.Debug,
+        pc2 = exports.ox_target:addBoxZone({ coords = Config.Pc2, size = vec3(1, 1, 1), rotation = 1, debug = Config.Debug,
         options = {{  name = Config.Pc2name, icon = "fas fa-bolt", label = "Hack", event = 'Polar-Paleto:Client:HackComputer' }, } })
-        exports.ox_target:addBoxZone({ coords = Config.Pc3, size = vec3(1, 1, 1), rotation = 1, debug = Config.Debug,
+        pc3 = exports.ox_target:addBoxZone({ coords = Config.Pc3, size = vec3(1, 1, 1), rotation = 1, debug = Config.Debug,
         options = {{  name = Config.Pc3name, icon = "fas fa-bolt", label = "Hack", event = 'Polar-Paleto:Client:HackComputer' }, } })
       
 
@@ -920,11 +926,11 @@ RegisterNetEvent('Polar-Paleto:Client:StartTargets', function()
     exports['qb-target']:AddBoxZone(paletodoorcard2name, vec3(Config.doorcard2Eye.x, Config.doorcard2Eye.y, Config.doorcard2Eye.z + 0.2), 1, 1, { name = paletodoorcard2name, heading = 0.0, debug = Config.Debug, minZ = Config.doorcard2Eye.z-1, maxZ =  Config.doorcard2Eye.z+1,}, 
     { options = {{ event = "Polar-Paleto:Client:doorcard2", icon = "fas fa-bolt", label = "Insert Card", excludejob = 'police', item = carditem}}, distance = 2.5 }) 
    
-    exports['qb-target']:AddBoxZone(Config.Pc1name, Config.Pc1, 2, 2, { name = Config.Pc1name, heading = 28.69, debug = true, minZ = Config.Pc1-1, maxZ =  Config.Pc1+1,}, 
+    exports['qb-target']:AddBoxZone(Config.Pc1name, Config.Pc1, 2, 2, { name = Config.Pc1name, heading = 28.69, debug = Config.Debug, minZ = Config.Pc1-1, maxZ =  Config.Pc1+1,}, 
     { options = {{ event = "Polar-Paleto:client:HackComputer", door = Config.Pc1name, icon = "fas fa-bolt", label = "Hack", excludejob = 'police', item = computeritem}}, distance = 2.5 }) 
-    exports['qb-target']:AddBoxZone(Config.Pc2name, Config.Pc1, 2, 2, { name = Config.Pc2name, heading = 28.69, debug = true, minZ = Config.Pc2-1, maxZ =  Config.Pc2+1,}, 
+    exports['qb-target']:AddBoxZone(Config.Pc2name, Config.Pc1, 2, 2, { name = Config.Pc2name, heading = 28.69, debug = Config.Debug, minZ = Config.Pc2-1, maxZ =  Config.Pc2+1,}, 
     { options = {{ event = "Polar-Paleto:client:HackComputer", door = Config.Pc2name, icon = "fas fa-bolt", label = "Hack", excludejob = 'police', item = computeritem}}, distance = 2.5 }) 
-    exports['qb-target']:AddBoxZone(Config.Pc3name, Config.Pc3, 2, 2, { name = Config.Pc3name, heading = 28.69, debug = true, minZ = Config.Pc3-1, maxZ =  Config.Pc3+1,}, 
+    exports['qb-target']:AddBoxZone(Config.Pc3name, Config.Pc3, 2, 2, { name = Config.Pc3name, heading = 28.69, debug = Config.Debug, minZ = Config.Pc3-1, maxZ =  Config.Pc3+1,}, 
     { options = {{ event = "Polar-Paleto:client:HackComputer", door = Config.Pc3name, icon = "fas fa-bolt", label = "Hack", excludejob = 'police', item = computeritem}}, distance = 2.5 }) 
     
     end
@@ -1256,17 +1262,18 @@ end)
 
 
 RegisterNetEvent('Polar-Paleto:Client:TargetRemove', function(door) 
-    if door == 'paletoprop1' then DeleteEntity(paletoprop1) end
-    if door == 'paletoprop2' then DeleteEntity(paletoprop2) end
-    if door == 'paletoprop3' then DeleteEntity(paletoprop3) end
-    if door == 'paletoprop4' then DeleteEntity(paletoprop4) end
-    if door == 'paletoprop5' then DeleteEntity(paletoprop5) end
-    if door == 'paletoprop6' then DeleteEntity(paletoprop6) end
-    if door == 'paletoprop7' then DeleteEntity(paletoprop7) end
-    if door == 'paletoprop8' then DeleteEntity(paletoprop8) end
-    if door == 'paletoprop9' then DeleteEntity(paletoprop9) end
-    if door == 'paletoprop10' then DeleteEntity(paletoprop10) end
 
+    if door == 'paletoprop1' then DeleteEntity(paletoprop1)end --  oxdoorname = paletoprop1 end
+    if door == 'paletoprop2' then DeleteEntity(paletoprop2)end --  oxdoorname = paletoprop2 end
+    if door == 'paletoprop3' then DeleteEntity(paletoprop3)end --  oxdoorname = paletoprop3 end
+    if door == 'paletoprop4' then DeleteEntity(paletoprop4)end --  oxdoorname = paletoprop4 end
+    if door == 'paletoprop5' then DeleteEntity(paletoprop5)end --  oxdoorname = paletoprop5 end
+    if door == 'paletoprop6' then DeleteEntity(paletoprop6)end --  oxdoorname = paletoprop6 end
+    if door == 'paletoprop7' then DeleteEntity(paletoprop7)end --  oxdoorname = paletoprop7 end
+    if door == 'paletoprop8' then DeleteEntity(paletoprop8)end --  oxdoorname = paletoprop8 end
+    if door == 'paletoprop9' then DeleteEntity(paletoprop9)end --  oxdoorname = paletoprop9 end
+    if door == 'paletoprop10' then DeleteEntity(paletoprop10)end --  oxdoorname = paletoprop10 end
+   
    -- if door == 'paletoprop11' then DeleteEntity(paletoprop11) end
    -- if door == 'paletoprop12' then DeleteEntity(paletoprop12) end
   --  if door == 'paletoprop13' then DeleteEntity(paletoprop13) end
@@ -1279,31 +1286,42 @@ RegisterNetEvent('Polar-Paleto:Client:TargetRemove', function(door)
   --  if door == 'paletoprop19' then DeleteEntity(paletoprop19) end
    -- if door == 'paletoprop20' then DeleteEntity(paletoprop20) end
 
-    if door == 'paletoprop21' then DeleteEntity(paletoprop21) end
-    if door == 'paletoprop22' then DeleteEntity(paletoprop22) end
-    if door == 'paletoprop23' then DeleteEntity(paletoprop23) end
-    if door == 'paletoprop24' then DeleteEntity(paletoprop24) end
-    if door == 'paletoprop25' then DeleteEntity(paletoprop25) end
+    if door == 'paletoprop21' then DeleteEntity(paletoprop21)end --  oxdoorname = paletoprop11 end
+    if door == 'paletoprop22' then DeleteEntity(paletoprop22)end --  oxdoorname = paletoprop12 end
+    if door == 'paletoprop23' then DeleteEntity(paletoprop23)end --  oxdoorname = paletoprop13 end
+    if door == 'paletoprop24' then DeleteEntity(paletoprop24)end --  oxdoorname = paletoprop14 end
+    if door == 'paletoprop25' then DeleteEntity(paletoprop25)end --  oxdoorname = paletoprop15 end
   --  if door == 'paletoprop26' then DeleteEntity(paletoprop26) end
   --  if door == 'paletoprop27' then DeleteEntity(paletoprop27) end
   --  if door == 'paletoprop28' then DeleteEntity(paletoprop28) end
   --  if door == 'paletoprop29' then DeleteEntity(paletoprop29) end
   --  if door == 'paletoprop30' then DeleteEntity(paletoprop30) end
 
-    if door == 'paletoprop31' then DeleteEntity(paletoprop31) end
-    if door == 'paletoprop32' then DeleteEntity(paletoprop32) end
-    if door == 'paletoprop33' then DeleteEntity(paletoprop33) end
-    if door == 'paletoprop34' then DeleteEntity(paletoprop34) end
-    if door == 'paletoprop35' then DeleteEntity(paletoprop35) end
-    if door == 'paletoprop36' then DeleteEntity(paletoprop36) end
-    if door == 'paletoprop37' then DeleteEntity(paletoprop37) end
-    if door == 'paletoprop38' then DeleteEntity(paletoprop38) end
-    if door == 'paletoprop39' then DeleteEntity(paletoprop39) end
-    if door == 'paletoprop40' then DeleteEntity(paletoprop40) end
-
+    if door == 'paletoprop31' then DeleteEntity(paletoprop31)end --  oxdoorname = paletoprop31 end
+    if door == 'paletoprop32' then DeleteEntity(paletoprop32)end --  oxdoorname = paletoprop32 end
+    if door == 'paletoprop33' then DeleteEntity(paletoprop33)end --  oxdoorname = paletoprop33 end
+    if door == 'paletoprop34' then DeleteEntity(paletoprop34)end --  oxdoorname = paletoprop34 end
+    if door == 'paletoprop35' then DeleteEntity(paletoprop35)end --  oxdoorname = paletoprop35 end
+    if door == 'paletoprop36' then DeleteEntity(paletoprop36)end --  oxdoorname = paletoprop36 end
+    if door == 'paletoprop37' then DeleteEntity(paletoprop37)end --  oxdoorname = paletoprop37 end
+    if door == 'paletoprop38' then DeleteEntity(paletoprop38)end --  oxdoorname = paletoprop38 end
+    if door == 'paletoprop39' then DeleteEntity(paletoprop39)end --  oxdoorname = paletoprop39 end
+    if door == 'paletoprop40' then DeleteEntity(paletoprop40)end --  oxdoorname = paletoprop40 end
     if oxt then
-        exports.ox_target:removeZone(door)
+        
+        if door == paletodoor1name then oxdoorname = paletodoor1 end
+        if door == paletodoor2name then oxdoorname = paletodoor2 end
+        if door == paletodoor3name then oxdoorname = paletodoor3 end
+        if door == paletodoorcard1name then oxdoorname = card1 end
+        if door == paletodoorcard2name then oxdoorname = card2 end
+        if door == Config.Pc1name then oxdoorname = pc1 end
+        if door == Config.Pc2name then oxdoorname = pc2 end
+        if door == Config.Pc3name then oxdoorname = pc3 end
+        Wait(1)
+        if door == nil then return end
+        exports.ox_target:removeZone(oxdoorname)
     else
+   
         exports['qb-target']:RemoveZone(door) 
     end
 end)

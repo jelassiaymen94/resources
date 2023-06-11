@@ -70,31 +70,31 @@ Config.Locations = {
 		discordlink = "",
 		discordcolour = 16711680,
 		discordimg = "https://static.wikia.nocookie.net/gtawiki/images/b/be/BennysOriginalMotorWorks-GTAO-Logo.png",
-	},
-	-- LS CUSTOMS IN CITY --
+	},]]
+	-- Angles of Death --
 	{	job = "mechanic",
 		zones = {
-			vector2(-356.63, -137.9),
-			vector2(-347.32, -111.48),
-			vector2(-309.05, -128.79),
-			vector2(-324.44, -148.96)
+			vector2(-251.52, 6245.45),
+ 			vector2(-228.03, 6268.56),
+ 			vector2(-207.58, 6245.45),
+ 			vector2(-233.33, 6223.48)
 		},
-		stash = { { coords = vector3(-345.77, -124.7, 39.01), w = 1.8, d = 0.6, heading = 340.0, }, },
-		store = { { coords = vector3(-347.9, -133.19, 39.01), w = 1.2, d = 0.25, heading = 340.0, }, },
-		crafting = { { coords = vector3(-340.44, -141.9, 39.01), w = 3.2, d = 1.0, heading = 255.0, }, },
-		clockin = { { coords = vector3(-344.85, -140.35, 39.05), heading = 157.0, }, },
-		garage = { spawn = vector4(-361.48, -123.14, 38.03, 158.96),
-					out = vector4(-356.2, -126.55, 39.43, 253.49),
-					list = { "towtruck", "panto", "slamtruck", "cheburek", "utillitruck3" } },
-		payments = { coords = vector3(-343.75, -140.86, 39.02), heading = 180.0, img = "<center><p><img src=https://static.wikia.nocookie.net/gtawiki/images/f/f2/GTAV-LSCustoms-Logo.png width=150px></p>" },
-		blip = vector3(-336.84, -136.39, 39.01),
-		bliplabel = "Los Santos Customs",
-		blipcolor = 81,
+		stash = { { coords = vector3(-232.88, 6273.74, 31.68), w = 1.8, d = 0.6, heading = 340.0, }, },
+		store = { { coords = vector3(-238.12, 6276.6, 31.46), w = 1.2, d = 0.45, heading = 340.0, }, },
+		crafting = { { coords = vector3(-234.22, 6270.08, 31.54), w = 3.2, d = 1.0, heading = 255.0, }, },
+		clockin = { { coords = vector3(-244.49, 6270.17, 31.48), heading = 90.0, }, },
+		garage = { spawn = vector4(-36100000000.48, -12300000000.14, 38.03, 158.96),
+					out = vector4(-356000000000.2, -126000000.55, 3900000.43, 253.49),
+					list = { "towtruck" } },
+		payments = { coords = vector3(-241.7, 6272.49, 31.5), heading = 90.0, img = "<center><p><img src=https://static.wikia.nocookie.net/gtawiki/images/f/f2/GTAV-LSCustoms-Logo.png width=150px></p>" },
+		blip = vector3(-238.0, 6270.55, 31.53),
+		bliplabel = "AOD Mechanic",
+		blipcolor = 75,
 		discordlink = "",
 		discordcolour = 2571775,
 		discordimg = "https://static.wikia.nocookie.net/gtawiki/images/f/f2/GTAV-LSCustoms-Logo.png",
 	},
-	-- HAYES AUTOS --
+	--[[ HAYES AUTOS --
 	{	job = "hayes",
 		zones = {
 			vector2(490.57400512695, -1302.0946044922),

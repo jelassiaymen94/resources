@@ -24,4 +24,14 @@ exports['qb-target']:AddBoxZone(Config.Stashes[i].numba, Config.Stashes[i].coord
 RegisterNetEvent('Polar-Sub:Client:Stash', function(data)  TriggerServerEvent("inventory:Server:OpenInventory", "stash", ""..data.stash, data.other) TriggerEvent("inventory:Client:SetCurrentStash", ""..data.stash) end)
 
 end
+
+for i = 1, #Config.GangStashes do
+    -- test stashhouse
+    weight = Config.GangStashes[i].weight * 1000
+    exports['qb-target']:AddBoxZone(Config.GangStashes[i].numba, Config.GangStashes[i].coords, 1.5, 2.0, { name=Config.GangStashes[i].numba, heading = 0.0, debugPoly=Config.Debug, minZ=Config.GangStashes[i].min, maxZ=Config.GangStashes[i].max},
+    { options = { {  event = "Polar-Sub:Client:Stash", icon = "fas fa-box-open", label = 'Open', gang = Config.GangStashes[i].gang, stash = "Storage" .. Config.GangStashes[i].numba .. " ", other = {slots = Config.GangStashes[i].slots, maxweight = weight}, coords = Config.GangStashes[i].coords, }, },  distance = 2.0 })
+    RegisterNetEvent('Polar-Sub:Client:Stash', function(data)  TriggerServerEvent("inventory:Server:OpenInventory", "stash", ""..data.stash, data.other) TriggerEvent("inventory:Client:SetCurrentStash", ""..data.stash) end)
+    
+    end
+
 end
