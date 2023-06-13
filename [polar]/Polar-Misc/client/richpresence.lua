@@ -9,13 +9,13 @@ CreateThread(function()
         -- (11-11-2018) New Natives:
         
         -- Here you can add hover text for the "large" icon.
-        SetDiscordRichPresenceAssetText('Avalanche')
+        SetDiscordRichPresenceAssetText('Blake Dev')
        
         -- Here you will have to put the image name for the "small" icon.
        -- SetDiscordRichPresenceAssetSmall('avalanche')
 
         -- Here you can add hover text for the "small" icon.
-        SetDiscordRichPresenceAssetSmallText('Avalanche')
+        SetDiscordRichPresenceAssetSmallText('Blake Dev')
 
 
         -- (26-02-2021) New Native:

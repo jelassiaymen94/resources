@@ -1,4 +1,3 @@
--- Polar-Sub
 
 local type = 'mph' -- mph or kmh, sets type of speed your server uses
 
