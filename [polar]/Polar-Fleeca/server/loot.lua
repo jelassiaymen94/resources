@@ -20,13 +20,6 @@ local diamondtable = {
 
 }
 
-RegisterNetEvent('', function()
-    local src = source local Player = QBCore.Functions.GetPlayer(src)
-
-    local chance = math.random(min, max)
-    if Player.Functions.AddItem(item, chance) then TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[item], "add", chance) end
-  
-end)
 
 function givet(item, min, max)
     local src = source local Player = QBCore.Functions.GetPlayer(src)
@@ -143,11 +136,11 @@ end
 
 
 
-QBCore.Commands.Add("paleto", "Set Player Metadata (God Only)", {}, false, function(source, args)
-    TriggerEvent('Polar-Paleto:Server:StartTargets')
-    TriggerEvent('Polar-Paleto:Server:StartCooldown')
-    TriggerEvent('Polar-Paleto:Server:StartInteract', 'paletodoor1')
-    TriggerEvent('Polar-Paleto:Server:StartInteract', 'paletodoor2')
-    TriggerEvent('Polar-Paleto:Server:StartInteract', 'paletodoor3')
+QBCore.Commands.Add("fleeca", "Set Player Metadata (God Only)", {}, false, function(source, args)
+    TriggerEvent('Polar-fleeca:Server:StartTargets')
+    TriggerEvent('Polar-fleeca:Server:StartCooldown')
+    TriggerEvent('Polar-fleeca:Server:StartInteract', 'fleecadoor1')
+    TriggerEvent('Polar-fleeca:Server:StartInteract', 'fleecadoor2')
+    TriggerEvent('Polar-fleeca:Server:StartInteract', 'fleecadoor3')
 end, "god") 
 

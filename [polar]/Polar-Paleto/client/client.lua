@@ -17,7 +17,7 @@ local open = 37.75
 local closed = -125.74
 local vaultloc = vector3(-1307.85, -816.5, 17.82)
 
-local hi = false
+local hi = true
 
 --- THERMITE
 local thermiteinfo = { time = 30, squares = 4, errors = 3}
@@ -69,50 +69,26 @@ RegisterNetEvent("Polar-Paleto:Client:ThermitePtfx", function(coords) if not Has
 
 
 RegisterNetEvent('Polar-Paleto:client:start', function()  pp = vector4(-109.43, 6483.32, 31.47, 224.11) door = paletostartname coords = vector3(-109.46, 6484.36, 31.27)
+    if CurrentCops >= Config.RequiredCops then
+    QBCore.Functions.TriggerCallback('QBCore:HasItem', function(result) if result then
     QBCore.Functions.TriggerCallback('Polar-Paleto:DoorCheckstart', function(result) if result then
     TriggerServerEvent('Polar-Paleto:Server:StopInteract', door)
     Wait(50)
-    TriggerEvent('Polar-Paleto:client:ThermiteStart', pp, door, coords)
+        TriggerEvent('Polar-Paleto:client:ThermiteStart', pp, door, coords)
     
     
     else
         QBCore.Functions.Notify(text('cooldown'), "error")
     end end)
+    else QBCore.Functions.Notify(text('nothermite'), "error") end 
+    end,  {thermiteitem})
+    else QBCore.Functions.Notify(text('nopolice'), "error") end
 end)
 
 RegisterNetEvent('Polar-Paleto:client:ThermiteStart', function(pp, door, coords)
-    QBCore.Functions.TriggerCallback('QBCore:HasItem', function(result) if result then if math.random(1, 100) <= Config.FingerPrintPercent and not gloves() then TriggerServerEvent("evidence:server:CreateFingerDrop", GetEntityCoords(PlayerPedId())) end
-            if CurrentCops >= Config.RequiredCops then
                     LocalPlayer.state:set('inv_busy', true, true)
                     PlantThermite(pp, door)
-                    if hi then
-                        LocalPlayer.state:set('inv_busy', false, true)
-                        TriggerServerEvent('Polar-Paleto:Server:StartCooldown')
-                        ThermiteEffect(door, coords) 
-                        TriggerServerEvent('Polar-Paleto:Server:StartInteract', 'paletodoor1')
-                        TriggerServerEvent('Polar-Paleto:Server:StartInteract', 'paletodoor2')
-                        TriggerServerEvent('Polar-Paleto:Server:StartInteract', 'paletodoor3')
-                        TriggerServerEvent('Polar-Paleto:Server:StartTargets')
-                    else
-                    if memgame then 
-                        exports[memname]:thermiteminigame(10, 3, 3, 10,
-                        function() -- success
-                            LocalPlayer.state:set('inv_busy', false, true)
-                            TriggerServerEvent('Polar-Paleto:Server:StartCooldown')
-                            ThermiteEffect(door, coords) 
-                            TriggerServerEvent('Polar-Paleto:Server:StartInteract', 'paletodoor1')
-                            TriggerServerEvent('Polar-Paleto:Server:StartInteract', 'paletodoor2')
-                            TriggerServerEvent('Polar-Paleto:Server:StartInteract', 'paletodoor3')
-                            TriggerServerEvent('Polar-Paleto:Server:StartTargets')
-                        end,
-                        function() -- failure
-                            TriggerServerEvent('Polar-Paleto:Server:StartInteract', door)
-                            LocalPlayer.state:set('inv_busy', false, true)
-                            QBCore.Functions.Notify(text('thermitefail'), "error") 
-                        end)
-                    else
-                    exports[thermiteexport]:Thermite(function(success) 
-                    if success then
+        if hi then
                     LocalPlayer.state:set('inv_busy', false, true)
                     TriggerServerEvent('Polar-Paleto:Server:StartCooldown')
                     ThermiteEffect(door, coords) 
@@ -120,16 +96,40 @@ RegisterNetEvent('Polar-Paleto:client:ThermiteStart', function(pp, door, coords)
                     TriggerServerEvent('Polar-Paleto:Server:StartInteract', 'paletodoor2')
                     TriggerServerEvent('Polar-Paleto:Server:StartInteract', 'paletodoor3')
                     TriggerServerEvent('Polar-Paleto:Server:StartTargets')
-                    else 
+        else
+            if memgame then 
+                exports[memname]:thermiteminigame(10, 3, 3, 10,
+                function() -- success
+                    LocalPlayer.state:set('inv_busy', false, true)
+                    TriggerServerEvent('Polar-Paleto:Server:StartCooldown')
+                    ThermiteEffect(door, coords) 
+                    TriggerServerEvent('Polar-Paleto:Server:StartInteract', 'paletodoor1')
+                    TriggerServerEvent('Polar-Paleto:Server:StartInteract', 'paletodoor2')
+                    TriggerServerEvent('Polar-Paleto:Server:StartInteract', 'paletodoor3')
+                    TriggerServerEvent('Polar-Paleto:Server:StartTargets')
+                end,
+                function() -- failure
+                    TriggerServerEvent('Polar-Paleto:Server:StartInteract', door)
+                    LocalPlayer.state:set('inv_busy', false, true)
+                    QBCore.Functions.Notify(text('thermitefail'), "error") 
+                end)
+            else
+                exports[thermiteexport]:Thermite(function(success) 
+                if success then
+                    LocalPlayer.state:set('inv_busy', false, true)
+                    TriggerServerEvent('Polar-Paleto:Server:StartCooldown')
+                    ThermiteEffect(door, coords) 
+                    TriggerServerEvent('Polar-Paleto:Server:StartInteract', 'paletodoor1')
+                    TriggerServerEvent('Polar-Paleto:Server:StartInteract', 'paletodoor2')
+                    TriggerServerEvent('Polar-Paleto:Server:StartInteract', 'paletodoor3')
+                    TriggerServerEvent('Polar-Paleto:Server:StartTargets')
+                else 
                     TriggerServerEvent('Polar-Paleto:Server:StartInteract', door)
                     LocalPlayer.state:set('inv_busy', false, true)
                     QBCore.Functions.Notify(text('thermitefail'), "error") end
-                    end, thermiteinfo.time, thermiteinfo.squares, thermiteinfo.errors)
-                    end
-                    end
-            else QBCore.Functions.Notify(text('nopolice'), "error")  TriggerServerEvent('Polar-Paleto:Server:StartInteract', door) end
-        else QBCore.Functions.Notify(text('nothermite'), "error") end 
-    end,  {thermiteitem})
+            end, thermiteinfo.time, thermiteinfo.squares, thermiteinfo.errors)
+        end
+    end
 end)
 
 
@@ -145,7 +145,7 @@ RegisterNetEvent('Polar-Paleto:client:Thermite', function(pp, door, coords)
         exports[memname]:thermiteminigame(10, 3, 3, 10,
         function() -- success
             TriggerServerEvent('Polar-Paleto:Server:TargetRemove', door) ThermiteEffect(door, coords)
-            TriggerServerEvent('qb-doorlock:server:updateState', door, false, false, false, true, false, false)
+            doorlock(door, false)
         end,
         function() -- failure
             TriggerServerEvent('Polar-Paleto:Server:StartInteract', door) 
@@ -154,7 +154,7 @@ RegisterNetEvent('Polar-Paleto:client:Thermite', function(pp, door, coords)
     else
     exports[thermiteexport]:Thermite(function(success)
     if success then TriggerServerEvent('Polar-Paleto:Server:TargetRemove', door) ThermiteEffect(door, coords)
-    TriggerServerEvent('qb-doorlock:server:updateState', door, false, false, false, true, false, false)
+    doorlock(door, false)
     else TriggerServerEvent('Polar-Paleto:Server:StartInteract', door) 
         QBCore.Functions.Notify(text('thermitefail'), "error") end
     end, thermiteinfo.time, thermiteinfo.squares, thermiteinfo.errors) -- Time, Gridsize (5, 6, 7, 8, 9, 10), IncorrectBlocks
@@ -220,10 +220,14 @@ end
 
 
 function other()
+    if oxt then
+        exports.ox_target:addBoxZone({ coords = vaultanimloc, size = vec3(1, 1, 1), rotation = 1, debug = Config.Debug,
+        options = {{  event = "Polar-Paleto:Client:VaultHack",  icon = "fas fa-bolt", label = "Hack", item = vaultitem}, } })
+    else
+        exports['qb-target']:AddBoxZone(vaultdoorname,  vaultanimloc, 0.5, 0.5, { name =  vaultdoorname, heading = 28.69, debug = false, minZ = vaultanimloc.z-0.5, maxZ =  vaultanimloc.z+0.5,}, 
+        { options = {{ event = "Polar-Paleto:Client:VaultHack", icon = "fas fa-bolt", label = "Hack", excludejob = 'police', item = vaultitem}}, distance = 2.5 }) 
+    end
 
-    exports['qb-target']:AddBoxZone(vaultdoorname,  vaultanimloc, 0.5, 0.5, { name =  vaultdoorname, heading = 28.69, debug = false, minZ = vaultanimloc.z-0.5, maxZ =  vaultanimloc.z+0.5,}, 
-    { options = {{ event = "Polar-Paleto:Client:VaultHack", icon = "fas fa-bolt", label = "Hack", excludejob = 'police', item = vaultitem}}, distance = 2.5 }) 
-   
     local k = 0
     local p = 0
     local distance1 = 0.22
@@ -249,20 +253,26 @@ function other()
     elseif chance<=100 then   space2 = k-distance1  space1 = k+distance1 
     end
 
-    local loc = vector4(-96.21, 6460.11, 31.63-space1, 226.61)  
-    local name = "paletodrill1"
-    exports['qb-target']:AddBoxZone(name,  vector3(loc.x, loc.y, loc.z), 0.25, 0.25, { name = name, heading = loc.w, debug = Config.Debug, minZ = loc.z-1, maxZ =  loc.z+1,}, 
-    { options = {{ event = "Polar-Paleto:Client:Drill", door = name, head = loc.w, coords = vec3(loc.x, loc.y, loc.z), icon = "fas fa-bolt", label = "Drill Lockbox", excludejob = 'police', item = drillitem}}, distance = 1.5 }) 
    
-    local loc = vector4(-96.85, 6463.54, 31.63-space2, 314.59) 
-    local name = "paletodrill2"
-    exports['qb-target']:AddBoxZone(name,  vector3(loc.x, loc.y, loc.z), 0.25, 0.25, { name = name, heading = loc.w, debug = Config.Debug, minZ = loc.z-1, maxZ =  loc.z+1,}, 
-    { options = {{ event = "Polar-Paleto:Client:Drill", door = name, head = loc.w, coords = vec3(loc.x, loc.y, loc.z), icon = "fas fa-bolt", label = "Drill Lockbox", excludejob = 'police', item = drillitem}}, distance = 1.5 }) 
-   
-   
+        local loc = vector4(-96.21, 6460.11, 31.63-space1, 226.61)  
+        local name = "paletodrill1"
+        adddrillspot(loc, name)
+
+        local loc = vector4(-96.85, 6463.54, 31.63-space2, 314.59) 
+        local name = "paletodrill2"
+        adddrillspot(loc, name)
+
 end 
 
-
+function adddrillspot(loc, name)
+    if oxt then
+        exports.ox_target:addBoxZone({ coords = vector3(loc.x, loc.y, loc.z), size = vec3(1, 1, 1), rotation = 1, debug = Config.Debug,
+        options = {{  event = "Polar-Paleto:Client:Drill", door = name, head = loc.w, coords = vec3(loc.x, loc.y, loc.z), icon = "fas fa-bolt", label = "Drill Lockbox" }, } })
+    else
+        exports['qb-target']:AddBoxZone(name,  vector3(loc.x, loc.y, loc.z), 0.25, 0.25, { name = name, heading = loc.w, debug = Config.Debug, minZ = loc.z-1, maxZ =  loc.z+1,}, 
+        { options = {{ event = "Polar-Paleto:Client:Drill", door = name, head = loc.w, coords = vec3(loc.x, loc.y, loc.z), icon = "fas fa-bolt", label = "Drill Lockbox", excludejob = 'police', item = drillitem}}, distance = 1.5 }) 
+    end
+end
 
 
 
@@ -467,7 +477,7 @@ function VaultForceClose()
     end
 end
 RegisterNetEvent('Polar-Paleto:Client:Vault', function(open)
-    if Config.Paleto then TriggerServerEvent('qb-doorlock:server:updateState',  vaultdoorname, false, false, false, true, false, false)   return end
+    if Config.Paleto then doorlock(vaultdoorname, false)   return end
     if not open then
     local object = GetClosestObjectOfType(vaultloc, 20.0, vaultid, false, false, false)
     --print(object)
@@ -513,11 +523,9 @@ end)
 
 RegisterNetEvent('Polar-Paleto:Client:AddPickupTarget', function(door, door2, prop, var, pile) 
     if oxt then
-       -- boxzone = exports.ox_target:addBoxZone({ coords = vec3(var.x, var.y, var.z), size = vec3(1, 1, 1), rotation = 1, debug = Config.Debug,
-      --  options = {{  event = "Polar-Paleto:Client:PickupTarget", type = door, piles = pile, canInteract = function() if door2 then return true end end, icon = "fas fa-bolt", label = "Grab" }, } })
-        exports['ox-target']:AddBoxZone(door, vec3(var.x, var.y, var.z), 0.5, 0.5, { name = door, heading = 28.69, debug = Config.Debug, minZ = var.z  - 0.5, maxZ =  var.z + 0.5,}, 
-        { options = {{ event = "Polar-Paleto:Client:PickupTarget", type = door, piles = pile, canInteract = function() if door2 then return true end end, icon = "fas fa-bolt", label = "Grab", excludejob = 'police'}}, distance = 1.5 }) 
-  
+        rod = exports.ox_target:addBoxZone({ coords = vec3(var.x, var.y, var.z), size = vec3(1, 1, 1), rotation = 1, debug = Config.Debug,
+        options = {{  event = "Polar-Paleto:Client:PickupTarget", type = door, piles = pile, canInteract = function() if door2 then return true end end, icon = "fas fa-bolt", label = "Grab" }, } })
+        print('pickup ' .. rod .. ' ' .. door)
     else
         exports['qb-target']:AddBoxZone(door, vec3(var.x, var.y, var.z), 0.5, 0.5, { name = door, heading = 28.69, debug = Config.Debug, minZ = var.z  - 0.5, maxZ =  var.z + 0.5,}, 
         { options = {{ event = "Polar-Paleto:Client:PickupTarget", type = door, piles = pile, canInteract = function() if door2 then return true end end, icon = "fas fa-bolt", label = "Grab", excludejob = 'police'}}, distance = 1.5 }) 
@@ -608,13 +616,19 @@ function Animation(door, props, model, animDict, sped)
     end
 end 
 RegisterNetEvent('Polar-Paleto:Client:AddTarget', function(door, door2, prop, var) 
-    exports['qb-target']:AddBoxZone(door, vec3(var.x, var.y, var.z), 0.5, 0.5, { name = door, heading = 28.69, debug = Config.Debug, minZ = var.z - 1.5, maxZ =  var.z + 1.5,}, 
-    { options = {{ event = "Polar-Paleto:Client:Target", type = door, canInteract = function() if door2 then return true end end, icon = "fas fa-bolt", label = "Grab", excludejob = 'police'}}, distance = 1.5 }) 
-
+    if oxt then 
+        box = exports.ox_target:addBoxZone({ coords = vec3(var.x, var.y, var.z), size = vec3(1, 1, 1), rotation = 1, debug = Config.Debug,
+        options = {{  event = "Polar-Paleto:Client:Target", type = door, canInteract = function() if door2 then return true end end, icon = "fas fa-bolt", label = "Grab" }, } })
+        print('grab ' .. box .. ' ' .. door)
+    else
+        exports['qb-target']:AddBoxZone(door, vec3(var.x, var.y, var.z), 0.5, 0.5, { name = door, heading = 28.69, debug = Config.Debug, minZ = var.z - 1.5, maxZ =  var.z + 1.5,}, 
+        { options = {{ event = "Polar-Paleto:Client:Target", type = door, canInteract = function() if door2 then return true end end, icon = "fas fa-bolt", label = "Grab", excludejob = 'police'}}, distance = 1.5 }) 
+    end
 end)
 
 
-RegisterNetEvent('Polar-Paleto:client:HackComputer', function(data)
+RegisterNetEvent('Polar-Paleto:Client:HackComputer', function(data)
+    QBCore.Functions.TriggerCallback('QBCore:HasItem', function(result) if result then
     local door = data.door
     TriggerServerEvent('Polar-Paleto:Server:StopInteract', door) 
     local chance=math.random(1,100) 
@@ -634,6 +648,8 @@ RegisterNetEvent('Polar-Paleto:client:HackComputer', function(data)
         TriggerServerEvent('Polar-Paleto:Server:StartInteract', door) 
     elseif result == -1 then end
     end) 
+    else QBCore.Functions.Notify(text('nopcitem'), "error") end 
+    end,  {computeritem})
 end)
 
 
@@ -648,7 +664,7 @@ RegisterNetEvent('Polar-Paleto:client:keycard', function(door, position, rot, it
     TriggerServerEvent('Polar-Paleto:Server:TargetRemove', door) 
     local chance = math.random(1,100) local pos = GetEntityCoords(PlayerPedId()) local animDict = "anim@heists@keycard@" loadAnimDict(animDict) local prop = 'vw_prop_vw_key_card_01a' loadModel(prop) local prop2 =  CreateObject(prop, pos.x, pos.y, pos.z + 0.2,  true,  true, true)
     FreezeEntityPosition(PlayerPedId(), true) AttachEntityToEntity(prop2, ped, GetPedBoneIndex(PlayerPedId(), 28422), 0, 0, 0, 0, 0, 180.0, true, true, false, true, 1, true) SetEntityHeading(PlayerPedId(), position.w) SetEntityCoords(PlayerPedId(), vector3(position.x, position.y,position.z-1)) if chance <= carditemchance then TriggerServerEvent('Polar-Paleto:Server:RemoveItem', item, 1) end 
-    TaskPlayAnim(PlayerPedId(), animDict, "enter", 5.0, 1.0, -1, 16, 0, 0, 0, 0) Wait(1000) TaskPlayAnim(PlayerPedId(), animDict, "idle_a", 5.0, 1.0, -1, 16, 0, 0, 0, 0) Wait(5000) TaskPlayAnim(PlayerPedId(), animDict, "exit", 5.0, 1.0, -1, 16, 0, 0, 0, 0) Wait(1000) StopAnimTask(PlayerPedId(), animDict, "exit", 16.0)  DeleteEntity(prop2) FreezeEntityPosition(PlayerPedId(), false) TriggerServerEvent('qb-doorlock:server:updateState', door, false, false, false, true, false, false) QBCore.Functions.Notify(text('doorunlock'), "success", 2500)
+    TaskPlayAnim(PlayerPedId(), animDict, "enter", 5.0, 1.0, -1, 16, 0, 0, 0, 0) Wait(1000) TaskPlayAnim(PlayerPedId(), animDict, "idle_a", 5.0, 1.0, -1, 16, 0, 0, 0, 0) Wait(5000) TaskPlayAnim(PlayerPedId(), animDict, "exit", 5.0, 1.0, -1, 16, 0, 0, 0, 0) Wait(1000) StopAnimTask(PlayerPedId(), animDict, "exit", 16.0)  DeleteEntity(prop2) FreezeEntityPosition(PlayerPedId(), false) doorlock(door, false) QBCore.Functions.Notify(text('doorunlock'), "success", 2500)
     else  QBCore.Functions.Notify(text('nokeycard'), "error") end
     end, {carditem})
 end)
@@ -752,7 +768,7 @@ function hack(door)
         if outcome == true then -- success
             local chance = math.random(1,100)
             if chance <= vaultitemchance then TriggerServerEvent('Polar-Paleto:Server:RemoveItem', vaultitem, 1) end
-            TriggerServerEvent('qb-doorlock:server:updateState', door, false, false, false, true, false, false)
+            doorlock(door, false)
             Wait(4000)
             NetworkStartSynchronisedScene(netScene3)
             Wait(4500)
@@ -801,16 +817,21 @@ RegisterNetEvent('Polar-Paleto:Client:Drill', function(data)
     else
         QBCore.Functions.Notify(text('sometingelse'), "error")
     end end)
- end)
+end)
 
- function vaultdone() TriggerServerEvent('Polar-Paleto:Server:Vault') end
+function vaultdone() TriggerServerEvent('Polar-Paleto:Server:Vault') end
 RegisterNetEvent('Polar-Paleto:Client:VaultHack', function() 
+    QBCore.Functions.TriggerCallback('QBCore:HasItem', function(result) if result then
     QBCore.Functions.TriggerCallback('Polar-Paleto:VaultCheck', function(result) if result then 
         hack(vaultdoorname)
     else
         QBCore.Functions.Notify(text('sometingelse'), "error")
     end end)
+    else QBCore.Functions.Notify(text('novaultitem'), "error") end 
+    end,  {vaultitem})
 end)
+
+
 
   
 
@@ -865,7 +886,6 @@ function starttarget()
     if oxt then
         exports.ox_target:addBoxZone({ coords = Config.StartThirdEye, size = vec3(1, 1, 1), rotation = 1, debug = Config.Debug,
         options = {{  name = paletostartname, icon = "fas fa-fire", label = "Thermite", event = 'Polar-Paleto:client:start' }, } })
-
     else
     
     exports['qb-target']:AddBoxZone(paletostartname, Config.StartThirdEye, 1, 1, { name = paletostartname, heading = 0.0, debug = Config.Debug, minZ = Config.StartThirdEye.z-1, maxZ =  Config.StartThirdEye.z+1,}, 
@@ -891,28 +911,25 @@ RegisterNetEvent('Polar-Paleto:Client:StartTargets', function()
     
     if oxt then
 
-        paletodoor1 = exports.ox_target:addBoxZone({ coords = vec3(Config.Door1Eye.x, Config.Door1Eye.y, Config.Door1Eye.z + 0.2), size = vec3(1, 1, 1), rotation = 1, debug = Config.Debug,
+        exports.ox_target:addBoxZone({ coords = vec3(Config.Door1Eye.x, Config.Door1Eye.y, Config.Door1Eye.z + 0.2), size = vec3(1, 1, 1), rotation = 1, debug = Config.Debug,
         options = {{  name = paletodoor1name, icon = "fas fa-fire", label = "Thermite", event = 'Polar-Paleto:Client:Door1' }, } })
-        paletodoor2 = exports.ox_target:addBoxZone({ coords = vec3(Config.Door2Eye.x, Config.Door2Eye.y, Config.Door2Eye.z + 0.2), size = vec3(1, 1, 1), rotation = 1, debug = Config.Debug,
+        exports.ox_target:addBoxZone({ coords = vec3(Config.Door2Eye.x, Config.Door2Eye.y, Config.Door2Eye.z + 0.2), size = vec3(1, 1, 1), rotation = 1, debug = Config.Debug,
         options = {{  name = paletodoor2name, icon = "fas fa-fire", label = "Thermite", event = 'Polar-Paleto:Client:Door2' }, } })
-        paletodoor3 = exports.ox_target:addBoxZone({ coords = vec3(Config.Door3Eye.x, Config.Door3Eye.y, Config.Door3Eye.z + 0.2), size = vec3(1, 1, 1), rotation = 1, debug = Config.Debug,
+        exports.ox_target:addBoxZone({ coords = vec3(Config.Door3Eye.x, Config.Door3Eye.y, Config.Door3Eye.z + 0.2), size = vec3(1, 1, 1), rotation = 1, debug = Config.Debug,
         options = {{  name = paletodoor3name, icon = "fas fa-fire", label = "Thermite", event = 'Polar-Paleto:Client:Door3' }, } })
 
-        card1 = exports.ox_target:addBoxZone({ coords = vec3(Config.doorcard1Eye.x, Config.doorcard1Eye.y, Config.doorcard1Eye.z + 0.2), size = vec3(1, 1, 1), rotation = 1, debug = Config.Debug,
+        exports.ox_target:addBoxZone({ coords = vec3(Config.doorcard1Eye.x, Config.doorcard1Eye.y, Config.doorcard1Eye.z + 0.2), size = vec3(1, 1, 1), rotation = 1, debug = Config.Debug,
         options = {{  name = paletodoorcard1name, icon = "fas fa-bolt", label = "Insert Card", event = 'Polar-Paleto:Client:doorcard1' }, } })
-        card2 = exports.ox_target:addBoxZone({ coords = vec3(Config.doorcard2Eye.x, Config.doorcard2Eye.y, Config.doorcard2Eye.z + 0.2), size = vec3(1, 1, 1), rotation = 1, debug = Config.Debug,
+        exports.ox_target:addBoxZone({ coords = vec3(Config.doorcard2Eye.x, Config.doorcard2Eye.y, Config.doorcard2Eye.z + 0.2), size = vec3(1, 1, 1), rotation = 1, debug = Config.Debug,
         options = {{  name = paletodoorcard2name, icon = "fas fa-bolt", label = "Insert Card", event = 'Polar-Paleto:Client:doorcard2' }, } })
       
-        pc1 = exports.ox_target:addBoxZone({ coords = Config.Pc1, size = vec3(1, 1, 1), rotation = 1, debug = Config.Debug,
-        options = {{  name = Config.Pc1name, icon = "fas fa-bolt", label = "Hack", event = 'Polar-Paleto:Client:HackComputer' }, } })
-        pc2 = exports.ox_target:addBoxZone({ coords = Config.Pc2, size = vec3(1, 1, 1), rotation = 1, debug = Config.Debug,
-        options = {{  name = Config.Pc2name, icon = "fas fa-bolt", label = "Hack", event = 'Polar-Paleto:Client:HackComputer' }, } })
-        pc3 = exports.ox_target:addBoxZone({ coords = Config.Pc3, size = vec3(1, 1, 1), rotation = 1, debug = Config.Debug,
-        options = {{  name = Config.Pc3name, icon = "fas fa-bolt", label = "Hack", event = 'Polar-Paleto:Client:HackComputer' }, } })
+        exports.ox_target:addBoxZone({ coords = Config.Pc1, size = vec3(1, 1, 1), rotation = 1, debug = Config.Debug,
+        options = {{  name = Config.Pc1name, icon = "fas fa-bolt", label = "Hack", door = Config.Pc1name, event = 'Polar-Paleto:Client:HackComputer' }, } })
+        exports.ox_target:addBoxZone({ coords = Config.Pc2, size = vec3(1, 1, 1), rotation = 1, debug = Config.Debug,
+        options = {{  name = Config.Pc2name, icon = "fas fa-bolt", label = "Hack", door = Config.Pc2name, event = 'Polar-Paleto:Client:HackComputer' }, } })
+        exports.ox_target:addBoxZone({ coords = Config.Pc3, size = vec3(1, 1, 1), rotation = 1, debug = Config.Debug,
+        options = {{  name = Config.Pc3name, icon = "fas fa-bolt", label = "Hack", door = Config.Pc3name, event = 'Polar-Paleto:Client:HackComputer' }, } })
       
-
-        
-
     else
     
    
@@ -929,11 +946,11 @@ RegisterNetEvent('Polar-Paleto:Client:StartTargets', function()
     { options = {{ event = "Polar-Paleto:Client:doorcard2", icon = "fas fa-bolt", label = "Insert Card", excludejob = 'police', item = carditem}}, distance = 2.5 }) 
    
     exports['qb-target']:AddBoxZone(Config.Pc1name, Config.Pc1, 2, 2, { name = Config.Pc1name, heading = 28.69, debug = Config.Debug, minZ = Config.Pc1-1, maxZ =  Config.Pc1+1,}, 
-    { options = {{ event = "Polar-Paleto:client:HackComputer", door = Config.Pc1name, icon = "fas fa-bolt", label = "Hack", excludejob = 'police', item = computeritem}}, distance = 2.5 }) 
+    { options = {{ event = "Polar-Paleto:Client:HackComputer", door = Config.Pc1name, icon = "fas fa-bolt", label = "Hack", excludejob = 'police', item = computeritem}}, distance = 2.5 }) 
     exports['qb-target']:AddBoxZone(Config.Pc2name, Config.Pc1, 2, 2, { name = Config.Pc2name, heading = 28.69, debug = Config.Debug, minZ = Config.Pc2-1, maxZ =  Config.Pc2+1,}, 
-    { options = {{ event = "Polar-Paleto:client:HackComputer", door = Config.Pc2name, icon = "fas fa-bolt", label = "Hack", excludejob = 'police', item = computeritem}}, distance = 2.5 }) 
+    { options = {{ event = "Polar-Paleto:Client:HackComputer", door = Config.Pc2name, icon = "fas fa-bolt", label = "Hack", excludejob = 'police', item = computeritem}}, distance = 2.5 }) 
     exports['qb-target']:AddBoxZone(Config.Pc3name, Config.Pc3, 2, 2, { name = Config.Pc3name, heading = 28.69, debug = Config.Debug, minZ = Config.Pc3-1, maxZ =  Config.Pc3+1,}, 
-    { options = {{ event = "Polar-Paleto:client:HackComputer", door = Config.Pc3name, icon = "fas fa-bolt", label = "Hack", excludejob = 'police', item = computeritem}}, distance = 2.5 }) 
+    { options = {{ event = "Polar-Paleto:Client:HackComputer", door = Config.Pc3name, icon = "fas fa-bolt", label = "Hack", excludejob = 'police', item = computeritem}}, distance = 2.5 }) 
     
     end
 
@@ -1270,11 +1287,11 @@ RegisterNetEvent('Polar-Paleto:Client:TargetRemove', function(door)
     if door == 'paletoprop3' then DeleteEntity(paletoprop3)end --  oxdoorname = paletoprop3 end
     if door == 'paletoprop4' then DeleteEntity(paletoprop4)end --  oxdoorname = paletoprop4 end
     if door == 'paletoprop5' then DeleteEntity(paletoprop5)end --  oxdoorname = paletoprop5 end
-    if door == 'paletoprop6' then DeleteEntity(paletoprop6)end --  oxdoorname = paletoprop6 end
-    if door == 'paletoprop7' then DeleteEntity(paletoprop7)end --  oxdoorname = paletoprop7 end
-    if door == 'paletoprop8' then DeleteEntity(paletoprop8)end --  oxdoorname = paletoprop8 end
-    if door == 'paletoprop9' then DeleteEntity(paletoprop9)end --  oxdoorname = paletoprop9 end
-    if door == 'paletoprop10' then DeleteEntity(paletoprop10)end --  oxdoorname = paletoprop10 end
+    if door == 'paletoprop6' then DeleteEntity(paletoprop6)end 
+    if door == 'paletoprop7' then DeleteEntity(paletoprop7)end 
+    if door == 'paletoprop8' then DeleteEntity(paletoprop8)end 
+    if door == 'paletoprop9' then DeleteEntity(paletoprop9)end 
+    if door == 'paletoprop10' then DeleteEntity(paletoprop10)end 
    
    -- if door == 'paletoprop11' then DeleteEntity(paletoprop11) end
    -- if door == 'paletoprop12' then DeleteEntity(paletoprop12) end
@@ -1289,7 +1306,7 @@ RegisterNetEvent('Polar-Paleto:Client:TargetRemove', function(door)
    -- if door == 'paletoprop20' then DeleteEntity(paletoprop20) end
 
     if door == 'paletoprop21' then DeleteEntity(paletoprop21)end --  oxdoorname = paletoprop11 end
-    if door == 'paletoprop22' then DeleteEntity(paletoprop22)end --  oxdoorname = paletoprop12 end
+    if door == 'paletoprop22' then DeleteEntity(paletoprop22)end 
     if door == 'paletoprop23' then DeleteEntity(paletoprop23)end --  oxdoorname = paletoprop13 end
     if door == 'paletoprop24' then DeleteEntity(paletoprop24)end --  oxdoorname = paletoprop14 end
     if door == 'paletoprop25' then DeleteEntity(paletoprop25)end --  oxdoorname = paletoprop15 end
@@ -1309,19 +1326,50 @@ RegisterNetEvent('Polar-Paleto:Client:TargetRemove', function(door)
     if door == 'paletoprop38' then DeleteEntity(paletoprop38)end --  oxdoorname = paletoprop38 end
     if door == 'paletoprop39' then DeleteEntity(paletoprop39)end --  oxdoorname = paletoprop39 end
     if door == 'paletoprop40' then DeleteEntity(paletoprop40)end --  oxdoorname = paletoprop40 end
+
     if oxt then
-        
-        if door == paletodoor1name then oxdoorname = paletodoor1 end
-        if door == paletodoor2name then oxdoorname = paletodoor2 end
-        if door == paletodoor3name then oxdoorname = paletodoor3 end
-        if door == paletodoorcard1name then oxdoorname = card1 end
-        if door == paletodoorcard2name then oxdoorname = card2 end
-        if door == Config.Pc1name then oxdoorname = pc1 end
-        if door == Config.Pc2name then oxdoorname = pc2 end
-        if door == Config.Pc3name then oxdoorname = pc3 end
+        if door == paletodoor1name then oxdoorname = 2 end
+        if door == paletodoor2name then oxdoorname = 3 end
+        if door == paletodoor3name then oxdoorname = 4 end
+        if door == paletodoorcard1name then oxdoorname = 5 end
+        if door == paletodoorcard2name then oxdoorname = 6 end
+        if door == Config.Pc1name then oxdoorname = 7 end
+        if door == Config.Pc2name then oxdoorname = 8 end
+        if door == Config.Pc3name then oxdoorname = 9 end
+        -- pickups
+        if door == 'paletoprop6' then  oxdoorname = 20 end 
+        if door == 'paletoprop7' then  oxdoorname = 21 end 
+        if door == 'paletoprop8' then  oxdoorname = 22 end 
+        if door == 'paletoprop9' then  oxdoorname = 23 end 
+        if door == 'paletoprop10' then oxdoorname = 24 end
+        if door == 'paletoprop21' then oxdoorname = 25 end 
+        if door == 'paletoprop22' then oxdoorname = 26 end 
+        -- piles
+        if door == 'paletoprop11' then oxdoorname = 27 end
+        if door == 'paletoprop12' then oxdoorname = 28 end
+        -- grabs
+        if door == 'paletoprop1' then  oxdoorname = 10 end 
+        if door == 'paletoprop2' then  oxdoorname = 11 end 
+        if door == 'paletoprop3' then  oxdoorname = 12 end 
+        if door == 'paletoprop4' then  oxdoorname = 13 end 
+        if door == 'paletoprop5' then oxdoorname = 14 end
+        if door == 'paletoprop31' then  oxdoorname = 15 end 
+        if door == 'paletoprop32' then  oxdoorname = 16 end 
+        if door == 'paletoprop33' then  oxdoorname = 17 end 
+        if door == 'paletoprop34' then  oxdoorname = 18 end 
+        if door == 'paletoprop35' then oxdoorname = 19 end
+        -- trollys
+        if door == 'paletoprop16' then oxdoorname = 29 end 
+        if door == 'paletoprop17' then oxdoorname = 30 end 
+        if door == 'paletoprop18' then oxdoorname = 31 end
+        if door == 'paletoprop19' then oxdoorname = 32 end
+
         Wait(1)
         if door == nil then return end
+        print(door)
+        if oxdoorname == nil then return end
         exports.ox_target:removeZone(oxdoorname)
+        oxdoorname = nil
     else
    
         exports['qb-target']:RemoveZone(door) 
@@ -1408,12 +1456,11 @@ RegisterNetEvent('Polar-Paleto:Client:ResetProps', function()
     if DoesEntityExist(paletoprop38) then DeleteEntity(paletoprop38) targetname = 'paletoprop38' end
     if DoesEntityExist(paletoprop39) then DeleteEntity(paletoprop39) targetname = 'paletoprop39' end
     if DoesEntityExist(paletoprop40) then DeleteEntity(paletoprop40) targetname = 'paletoprop40' end
-    if targetname == nil then else
-        if oxt then
-            exports.ox_target:removeZone(targetname)
-        else
-            exports['qb-target']:RemoveZone(targetname)
-        end
+    if targetname == nil then return end
+    if oxt then
+        exports.ox_target:removeZone(targetname)
+    else
+        exports['qb-target']:RemoveZone(targetname)
     end
 end)
 
@@ -1450,11 +1497,15 @@ end)
 
 RegisterNetEvent('Polar-Paleto:Client:ResetDoors', function()
 
-    TriggerServerEvent('qb-doorlock:server:updateState', paletodoor1name, true, false, false, true, false, false)
-    TriggerServerEvent('qb-doorlock:server:updateState', paletodoor2name, true, false, false, true, false, false)
-    TriggerServerEvent('qb-doorlock:server:updateState', paletodoor3name, true, false, false, true, false, false)
-    TriggerServerEvent('qb-doorlock:server:updateState', paletodoorcard1name, true, false, false, true, false, false)
-    TriggerServerEvent('qb-doorlock:server:updateState', paletodoorcard2name, true, false, false, true, false, false)
-    TriggerServerEvent('qb-doorlock:server:updateState', Config.VaultDoorDoor, true, false, false, true, false, false)
+    doorlock(paletodoor1name, true)
+    doorlock(paletodoor2name, true)
+    doorlock(paletodoor3name, true)
+    doorlock(paletodoorcard1name, true)
+    doorlock(paletodoorcard2name, true)
+    doorlock(Config.VaultDoorDoor, true)
     
 end)
+
+function doorlock(name, what)
+    TriggerServerEvent('qb-doorlock', name, what, false, false, true, false, false)
+end

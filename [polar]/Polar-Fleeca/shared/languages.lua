@@ -8,8 +8,6 @@ local English = {
     ['nodrill'] = 'You dont have a Drill',
     ['nothermite'] = 'You dont have Thermite',
     ['nokeycard'] = 'You dont have a Keycard',
-    ['nopcitem'] = 'You dont have a Hacking Device',
-    ['novaultitem'] = 'You dont have a Blue Laptop',
 }
 local French = {
     ['cooldown'] = 'You Cannot Thermite Right Now..',
@@ -21,8 +19,6 @@ local French = {
     ['nodrill'] = 'You dont have a Drill',
     ['nothermite'] = 'You dont have Thermite',
     ['nokeycard'] = 'You dont have a Keycard',
-    ['nopcitem'] = 'You dont have a Hacking Device',
-    ['novaultitem'] = 'You dont have a Blue Laptop',
 }
 
 
