@@ -11,6 +11,15 @@ Config.img = "qb-inventory/html/images/"
 --==========================================================================
 
 
+--============== CORE ================ Change if esx
+Config.Notify = 'qb' -- or 'esx'
+if Config.Notify == 'qb' then 
+    QBCore = exports[Config.Core]:GetCoreObject()
+elseif Config.Notify == 'esx' then
+    ESX = nil
+end
+Config.CallBack =  QBCore.Functions.CreateCallback -- ESX.RegisterServerCallback
+Config.TrigCallBack = QBCore.Functions.TriggerCallback -- ESX.TriggerServerCallback
 
 
 Config.Debug = false -- debug for checks
@@ -27,7 +36,6 @@ Config.Language = 'English' -- change with languages EX. 'French'
 
 
 --============== OX ================
-Config.OxIventory = false
 Config.OxTarget = true
 
 

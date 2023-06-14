@@ -1,4 +1,8 @@
-local QBCore = exports[Config.Core]:GetCoreObject()
+if Config.Notify == 'qb' then 
+    QBCore = exports[Config.Core]:GetCoreObject()
+elseif Config.Notify == 'esx' then
+    ESX = nil
+end
 local oxinv = Config.OxIventory
 RegisterNetEvent('Polar-Paleto:Server:VaultClose', function() TriggerClientEvent('QBCore:Notify', -1, "Vault Closes in 2 Minutes", 'error') SetTimeout(60000, function() TriggerClientEvent('QBCore:Notify', -1, "Vault Closes in 1 Minutes", 'error') SetTimeout(30000, function() TriggerClientEvent('QBCore:Notify', -1, "Vault Closes in 30 Seconds", 'error') SetTimeout(20000, function() TriggerClientEvent('QBCore:Notify', -1, "Vault Closes in 10 Seconds", 'error') SetTimeout(10000, function() TriggerClientEvent('Polar-Paleto:Client:Vault', -1, false) end) end) end) end) end)
 
@@ -32,6 +36,16 @@ RegisterNetEvent('Polar-Paleto:Server:RemoveItems', function(item, amount)
     end 
 end)
 
+-- Register the 'callback' event on the server-side
+RegisterNetEvent('callback', function(callback)
+  -- Perform some logic here to determine the condition
+  local condition = true
+
+  -- Invoke the callback function on the client-side with the condition
+  callback(condition)
+end)
+
+
 local paletostartname = 'paletostart'
 local paletodoor1name = 'paletodoor1'
 local paletodoor2name = 'paletodoor2'
@@ -57,100 +71,100 @@ local paletodoorcard2 = false
 
 
 local paletoprop1 = false
-QBCore.Functions.CreateCallback('Polar-Paleto:paletoprop1', function(source, cb) cb(paletoprop1) end) 
+Config.CallBack('Polar-Paleto:paletoprop1', function(source, cb) cb(paletoprop1) end) 
 local paletoprop2 = false
-QBCore.Functions.CreateCallback('Polar-Paleto:paletoprop2', function(source, cb) cb(paletoprop2) end) 
+Config.CallBack('Polar-Paleto:paletoprop2', function(source, cb) cb(paletoprop2) end) 
 local paletoprop3 = false
-QBCore.Functions.CreateCallback('Polar-Paleto:paletoprop3', function(source, cb) cb(paletoprop3) end) 
+Config.CallBack('Polar-Paleto:paletoprop3', function(source, cb) cb(paletoprop3) end) 
 local paletoprop4 = false
-QBCore.Functions.CreateCallback('Polar-Paleto:paletoprop4', function(source, cb) cb(paletoprop4) end) 
+Config.CallBack('Polar-Paleto:paletoprop4', function(source, cb) cb(paletoprop4) end) 
 local paletoprop5 = false
-QBCore.Functions.CreateCallback('Polar-Paleto:paletoprop5', function(source, cb) cb(paletoprop5) end) 
+Config.CallBack('Polar-Paleto:paletoprop5', function(source, cb) cb(paletoprop5) end) 
 
 local paletoprop6 = false
-QBCore.Functions.CreateCallback('Polar-Paleto:paletoprop6', function(source, cb) cb(paletoprop6) end) 
+Config.CallBack('Polar-Paleto:paletoprop6', function(source, cb) cb(paletoprop6) end) 
 local paletoprop7 = false
-QBCore.Functions.CreateCallback('Polar-Paleto:paletoprop7', function(source, cb) cb(paletoprop7) end) 
+Config.CallBack('Polar-Paleto:paletoprop7', function(source, cb) cb(paletoprop7) end) 
 local paletoprop8 = false
-QBCore.Functions.CreateCallback('Polar-Paleto:paletoprop8', function(source, cb) cb(paletoprop8) end) 
+Config.CallBack('Polar-Paleto:paletoprop8', function(source, cb) cb(paletoprop8) end) 
 local paletoprop9 = false
-QBCore.Functions.CreateCallback('Polar-Paleto:paletoprop9', function(source, cb) cb(paletoprop9) end) 
+Config.CallBack('Polar-Paleto:paletoprop9', function(source, cb) cb(paletoprop9) end) 
 local paletoprop10 = false
-QBCore.Functions.CreateCallback('Polar-Paleto:paletoprop10', function(source, cb) cb(paletoprop10) end) 
+Config.CallBack('Polar-Paleto:paletoprop10', function(source, cb) cb(paletoprop10) end) 
 
 local paletoprop11 = false
-QBCore.Functions.CreateCallback('Polar-Paleto:paletoprop11', function(source, cb) cb(paletoprop11) end) 
+Config.CallBack('Polar-Paleto:paletoprop11', function(source, cb) cb(paletoprop11) end) 
 local paletoprop12 = false
-QBCore.Functions.CreateCallback('Polar-Paleto:paletoprop12', function(source, cb) cb(paletoprop12) end) 
+Config.CallBack('Polar-Paleto:paletoprop12', function(source, cb) cb(paletoprop12) end) 
 local paletoprop13 = false
-QBCore.Functions.CreateCallback('Polar-Paleto:paletoprop13', function(source, cb) cb(paletoprop13) end) 
+Config.CallBack('Polar-Paleto:paletoprop13', function(source, cb) cb(paletoprop13) end) 
 local paletoprop14 = false
-QBCore.Functions.CreateCallback('Polar-Paleto:paletoprop14', function(source, cb) cb(paletoprop14) end) 
+Config.CallBack('Polar-Paleto:paletoprop14', function(source, cb) cb(paletoprop14) end) 
 local paletoprop15 = false
-QBCore.Functions.CreateCallback('Polar-Paleto:paletoprop15', function(source, cb) cb(paletoprop15) end) 
+Config.CallBack('Polar-Paleto:paletoprop15', function(source, cb) cb(paletoprop15) end) 
 
 local paletoprop16 = false
-QBCore.Functions.CreateCallback('Polar-Paleto:paletoprop16', function(source, cb) cb(paletoprop16) end) 
+Config.CallBack('Polar-Paleto:paletoprop16', function(source, cb) cb(paletoprop16) end) 
 local paletoprop17 = false
-QBCore.Functions.CreateCallback('Polar-Paleto:paletoprop17', function(source, cb) cb(paletoprop17) end) 
+Config.CallBack('Polar-Paleto:paletoprop17', function(source, cb) cb(paletoprop17) end) 
 local paletoprop18 = false
-QBCore.Functions.CreateCallback('Polar-Paleto:paletoprop18', function(source, cb) cb(paletoprop18) end) 
+Config.CallBack('Polar-Paleto:paletoprop18', function(source, cb) cb(paletoprop18) end) 
 local paletoprop19 = false
-QBCore.Functions.CreateCallback('Polar-Paleto:paletoprop19', function(source, cb) cb(paletoprop19) end) 
+Config.CallBack('Polar-Paleto:paletoprop19', function(source, cb) cb(paletoprop19) end) 
 local paletoprop20 = false
-QBCore.Functions.CreateCallback('Polar-Paleto:paletoprop20', function(source, cb) cb(paletoprop20) end) 
+Config.CallBack('Polar-Paleto:paletoprop20', function(source, cb) cb(paletoprop20) end) 
 
 local paletoprop21 = false
-QBCore.Functions.CreateCallback('Polar-Paleto:paletoprop21', function(source, cb) cb(paletoprop21) end) 
+Config.CallBack('Polar-Paleto:paletoprop21', function(source, cb) cb(paletoprop21) end) 
 local paletoprop22 = false
-QBCore.Functions.CreateCallback('Polar-Paleto:paletoprop22', function(source, cb) cb(paletoprop22) end) 
+Config.CallBack('Polar-Paleto:paletoprop22', function(source, cb) cb(paletoprop22) end) 
 local paletoprop23 = false
-QBCore.Functions.CreateCallback('Polar-Paleto:paletoprop23', function(source, cb) cb(paletoprop23) end) 
+Config.CallBack('Polar-Paleto:paletoprop23', function(source, cb) cb(paletoprop23) end) 
 local paletoprop24 = false
-QBCore.Functions.CreateCallback('Polar-Paleto:paletoprop24', function(source, cb) cb(paletoprop24) end) 
+Config.CallBack('Polar-Paleto:paletoprop24', function(source, cb) cb(paletoprop24) end) 
 local paletoprop25 = false
-QBCore.Functions.CreateCallback('Polar-Paleto:paletoprop25', function(source, cb) cb(paletoprop25) end) 
+Config.CallBack('Polar-Paleto:paletoprop25', function(source, cb) cb(paletoprop25) end) 
 
 local paletoprop26 = false
-QBCore.Functions.CreateCallback('Polar-Paleto:paletoprop26', function(source, cb) cb(paletoprop26) end) 
+Config.CallBack('Polar-Paleto:paletoprop26', function(source, cb) cb(paletoprop26) end) 
 local paletoprop27 = false
-QBCore.Functions.CreateCallback('Polar-Paleto:paletoprop27', function(source, cb) cb(paletoprop27) end) 
+Config.CallBack('Polar-Paleto:paletoprop27', function(source, cb) cb(paletoprop27) end) 
 local paletoprop28 = false
-QBCore.Functions.CreateCallback('Polar-Paleto:paletoprop28', function(source, cb) cb(paletoprop28) end) 
+Config.CallBack('Polar-Paleto:paletoprop28', function(source, cb) cb(paletoprop28) end) 
 local paletoprop29 = false
-QBCore.Functions.CreateCallback('Polar-Paleto:paletoprop29', function(source, cb) cb(paletoprop29) end) 
+Config.CallBack('Polar-Paleto:paletoprop29', function(source, cb) cb(paletoprop29) end) 
 local paletoprop30 = false
-QBCore.Functions.CreateCallback('Polar-Paleto:paletoprop30', function(source, cb) cb(paletoprop30) end) 
+Config.CallBack('Polar-Paleto:paletoprop30', function(source, cb) cb(paletoprop30) end) 
 
 local paletoprop31 = false
-QBCore.Functions.CreateCallback('Polar-Paleto:paletoprop31', function(source, cb) cb(paletoprop31) end) 
+Config.CallBack('Polar-Paleto:paletoprop31', function(source, cb) cb(paletoprop31) end) 
 local paletoprop32 = false
-QBCore.Functions.CreateCallback('Polar-Paleto:paletoprop32', function(source, cb) cb(paletoprop32) end) 
+Config.CallBack('Polar-Paleto:paletoprop32', function(source, cb) cb(paletoprop32) end) 
 local paletoprop33 = false
-QBCore.Functions.CreateCallback('Polar-Paleto:paletoprop33', function(source, cb) cb(paletoprop33) end) 
+Config.CallBack('Polar-Paleto:paletoprop33', function(source, cb) cb(paletoprop33) end) 
 local paletoprop34 = false
-QBCore.Functions.CreateCallback('Polar-Paleto:paletoprop34', function(source, cb) cb(paletoprop34) end) 
+Config.CallBack('Polar-Paleto:paletoprop34', function(source, cb) cb(paletoprop34) end) 
 local paletoprop35 = false
-QBCore.Functions.CreateCallback('Polar-Paleto:paletoprop35', function(source, cb) cb(paletoprop35) end) 
+Config.CallBack('Polar-Paleto:paletoprop35', function(source, cb) cb(paletoprop35) end) 
 
 local paletoprop36 = false
-QBCore.Functions.CreateCallback('Polar-Paleto:paletoprop36', function(source, cb) cb(paletoprop36) end) 
+Config.CallBack('Polar-Paleto:paletoprop36', function(source, cb) cb(paletoprop36) end) 
 local paletoprop37 = false
-QBCore.Functions.CreateCallback('Polar-Paleto:paletoprop37', function(source, cb) cb(paletoprop37) end) 
+Config.CallBack('Polar-Paleto:paletoprop37', function(source, cb) cb(paletoprop37) end) 
 local paletoprop38 = false
-QBCore.Functions.CreateCallback('Polar-Paleto:paletoprop38', function(source, cb) cb(paletoprop38) end) 
+Config.CallBack('Polar-Paleto:paletoprop38', function(source, cb) cb(paletoprop38) end) 
 local paletoprop39 = false
-QBCore.Functions.CreateCallback('Polar-Paleto:paletoprop39', function(source, cb) cb(paletoprop39) end) 
+Config.CallBack('Polar-Paleto:paletoprop39', function(source, cb) cb(paletoprop39) end) 
 local paletoprop40 = false
-QBCore.Functions.CreateCallback('Polar-Paleto:paletoprop40', function(source, cb) cb(paletoprop40) end) 
+Config.CallBack('Polar-Paleto:paletoprop40', function(source, cb) cb(paletoprop40) end) 
 
 local paletodrill1 = true
-QBCore.Functions.CreateCallback('Polar-Paleto:paletodrill1', function(source, cb) cb(paletodrill1) end) 
+Config.CallBack('Polar-Paleto:paletodrill1', function(source, cb) cb(paletodrill1) end) 
 local paletodrill2 = true
-QBCore.Functions.CreateCallback('Polar-Paleto:paletodrill2', function(source, cb) cb(paletodrill2) end) 
+Config.CallBack('Polar-Paleto:paletodrill2', function(source, cb) cb(paletodrill2) end) 
 
 local paletovault = true
-QBCore.Functions.CreateCallback('Polar-Paleto:VaultCheck', function(source, cb)  cb(paletovault) end) 
+Config.CallBack('Polar-Paleto:VaultCheck', function(source, cb)  cb(paletovault) end) 
 
 RegisterNetEvent('Polar-Paleto:Server:StopInteract', function(door)
     if door == paletostartname then paletostart = false end
@@ -284,17 +298,17 @@ RegisterNetEvent('Polar-Paleto:Server:StartInteract', function(door)
 end)
 
 
-QBCore.Functions.CreateCallback('Polar-Paleto:DoorCheckstart', function(source, cb) cb(paletostart) end) 
+Config.CallBack('Polar-Paleto:DoorCheckstart', function(source, cb) cb(paletostart) end) 
 
-QBCore.Functions.CreateCallback('Polar-Paleto:Door1', function(source, cb) cb(paletodoor1) end) 
+Config.CallBack('Polar-Paleto:Door1', function(source, cb) cb(paletodoor1) end) 
 
-QBCore.Functions.CreateCallback('Polar-Paleto:Door2', function(source, cb)  cb(paletodoor2) end) 
+Config.CallBack('Polar-Paleto:Door2', function(source, cb)  cb(paletodoor2) end) 
 
-QBCore.Functions.CreateCallback('Polar-Paleto:Door3', function(source, cb) cb(paletodoor3) end) 
+Config.CallBack('Polar-Paleto:Door3', function(source, cb) cb(paletodoor3) end) 
 
-QBCore.Functions.CreateCallback('Polar-Paleto:Doorcard1', function(source, cb) cb(paletodoorcard1) end) 
+Config.CallBack('Polar-Paleto:Doorcard1', function(source, cb) cb(paletodoorcard1) end) 
 
-QBCore.Functions.CreateCallback('Polar-Paleto:Doorcard2', function(source, cb)  cb(paletodoorcard2) end) 
+Config.CallBack('Polar-Paleto:Doorcard2', function(source, cb)  cb(paletodoorcard2) end) 
 
 local time = (Config.CooldownTime * 60000) RegisterNetEvent('Polar-Paleto:Server:StartCooldown', function(door) SetTimeout(time, function() reset() end) end)
 

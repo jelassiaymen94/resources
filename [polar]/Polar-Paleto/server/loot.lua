@@ -1,4 +1,8 @@
-local QBCore = exports[Config.Core]:GetCoreObject()
+if Config.Notify == 'qb' then 
+    QBCore = exports[Config.Core]:GetCoreObject()
+elseif Config.Notify == 'esx' then
+    ESX = nil
+end
 
 local item = nil
 local item2 = nil
@@ -20,13 +24,8 @@ local diamondtable = {
 
 }
 
-RegisterNetEvent('', function()
-    local src = source local Player = QBCore.Functions.GetPlayer(src)
 
-    local chance = math.random(min, max)
-    if Player.Functions.AddItem(item, chance) then TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[item], "add", chance) end
-  
-end)
+RegisterNetEvent('Polar-Paleto:Server:RemoveItems', function(item, amount) local src = source local Player = QBCore.Functions.GetPlayer(src) Wait(150) if amount == nil then Player.Functions.AddItem(item, 1) TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[item], "add", 1) else Player.Functions.AddItem(item, amount) TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[item], "add", amount) end end)
 
 function givet(item, min, max)
     local src = source local Player = QBCore.Functions.GetPlayer(src)
@@ -39,7 +38,7 @@ function give(item, amount)
     local src = source local Player = QBCore.Functions.GetPlayer(src)
     Wait(150)
     if amount == nil then
-    Player.Functions.AddItem(item, 1) TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[item], "add", 1)
+        Player.Functions.AddItem(item, 1) TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[item], "add", 1)
     else
         Player.Functions.AddItem(item, amount) TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[item], "add", amount)
     end

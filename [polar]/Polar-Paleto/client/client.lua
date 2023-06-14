@@ -1,5 +1,8 @@
- local QBCore = exports[Config.Core]:GetCoreObject()
-
+if Config.Notify == 'qb' then 
+    QBCore = exports[Config.Core]:GetCoreObject()
+elseif Config.Notify == 'esx' then
+    ESX = nil
+end
 local oxt = Config.OxTarget -- ox target
 local oxdoorname = nil
 
@@ -66,23 +69,20 @@ RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function() Wait(100) if Config.
 RegisterNetEvent('police:SetCopCount', function(amount) CurrentCops = amount end)
 RegisterNetEvent("Polar-Paleto:Client:ThermitePtfx", function(coords) if not HasNamedPtfxAssetLoaded("scr_ornate_heist") then  RequestNamedPtfxAsset("scr_ornate_heist") end while not HasNamedPtfxAssetLoaded("scr_ornate_heist") do Wait(0) end SetPtfxAssetNextCall("scr_ornate_heist") local effect = StartParticleFxLoopedAtCoord("scr_heist_ornate_thermal_burn", coords, 0.0, 0.0, 0.0, 1.0, false, false, false, false)  Wait(thermitetime) StopParticleFxLooped(effect, 0) end)
 
-
+local callback = Config.TrigCallBack -- QBCore.Functions.TriggerCallback ESX.TriggerServerCallback
 
 RegisterNetEvent('Polar-Paleto:client:start', function()  pp = vector4(-109.43, 6483.32, 31.47, 224.11) door = paletostartname coords = vector3(-109.46, 6484.36, 31.27)
     if CurrentCops >= Config.RequiredCops then
-    QBCore.Functions.TriggerCallback('QBCore:HasItem', function(result) if result then
-    QBCore.Functions.TriggerCallback('Polar-Paleto:DoorCheckstart', function(result) if result then
+    if playeritem(thermiteitem) then
+        callback('Polar-Paleto:DoorCheckstart', function(result) if result then
     TriggerServerEvent('Polar-Paleto:Server:StopInteract', door)
     Wait(50)
         TriggerEvent('Polar-Paleto:client:ThermiteStart', pp, door, coords)
-    
-    
     else
-        QBCore.Functions.Notify(text('cooldown'), "error")
+        notify(text('cooldown'), "error")
     end end)
-    else QBCore.Functions.Notify(text('nothermite'), "error") end 
-    end,  {thermiteitem})
-    else QBCore.Functions.Notify(text('nopolice'), "error") end
+    else notify(text('nothermite'), "error") end
+    else notify(text('nopolice'), "error") end
 end)
 
 RegisterNetEvent('Polar-Paleto:client:ThermiteStart', function(pp, door, coords)
@@ -111,7 +111,7 @@ RegisterNetEvent('Polar-Paleto:client:ThermiteStart', function(pp, door, coords)
                 function() -- failure
                     TriggerServerEvent('Polar-Paleto:Server:StartInteract', door)
                     LocalPlayer.state:set('inv_busy', false, true)
-                    QBCore.Functions.Notify(text('thermitefail'), "error") 
+                    notify(text('thermitefail'), "error") 
                 end)
             else
                 exports[thermiteexport]:Thermite(function(success) 
@@ -126,7 +126,7 @@ RegisterNetEvent('Polar-Paleto:client:ThermiteStart', function(pp, door, coords)
                 else 
                     TriggerServerEvent('Polar-Paleto:Server:StartInteract', door)
                     LocalPlayer.state:set('inv_busy', false, true)
-                    QBCore.Functions.Notify(text('thermitefail'), "error") end
+                    notify(text('thermitefail'), "error") end
             end, thermiteinfo.time, thermiteinfo.squares, thermiteinfo.errors)
         end
     end
@@ -138,7 +138,7 @@ end)
 
 RegisterNetEvent('Polar-Paleto:client:Thermite', function(pp, door, coords)
     if hi then PlantThermite(pp, door) ThermiteEffect(door, coords) else
-    QBCore.Functions.TriggerCallback('QBCore:HasItem', function(result) if result then 
+        if playeritem(thermiteitem) then
     TriggerServerEvent('Polar-Paleto:Server:StopInteract', door)
     if math.random(1, 100) <= Config.FingerPrintPercent and not gloves() then TriggerServerEvent("evidence:server:CreateFingerDrop", GetEntityCoords(PlayerPedId())) end PlantThermite(pp, door)
     if memgame then 
@@ -149,19 +149,18 @@ RegisterNetEvent('Polar-Paleto:client:Thermite', function(pp, door, coords)
         end,
         function() -- failure
             TriggerServerEvent('Polar-Paleto:Server:StartInteract', door) 
-            QBCore.Functions.Notify(text('thermitefail'), "error") 
+            notify(text('thermitefail'), "error") 
         end)
     else
     exports[thermiteexport]:Thermite(function(success)
     if success then TriggerServerEvent('Polar-Paleto:Server:TargetRemove', door) ThermiteEffect(door, coords)
     doorlock(door, false)
     else TriggerServerEvent('Polar-Paleto:Server:StartInteract', door) 
-        QBCore.Functions.Notify(text('thermitefail'), "error") end
+        notify(text('thermitefail'), "error") end
     end, thermiteinfo.time, thermiteinfo.squares, thermiteinfo.errors) -- Time, Gridsize (5, 6, 7, 8, 9, 10), IncorrectBlocks
     end
-    else 
-        QBCore.Functions.Notify(text('nothermite'), "error")
-    end end, {thermiteitem}) end
+    else notify(text('nothermite'), "error") end
+    end
 end)
 function ThermiteEffect(door, coords)
     if door == 'paletostart' then CallPolice() end
@@ -628,7 +627,7 @@ end)
 
 
 RegisterNetEvent('Polar-Paleto:Client:HackComputer', function(data)
-    QBCore.Functions.TriggerCallback('QBCore:HasItem', function(result) if result then
+    if playeritem(computeritem) then
     local door = data.door
     TriggerServerEvent('Polar-Paleto:Server:StopInteract', door) 
     local chance=math.random(1,100) 
@@ -648,8 +647,7 @@ RegisterNetEvent('Polar-Paleto:Client:HackComputer', function(data)
         TriggerServerEvent('Polar-Paleto:Server:StartInteract', door) 
     elseif result == -1 then end
     end) 
-    else QBCore.Functions.Notify(text('nopcitem'), "error") end 
-    end,  {computeritem})
+    else notify(text('nopcitem'), "error") end
 end)
 
 
@@ -660,107 +658,87 @@ end)
 
 
 RegisterNetEvent('Polar-Paleto:client:keycard', function(door, position, rot, item) TriggerServerEvent('Polar-Paleto:Server:StopInteract', door) 
-    QBCore.Functions.TriggerCallback('QBCore:HasItem', function(result) if result then 
+    if playeritem(carditem) then
     TriggerServerEvent('Polar-Paleto:Server:TargetRemove', door) 
     local chance = math.random(1,100) local pos = GetEntityCoords(PlayerPedId()) local animDict = "anim@heists@keycard@" loadAnimDict(animDict) local prop = 'vw_prop_vw_key_card_01a' loadModel(prop) local prop2 =  CreateObject(prop, pos.x, pos.y, pos.z + 0.2,  true,  true, true)
     FreezeEntityPosition(PlayerPedId(), true) AttachEntityToEntity(prop2, ped, GetPedBoneIndex(PlayerPedId(), 28422), 0, 0, 0, 0, 0, 180.0, true, true, false, true, 1, true) SetEntityHeading(PlayerPedId(), position.w) SetEntityCoords(PlayerPedId(), vector3(position.x, position.y,position.z-1)) if chance <= carditemchance then TriggerServerEvent('Polar-Paleto:Server:RemoveItem', item, 1) end 
-    TaskPlayAnim(PlayerPedId(), animDict, "enter", 5.0, 1.0, -1, 16, 0, 0, 0, 0) Wait(1000) TaskPlayAnim(PlayerPedId(), animDict, "idle_a", 5.0, 1.0, -1, 16, 0, 0, 0, 0) Wait(5000) TaskPlayAnim(PlayerPedId(), animDict, "exit", 5.0, 1.0, -1, 16, 0, 0, 0, 0) Wait(1000) StopAnimTask(PlayerPedId(), animDict, "exit", 16.0)  DeleteEntity(prop2) FreezeEntityPosition(PlayerPedId(), false) doorlock(door, false) QBCore.Functions.Notify(text('doorunlock'), "success", 2500)
-    else  QBCore.Functions.Notify(text('nokeycard'), "error") end
-    end, {carditem})
+    TaskPlayAnim(PlayerPedId(), animDict, "enter", 5.0, 1.0, -1, 16, 0, 0, 0, 0) Wait(1000) TaskPlayAnim(PlayerPedId(), animDict, "idle_a", 5.0, 1.0, -1, 16, 0, 0, 0, 0) Wait(5000) TaskPlayAnim(PlayerPedId(), animDict, "exit", 5.0, 1.0, -1, 16, 0, 0, 0, 0) Wait(1000) StopAnimTask(PlayerPedId(), animDict, "exit", 16.0)  DeleteEntity(prop2) FreezeEntityPosition(PlayerPedId(), false) doorlock(door, false) notify(text('doorunlock'), "success", 2500)
+    else  notify(text('nokeycard'), "error") end
 end)
 
 
-
-
-function hack(door)
-    LocalPlayer.state:set('inv_busy', true, true) 
-    TriggerServerEvent('Polar-Paleto:Server:StopInteract', door)
-    local ped = PlayerPedId()
-    local loc = nil local location = nil
-    if door ==  vaultdoorname then  
-        loc = Config.VaultDoorAnimation
-       
-    elseif door == Config.FingerPrintDoorDoor then
-        loc = Config.FingerPrintDoor
-       
-    end
-    SetEntityHeading(ped, loc.w)
+function next(door, loc)
     SetEntityCoords(ped, vec3(loc.x, loc.y, loc.z-1))
-    QBCore.Functions.Progressbar("door", "Connecting to Door ..", math.random(5000, 7500), false, true, {
-    disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true,
-    }, { animDict = "anim@gangops@facility@servers@", anim = "hotwire", flags = 16,
-    }, {}, {}, function() StopAnimTask(ped, "anim@gangops@facility@servers@", "hotwire", 1.0)
-        SetEntityCoords(ped, vec3(loc.x, loc.y, loc.z-1))
-        local animDict = 'anim@heists@ornate_bank@hack'
-        loadAnimDict(animDict)
-        loadModel('hei_prop_hst_laptop')
-        loadModel('hei_p_m_bag_var22_arm_s')
-        local ped = PlayerPedId()
-        local targetPosition, targetRotation = (vec3(GetEntityCoords(ped))), vec3(GetEntityRotation(ped))
-        SetPedComponentVariation(ped, 5, Config.HideBagID, 1, 1)
-        SetEntityHeading(ped, loc.w)
-        local animPos = GetAnimInitialOffsetPosition(animDict, 'hack_enter', loc.x, loc.y, loc.z-0.445, loc.x, loc.y, loc.z, 0, 2)
-        local animPos2 = GetAnimInitialOffsetPosition(animDict, 'hack_loop', loc.x, loc.y, loc.z-0.445, loc.x, loc.y, loc.z, 0, 2)
-        local animPos3 = GetAnimInitialOffsetPosition(animDict, 'hack_exit', loc.x, loc.y, loc.z-0.445, loc.x, loc.y, loc.z, 0, 2)
-    
-        FreezeEntityPosition(ped, true)
-        local netScene = NetworkCreateSynchronisedScene(animPos, targetRotation, 2, false, false, 1065353216, 0, 1.3)
-        local bag = CreateObject(GetHashKey('hei_p_m_bag_var22_arm_s'), targetPosition, 1, 1, 0)
-        local laptop = CreateObject(GetHashKey('hei_prop_hst_laptop'), targetPosition, 1, 1, 0)
-    
-        NetworkAddPedToSynchronisedScene(ped, netScene, animDict, 'hack_enter', 1.5, -4.0, 1, 16, 1148846080, 0)
-        NetworkAddEntityToSynchronisedScene(bag, netScene, animDict, 'hack_enter_bag', 4.0, -8.0, 1)
-        NetworkAddEntityToSynchronisedScene(laptop, netScene, animDict, 'hack_enter_laptop', 4.0, -8.0, 1)
-    
-        local netScene2 = NetworkCreateSynchronisedScene(animPos2, targetRotation, 2, false, true, 1065353216, 0, 1.3)
-        NetworkAddPedToSynchronisedScene(ped, netScene2, animDict, 'hack_loop', 1.5, -4.0, 1, 16, 1148846080, 0)
-        NetworkAddEntityToSynchronisedScene(bag, netScene2, animDict, 'hack_loop_bag', 4.0, -8.0, 1)
-        NetworkAddEntityToSynchronisedScene(laptop, netScene2, animDict, 'hack_loop_laptop', 4.0, -8.0, 1)
-    
-        local netScene3 = NetworkCreateSynchronisedScene(animPos3, targetRotation, 2, false, false, 1065353216, 0, 1.3)
-        NetworkAddPedToSynchronisedScene(ped, netScene3, animDict, 'hack_exit', 1.5, -4.0, 1, 16, 1148846080, 0)
-        NetworkAddEntityToSynchronisedScene(bag, netScene3, animDict, 'hack_exit_bag', 4.0, -8.0, 1)
-        NetworkAddEntityToSynchronisedScene(laptop, netScene3, animDict, 'hack_exit_laptop', 4.0, -8.0, 1)
-    
-        Wait(200)
-        NetworkStartSynchronisedScene(netScene)
-        Wait(6300)
-        NetworkStartSynchronisedScene(netScene2)
-        Wait(2000)
-       -- if door == vaultdoorname then
-            LocalPlayer.state:set('inv_busy', true, true) 
-        exports[hackname]:OpenHackingGame(10, 5, 3, function(Success) 
-            if Success then
-                local chance = math.random(1,100)
-                if chance <= vaultitemchance then TriggerServerEvent('Polar-Paleto:Server:RemoveItem', vaultitem, 1) end
-                vaultdone()
-                Wait(4000)
-                NetworkStartSynchronisedScene(netScene3)
-                Wait(4500)
-                NetworkStopSynchronisedScene(netScene3)
-                DeleteObject(bag)
-                SetPedComponentVariation(ped, 5, Config.BagUseID, 0, 1)
-                DeleteObject(laptop)
-                FreezeEntityPosition(ped, false)
-                LocalPlayer.state:set('inv_busy', false, true) 
-                QBCore.Functions.Notify(text('vaultopen'), "success", 2500)
-                TriggerServerEvent('Polar-Paleto:Server:TargetRemove', door) 
-            else
-                local chance = math.random(1,100)
-                if chance <= vaultitemchance then TriggerServerEvent('Polar-Paleto:Server:RemoveItem', vaultitem, 1) end
-                Wait(4000)
-                NetworkStartSynchronisedScene(netScene3)
-                Wait(4500)
-                NetworkStopSynchronisedScene(netScene3)
-                DeleteObject(bag)
-                SetPedComponentVariation(ped, 5, Config.BagUseID, 0, 1)
-                DeleteObject(laptop)
-                FreezeEntityPosition(ped, false)
-                LocalPlayer.state:set('inv_busy', false, true) 
-                TriggerServerEvent('Polar-Paleto:Server:StartInteract', door)
-            end
-        end)
-     --[[  
+    local animDict = 'anim@heists@ornate_bank@hack'
+    loadAnimDict(animDict)
+    loadModel('hei_prop_hst_laptop')
+    loadModel('hei_p_m_bag_var22_arm_s')
+    local ped = PlayerPedId()
+    local targetPosition, targetRotation = (vec3(GetEntityCoords(ped))), vec3(GetEntityRotation(ped))
+    SetPedComponentVariation(ped, 5, Config.HideBagID, 1, 1)
+    SetEntityHeading(ped, loc.w)
+    local animPos = GetAnimInitialOffsetPosition(animDict, 'hack_enter', loc.x, loc.y, loc.z-0.445, loc.x, loc.y, loc.z, 0, 2)
+    local animPos2 = GetAnimInitialOffsetPosition(animDict, 'hack_loop', loc.x, loc.y, loc.z-0.445, loc.x, loc.y, loc.z, 0, 2)
+    local animPos3 = GetAnimInitialOffsetPosition(animDict, 'hack_exit', loc.x, loc.y, loc.z-0.445, loc.x, loc.y, loc.z, 0, 2)
+
+    FreezeEntityPosition(ped, true)
+    local netScene = NetworkCreateSynchronisedScene(animPos, targetRotation, 2, false, false, 1065353216, 0, 1.3)
+    local bag = CreateObject(GetHashKey('hei_p_m_bag_var22_arm_s'), targetPosition, 1, 1, 0)
+    local laptop = CreateObject(GetHashKey('hei_prop_hst_laptop'), targetPosition, 1, 1, 0)
+
+    NetworkAddPedToSynchronisedScene(ped, netScene, animDict, 'hack_enter', 1.5, -4.0, 1, 16, 1148846080, 0)
+    NetworkAddEntityToSynchronisedScene(bag, netScene, animDict, 'hack_enter_bag', 4.0, -8.0, 1)
+    NetworkAddEntityToSynchronisedScene(laptop, netScene, animDict, 'hack_enter_laptop', 4.0, -8.0, 1)
+
+    local netScene2 = NetworkCreateSynchronisedScene(animPos2, targetRotation, 2, false, true, 1065353216, 0, 1.3)
+    NetworkAddPedToSynchronisedScene(ped, netScene2, animDict, 'hack_loop', 1.5, -4.0, 1, 16, 1148846080, 0)
+    NetworkAddEntityToSynchronisedScene(bag, netScene2, animDict, 'hack_loop_bag', 4.0, -8.0, 1)
+    NetworkAddEntityToSynchronisedScene(laptop, netScene2, animDict, 'hack_loop_laptop', 4.0, -8.0, 1)
+
+    local netScene3 = NetworkCreateSynchronisedScene(animPos3, targetRotation, 2, false, false, 1065353216, 0, 1.3)
+    NetworkAddPedToSynchronisedScene(ped, netScene3, animDict, 'hack_exit', 1.5, -4.0, 1, 16, 1148846080, 0)
+    NetworkAddEntityToSynchronisedScene(bag, netScene3, animDict, 'hack_exit_bag', 4.0, -8.0, 1)
+    NetworkAddEntityToSynchronisedScene(laptop, netScene3, animDict, 'hack_exit_laptop', 4.0, -8.0, 1)
+
+    Wait(200)
+    NetworkStartSynchronisedScene(netScene)
+    Wait(6300)
+    NetworkStartSynchronisedScene(netScene2)
+    Wait(2000)
+   -- if door == vaultdoorname then
+        LocalPlayer.state:set('inv_busy', true, true) 
+    exports[hackname]:OpenHackingGame(10, 5, 3, function(Success) 
+        if Success then
+            local chance = math.random(1,100)
+            if chance <= vaultitemchance then TriggerServerEvent('Polar-Paleto:Server:RemoveItem', vaultitem, 1) end
+            vaultdone()
+            Wait(4000)
+            NetworkStartSynchronisedScene(netScene3)
+            Wait(4500)
+            NetworkStopSynchronisedScene(netScene3)
+            DeleteObject(bag)
+            SetPedComponentVariation(ped, 5, Config.BagUseID, 0, 1)
+            DeleteObject(laptop)
+            FreezeEntityPosition(ped, false)
+            LocalPlayer.state:set('inv_busy', false, true) 
+            notify(text('vaultopen'), "success", 2500)
+            TriggerServerEvent('Polar-Paleto:Server:TargetRemove', door) 
+        else
+            local chance = math.random(1,100)
+            if chance <= vaultitemchance then TriggerServerEvent('Polar-Paleto:Server:RemoveItem', vaultitem, 1) end
+            Wait(4000)
+            NetworkStartSynchronisedScene(netScene3)
+            Wait(4500)
+            NetworkStopSynchronisedScene(netScene3)
+            DeleteObject(bag)
+            SetPedComponentVariation(ped, 5, Config.BagUseID, 0, 1)
+            DeleteObject(laptop)
+            FreezeEntityPosition(ped, false)
+            LocalPlayer.state:set('inv_busy', false, true) 
+            TriggerServerEvent('Polar-Paleto:Server:StartInteract', door)
+        end
+    end)
+      --[[
         elseif door == fingerprintdoor then
      
             LocalPlayer.state:set('inv_busy', true, true) 
@@ -778,7 +756,7 @@ function hack(door)
             DeleteObject(laptop)
             FreezeEntityPosition(ped, false)
             LocalPlayer.state:set('inv_busy', false, true) 
-            QBCore.Functions.Notify(text('doorunlock'), "success", 2500)
+            notify(text('doorunlock'), "success", 2500)
             TriggerServerEvent('Polar-Paleto:Server:TargetRemove', door) 
         elseif outcome == false then -- fail
             local chance = math.random(1,100)
@@ -796,39 +774,61 @@ function hack(door)
         end end)
         end ]]
        
+end
+function hack(door)
+    LocalPlayer.state:set('inv_busy', true, true) 
+    TriggerServerEvent('Polar-Paleto:Server:StopInteract', door)
+    local ped = PlayerPedId()
+    local loc = nil local location = nil
+    if door ==  vaultdoorname then  
+        loc = Config.VaultDoorAnimation
+       
+    elseif door == Config.FingerPrintDoorDoor then
+        loc = Config.FingerPrintDoor
+       
+    end
+    SetEntityHeading(ped, loc.w)
+    SetEntityCoords(ped, vec3(loc.x, loc.y, loc.z-1))
+    if Config.Notify == 'esx' then
+        next(door, loc)
+    else
+    QBCore.Functions.Progressbar("door", "Connecting to Door ..", math.random(5000, 7500), false, true, {
+    disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true,
+    }, { animDict = "anim@gangops@facility@servers@", anim = "hotwire", flags = 16,
+    }, {}, {}, function() StopAnimTask(ped, "anim@gangops@facility@servers@", "hotwire", 1.0)
+        next(door, loc)
     end, function() StopAnimTask(ped, "anim@gangops@facility@servers@", "hotwire", 1.0)
         TriggerServerEvent('Polar-Paleto:Server:StartInteract', door)
         LocalPlayer.state:set('inv_busy', false, true) 
     end)
+    end
 end
 
 RegisterNetEvent('Polar-Paleto:client:DrillStart', function(drillpos, drillrot, door)
-    QBCore.Functions.TriggerCallback('QBCore:HasItem', function(result) if result then 
+    if playeritem(drillitem) then
     SetPedComponentVariation(ped, 5, Config.HideBagID, 1, 1)
     TriggerServerEvent('Polar-Paleto:Server:StopInteract', door)
     drill(drillpos, drillrot, drillitem, door)
-    else  QBCore.Functions.Notify(text('nodrill'), "error") end
-    end, {drillitem})
+    else  notify(text('nodrill'), "error") end
 end)
 
 RegisterNetEvent('Polar-Paleto:Client:Drill', function(data)
-    QBCore.Functions.TriggerCallback('Polar-Paleto:' .. data.door .. '', function(result) if result then 
+    callback('Polar-Paleto:' .. data.door .. '', function(result) if result then 
     TriggerEvent('Polar-Paleto:client:DrillStart', data.coords, vector3(0.0, 0.0, data.head), data.door)
     else
-        QBCore.Functions.Notify(text('sometingelse'), "error")
+        notify(text('sometingelse'), "error")
     end end)
 end)
 
 function vaultdone() TriggerServerEvent('Polar-Paleto:Server:Vault') end
 RegisterNetEvent('Polar-Paleto:Client:VaultHack', function() 
-    QBCore.Functions.TriggerCallback('QBCore:HasItem', function(result) if result then
-    QBCore.Functions.TriggerCallback('Polar-Paleto:VaultCheck', function(result) if result then 
+    if playeritem(vaultitem) then
+    callback('Polar-Paleto:VaultCheck', function(result) if result then 
         hack(vaultdoorname)
     else
-        QBCore.Functions.Notify(text('sometingelse'), "error")
+        notify(text('sometingelse'), "error")
     end end)
-    else QBCore.Functions.Notify(text('novaultitem'), "error") end 
-    end,  {vaultitem})
+    else notify(text('novaultitem'), "error") end
 end)
 
 
@@ -960,9 +960,9 @@ end)
 
 
 --- Thermites
-RegisterNetEvent('Polar-Paleto:Client:Door1', function() pp = vec4(Config.Door1Thermite.x, Config.Door1Thermite.y, Config.Door1Thermite.z + 0.2, Config.Door1Thermite.w) door = paletodoor1name coords =  Config.Door1Pfx QBCore.Functions.TriggerCallback('Polar-Paleto:Door1', function(result) if result then TriggerEvent('Polar-Paleto:client:Thermite', pp, door, coords) else  QBCore.Functions.Notify(text('sometingelse'), "error") end end) end)
-RegisterNetEvent('Polar-Paleto:Client:Door2', function() pp = vec4(Config.Door2Thermite.x, Config.Door2Thermite.y, Config.Door2Thermite.z + 0.2, Config.Door2Thermite.w) door = paletodoor2name coords =  Config.Door2Pfx QBCore.Functions.TriggerCallback('Polar-Paleto:Door2', function(result) if result then TriggerEvent('Polar-Paleto:client:Thermite', pp, door, coords) else  QBCore.Functions.Notify(text('sometingelse'), "error") end end) end)
-RegisterNetEvent('Polar-Paleto:Client:Door3', function() pp = vec4(Config.Door3Thermite.x, Config.Door3Thermite.y, Config.Door3Thermite.z + 0.2, Config.Door3Thermite.w) door = paletodoor3name coords =  Config.Door3Pfx QBCore.Functions.TriggerCallback('Polar-Paleto:Door3', function(result) if result then TriggerEvent('Polar-Paleto:client:Thermite', pp, door, coords) else  QBCore.Functions.Notify(text('sometingelse'), "error") end end) end)
+RegisterNetEvent('Polar-Paleto:Client:Door1', function() pp = vec4(Config.Door1Thermite.x, Config.Door1Thermite.y, Config.Door1Thermite.z + 0.2, Config.Door1Thermite.w) door = paletodoor1name coords =  Config.Door1Pfx callback('Polar-Paleto:Door1', function(result) if result then TriggerEvent('Polar-Paleto:client:Thermite', pp, door, coords) else  notify(text('sometingelse'), "error") end end) end)
+RegisterNetEvent('Polar-Paleto:Client:Door2', function() pp = vec4(Config.Door2Thermite.x, Config.Door2Thermite.y, Config.Door2Thermite.z + 0.2, Config.Door2Thermite.w) door = paletodoor2name coords =  Config.Door2Pfx callback('Polar-Paleto:Door2', function(result) if result then TriggerEvent('Polar-Paleto:client:Thermite', pp, door, coords) else  notify(text('sometingelse'), "error") end end) end)
+RegisterNetEvent('Polar-Paleto:Client:Door3', function() pp = vec4(Config.Door3Thermite.x, Config.Door3Thermite.y, Config.Door3Thermite.z + 0.2, Config.Door3Thermite.w) door = paletodoor3name coords =  Config.Door3Pfx callback('Polar-Paleto:Door3', function(result) if result then TriggerEvent('Polar-Paleto:client:Thermite', pp, door, coords) else  notify(text('sometingelse'), "error") end end) end)
 ----- CARD INSERT
 RegisterNetEvent('Polar-Paleto:Client:doorcard1', function() item = carditem  rot = vector3(0.0, 0.0, 37.0) position = Config.doorcard1swipe door = paletodoorcard1name TriggerEvent('Polar-Paleto:client:keycard', door, position, rot, item) end)
 RegisterNetEvent('Polar-Paleto:Client:doorcard2', function() item = carditem  rot = vector3(0.0, 0.0, 37.0) position = Config.doorcard2swipe door = paletodoorcard2name TriggerEvent('Polar-Paleto:client:keycard', door, position, rot, item) end)
@@ -1366,7 +1366,6 @@ RegisterNetEvent('Polar-Paleto:Client:TargetRemove', function(door)
 
         Wait(1)
         if door == nil then return end
-        print(door)
         if oxdoorname == nil then return end
         exports.ox_target:removeZone(oxdoorname)
         oxdoorname = nil
@@ -1509,3 +1508,18 @@ end)
 function doorlock(name, what)
     TriggerServerEvent('qb-doorlock', name, what, false, false, true, false, false)
 end
+
+function playeritem(item, amount)
+    return exports['qb-inventory']:HasItem(item, amount)
+end
+  
+function notify(what, color)
+    if Config.Notify == 'qb' then
+        QBCore.Functions.Notify(what, color)
+    elseif Config.Notify == 'esx' then
+        if color == 'error' then colo = 'r' elseif color == 'success' then colo = 'g' end
+        ESX.ShowNotification(what, true, true, colo)
+    end
+end
+ 
+  

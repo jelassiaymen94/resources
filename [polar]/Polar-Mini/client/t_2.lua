@@ -11,7 +11,6 @@ function switch()
     if mode > 3 then mode = 1 end
     else print('you need a weapon that has a firing switch') end
 end
-
 AddEventHandler('CEventGunShot', function() 
     counter = counter + 1
     weapon = GetWeapontypeGroup(GetSelectedPedWeapon(PlayerPedId()))
@@ -25,10 +24,9 @@ AddEventHandler('CEventGunShot', function()
         end 
     end
 end)
-
 function pause()
-    while true do
-    if IsDisabledControlJustReleased(0,24) then weapon = nil counter = 0 break end
+    while counter > 0 do
+    if IsDisabledControlJustReleased(0,24) then weapon = nil counter = 0 end
     DisablePlayerFiring(PlayerPedId(), true)
     Wait(1)
     end
