@@ -1,13 +1,6 @@
-# qb-garages
+Polar-Garages
 
 
-
-**ATENTION: THIS SCRIPT USES THE LATEST VERSION OF THE [RADIALMENU](https://github.com/qbcore-framework/qb-radialmenu) AND [QB-CORE](https://github.com/qbcore-framework/qb-core)**
-
-This is a qb-garages script that uses the radialmenu to retrieve and park vehicles.
-Almost everything is fully customizable to the last bit!
-
-**For screenshots scroll down**
 
 ## Dependencies
  - [qb-radialmenu](https://github.com/qbcore-framework/qb-radialmenu)
@@ -32,18 +25,6 @@ Drag 'n Drop replace for qb-garages.
 * Custom DrawText
 * Water Garages
 * Aircraft Garages
-
-## Screenshots
-
-![image](https://user-images.githubusercontent.com/25738474/161191185-5bfa6805-1e89-44ef-902a-11f60ed68ea8.png)
-
-![image](https://user-images.githubusercontent.com/25738474/161191275-2ca930fe-5583-4caa-a159-0c239b404abe.png)
-
-![image](https://user-images.githubusercontent.com/25738474/161191330-9270f95d-182f-4709-988a-ef13f0723ba5.png)
-
-![image](https://user-images.githubusercontent.com/25738474/161191354-057ca8d9-ee6d-4f92-8dd7-657d3bf26274.png)
-
-## Config Example
 
 ```
 Everything that says optional can be omitted.

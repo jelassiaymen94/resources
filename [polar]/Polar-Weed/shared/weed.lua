@@ -9,6 +9,8 @@ Config.Inventory = 'qb-inventory'
 Config.Skillbar = 'qb-skillbar'
 Config.img = "qb-inventory/html/images/"
 --==========================================================================
+Config.Notify = 'qb'
+
 
 Config.Debug = false -- debug for checks
 
@@ -31,7 +33,7 @@ Config.Distance = 7.0
 
 --------- GENERAL ----------
 Config.RestartPlantRemoval = true -- remove dead plants on restart
-Config.TimeToGrow = math.random(180, 240) -- Time in minutes for a plant to grow from 0 to 100
+Config.TimeToGrow = math.random(1, 10) -- Time in minutes for a plant to grow from 0 to 100
 Config.Updates = 10 -- Time in minutes to update everything
 Config.HealthRemoved = {2, 6} -- Min/Max Amount of health decay when the plant is below the above thresholds for water and nutrition
 Config.PlaceTime = 2000 -- progressbar time to place plant
@@ -166,7 +168,7 @@ Config.TrimItem9 = 'crophigh'
 Config.TrimItem10 = 'crophigh'
 Config.TrimItemAmount = 1
 
-Config.UseProps = false
+Config.UseProps = true
 Config.TableHeight = -40
 Config.Floor = -39.16
 

@@ -11,7 +11,7 @@ RegisterNetEvent('Polar-Sub:Client:W', function()
 	local currentCamMode = GetFollowPedCamViewMode()
     using = true
   
-        local cameraOffset = vector3(0.0, 1.0, 0.7) -- adjust this value to change the distance
+        local cameraOffset = vector3(0.0, 1.0, 0.2) -- adjust this value to change the distance
         local cameraPos = GetOffsetFromEntityInWorldCoords(PlayerPedId(), cameraOffset)
 
      

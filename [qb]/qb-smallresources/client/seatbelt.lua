@@ -194,11 +194,11 @@ CreateThread(function()
                         end
                     end
                     damagedone = true
-                    SetVehicleEngineOn(currentVehicle, false, true, true)
+                    SetVehicleEngineOn(currentVehicle, true, true, true)
                 end
                 if currentvehicleBodyHealth < 350.0 and not damagedone then
                     damagedone = true
-                    SetVehicleEngineOn(currentVehicle, false, true, true)
+                    SetVehicleEngineOn(currentVehicle, true, true, true)
                     Wait(1000)
                 end
             end
@@ -242,7 +242,7 @@ CreateThread(function()
                 newvehicleBodyHealth = GetVehicleBodyHealth(lastVehicle)
                 if not damagedone and newvehicleBodyHealth < currentvehicleBodyHealth then
                     damagedone = true
-                    SetVehicleEngineOn(lastVehicle, false, true, true)
+                    SetVehicleEngineOn(lastVehicle, true, true, true)
                     Wait(1000)
                 end
                 lastVehicle = nil

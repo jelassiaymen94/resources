@@ -36,14 +36,7 @@ RegisterNetEvent('Polar-Paleto:Server:RemoveItems', function(item, amount)
     end 
 end)
 
--- Register the 'callback' event on the server-side
-RegisterNetEvent('callback', function(callback)
-  -- Perform some logic here to determine the condition
-  local condition = true
 
-  -- Invoke the callback function on the client-side with the condition
-  callback(condition)
-end)
 
 
 local paletostartname = 'paletostart'

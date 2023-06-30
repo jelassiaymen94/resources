@@ -21,7 +21,7 @@ Config = {
 	StashCraft = true,  -- Set true to grab materials from mechaincs stash for crafting
 	PreviewPhone = false, -- Enable this is preview menu generates an email, False if you want to give an item
 	PreviewJob = false, -- Enable this if you want /preview to require a Job Role
-	PreviewLocation = true, -- Enable this if you want to lock /preview to a job location (ignored if LocationRequired is false)
+	PreviewLocation = false, -- Enable this if you want to lock /preview to a job location (ignored if LocationRequired is false)
 
 	PhoneMail = "qb", 	-- If PreviewPhone is true, change this to choose the correct phone system
 						-- "qb" = use qb-phone for emails

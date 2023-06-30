@@ -1,43 +1,25 @@
 fx_version "cerulean"
-game 'gta5'
+games {"gta5"}
 
 
-description 'Polar Misc'
-version '1.0.0'
 
+ui_page "core/client/ui/html/index.html"
 
-shared_scripts {
+files {"core/client/ui/html/index.html", "core/client/ui/html/js/ui.js", "core/client/ui/html/css/menu.css", "core/client/ui/html/imgs/logo.png"}
 
-'shared/*.lua',
+shared_script "_configs/cfg_general.lua"
 
-}
-
-client_scripts {
-
-'client/*.lua',
-
-}
+client_scripts {"core/client/cl_ply.lua", "core/client/ui/cl_ui.lua", "@PolyZone/client.lua" ,"@PolyZone/BoxZone.lua"}
 
 server_scripts {
-
-'server/*.lua',
-'@oxmysql/lib/MySQL.lua',
-
+    "core/server/sv_ply.lua",
+    '@oxmysql/lib/MySQL.lua',
 }
 
 
-ui_page "client/ui/html/index.html"
-
-files {
+escrow_ignore {
+    '_configs/*.lua',
     
-"client/ui/html/index.html",
-"client/ui/html/js/ui.js",
-"client/ui/html/css/menu.css",
-"client/ui/html/imgs/logo.png"
-
 }
-
 
 lua54 'yes'
-
-

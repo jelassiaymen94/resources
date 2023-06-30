@@ -4,9 +4,6 @@ Config = {} or Config
 
 Config.MinimumCops = 1 -- how many cops min to start corner selling
 
---------------- THIRD EYE CORNER SELLING
-
-
 Config.GiveBonusOnPolice = true -- \ Give bonus on selling drugs to police (Edit on server side)
 Config.ChanceSell = 70 -- \ Chance to sell drug (in %)
 Config.Zones = { -- \ Sell zones (these zones are linked with the certain drugs check below)
@@ -122,33 +119,33 @@ Config.BlacklistPeds = { -- \ Ped models that should be blacklisted
     "IG_Benny_02",
     "MP_F_BennyMech_01",
     "S_M_M_Autoshop_03",
-    `cs_nervousron`,
-    `IG_RussianDrunk`,
-    `U_M_Y_MilitaryBum`,
-    `A_F_M_TrampBeac_01`,
-    `A_M_M_Tramp_01`,
-    `S_M_M_StrVend_01`,
-    `s_m_m_ammucountry`,
-    `mp_f_weed_01`,
-			`MP_M_Weed_01`,
-			`A_M_Y_MethHead_01`,
-			`A_F_Y_RurMeth_01`,
-			`a_m_y_hippy_01`,
-			`MP_M_WareMech_01`,
-			`A_M_M_Farmer_01`,
-			`MP_M_ExArmy_01`,
-			`S_M_Y_ArmyMech_01`,
-			`S_M_M_Armoured_02`,
-            `mp_f_weed_01`,
-			`MP_M_Weed_01`,
-			`A_M_Y_MethHead_01`,
-			`A_F_Y_RurMeth_01`,
-			`A_M_M_RurMeth_01`,
-			`MP_F_Meth_01`,
-			`MP_M_Meth_01`,
-            `a_m_y_hippy_01`,
-            `mp_m_boatstaff_01`,
-			`a_m_y_beach_01`,
+    'cs_nervousron',
+    'IG_RussianDrunk',
+    'U_M_Y_MilitaryBum',
+    'A_F_M_TrampBeac_01',
+    'A_M_M_Tramp_01',
+    'S_M_M_StrVend_01',
+    's_m_m_ammucountry',
+    'mp_f_weed_01',
+			'MP_M_Weed_01',
+			'A_M_Y_MethHead_01',
+			'A_F_Y_RurMeth_01',
+			'a_m_y_hippy_01',
+			'MP_M_WareMech_01',
+			'A_M_M_Farmer_01',
+			'MP_M_ExArmy_01',
+			'S_M_Y_ArmyMech_01',
+			'S_M_M_Armoured_02',
+            'mp_f_weed_01',
+			'MP_M_Weed_01',
+			'A_M_Y_MethHead_01',
+			'A_F_Y_RurMeth_01',
+			'A_M_M_RurMeth_01',
+			'MP_F_Meth_01',
+			'MP_M_Meth_01',
+            'a_m_y_hippy_01',
+            'mp_m_boatstaff_01',
+			'a_m_y_beach_01',
 }
 
 

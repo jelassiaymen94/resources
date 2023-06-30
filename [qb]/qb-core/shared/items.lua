@@ -660,7 +660,8 @@ QBShared.Items = {
 
 
    ['meth'] 					 	 = {['name'] = 'meth', 							['label'] = 'Meth', 					['weight'] = 2000, 		['type'] = 'item', 		['image'] = 'meth_purple.png', 			['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,    ['combinable'] = nil,   ['description'] = 'A sack of that pure purple stuff'},
-	
+   ['methshard'] 					 	 = {['name'] = 'methshard', 							['label'] = 'Meth Shards', 					['weight'] = 2000, 		['type'] = 'item', 		['image'] = 'glass.png', 			['unique'] = false, 	['useable'] = false, 	['shouldClose'] = true,    ['combinable'] = nil,   ['description'] = 'A stack of the good shit to make that purple stuff'},
+
  --  ["purifiedwater"] 		 	 	     = {["name"] = "purifiedwater",           		    ["label"] = "Purified Water",	 		    ["weight"] = 1000, 		["type"] = "item", 		["image"] = "waterjug.png", 		    ["unique"] = false, 	["useable"] = false, 	["shouldClose"] = false,   ["combinable"] = nil,   ["expire"] = 90,  ["description"] = "A Household Water Jug"},
 ["methylamine"] 		 	 	     = {["name"] = "methylamine",           		    ["label"] = "Methylamine Crystals",	 		["weight"] = 2000, 		["type"] = "item", 		["image"] = "methalyme.png", 		    ["unique"] = false, 	["useable"] = false, 	["shouldClose"] = false,   ["combinable"] = nil,   ["expire"] = 90,  ["description"] = "A Methalyme Crystal"},
 --['drugbag'] 					 = {['name'] = 'drugbag', 						['label'] = 'Empty Bag', 				['weight'] = 500, 		['type'] = 'item', 		['image'] = 'weed_baggy_empty.png', 			['unique'] = false, 	['useable'] = false, 	['shouldClose'] = false,   ['combinable'] = nil,   ['description'] = 'A Empty Bag'},

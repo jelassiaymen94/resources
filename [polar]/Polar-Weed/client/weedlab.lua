@@ -1,4 +1,8 @@
-local QBCore = exports[Config.Core]:GetCoreObject()
+if Config.Notify == 'qb' then 
+    QBCore = exports[Config.Core]:GetCoreObject()
+elseif Config.Notify == 'esx' then
+    ESX = nil
+end
 --==========================================================================
                     -- WEED CONFIG --
 --==========================================================================
@@ -35,7 +39,18 @@ local red = 'error'
 local alerttime = math.random(1500,2500)
 
 local ForceCheck = false
-
+function playeritem(item, amount)
+    return exports['qb-inventory']:HasItem(item, amount)
+end
+  
+function notify(what, color)
+    if Config.Notify == 'qb' then
+        QBCore.Functions.Notify(what, color)
+    elseif Config.Notify == 'esx' then
+        if color == 'error' then colo = 'r' elseif color == 'success' then colo = 'g' end
+        ESX.ShowNotification(what, true, true, colo)
+    end
+end
 function targets()
     exports['qb-target']:AddBoxZone("enter", vector3(2849.3, 4449.72, 48.52), 1, 1, { name = "enter", heading = 0, debug = Config.Debug, minZ =  47.79, maxZ =  49.79,}, 
     { options = {{ event = "Polar-Weed:Client:Enter", icon = "fa-solid fa-cannabis", label = "Enter", excludejob = 'police'}}, distance = 1.5})
@@ -72,7 +87,7 @@ function pp()
     TriggerServerEvent('Polar-Weed:Server:ForceCheck')
     local heading = 270 local coord =  vector3(1037.4, -3205.92, -37.69) local rotx =  0.85 local roty = 0 local rotz = -1.4 local playerPed = PlayerPedId()
     local animDict = "anim@amb@business@weed@weed_sorting_seated@" RequestAnimDict(animDict) while not HasAnimDictLoaded(animDict) do Wait(10) end
-    RequestModel("bkr_prop_weed_dry_01a") RequestModel("bkr_prop_weed_leaf_01a") RequestModel("bkr_prop_weed_bag_01a") RequestModel("bkr_prop_weed_bud_02b") RequestModel("bkr_prop_weed_bud_02a") RequestModel("bkr_prop_weed_bag_pile_01a") RequestModel("bkr_prop_weed_bucket_open_01a")
+    loadModel("bkr_prop_weed_dry_01a") loadModel("bkr_prop_weed_leaf_01a") loadModel("bkr_prop_weed_bag_01a") loadModel("bkr_prop_weed_bud_02b") loadModel("bkr_prop_weed_bud_02a") loadModel("bkr_prop_weed_bag_pile_01a") loadModel("bkr_prop_weed_bucket_open_01a")
     while not HasModelLoaded("bkr_prop_weed_dry_01a") and not HasModelLoaded("bkr_prop_weed_leaf_01a") and not HasModelLoaded("bkr_prop_weed_bag_01a") and not HasModelLoaded("bkr_prop_weed_bud_02b") and not HasModelLoaded("bkr_prop_weed_bud_02a") and not HasModelLoaded("bkr_prop_weed_bag_pile_01a") and not HasModelLoaded("bkr_prop_weed_bucket_open_01a") do Wait(50) end
     SetEntityHeading(playerPed, heading) Wait(10)
     local packScene = NetworkCreateSynchronisedScene(coord.x+rotx, coord.y+roty, coord.z+rotz, 0.0, 0.0, 270.0, 2, false, false, 1065353216, 0, 1.3) local packScene2 = NetworkCreateSynchronisedScene(coord.x+rotx, coord.y+roty, coord.z+rotz, 0.0, 0.0, 270.0, 2, false, false, 1065353216, 0, 1.3) local packScene3 = NetworkCreateSynchronisedScene(coord.x+rotx, coord.y+roty, coord.z+rotz, 0.0, 0.0, 270.0, 2, false, false, 1065353216, 0, 1.3) local packScene4 = NetworkCreateSynchronisedScene(coord.x+rotx, coord.y+roty, coord.z+rotz, 0.0, 0.0, 270.0, 2, false, false, 1065353216, 0, 1.3) local packScene5 = NetworkCreateSynchronisedScene(coord.x+rotx, coord.y+roty, coord.z+rotz, 0.0, 0.0, 270.0, 2, false, false, 1065353216, 0, 1.3) local packScene6 = NetworkCreateSynchronisedScene(coord.x+rotx, coord.y+roty, coord.z+rotz, 0.0, 0.0, 270.0, 2, false, false, 1065353216, 0, 1.3)

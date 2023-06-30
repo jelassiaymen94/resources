@@ -122,7 +122,7 @@ Config.Pc1name = 'paletopc1'
 Config.Pc1 = vector3(-103.82, 6460.3, 31.47)
 
 Config.Pc2name = 'paletopc2'
-Config.Pc2 = vector3(-106.44, 6473.9, 31.32)
+Config.Pc2 = vector3(-106.44, 6473.9, 31.32)-- vector3(-104.3, 6476.88, 31.5)
 
 Config.Pc3name = 'paletopc3'
 Config.Pc3 = vector3(-98.11, 6466.09, 31.47)

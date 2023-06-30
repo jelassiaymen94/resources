@@ -11,7 +11,7 @@ local item4 = nil
 local amount = nil
 
 local cashtable = {
-    'band',
+    'markedbills',
 
 }
 local goldtable = {
@@ -25,27 +25,53 @@ local diamondtable = {
 }
 
 
+
 RegisterNetEvent('Polar-Paleto:Server:RemoveItems', function(item, amount) local src = source local Player = QBCore.Functions.GetPlayer(src) Wait(150) if amount == nil then Player.Functions.AddItem(item, 1) TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[item], "add", 1) else Player.Functions.AddItem(item, amount) TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[item], "add", amount) end end)
 
 function givet(item, min, max)
+    if item == 'markedbills' then
+        local chance = math.random(min, max)
+        local src = source local Player = QBCore.Functions.GetPlayer(src)
+        local info = {
+            worth = math.random(1,100)
+        }
+        Player.Functions.AddItem('markedbills', chance, false, info)
+        TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['markedbills'], "add", chance)
+        TriggerEvent("qb-log:server:CreateLog", "paleto", "Paleto Bank Robbery", "red", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' Got ' .. QBCore.Shared.Items[item] .. ' from robbin ' .. chance .. '')
+    else
     local src = source local Player = QBCore.Functions.GetPlayer(src)
-
+    
     local chance = math.random(min, max)
     if Player.Functions.AddItem(item, chance) then TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[item], "add", chance) end
-  
+    TriggerEvent("qb-log:server:CreateLog", "paleto", "Paleto Bank Robbery", "red", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' Got ' .. QBCore.Shared.Items[item] .. ' from robbin ' .. chance .. '')
+    end
 end 
 function give(item, amount)
-    local src = source local Player = QBCore.Functions.GetPlayer(src)
-    Wait(150)
-    if amount == nil then
-        Player.Functions.AddItem(item, 1) TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[item], "add", 1)
+    if item == 'markedbills' then
+        local src = source local Player = QBCore.Functions.GetPlayer(src)
+        local info = {
+            worth = math.random(1,100)
+        }
+        Player.Functions.AddItem('markedbills', 1, false, info)
+        TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['markedbills'], "add")
+        TriggerEvent("qb-log:server:CreateLog", "paleto", "Paleto Bank Robbery", "red", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' Got ' .. QBCore.Shared.Items[item] .. ' from robbin ')
     else
-        Player.Functions.AddItem(item, amount) TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[item], "add", amount)
+        local src = source local Player = QBCore.Functions.GetPlayer(src)
+        Wait(150)
+        if amount == nil then
+            Player.Functions.AddItem(item, 1) TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[item], "add", 1)
+            TriggerEvent("qb-log:server:CreateLog", "paleto", "Paleto Bank Robbery", "red", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' Got ' .. QBCore.Shared.Items[item] .. ' from robbin ')
+   
+        else
+            Player.Functions.AddItem(item, amount) TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[item], "add", amount)
+            TriggerEvent("qb-log:server:CreateLog", "paleto", "Paleto Bank Robbery", "red", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' Got ' .. QBCore.Shared.Items[item] .. ' from robbin ' .. amount .. '')
+   
+        end
     end
 end
 
 function pile(prop)
-    if prop ==    'ex_cash_pile_005' then item = 'band' amount = math.random(1,5) give(item, amount)
+    if prop ==    'ex_cash_pile_005' then item = 'markedbills' amount = math.random(1,5) give(item, amount)
     elseif prop == 'h4_prop_h4_gold_stack_01a' then  item = 'goldbar' amount = math.random(1,3) give(item, amount)
 else
     print('' .. prop .. ' does not have a giveitem')
@@ -82,11 +108,11 @@ end
 
 
 function hiya(prop)
-    if prop ==    'prop_cash_pile_01' then item = 'band' amount = math.random(1,1) give(item, amount)
-    elseif prop == 'prop_cash_pile_02' then  item = 'band' amount = math.random(1,1) give(item, amount)
-    elseif prop == 'prop_anim_cash_pile_01'then item = 'band' amount = math.random(1,1) give(item, amount)
-    elseif prop ==  'prop_anim_cash_pile_02'then  item = 'band' amount = math.random(1,1) give(item, amount)
-    elseif prop ==  'bkr_prop_bkr_cash_roll_01' then  item = 'band' amount = math.random(1,1) give(item, amount)
+    if prop ==    'prop_cash_pile_01' then item = 'markedbills' amount = math.random(1,1) give(item, amount)
+    elseif prop == 'prop_cash_pile_02' then  item = 'markedbills' amount = math.random(1,1) give(item, amount)
+    elseif prop == 'prop_anim_cash_pile_01'then item = 'markedbills' amount = math.random(1,1) give(item, amount)
+    elseif prop ==  'prop_anim_cash_pile_02'then  item = 'markedbills' amount = math.random(1,1) give(item, amount)
+    elseif prop ==  'bkr_prop_bkr_cash_roll_01' then  item = 'markedbills' amount = math.random(1,1) give(item, amount)
     
     elseif prop ==  'ch_prop_gold_bar_01a' then  item = 'goldbar' amount = math.random(1,1) give(item, amount)
     elseif prop ==  'hei_prop_heist_gold_bar' then  item = 'goldbar' amount = math.random(1,1) give(item, amount)
@@ -148,5 +174,6 @@ QBCore.Commands.Add("paleto", "Set Player Metadata (God Only)", {}, false, funct
     TriggerEvent('Polar-Paleto:Server:StartInteract', 'paletodoor1')
     TriggerEvent('Polar-Paleto:Server:StartInteract', 'paletodoor2')
     TriggerEvent('Polar-Paleto:Server:StartInteract', 'paletodoor3')
+    TriggerClientEvent('Polar-Paleto:Client:StartLoot', source)
 end, "god") 
 

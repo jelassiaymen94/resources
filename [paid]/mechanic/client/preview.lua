@@ -333,9 +333,9 @@ local function preview(playerPed, vehicle)
 	local startcoords = GetEntityCoords(vehicle)
 	while previewing do
 		if GetIsVehicleEngineRunning(vehicle) then SetVehicleUndriveable(vehicle, true) SetVehicleEngineOn(vehicle, false, true, true) end
-		if #(startcoords - GetEntityCoords(vehicle)) > 3 or (GetPedInVehicleSeat(vehicle, -1) ~= playerPed) then previewing = false end
+		if #(startcoords - GetEntityCoords(vehicle)) > 3 or (GetPedInVehicleSeat(vehicle, -1) ~= playerPed) then previewing = true end
 		if not previewing then
-			previewing = false
+			previewing = true
 			TriggerServerEvent("jim-mechanic:server:preview", false)
 			local newproperties = QBCore.Functions.GetVehicleProperties(vehicle)
 			QBCore.Functions.SetVehicleProperties(vehicle, properties)
@@ -351,7 +351,7 @@ end
 
 RegisterNetEvent("jim-mechanic:preview:exploitfix", function(vehicle, resetprop)
 	if Config.Debug then print("^5Debug^7: ^3Preview: ^2Using client to reset vehicle properties of abandoned vehicle^7") end
-	QBCore.Functions.SetVehicleProperties(NetToVeh(vehicle), resetprop)
+	--QBCore.Functions.SetVehicleProperties(NetToVeh(vehicle), resetprop)
 end)
 
 RegisterNetEvent('jim-mechanic:client:Preview:Menu', function()

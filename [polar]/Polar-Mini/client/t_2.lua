@@ -15,20 +15,21 @@ AddEventHandler('CEventGunShot', function()
     counter = counter + 1
     weapon = GetWeapontypeGroup(GetSelectedPedWeapon(PlayerPedId()))
     if weapon == 970310034 then
-            if mode == 1 then
-                pause()
-        elseif mode == 2 then
-            if counter > 7 then 
-                pause()
-            end  
-        end 
+        pause()
     end
 end)
 function pause()
-    while counter > 0 do
-    if IsDisabledControlJustReleased(0,24) then weapon = nil counter = 0 end
-    DisablePlayerFiring(PlayerPedId(), true)
-    Wait(1)
+    if mode == 1 then
+        while IsDisabledControlPressed(0,24) do 
+            DisablePlayerFiring(PlayerPedId(), true)
+            Wait(1)
+        end
+    elseif mode == 2 then
+        Wait(400)
+        while IsDisabledControlPressed(0,24) do 
+            DisablePlayerFiring(PlayerPedId(), true)
+            Wait(1)
+        end
     end
 end
 
