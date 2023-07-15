@@ -5,7 +5,7 @@ elseif Config.Notify == 'esx' then
 end
 local oxt = Config.OxTarget -- ox target
 local oxdoorname = nil
-
+local oxd = Config.OxDoorlock
 local ped = PlayerPedId()
 local animDict = nil local model = nil local prop = nil local var = nil local drillpos = nil local drillrot = nil local door = nil local pp = nil local coords = nil local rot = nil local position = nil local item = nil local CurrentCops = 0
 local amount = nil
@@ -164,7 +164,8 @@ end)
 function ThermiteEffect(door, coords)
     if door == 'BobCatstart' then CallPolice() end
     RequestAnimDict("anim@heists@ornate_bank@thermal_charge") while not HasAnimDictLoaded("anim@heists@ornate_bank@thermal_charge") do Wait(50) end Wait(1500)
-    TriggerServerEvent("Polar-BobCat:Server:ThermitePtfx", vec3(coords.x, coords.y, coords.z+0.2)) Wait(500) TaskPlayAnim(PlayerPedId(), "anim@heists@ornate_bank@thermal_charge", "cover_eyes_intro", 8.0, 8.0, 1000, 36, 1, 0, 0, 0) TaskPlayAnim(PlayerPedId(), "anim@heists@ornate_bank@thermal_charge", "cover_eyes_loop", 8.0, 8.0, 3000, 49, 1, 0, 0, 0) TriggerEvent('Polar-BobCat:Client:DestroyPad', door) Wait(thermitetime) ClearPedTasks(PlayerPedId())   TriggerServerEvent('qb-doorlock:server:updateState', door, false, false, false, true, false, false)
+    TriggerServerEvent("Polar-BobCat:Server:ThermitePtfx", vec3(coords.x, coords.y, coords.z+0.2)) Wait(500) TaskPlayAnim(PlayerPedId(), "anim@heists@ornate_bank@thermal_charge", "cover_eyes_intro", 8.0, 8.0, 1000, 36, 1, 0, 0, 0) TaskPlayAnim(PlayerPedId(), "anim@heists@ornate_bank@thermal_charge", "cover_eyes_loop", 8.0, 8.0, 3000, 49, 1, 0, 0, 0) TriggerEvent('Polar-BobCat:Client:DestroyPad', door) Wait(thermitetime) ClearPedTasks(PlayerPedId())    if oxd then  TriggerServerEvent('Polar-BobCat:Server:OxDoorlock', door, false)
+    else TriggerServerEvent('qb-doorlock:server:updateState', door, false, false, false, true, false, false) end
  end 
 function PlantThermite(pp, door)
     SetPedComponentVariation(PlayerPedId(), 5, Config.HideBagID, 1, 1)
@@ -486,7 +487,7 @@ function VaultForceClose()
     end
 end
 RegisterNetEvent('Polar-BobCat:Client:Vault', function(open)
-    if Config.BobCat then  TriggerServerEvent('qb-doorlock:server:updateState', vaultdoorname, false, false, false, true, false, false)  return end
+    if Config.BobCat then if oxd then  TriggerServerEvent('Polar-BobCat:Server:OxDoorlock', vaultdoorname, false) else TriggerServerEvent('qb-doorlock:server:updateState', vaultdoorname, false, false, false, true, false, false)  return end end
     if not open then
     local object = GetClosestObjectOfType(vaultloc, 20.0, vaultid, false, false, false)
     --print(object)
@@ -673,7 +674,9 @@ RegisterNetEvent('Polar-BobCat:client:keycard', function(door, position, rot, it
     TriggerServerEvent('Polar-BobCat:Server:TargetRemove', door) 
     local chance = math.random(1,100) local pos = GetEntityCoords(PlayerPedId()) local animDict = "anim@heists@keycard@" loadAnimDict(animDict) local prop = 'vw_prop_vw_key_card_01a' loadModel(prop) local prop2 =  CreateObject(prop, pos.x, pos.y, pos.z + 0.2,  true,  true, true)
     FreezeEntityPosition(PlayerPedId(), true) AttachEntityToEntity(prop2, ped, GetPedBoneIndex(PlayerPedId(), 28422), 0, 0, 0, 0, 0, 180.0, true, true, false, true, 1, true) SetEntityHeading(PlayerPedId(), position.w) SetEntityCoords(PlayerPedId(), vector3(position.x, position.y,position.z-1)) if chance <= carditemchance then TriggerServerEvent('Polar-BobCat:Server:RemoveItem', item, 1) end 
-    TaskPlayAnim(PlayerPedId(), animDict, "enter", 5.0, 1.0, -1, 16, 0, 0, 0, 0) Wait(1000) TaskPlayAnim(PlayerPedId(), animDict, "idle_a", 5.0, 1.0, -1, 16, 0, 0, 0, 0) Wait(5000) TaskPlayAnim(PlayerPedId(), animDict, "exit", 5.0, 1.0, -1, 16, 0, 0, 0, 0) Wait(1000) StopAnimTask(PlayerPedId(), animDict, "exit", 16.0)  DeleteEntity(prop2) FreezeEntityPosition(PlayerPedId(), false) TriggerServerEvent('qb-doorlock:server:updateState', door, false, false, false, true, false, false)  notify(text('doorunlock'), "success", 2500)
+    TaskPlayAnim(PlayerPedId(), animDict, "enter", 5.0, 1.0, -1, 16, 0, 0, 0, 0) Wait(1000) TaskPlayAnim(PlayerPedId(), animDict, "idle_a", 5.0, 1.0, -1, 16, 0, 0, 0, 0) Wait(5000) TaskPlayAnim(PlayerPedId(), animDict, "exit", 5.0, 1.0, -1, 16, 0, 0, 0, 0) Wait(1000) StopAnimTask(PlayerPedId(), animDict, "exit", 16.0)  DeleteEntity(prop2) FreezeEntityPosition(PlayerPedId(), false) 
+    if oxd then  TriggerServerEvent('Polar-BobCat:Server:OxDoorlock', door, false)  else TriggerServerEvent('qb-doorlock:server:updateState', door, false, false, false, true, false, false) end 
+     notify(text('doorunlock'), "success", 2500)
     else  notify(text('nokeycard'), "error") end
 end)
 
@@ -1515,12 +1518,23 @@ end)
 
 
 RegisterNetEvent('Polar-BobCat:Client:ResetDoors', function()
+    if oxd then
+        TriggerServerEvent('Polar-BobCat:Server:OxDoorlock', BobCatdoor1name, true)
+        TriggerServerEvent('Polar-BobCat:Server:OxDoorlock', BobCatdoor2name, true)
+        TriggerServerEvent('Polar-BobCat:Server:OxDoorlock', BobCatdoor2name, true)
+        TriggerServerEvent('Polar-BobCat:Server:OxDoorlock', BobCatdoorcard1name, true)
+        TriggerServerEvent('Polar-BobCat:Server:OxDoorlock', BobCatdoorcard2name, true)
+        TriggerServerEvent('Polar-BobCat:Server:OxDoorlock', Config.VaultDoorDoor, true)
+       
+    else
     TriggerServerEvent('qb-doorlock:server:updateState', BobCatdoor1name, true, false, false, true, false, false)
     TriggerServerEvent('qb-doorlock:server:updateState', BobCatdoor2name, true, false, false, true, false, false)
     TriggerServerEvent('qb-doorlock:server:updateState', BobCatdoor3name, true, false, false, true, false, false)
     TriggerServerEvent('qb-doorlock:server:updateState', BobCatdoorcard1name, true, false, false, true, false, false)
     TriggerServerEvent('qb-doorlock:server:updateState', BobCatdoorcard2name, true, false, false, true, false, false)
     TriggerServerEvent('qb-doorlock:server:updateState', Config.VaultDoorDoor, true, false, false, true, false, false)
+
+    end
     TriggerServerEvent('Polar-BobCat:Slient:TargetRemove', vaultdoorname)
  --   doorlock(BobCatdoor1name, true)
   --  doorlock(BobCatdoor2name, true)
@@ -1533,7 +1547,10 @@ end)
 
 function doorlock(name, what)
     print(' and the name is ' .. name .. ' john the rock ' .. what .. ' cena')
+    if oxd then  TriggerServerEvent('Polar-BobCat:Server:OxDoorlock', name, what)
+    else 
     TriggerServerEvent('qb-doorlock', name, what, false, false, true, false, false)
+    end
 end
 
 function playeritem(item, amount)

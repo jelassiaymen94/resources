@@ -22,7 +22,7 @@ Config.CallBack =  QBCore.Functions.CreateCallback -- ESX.RegisterServerCallback
 Config.TrigCallBack = QBCore.Functions.TriggerCallback -- ESX.TriggerServerCallback
 
 
-Config.Debug = true -- debug for checks
+Config.Debug = false -- debug for checks
 
 
 
@@ -36,18 +36,16 @@ Config.Language = 'English' -- change with languages EX. 'French'
 
 
 --============== OX ================
-Config.OxTarget = false
-Config.OxDoorlock = false
+Config.OxTarget = true
+
 
 --============== BANK BLIP -=============
 
-Config.UseBlip = true -- use a blip on the map?
-Config.BlipName = "Bob Cat Security" -- blip name
-Config.BlipLocation = vector3(888.39, -2130.36, 31.24) -- blip location
-Config.BlipSprite = 106 -- https://docs.fivem.net/docs/game-references/blips/ -- picture of blip
-Config.BlipColor = 5  -- https://gtaforums.com/topic/864881-all-blip-color-ids-pictured/ -- color of blip
-
-
+Config.UseBlip = false -- use a blip on the map?
+Config.BlipName = "Pacific Bank" -- blip name
+Config.BlipLocation = vector3(225.89, 199.04, 105.36) -- blip location
+Config.BlipSprite = 267 -- https://docs.fivem.net/docs/game-references/blips/ -- picture of blip
+Config.BlipColor = 7  -- https://gtaforums.com/topic/864881-all-blip-color-ids-pictured/ -- color of blip
 
 
 --============== CLOTHING ================
@@ -65,56 +63,53 @@ Config.FemaleGloves = { [0] = true, [1] = true, [2] = true, [3] = true, [4] = tr
 --============== POLICE ================
 
 function CallPolice() exports["qb-dispatch"]:CustomAlert({
-        coords = vector3(-111.1, 6482.23, 31.47), message = "Bank Robbery",
-        dispatchCode = "10-90", description = "", radius = 10,
-        sprite = 304,  color = 46, scale = 1.0,  length = 1,
-       
-        })         
-     --   TriggerServerEvent('InteractSound_SV:PlayAtCoord', vector3(-106.67, 6466.64, 32.75), 50, 'warehousealert', 0.35) 
+    coords = vector3(225.89, 199.04, 105.36), message = "Bank Robbery",
+    dispatchCode = "10-90", description = "", radius = 10,
+    sprite = 304,  color = 46, scale = 1.0,  length = 1,
+   
+    })         
+ --   TriggerServerEvent('InteractSound_SV:PlayAtCoord', vector3(-106.67, 6466.64, 32.75), 50, 'warehousealert', 0.35) 
 end
 
 
 
 
 
-Config.Health = 200
-Config.Accuracy = 50
-Config.Range = 2
-Config.AmmoCount = 50
 
 
 
 --============== Vault ================
-    
+      
 Config.FingerPrintPercent = 85
-Config.FingerPrintDoor = vec4(1,2,3,4)
-Config.FingerPrintDoorDoor = 'BobCatfinger'
+Config.FingerPrintDoor = vector4(261.93, 223.1, 106.28, 254.91)
+Config.FingerPrintDoorDoor = 'Pacificfinger'
+Config.FingerEye = vector3(262.3, 223.04, 106.61)
 
-Config.BobCat = true
-Config.VaultDoorAnimation = vector4(-102.2, 6463.14, 31.63, 214.89)
-Config.VaultDoorDoor = 'BobCatvault'
-Config.VaultDoorThirdEye = vector3(-101.86, 6462.93, 32.0)
+Config.DoorLock = false -- if door is a doorlock
+Config.VaultDoorAnimation = vector4(253.33, 228.43, 101.68, 69.96)
+Config.VaultDoorDoor = 'Pacificvault'
+Config.VaultDoorThirdEye = vector3(252.97, 228.52, 102.01)
 
 
 
 
 --============== Thermite Locations ================
 
-Config.StartThirdEye =   vector3(870.46, -2134.83, 30.78)-- vector3(870.41, -2134.94, 30.7)
-Config.StartThermite = vector4(870.34, -2134.82, 30.77, 264.66)
-Config.StartPfx = vector3(870.33, -2133.80, 30.50)
+Config.StartThirdEye = vector3(285.61, 264.62, 105.91)
+Config.StartThermite = vector4(285.68, 264.60, 105.59, 158.3)
+Config.StartPfx =vector3(285.66, 265.69, 105.35)
 
-Config.Door1Eye = vector3(908.56, -2119.78, 31.44)
-Config.Door1Thermite = vector4(908.25, -2119.75, 31.47, 86.71)
-Config.Door1Pfx = vector3(908.96, -2120.16, 31.23)
+Config.Door1Eye = vector3(256.07, 220.6, 106.35)
+Config.Door1Thermite = vector4(256.05, 220.57, 106.35, 339.17)
+Config.Door1Pfx = vector3(255.91, 221.61, 106.35)
 
-Config.Door2Eye = vector3(891.99, -2108.15, 31.23)
-Config.Door2Thermite = vector4(891.98, -2107.93, 31.25, 0.07)
-Config.Door2Pfx = vector3(891.34, -2108.36, 31.23)
+Config.Door2Eye = vector3(25400000.85, 220.88, 101.78)
+Config.Door2Thermite = vector4(2540000.6, 221.13, 101.68, 261.66)
+Config.Door2Pfx = vector3(254000.850000, 220.88, 101.78)
 
-Config.Door3Eye =  vector3(-1039999999.561, 6474.922, 31.63)
-Config.Door3Thermite = vector4(-103999999999.51, 6474.86, 31.63, 41.54)
-Config.Door3Pfx = vector3(-103.5299999999999, 6475.85, 31.63)
+Config.Door3Eye =  vector3(256.48, 219.11, 101.8)
+Config.Door3Thermite = vector4(256.4, 219.03, 101.8, 339.09)
+Config.Door3Pfx = vector3(256.44, 220.07, 101.8)
    
 
 
@@ -122,13 +117,13 @@ Config.Door3Pfx = vector3(-103.5299999999999, 6475.85, 31.63)
 
 --============== Crypto Computers ================
 
-Config.Pc1name = 'BobCatpc1'
+Config.Pc1name = 'Pacificpc1'
 Config.Pc1 = vector3(-103.82, 6460.3, 31.47)
 
-Config.Pc2name = 'BobCatpc2'
-Config.Pc2 = vector3(-106.44, 6473.9, 31.32)-- vector3(-104.3, 6476.88, 31.5)
+Config.Pc2name = 'Pacificpc2'
+Config.Pc2 = vector3(-106.44, 6473.9, 31.32)
 
-Config.Pc3name = 'BobCatpc3'
+Config.Pc3name = 'Pacificpc3'
 Config.Pc3 = vector3(-98.11, 6466.09, 31.47)
 
 
@@ -137,11 +132,11 @@ Config.Pc3 = vector3(-98.11, 6466.09, 31.47)
 
 --============== Key Card Locations ================
     
-Config.doorcard1Eye = vector3(908.14, -2113.59, 31.23)
-Config.doorcard1swipe = vector4(908.15, -2113.98, 31.23, 354.73)
+Config.doorcard1Eye = vector3(255.11, 221.28, 101.68)
+Config.doorcard1swipe = vector4(254.65, 221.44, 101.68, 247.75)
    
-Config.doorcard2Eye = vector3(-11199999999999.99, 6474.2, 31.63)
-Config.doorcard2swipe = vector4(-1119999999999.55, 6473.83, 31.63, 49.81)
+Config.doorcard2Eye = vector3(-1110000.99, 6474.2, 31.63)
+Config.doorcard2swipe = vector4(-1110000.55, 6473.83, 31.63, 49.81)
    
 
 

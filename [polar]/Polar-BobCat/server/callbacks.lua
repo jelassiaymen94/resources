@@ -36,7 +36,14 @@ RegisterNetEvent('Polar-BobCat:Server:RemoveItems', function(item, amount)
     end 
 end)
 
+RegisterNetEvent('Polar-BobCat:Server:OxDoorlock', function(doorId, state)
+    local id = nil
+    if state == true then id = 1
+    elseif state == false then id = 0
+    end
+    TriggerEvent('ox_doorlock:setState', doorId, id)
 
+end)
 
 
 local BobCatstartname = 'BobCatstart'
