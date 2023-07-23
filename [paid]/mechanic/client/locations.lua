@@ -47,7 +47,7 @@ Config.Locations = {
 		discordimg = "https://static.wikia.nocookie.net/gtawiki/images/b/be/BennysOriginalMotorWorks-GTAO-Logo.png",
 	},]]
 	-- ALTA STREET BENNYS --
-	--[[{	job = "mechanic",
+	{	job = "mechanic",
 		zones = {
 			vector2(-189.07, -1311.31),
 			vector2(-188.36, -1343.46),
@@ -62,7 +62,7 @@ Config.Locations = {
 		clockin = { { coords = vector3(-200.14, -1317.28, 31.08), heading = 270.0, }, },
 		garage = { spawn = vector4(-182.74, -1317.61, 30.63, 357.23),
 					out = vector4(-187.25, -1310.55, 31.3, 270.52),
-					list = { "towtruck", "panto", "slamtruck", "cheburek", "utillitruck3" } },
+					list = { "towtruck" } },
         payments = { coords = vector3(-200.68, -1314.53, 31.08), heading = 0.0, img = "<center><p><img src=https://static.wikia.nocookie.net/gtawiki/images/b/be/BennysOriginalMotorWorks-GTAO-Logo.png width=150px></p>" },
 		blip = vector3(-211.55, -1324.55, 30.9),
 		bliplabel = "Bennys Workshop",
@@ -70,7 +70,8 @@ Config.Locations = {
 		discordlink = "",
 		discordcolour = 16711680,
 		discordimg = "https://static.wikia.nocookie.net/gtawiki/images/b/be/BennysOriginalMotorWorks-GTAO-Logo.png",
-	},]]
+	},
+	--[[
 	-- Angles of Death --
 	{	job = "mechanic",
 		zones = {
@@ -93,7 +94,7 @@ Config.Locations = {
 		discordlink = "",
 		discordcolour = 2571775,
 		discordimg = "https://static.wikia.nocookie.net/gtawiki/images/f/f2/GTAV-LSCustoms-Logo.png",
-	},
+	},]]
 	--[[ HAYES AUTOS --
 	{	job = "hayes",
 		zones = {
@@ -261,7 +262,7 @@ Config.Locations = {
 		discordlink = "",
 		discordcolour = 2571775,
 		discordimg = "https://static.wikia.nocookie.net/gtawiki/images/f/f2/GTAV-LSCustoms-Logo.png",
-	}, ]]
+	}, 
 	-- OTTOS AUTOS -- 
     {	job = "otto",
 		zones = {
@@ -285,7 +286,7 @@ Config.Locations = {
 		discordlink = "",
 		discordcolour = 16711680,
 		discordimg = "https://i.imgur.com/74UVnCb.jpeg",
-	},
+	},]]
 	-- HAYES AUTOS --
 	--[[{    job = "hayes",
 		zones = {

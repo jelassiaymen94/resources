@@ -809,7 +809,7 @@ CreateThread(function()
                             if IsControlJustReleased() then
                                 if GetPedInVehicleSeat(GetVehiclePedIsIn(PlayerPedId()), -1) == PlayerPedId() then
                                     if (v.useJob and isAuthorized((QBCore.Functions.GetPlayerData().job.name), k)) or not v.useJob then
-                                        TriggerEvent('event:control:bennys', k)
+                                        --TriggerEvent('event:control:bennys', k)
                                     else
                                         QBCore.Functions.Notify("You are not authorized", "error")
                                     end
@@ -879,10 +879,10 @@ end
 --downtown benny
 
 local Downbenny = PolyZone:Create({
-    vector2(-203.33, -1311.49),
-	vector2(-224.95, -1323.07),
-	vector2(-216.13, -1334.46),
-	vector2(-202.09, -1331.34),
+    vector2(789.39, -835.61),
+    vector2(789.39, -771.21),
+    vector2(851.52, -771.21),
+    vector2(851.52, -835.61)
   }, {
 	debugPoly=false,
     name="downbenny",
