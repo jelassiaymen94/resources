@@ -47,7 +47,7 @@ Config.Locations = {
 		discordimg = "https://static.wikia.nocookie.net/gtawiki/images/b/be/BennysOriginalMotorWorks-GTAO-Logo.png",
 	},]]
 	-- ALTA STREET BENNYS --
-	{	job = "mechanic",
+	{	job = "bennys",
 		zones = {
 			vector2(-189.07, -1311.31),
 			vector2(-188.36, -1343.46),
@@ -56,14 +56,14 @@ Config.Locations = {
 			vector2(-244.44, -1342.33),
 			vector2(-244.07, -1312.06)
 		},
-		stash = { { coords = vector3(-216.86, -1318.25, 30.89), w = 3.6, d = 0.6, heading = 0, }, },
-		store = { { coords = vector3(-199.44, -1319.16, 31.11), w = 0.85, d = 1.8, heading = 359.0, }, },
-		crafting = { { coords = vector3(-198.74, -1314.46, 31.09), w = 2.8, d = 1.0, heading = 270.0, }, },
-		clockin = { { coords = vector3(-200.14, -1317.28, 31.08), heading = 270.0, }, },
-		garage = { spawn = vector4(-182.74, -1317.61, 30.63, 357.23),
+		stash = { { coords = vector3(-225.61, -1315.66, 31.8), w = 1.6, d = 0.6, heading = 0, }, },
+		store = { { coords = vector3(-212.6, -1322.5, 31.44), w = 0.85, d = 1.8, heading = 359.0, }, },
+		crafting = { { coords = vector3(-215.68, -1339.68, 31.77), w = 0.8, d = 1.0, heading = 270.0, }, },
+		clockin = { { coords = vector3(-210.69, -1336.03, 34.89), heading = 90.0, }, },
+		garage = { spawn = vector4(-180.59, -1312.18, 31.3, 358.36),
 					out = vector4(-187.25, -1310.55, 31.3, 270.52),
 					list = { "towtruck" } },
-        payments = { coords = vector3(-200.68, -1314.53, 31.08), heading = 0.0, img = "<center><p><img src=https://static.wikia.nocookie.net/gtawiki/images/b/be/BennysOriginalMotorWorks-GTAO-Logo.png width=150px></p>" },
+        payments = { coords = vector3(-197.91, -1317.94, 31.07), heading = 270.0, img = "<center><p><img src=https://static.wikia.nocookie.net/gtawiki/images/b/be/BennysOriginalMotorWorks-GTAO-Logo.png width=150px></p>" },
 		blip = vector3(-211.55, -1324.55, 30.9),
 		bliplabel = "Bennys Workshop",
 		blipcolor = 1,

@@ -59,10 +59,42 @@ RegisterNUICallback('spawnCharacter', function(data, cb)
     spawnCoords = {x = data.x, y = data.y, z = data.z}
   end
   
+  if data.label == 'Alta Apartments2' then
+    
+      local pos = Location
+      local ped = PlayerPedId()
+      FreezeEntityPosition(PlayerPedId(), true)
+      SetNuiFocus(false, false)
+      Wait(500)
+      RenderScriptCams(false, true, 500, true, true)
+      SetCamActive(cam, false)
+      DestroyCam(cam, true)
+      SetCamActive(cam2, false)
+      DestroyCam(cam2, true)
+      SetEntityVisible(PlayerPedId(), true)
+      Wait(500)
+      SetNuiFocus(false, false)
+    
+      
+      ClearScreen()
+      Wait(0)
+      
+      ShutdownLoadingScreenNui()
+      
+      ClearScreen()
+      Wait(0)
+      ClearScreen()
+      TriggerServerEvent('QBCore:Server:OnPlayerLoaded')
+      TriggerEvent('QBCore:Client:OnPlayerLoaded')
 
+      FreezeEntityPosition(PlayerPedId(), false)
+    
+      TriggerEvent('apartments:client:EnterApartment')
+      toggleNuiFrame(false)
+  else
   toggleNuiFrame(false)
   SpawnPlayer(spawnCoords)
-  
+  end
 end)
 
 local cloudOpacity = 0.01

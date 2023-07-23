@@ -14,7 +14,7 @@ AddEventHandler('qb-storerobbery:server:takeMoney', function(register, isDone)
 	-- Add some stuff if you want, this here above the if statement will trigger every 2 seconds of the animation when robbing a cash register.
     if isDone then
     local info = math.random(3, 10)
-    exports['qb-inventory']:AddItem(src, "band", info, false, info)
+    exports['ps-inventory']:AddItem(src, "band", info, false, info)
     TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items["band"], "add", info) 
         if math.random(1, 100) <= 50 then
             -- Give Special Item (Safe Cracker)
@@ -54,7 +54,7 @@ AddEventHandler('qb-storerobbery:server:SafeReward', function(safe)
 	TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['markedcash'], "add")]]
 
     local info = {worth = math.random(5000, 8000)}
-    exports['qb-inventory']:AddItem(src, "markedbills", 1, false, info)
+    exports['ps-inventory']:AddItem(src, "markedbills", 1, false, info)
     TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items["markedbills"], "add", 1) 
     TriggerEvent("qb-log:server:CreateLog", "storerobbery", "Store Robbery Rewards", "default", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' Received the following from the Store Robbery. **Loot**: '.."2".. ' x '.. "markedbills")
 

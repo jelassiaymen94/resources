@@ -33,7 +33,7 @@ RegisterNetEvent('qb-fishing:server:SellFish', function(fish, amount)
     if not item then return end
     if not priceTable[fish] then return end
     if item.amount >= amount then
-        if exports['qb-inventory']:RemoveItem(Player.PlayerData.source, item.name, amount, false) then
+        if exports['ps-inventory']:RemoveItem(Player.PlayerData.source, item.name, amount, false) then
             -- Item Box
             local randomamountgiven = math.random(1,10)
             TriggerClientEvent('inventory:client:ItemBox', Player.PlayerData.source, QBCore.Shared.Items[item.name], 'remove', amount)

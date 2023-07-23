@@ -1,7 +1,7 @@
 
 Config = {
 	Debug = false, -- Enable to add debug boxes and message.
-	img = "qb-inventory/html/images/", -- Set this to your inventory
+	img = "ps-inventory/html/images/", -- Set this to your inventory
 	JimMenu = true, -- Enable this if you are using an updated qb-menu resource with icon support
 	ApGov = false, -- Add support for AP-Goverment Tax 
 	Peds = true, -- Set to true if you want Shops to have Peds

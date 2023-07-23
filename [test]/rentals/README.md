@@ -42,7 +42,7 @@ if args[2] == "driver" or args[2] == "weapon" or args[2] == "pilot" then
  ```lua
   ["rentalpapers"]				 = {["name"] = "rentalpapers", 					["label"] = "Rental Papers", 			["weight"] = 0, 		["type"] = "item", 		["image"] = "rentalpapers.png", 		["unique"] = true, 		["useable"] = false, 	["shouldClose"] = false, 	["combinable"] = nil, 	["description"] = "Yea, this is my car i can prove it!"},
   ```
-  # Rental Papers Item Description - qb-inventory/html/js/app.js (Line 577)
+  # Rental Papers Item Description - ps-inventory/html/js/app.js (Line 577)
   
  ```lua
         } else if (itemData.name == "stickynote") {

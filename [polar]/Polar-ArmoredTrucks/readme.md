@@ -9,7 +9,7 @@ Polar Armored Truck Script
 
 -  Qb-Target
 
--  Qb-Inventory (Can be Changed Easily)
+-  ps-inventory (Can be Changed Easily)
 
 -  Qb-Core
 
@@ -41,7 +41,7 @@ https://github.com/christikat/glow_minigames
 
 Add ["banktrucks"] = '',
 
-* **qb-inventory>html>images**
+* **ps-inventory>html>images**
 
 
 

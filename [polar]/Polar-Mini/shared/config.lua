@@ -1,5 +1,5 @@
 Config = {} or Config
-Config.img = "qb-inventory/html/images/"
+Config.img = "ps-inventory/html/images/"
 Config.Debug = false
 
 

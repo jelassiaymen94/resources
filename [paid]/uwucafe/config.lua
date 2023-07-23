@@ -2,7 +2,7 @@
 Config = {
 	Debug = false, -- false to remove green boxes
 	Lan = "en",
-	img = "qb-inventory/html/images/", -- Change this to your inventory's name and image folder (SET TO "" IF YOU HAVE DOUBLE IMAGES)
+	img = "ps-inventory/html/images/", -- Change this to your inventory's name and image folder (SET TO "" IF YOU HAVE DOUBLE IMAGES)
 	PatHeal = 2, 			--how much you are healed by patting a cat, 2 hp seems resonable, enough not to be over powered and enough to draw people in.
 							--set to 0 if you don't want to use this
 	RelieveStress = 5,		-- How much stress relief per pat

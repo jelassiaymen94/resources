@@ -2,7 +2,7 @@ Config = {} or Config
 
 --==========================================================================
 Config.Core = 'qb-core' -- for escrowed part
-Config.img = "qb-inventory/html/images/"
+Config.img = "ps-inventory/html/images/"
 --==========================================================================
 
 

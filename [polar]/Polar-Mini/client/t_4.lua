@@ -1,7 +1,7 @@
 
 
-RegisterCommand("guard", function(source)  bodyguard(0, "npcguards") end, false)
-RegisterCommand("enemy", function(source)  bodyguard(5, "npcenemy") end, false)
+--RegisterCommand("guard", function(source)  bodyguard(0, "npcguards") end, false)
+--RegisterCommand("enemy", function(source)  bodyguard(5, "npcenemy") end, false)
 
 local model = "s_m_m_prisguard_01"
 local weapon = 'weapon_smg'

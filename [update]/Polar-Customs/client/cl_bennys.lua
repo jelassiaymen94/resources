@@ -30,23 +30,7 @@ local isPurchaseSuccessful = false
 local bennyLocation
 
 
-CreateThread(function()
-    for k, v in pairs(bennyGarages) do
-       
 
-        local blip = AddBlipForCoord(v.coords.x,v.coords.y,v.coords.z)
-        SetBlipSprite(blip, 402)
-        SetBlipScale(blip, 0.6)
-        SetBlipColour(blip, 2)
-        SetBlipDisplay(blip, 6) 
-        SetBlipAsShortRange(blip,true)
-        BeginTextCommandSetBlipName("STRING")
-        AddTextComponentSubstringPlayerName("Repair")
-        EndTextCommandSetBlipName(blip)
-       
-      
-    end
-end)
 --#[Local Functions]#--
 local function isNear(pos1, pos2, distMustBe)
     local diff = pos2 - pos1

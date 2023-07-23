@@ -24,12 +24,9 @@ RegisterNetEvent('superfood:server:removeitem', function(item, amount)
 	local amount = amount or 1
 	local Player = QBCore.Functions.GetPlayer(src)
 	
-	if QBCore.Functions.GetPlayer(src).Functions.RemoveItem(item, amount) then
-		if Config.Debug then print("^5Debug^7: ^1Removing ^2from Player^7(^2"..src.."^7) '^6"..QBCore.Shared.Items[item].label.."^7(^2x^6"..(amount or "1").."^7)'") end
-		TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[item], "remove", amount)
-		TriggerEvent("qb-log:server:CreateLog", "catcafeitems", "REmoved", "black", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' ' .. amount .. ' ' .. item .. ' ')
-
-	end
-
+	Player.Functions.RemoveItem(item, amount)
+	if Config.Debug then print("^5Debug^7: ^1Removing ^2from Player^7(^2"..src.."^7) '^6"..QBCore.Shared.Items[item].label.."^7(^2x^6"..(amount or "1").."^7)'") end
+	TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[item], "remove", amount)
+	TriggerEvent("qb-log:server:CreateLog", "catcafeitems", "REmoved", "black", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' ' .. amount .. ' ' .. item .. ' ')
 
 end)

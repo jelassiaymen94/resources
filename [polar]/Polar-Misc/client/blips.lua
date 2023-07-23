@@ -214,11 +214,12 @@ local QBCore = exports['qb-core']:GetCoreObject()
 RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function()
    PlayerJob = QBCore.Functions.GetPlayerData().job
    if PlayerJob.name ~= "police" then 
+      policeblips()
    else
-   policeblips()
    end
-   supermarket()
-   clothing()
+      clothingblip()
+      supermarket()
+      garages()
 end)
 RegisterNetEvent('QBCore:Client:OnJobUpdate', function(JobInfo)
    PlayerJob = QBCore.Functions.GetPlayerData().job
@@ -240,44 +241,11 @@ function removepoliceblips()
 
 end
 
-function policeblips()
-CreateThread(function()
-   local currentblip = 0
-   while true do
-      local coords = GetEntityCoords(PlayerPedId())
-      local closest = 1000
-      local closestCoords 
-      
-      for i = 1, #Config.BoatBlips do
-         local cads = Config.BoatBlips[i].coords
-         local dstcheck = GetDistanceBetweenCoords(coords.x, coords.y, coords.z, cads.x, cads.y, cads.z, false)
 
-         if dstcheck < closest then
-            closest = dstcheck
-            closestCoords = cads
-          
-         end
-      end
-      if DoesBlipExist(currentblip) then
-         RemoveBlip(currentblip)
-      end
-      currentblip = CreateBlip(closestCoords)
-      Wait(10000)
-    end
-end)
-end
-function CreateBlip(coords)
-	local blip = AddBlipForCoord(coords)
-	SetBlipSprite(blip, 404)
-	SetBlipScale(blip, 0.6)
-	SetBlipColour(blip, 3)
-	SetBlipDisplay(blip, 6)
-	SetBlipAsShortRange(blip, true)
-	BeginTextCommandSetBlipName("STRING")
-	AddTextComponentString("Police Boat")
-	EndTextCommandSetBlipName(blip)
-	return blip
-end
+
+
+
+ 
 
 
 
@@ -298,104 +266,178 @@ end
 
 
 
-function supermarket()
-CreateThread(function()
-      
-      local currentblip = 0
-      while true do
-         local coords = GetEntityCoords(PlayerPedId())
-         local closest = 1000
-         local closestCoords 
-         
-         for i = 1, #Config.SuperMarket do
-            local cads = Config.SuperMarket[i].coords
-            local dstcheck = GetDistanceBetweenCoords(coords.x, coords.y, coords.z, cads.x, cads.y, cads.z, false)
-            --print(cads)
-            if dstcheck < closest then
-               closest = dstcheck
-               closestCoords = cads
-               --print(closestCoords)
-            end
-         end
-         if DoesBlipExist(currentblip) then
-            RemoveBlip(currentblip)
-         end
-         currentblip = CreateBlip2(closestCoords)
-         Wait(10000)
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+
+
+
+
+
+
+    
+    
+
+  
+ 
+ 
+
+   
+function FindNearestStore(playerPos, stores)
+   local nearestStore = nil
+   local nearestDistance = nil
+
+   for _, store in ipairs(stores) do
+       local distance = GetDistanceBetweenCoords(playerPos.x, playerPos.y, playerPos.z, store.x, store.y, store.z)
+       if not nearestDistance or distance < nearestDistance then
+           nearestStore = store
+           nearestDistance = distance
        end
-   end)
-end
-   function CreateBlip2(coords)
-      local blip = AddBlipForCoord(coords)
-      SetBlipSprite(blip, 628)
-      SetBlipScale(blip, 0.6)
-      SetBlipColour(blip, 2)
-      SetBlipDisplay(blip, 6)
-      SetBlipAsShortRange(blip, true)
-      BeginTextCommandSetBlipName("STRING")
-      AddTextComponentString("24/7 Supermarket")
-      EndTextCommandSetBlipName(blip)
-      return blip
    end
-   
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-   
-
-function clothing()
-   CreateThread(function()
-      
-      local currentblip = 0
-      while true do
-         local coords = GetEntityCoords(PlayerPedId())
-         local closest = 1000
-         local closestCoords 
-         
-         for i = 1, #Config.Clothing do
-            local cads = Config.Clothing[i].coords
-            local dstcheck = GetDistanceBetweenCoords(coords.x, coords.y, coords.z, cads.x, cads.y, cads.z, false)
-            --print(cads)
-            if dstcheck < closest then
-               closest = dstcheck
-               closestCoords = cads
-               --print(closestCoords)
-            end
-         end
-         if DoesBlipExist(currentblip) then
-            RemoveBlip(currentblip)
-         end
-         currentblip = CreateBlip3(closestCoords)
-         Wait(10000)
-       end
-   end)
-
-
-
-
+   return nearestStore
 end
-function CreateBlip3(coords)
+function CreateBlipForLocation(coords, sprite, scale, color, text)
    local blip = AddBlipForCoord(coords)
-   SetBlipSprite(blip, 366)
-   SetBlipScale(blip, 0.6)
-   SetBlipColour(blip, 47)
+   SetBlipSprite(blip, sprite)
+   SetBlipScale(blip, scale)
+   SetBlipColour(blip, color)
    SetBlipDisplay(blip, 6)
    SetBlipAsShortRange(blip, true)
    BeginTextCommandSetBlipName("STRING")
-   AddTextComponentString("Clothing Store")
+   AddTextComponentString(text)
    EndTextCommandSetBlipName(blip)
    return blip
+end
+function GetDistanceBetweenCoords(x1, y1, z1, x2, y2, z2)
+   return math.sqrt((x2 - x1)^2 + (y2 - y1)^2 + (z2 - z1)^2)
+end
+
+
+local bennysgarages = {
+
+
+
+}
+
+
+
+
+local supermarketstores = {
+
+   vector4(24.91, -1346.86, 29.5, 268.37),
+   vector4(-3039.64, 584.78, 7.91, 21.88),
+   vector4(-3242.73, 1000.46, 12.83, 2.08),
+   vector4(1728.44, 6415.4, 35.04, 243.26),
+   vector4(1697.96, 4923.04, 42.06, 326.61),
+   vector4(1960.26, 3740.6, 32.34, 300.45),
+   vector4(2677.97, 3279.95, 55.24, 325.89),
+   vector4(2556.8, 381.27, 108.62, 359.15),
+   vector4(373.08, 326.75, 103.57, 253.14),
+   vector4(161.2, 6641.74, 31.7, 221.02),
+
+
+}
+
+
+
+local clothing = {
+   vector3(-1448.72, -238.91, 49.81),
+   vector3(1693.54, 4830.79, 42.07),
+   vector3(-1199.32, -769.85, 17.31),
+   vector3(426.22, -798.37, 29.49),
+   vector3(-165.53, -302.4, 39.73),
+   vector3(74.64, -1400.79, 29.38),
+   vector3(-829.6, -1076.86, 11.33),
+   vector3(-1450.711, -236.83, 48.809),
+   vector3(11.15, 6517.19, 31.88),
+   vector3(612.51, 2756.6, 42.09),
+   vector3(1188.79, 2710.86, 38.22),
+   vector3(-3166.18, 1048.37, 20.86),
+   vector3(-1107.81, 2705.86, 19.11),
+   vector3(129.91, -218.86, 54.56), 
+}
+
+local boats = {
+   vector3(-914.95, 5797.57, 0.41),
+   vector3(916.11, 3655.86, 32.49),
+   vector3(643.17, -1828.23, 9.08),
+}
+
+
+function policeblips()
+   CreateThread(function()
+      while true do
+          Wait(1000) 
+          local playerPos = GetEntityCoords(PlayerPedId())
+          local nearestStore = FindNearestStore(playerPos, boats)
+          if boatblip then
+              RemoveBlip(storeBlip)
+              boatblip = nil
+          end
+          if nearestStore then
+               boatblip = CreateBlipForLocation(vec3(nearestStore.x, nearestStore.y, nearestStore.z), 404, 0.6, 3, "Police Boat")
+          end
+      end
+   end)
+end
+
+function clothingblip()
+   CreateThread(function()
+   while true do
+       Wait(1000) 
+       local playerPos = GetEntityCoords(PlayerPedId())
+       local nearestStore = FindNearestStore(playerPos, clothing)
+       if storeBlip then
+           RemoveBlip(storeBlip)
+           storeBlip = nil
+       end
+       if nearestStore then
+           storeBlip = CreateBlipForLocation(vec3(nearestStore.x, nearestStore.y, nearestStore.z), 366, 0.6, 47, "Clothing Store")
+       end
+   end
+end)
+end
+function supermarket()
+   CreateThread(function()
+   while true do
+       Wait(1000) 
+       local playerPos = GetEntityCoords(PlayerPedId())
+       local nearestStore = FindNearestStore(playerPos, supermarketstores)
+       if storeBlips then
+           RemoveBlip(storeBlips)
+           storeBlips = nil
+       end
+       if nearestStore then
+           storeBlips = CreateBlipForLocation(vec3(nearestStore.x, nearestStore.y, nearestStore.z), 628, 0.6, 2, "24/7 Supermarket")
+       end
+   end
+end)
+end
+function garages()
+   CreateThread(function()
+      while true do
+          Wait(1000) 
+          local playerPos = GetEntityCoords(PlayerPedId())
+          local nearestStore = FindNearestStore(playerPos, bennysgarages)
+          if bennysblip then
+              RemoveBlip(bennysblip)
+              bennysblip = nil
+          end
+          if nearestStore then
+            bennysblip = CreateBlipForLocation(vec3(nearestStore.x, nearestStore.y, nearestStore.z), 402, 0.6, 2, "Repair")
+          end
+      end
+   end)
 end

@@ -42,16 +42,6 @@ Apartments.Locations = {
         coords = {
             enter = vector4(-271.08, -957.81, 31.22, 293.42),
         },
-        polyzoneBoxData = {
-            heading = 250,
-            minZ = 40,
-            maxZ = 43.5,
-            debug = false,
-            length = 1,
-            width = 1,
-            distance = 2.0,
-            created = false
-        }
     },
     --[[["apartment4"] = {
         name = "apartment4",

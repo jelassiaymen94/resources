@@ -5,7 +5,7 @@ local ParachuteEquiped = false
 local currentVest = nil
 local currentVestTexture = nil
 local healing = false
-local img = "qb-inventory/html/images/"
+local img = "ps-inventory/html/images/"
 -- Functions
 
 function loadAnimDict(dict)

@@ -9,7 +9,7 @@ Preview: https://youtu.be/UdPLwmzGQv4
 
 -  Qb-Target
 
--  Qb-Inventory (Can be Changed Easily)
+-  ps-inventory (Can be Changed Easily)
 
 -  Qb-Core
 
@@ -110,10 +110,10 @@ Preview: https://youtu.be/UdPLwmzGQv4
 * **qb-smallresources>server>logs**
 Add ["weed"] = '',
 
-* **qb-inventory>html>images**
+* **ps-inventory>html>images**
 Add all Images
 
-* **qb-inventory>html/js/app.js** look for the ```function FormatItemInfo```
+* **ps-inventory>html/js/app.js** look for the ```function FormatItemInfo```
 Add Items
 
           else if (itemData.name == "1ozlow") {

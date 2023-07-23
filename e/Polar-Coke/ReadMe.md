@@ -9,7 +9,7 @@ Polar Coke Script
 
 -  Qb-Target
 
--  Qb-Inventory (Can be Changed Easily)
+-  ps-inventory (Can be Changed Easily)
 
 -  Qb-Core
 
@@ -61,7 +61,7 @@ Polar Coke Script
 
 Add ["coke"] = '',
 
-* **qb-inventory>html>images**
+* **ps-inventory>html>images**
 
 Add all Images
 

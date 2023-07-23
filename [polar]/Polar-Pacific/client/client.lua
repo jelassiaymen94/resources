@@ -1336,7 +1336,7 @@ end)
 
 function playeritem(item, amount)
     if Config.Framework == 'qb' then
-    return exports['qb-inventory']:HasItem(item, amount)
+    return exports['ps-inventory']:HasItem(item, amount)
     else
         
     end

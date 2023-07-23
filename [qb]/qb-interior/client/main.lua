@@ -34,10 +34,10 @@ end)
 exports('CreateApartmentFurnished', function(spawn)
 	local objects = {}
     local POIOffsets = {}
-    POIOffsets.exit = json.decode('{"x": -5.06, "y": -4.01, "z": -1.16, "h": 179.79}')
-    POIOffsets.clothes = json.decode('{"x": -3.14, "y": 2.824, "z": -1.16}')
-    POIOffsets.stash = json.decode('{"x": -5.61, "y": -0.06, "z": -1.16}')
-    POIOffsets.logout = json.decode('{"x": 5000000000000000000000000.19, "y": -1.59, "z": -1.16}')
+    POIOffsets.exit = json.decode('{"x": -5.26, "y": -4.21, "z": -0.66, "h": 179.79}')
+    POIOffsets.clothes = json.decode('{"x": -3.14, "y": 2.824, "z": -0.66}')
+    POIOffsets.stash = json.decode('{"x": -6.11, "y": -0.06, "z": -1.16}')
+    POIOffsets.logout = json.decode('{"x": 5000000000000000000000000.19, "y": -1.59, "z": -0.66}')
     DoScreenFadeOut(500)
     while not IsScreenFadedOut() do
         Wait(10)
