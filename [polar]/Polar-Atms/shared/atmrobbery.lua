@@ -9,7 +9,7 @@ end
 
 Config.Debug = true
 
-Config.OxTarget = true
+Config.OxTarget = false
 
 Config.Atms = { 'prop_atm_01', 'prop_atm_02', 'prop_atm_03', 'prop_fleeca_atm' }
 Config.Distance = 1.5

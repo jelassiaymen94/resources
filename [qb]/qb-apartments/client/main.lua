@@ -15,15 +15,6 @@ local POIOffsets = {
 }
 local RangDoorbell = nil
 
--- target variables
-local InApartmentTargets = {}
-
--- polyzone variables
-local IsInsideStashZone = false
-local IsInsideOutfitsZone = false
-local IsInsideLogoutZone = false
-
-
 
 local function ShowEntranceHeaderMenu()
     --[[local headerMenu = {}

@@ -444,6 +444,7 @@ $(document).on("click", "#weapon-attachments", function(e) {
         );
     }
 });
+/*
 
 function FormatItemInfo(itemData, dom) {
 
@@ -653,7 +654,477 @@ function FormatItemInfo(itemData, dom) {
         $(".item-info-description").html("<p>" + itemData.description + "</p><p style=\"font-size:11px\"><b>Weight: </b>" + itemData.weight + " | <b>Amount: </b> " + itemData.amount + " | <b>Quality: </b> " + "<a style=\"font-size:11px;color:green\">" + Math.floor(itemData.info.quality) + "</a>");
     }
 }
+*/
+function FormatItemInfo(itemData, dom) {
 
+    let element = $('.ply-iteminfo-container');
+    let itemOffset = $(dom).offset();
+    element.css('top', itemOffset.top - element.height());
+    let leftOffset = itemOffset.left + 92;
+    if (leftOffset + element.width() > $(window).width()) {
+        leftOffset = $(window).width() - element.width() - 20;
+    }
+    element.css('left', leftOffset);
+
+
+    if (itemData != null && itemData.info != "") {
+        if (itemData.name == "id_card") {
+            var gender = "Male";
+            if (itemData.info.gender == 1) {
+                gender = "Female";
+            }
+            $(".item-info-title").html("<p>" + itemData.label + "</p>");
+            $(".item-info-description").html(
+                "<p><strong>Citizen ID: </strong><span>" +
+                itemData.info.citizenid +
+                "</span></p><p><strong>Name: </strong><span>" +
+                itemData.info.firstname + " " + itemData.info.lastname +
+                "</span></p><p><strong>Birth Date: </strong><span>" +
+                itemData.info.birthdate +
+                "</span></p><p><strong>Gender: </strong><span>" +
+                gender +
+                "</span></p><p><strong>Nationality: </strong><span>" +
+                itemData.info.nationality +
+                "</span></p><p><strong>Fingerprint: </strong><span>" +
+                itemData.info.fingerprint +
+                "</span></p>"
+            );
+            $(".item-info-stats").html('<p>Weight: ' + ((itemData.weight * itemData.amount) / 1000).toFixed(1) + ' | Amount: ' + itemData.amount)
+            
+        } 
+        else if (itemData.name == "printerdocument") {
+            $(".item-info-title").html('<p>'+itemData.label+'</p>')
+            $(".item-info-description").html('<p>'+itemData.info.name+'</p><br/>');
+        }
+        else if (itemData.name == "driver_license") {
+            $(".item-info-title").html("<p>" + itemData.label + "</p>");
+            $(".item-info-description").html(
+                "</span></p><p><strong>Name: </strong><span>" +
+                itemData.info.firstname + " " + itemData.info.lastname +
+                "</span></p><p><strong>Birth Date: </strong><span>" +
+                itemData.info.birthdate +
+                "</span></p><p><strong>Licenses: </strong><span>" +
+                itemData.info.type +
+                "</span></p>"
+            );
+            $(".item-info-stats").html('<p>Weight: ' + ((itemData.weight * itemData.amount) / 1000).toFixed(1) + ' | Amount: ' + itemData.amount)
+            }
+            else if (itemData.name == "oilbarell") {
+                $(".item-info-title").html("<p>" + itemData.label + "</p>");
+                $(".item-info-description").html("<p>Gal: " + itemData.info.gal + "</p>" + "<p>Type: " + itemData.info.type + "</p>" + "<p>Octane: " + itemData.info.avg_gas_octane + "</p>");
+            } else if (itemData.name == "wetbills") {
+                $(".item-info-title").html("<p>" + itemData.label + "</p>");
+                $(".item-info-description").html(
+                    "<p><strong>Worth: </strong><span>$" +
+                    itemData.info.worth +
+                    "</span></p>"
+                );
+        } 
+        
+      
+        
+        else if (itemData.name == "weaponlicense") {
+            $(".item-info-title").html("<p>" + itemData.label + "</p>");
+            $(".item-info-description").html(
+                "<p><strong>First Name: </strong><span>" +
+                itemData.info.firstname +
+                "</span></p><p><strong>Last Name: </strong><span>" +
+                itemData.info.lastname +
+                "</span></p><p><strong>Licenses: </strong><span>" +
+                itemData.info.type +
+                "</span></p>"
+            );
+            $(".item-info-stats").html('<p>Weight: ' + ((itemData.weight * itemData.amount) / 1000).toFixed(1) + ' | Amount: ' + itemData.amount)
+        } else if (itemData.name == "lawyerpass") {
+            $(".item-info-title").html('<p>' + itemData.label + '</p>')
+            $(".item-info-description").html('<p><strong>Pass-ID: </strong><span>' + itemData.info.id + '</span></p><p><strong>First Name: </strong><span>' + itemData.info.firstname + '</span></p><p><strong>Last Name: </strong><span>' + itemData.info.lastname + '</span></p><p><strong>CSN: </strong><span>' + itemData.info.citizenid + '</span></p>');
+            $(".item-info-stats").html('<p>Weight: ' + ((itemData.weight * itemData.amount) / 1000).toFixed(1) + ' | Amount: ' + itemData.amount)
+        } else if (itemData.name == "fishicebox") {
+			$(".item-info-title").html('<p>' + itemData.label + ' ' + itemData.info.boxid + '</p>')
+			$(".item-info-description").html('<p><strong>Box Owner: </strong><span>' + itemData.info.boxOwner + '</span></p> Ice Box to store all of your fish');
+        } else if (itemData.name == "harness") {
+            $(".item-info-title").html('<p>' + itemData.label + '</p>')
+            $(".item-info-description").html('<p>' + itemData.info.uses + ' uses left.</p>');
+            $(".item-info-stats").html('<p>Weight: ' + ((itemData.weight * itemData.amount) / 1000).toFixed(1) + ' | Amount: ' + itemData.amount)
+        } else if (itemData.name == "carkeys") {
+            $(".item-info-title").html('<p>' + itemData.info.model + ' Car Key</p>')
+            $(".item-info-description").html('<p>Model: ' + itemData.info.model + '</p><p>License Plate: ' + itemData.info.plate + '</p>');
+            $(".item-info-stats").html('<p>Weight: ' + ((itemData.weight * itemData.amount) / 1000).toFixed(1) + ' | Amount: ' + itemData.amount)
+        } else if (itemData.name == "carstashkey") {
+            $(".item-info-title").html('<p>' + itemData.info.car + ' Stash Key</p>')
+            $(".item-info-description").html('<p><strong></strong><span></span></p><p><strong>Owner: ' + itemData.info.owner + '</span></p><span><p><strong>Model: </strong><span>' + itemData.info.car + '</span></p><p><strong></strong><span></span></p><p><strong>License Plate: </strong><span>' + itemData.info.ss + '</span></p>');
+            $(".item-info-stats").html('<p>Weight: ' + ((itemData.weight * itemData.amount) / 1000).toFixed(1) + ' | Amount: ' + itemData.amount)
+        } else if (itemData.name == "arcadeblue") {
+            $(".item-info-title").html('<p>' + itemData.label + '</p>')
+            $(".item-info-description").html('<p><strong>Owner: </strong>' + itemData.info.owner + '</p><strong>Play Card Time:</strong> ' + itemData.info.cardtime + ' minutes</p>');
+            $(".item-info-stats").html('<p>Weight: ' + ((itemData.weight * itemData.amount) / 1000).toFixed(1) + ' | Amount: ' + itemData.amount)
+        } else if (itemData.name == "arcadegreen") {
+            $(".item-info-title").html('<p>' + itemData.label + '</p>')
+            $(".item-info-description").html('<p><strong>Owner: </strong>' + itemData.info.owner + '</p><strong>Play Card Time:</strong> ' + itemData.info.cardtime + ' minutes</p>');
+            $(".item-info-stats").html('<p>Weight: ' + ((itemData.weight * itemData.amount) / 1000).toFixed(1) + ' | Amount: ' + itemData.amount)
+        } else if (itemData.name == "arcadegold") {
+            $(".item-info-title").html('<p>' + itemData.label + '</p>')
+            $(".item-info-description").html('<p><strong>Owner: </strong>' + itemData.info.owner + '</p><strong>Play Card Time:</strong> ' + itemData.info.cardtime + ' minutes</p>');
+            $(".item-info-stats").html('<p>Weight: ' + ((itemData.weight * itemData.amount) / 1000).toFixed(1) + ' | Amount: ' + itemData.amount)
+        } else if (itemData.type == "weapon") {
+            $(".item-info-title").html("<p>" + itemData.label + "</p>");
+            $(".item-info-stats").html('<p>Weight: ' + ((itemData.weight * itemData.amount) / 1000).toFixed(1) + ' | Amount: ' + itemData.amount)
+            if (itemData.info.ammo == undefined) {
+                itemData.info.ammo = 0;
+            } else {
+                itemData.info.ammo != null ? itemData.info.ammo : 0;
+            }
+            if (itemData.info.attachments != null) {
+                var attachmentString = "";
+                $.each(itemData.info.attachments, function (i, attachment) {
+                    if (i == itemData.info.attachments.length - 1) {
+                        attachmentString += attachment.label;
+                    } else {
+                        attachmentString += attachment.label + ", ";
+                    }
+                });
+                $(".item-info-description").html(
+                    "<p><strong>ID: </strong><span>" +
+                    itemData.info.serie +
+                    "</span></p><p><strong>Munition: </strong><span>" +
+                    itemData.info.ammo +
+                    "</span></p><p><strong>Attachments: </strong><span>" +
+                    attachmentString +
+                    "</span></p>"
+                );
+            } else {
+                $(".item-info-description").html(
+                    "<p><strong>ID: </strong><span>" +
+                    itemData.info.serie +
+                    "</span></p><p><strong>Munition: </strong><span>" +
+                    itemData.info.ammo +
+                    "</span></p><p>" +
+                    itemData.description +
+                    "</p>"
+                );
+            }
+        } else if (itemData.name == "filled_evidence_bag") {
+            $(".item-info-title").html("<p>" + itemData.label + "</p>");
+            if (itemData.info.type == "casing") {
+                $(".item-info-description").html(
+                    "<p><strong>Type: </strong><span>" +
+                    itemData.info.label +  
+                    "<p><strong>Tracking ID: </strong><span>" +
+                    itemData.info.tracking +
+                    "<p><strong>Date: </strong><span>" +
+                    itemData.info.date +
+                    "</span></p><p><strong>Collected: </strong><span>" +
+                    itemData.info.street +
+                    "</span></p><p><strong>Caliber: </strong><span>" +
+                    itemData.info.ammolabel +
+                    "</span></p><p><strong>Serial Number: </strong><span>" +
+                    itemData.info.serie +
+                    "</span></p><br /><p>" +
+                    itemData.description +
+                    "</p>"
+                );
+            } else if (itemData.info.type == "blood") {
+                $(".item-info-description").html(
+                    "<p><strong>Type: </strong><span>" +
+                    itemData.info.label +
+                    "<p><strong>Tracking ID: </strong><span>" +
+                    itemData.info.tracking +
+                    "<p><strong>Date: </strong><span>" +
+                    itemData.info.date +
+                    "</span></p><p><strong>Collected: </strong><span>" +
+                    itemData.info.street +
+                    "</span></p><p><strong>Blood Type: </strong><span>" +
+                    itemData.info.bloodtype +
+                    "</span></p><p><strong>DNA Code: </strong><span>" +
+                    itemData.info.dnalabel +
+                    "</span></p><br /><p>" +
+                    itemData.description +
+                    "</p>"
+                );
+            } else if (itemData.info.type == "fingerprint") {
+                $(".item-info-description").html(
+                    "<p><strong>Type: </strong><span>" +
+                    itemData.info.label +
+                    "<p><strong>Tracking ID: </strong><span>" +
+                    itemData.info.tracking +
+                    "<p><strong>Date: </strong><span>" +
+                    itemData.info.date +
+                    "</span></p><p><strong>Collected: </strong><span>" +
+                    itemData.info.street +
+                    "</span></p><p><strong>Fingerprint: </strong><span>" +
+                    itemData.info.fingerprint +
+                    "</span></p><br /><p>" +
+                    itemData.description +
+                    "</p>"
+                );
+            } else if (itemData.info.type == "fragment") {
+                $(".item-info-description").html(
+                    "<p><strong>Type: </strong><span>" +
+                    itemData.info.label +
+                    "<p><strong>Tracking ID: </strong><span>" +
+                    itemData.info.tracking +
+                    "<p><strong>Date: </strong><span>" +
+                    itemData.info.date +
+                    "</span></p><p><strong>Collected: </strong><span>" +
+                    itemData.info.street +
+                    "</span></p><p><strong>Vehicle: </strong><span>" +
+                    itemData.info.vehname +
+                    "</span></p><p><strong>Color: </strong><span>" +
+                    itemData.info.vehcolor +
+                    "</span></p><p><strong>VIN Match: </strong><span>" +
+                    itemData.info.plate +
+                    "</span></p><br /><p>" +
+                    itemData.description +
+                    "</p>"
+                );
+            } else if (itemData.info.type == "gsr") {
+                $(".item-info-description").html(
+                    "<p><strong>Type: </strong><span>" +
+                    itemData.info.label +
+                    "<p><strong>Date: </strong><span>" +
+                    itemData.info.date +
+                    "</span></p><p><strong>Conducted: </strong><span>" +
+                    itemData.info.street +
+                    "</span></p><br /><p>" +
+                    itemData.description +
+                    "</p>"
+                );
+            } else if (itemData.info.type == "dna") {
+                $(".item-info-description").html(
+                    "<p><strong>Type: </strong><span>" +
+                    itemData.info.label +
+                    "</span></p><p><strong>DNA Code: </strong><span>" +
+                    itemData.info.dnalabel +
+                    "<p><strong>Date: </strong><span>" +
+                    itemData.info.date +
+                    "</span></p><p><strong>Conducted: </strong><span>" +
+                    itemData.info.street +
+                    "</span></p><br /><p>" +
+                    itemData.description +
+                    "</p>"
+                );
+            }
+        } else if (itemData.name == "phone") {
+            $(".item-info-title").html('<p>' + itemData.label + '</p>')
+            $(".item-info-description").html('<p>Owner: ' + itemData.info.firstname + ' ' + itemData.info.lastname + '<br>' + 'Number: ' + itemData.info.phone + '</p>');
+            $(".item-info-stats").html('<p>Weight: ' + ((itemData.weight * itemData.amount) / 1000).toFixed(1) + ' | Amount: ' + itemData.amount)
+        } else if (itemData.name == "visa" || itemData.name == "mastercard") {
+            $(".item-info-title").html('<p>' + itemData.label + '</p>')
+            var str = "" + itemData.info.cardNumber + "";
+            var res = str.slice(12);
+            var cardNumber = "************" + res;
+            $(".item-info-description").html('<p><strong>Card Holder: </strong><span>' + itemData.info.name + '</span></p><p><strong>Citizen ID: </strong><span>' + itemData.info.citizenid + '</span></p><p><strong>Card Number: </strong><span>' + cardNumber + '</span></p>');
+            $(".item-info-stats").html('<p>Weight: ' + ((itemData.weight * itemData.amount) / 1000).toFixed(1) + ' | Amount: ' + itemData.amount)
+        } else if (itemData.info.costs != undefined && itemData.info.costs != null) {
+            $(".item-info-title").html('<p>' + itemData.label + '</p>')
+            $(".item-info-description").html('<p>' + itemData.info.costs + '</p>');
+            $(".item-info-stats").html('<p>Weight: ' + ((itemData.weight * itemData.amount) / 1000).toFixed(1) + ' | Amount: ' + itemData.amount)
+        } else if (itemData.name == "burger-ticket") {
+            $(".item-info-title").html('<p>' + itemData.label + '</p>')
+            $(".item-info-description").html('<p><strong>Paid: </strong><span>$' + itemData.info.price + '</span></p><p><strong>Note: </strong><span>' + itemData.info.note + '</span></p>');
+            $(".item-info-stats").html('<p>Weight: ' + ((itemData.weight * itemData.amount) / 1000).toFixed(1) + ' | Amount: ' + itemData.amount)
+        } else if (itemData.name == "note") {
+            $(".item-info-title").html('<p>' + itemData.label + '</p>')
+            $(".item-info-description").html('<p>' + itemData.info.label + '</p>');
+            $(".item-info-stats").html('<p>Weight: ' + ((itemData.weight * itemData.amount) / 1000).toFixed(1) + ' | Amount: ' + itemData.amount)
+        } else if (itemData.name == "moneybag") {
+            $(".item-info-title").html('<p>' + itemData.label + '</p>')
+            $(".item-info-description").html('<p><strong>Amount of cash: </strong><span><strong style="color: green;width: 100%;">$ </strong>' + itemData.info.cash + '</span></p>');
+            $(".item-info-stats").html('<p>Weight: ' + ((itemData.weight * itemData.amount) / 1000).toFixed(1) + ' | Amount: ' + itemData.amount)
+        } else if (itemData.name == "markedbills") {
+            $(".item-info-title").html('<p>' + itemData.label + '</p>')
+            $(".item-info-description").html('<p><strong>Worth: </strong><span><strong style="color: green;width: 100%;">$ </strong>' + itemData.info.worth + '</span></p>');
+            $(".item-info-stats").html('<p>Weight: ' + ((itemData.weight * itemData.amount) / 1000).toFixed(1) + ' | Amount: ' + itemData.amount)
+        } else if (itemData.name == "duffel-bag") {
+            $(".item-info-title").html('<p>' + itemData.label + '</p>')
+            $(".item-info-description").html('<p><strong>Duffel Bag ID: </strong><span>' + itemData.info.bagid + '</span></p>');
+            $(".item-info-stats").html('<p>Weight: ' + ((itemData.weight * itemData.amount) / 1000).toFixed(1) + ' | Amount: ' + itemData.amount)
+        } else if (itemData.name == "murder-meal") {
+            $(".item-info-title").html('<p>' + itemData.label + '</p>')
+            $(".item-info-description").html('<p><strong>Murder Meal ID: </strong><span>' + itemData.info.mealid + '</span></p>');
+            $(".item-info-stats").html('<p>Weight: ' + ((itemData.weight * itemData.amount) / 1000).toFixed(1) + ' | Amount: ' + itemData.amount)
+        } else if (itemData.name == "labkey") {
+            $(".item-info-title").html('<p>' + itemData.label + '</p>')
+            $(".item-info-description").html('<p>Lab: ' + itemData.info.lab + '</p>');
+            $(".item-info-stats").html('<p>Weight: ' + ((itemData.weight * itemData.amount) / 1000).toFixed(1) + ' | Amount: ' + itemData.amount)
+        }   else if (itemData.name == 'spray') {
+            $(".item-info-title").html("<p>" + itemData.label + "</p>");
+            $(".item-info-description").html("<p>Gang: " + itemData.info.gang + "</p>");
+          } 
+        else if (itemData.name == "methtable") {
+            $(".item-info-title").html("<p>" + itemData.label + "</p>");
+            $(".item-info-description").html("<p>Table ID: " + itemData.info.tableid + "</p>");
+        }
+        else if (itemData.name == "methbag") {
+            $(".item-info-title").html("<p>" + itemData.label + "</p>");
+            $(".item-info-description").html("<p>Quality: " + itemData.info.qualityIndex + "</p>");
+        } else if (itemData.name == "bass") {
+            $(".item-info-title").html('<p>' + itemData.label + '</p>')
+            $(".item-info-description").html('<p>Species: ' + itemData.info.species + '</p>Weight: ' + itemData.info.lbs + ' lbs</p>Type: ' + itemData.info.type);
+            $(".item-info-stats").html('<p>Weight: ' + ((itemData.weight * itemData.amount) / 1000).toFixed(1) + ' | Amount: ' + itemData.amount)
+        } else if (itemData.name == "stingray") {
+            $(".item-info-title").html('<p>' + itemData.label + '</p>')
+            $(".item-info-description").html('<p>Species: ' + itemData.info.species + '</p>Weight: ' + itemData.info.lbs + ' lbs</p>Type: ' + itemData.info.type);
+            $(".item-info-stats").html('<p>Weight: ' + ((itemData.weight * itemData.amount) / 1000).toFixed(1) + ' | Amount: ' + itemData.amount)
+        } else if (itemData.name == "flounder") {
+            $(".item-info-title").html('<p>' + itemData.label + '</p>')
+            $(".item-info-description").html('<p>Species: ' + itemData.info.species + '</p>Weight: ' + itemData.info.lbs + ' lbs</p>Type: ' + itemData.info.type);
+            $(".item-info-stats").html('<p>Weight: ' + ((itemData.weight * itemData.amount) / 1000).toFixed(1) + ' | Amount: ' + itemData.amount)
+        } else if (itemData.name == "codfish") {
+            $(".item-info-title").html('<p>' + itemData.label + '</p>')
+            $(".item-info-description").html('<p>Species: ' + itemData.info.species + '</p>Weight: ' + itemData.info.lbs + ' lbs</p>Type: ' + itemData.info.type);
+            $(".item-info-stats").html('<p>Weight: ' + ((itemData.weight * itemData.amount) / 1000).toFixed(1) + ' | Amount: ' + itemData.amount)
+        } else if (itemData.name == "mackerel") {
+            $(".item-info-title").html('<p>' + itemData.label + '</p>')
+            $(".item-info-description").html('<p>Species: ' + itemData.info.species + '</p>Weight: ' + itemData.info.lbs + ' lbs</p>Type: ' + itemData.info.type);
+            $(".item-info-stats").html('<p>Weight: ' + ((itemData.weight * itemData.amount) / 1000).toFixed(1) + ' | Amount: ' + itemData.amount)
+        } else if (itemData.name == "dolphin") {
+            $(".item-info-title").html('<p>' + itemData.label + '</p>')
+            $(".item-info-description").html('<p>Species: ' + itemData.info.species + '</p>Weight: ' + itemData.info.lbs + ' lbs</p>Type: ' + itemData.info.type);
+            $(".item-info-stats").html('<p>Weight: ' + ((itemData.weight * itemData.amount) / 1000).toFixed(1) + ' | Amount: ' + itemData.amount)
+        } else if (itemData.name == "sharkhammer") {
+            $(".item-info-title").html('<p>' + itemData.label + '</p>')
+            $(".item-info-description").html('<p>Species: ' + itemData.info.species + '</p>Weight: ' + itemData.info.lbs + ' lbs</p>Type: ' + itemData.info.type);
+            $(".item-info-stats").html('<p>Weight: ' + ((itemData.weight * itemData.amount) / 1000).toFixed(1) + ' | Amount: ' + itemData.amount)
+        } else if (itemData.name == "sharktiger") {
+            $(".item-info-title").html('<p>' + itemData.label + '</p>')
+            $(".item-info-description").html('<p>Species: ' + itemData.info.species + '</p>Weight: ' + itemData.info.lbs + ' lbs</p>Type: ' + itemData.info.type);
+            $(".item-info-stats").html('<p>Weight: ' + ((itemData.weight * itemData.amount) / 1000).toFixed(1) + ' | Amount: ' + itemData.amount)
+        } else if (itemData.name == "killerwhale") {
+            $(".item-info-title").html('<p>' + itemData.label + '</p>')
+            $(".item-info-description").html('<p>Species: ' + itemData.info.species + '</p>Weight: ' + itemData.info.lbs + ' lbs</p>Type: ' + itemData.info.type);
+            $(".item-info-stats").html('<p>Weight: ' + ((itemData.weight * itemData.amount) / 1000).toFixed(1) + ' | Amount: ' + itemData.amount)
+        } else if (itemData.name == "fishicebox") {
+            $(".item-info-title").html('<p>' + itemData.label + ' ' + itemData.info.boxid + '</p>')
+            $(".item-info-description").html('<p><strong>Box Owner: </strong><span>' + itemData.info.boxOwner + '</span></p> Ice Box to store all of your fish');
+            $(".item-info-stats").html('<p>Weight: ' + ((itemData.weight * itemData.amount) / 1000).toFixed(1) + ' | Amount: ' + itemData.amount)
+        } else if (itemData.name == "stickynote") {
+            $(".item-info-title").html('<p>' + itemData.label + '</p>')
+            $(".item-info-description").html('<p>' + itemData.info.label + '</p>');
+        } else if (itemData.name == "rentalpapers") {
+            $(".item-info-title").html('<p>' + itemData.label + '</p>')
+            $(".item-info-description").html('<p><strong>Name: </strong><span>'+ itemData.info.firstname + '</span></p><p><strong>Last Name: </strong><span>'+ itemData.info.lastname+ '</span></p><p><strong>Plate: </strong><span>'+ itemData.info.plate + '<p><strong>Model: </strong><span>'+ itemData.info.model +'</span></p>');
+        } else if (itemData.name == "marijuana_1oz_low") {
+            $(".item-info-title").html('<p>' + itemData.label + '</p>')
+            $(".item-info-description").html('<p>Strain: ' + itemData.info.strain + '</p>Potency: ' + itemData.info.potency + '</p>Type: ' + itemData.info.type + '<p>Thc: ' + itemData.info.thc + '%</p>');
+            $(".item-info-stats").html('<p>Weight: ' + ((itemData.weight * itemData.amount) / 1000).toFixed(1) + ' | Amount: ' + itemData.amount)
+        } else if (itemData.name == "marijuana_1oz_mid") {
+            $(".item-info-title").html('<p>' + itemData.label + '</p>')
+            $(".item-info-description").html('<p>Strain: ' + itemData.info.strain + '</p>Potency: ' + itemData.info.potency + '</p>Type: ' + itemData.info.type + '<p>Thc: ' + itemData.info.thc + '%</p>');
+            $(".item-info-stats").html('<p>Weight: ' + ((itemData.weight * itemData.amount) / 1000).toFixed(1) + ' | Amount: ' + itemData.amount)
+        } else if (itemData.name == "marijuana_1oz_high") {
+            $(".item-info-title").html('<p>' + itemData.label + '</p>')
+            $(".item-info-description").html('<p>Strain: ' + itemData.info.strain + '</p>Potency: ' + itemData.info.potency + '</p>Type: ' + itemData.info.type + '<p>Thc: ' + itemData.info.thc + '%</p>');
+            $(".item-info-stats").html('<p>Weight: ' + ((itemData.weight * itemData.amount) / 1000).toFixed(1) + ' | Amount: ' + itemData.amount)
+        } else if (itemData.name == "marijuana_3.5_low") {
+            $(".item-info-title").html('<p>' + itemData.label + '</p>')
+            $(".item-info-description").html('<p>Strain: ' + itemData.info.strain + '</p>Potency: ' + itemData.info.potency + '</p>Type: ' + itemData.info.type + '<p>Thc: ' + itemData.info.thc + '%</p>');
+            $(".item-info-stats").html('<p>Weight: ' + ((itemData.weight * itemData.amount) / 1000).toFixed(1) + ' | Amount: ' + itemData.amount)
+        } else if (itemData.name == "marijuana_3.5_mid") {
+            $(".item-info-title").html('<p>' + itemData.label + '</p>')
+            $(".item-info-description").html('<p>Strain: ' + itemData.info.strain + '</p>Potency: ' + itemData.info.potency + '</p>Type: ' + itemData.info.type + '<p>Thc: ' + itemData.info.thc + '%</p>');
+            $(".item-info-stats").html('<p>Weight: ' + ((itemData.weight * itemData.amount) / 1000).toFixed(1) + ' | Amount: ' + itemData.amount)
+        } else if (itemData.name == "marijuana_3.5_high") {
+            $(".item-info-title").html('<p>' + itemData.label + '</p>')
+            $(".item-info-description").html('<p>Strain: ' + itemData.info.strain + '</p>Potency: ' + itemData.info.potency + '</p>Type: ' + itemData.info.type + '<p>Thc: ' + itemData.info.thc + '%</p>');
+            $(".item-info-stats").html('<p>Weight: ' + ((itemData.weight * itemData.amount) / 1000).toFixed(1) + ' | Amount: ' + itemData.amount)
+
+        } else if (itemData.name == "casino_member_validated") {
+            $(".item-info-title").html('<p>' + itemData.label + '</p>')
+            $(".item-info-description").html('<p>Diamond Casino Member:  ' + itemData.info.owner);
+            $(".item-info-stats").html('<p>Weight: ' + ((itemData.weight * itemData.amount) / 1000).toFixed(1) + ' | Amount: ' + itemData.amount)
+        } else if (itemData.name == "casino_vip_validated") {
+            $(".item-info-title").html('<p>' + itemData.label + '</p>')
+            $(".item-info-description").html('<p>Diamond Casino V.I.P:  ' + itemData.info.owner);
+            $(".item-info-stats").html('<p>Weight: ' + ((itemData.weight * itemData.amount) / 1000).toFixed(1) + ' | Amount: ' + itemData.amount)
+        }
+		
+		
+        else if (itemData.name == "1ozlow") {
+            $(".item-info-title").html('<p>' + itemData.label + '</p>')
+            $(".item-info-description").html('<p>Strain: ' + itemData.info.strain + '</p>Potency: ' + itemData.info.potency + '</p>Type: ' + itemData.info.type + '<p>Thc: ' + itemData.info.thc + '%</p>' + '<p>Color: ' + itemData.info.color + '</p>');
+        } else if (itemData.name == "1ozmid") {
+            $(".item-info-title").html('<p>' + itemData.label + '</p>')
+            $(".item-info-description").html('<p>Strain: ' + itemData.info.strain + '</p>Potency: ' + itemData.info.potency + '</p>Type: ' + itemData.info.type + '<p>Thc: ' + itemData.info.thc + '%</p>' + '<p>Color: ' + itemData.info.color + '</p>');
+        } else if (itemData.name == "1ozhigh") {
+            $(".item-info-title").html('<p>' + itemData.label + '</p>')
+            $(".item-info-description").html('<p>Strain: ' + itemData.info.strain + '</p>Potency: ' + itemData.info.potency + '</p>Type: ' + itemData.info.type + '<p>Thc: ' + itemData.info.thc + '%</p>' + '<p>Color: ' + itemData.info.color + '</p>');
+        } else if (itemData.name == "35weedlow") {
+            $(".item-info-title").html('<p>' + itemData.label + '</p>')
+            $(".item-info-description").html('<p>Strain: ' + itemData.info.strain + '</p>Potency: ' + itemData.info.potency + '</p>Type: ' + itemData.info.type + '<p>Thc: ' + itemData.info.thc + '%</p>' + '<p>Color: ' + itemData.info.color + '</p>');
+        } else if (itemData.name == "35weedmid") {
+            $(".item-info-title").html('<p>' + itemData.label + '</p>')
+            $(".item-info-description").html('<p>Strain: ' + itemData.info.strain + '</p>Potency: ' + itemData.info.potency + '</p>Type: ' + itemData.info.type + '<p>Thc: ' + itemData.info.thc + '%</p>' + '<p>Color: ' + itemData.info.color + '</p>');
+        } else if (itemData.name == "35weedhigh") {
+            $(".item-info-title").html('<p>' + itemData.label + '</p>')
+            $(".item-info-description").html('<p>Strain: ' + itemData.info.strain + '</p>Potency: ' + itemData.info.potency + '</p>Type: ' + itemData.info.type + '<p>Thc: ' + itemData.info.thc + '%</p>' + '<p>Color: ' + itemData.info.color + '</p>');
+        }  
+
+		
+		
+		
+        else if (
+            itemData.name == "keepcompanionhusky" ||
+            itemData.name == "keepcompanionrottweiler" ||
+            itemData.name == "keepcompanionmtlion" ||
+            itemData.name == "keepcompanionmtlion2" ||
+            itemData.name == "keepcompanioncat" ||
+            itemData.name == "keepcompanionpoodle" ||
+            itemData.name == "keepcompanionpug" ||
+            itemData.name == "keepcompanionretriever" ||
+            itemData.name == "keepcompanionshepherd" ||
+            itemData.name == "keepcompanionwesty" ||
+            itemData.name == "keepcompanioncoyote" ||
+            itemData.name == "keepcompanionrabbit" ||
+            itemData.name == "monkeypet" ||
+            itemData.name == "sharkpet" ||
+            itemData.name == "cranepet" ||
+            itemData.name == "keepcompanionhen"
+        ) {
+            let gender = itemData.info.gender;
+            gender ? (gender = "male") : (gender = "female");
+            $(".item-info-title").html("<p>" + itemData.info.name + "</p>");
+            $(".item-info-description").html(
+                "<p><strong>Owner Phone: </strong><span>" +
+                itemData.info.owner.phone +
+                "</span></p><p><strong>Variation: </strong><span>" +
+                `${itemData.info.variation}` +
+                "</span></p><p><strong>Gender: </strong><span>" +
+                `${gender}` +
+                "</span></p><p><strong>Health: </strong><span>" +
+                itemData.info.health +
+                "</span></p><p><strong>Xp/Max: </strong><span>" +
+                `${itemData.info.XP} / ${maxExp(itemData.info.level)}` +
+                "</span></p><p><strong>Level: </strong><span>" +
+                itemData.info.level +
+                "</span></p><p><strong>Age: </strong><span>" +
+                callAge(itemData.info.age) +
+                "</span></p><p><strong>Food: </strong><span>" +
+                itemData.info.food +
+                "</span></p>" +
+                "</span></p><p><strong>Thirst: </strong><span>" +
+                itemData.info.thirst +
+                "</span></p>"
+            );
+        }
+        else if (itemData.name == "petwaterbottleportable") {
+            $(".item-info-title").html("<p>" + itemData.label + "</p>");
+            $(".item-info-description").html("<p>capacity(L): " + itemData.info.liter + "</p>");
+        }
+
+
+        else {
+            $(".item-info-title").html('<p>' + itemData.label + '</p>')
+            $(".item-info-description").html('<p>' + itemData.description + '</p>')
+            $(".item-info-stats").html('<p>Weight: ' + ((itemData.weight * itemData.amount) / 1000).toFixed(1) + ' | Amount: ' + itemData.amount)
+        }
+    } else {
+        $(".item-info-title").html('<p>' + itemData.label + ' </p>')
+        $(".item-info-description").html('<p>' + itemData.description + '</p>')
+        $(".item-info-stats").html('<p>Weight: ' + ((itemData.weight * itemData.amount) / 1000).toFixed(1) + ' | Amount: ' + itemData.amount)
+
+    }
+}
 function handleDragDrop() {
     $(".item-drag").draggable({
         helper: "clone",

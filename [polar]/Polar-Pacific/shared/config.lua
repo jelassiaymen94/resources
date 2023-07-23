@@ -41,7 +41,7 @@ Config.LazerSounds = true -- if a player walks into it, it causes a sound to pla
 
 
 --============== OX ================
-Config.OxTarget = true -- fully supported
+Config.OxTarget = false -- fully supported
 Config.OxTargetDistance = 1.5 -- should keep low to stop glitching through walls
 Config.OxDoorlock = false -- not fully supported yet
 Config.OxIventory = false -- not fully supported yet
