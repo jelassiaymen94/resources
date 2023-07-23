@@ -95,38 +95,9 @@ local SetupPoly = function()
             radialmenuOption = nil
         end
     end)
-
-    -- Boss Menu
-    if PlayerJob.grade.level < Config.Dealership[PlayerJob.name].bossMenuThreshold then return end
-    DealershipBossMenu = BoxZone:Create(Config.Dealership[PlayerJob.name].bossmenu, 1.0, 1.0, {
-        name = 'DealershipBossMenu',
-        heading = 0.00,
-        minZ = Config.Dealership[PlayerJob.name].bossmenu.z - 1.0,
-        maxZ = Config.Dealership[PlayerJob.name].bossmenu.z + 1.0,
-        debugPoly = false
-    })
-    
-    DealershipBossMenu:onPlayerInOut(function(isPointInside)
-        if isPointInside then
-            inZone = true
-            exports['qb-core']:DrawText('[E] - Manage '..PlayerJob.label, 'left')
-            CreateThread(function()
-                while inZone do
-                    if IsControlJustPressed(0, 38) then
-                        exports['qb-core']:KeyPressed(38)
-                        openBossMenu()
-                    end
-                    Wait(3)
-                end
-            end)
-        else
-            inZone = false
-            exports['qb-core']:HideText()
-        end
-    end)
 end
 
--- (Re)start events
+
 RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function()
     PlayerJob = QBCore.Functions.GetPlayerData().job
     SetupPoly()
@@ -176,14 +147,14 @@ AddStateBagChangeHandler('isLoggedIn', nil, function(bagName, key, value)
     isLoggedIn = value
 end)
 
--- Radialmenu Event
+
 RegisterNetEvent('Polar-Dealership:client:OpenShowroom', function()
     if DealershipShowroom:isPointInside(GetEntityCoords(PlayerPedId())) then
         openShowroom()
     end
 end)
 
--- Sale related events
+
 RegisterNetEvent('Polar-Dealership:client:sellConfirm',function(target, targetName, job)
     if Config.Dealership[PlayerJob.name] then
         if IsPedInAnyVehicle(PlayerPedId(), false) then
@@ -202,15 +173,15 @@ RegisterNetEvent('Polar-Dealership:client:sellConfirm',function(target, targetNa
                         end
                     end
                 end
-                -- THIS LIMITS DEALERSHIPS TO THEIR OWN VEHICLES
+               
                 if vehmodel ~= nil then
                     -- SET OWNER
                     TriggerServerEvent('Polar-Dealership:server:setOwner', vehmodel, hash, target, job)
 
-                    -- LOG
+                  
                     TriggerServerEvent("qb-log:server:CreateLog", "vehicleshop", "Vehicle purchased ("..PlayerJob.name..")", "red", "**"..targetName.."**: bought a **" .. QBCore.Shared.Vehicles[vehmodel]["brand"].." "..QBCore.Shared.Vehicles[vehmodel]["name"].. "** from "..GetPlayerName(PlayerId()))
 
-                    -- Save properties
+                    
                     Wait(2000)
                     TriggerServerEvent('qb-vehicletuning:server:SaveVehicleProps', QBCore.Functions.GetVehicleProperties(veh))
                 else
@@ -230,7 +201,7 @@ RegisterNetEvent('Polar-Dealership:client:setOwner',function(plate)
     FreezeEntityPosition(veh, false)
 end)
 
--- Testdrive related event
+
 RegisterNetEvent('Polar-Dealership:client:testdrive',function()
     local veh = GetVehiclePedIsIn(PlayerPedId())
     local plate = GetVehicleNumberPlateText(veh)
@@ -248,7 +219,7 @@ RegisterNetEvent('Polar-Dealership:client:testdrive',function()
             end
         end
 
-        -- THIS LIMITS DEALERSHIPS TO THEIR OWN VEHICLES
+       
         if vehmodel then
             SetVehicleNumberPlateText(veh, "TESTCAR1")
             TriggerEvent("vehiclekeys:client:SetOwner", GetVehicleNumberPlateText(veh))
@@ -264,39 +235,7 @@ RegisterNetEvent('Polar-Dealership:client:testdrive',function()
     end
 end)
 
-CreateThread(function() -- Main thread for garage menus
-    while true do
-        Wait(3)
-        local inRange = false
-        if isLoggedIn and PlayerJob and Config.Dealership[PlayerJob.name] then
-            local ped = PlayerPedId()
-            local pos = GetEntityCoords(ped)
-            local dist = #(pos - Config.Dealership[PlayerJob.name].garage.xyz)
-            if dist < 9 then
-                inRange = true
-                DrawMarker(39, Config.Dealership[PlayerJob.name].garage.xyz, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 242, 148, 41, 255, false, false, false, 1, false, false, false)
-                if dist < 3 then
-                    if IsPedOnFoot(ped) then
-                        QBCore.Functions.DrawText3D(Config.Dealership[PlayerJob.name].garage.x, Config.Dealership[PlayerJob.name].garage.y, Config.Dealership[PlayerJob.name].garage.z, "~g~[E]~w~ - Open Garage Menu")
-                        if IsControlJustPressed(0, 38) then
-                            TriggerEvent('Polar-Dealership:client:menu:OpenGarageMenu')
-                        end
-                    else
-                        QBCore.Functions.DrawText3D(Config.Dealership[PlayerJob.name].garage.x, Config.Dealership[PlayerJob.name].garage.y, Config.Dealership[PlayerJob.name].garage.z, "~g~[E]~w~ - Store Vehicle")
-                        if IsControlJustPressed(0, 38) then
-                            TriggerEvent('Polar-Dealership:client:menu:DeleteVehicleMenu')
-                        end
-                    end
-                end
-            end
-        else
-            Wait(2000)
-        end
-        if not inRange then Wait(2000) end
-    end
-end)
-
-CreateThread(function() -- Blips
+CreateThread(function() 
    --[[local tunerblip = AddBlipForCoord(139.34, -3028.73, 7.04)
 	SetBlipSprite(tunerblip, 488)
 	SetBlipDisplay(tunerblip, 4)
@@ -306,24 +245,5 @@ CreateThread(function() -- Blips
 	BeginTextCommandSetBlipName("STRING")
 	AddTextComponentSubstringPlayerName("Tuner Shop")
 	EndTextCommandSetBlipName(tunerblip)
-
-    local redline = AddBlipForCoord(-566.0908, -933.0880, 23.8866)
-	SetBlipSprite(redline, 488)
-	SetBlipDisplay(redline, 4)
-	SetBlipScale(redline, 0.6)
-	SetBlipAsShortRange(redline, true)
-	SetBlipColour(redline, 45)
-	BeginTextCommandSetBlipName("STRING")
-	AddTextComponentSubstringPlayerName("Redline Performance")
-	EndTextCommandSetBlipName(redline) -- -566.0908, -933.0880, 23.8866, 108.3232
-
- local luxuryblip = AddBlipForCoord(-566.0908, -933.0880, 23.8866)
-	SetBlipSprite(luxuryblip, 488)
-	SetBlipDisplay(luxuryblip, 4)
-	SetBlipScale(luxuryblip, 0.7)
-	SetBlipAsShortRange(luxuryblip, true)
-	SetBlipColour(luxuryblip, 1)
-	BeginTextCommandSetBlipName("STRING")
-	AddTextComponentSubstringPlayerName("Redline Performance")
-	EndTextCommandSetBlipName(luxuryblip)]]
+]]
 end)

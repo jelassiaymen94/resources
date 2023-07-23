@@ -1,11 +1,10 @@
-if Config.Notify == 'qb' then 
+if Config.Framework == 'qb' then 
     QBCore = exports[Config.Core]:GetCoreObject()
-elseif Config.Notify == 'esx' then
+elseif Config.Framework == 'esx' then
     ESX = nil
 end
 
 local prop = nil local var = nil local item = nil local amount = nil
-Config.CallBack('Polar-Paleto:Server:GetCops', function(source, cb) local camount = 0 for k, v in pairs(QBCore.Functions.GetQBPlayers()) do if v.PlayerData.job.name == "police" and v.PlayerData.job.onduty then camount = camount + 1 end end cb(camount) end)
 RegisterNetEvent('Polar-Paleto:Server:ThermitePtfx', function(coords) TriggerClientEvent('Polar-Paleto:Client:ThermitePtfx', -1, coords) end)
 RegisterNetEvent('Polar-Paleto:Server:GiveRewards', function(item, amount)  local src = source exports[Config.Core]:ExploitBan(src, "HERES YOUR " .. amount .. " " .. item .. " S BITCH") end) -- modder bait lol
 RegisterNetEvent('Polar-Paleto:Server:Vault', function() TriggerClientEvent('Polar-Paleto:Client:Vault', -1, true) end)

@@ -1,13 +1,13 @@
 local QBCore = exports['qb-core']:GetCoreObject()
 
-QBCore.Functions.CreateCallback("Polar-Sub:Server:GetCars", function(source, cb, plate)
+QBCore.Functions.CreateCallback("Polar-Dealership:Server:GetCars", function(source, cb, plate)
 	MySQL.Async.fetchAll('SELECT * FROM player_vehicles WHERE plate = ?', { plate }, function(result)
         if result[1] then cb(true)
         else cb(false) end
 	end)
 end)
 
-RegisterNetEvent('Polar-Sub:Server:Sell', function(money, vehicle, plate)
+RegisterNetEvent('Polar-Dealership:Server:Sell', function(money, vehicle, plate)
     local plates = plate
     local car = vehicle
     local dealership = 'cardealer'
@@ -90,6 +90,25 @@ RegisterNetEvent('Polar-Sub:Server:Sell', function(money, vehicle, plate)
     else 
 
     end
+    
+   
+end)
+
+RegisterNetEvent('Polar-Dealership:Server:StoreCar', function(vehicle)
+    local car = vehicle
+    local dealership = 'cardealer'
+    local src = source
+    local Player = QBCore.Functions.GetPlayer(src)
+    if not Player then return end
+    if Player.PlayerData.job.name ~= dealership then return end
+ 
+
+
+    if car == nil then return end
+  
+    MySQL.insert('INSERT INTO dealerships_orders (dealership, vehicle) VALUES (?, ?)', {'cardealer', car})
+      
+       
     
    
 end)

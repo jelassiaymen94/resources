@@ -1,4 +1,8 @@
-local QBCore = exports[Config.Core]:GetCoreObject()
+if Config.Framework == 'qb' then 
+    QBCore = exports[Config.Core]:GetCoreObject()
+elseif Config.Framework == 'esx' then
+    ESX = nil
+end
 AddEventHandler('onResourceStart', function(resource) if resource == GetCurrentResourceName() then Wait(100) if Config.Debug then print('Starting Props') end props() end end)
 RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function() Wait(100) if Config.Debug then print('Player Loaded Props Starting') end props() end)
 
@@ -12,9 +16,12 @@ local dkeypad2 = nil
 local dkeypad3 = nil
 local dkeypad4 = nil
 
+local kp1 = nil
+local kp2 = nil
+
 function props()
-   local kp1 =  CreateObject(GetHashKey("ch_prop_fingerprint_scanner_error_01b"),Config.doorcard1Eye, false, false, false) SetEntityHeading(kp1, 250.93) -- left double
-   local kp2 =  CreateObject(GetHashKey("ch_prop_fingerprint_scanner_error_01b"),  Config.doorcard2Eye, false, false, false) SetEntityHeading(kp2, 45.7) -- right double
+   kp1 =  CreateObject(GetHashKey("ch_prop_fingerprint_scanner_error_01b"),Config.doorcard1Eye, false, false, false) SetEntityHeading(kp1, 250.93) -- left double
+   kp2 =  CreateObject(GetHashKey("ch_prop_fingerprint_scanner_error_01b"),  Config.doorcard2Eye, false, false, false) SetEntityHeading(kp2, 45.7) -- right double
 
    keypad1 =  CreateObject(GetHashKey("ch_prop_fingerprint_scanner_error_01b"),  Config.Door1Eye, false, false, false) SetEntityHeading(keypad1, 340.7) -- right double
    keypad2 =  CreateObject(GetHashKey("ch_prop_fingerprint_scanner_error_01b"),  Config.Door2Eye, false, false, false) SetEntityHeading(keypad2, 225.7) -- right double
@@ -39,15 +46,15 @@ function switch(prop, location, number)
  
    if number == 1 then
       if DoesEntityExist(keypad1) then DeleteEntity(keypad1) end
-      local dkeypad1 =  CreateObject(GetHashKey("ch_prop_fingerprint_damaged_01"),  location, false, false, false) SetEntityHeading(dkeypad1, 340.7) -- right double
+      dkeypad1 =  CreateObject(GetHashKey("ch_prop_fingerprint_damaged_01"),  location, false, false, false) SetEntityHeading(dkeypad1, 340.7) -- right double
       Wait(50) FreezeEntityPosition(dkeypad1, true)  
    elseif number == 2 then
       if DoesEntityExist(keypad2) then DeleteEntity(keypad2) end
-      local dkeypad2 =  CreateObject(GetHashKey("ch_prop_fingerprint_damaged_01"),  location, false, false, false) SetEntityHeading(dkeypad2, 225.7) -- right double
+      dkeypad2 =  CreateObject(GetHashKey("ch_prop_fingerprint_damaged_01"),  location, false, false, false) SetEntityHeading(dkeypad2, 225.7) -- right double
       Wait(50) FreezeEntityPosition(dkeypad2, true)  
    elseif number == 3 then
       DeleteEntity(keypad3)
-      local dkeypad3 =  CreateObject(GetHashKey("ch_prop_fingerprint_damaged_01"),  location, false, false, false) SetEntityHeading(dkeypad3, 340.7) -- right double
+      dkeypad3 =  CreateObject(GetHashKey("ch_prop_fingerprint_damaged_01"),  location, false, false, false) SetEntityHeading(dkeypad3, 340.7) -- right double
       Wait(50) FreezeEntityPosition(dkeypad3, true)  
    
    else print('no switch')
@@ -73,4 +80,5 @@ RegisterNetEvent('Polar-Pacific:Client:ResetPropsKeypads', function()
    if DoesEntityExist(dkeypad3) then DeleteEntity(dkeypad3) end
    if DoesEntityExist(dkeypad4) then DeleteEntity(dkeypad4) end
    
+   keypad1 = nil keypad2 = nil keypad3 = nil keypad4 = nil dkeypad1 = nil dkeypad2 = nil dkeypad3 = nil dkeypad4 = nil kp1 = nil kp2 = nil
 end)

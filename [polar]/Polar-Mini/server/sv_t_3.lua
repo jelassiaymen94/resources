@@ -1,5 +1,5 @@
 
-CreateThread(function()
+--[[CreateThread(function()
     while true do 
     Wait(300000) -- 5 mins
     local whip = GetAllVehicles()
@@ -8,4 +8,4 @@ CreateThread(function()
         if not IsPedAPlayer(driver) then DeleteEntity(car) end
     end
     end
-end)
+end)]]

@@ -1,6 +1,6 @@
 Config = {}
 
-Config.Debug = false -- Toggle server console prints
+Config.Debug = false 
 
 Config.Fuel = 'LegacyFuel'
 
@@ -13,14 +13,20 @@ Config.Dealership = {
             ["Regular"] = { "adder", "turismo2","cheetah","cheetah2", "elegy", "elegy2" },
            
         },
-        bossmenu = vector3(148000000000.16, -141.82, 54.8),
-        bossMenuThreshold = 4, -- what job grade can access
+        bossMenuThreshold = 3, -- what job grade can access
         moneyMenuThreshold = 4,  -- what job grade can access
-        margin = 0.6, -- 35% 
-        garage = vector4(0, 0, 0, 0),
-        platform = vector4(1217.92, -2956.92, 5.87, 91.13), -- 122.0757, -143.4386, 54.8001, 212.3672
+        margin = 0.6, -- 35% increase
+        platform = vector4(-1278.68, -3037.11, -48.49, 347.61),
+        delivery = {
+           -- [1] = vector4(1215.87, -2956.84, 5.87, 90.14), 
+           -- [2] = vector4(1215.65, -2960.41, 5.87, 90.4),
+           -- [3] = vector4(1215.76, -2964.48, 5.87, 91.48),
+           -- [4] = vector4(1215.93, -2968.27, 5.87, 86.64),
+           -- [5] = vector4(1215.91, -2971.74, 5.87, 90.08),
+            [1] = vector4(-1279.59, -3038.23, -48.49, 276.1),
+        },
         displays = {
-            [1] = vector4(-1272.78, -3022.1, -48.49, 322.97), -- 138.1914, -149.5041, 55.0501, 111.8849
+            [1] = vector4(-1272.78, -3022.1, -48.49, 322.97), 
             [2] = vector4(-1267.02, -3023.55, -48.49, 3.89),
             [3] = vector4(125.22, -3022.78, 7.04, 269.71),
             [4] = vector4(-1259.8, -3020.77, -48.49, 43.69),
@@ -39,59 +45,4 @@ Config.Dealership = {
         minZ = -50.07,
         maxZ = 10.07
     },
-   --[[ tuner = {
-        vehicles = {
-            --["Brand Name"] =    {"spawnname1", "spawnname2"},
-        },
-        bossmenu = vector3(-20.78344, -1055.242, 32.400444),
-        bossMenuThreshold = 3,
-        moneyMenuThreshold = 4,
-        margin = 1.1, -- 10%
-        garage = vector4(128.25, -3023.1, 7.04, 269.17),
-        platform = vector4(136.09, -3031.26, 7.04, 1.06),
-        displays = {
-            [1] = vector4(145.2, -3045.95, 7.04, 42.05),
-            [2] = vector4(141.22, -3046.24, 7.04, 42.05),
-            [3] = vector4(137.81, -3045.98, 7.04, 42.05),
-            [4] = vector4(133.53, -3046.09, 7.04, 42.05),
-            [5] = vector4(123.8, -3047.51, 7.04, 267.89),
-        },
-        showroom = {
-            vector2(154.39083862305, -3051.4331054688),
-            vector2(120.80993652344, -3051.5971679688),
-            vector2(120.60404205322, -3007.771484375),
-            vector2(153.39619445801, -3007.0881347656)
-        },
-        minZ = 28.27,
-        maxZ = 30.26
-    },
-    redline = {
-        vehicles = {
-            --["Brand Name"] =    {"spawnname1", "spawnname2"},
-            ["Redline Imports"] =    {"lwgtr", "m3e46"},
-        },
-        bossmenu = vector3(-589.0047, -930.8109, 23.8866), -- -589.0047, -930.8109, 23.8866, 115.8622
-        bossMenuThreshold = 4,
-        moneyMenuThreshold = 4,
-        margin = 2.0, -- 10%
-        garage = vector4(0,0,0, 0),
-        platform = vector4(-591.3436, -916.8173, 23.8866, 136.6419),
-        displays = { 
-            [1] = vector4(-570.8351, -936.6249, 23.8866, 314.3223), -- upstairs
-            [2] = vector4(-575.9909, -936.4629, 23.8866, 313.9818), -- upstairs
-            [3] = vector4(-593.7063, -933.2158, 17.5926, 351.7946), -- down
-            [4] = vector4(-584.3689, -923.3737, 17.5926, 39.0835), -- down
-            [5] = vector4(-602.6048, -922.9838, 17.5926, 308.4578), -- down
-        },
-        showroom = {
-            vector2(-622.73, -850.00),
- vector2(-625.76, -948.48),
- vector2(-542.42, -951.52),
- vector2(-510.61, -883.33),
- vector2(-513.64, -856.06),
- vector2(-560.61, -846.97)
-        },
-        minZ = 15.27,
-        maxZ = 25.26
-    }]]
 }

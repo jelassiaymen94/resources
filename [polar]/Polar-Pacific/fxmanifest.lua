@@ -24,20 +24,19 @@ client_scripts {
 '@PolyZone/CircleZone.lua',
 '@PolyZone/ComboZone.lua',
 'client/*.lua',
-
 }
 
 server_scripts {
 'server/*.lua',
 '@oxmysql/lib/MySQL.lua',
-'sv_escrowed.lua'
+'sv_escrowed.lua',
 }
 
 escrow_ignore {
     'client/*.lua',
     'server/*.lua',
     'shared/*.lua',
-    'pacificbankdoors.lua',
+    'Pacificbankdoors.lua',
     '*.*'
   }
 

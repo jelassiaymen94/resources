@@ -1,23 +1,51 @@
-local QBCore = exports[Config.Core]:GetCoreObject()
-
-
-
-local ped = PlayerPedId()
-local animDict = nil local model = nil local prop = nil local var = nil local drillpos = nil local drillrot = nil local door = nil local pp = nil local coords = nil local rot = nil local position = nil local item = nil local CurrentCops = 0
+if Config.Framework == 'qb' then 
+    QBCore = exports[Config.Core]:GetCoreObject()
+elseif Config.Framework == 'esx' then
+    ESX = nil
+end
 local amount = nil
 
-local specialgrab = 'Pacificgrab'
-local vaultdoorname = Config.VaultDoorDoor
-local vaultanimloc = Config.VaultDoorThirdEye
-local fingerprintdoor = Config.FingerPrintDoorDoor
 
--- vault stuff
-local vaultid = 961976194
-local open = -3.1
-local closed = 158.92
-local vaultloc = vector3(255.23, 223.98, 102.39)
 
-local hi = false
+
+--============== CONFIG ====================================================================================================================================================
+
+local drillreward = nil
+function goodies()  
+    local chance = math.random(1,100) 
+    if chance <= 25 then 
+        drillreward = 'band' 
+        amount = 3 
+    elseif 
+        chance <= 50 then 
+        drillreward = 'band' 
+        amount = 2 
+    elseif 
+        chance <=100 then 
+        drillreward = 'band' 
+        amount = 1 
+    end 
+end
+
+local knifeitem = 'weapon_switchblade' -- item for paintings
+
+local thermiteitem = "thermite" -- item for doors
+
+local computeritem = 'hacking_device' -- item to hack computers
+local pcitem = 'btc' -- comes from pc completion
+
+local vaultitem = 'laptop_red' -- item for vault
+local vaultitemchance = 50 -- chance for item to be removed
+
+local yellowdrillitem = 'drill' -- item for deposit boxes (2 sections, yellow drill)
+local ydrillitemchance = 50 -- chance for yellow drill to break
+local drillitem = 'drill' -- item for deposit boxes (regular)
+local drillitemchance = 50 -- chance for item to break
+
+local carditem = 'keycard' -- item for keycard rooms
+local carditemchance = 50 -- chance for item to be removed
+
+
 
 --- THERMITE
 local thermiteinfo = { time = 30, squares = 4, errors = 3}
@@ -30,19 +58,97 @@ local fingerhack = 'utk_fingerprint' -- https://github.com/utkuali/Finger-Print-
 local memorygame = 'memory' 
 local voltgame = 'ultra-voltlab' -- https://forum.cfx.re/t/release-voltlab-hacking-minigame-cayo-perico-mission/3933171
 
-local drillreward = nil
-function goodies()  local chance = math.random(1,100) if chance <= 25 then drillreward = 'band' amount = 3 elseif chance <= 50 then drillreward = 'band' amount = 2 elseif chance <=100 then drillreward = 'band' amount = 1 end end
+--- QBCORE MEMORY GAME ----------------
+local memgame = false -- if using default qbcore memorygame then set to true
+local memname = "memorygame"
 
 
-local pcitem = 'btc' -- crypto or sum
-local thermiteitem = "thermite"
-local vaultitem = 'laptop_red' -- bluelaptop
-local vaultitemchance = 50
-local drillitem = 'drill' 
-local drillitemchance = 50
-local carditem = 'keycard' -- vaultkeycard
-local carditemchance = 50
-local computeritem = 'hacking_device' -- hacking_device
+--==================================================================================================================================================================
+
+
+
+
+
+
+
+
+
+
+local disabled = true
+
+
+
+
+
+
+local gabz = Config.Gabz
+
+local bagcolor = Config.Bag
+
+local oxt = Config.OxTarget -- ox target
+local oxdoorname = nil
+local oxd = Config.OxDoorlock
+
+local ped = PlayerPedId()
+local animDict = nil local model = nil local prop = nil local var = nil local drillpos = nil local drillrot = nil local door = nil local pp = nil local coords = nil local rot = nil local position = nil local item = nil local CurrentCops = 0
+
+
+local doors = {}
+local trollys = {}
+local targets = {}
+local caseitem = {}
+local itemstand = {}
+local displaycase = {}
+
+local specialgrab = 'Pacificgrab'
+local vaultdoorname = Config.VaultDoorName
+local vaultanimloc = Config.VaultDoorThirdEye
+local fingerprintdoor = Config.FingerDoorName
+
+-- vault stuff
+local vaultid = 961976194
+local open = -3.1
+local closed = 158.92
+local vaultloc = vector3(255.23, 223.98, 102.39)
+
+local hi = Config.Debug
+
+local paintingtable = {
+    'Pacificprop40',
+    'Pacificprop41',
+    'Pacificprop42',
+    'Pacificprop43',
+    'Pacificprop44',
+    'Pacificprop45',
+
+}
+local casetable = {
+    'Pacificprop45',
+    'Pacificprop46',
+    'Pacificprop47',
+    'Pacificprop48',
+    'Pacificprop49',
+    'Pacificprop50',
+}
+local trollytable = {
+    'Pacificprop16',
+    'Pacificprop17',
+    'Pacificprop18', 
+    'Pacificprop19', 
+    'Pacificprop20',
+    'Pacificprop26', 
+    'Pacificprop27', 
+    'Pacificprop28', 
+    'Pacificprop29', 
+    'Pacificprop30',
+}
+local proptable = {
+    'Pacificprop1', 'Pacificprop2', 'Pacificprop3', 'Pacificprop4', 'Pacificprop5', 'Pacificprop6', 'Pacificprop7', 'Pacificprop8', 'Pacificprop9', 'Pacificprop10', 'Pacificprop11', 'Pacificprop12','Pacificprop13', 'Pacificprop14', 'Pacificprop15',
+    'Pacificprop16', 'Pacificprop17',  'Pacificprop18', 'Pacificprop19', 'Pacificprop20', 'Pacificprop21', 'Pacificprop22', 'Pacificprop23', 'Pacificprop24', 'Pacificprop25', 'Pacificprop26','Pacificprop27', 'Pacificprop28', 'Pacificprop29',
+    'Pacificprop30', 'Pacificprop31', 'Pacificprop32', 'Pacificprop33', 'Pacificprop34', 'Pacificprop35', 'Pacificprop36', 'Pacificprop37', 'Pacificprop38', 'Pacificprop39', 'Pacificprop40', 'Pacificprop41',
+    'Pacificprop42', 'Pacificprop43', 'Pacificprop44', 'Pacificprop45', 'Pacificprop46', 'Pacificprop47', 'Pacificprop48', 'Pacificprop49', 'Pacificprop50',
+}
+
 
 
 local Pacificstartname = 'Pacificstart'
@@ -53,36 +159,48 @@ local Pacificdoorcard1name = 'Pacificdoorcard1'
 local Pacificdoorcard2name = 'Pacificdoorcard2'
 
 
+local doortable = {
+    
+    Pacificdoor1name,
+    Pacificdoor2name,
+    Pacificdoor3name,
+    Pacificdoorcard1name,
+    Pacificdoorcard2name,
+    Config.Pc1name,
+    Config.Pc2name,
+    Config.Pc3name,
+    Config.LazerName,
+    Config.VaultDoorName,
+    Config.FingerDoorName,
 
-AddEventHandler('onResourceStop', function(resource) if resource ~= GetCurrentResourceName() then return end  TriggerEvent('Polar-Pacific:Client:ResetProps') TriggerEvent('Polar-Pacific:Client:ResetDoors') TriggerEvent('Polar-Pacific:Client:ResetPropsKeypads') end)
-AddEventHandler('onResourceStart', function(resource) if resource == GetCurrentResourceName() then Wait(100) if Config.Debug then print('Starting Targets')  end starttarget() blip()  end end)
-RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function() Wait(100) if Config.Debug then print('Player Loaded Targets Starting') end starttarget() blip()  end)
+}
+
+AddEventHandler('onResourceStop', function(resource) if resource ~= GetCurrentResourceName() then return end  TriggerEvent('Polar-Pacific:Client:ResetProps') TriggerEvent('Polar-Pacific:Client:ResetDoors') TriggerEvent('Polar-Pacific:Client:ResetPropsKeypads') resetstuff() LocalPlayer.state:set('inv_busy', false, true) end)
+AddEventHandler('onResourceStart', function(resource) if resource == GetCurrentResourceName() then Wait(100) if hi then print('Starting Targets')  end starttarget() blip()  end end)
+RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function() Wait(100) if hi then print('Player Loaded Targets Starting') end starttarget() blip()  end)
 RegisterNetEvent('police:SetCopCount', function(amount) CurrentCops = amount end)
 RegisterNetEvent("Polar-Pacific:Client:ThermitePtfx", function(coords) if not HasNamedPtfxAssetLoaded("scr_ornate_heist") then  RequestNamedPtfxAsset("scr_ornate_heist") end while not HasNamedPtfxAssetLoaded("scr_ornate_heist") do Wait(0) end SetPtfxAssetNextCall("scr_ornate_heist") local effect = StartParticleFxLoopedAtCoord("scr_heist_ornate_thermal_burn", coords, 0.0, 0.0, 0.0, 1.0, false, false, false, false)  Wait(thermitetime) StopParticleFxLooped(effect, 0) end)
 
+local callback = Config.TrigCallBack -- QBCore.Functions.TriggerCallback ESX.TriggerServerCallback
 
-RegisterCommand('openvault', function(source, args, rawCommand)
-    TriggerEvent('Polar-Pacific:Client:Vault')
-    -- vaultdone()
+RegisterNetEvent('Polar-Pacific:client:start', function()  pp = Config.StartThermite door = Pacificstartname coords = Config.StartPfx
+    if CurrentCops >= Config.RequiredCops then
+    if playeritem(thermiteitem) then
+    callback('Polar-Pacific:DoorCheckstart', function(result) if result then
+    TriggerServerEvent('Polar-Pacific:Server:StopInteract', door)
+    Wait(50)
+        TriggerEvent('Polar-Pacific:client:ThermiteStart', pp, door, coords)
+    else
+        notify(text('cooldown'), "error")
+    end end)
+    else notify(text('nothermite'), "error") end
+    else notify(text('nopolice'), "error") end
 end)
 
-
 RegisterNetEvent('Polar-Pacific:client:ThermiteStart', function(pp, door, coords)
-    QBCore.Functions.TriggerCallback('QBCore:HasItem', function(result) if result then if math.random(1, 100) <= Config.FingerPrintPercent and not gloves() then TriggerServerEvent("evidence:server:CreateFingerDrop", GetEntityCoords(PlayerPedId())) end
-            if CurrentCops >= Config.RequiredCops then
-                LocalPlayer.state:set('inv_busy', true, true)
+                    LocalPlayer.state:set('inv_busy', true, true)
                     PlantThermite(pp, door)
-                    if hi then
-                        LocalPlayer.state:set('inv_busy', false, true)
-                        TriggerServerEvent('Polar-Pacific:Server:StartCooldown')
-                        ThermiteEffect(door, coords) 
-                        TriggerServerEvent('Polar-Pacific:Server:StartInteract', 'Pacificdoor1')
-                        TriggerServerEvent('Polar-Pacific:Server:StartInteract', 'Pacificdoor2')
-                        TriggerServerEvent('Polar-Pacific:Server:StartInteract', 'Pacificdoor3')
-                        TriggerServerEvent('Polar-Pacific:Server:StartTargets')
-                    else
-                    exports[thermiteexport]:Thermite(function(success) 
-                    if success then
+        if hi then
                     LocalPlayer.state:set('inv_busy', false, true)
                     TriggerServerEvent('Polar-Pacific:Server:StartCooldown')
                     ThermiteEffect(door, coords) 
@@ -90,17 +208,41 @@ RegisterNetEvent('Polar-Pacific:client:ThermiteStart', function(pp, door, coords
                     TriggerServerEvent('Polar-Pacific:Server:StartInteract', 'Pacificdoor2')
                     TriggerServerEvent('Polar-Pacific:Server:StartInteract', 'Pacificdoor3')
                     TriggerServerEvent('Polar-Pacific:Server:StartTargets')
-                    else 
+        else
+            if memgame then 
+                exports[memname]:thermiteminigame(10, 3, 3, 10,
+                function() -- success
+                    LocalPlayer.state:set('inv_busy', false, true)
+                    TriggerServerEvent('Polar-Pacific:Server:StartCooldown')
+                    ThermiteEffect(door, coords) 
+                    TriggerServerEvent('Polar-Pacific:Server:StartInteract', 'Pacificdoor1')
+                    TriggerServerEvent('Polar-Pacific:Server:StartInteract', 'Pacificdoor2')
+                    TriggerServerEvent('Polar-Pacific:Server:StartInteract', 'Pacificdoor3')
+                    TriggerServerEvent('Polar-Pacific:Server:StartTargets')
+                end,
+                function() -- failure
                     TriggerServerEvent('Polar-Pacific:Server:StartInteract', door)
                     LocalPlayer.state:set('inv_busy', false, true)
-                    QBCore.Functions.Notify(text('thermitefail'), "error") end
-                    end, thermiteinfo.time, thermiteinfo.squares, thermiteinfo.errors)
-                    end
-            else QBCore.Functions.Notify(text('nopolice'), "error")  TriggerServerEvent('Polar-Pacific:Server:StartInteract', door) end
-        else TriggerServerEvent('Polar-Pacific:Server:GiveRewards', 'markedbills', math.random(2,4)) end  -- cart finish
-    end,  {thermiteitem})
+                    notify(text('thermitefail'), "error") 
+                end)
+            else
+                exports[thermiteexport]:Thermite(function(success) 
+                if success then
+                    LocalPlayer.state:set('inv_busy', false, true)
+                    TriggerServerEvent('Polar-Pacific:Server:StartCooldown')
+                    ThermiteEffect(door, coords) 
+                    TriggerServerEvent('Polar-Pacific:Server:StartInteract', 'Pacificdoor1')
+                    TriggerServerEvent('Polar-Pacific:Server:StartInteract', 'Pacificdoor2')
+                    TriggerServerEvent('Polar-Pacific:Server:StartInteract', 'Pacificdoor3')
+                    TriggerServerEvent('Polar-Pacific:Server:StartTargets')
+                else 
+                    TriggerServerEvent('Polar-Pacific:Server:StartInteract', door)
+                    LocalPlayer.state:set('inv_busy', false, true)
+                    notify(text('thermitefail'), "error") end
+            end, thermiteinfo.time, thermiteinfo.squares, thermiteinfo.errors)
+        end
+    end
 end)
-
 
 
 
@@ -108,35 +250,50 @@ end)
 
 RegisterNetEvent('Polar-Pacific:client:Thermite', function(pp, door, coords)
     if hi then PlantThermite(pp, door) ThermiteEffect(door, coords) else
-    QBCore.Functions.TriggerCallback('QBCore:HasItem', function(result) if result then 
+        if playeritem(thermiteitem) then
     TriggerServerEvent('Polar-Pacific:Server:StopInteract', door)
     if math.random(1, 100) <= Config.FingerPrintPercent and not gloves() then TriggerServerEvent("evidence:server:CreateFingerDrop", GetEntityCoords(PlayerPedId())) end PlantThermite(pp, door)
+    if memgame then 
+        exports[memname]:thermiteminigame(10, 3, 3, 10,
+        function() -- success
+            TriggerServerEvent('Polar-Pacific:Server:TargetRemove', door) ThermiteEffect(door, coords)
+           
+        end,
+        function() -- failure
+            TriggerServerEvent('Polar-Pacific:Server:StartInteract', door) 
+            notify(text('thermitefail'), "error") 
+        end)
+    else
     exports[thermiteexport]:Thermite(function(success)
     if success then TriggerServerEvent('Polar-Pacific:Server:TargetRemove', door) ThermiteEffect(door, coords)
     
     else TriggerServerEvent('Polar-Pacific:Server:StartInteract', door) 
-        QBCore.Functions.Notify(text('thermitefail'), "error") end
+        notify(text('thermitefail'), "error") end
     end, thermiteinfo.time, thermiteinfo.squares, thermiteinfo.errors) -- Time, Gridsize (5, 6, 7, 8, 9, 10), IncorrectBlocks
-    else 
-         TriggerServerEvent('Polar-Pacific:Server:GiveRewards', 'markedbills', 3) 
-    end end, {thermiteitem}) end
+    end
+    else notify(text('nothermite'), "error") end
+    end
 end)
 function ThermiteEffect(door, coords)
-    if door == 'Pacificstart' then CallPolice() end
+    if door == 'Pacificstart' then if Config.LazerPolice then if Config.Debug then print('Lazer Police Call') else CallPolice() end end end
     RequestAnimDict("anim@heists@ornate_bank@thermal_charge") while not HasAnimDictLoaded("anim@heists@ornate_bank@thermal_charge") do Wait(50) end Wait(1500)
-    TriggerServerEvent("Polar-Pacific:Server:ThermitePtfx", vec3(coords.x, coords.y, coords.z+0.2)) Wait(500) TaskPlayAnim(PlayerPedId(), "anim@heists@ornate_bank@thermal_charge", "cover_eyes_intro", 8.0, 8.0, 1000, 36, 1, 0, 0, 0) TaskPlayAnim(PlayerPedId(), "anim@heists@ornate_bank@thermal_charge", "cover_eyes_loop", 8.0, 8.0, 3000, 49, 1, 0, 0, 0) TriggerEvent('Polar-Pacific:Client:DestroyPad', door) Wait(thermitetime) ClearPedTasks(PlayerPedId()) TriggerServerEvent('qb-doorlock:server:updateState', door, false, false, false, true, false, false)
+    TriggerServerEvent("Polar-Pacific:Server:ThermitePtfx", vec3(coords.x, coords.y, coords.z+0.2)) Wait(500) TaskPlayAnim(PlayerPedId(), "anim@heists@ornate_bank@thermal_charge", "cover_eyes_intro", 8.0, 8.0, 1000, 36, 1, 0, 0, 0) TaskPlayAnim(PlayerPedId(), "anim@heists@ornate_bank@thermal_charge", "cover_eyes_loop", 8.0, 8.0, 3000, 49, 1, 0, 0, 0) TriggerEvent('Polar-Pacific:Client:DestroyPad', door) Wait(thermitetime) ClearPedTasks(PlayerPedId())  if oxd then  doorlock(door, false)
+    else TriggerServerEvent('qb-doorlock:server:updateState', door, false, false, false, true, false, false) end
  end 
 function PlantThermite(pp, door)
     SetPedComponentVariation(PlayerPedId(), 5, Config.HideBagID, 1, 1)
-    TriggerServerEvent('Polar-Pacific:Server:StopInteract', door) TriggerServerEvent("QBCore:Server:RemoveItem", thermiteitem, 1)  TriggerEvent('inventory:client:ItemBox', QBCore.Shared.Items[thermiteitem], "remove") RequestAnimDict("anim@heists@ornate_bank@thermal_charge") RequestModel("hei_p_m_bag_var22_arm_s")
-    RequestNamedPtfxAsset("scr_ornate_heist") while not HasAnimDictLoaded("anim@heists@ornate_bank@thermal_charge") or not HasModelLoaded("hei_p_m_bag_var22_arm_s") or not HasNamedPtfxAssetLoaded("scr_ornate_heist") do Wait(50) end
-    local pos = pp SetEntityHeading(PlayerPedId(), pos.w) Wait(100) local rotx, roty, rotz = table.unpack(vector3(GetEntityRotation(PlayerPedId()))) local netscene = NetworkCreateSynchronisedScene(pos.x, pos.y, pos.z, rotx, roty, rotz, 2, false, false, 1065353216, 0, 1.3) local bag = CreateObject('hei_p_m_bag_var22_arm_s', pos.x, pos.y, pos.z,  true,  true, false)
+    TriggerServerEvent('Polar-Pacific:Server:StopInteract', door) TriggerServerEvent('Polar-Pacific:Server:RemoveItem', thermiteitem, 1) RequestAnimDict("anim@heists@ornate_bank@thermal_charge") RequestModel(bagcolor)
+    RequestNamedPtfxAsset("scr_ornate_heist") while not HasAnimDictLoaded("anim@heists@ornate_bank@thermal_charge") or not HasModelLoaded(bagcolor) or not HasNamedPtfxAssetLoaded("scr_ornate_heist") do Wait(50) end
+    local pos = pp SetEntityHeading(PlayerPedId(), pos.w) Wait(100) local rotx, roty, rotz = table.unpack(vector3(GetEntityRotation(PlayerPedId()))) local netscene = NetworkCreateSynchronisedScene(pos.x, pos.y, pos.z, rotx, roty, rotz, 2, false, false, 1065353216, 0, 1.3) local bag = CreateObject(bagcolor, pos.x, pos.y, pos.z,  true,  true, false)
     SetEntityCollision(bag, false, true) local x, y, z = table.unpack(GetEntityCoords(PlayerPedId())) local thermite = CreateObject('hei_prop_heist_thermite', x, y, z + 0.2,  true,  true, true) SetEntityCollision(thermite, false, true) AttachEntityToEntity(thermite, ped, GetPedBoneIndex(PlayerPedId(), 28422), 0, 0, 0, 0, 0, 200.0, true, true, false, true, 1, true) NetworkAddPedToSynchronisedScene(PlayerPedId(), netscene, "anim@heists@ornate_bank@thermal_charge", "thermal_charge", 1.5, -4.0, 1, 16, 1148846080, 0)
-    NetworkAddEntityToSynchronisedScene(bag, netscene, "anim@heists@ornate_bank@thermal_charge", "bag_thermal_charge", 4.0, -8.0, 1) SetPedComponentVariation(PlayerPedId(), 5, 0, 0, 0) NetworkStartSynchronisedScene(netscene) Wait(5000) DetachEntity(thermite, 1, 1) FreezeEntityPosition(thermite, true) DeleteObject(bag)  SetPedComponentVariation(PlayerPedId(), 5, Config.BagUseID, 1, 1) NetworkStopSynchronisedScene(netscene) CreateThread(function() Wait(15000) delete(thermite) end)
+    NetworkAddEntityToSynchronisedScene(bag, netscene, "anim@heists@ornate_bank@thermal_charge", "bag_thermal_charge", 4.0, -8.0, 1)  SetPedComponentVariation(PlayerPedId(), 5, Config.HideBagID, 1, 1) NetworkStartSynchronisedScene(netscene) Wait(5000) DetachEntity(thermite, 1, 1) FreezeEntityPosition(thermite, true) DeleteObject(bag)  SetPedComponentVariation(PlayerPedId(), 5, Config.BagUseID, 1, 1) NetworkStopSynchronisedScene(netscene) CreateThread(function() Wait(15000) DeleteEntity(thermite) end)
 end
 function loadAnimDict(dict) while not HasAnimDictLoaded(dict) do RequestAnimDict(dict) Wait(50) end end
 function loadModel(model) if type(model) == 'number' then model = model else model = GetHashKey(model) end while not HasModelLoaded(model) do RequestModel(model) Wait(0) end end
-function drill(drillpos, drillrot, item, door) local pedCo = GetEntityCoords(PlayerPedId()) LocalPlayer.state:set('inv_busy', true, true) local coords, pedRotation = GetEntityCoords(PlayerPedId()), GetEntityRotation(PlayerPedId()) local animDict = 'anim_heist@hs3f@ig9_vault_drill@laser_drill@' loadAnimDict(animDict) local bagModel = 'hei_p_m_bag_var22_arm_s' loadModel(bagModel) local laserDrillModel = 'hei_prop_heist_drill' loadModel(laserDrillModel) RequestAmbientAudioBank('DLC_HEIST_FLEECA_SOUNDSET', 0) RequestAmbientAudioBank('DLC_MPHEIST\\HEIST_FLEECA_DRILL', 0) RequestAmbientAudioBank('DLC_MPHEIST\\HEIST_FLEECA_DRILL_2', 0) soundId = GetSoundId() cam = CreateCam('DEFAULT_ANIMATED_CAMERA', true) SetCamActive(cam, true) RenderScriptCams(true, 0, 3000, 1, 0) bag = CreateObject(GetHashKey(bagModel), coords, 1, 0, 0) laserDrill = CreateObject(GetHashKey(laserDrillModel), coords, 1, 0, 0)
+function drill(drillpos, drillrot) local pedCo = GetEntityCoords(PlayerPedId()) LocalPlayer.state:set('inv_busy', true, true) local coords, pedRotation = GetEntityCoords(PlayerPedId()), GetEntityRotation(PlayerPedId()) local animDict = 'anim_heist@hs3f@ig9_vault_drill@laser_drill@' loadAnimDict(animDict) local bagModel = bagcolor loadModel(bagModel) local laserDrillModel = 'hei_prop_heist_drill' loadModel(laserDrillModel) RequestAmbientAudioBank('DLC_HEIST_FLEECA_SOUNDSET', 0) RequestAmbientAudioBank('DLC_MPHEIST\\HEIST_FLEECA_DRILL', 0) 
+    RequestAmbientAudioBank('DLC_MPHEIST\\HEIST_FLEECA_DRILL_2', 0) 
+    soundId = GetSoundId()
+    cam = CreateCam('DEFAULT_ANIMATED_CAMERA', true) SetCamActive(cam, true) RenderScriptCams(true, 0, 3000, 1, 0) bag = CreateObject(GetHashKey(bagModel), coords, 1, 0, 0) laserDrill = CreateObject(GetHashKey(laserDrillModel), coords, 1, 0, 0)
     scene1 = NetworkCreateSynchronisedScene(drillpos, drillrot, 2, true, false, 1065353216, 0, 1.3) NetworkAddPedToSynchronisedScene(PlayerPedId(), scene1, animDict, 'intro', 4.0, -4.0, 1033, 0, 1000.0, 0) NetworkAddEntityToSynchronisedScene(bag, scene1, animDict, 'bag_intro', 1.0, -1.0, 1148846080) NetworkAddEntityToSynchronisedScene(laserDrill, scene1, animDict, 'intro_drill_bit', 1.0, -1.0, 1148846080) scene2 = NetworkCreateSynchronisedScene(drillpos, drillrot, 2, true, false, 1065353216, 0, 1.3) NetworkAddPedToSynchronisedScene(PlayerPedId(), scene2, animDict, 'drill_straight_start', 4.0, -4.0, 1033, 0, 1000.0, 0) NetworkAddEntityToSynchronisedScene(bag, scene2, animDict, 'bag_drill_straight_start', 1.0, -1.0, 1148846080) NetworkAddEntityToSynchronisedScene(laserDrill, scene2, animDict, 'drill_straight_start_drill_bit', 1.0, -1.0, 1148846080) scene3 = NetworkCreateSynchronisedScene(drillpos, drillrot, 2, true, false, 1065353216, 0, 1.3) NetworkAddPedToSynchronisedScene(PlayerPedId(), scene3, animDict, 'drill_straight_end_idle', 4.0, -4.0, 1033, 0, 1000.0, 0) NetworkAddEntityToSynchronisedScene(bag, scene3, animDict, 'bag_drill_straight_end_idle', 1.0, -1.0, 1148846080) NetworkAddEntityToSynchronisedScene(laserDrill, scene3, animDict, 'drill_straight_end_idle_drill_bit', 1.0, -1.0, 1148846080) scene4 = NetworkCreateSynchronisedScene(drillpos, drillrot, 2, true, false, 1065353216, 0, 1.3)
     NetworkAddPedToSynchronisedScene(PlayerPedId(), scene4, animDict, 'drill_straight_fail', 4.0, -4.0, 1033, 0, 1000.0, 0) NetworkAddEntityToSynchronisedScene(bag, scene4, animDict, 'bag_drill_straight_fail', 1.0, -1.0, 1148846080) NetworkAddEntityToSynchronisedScene(laserDrill, scene4, animDict, 'drill_straight_fail_drill_bit', 1.0, -1.0, 1148846080) scene5 = NetworkCreateSynchronisedScene(drillpos, drillrot, 2, true, false, 1065353216, 0, 1.3) NetworkAddPedToSynchronisedScene(PlayerPedId(), scene5, animDict, 'drill_straight_end', 4.0, -4.0, 1033, 0, 1000.0, 0) NetworkAddEntityToSynchronisedScene(bag, scene5, animDict, 'bag_drill_straight_end', 1.0, -1.0, 1148846080) NetworkAddEntityToSynchronisedScene(laserDrill, scene5, animDict, 'drill_straight_end_drill_bit', 1.0, -1.0, 1148846080) scene6 = NetworkCreateSynchronisedScene(drillpos, drillrot, 2, true, false, 1065353216, 0, 1.3) NetworkAddPedToSynchronisedScene(PlayerPedId(), scene6, animDict, 'exit', 4.0, -4.0, 1033, 0, 1000.0, 0) NetworkAddEntityToSynchronisedScene(bag, scene6, animDict, 'bag_exit', 1.0, -1.0, 1148846080) NetworkAddEntityToSynchronisedScene(laserDrill, scene6, animDict, 'exit_drill_bit', 1.0, -1.0, 1148846080)
     NetworkStartSynchronisedScene(scene1) PlayCamAnim(cam, 'intro_cam', animDict, drillpos, drillrot, 0, 2) Wait(GetAnimDuration(animDict, 'intro') * 1000) NetworkStartSynchronisedScene(scene2) PlayCamAnim(cam, 'drill_straight_start_cam', animDict, drillpos, drillrot, 0, 2) NetworkStartSynchronisedScene(scene3) PlayCamAnim(cam, 'drill_straight_idle_cam', animDict, drillpos, drillrot, 0, 2) PlaySoundFromEntity(soundId, 'Drill', laserDrill, 'DLC_HEIST_FLEECA_SOUNDSET', 1, 0)
@@ -144,20 +301,11 @@ function drill(drillpos, drillrot, item, door) local pedCo = GetEntityCoords(Pla
     StopSound(soundId) NetworkStartSynchronisedScene(scene5) PlayCamAnim(cam, 'drill_straight_end_cam', animDict, drillpos, drillrot, 0, 2)
     Wait(GetAnimDuration(animDict, 'drill_straight_end') * 1000) NetworkStartSynchronisedScene(scene6) PlayCamAnim(cam, 'exit_cam', animDict, drillpos, drillrot, 0, 2) Wait(GetAnimDuration(animDict, 'exit') * 1000)
     RenderScriptCams(false, false, 0, 1, 0) DestroyCam(cam, false) ClearPedTasks(PlayerPedId()) DeleteObject(bag) DeleteObject(laserDrill) LocalPlayer.state:set('inv_busy', false, true) 
-    -- success
-    goodies()
-    TriggerServerEvent('Polar-Pacific:Server:RemoveItems', drillreward, amount)
-    SetPedComponentVariation(PlayerPedId(), 5, Config.BagUseID, 0, 1)
-    local chance = math.random(1,100)
-    if chance <= drillitemchance then TriggerServerEvent('Polar-Pacific:Server:RemoveItem', item, 1) end
-    TriggerServerEvent('Polar-Pacific:Server:TargetRemove', door) 
+    return true
     else
-    StopSound(soundId) NetworkStartSynchronisedScene(scene4) PlayCamAnim(cam, 'drill_straight_fail_cam', animDict, drillpos, drillrot, 0, 2) Wait(GetAnimDuration(animDict, 'drill_straight_fail') * 1000 - 1500)
-    RenderScriptCams(false, false, 0, 1, 0) DestroyCam(cam, false) ClearPedTasks(PlayerPedId())  DeleteObject(bag) DeleteObject(laserDrill) LocalPlayer.state:set('inv_busy', false, true) 
-    -- fail 
-    SetPedComponentVariation(PlayerPedId(), 5, Config.BagUseID, 0, 1)
-    local chance = math.random(1,100) TriggerServerEvent('Polar-Pacific:Server:StartInteract', door)
-    if chance <= drillitemchance then TriggerServerEvent('Polar-Pacific:Server:RemoveItem', item, 1) end
+        StopSound(soundId) NetworkStartSynchronisedScene(scene4) PlayCamAnim(cam, 'drill_straight_fail_cam', animDict, drillpos, drillrot, 0, 2) Wait(GetAnimDuration(animDict, 'drill_straight_fail') * 1000 - 1500)
+        RenderScriptCams(false, false, 0, 1, 0) DestroyCam(cam, false) ClearPedTasks(PlayerPedId())  DeleteObject(bag) DeleteObject(laserDrill) LocalPlayer.state:set('inv_busy', false, true) 
+    return false
     end
     end)
 end
@@ -176,15 +324,24 @@ end
 
 
 
+function CreateTarget(names, coords1, handler, labels, icons, his)
+    if oxt then
+        targets[names] = exports.ox_target:addBoxZone({ coords = coords1, size = vec3(1, 1, 1), rotation = 1, debug = his,
+        options = {{  event = handler,  icon = icons, label = labels, id = names, canInteract = function(_, distance) return distance <= Config.OxTargetDistance end }, } })
+    else
+        exports['qb-target']:AddBoxZone(names,  coords1, 0.5, 0.5, { name =  names, heading = 28.69, debug = his, minZ = coords1.z-0.5, maxZ =  coords1.z+0.5,}, 
+        { options = {{ event = handler, icon = icons, label = labels, id = names }}, distance = 1 }) 
+    end
+    --print(names .. ' is ' .. json.encode(targets[names]))
+    
+end
 
+local Pacificdrill1loc = nil local Pacificdrill1name = nil local Pacificdrill2loc = nil local Pacificdrill2name = nil
 function other()
+    CreateTarget(vaultdoorname, vaultanimloc, "Polar-Pacific:Client:VaultHack", "Hack", "fas fa-bolt", Config.Debug)
+    CreateTarget(fingerprintdoor, Config.FingerEye, "Polar-Pacific:Client:VaultHack", "Hack", "fas fa-bolt", Config.Debug)
 
-    exports['qb-target']:AddBoxZone(vaultdoorname,  vaultanimloc, 0.5, 0.5, { name =  vaultdoorname, heading = 28.69, debug = false, minZ = vaultanimloc.z-0.5, maxZ =  vaultanimloc.z+0.5,}, 
-    { options = {{ event = "Polar-Pacific:Client:VaultHack", icon = "fas fa-bolt", label = "Hack", excludejob = 'police', item = vaultitem}}, distance = 2.5 }) 
-   
-    exports['qb-target']:AddBoxZone(Config.FingerPrintDoorDoor,  Config.FingerEye, 0.5, 0.5, { name =  Config.FingerPrintDoorDoor, heading = 28.69, debug = false, minZ = Config.FingerEye.z-0.5, maxZ =  Config.FingerEye.z+0.5,}, 
-    { options = {{ event = "Polar-Pacific:Client:VaultFinger",  icon = "fas fa-bolt", label = "Hack Door", excludejob = 'police', item = vaultitem}}, distance = 2.5 }) 
-   
+
     drill1()
    
 end 
@@ -193,6 +350,10 @@ end
 function drill1()
     local k = 0 local p = 0 local distance1 = 0.22 local distance2 = 0.22 local space1 = nil local space2 = nil local chance = math.random(1,100)  if chance<=15 then   space2 = k+distance1  space1 = k-distance2  elseif chance<=30 then   space2 = k-distance2  space1 = k+distance1  elseif chance<=45 then   space2 = k  space1 = k+distance1   elseif chance<=60 then   space1 = k space2 = k+distance2 elseif chance<=75 then   space2 = k-distance2 space1 = k elseif chance<=90 then   space1 = k-distance1 space2 = k elseif chance<=100 then   space2 = k  space1 = k end 
   
+    if gabz then
+        
+
+    else
     local loc =  vector4(258.67, 218.69, 102.27-space1, 339.88)
     local name = "Pacificdrill1"
     adddrillspot(loc, name)
@@ -217,7 +378,22 @@ function drill1()
     local loc =   vector4(262.46, 212.25,  102.27-space2, 161.2)
     local name = "Pacificdrill8"
     adddrillspot(loc, name)
+    end
 end
+
+
+function adddrillspot(loc, name)
+    if oxt then
+        targets[name] = exports.ox_target:addBoxZone({ coords = vector3(loc.x, loc.y, loc.z), size = vec3(1, 1, 1), rotation = 1, debug = hi,
+        options = {{  event = "Polar-Pacific:Client:Drill", door = name, head = loc.w, coords = vec3(loc.x, loc.y, loc.z), icon = "fas fa-bolt", label = "Drill Lockbox" }, } })
+    else
+        exports['qb-target']:AddBoxZone(name,  vector3(loc.x, loc.y, loc.z), 0.25, 0.25, { name = name, heading = loc.w, debug = hi, minZ = loc.z-1, maxZ =  loc.z+1,}, 
+        { options = {{ event = "Polar-Pacific:Client:Drill", door = name, head = loc.w, coords = vec3(loc.x, loc.y, loc.z), icon = "fas fa-bolt", label = "Drill Lockbox"}}, distance = 1 }) 
+    end
+end
+
+
+
 
 
 
@@ -257,9 +433,9 @@ function CashAppear(grabModel)
     end)
 end
 
-function grabloot(door, object, prop, p, name)
-    TriggerServerEvent('Polar-Pacific:Server:TargetRemove', door)
-    TriggerServerEvent('Polar-Pacific:Server:StopInteract', door)
+function grabloot(door, object)
+    
+    local prop = trollys[door]
     if prop == 'ch_prop_ch_cash_trolly_01a' then grabModel = 'hei_prop_heist_cash_pile'  end
     if prop == 'ch_prop_gold_trolly_01a' then grabModel = 'ch_prop_gold_bar_01a' end
     if prop == 'ch_prop_diamond_trolly_01a' then grabModel = 'ch_prop_vault_dimaondbox_01a' end
@@ -270,8 +446,8 @@ function grabloot(door, object, prop, p, name)
     local pedCoords, pedRotation = GetEntityCoords(PlayerPedId()), vector3(0.0, 0.0, 0.0)
     local animDict = 'anim@heists@ornate_bank@grab_cash'
     loadAnimDict(animDict)
-    loadModel('hei_p_m_bag_var22_arm_s')
-    local bag = CreateObject(GetHashKey('hei_p_m_bag_var22_arm_s'), pedCoords, true, false, false)
+    loadModel(bagcolor)
+    local bag = CreateObject(GetHashKey(bagcolor), pedCoords, true, false, false)
     scene1 = NetworkCreateSynchronisedScene(prop2, rot, 2, true, false, 1065353216, 0, 1.3)
     NetworkAddPedToSynchronisedScene(PlayerPedId(), scene1, animDict, 'intro', 1.5, -4.0, 1, 16, 1148846080, 0)
     NetworkAddEntityToSynchronisedScene(bag, scene1, animDict, 'bag_intro', 4.0, -8.0, 1)
@@ -287,71 +463,71 @@ function grabloot(door, object, prop, p, name)
     CashAppear(grabModel)
     NetworkStartSynchronisedScene(scene2)
     Wait(1000)
-    TriggerServerEvent('Polar-Pacific:Server:SynapsePacific' .. name .. '', prop) 
+     TriggerServerEvent('Polar-Pacific:Server:Synapse', door)    
     Wait(1000)
-    TriggerServerEvent('Polar-Pacific:Server:SynapsePacific' .. name .. '', prop)  
+     TriggerServerEvent('Polar-Pacific:Server:Synapse', door)     
     Wait(1000)
-    TriggerServerEvent('Polar-Pacific:Server:SynapsePacific' .. name .. '', prop)  
+     TriggerServerEvent('Polar-Pacific:Server:Synapse', door)     
     Wait(1000)
-    TriggerServerEvent('Polar-Pacific:Server:SynapsePacific' .. name .. '', prop)  
+     TriggerServerEvent('Polar-Pacific:Server:Synapse', door)     
     Wait(1000)
-    TriggerServerEvent('Polar-Pacific:Server:SynapsePacific' .. name .. '', prop)  
+     TriggerServerEvent('Polar-Pacific:Server:Synapse', door)     
     Wait(1000)
-    TriggerServerEvent('Polar-Pacific:Server:SynapsePacific' .. name .. '', prop)  
+     TriggerServerEvent('Polar-Pacific:Server:Synapse', door)     
     Wait(1000)
-    TriggerServerEvent('Polar-Pacific:Server:SynapsePacific' .. name .. '', prop)   
+     TriggerServerEvent('Polar-Pacific:Server:Synapse', door)      
     Wait(1000)
-    TriggerServerEvent('Polar-Pacific:Server:SynapsePacific' .. name .. '', prop)   
+     TriggerServerEvent('Polar-Pacific:Server:Synapse', door)      
     Wait(1000)
-    TriggerServerEvent('Polar-Pacific:Server:SynapsePacific' .. name .. '', prop)   
+     TriggerServerEvent('Polar-Pacific:Server:Synapse', door)      
     Wait(1000)
-    TriggerServerEvent('Polar-Pacific:Server:SynapsePacific' .. name .. '', prop)   
+     TriggerServerEvent('Polar-Pacific:Server:Synapse', door)      
     Wait(1000)
-    TriggerServerEvent('Polar-Pacific:Server:SynapsePacific' .. name .. '', prop)   
+     TriggerServerEvent('Polar-Pacific:Server:Synapse', door)      
     Wait(1000)
-    TriggerServerEvent('Polar-Pacific:Server:SynapsePacific' .. name .. '', prop)   
+     TriggerServerEvent('Polar-Pacific:Server:Synapse', door)      
     Wait(1000)
-    TriggerServerEvent('Polar-Pacific:Server:SynapsePacific' .. name .. '', prop)   
+     TriggerServerEvent('Polar-Pacific:Server:Synapse', door)      
     Wait(1000)
-    TriggerServerEvent('Polar-Pacific:Server:SynapsePacific' .. name .. '', prop)   
+     TriggerServerEvent('Polar-Pacific:Server:Synapse', door)      
     Wait(1000)
-    TriggerServerEvent('Polar-Pacific:Server:SynapsePacific' .. name .. '', prop)   
+     TriggerServerEvent('Polar-Pacific:Server:Synapse', door)      
     Wait(1000)
-    TriggerServerEvent('Polar-Pacific:Server:SynapsePacific' .. name .. '', prop)   
+     TriggerServerEvent('Polar-Pacific:Server:Synapse', door)      
     Wait(1000)
-    TriggerServerEvent('Polar-Pacific:Server:SynapsePacific' .. name .. '', prop)   
+     TriggerServerEvent('Polar-Pacific:Server:Synapse', door)      
     Wait(1000)
-    TriggerServerEvent('Polar-Pacific:Server:SynapsePacific' .. name .. '', prop)   
+     TriggerServerEvent('Polar-Pacific:Server:Synapse', door)      
     Wait(1000)
-    TriggerServerEvent('Polar-Pacific:Server:SynapsePacific' .. name .. '', prop)   
+     TriggerServerEvent('Polar-Pacific:Server:Synapse', door)      
     Wait(1000)
-    TriggerServerEvent('Polar-Pacific:Server:SynapsePacific' .. name .. '', prop)   
+     TriggerServerEvent('Polar-Pacific:Server:Synapse', door)      
     Wait(1000)
-    TriggerServerEvent('Polar-Pacific:Server:SynapsePacific' .. name .. '', prop)   
+     TriggerServerEvent('Polar-Pacific:Server:Synapse', door)      
     Wait(1000)
-    TriggerServerEvent('Polar-Pacific:Server:SynapsePacific' .. name .. '', prop)   
+     TriggerServerEvent('Polar-Pacific:Server:Synapse', door)      
     Wait(1000)
-    TriggerServerEvent('Polar-Pacific:Server:SynapsePacific' .. name .. '', prop)   
+     TriggerServerEvent('Polar-Pacific:Server:Synapse', door)      
     Wait(1000)
-    TriggerServerEvent('Polar-Pacific:Server:SynapsePacific' .. name .. '', prop)   
+     TriggerServerEvent('Polar-Pacific:Server:Synapse', door)      
     Wait(1000)
-    TriggerServerEvent('Polar-Pacific:Server:SynapsePacific' .. name .. '', prop)   
+     TriggerServerEvent('Polar-Pacific:Server:Synapse', door)      
     Wait(1000)
-    TriggerServerEvent('Polar-Pacific:Server:SynapsePacific' .. name .. '', prop)   
+     TriggerServerEvent('Polar-Pacific:Server:Synapse', door)      
     Wait(1000)
-    TriggerServerEvent('Polar-Pacific:Server:SynapsePacific' .. name .. '', prop)   
+     TriggerServerEvent('Polar-Pacific:Server:Synapse', door)      
     Wait(5000)
-    TriggerServerEvent('Polar-Pacific:Server:SynapsePacific' .. name .. '', prop)  
+     TriggerServerEvent('Polar-Pacific:Server:Synapse', door)     
     Wait(1000)
-    TriggerServerEvent('Polar-Pacific:Server:SynapsePacific' .. name .. '', prop)   
+     TriggerServerEvent('Polar-Pacific:Server:Synapse', door)      
     Wait(1000)
-    TriggerServerEvent('Polar-Pacific:Server:SynapsePacific' .. name .. '', prop)   
+     TriggerServerEvent('Polar-Pacific:Server:Synapse', door)      
     Wait(1000)
-    TriggerServerEvent('Polar-Pacific:Server:SynapsePacific' .. name .. '', prop)   
+     TriggerServerEvent('Polar-Pacific:Server:Synapse', door)      
     Wait(1000)
-    TriggerServerEvent('Polar-Pacific:Server:SynapsePacific' .. name .. '', prop)   
+     TriggerServerEvent('Polar-Pacific:Server:Synapse', door)      
     Wait(1000)
-    TriggerServerEvent('Polar-Pacific:Server:SynapsePacific' .. name .. '', prop)    
+     TriggerServerEvent('Polar-Pacific:Server:Synapse', door)      
     NetworkStartSynchronisedScene(scene3)
     Wait(2000)
     DeleteObject(bag)
@@ -365,10 +541,10 @@ end
 
 
 local zone = PolyZone:Create({
-    vector2(204.55, 287.96),
-    vector2(168.94, 177.38),
-    vector2(369.70, 109.22),
-    vector2(393.94, 230.40)
+    vector2(-95.45, 6557.95),
+    vector2(29.92, 6432.58),
+    vector2(-119.70, 6274.62),
+    vector2(-265.91, 6426.14)
   }, {
 	debugPoly=false,
     name="zone",
@@ -422,37 +598,40 @@ function VaultForceClose()
     end
 end
 RegisterNetEvent('Polar-Pacific:Client:Vault', function(opens)
-    if Config.DoorLock then TriggerServerEvent('qb-doorlock:server:updateState',  vaultdoorname, false, false, false, true, false, false)   return end
+    if Config.VaultDoorlock then  if oxd then  doorlock(vaultdoorname, false) else TriggerServerEvent('qb-doorlock:server:updateState', vaultdoorname, false, false, false, true, false, false) end return end
     if not opens then
     local object = GetClosestObjectOfType(vaultloc, 20.0, vaultid, false, false, false)
     --print(object)
     local entHeading = closed
     FreezeEntityPosition(object, false)
+   
     while true do
-        print('h')
+       -- print('h')
         if entHeading > open then
             SetEntityHeading(object, entHeading + 1)
-            entHeading = entHeading - 0.01
+            entHeading = entHeading - 0.501
         else
             FreezeEntityPosition(object, true)
-          
+            TriggerServerEvent('Polar-Pacific:Server:VaultClose')
             break
         end
 
         Wait(10)
     end
     else
+        print('closing')
         local object = GetClosestObjectOfType(vaultloc, 20.0, vaultid, false, false, false)
         --print(object)
         local entHeading = open
         FreezeEntityPosition(object, false)
         while true do
-            if entHeading > closed then
+            --print('d')
+            if entHeading < closed then
                 SetEntityHeading(object, entHeading)
-                entHeading = entHeading - 0.01
+                entHeading = entHeading + 0.501
             else
                 FreezeEntityPosition(object, true)
-                TriggerServerEvent('Polar-Pacific:Server:VaultClose')
+                
                 break
             end
     
@@ -465,21 +644,47 @@ end)
 
 
 
+RegisterNetEvent('Polar-Pacific:Client:AddTarget', function(door, prop, var) 
+    if oxt then 
+        targets[door] = exports.ox_target:addBoxZone({ coords = vec3(var.x, var.y, var.z), size = vec3(1, 1, 1), rotation = 1, debug = hi,
+        options = {{  event = "Polar-Pacific:Client:Target", type = door,  icon = "fas fa-bolt", label = "Grab", canInteract = function(_, distance) return distance <= Config.OxTargetDistance end }, } })
+        if hi then print('grab id: ' ..  targets[door] .. ' propdoor: ' .. door .. ' proplabel: ' .. prop) end
 
+    else
+        exports['qb-target']:AddBoxZone(door, vec3(var.x, var.y, var.z), 0.5, 0.5, { name = door, heading = 28.69, debug = hi, minZ = var.z - 1.5, maxZ =  var.z + 1.5,}, 
+        { options = {{ event = "Polar-Pacific:Client:Target", type = door,  icon = "fas fa-bolt", label = "Grab"}}, distance = 1.0  }) 
+    end
+end)
+RegisterNetEvent('Polar-Pacific:Client:AddPickupTarget', function(door, prop, var, pile) 
+    if oxt then
+        targets[door] = exports.ox_target:addBoxZone({ coords = vec3(var.x, var.y, var.z), size = vec3(1, 1, 1), rotation = 1, debug = hi,
+        options = {{  event = "Polar-Pacific:Client:PickupTarget", type = door, piles = pile, icon = "fas fa-bolt", label = "Grab", canInteract = function(_, distance) return distance <= Config.OxTargetDistance end }, } })
+        if hi then print('grab id: ' .. targets[door] .. ' propdoor: ' .. door .. ' proplabel: ' .. prop .. ' ispile: ') end
+    else
+        exports['qb-target']:AddBoxZone(door, vec3(var.x, var.y, var.z), 0.5, 0.5, { name = door, heading = 28.69, debug = hi, minZ = var.z  - 0.5, maxZ =  var.z + 0.5,}, 
+        { options = {{ event = "Polar-Pacific:Client:PickupTarget", type = door, piles = pile, icon = "fas fa-bolt", label = "Grab"}}, distance = 2.0 }) 
+    end
+end)
+RegisterNetEvent('Polar-Pacific:Client:AddPaintTarget', function(door, prop, var, cases) 
+    if oxt then 
+        targets[door] = exports.ox_target:addBoxZone({ coords = vec3(var.x, var.y, var.z), size = vec3(1, 1, 1), rotation = 1, debug = hi,
+        options = {{  event = "Polar-Pacific:Client:PaintTarget", type = door, case = cases, icon = "fas fa-bolt", label = "Grab", canInteract = function(_, distance) return distance <= Config.OxTargetDistance end }, } })
+        if hi then print('paint id: ' ..  targets[door] .. ' propdoor: ' .. door .. ' proplabel: ' .. prop) end
 
-RegisterNetEvent('Polar-Pacific:Client:AddPickupTarget', function(door, door2, prop, var, pile) 
-    exports['qb-target']:AddBoxZone(door, vec3(var.x, var.y, var.z), 0.5, 0.5, { name = door, heading = 28.69, debug = true, minZ = var.z  - 0.5, maxZ =  var.z + 0.5,}, 
-    { options = {{ event = "Polar-Pacific:Client:PickupTarget", type = door, piles = pile, canInteract = function() if door2 then return true end end, icon = "fas fa-bolt", label = "Grab", excludejob = 'police'}}, distance = 1.5 }) 
-
+    else
+        exports['qb-target']:AddBoxZone(door, vec3(var.x, var.y, var.z), 0.5, 0.5, { name = door, heading = 28.69, debug = hi, minZ = var.z - 1.5, maxZ =  var.z + 1.5,}, 
+        { options = {{ event = "Polar-Pacific:Client:PaintTarget", type = door, case = cases, icon = "fas fa-bolt", label = "Grab"}}, distance = 1.0 }) 
+    end
 end)
 
 
 
 
 
-function Animation(door, props, model, animDict, sped)
+function Animation(door, props)
     if door == specialgrab then
        
+
         SetPedComponentVariation(PlayerPedId(), 5, Config.HideBagID, 1, 1)
         LocalPlayer.state:set('inv_busy', true, true) -- Busy
       
@@ -495,10 +700,8 @@ function Animation(door, props, model, animDict, sped)
             animDict = 'anim@scripted@heist@ig1_table_grab@cash@male@'
             loadAnimDict(animDict)
         end
-        TriggerServerEvent('Polar-Pacific:Server:TargetRemove', door)
-        loadModel('hei_p_m_bag_var22_arm_s')
-        local bag = CreateObject(GetHashKey('hei_p_m_bag_var22_arm_s'), pedCo, 1, 1, 0)
-        TriggerServerEvent('Polar-Pacific:Server:StopInteract', door)
+        loadModel(bagcolor)
+        local bag = CreateObject(GetHashKey(bagcolor), pedCo, 1, 1, 0)
         local scene1 = NetworkCreateSynchronisedScene(GetEntityCoords(props), 
         GetEntityRotation(props), 2, true, false, 1065353216, 0, 1.3) 
         NetworkAddPedToSynchronisedScene(PlayerPedId(), scene1, animDict, 'enter', 4.0, -4.0, 1033, 0, 1000.0, 0) 
@@ -527,17 +730,30 @@ function Animation(door, props, model, animDict, sped)
         DeleteObject(bag)
         SetPedComponentVariation(PlayerPedId(), 5, Config.BagUseID, 0, 1)
         LocalPlayer.state:set('inv_busy', false, true) 
-        TriggerServerEvent('Polar-Pacific:Server:Synapse' .. door .. '', sped)  
+        TriggerServerEvent('Polar-Pacific:Server:Synapse', door, sped)  
     else
+        model = bagcolor animDict = 'anim@scripted@heist@ig1_table_grab@cash@male@' 
+       
+            local playerCoords = GetEntityCoords(PlayerPedId())
+            local propCoords = GetEntityCoords(props)
+            local direction = vector3(propCoords.x - playerCoords.x, propCoords.y - playerCoords.y, propCoords.z - playerCoords.z)
+            local heading = -math.atan2(direction.x, direction.y) * 180.0 / math.pi
+            local pitch = math.asin(direction.z / #(direction)) * 180.0 / math.pi
+
+        local dotProduct = Citizen.InvokeNative(0xBFE95ABAF46CD9B8, direction.x, direction.y, direction.z, 0.0, 0.0, 1.0)
+        if dotProduct then else 
+   
+        SetEntityHeading(PlayerPedId(), heading)
+        SetEntityRotation(PlayerPedId(), pitch, 0.0, heading, 2, true)
+    
+    
     TriggerServerEvent('Polar-Pacific:Server:TargetRemove', door)
     SetPedComponentVariation(PlayerPedId(), 5, Config.HideBagID, 1, 1)
     LocalPlayer.state:set('inv_busy', true, true) -- Busy
-    TriggerServerEvent('Polar-Pacific:Server:StopInteract', door)
-    local pedCo, pedRotation = GetEntityCoords(PlayerPedId()), GetEntityRotation(PlayerPedId())
-    loadAnimDict(animDict) loadModel(model) local bag = CreateObject(GetHashKey(model), pedCo, 1, 1, 0)
-    local scene1 = NetworkCreateSynchronisedScene(GetEntityCoords(props), GetEntityRotation(props), 2, true, false, 1065353216, 0, 1.3)  NetworkAddPedToSynchronisedScene(PlayerPedId(), scene1, animDict, 'enter', 4.0, -4.0, 1033, 0, 1000.0, 0)  NetworkAddEntityToSynchronisedScene(bag, scene1, animDict,'enter_bag', 1.0, -1.0, 1148846080)
-    local scene2 = NetworkCreateSynchronisedScene(GetEntityCoords(props), GetEntityRotation(props), 2, true, false, 1065353216, 0, 1.3)  NetworkAddPedToSynchronisedScene(PlayerPedId(), scene2, animDict, 'grab', 4.0, -4.0, 1033, 0, 1000.0, 0) NetworkAddEntityToSynchronisedScene(bag, scene2, animDict, 'grab_bag', 1.0, -1.0, 1148846080)
-    local scene3 = NetworkCreateSynchronisedScene(GetEntityCoords(props), GetEntityRotation(props), 2, true, false, 1065353216, 0, 1.3)  NetworkAddPedToSynchronisedScene(PlayerPedId(), scene3, animDict, 'exit', 4.0, -4.0, 1033, 0, 1000.0, 0)  NetworkAddEntityToSynchronisedScene(bag, scene3, animDict, 'exit_bag', 1.0, -1.0, 1148846080)
+    loadAnimDict(animDict) loadModel(model) local bag = CreateObject(GetHashKey(model), playerCoords, 1, 1, 0)
+    local scene1 = NetworkCreateSynchronisedScene(GetEntityCoords(props), GetEntityRotation(PlayerPedId()), 2, true, false, 1065353216, 0, 1.3)  NetworkAddPedToSynchronisedScene(PlayerPedId(), scene1, animDict, 'enter', 4.0, -4.0, 1033, 0, 1000.0, 0)  NetworkAddEntityToSynchronisedScene(bag, scene1, animDict,'enter_bag', 1.0, -1.0, 1148846080)
+    local scene2 = NetworkCreateSynchronisedScene(GetEntityCoords(props), GetEntityRotation(PlayerPedId()), 2, true, false, 1065353216, 0, 1.3)  NetworkAddPedToSynchronisedScene(PlayerPedId(), scene2, animDict, 'grab', 4.0, -4.0, 1033, 0, 1000.0, 0) NetworkAddEntityToSynchronisedScene(bag, scene2, animDict, 'grab_bag', 1.0, -1.0, 1148846080)
+    local scene3 = NetworkCreateSynchronisedScene(GetEntityCoords(props), GetEntityRotation(PlayerPedId()), 2, true, false, 1065353216, 0, 1.3)  NetworkAddPedToSynchronisedScene(PlayerPedId(), scene3, animDict, 'exit', 4.0, -4.0, 1033, 0, 1000.0, 0)  NetworkAddEntityToSynchronisedScene(bag, scene3, animDict, 'exit_bag', 1.0, -1.0, 1148846080)
     SetPedComponentVariation(PlayerPedId(), 5, Config.HideBagID, 0, 1) NetworkStartSynchronisedScene(scene1) Wait(1000)
     NetworkStartSynchronisedScene(scene2)
     FreezeEntityPosition(props, true)
@@ -548,18 +764,21 @@ function Animation(door, props, model, animDict, sped)
     Wait(500) SetEntityVisible(props, false, false)
     NetworkStartSynchronisedScene(scene3) Wait(1000) ClearPedTasks(PlayerPedId()) DeleteObject(bag) SetPedComponentVariation(PlayerPedId(), 5, Config.BagUseID, 0, 1)
     LocalPlayer.state:set('inv_busy', false, true)  
-    TriggerServerEvent('Polar-Pacific:Server:Synapse' .. door .. '', sped)  
+    TriggerServerEvent('Polar-Pacific:Server:Synapse', door, sped)  
+
+      
+
+        end
     end
 end 
-RegisterNetEvent('Polar-Pacific:Client:AddTarget', function(door, door2, prop, var) 
-    exports['qb-target']:AddBoxZone(door, vec3(var.x, var.y, var.z), 0.5, 0.5, { name = door, heading = 28.69, debug = true, minZ = var.z - 1.5, maxZ =  var.z + 1.5,}, 
-    { options = {{ event = "Polar-Pacific:Client:Target", type = door, canInteract = function() if door2 then return true end end, icon = "fas fa-bolt", label = "Grab", excludejob = 'police'}}, distance = 1.5 }) 
-  -- print(door)
-end)
 
 
-RegisterNetEvent('Polar-Pacific:client:HackComputer', function(data)
-    local door = data.door
+RegisterNetEvent('Polar-Pacific:Client:HackComputer', function(data)
+    if playeritem(computeritem) then
+        local door = data.id
+        callback('Polar-Pacific:Door' .. door, function(result) if result then 
+       
+    
     TriggerServerEvent('Polar-Pacific:Server:StopInteract', door) 
     local chance=math.random(1,100) 
 
@@ -578,137 +797,85 @@ RegisterNetEvent('Polar-Pacific:client:HackComputer', function(data)
         TriggerServerEvent('Polar-Pacific:Server:StartInteract', door) 
     elseif result == -1 then end
     end) 
+        else  notify(text('sometingelse'), "error") end end)
+    else notify(text('nopcitem'), "error") end
 end)
 
 
 
 
-RegisterNetEvent('Polar-Pacific:client:start', function()  pp = Config.StartThermite door = Pacificstartname coords = Config.StartPfx
-    QBCore.Functions.TriggerCallback('Polar-Pacific:DoorCheckstart', function(result) if result then
-    TriggerServerEvent('Polar-Pacific:Server:StopInteract', door)
-    Wait(50)
-    TriggerEvent('Polar-Pacific:client:ThermiteStart', pp, door, coords)
-    
-    
-    else
-        QBCore.Functions.Notify(text('cooldown'), "error")
-    end end)
-end)
 
 
 
 
 RegisterNetEvent('Polar-Pacific:client:keycard', function(door, position, rot, item) TriggerServerEvent('Polar-Pacific:Server:StopInteract', door) 
-    TriggerServerEvent('Polar-Pacific:Server:TargetRemove', door) 
+    if playeritem(carditem) then
+        if oxd then  doorlock(door, false)  else TriggerServerEvent('qb-doorlock:server:updateState', door, false, false, false, true, false, false) end 
     local chance = math.random(1,100) local pos = GetEntityCoords(PlayerPedId()) local animDict = "anim@heists@keycard@" loadAnimDict(animDict) local prop = 'vw_prop_vw_key_card_01a' loadModel(prop) local prop2 =  CreateObject(prop, pos.x, pos.y, pos.z + 0.2,  true,  true, true)
     FreezeEntityPosition(PlayerPedId(), true) AttachEntityToEntity(prop2, ped, GetPedBoneIndex(PlayerPedId(), 28422), 0, 0, 0, 0, 0, 180.0, true, true, false, true, 1, true) SetEntityHeading(PlayerPedId(), position.w) SetEntityCoords(PlayerPedId(), vector3(position.x, position.y,position.z-1)) if chance <= carditemchance then TriggerServerEvent('Polar-Pacific:Server:RemoveItem', item, 1) end 
-    TaskPlayAnim(PlayerPedId(), animDict, "enter", 5.0, 1.0, -1, 16, 0, 0, 0, 0) Wait(1000) TaskPlayAnim(PlayerPedId(), animDict, "idle_a", 5.0, 1.0, -1, 16, 0, 0, 0, 0) Wait(5000) TaskPlayAnim(PlayerPedId(), animDict, "exit", 5.0, 1.0, -1, 16, 0, 0, 0, 0) Wait(1000) StopAnimTask(PlayerPedId(), animDict, "exit", 16.0)  delete(prop2) FreezeEntityPosition(PlayerPedId(), false) TriggerServerEvent('qb-doorlock:server:updateState', door, false, false, false, true, false, false) QBCore.Functions.Notify(text('doorunlock'), "success", 2500)
+    TaskPlayAnim(PlayerPedId(), animDict, "enter", 5.0, 1.0, -1, 16, 0, 0, 0, 0) Wait(1000) TaskPlayAnim(PlayerPedId(), animDict, "idle_a", 5.0, 1.0, -1, 16, 0, 0, 0, 0) Wait(5000) TaskPlayAnim(PlayerPedId(), animDict, "exit", 5.0, 1.0, -1, 16, 0, 0, 0, 0) Wait(1000) StopAnimTask(PlayerPedId(), animDict, "exit", 16.0)  DeleteEntity(prop2) FreezeEntityPosition(PlayerPedId(), false) TriggerServerEvent('qb-doorlock:server:updateState', door, false, false, false, true, false, false)  notify(text('doorunlock'), "success", 2500)
+    else  notify(text('nokeycard'), "error") end
 end)
 
 
-
-
-
-
-function hack(door)
-    LocalPlayer.state:set('inv_busy', true, true) 
-    TriggerServerEvent('Polar-Pacific:Server:StopInteract', door)
-    local ped = PlayerPedId()
-    local loc = nil local location = nil
-    if door ==  vaultdoorname then  
-        loc = Config.VaultDoorAnimation
-       
-    elseif door == Config.FingerPrintDoorDoor then
-        loc = Config.FingerPrintDoor
-       
-    end
-    SetEntityHeading(ped, loc.w)
+function next(door, loc)
     SetEntityCoords(ped, vec3(loc.x, loc.y, loc.z-1))
-    QBCore.Functions.Progressbar("door", "Connecting to Door ..", math.random(5000, 7500), false, true, {
-    disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true,
-    }, { animDict = "anim@gangops@facility@servers@", anim = "hotwire", flags = 16,
-    }, {}, {}, function() StopAnimTask(ped, "anim@gangops@facility@servers@", "hotwire", 1.0)
-        SetEntityCoords(ped, vec3(loc.x, loc.y, loc.z-1))
-        local animDict = 'anim@heists@ornate_bank@hack'
-        loadAnimDict(animDict)
-        loadModel('hei_prop_hst_laptop')
-        loadModel('hei_p_m_bag_var22_arm_s')
-        local ped = PlayerPedId()
-        local targetPosition, targetRotation = (vec3(GetEntityCoords(ped))), vec3(GetEntityRotation(ped))
-        SetPedComponentVariation(ped, 5, Config.HideBagID, 1, 1)
-        SetEntityHeading(ped, loc.w)
-        local animPos = GetAnimInitialOffsetPosition(animDict, 'hack_enter', loc.x, loc.y, loc.z-0.445, loc.x, loc.y, loc.z, 0, 2)
-        local animPos2 = GetAnimInitialOffsetPosition(animDict, 'hack_loop', loc.x, loc.y, loc.z-0.445, loc.x, loc.y, loc.z, 0, 2)
-        local animPos3 = GetAnimInitialOffsetPosition(animDict, 'hack_exit', loc.x, loc.y, loc.z-0.445, loc.x, loc.y, loc.z, 0, 2)
-    
-        FreezeEntityPosition(ped, true)
-        local netScene = NetworkCreateSynchronisedScene(animPos, targetRotation, 2, false, false, 1065353216, 0, 1.3)
-        local bag = CreateObject(GetHashKey('hei_p_m_bag_var22_arm_s'), targetPosition, 1, 1, 0)
-        local laptop = CreateObject(GetHashKey('hei_prop_hst_laptop'), targetPosition, 1, 1, 0)
-    
-        NetworkAddPedToSynchronisedScene(ped, netScene, animDict, 'hack_enter', 1.5, -4.0, 1, 16, 1148846080, 0)
-        NetworkAddEntityToSynchronisedScene(bag, netScene, animDict, 'hack_enter_bag', 4.0, -8.0, 1)
-        NetworkAddEntityToSynchronisedScene(laptop, netScene, animDict, 'hack_enter_laptop', 4.0, -8.0, 1)
-    
-        local netScene2 = NetworkCreateSynchronisedScene(animPos2, targetRotation, 2, false, true, 1065353216, 0, 1.3)
-        NetworkAddPedToSynchronisedScene(ped, netScene2, animDict, 'hack_loop', 1.5, -4.0, 1, 16, 1148846080, 0)
-        NetworkAddEntityToSynchronisedScene(bag, netScene2, animDict, 'hack_loop_bag', 4.0, -8.0, 1)
-        NetworkAddEntityToSynchronisedScene(laptop, netScene2, animDict, 'hack_loop_laptop', 4.0, -8.0, 1)
-    
-        local netScene3 = NetworkCreateSynchronisedScene(animPos3, targetRotation, 2, false, false, 1065353216, 0, 1.3)
-        NetworkAddPedToSynchronisedScene(ped, netScene3, animDict, 'hack_exit', 1.5, -4.0, 1, 16, 1148846080, 0)
-        NetworkAddEntityToSynchronisedScene(bag, netScene3, animDict, 'hack_exit_bag', 4.0, -8.0, 1)
-        NetworkAddEntityToSynchronisedScene(laptop, netScene3, animDict, 'hack_exit_laptop', 4.0, -8.0, 1)
-    
-        Wait(200)
-        NetworkStartSynchronisedScene(netScene)
-        Wait(6300)
-        NetworkStartSynchronisedScene(netScene2)
-        Wait(2000)
-        if door == vaultdoorname then
-            LocalPlayer.state:set('inv_busy', true, true) 
-        exports[hackname]:OpenHackingGame(10, 5, 3, function(Success) 
-            if Success then
-                local chance = math.random(1,100)
-                if chance <= vaultitemchance then TriggerServerEvent('Polar-Pacific:Server:RemoveItem', vaultitem, 1) end
-                vaultdone()
-                Wait(4000)
-                NetworkStartSynchronisedScene(netScene3)
-                Wait(4500)
-                NetworkStopSynchronisedScene(netScene3)
-                DeleteObject(bag)
-                SetPedComponentVariation(ped, 5, Config.BagUseID, 0, 1)
-                DeleteObject(laptop)
-                FreezeEntityPosition(ped, false)
-                LocalPlayer.state:set('inv_busy', false, true) 
-                QBCore.Functions.Notify(text('vaultopen'), "success", 2500)
-                TriggerServerEvent('Polar-Pacific:Server:TargetRemove', door) 
-            else
-                local chance = math.random(1,100)
-                if chance <= vaultitemchance then TriggerServerEvent('Polar-Pacific:Server:RemoveItem', vaultitem, 1) end
-                Wait(4000)
-                NetworkStartSynchronisedScene(netScene3)
-                Wait(4500)
-                NetworkStopSynchronisedScene(netScene3)
-                DeleteObject(bag)
-                SetPedComponentVariation(ped, 5, Config.BagUseID, 0, 1)
-                DeleteObject(laptop)
-                FreezeEntityPosition(ped, false)
-                LocalPlayer.state:set('inv_busy', false, true) 
-                TriggerServerEvent('Polar-Pacific:Server:StartInteract', door)
-            end
-        end)
-        elseif door == fingerprintdoor then
-        -- levels is how many levels you want. Max is 4, Min is 1
-        -- lifes is how many life player has, Max is 6, Min is 1
-        -- time is how much time player has in minutes, Max is 9, min is 1 (I highly recommend to set it between 3-1)
-        -- callback is the callback function to catch the outcome
-            LocalPlayer.state:set('inv_busy', true, true) 
-        TriggerEvent("".. fingerhack ..":Start", 4, 1, 1, function(outcome, reason) 
-        if outcome == true then -- success
+    local animDict = 'anim@heists@ornate_bank@hack'
+    loadAnimDict(animDict)
+    loadModel('hei_prop_hst_laptop')
+    loadModel(bagcolor)
+    local ped = PlayerPedId()
+    local targetPosition, targetRotation = (vec3(GetEntityCoords(ped))), vec3(GetEntityRotation(ped))
+    SetPedComponentVariation(ped, 5, Config.HideBagID, 1, 1)
+    SetEntityHeading(ped, loc.w)
+    local animPos = GetAnimInitialOffsetPosition(animDict, 'hack_enter', loc.x, loc.y, loc.z-0.445, loc.x, loc.y, loc.z, 0, 2)
+    local animPos2 = GetAnimInitialOffsetPosition(animDict, 'hack_loop', loc.x, loc.y, loc.z-0.445, loc.x, loc.y, loc.z, 0, 2)
+    local animPos3 = GetAnimInitialOffsetPosition(animDict, 'hack_exit', loc.x, loc.y, loc.z-0.445, loc.x, loc.y, loc.z, 0, 2)
+
+    FreezeEntityPosition(ped, true)
+    local netScene = NetworkCreateSynchronisedScene(animPos, targetRotation, 2, false, false, 1065353216, 0, 1.3)
+    local bag = CreateObject(GetHashKey(bagcolor), targetPosition, 1, 1, 0)
+    local laptop = CreateObject(GetHashKey('hei_prop_hst_laptop'), targetPosition, 1, 1, 0)
+
+    NetworkAddPedToSynchronisedScene(ped, netScene, animDict, 'hack_enter', 1.5, -4.0, 1, 16, 1148846080, 0)
+    NetworkAddEntityToSynchronisedScene(bag, netScene, animDict, 'hack_enter_bag', 4.0, -8.0, 1)
+    NetworkAddEntityToSynchronisedScene(laptop, netScene, animDict, 'hack_enter_laptop', 4.0, -8.0, 1)
+
+    local netScene2 = NetworkCreateSynchronisedScene(animPos2, targetRotation, 2, false, true, 1065353216, 0, 1.3)
+    NetworkAddPedToSynchronisedScene(ped, netScene2, animDict, 'hack_loop', 1.5, -4.0, 1, 16, 1148846080, 0)
+    NetworkAddEntityToSynchronisedScene(bag, netScene2, animDict, 'hack_loop_bag', 4.0, -8.0, 1)
+    NetworkAddEntityToSynchronisedScene(laptop, netScene2, animDict, 'hack_loop_laptop', 4.0, -8.0, 1)
+
+    local netScene3 = NetworkCreateSynchronisedScene(animPos3, targetRotation, 2, false, false, 1065353216, 0, 1.3)
+    NetworkAddPedToSynchronisedScene(ped, netScene3, animDict, 'hack_exit', 1.5, -4.0, 1, 16, 1148846080, 0)
+    NetworkAddEntityToSynchronisedScene(bag, netScene3, animDict, 'hack_exit_bag', 4.0, -8.0, 1)
+    NetworkAddEntityToSynchronisedScene(laptop, netScene3, animDict, 'hack_exit_laptop', 4.0, -8.0, 1)
+
+    Wait(200)
+    NetworkStartSynchronisedScene(netScene)
+    Wait(6300)
+    NetworkStartSynchronisedScene(netScene2)
+    Wait(2000)
+    if hi then
+        local chance = math.random(1,100)
+        if chance <= vaultitemchance then TriggerServerEvent('Polar-Pacific:Server:RemoveItem', vaultitem, 1) end
+        Wait(4000)
+        NetworkStartSynchronisedScene(netScene3)
+        Wait(4500)
+        NetworkStopSynchronisedScene(netScene3)
+        DeleteObject(bag)
+        SetPedComponentVariation(ped, 5, Config.BagUseID, 0, 1)
+        DeleteObject(laptop)
+        FreezeEntityPosition(ped, false)
+        LocalPlayer.state:set('inv_busy', false, true) 
+        return true
+    else
+   -- if door == vaultdoorname then
+        LocalPlayer.state:set('inv_busy', true, true) 
+    exports[hackname]:OpenHackingGame(10, 5, 3, function(Success) 
+        if Success then
             local chance = math.random(1,100)
             if chance <= vaultitemchance then TriggerServerEvent('Polar-Pacific:Server:RemoveItem', vaultitem, 1) end
-            TriggerServerEvent('qb-doorlock:server:updateState', door, false, false, false, true, false, false)
             Wait(4000)
             NetworkStartSynchronisedScene(netScene3)
             Wait(4500)
@@ -718,7 +885,41 @@ function hack(door)
             DeleteObject(laptop)
             FreezeEntityPosition(ped, false)
             LocalPlayer.state:set('inv_busy', false, true) 
-            QBCore.Functions.Notify(text('doorunlock'), "success", 2500)
+            return true
+        else
+            local chance = math.random(1,100)
+            if chance <= vaultitemchance then TriggerServerEvent('Polar-Pacific:Server:RemoveItem', vaultitem, 1) end
+            Wait(4000)
+            NetworkStartSynchronisedScene(netScene3)
+            Wait(4500)
+            NetworkStopSynchronisedScene(netScene3)
+            DeleteObject(bag)
+            SetPedComponentVariation(ped, 5, Config.BagUseID, 0, 1)
+            DeleteObject(laptop)
+            FreezeEntityPosition(ped, false)
+            LocalPlayer.state:set('inv_busy', false, true) 
+            return false
+        end
+    end)
+      --[[
+        elseif door == fingerprintdoor then
+     
+            LocalPlayer.state:set('inv_busy', true, true) 
+        TriggerEvent("".. fingerhack ..":Start", 4, 1, 1, function(outcome, reason) 
+        if outcome == true then -- success
+            local chance = math.random(1,100)
+            if chance <= vaultitemchance then TriggerServerEvent('Polar-Pacific:Server:RemoveItem', vaultitem, 1) end
+            doorlock(door, false)
+            Wait(4000)
+            NetworkStartSynchronisedScene(netScene3)
+            Wait(4500)
+            NetworkStopSynchronisedScene(netScene3)
+            DeleteObject(bag)
+            SetPedComponentVariation(ped, 5, Config.BagUseID, 0, 1)
+            DeleteObject(laptop)
+            FreezeEntityPosition(ped, false)
+            LocalPlayer.state:set('inv_busy', false, true) 
+            notify(text('doorunlock'), "success", 2500)
             TriggerServerEvent('Polar-Pacific:Server:TargetRemove', door) 
         elseif outcome == false then -- fail
             local chance = math.random(1,100)
@@ -734,48 +935,116 @@ function hack(door)
             LocalPlayer.state:set('inv_busy', false, true)
             TriggerServerEvent('Polar-Pacific:Server:StartInteract', door) 
         end end)
-        end
+        end ]]
+    end
+end
+function hack(door)
+    LocalPlayer.state:set('inv_busy', true, true) 
+    TriggerServerEvent('Polar-Pacific:Server:StopInteract', door)
+    local ped = PlayerPedId()
+    local loc = nil local location = nil
+    
+    if door ==  targets[vaultdoorname] then  
+        loc = Config.VaultDoorAnimation
        
+    elseif door == targets[Config.FingerDoorName] then
+        loc = Config.FingerPrintDoor
+       
+    end
+    SetEntityHeading(ped, loc.w)
+    SetEntityCoords(ped, vec3(loc.x, loc.y, loc.z-1))
+    if Config.Framework == 'esx' then
+        if door == fingerprintdoor then
+            hacking(door, loc)
+        else
+        if next(door, loc) then
+            notify(text('vaultopen'), "success", 2500)
+            TriggerServerEvent('Polar-Pacific:Server:TargetRemove', door) 
+            vaultdone()
+        else
+            TriggerServerEvent('Polar-Pacific:Server:StartInteract', door)
+        end
+        end
+    else
+    QBCore.Functions.Progressbar("door", "Connecting to Door ..", math.random(5000, 7500), false, true, {
+    disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true,
+    }, { animDict = "anim@gangops@facility@servers@", anim = "hotwire", flags = 16,
+    }, {}, {}, function() StopAnimTask(ped, "anim@gangops@facility@servers@", "hotwire", 1.0)
+        if door == fingerprintdoor then
+
+        else
+        if next(door, loc) then
+            notify(text('vaultopen'), "success", 2500)
+            TriggerServerEvent('Polar-Pacific:Server:TargetRemove', door) 
+            vaultdone()
+        else
+            TriggerServerEvent('Polar-Pacific:Server:StartInteract', door)
+        end
+        end
     end, function() StopAnimTask(ped, "anim@gangops@facility@servers@", "hotwire", 1.0)
         TriggerServerEvent('Polar-Pacific:Server:StartInteract', door)
         LocalPlayer.state:set('inv_busy', false, true) 
     end)
+    end
 end
 
+
 RegisterNetEvent('Polar-Pacific:client:DrillStart', function(drillpos, drillrot, door)
-    QBCore.Functions.TriggerCallback('QBCore:HasItem', function(result) if result then 
+    if door == 'Pacificdrill15' then
+        if playeritem(yellowdrillitem) then
+            SetPedComponentVariation(ped, 5, Config.HideBagID, 1, 1)
+            TriggerServerEvent('Polar-Pacific:Server:StopInteract', door)
+         
+            local animDict = "anim_heist@hs3f@ig10_lockbox_drill@pattern_01@lockbox_01@male@"
+          
+                yellodrill(drillpos, drillrot, yellowdrillitem, door, animDict)
+          
+            
+        else notify(text('nodrill'), "error") end
+    else
+    if playeritem(drillitem) then
     SetPedComponentVariation(ped, 5, Config.HideBagID, 1, 1)
     TriggerServerEvent('Polar-Pacific:Server:StopInteract', door)
-    drill(drillpos, drillrot, drillitem, door)
-    else  TriggerServerEvent('Polar-Pacific:Server:GiveRewards', 'weapon_assaultrifle', 1) end end, {drillitem}) -- hiest finish
+        
+   
+    
+    if drill(drillpos, drillrot) then
+        goodies() TriggerServerEvent('Polar-Pacific:Server:RemoveItems', drillreward, amount)
+        SetPedComponentVariation(PlayerPedId(), 5, Config.BagUseID, 0, 1)
+        
+        local chance = math.random(1,100) if chance <= drillitemchance then TriggerServerEvent('Polar-Pacific:Server:RemoveItem', drillitem, 1) end
+        TriggerServerEvent('Polar-Pacific:Server:TargetRemove', door) 
+    else
+        SetPedComponentVariation(PlayerPedId(), 5, Config.BagUseID, 0, 1)
+        TriggerServerEvent('Polar-Pacific:Server:StartInteract', door)
+        local chance = math.random(1,100) if chance <= drillitemchance then TriggerServerEvent('Polar-Pacific:Server:RemoveItem', drillitem, 1) end
+    end
+    else  notify(text('nodrill'), "error") end
+    end
 end)
 
 RegisterNetEvent('Polar-Pacific:Client:Drill', function(data)
-    QBCore.Functions.TriggerCallback('Polar-Pacific:' .. data.door .. '', function(result) if result then 
+    callback('Polar-Pacific:' .. data.door .. '', function(result) if result then 
     TriggerEvent('Polar-Pacific:client:DrillStart', data.coords, vector3(0.0, 0.0, data.head), data.door)
     else
-        QBCore.Functions.Notify(text('sometingelse'), "error")
+        notify(text('sometingelse'), "error")
     end end)
- end)
+end)
 
- function vaultdone() TriggerServerEvent('Polar-Pacific:Server:Vault') end
+function vaultdone() TriggerServerEvent('Polar-Pacific:Server:Vault') end
 RegisterNetEvent('Polar-Pacific:Client:VaultHack', function(data) 
-    QBCore.Functions.TriggerCallback('Polar-Pacific:VaultCheck', function(result) if result then 
-        hack(vaultdoorname)
+    if playeritem(vaultitem) then
+    callback('Polar-Pacific:VaultCheck', function(result) if result then 
+        hack(targets[data.id])
     else
-        QBCore.Functions.Notify(text('sometingelse'), "error")
+        notify(text('sometingelse'), "error")
     end end)
-end)
-RegisterNetEvent('Polar-Pacific:Client:VaultFinger', function(data) 
-    QBCore.Functions.TriggerCallback('Polar-Pacific:VaultCheck', function(result) if result then 
-        hack(fingerprintdoor)
-    else
-        QBCore.Functions.Notify(text('sometingelse'), "error")
-    end end)
+    else notify(text('novaultitem'), "error") end
 end)
 
 
 
+  
 
 
 
@@ -801,19 +1070,6 @@ end)
 
 
 
-
-
-local prop16 = nil
-local prop17 = nil
-local prop18 = nil
-local prop19 = nil
-local prop20 = nil
-
-local prop26 = nil
-local prop27 = nil
-local prop28 = nil
-local prop29 = nil
-local prop30 = nil
 
 
 
@@ -823,15 +1079,19 @@ local prop30 = nil
 
 function starttarget()
     ------ DOOR THERMITE
-    exports['qb-target']:AddBoxZone(Pacificstartname, Config.StartThirdEye, 1, 1, { name = Pacificstartname, heading = 0.0, debug = Config.Debug, minZ = Config.StartThirdEye.z-1, maxZ =  Config.StartThirdEye.z+1,}, 
-    { options = {{ event = "Polar-Pacific:client:start", icon = "fas fa-fire", label = "Thermite", excludejob = 'police', item = thermiteitem}}, distance = 2.5 }) 
+    if oxt then
+        exports.ox_target:addBoxZone({ coords = Config.StartThirdEye, size = vec3(1, 1, 1), rotation = 1, debug = hi,
+        options = {{  name = Pacificstartname, icon = "fas fa-fire", label = "Thermite", event = 'Polar-Pacific:client:start', canInteract = function(_, distance) return distance <= Config.OxTargetDistance end }, } })
+    else
+    
+    exports['qb-target']:AddBoxZone(Pacificstartname, Config.StartThirdEye, 1, 1, { name = Pacificstartname, heading = 0.0, debug = hi, minZ = Config.StartThirdEye.z-1, maxZ =  Config.StartThirdEye.z+1,}, 
+    { options = {{ event = "Polar-Pacific:client:start", icon = "fas fa-fire", label = "Thermite", excludejob = 'police', item = thermiteitem}}, distance = 1 }) 
 
-
+    end
 end
 
+RegisterNetEvent('Polar-Pacific:Client:StartLoot', function()
 
-RegisterNetEvent('Polar-Pacific:Client:StartTargets', function()
-    
     TriggerServerEvent('Polar-Pacific:Server:SetupGrab1')
 
     TriggerServerEvent('Polar-Pacific:Server:SetupPickup1')
@@ -839,169 +1099,64 @@ RegisterNetEvent('Polar-Pacific:Client:StartTargets', function()
     TriggerServerEvent('Polar-Pacific:Server:SetupPile1')
 
     TriggerServerEvent('Polar-Pacific:Server:SetupTrolly1')
+
+    TriggerServerEvent('Polar-Pacific:Server:SetupPainting1')
+
+    TriggerServerEvent('Polar-Pacific:Server:SetupCase1')
+
+end)
+
+RegisterNetEvent('Polar-Pacific:Client:StartTargets', function()
+    beginlazers()
+
+    CreateTarget(Pacificdoor1name, vec3(Config.Door1Eye.x, Config.Door1Eye.y, Config.Door1Eye.z + 0.2), "Polar-Pacific:Client:Door", "Thermite", "fas fa-fire", Config.Debug)
+    CreateTarget(Pacificdoor2name, vec3(Config.Door2Eye.x, Config.Door2Eye.y, Config.Door2Eye.z + 0.2), "Polar-Pacific:Client:Door", "Thermite", "fas fa-fire", Config.Debug)
+    CreateTarget(Pacificdoor3name, vec3(Config.Door3Eye.x, Config.Door3Eye.y, Config.Door3Eye.z + 0.2), "Polar-Pacific:Client:Door", "Thermite", "fas fa-fire", Config.Debug)
+
+    CreateTarget(Pacificdoorcard1name, vec3(Config.doorcard1Eye.x, Config.doorcard1Eye.y, Config.doorcard1Eye.z + 0.2), "Polar-Pacific:Client:doorcard", "Insert Card", "fas fa-bolt", Config.Debug)
+    CreateTarget(Pacificdoorcard2name, vec3(Config.doorcard2Eye.x, Config.doorcard2Eye.y, Config.doorcard2Eye.z + 0.2), "Polar-Pacific:Client:doorcard", "Insert Card", "fas fa-bolt", Config.Debug)
    
-    exports['qb-target']:AddBoxZone(Pacificdoor1name, vec3(Config.Door1Eye.x, Config.Door1Eye.y, Config.Door1Eye.z + 0.2), 1, 1, { name = Pacificdoor1name, heading = 0.0, debug = Config.Debug, minZ = Config.Door1Eye.z-1, maxZ =  Config.Door1Eye.z+1,}, 
-    { options = {{ event = "Polar-Pacific:Client:Door1", icon = "fas fa-fire", label = "Thermite", excludejob = 'police', item = thermiteitem}}, distance = 2.5 }) 
-    
-    exports['qb-target']:AddBoxZone(Pacificdoor2name, vec3(Config.Door2Eye.x, Config.Door2Eye.y, Config.Door2Eye.z + 0.2), 1, 1, { name = Pacificdoor2name, heading = 0.0, debug = Config.Debug, minZ = Config.Door2Eye.z-1, maxZ =  Config.Door2Eye.z+1,}, 
-    { options = {{ event = "Polar-Pacific:Client:Door2", icon = "fas fa-fire", label = "Thermite", excludejob = 'police', item = thermiteitem}}, distance = 2.5 }) 
-   
-    exports['qb-target']:AddBoxZone(Pacificdoor3name, vec3(Config.Door3Eye.x, Config.Door3Eye.y, Config.Door3Eye.z + 0.2), 1, 1, { name = Pacificdoor3name, heading = 0.0, debug = Config.Debug, minZ = Config.Door3Eye.z-1, maxZ =  Config.Door3Eye.z+1,}, 
-    { options = {{ event = "Polar-Pacific:Client:Door3", icon = "fas fa-fire", label = "Thermite", excludejob = 'police', item = thermiteitem}}, distance = 2.5 }) 
-    
-    exports['qb-target']:AddBoxZone(Pacificdoorcard1name, vec3(Config.doorcard1Eye.x, Config.doorcard1Eye.y, Config.doorcard1Eye.z + 0.2), 1, 1, { name = Pacificdoorcard1name, heading = 0.0, debug = Config.Debug, minZ = Config.doorcard1Eye.z-1, maxZ =  Config.doorcard1Eye.z+1,}, 
-    { options = {{ event = "Polar-Pacific:Client:doorcard1", icon = "fas fa-bolt", label = "Insert Card", excludejob = 'police', item = carditem}}, distance = 2.5 }) 
-   
-    exports['qb-target']:AddBoxZone(Pacificdoorcard2name, vec3(Config.doorcard2Eye.x, Config.doorcard2Eye.y, Config.doorcard2Eye.z + 0.2), 1, 1, { name = Pacificdoorcard2name, heading = 0.0, debug = Config.Debug, minZ = Config.doorcard2Eye.z-1, maxZ =  Config.doorcard2Eye.z+1,}, 
-    { options = {{ event = "Polar-Pacific:Client:doorcard2", icon = "fas fa-bolt", label = "Insert Card", excludejob = 'police', item = carditem}}, distance = 2.5 }) 
-   
-    exports['qb-target']:AddBoxZone(Config.Pc1name, Config.Pc1, 2, 2, { name = Config.Pc1name, heading = 28.69, debug = true, minZ = Config.Pc1-1, maxZ =  Config.Pc1+1,}, 
-    { options = {{ event = "Polar-Pacific:client:HackComputer", door = Config.Pc1name, icon = "fas fa-bolt", label = "Hack", excludejob = 'police', item = computeritem}}, distance = 2.5 }) 
-   
-    exports['qb-target']:AddBoxZone(Config.Pc2name, Config.Pc1, 2, 2, { name = Config.Pc2name, heading = 28.69, debug = true, minZ = Config.Pc2-1, maxZ =  Config.Pc2+1,}, 
-    { options = {{ event = "Polar-Pacific:client:HackComputer", door = Config.Pc2name, icon = "fas fa-bolt", label = "Hack", excludejob = 'police', item = computeritem}}, distance = 2.5 }) 
-   
-    exports['qb-target']:AddBoxZone(Config.Pc3name, Config.Pc3, 2, 2, { name = Config.Pc3name, heading = 28.69, debug = true, minZ = Config.Pc3-1, maxZ =  Config.Pc3+1,}, 
-    { options = {{ event = "Polar-Pacific:client:HackComputer", door = Config.Pc3name, icon = "fas fa-bolt", label = "Hack", excludejob = 'police', item = computeritem}}, distance = 2.5 }) 
-  
+    CreateTarget(Config.Pc1name, Config.Pc1, "Polar-Pacific:Client:HackComputer", "Hack", "fas fa-bolt", Config.Debug)
+    CreateTarget(Config.Pc2name, Config.Pc2, "Polar-Pacific:Client:HackComputer", "Hack", "fas fa-bolt", Config.Debug)
+    CreateTarget(Config.Pc3name, Config.Pc3, "Polar-Pacific:Client:HackComputer", "Hack", "fas fa-bolt", Config.Debug)
+    if Config.Lazers then CreateTarget(Config.LazerName, Config.LazerLocation, "Polar-Pacific:Client:StopLazers", "Press", "fas fa-bolt", Config.Debug) end
+
     other()
 
+    changecolor()
 end)
 
 
 --- Thermites
-RegisterNetEvent('Polar-Pacific:Client:Door1', function() pp = vec4(Config.Door1Thermite.x, Config.Door1Thermite.y, Config.Door1Thermite.z + 0.2, Config.Door1Thermite.w) door = Pacificdoor1name coords =  Config.Door1Pfx QBCore.Functions.TriggerCallback('Polar-Pacific:Door1', function(result) if result then TriggerEvent('Polar-Pacific:client:Thermite', pp, door, coords) else  QBCore.Functions.Notify(text('sometingelse'), "error") end end) end)
-RegisterNetEvent('Polar-Pacific:Client:Door2', function() pp = vec4(Config.Door2Thermite.x, Config.Door2Thermite.y, Config.Door2Thermite.z + 0.2, Config.Door2Thermite.w) door = Pacificdoor2name coords =  Config.Door2Pfx QBCore.Functions.TriggerCallback('Polar-Pacific:Door2', function(result) if result then TriggerEvent('Polar-Pacific:client:Thermite', pp, door, coords) else  QBCore.Functions.Notify(text('sometingelse'), "error") end end) end)
-RegisterNetEvent('Polar-Pacific:Client:Door3', function() pp = vec4(Config.Door3Thermite.x, Config.Door3Thermite.y, Config.Door3Thermite.z + 0.2, Config.Door3Thermite.w) door = Pacificdoor3name coords =  Config.Door3Pfx QBCore.Functions.TriggerCallback('Polar-Pacific:Door3', function(result) if result then TriggerEvent('Polar-Pacific:client:Thermite', pp, door, coords) else  QBCore.Functions.Notify(text('sometingelse'), "error") end end) end)
+RegisterNetEvent('Polar-Pacific:Client:Door', function(data)
+    local name = data.id
+    door = name
+    if name == Pacificdoor1name then
+    pp = vec4(Config.Door1Thermite.x, Config.Door1Thermite.y, Config.Door1Thermite.z + 0.2, Config.Door1Thermite.w) 
+    coords =  Config.Door1Pfx 
+    elseif name == Pacificdoor2name then
+        pp = vec4(Config.Door2Thermite.x, Config.Door2Thermite.y, Config.Door2Thermite.z + 0.2, Config.Door2Thermite.w) 
+        coords =  Config.Door2Pfx 
+    elseif name == Pacificdoor3name then
+        pp = vec4(Config.Door3Thermite.x, Config.Door3Thermite.y, Config.Door3Thermite.z + 0.2, Config.Door3Thermite.w) 
+        coords =  Config.Door3Pfx 
+    end
+    callback('Polar-Pacific:Door' .. name, function(result) if result then 
+        TriggerEvent('Polar-Pacific:client:Thermite', pp, door, coords) 
+    else  notify(text('sometingelse'), "error") end end)
+end)
+
 ----- CARD INSERT
-RegisterNetEvent('Polar-Pacific:Client:doorcard1', function() item = carditem  rot = vector3(0.0, 0.0, 37.0) position = Config.doorcard1swipe door = Pacificdoorcard1name TriggerEvent('Polar-Pacific:client:keycard', door, position, rot, item) end)
-RegisterNetEvent('Polar-Pacific:Client:doorcard2', function() item = carditem  rot = vector3(0.0, 0.0, 37.0) position = Config.doorcard2swipe door = Pacificdoorcard2name TriggerEvent('Polar-Pacific:client:keycard', door, position, rot, item) end)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
----- grabs 1-5 and 31-40
-
-
-
-
-
-local Pacificprop1 = nil
-RegisterNetEvent('Polar-Pacific:Client:Pacificprop1', function(door, prop, var) loadModel(prop) Pacificprop1 =  CreateObject(prop, var.x, var.y, var.z,  true,  true, true) SetEntityHeading(Pacificprop1, var.w) 
-    TriggerServerEvent('Polar-Pacific:Server:StartInteract', door)
- 
-end)
-
-local Pacificprop2 = nil
-RegisterNetEvent('Polar-Pacific:Client:Pacificprop2', function(door, prop, var) loadModel(prop) Pacificprop2 =  CreateObject(prop, var.x, var.y, var.z,  true,  true, true) SetEntityHeading(Pacificprop2, var.w) 
-    TriggerServerEvent('Polar-Pacific:Server:StartInteract', door)
-   
-end)
-
-local Pacificprop3 = nil
-RegisterNetEvent('Polar-Pacific:Client:Pacificprop3', function(door, prop, var) loadModel(prop) Pacificprop3 =  CreateObject(prop, var.x, var.y, var.z,  true,  true, true) SetEntityHeading(Pacificprop3, var.w) 
-    TriggerServerEvent('Polar-Pacific:Server:StartInteract', door)
- 
-end)
-
-local Pacificprop4 = nil
-RegisterNetEvent('Polar-Pacific:Client:Pacificprop4', function(door, prop, var) loadModel(prop) Pacificprop4 =  CreateObject(prop, var.x, var.y, var.z,  true,  true, true) SetEntityHeading(Pacificprop4, var.w) 
-    TriggerServerEvent('Polar-Pacific:Server:StartInteract', door)
-  
-end)
-
-local Pacificprop5 = nil
-RegisterNetEvent('Polar-Pacific:Client:Pacificprop5', function(door, prop, var) loadModel(prop) Pacificprop5 =  CreateObject(prop, var.x, var.y, var.z,  true,  true, true) SetEntityHeading(Pacificprop5, var.w) 
-    TriggerServerEvent('Polar-Pacific:Server:StartInteract', door)
-  
-end)
-
-
-local Pacificprop31 = nil
-RegisterNetEvent('Polar-Pacific:Client:Pacificprop31', function(door, prop, var) loadModel(prop) Pacificprop31 =  CreateObject(prop, var.x, var.y, var.z,  true,  true, true) SetEntityHeading(Pacificprop31, var.w) 
-    TriggerServerEvent('Polar-Pacific:Server:StartInteract', door)
-   
-end)
-
-local Pacificprop32 = nil
-RegisterNetEvent('Polar-Pacific:Client:Pacificprop32', function(door, prop, var) loadModel(prop) Pacificprop32 =  CreateObject(prop, var.x, var.y, var.z,  true,  true, true) SetEntityHeading(Pacificprop32, var.w) 
-    TriggerServerEvent('Polar-Pacific:Server:StartInteract', door)
- 
-end)
-
-local Pacificprop33 = nil
-RegisterNetEvent('Polar-Pacific:Client:Pacificprop33', function(door, prop, var) loadModel(prop) Pacificprop33 =  CreateObject(prop, var.x, var.y, var.z,  true,  true, true) SetEntityHeading(Pacificprop33, var.w) 
-    TriggerServerEvent('Polar-Pacific:Server:StartInteract', door)
-  
-end)
-
-local Pacificprop34 = nil
-RegisterNetEvent('Polar-Pacific:Client:Pacificprop34', function(door, prop, var) loadModel(prop) Pacificprop34 =  CreateObject(prop, var.x, var.y, var.z,  true,  true, true) SetEntityHeading(Pacificprop34, var.w) 
-    TriggerServerEvent('Polar-Pacific:Server:StartInteract', door)
- 
-end)
-
-local Pacificprop35 = nil
-RegisterNetEvent('Polar-Pacific:Client:Pacificprop35', function(door, prop, var) loadModel(prop) Pacificprop35 =  CreateObject(prop, var.x, var.y, var.z,  true,  true, true) SetEntityHeading(Pacificprop35, var.w) 
-    TriggerServerEvent('Polar-Pacific:Server:StartInteract', door)
-  
-end)
-
-
-local Pacificprop36 = nil
-RegisterNetEvent('Polar-Pacific:Client:Pacificprop36', function(door, prop, var) loadModel(prop) Pacificprop36 =  CreateObject(prop, var.x, var.y, var.z,  true,  true, true) SetEntityHeading(Pacificprop36, var.w) 
-    TriggerServerEvent('Polar-Pacific:Server:StartInteract', door)
- 
-end)
-
-local Pacificprop37 = nil
-RegisterNetEvent('Polar-Pacific:Client:Pacificprop37', function(door, prop, var) loadModel(prop) Pacificprop37 =  CreateObject(prop, var.x, var.y, var.z,  true,  true, true) SetEntityHeading(Pacificprop37, var.w) 
-    TriggerServerEvent('Polar-Pacific:Server:StartInteract', door)
-  
-end)
-
-local Pacificprop38 = nil
-RegisterNetEvent('Polar-Pacific:Client:Pacificprop38', function(door, prop, var) loadModel(prop) Pacificprop38 =  CreateObject(prop, var.x, var.y, var.z,  true,  true, true) SetEntityHeading(Pacificprop38, var.w) 
-    TriggerServerEvent('Polar-Pacific:Server:StartInteract', door)
- 
-end)
-
-local Pacificprop39 = nil
-RegisterNetEvent('Polar-Pacific:Client:Pacificprop39', function(door, prop, var) loadModel(prop) Pacificprop39 =  CreateObject(prop, var.x, var.y, var.z,  true,  true, true) SetEntityHeading(Pacificprop39, var.w) 
-    TriggerServerEvent('Polar-Pacific:Server:StartInteract', door)
-
-end)
-
-local Pacificprop40 = nil
-RegisterNetEvent('Polar-Pacific:Client:Pacificprop40', function(door, prop, var) loadModel(prop) Pacificprop40 =  CreateObject(prop, var.x, var.y, var.z,  true,  true, true) SetEntityHeading(Pacificprop40, var.w) 
-    TriggerServerEvent('Polar-Pacific:Server:StartInteract', door)
-   
+RegisterNetEvent('Polar-Pacific:Client:doorcard', function(data) 
+    item = carditem  
+    rot = vector3(0.0, 0.0, 37.0) 
+    door = data.id
+    if door == Pacificdoorcard1name then
+        position = Config.doorcard1swipe 
+    elseif door == Pacificdoorcard2name then
+        position = Config.doorcard2swipe 
+    end
+    TriggerEvent('Polar-Pacific:client:keycard', door, position, rot, item) 
 end)
 
 
@@ -1015,315 +1170,115 @@ end)
 
 
 
----- pickups 6-10 and 21 - 25
 
-local Pacificprop6 = nil
-RegisterNetEvent('Polar-Pacific:Client:Pacificprop6', function(door, prop, var) loadModel(prop) Pacificprop6 =  CreateObject(prop, var.x, var.y, var.z,  true,  true, true) SetEntityHeading(Pacificprop6, var.w) 
-    TriggerServerEvent('Polar-Pacific:Server:StartInteract', door)
-  
-end)
 
-local Pacificprop7 = nil
-RegisterNetEvent('Polar-Pacific:Client:Pacificprop7', function(door, prop, var) loadModel(prop) Pacificprop7 =  CreateObject(prop, var.x, var.y, var.z,  true,  true, true) SetEntityHeading(Pacificprop7, var.w) 
-    TriggerServerEvent('Polar-Pacific:Server:StartInteract', door)
-  
-end)
 
-local Pacificprop8 = nil
-RegisterNetEvent('Polar-Pacific:Client:Pacificprop8', function(door, prop, var) loadModel(prop) Pacificprop8 =  CreateObject(prop, var.x, var.y, var.z,  true,  true, true) SetEntityHeading(Pacificprop8, var.w) 
-    TriggerServerEvent('Polar-Pacific:Server:StartInteract', door)
 
-end)
 
-local Pacificprop9 = nil
-RegisterNetEvent('Polar-Pacific:Client:Pacificprop9', function(door, prop, var) loadModel(prop) Pacificprop9 =  CreateObject(prop, var.x, var.y, var.z,  true,  true, true) SetEntityHeading(Pacificprop9, var.w) 
-    TriggerServerEvent('Polar-Pacific:Server:StartInteract', door)
 
-end)
 
-local Pacificprop10 = nil
-RegisterNetEvent('Polar-Pacific:Client:Pacificprop10', function(door, prop, var) loadModel(prop) Pacificprop10 =  CreateObject(prop, var.x, var.y, var.z,  true,  true, true) SetEntityHeading(Pacificprop10, var.w) 
-    TriggerServerEvent('Polar-Pacific:Server:StartInteract', door)
 
-end)
 
 
-local Pacificprop21 = nil
-RegisterNetEvent('Polar-Pacific:Client:Pacificprop21', function(door, prop, var) loadModel(prop) Pacificprop21 =  CreateObject(prop, var.x, var.y, var.z,  true,  true, true) SetEntityHeading(Pacificprop21, var.w) 
-    TriggerServerEvent('Polar-Pacific:Server:StartInteract', door) 
- 
-end)
 
-local Pacificprop22 = nil
-RegisterNetEvent('Polar-Pacific:Client:Pacificprop22', function(door, prop, var) loadModel(prop) Pacificprop22 =  CreateObject(prop, var.x, var.y, var.z,  true,  true, true) SetEntityHeading(Pacificprop22, var.w) 
-    TriggerServerEvent('Polar-Pacific:Server:StartInteract', door) 
 
-end)
 
-local Pacificprop23 = nil
-RegisterNetEvent('Polar-Pacific:Client:Pacificprop23', function(door, prop, var) loadModel(prop) Pacificprop23 =  CreateObject(prop, var.x, var.y, var.z,  true,  true, true) SetEntityHeading(Pacificprop23, var.w) 
-    TriggerServerEvent('Polar-Pacific:Server:StartInteract', door) 
 
-end)
 
-local Pacificprop24 = nil
-RegisterNetEvent('Polar-Pacific:Client:Pacificprop24', function(door, prop, var) loadModel(prop) Pacificprop24 =  CreateObject(prop, var.x, var.y, var.z,  true,  true, true) SetEntityHeading(Pacificprop24, var.w) 
-    TriggerServerEvent('Polar-Pacific:Server:StartInteract', door) 
 
-end)
 
-local Pacificprop25 = nil
-RegisterNetEvent('Polar-Pacific:Client:Pacificprop25', function(door, prop, var) loadModel(prop) Pacificprop25 =  CreateObject(prop, var.x, var.y, var.z,  true,  true, true) SetEntityHeading(Pacificprop25, var.w) 
-    TriggerServerEvent('Polar-Pacific:Server:StartInteract', door) 
 
-end)
-
-
-
-
-
-
-
-
-
-
-
----- piles 11-15
-
-local Pacificprop11 = nil
-RegisterNetEvent('Polar-Pacific:Client:Pacificprop11', function(door, prop, var) loadModel(prop) Pacificprop11 =  CreateObject(prop, var.x, var.y, var.z,  true,  true, true) SetEntityHeading(Pacificprop11, var.w) 
-    TriggerServerEvent('Polar-Pacific:Server:StartInteract', door) 
-
-end)
-
-local Pacificprop12 = nil
-RegisterNetEvent('Polar-Pacific:Client:Pacificprop12', function(door, prop, var) loadModel(prop) Pacificprop12 =  CreateObject(prop, var.x, var.y, var.z,  true,  true, true) SetEntityHeading(Pacificprop12, var.w) 
-    TriggerServerEvent('Polar-Pacific:Server:StartInteract', door) 
-
-end)
-
-local Pacificprop13 = nil
-RegisterNetEvent('Polar-Pacific:Client:Pacificprop13', function(door, prop, var) loadModel(prop) Pacificprop13 =  CreateObject(prop, var.x, var.y, var.z,  true,  true, true) SetEntityHeading(Pacificprop13, var.w) 
-    TriggerServerEvent('Polar-Pacific:Server:StartInteract', door) 
-
-end)
-
-local Pacificprop14 = nil
-RegisterNetEvent('Polar-Pacific:Client:Pacificprop14', function(door, prop, var) loadModel(prop) Pacificprop14 =  CreateObject(prop, var.x, var.y, var.z,  true,  true, true) SetEntityHeading(Pacificprop14, var.w) 
-    TriggerServerEvent('Polar-Pacific:Server:StartInteract', door) 
-
-end)
-
-local Pacificprop15 = nil
-RegisterNetEvent('Polar-Pacific:Client:Pacificprop15', function(door, prop, var) loadModel(prop) Pacificprop15 =  CreateObject(prop, var.x, var.y, var.z,  true,  true, true) SetEntityHeading(Pacificprop15, var.w) 
-    TriggerServerEvent('Polar-Pacific:Server:StartInteract', door) 
-
-end)
-
-
-
-
----- trollys 16-20 and 26-30
-
-local Pacificprop16 = nil
-RegisterNetEvent('Polar-Pacific:Client:Pacificprop16', function(door, prop, var) loadModel(prop) prop16 = prop Pacificprop16 =  CreateObject(prop, var.x, var.y, var.z,  true,  true, true) SetEntityHeading(Pacificprop16, var.w) 
-    TriggerServerEvent('Polar-Pacific:Server:StartInteract', door)
-   
-end)
-
-local Pacificprop17 = nil
-RegisterNetEvent('Polar-Pacific:Client:Pacificprop17', function(door, prop, var) loadModel(prop) prop17 = prop Pacificprop17 =  CreateObject(prop, var.x, var.y, var.z,  true,  true, true) SetEntityHeading(Pacificprop17, var.w) 
-    TriggerServerEvent('Polar-Pacific:Server:StartInteract', door)
-
-end)
-
-local Pacificprop18 = nil
-RegisterNetEvent('Polar-Pacific:Client:Pacificprop18', function(door, prop, var) loadModel(prop) prop18 = prop Pacificprop18 =  CreateObject(prop, var.x, var.y, var.z,  true,  true, true) SetEntityHeading(Pacificprop18, var.w) 
-    TriggerServerEvent('Polar-Pacific:Server:StartInteract', door)
-
-end)
-
-local Pacificprop19 = nil
-RegisterNetEvent('Polar-Pacific:Client:Pacificprop19', function(door, prop, var) loadModel(prop) prop19 = prop Pacificprop19 =  CreateObject(prop, var.x, var.y, var.z,  true,  true, true) SetEntityHeading(Pacificprop19, var.w) 
-    TriggerServerEvent('Polar-Pacific:Server:StartInteract', door)
-
-end)
-
-local Pacificprop20 = nil
-RegisterNetEvent('Polar-Pacific:Client:Pacificprop20', function(door, prop, var) loadModel(prop) prop20 = prop Pacificprop20 =  CreateObject(prop, var.x, var.y, var.z,  true,  true, true) SetEntityHeading(Pacificprop20, var.w) 
-    TriggerServerEvent('Polar-Pacific:Server:StartInteract', door)
-
-end)
-
-
-local Pacificprop26 = nil
-RegisterNetEvent('Polar-Pacific:Client:Pacificprop26', function(door, prop, var) loadModel(prop) prop26 = prop Pacificprop26 =  CreateObject(prop, var.x, var.y, var.z,  true,  true, true) SetEntityHeading(Pacificprop26, var.w) 
-    TriggerServerEvent('Polar-Pacific:Server:StartInteract', door)
-
-end)
-
-local Pacificprop27 = nil
-RegisterNetEvent('Polar-Pacific:Client:Pacificprop27', function(door, prop, var) loadModel(prop) prop27 = prop Pacificprop27 =  CreateObject(prop, var.x, var.y, var.z,  true,  true, true) SetEntityHeading(Pacificprop27, var.w) 
-    TriggerServerEvent('Polar-Pacific:Server:StartInteract', door)
-
-end)
-
-local Pacificprop28 = nil
-RegisterNetEvent('Polar-Pacific:Client:Pacificprop28', function(door, prop, var) loadModel(prop) prop28 = prop Pacificprop28 =  CreateObject(prop, var.x, var.y, var.z,  true,  true, true) SetEntityHeading(Pacificprop28, var.w) 
-    TriggerServerEvent('Polar-Pacific:Server:StartInteract', door)
-
-end)
-
-local Pacificprop29 = nil
-RegisterNetEvent('Polar-Pacific:Client:Pacificprop29', function(door, prop, var) loadModel(prop) prop29 = prop Pacificprop29 =  CreateObject(prop, var.x, var.y, var.z,  true,  true, true) SetEntityHeading(Pacificprop29, var.w) 
-    TriggerServerEvent('Polar-Pacific:Server:StartInteract', door)
-
-end)
-
-local Pacificprop30 = nil
-RegisterNetEvent('Polar-Pacific:Client:Pacificprop30', function(door, prop, var) loadModel(prop) prop30 = prop Pacificprop30 =  CreateObject(prop, var.x, var.y, var.z,  true,  true, true) SetEntityHeading(Pacificprop30, var.w) 
-    TriggerServerEvent('Polar-Pacific:Server:StartInteract', door)
-
-end)
-
-
-function delete(prop)
-    print(prop)
-    DeleteEntity(prop)
+function resetstuff()
+    doors = {}
+    trollys = {}
+    targets = {}
+    caseitem = {}
+    itemstand = {}
+    displaycase = {}
+    disabled = true
+    for i = 1, 40 do
+        if hi then print('setting to nil ' .. i .. ' / 40') end
+        _G["Pacificprop" .. i] = nil
+    end
 end
 
 
-RegisterNetEvent('Polar-Pacific:Client:TargetRemove', function(door) 
-    if door == 'Pacificprop1' then delete(Pacificprop1) end
-    if door == 'Pacificprop2' then delete(Pacificprop2) end
-    if door == 'Pacificprop3' then delete(Pacificprop3) end
-    if door == 'Pacificprop4' then delete(Pacificprop4) end
-    if door == 'Pacificprop5' then delete(Pacificprop5) end
-    if door == 'Pacificprop6' then delete(Pacificprop6) end
-    if door == 'Pacificprop7' then delete(Pacificprop7) end
-    if door == 'Pacificprop8' then delete(Pacificprop8) end
-    if door == 'Pacificprop9' then delete(Pacificprop9) end
-    if door == 'Pacificprop10' then delete(Pacificprop10) end
-
-   -- if door == 'Pacificprop11' then delete(Pacificprop11) end
-   -- if door == 'Pacificprop12' then delete(Pacificprop12) end
-  --  if door == 'Pacificprop13' then delete(Pacificprop13) end
-  --  if door == 'Pacificprop14' then delete(Pacificprop14) end
-  --  if door == 'Pacificprop15' then delete(Pacificprop15) end
-
-   -- if door == 'Pacificprop16' then delete(Pacificprop16) end
-  --  if door == 'Pacificprop17' then delete(Pacificprop17) end
-  --  if door == 'Pacificprop18' then delete(Pacificprop18) end
-  --  if door == 'Pacificprop19' then delete(Pacificprop19) end
-   -- if door == 'Pacificprop20' then delete(Pacificprop20) end
-
-    if door == 'Pacificprop21' then delete(Pacificprop21) end
-    if door == 'Pacificprop22' then delete(Pacificprop22) end
-    if door == 'Pacificprop23' then delete(Pacificprop23) end
-    if door == 'Pacificprop24' then delete(Pacificprop24) end
-    if door == 'Pacificprop25' then delete(Pacificprop25) end
-  --  if door == 'Pacificprop26' then delete(Pacificprop26) end
-  --  if door == 'Pacificprop27' then delete(Pacificprop27) end
-  --  if door == 'Pacificprop28' then delete(Pacificprop28) end
-  --  if door == 'Pacificprop29' then delete(Pacificprop29) end
-  --  if door == 'Pacificprop30' then delete(Pacificprop30) end
-
-    if door == 'Pacificprop31' then delete(Pacificprop31) end
-    if door == 'Pacificprop32' then delete(Pacificprop32) end
-    if door == 'Pacificprop33' then delete(Pacificprop33) end
-    if door == 'Pacificprop34' then delete(Pacificprop34) end
-    if door == 'Pacificprop35' then delete(Pacificprop35) end
-    if door == 'Pacificprop36' then delete(Pacificprop36) end
-    if door == 'Pacificprop37' then delete(Pacificprop37) end
-    if door == 'Pacificprop38' then delete(Pacificprop38) end
-    if door == 'Pacificprop39' then delete(Pacificprop39) end
-    if door == 'Pacificprop40' then delete(Pacificprop40) end
-
-
-    exports['qb-target']:RemoveZone(door) 
-end)
-
-
-RegisterNetEvent('Polar-Pacific:Client:Target', function(data) 
-    model = 'hei_p_m_bag_var22_arm_s' animDict = 'anim@scripted@heist@ig1_table_grab@cash@male@' 
-    local p = data.type 
-    TriggerServerEvent('Polar-Pacific:Server:StopInteract', p)
-    if p == 'Pacificprop1' then     Animation(p, Pacificprop1, model, animDict, prop)  
-    elseif p == 'Pacificprop2' then   Animation(p, Pacificprop2, model, animDict, prop) 
-    elseif p == 'Pacificprop3' then   Animation(p, Pacificprop3, model, animDict, prop)  
-    elseif p == 'Pacificprop4' then   Animation(p, Pacificprop4, model, animDict, prop)  
-    elseif p == 'Pacificprop5' then   Animation(p, Pacificprop5, model, animDict, prop)  
-    elseif p == 'Pacificprop31' then   Animation(p, Pacificprop31, model, animDict, prop) 
-    elseif p == 'Pacificprop32' then   Animation(p, Pacificprop32, model, animDict, prop)   
-    elseif p == 'Pacificprop33' then   Animation(p, Pacificprop33, model, animDict, prop) 
-    elseif p == 'Pacificprop34' then   Animation(p, Pacificprop34, model, animDict, prop) 
-    elseif p == 'Pacificprop35' then   Animation(p, Pacificprop35, model, animDict, prop)   
-    elseif p == 'Pacificprop36' then   Animation(p, Pacificprop36, model, animDict, prop)      
-    elseif p == 'Pacificprop37' then   Animation(p, Pacificprop37, model, animDict, prop)   
-    elseif p == 'Pacificprop38' then   Animation(p, Pacificprop38, model, animDict, prop)   
-    elseif p == 'Pacificprop39' then   Animation(p, Pacificprop39, model, animDict, prop) 
-    elseif p == 'Pacificprop40' then   Animation(p, Pacificprop40, model, animDict, prop)   
-  
-  --  elseif p == 'specialgrab' then  Animation('specialgrab', specialgrabprop, model, animDict, prop)
-
-    elseif p == 'Pacificprop16' then   grabloot(p, Pacificprop16, prop16, prop, 'prop16')      
-    elseif p == 'Pacificprop17' then   grabloot(p, Pacificprop17, prop17, prop, 'prop17')  
-    elseif p == 'Pacificprop18' then   grabloot(p, Pacificprop18, prop18, prop, 'prop18')   
-    elseif p == 'Pacificprop19' then   grabloot(p, Pacificprop19, prop19, prop, 'prop19') 
-    elseif p == 'Pacificprop20' then   grabloot(p, Pacificprop20, prop20, prop, 'prop20')     
-    elseif p == 'Pacificprop26' then   grabloot(p, Pacificprop26, prop26, prop, 'prop26')    
-    elseif p == 'Pacificprop27' then   grabloot(p, Pacificprop27, prop27, prop, 'prop27')   
-    elseif p == 'Pacificprop28' then   grabloot(p, Pacificprop28, prop28, prop, 'prop28') 
-    elseif p == 'Pacificprop29' then   grabloot(p, Pacificprop29, prop29, prop, 'prop29')  
-    elseif p == 'Pacificprop30' then   grabloot(p, Pacificprop30, prop30, prop, 'prop30') 
- 
+RegisterNetEvent('Polar-Pacific:Client:PacificProp', function(door, prop, var, value, number) 
+    loadModel(prop) 
+    if value then
+        if number == 1 then
+            itemstand[door] =  CreateObject(prop, var.x, var.y, var.z,  true,  true, true) 
+            SetEntityHeading(itemstand[door], var.w) 
+        elseif number == 2 then
+            displaycase[door] =  CreateObject(prop, var.x, var.y, var.z,  true,  true, true) 
+            SetEntityHeading(displaycase[door], var.w) 
+        end
+    else
+    doors[door] =  CreateObject(prop, var.x, var.y, var.z,  true,  true, true) 
+    SetEntityHeading(doors[door], var.w) 
+    --print(doors[door])
     end
 end)
 
 
-RegisterNetEvent('Polar-Pacific:Client:ResetProps', function()
-    
-    if DoesEntityExist(Pacificprop1) then delete(Pacificprop1) exports['qb-target']:RemoveZone('Pacificprop1') end
-    if DoesEntityExist(Pacificprop2) then delete(Pacificprop2) exports['qb-target']:RemoveZone('Pacificprop2') end
-    if DoesEntityExist(Pacificprop3) then delete(Pacificprop3) exports['qb-target']:RemoveZone('Pacificprop3') end
-    if DoesEntityExist(Pacificprop4) then delete(Pacificprop4) exports['qb-target']:RemoveZone('Pacificprop4') end
-    if DoesEntityExist(Pacificprop5) then delete(Pacificprop5) exports['qb-target']:RemoveZone('Pacificprop5') end
-    if DoesEntityExist(Pacificprop6) then delete(Pacificprop6) exports['qb-target']:RemoveZone('Pacificprop6') end
-    if DoesEntityExist(Pacificprop7) then delete(Pacificprop7) exports['qb-target']:RemoveZone('Pacificprop7') end
-    if DoesEntityExist(Pacificprop8) then delete(Pacificprop8) exports['qb-target']:RemoveZone('Pacificprop8') end
-    if DoesEntityExist(Pacificprop9) then delete(Pacificprop9) exports['qb-target']:RemoveZone('Pacificprop9') end
-    if DoesEntityExist(Pacificprop10) then delete(Pacificprop10) exports['qb-target']:RemoveZone('Pacificprop10') end
-    if DoesEntityExist(Pacificprop11) then delete(Pacificprop11) exports['qb-target']:RemoveZone('Pacificprop11') end
-    if DoesEntityExist(Pacificprop12) then delete(Pacificprop12) exports['qb-target']:RemoveZone('Pacificprop12') end
-    if DoesEntityExist(Pacificprop13) then delete(Pacificprop13) exports['qb-target']:RemoveZone('Pacificprop13') end
-    if DoesEntityExist(Pacificprop14) then delete(Pacificprop14) exports['qb-target']:RemoveZone('Pacificprop14') end
-    if DoesEntityExist(Pacificprop15) then delete(Pacificprop15) exports['qb-target']:RemoveZone('Pacificprop15') end
-    if DoesEntityExist(Pacificprop16) then delete(Pacificprop16) exports['qb-target']:RemoveZone('Pacificprop16') end
-    if DoesEntityExist(Pacificprop17) then delete(Pacificprop17) exports['qb-target']:RemoveZone('Pacificprop17') end
-    if DoesEntityExist(Pacificprop18) then delete(Pacificprop18) exports['qb-target']:RemoveZone('Pacificprop18') end
-    if DoesEntityExist(Pacificprop19) then delete(Pacificprop19) exports['qb-target']:RemoveZone('Pacificprop19') end
-    if DoesEntityExist(Pacificprop20) then delete(Pacificprop20) exports['qb-target']:RemoveZone('Pacificprop20') end
-    if DoesEntityExist(Pacificprop21) then delete(Pacificprop21) exports['qb-target']:RemoveZone('Pacificprop21') end
-    if DoesEntityExist(Pacificprop22) then delete(Pacificprop22) exports['qb-target']:RemoveZone('Pacificprop22') end
-    if DoesEntityExist(Pacificprop23) then delete(Pacificprop23) exports['qb-target']:RemoveZone('Pacificprop23') end
-    if DoesEntityExist(Pacificprop24) then delete(Pacificprop24) exports['qb-target']:RemoveZone('Pacificprop24') end
-    if DoesEntityExist(Pacificprop25) then delete(Pacificprop25) exports['qb-target']:RemoveZone('Pacificprop25') end
-    if DoesEntityExist(Pacificprop26) then delete(Pacificprop26) exports['qb-target']:RemoveZone('Pacificprop26') end
-    if DoesEntityExist(Pacificprop27) then delete(Pacificprop27) exports['qb-target']:RemoveZone('Pacificprop27') end
-    if DoesEntityExist(Pacificprop28) then delete(Pacificprop28) exports['qb-target']:RemoveZone('Pacificprop28') end
-    if DoesEntityExist(Pacificprop29) then delete(Pacificprop29) exports['qb-target']:RemoveZone('Pacificprop29') end
-    if DoesEntityExist(Pacificprop30) then delete(Pacificprop30) exports['qb-target']:RemoveZone('Pacificprop30') end
-    if DoesEntityExist(Pacificprop31) then delete(Pacificprop31) exports['qb-target']:RemoveZone('Pacificprop31') end
-    if DoesEntityExist(Pacificprop32) then delete(Pacificprop32) exports['qb-target']:RemoveZone('Pacificprop32') end
-    if DoesEntityExist(Pacificprop33) then delete(Pacificprop33) exports['qb-target']:RemoveZone('Pacificprop33') end
-    if DoesEntityExist(Pacificprop34) then delete(Pacificprop34) exports['qb-target']:RemoveZone('Pacificprop34') end
-    if DoesEntityExist(Pacificprop35) then delete(Pacificprop35) exports['qb-target']:RemoveZone('Pacificprop35') end
-    if DoesEntityExist(Pacificprop36) then delete(Pacificprop36) exports['qb-target']:RemoveZone('Pacificprop36') end
-    if DoesEntityExist(Pacificprop37) then delete(Pacificprop37) exports['qb-target']:RemoveZone('Pacificprop37') end
-    if DoesEntityExist(Pacificprop38) then delete(Pacificprop38) exports['qb-target']:RemoveZone('Pacificprop38') end
-    if DoesEntityExist(Pacificprop39) then delete(Pacificprop39) exports['qb-target']:RemoveZone('Pacificprop39') end
-    if DoesEntityExist(Pacificprop40) then delete(Pacificprop40) exports['qb-target']:RemoveZone('Pacificprop40') end
 
+
+
+
+
+
+
+
+
+RegisterNetEvent('Polar-Pacific:Client:TargetRemove', function(door) 
+    if hi then print(doors[door]) end
+    if targets[door] == nil then return end
+    if oxt then 
+        exports.ox_target:removeZone(targets[door]) 
+    else  
+        exports['qb-target']:RemoveZone(door) 
+    end
+    if tablecheck(door, paintingtable) then return end
+    if tablecheck(door, casetable) then return end
+    if tablecheck(door, trollytable) then return end
+       
+        
+            
+        
+        --print(door)
+      --  print(targets[door])
+       -- print(doors[door])
+            
+    if DoesEntityExist(doors[door]) then DeleteEntity(doors[door]) end 
+end)
+
+RegisterNetEvent('Polar-Pacific:Client:SetTrollyProp', function(door, prop)
+    trollys[door] = prop 
+
+end)
+
+RegisterNetEvent('Polar-Pacific:Client:Target', function(data) 
+    local p = data.type 
+    
+   
+   -- print(GetEntityRotation(doors[p]))
+   TriggerServerEvent('Polar-Pacific:Server:TargetRemove', p)
+
+    if tablecheck(p, trollytable) then
+        grabloot(p, doors[p])
+    else
+        Animation(p, doors[p])  
+    end
+end)
+
+RegisterNetEvent('Polar-Pacific:Client:ResetProps', function()
+    for _, v in ipairs(proptable) do
+        if oxt then exports.ox_target:removeZone(targets[v])  else exports['qb-target']:RemoveZone(v) end
+        if DoesEntityExist(doors[v]) then DeleteEntity(doors[v]) end
+    end
+    for _, v in ipairs(doortable) do
+        if oxt then exports.ox_target:removeZone(targets[v])  else exports['qb-target']:RemoveZone(v) end
+    end
 end)
 
 
@@ -1341,16 +1296,11 @@ RegisterNetEvent('Polar-Pacific:Client:PickupTarget', function(data)
         TaskPlayAnim(PlayerPedId(), 'anim@gangops@facility@servers@bodysearch@', 'player_search', 8.0, 8.0, -1, 48, 0, false, false, false)
         Wait(5000)
         ClearPedTasks(PlayerPedId())
-        if door == 'Pacificprop11' then delete(Pacificprop11) end
-        if door == 'Pacificprop12' then delete(Pacificprop12) end
-        if door == 'Pacificprop13' then delete(Pacificprop13) end
-        if door == 'Pacificprop14' then delete(Pacificprop14) end
-        if door == 'Pacificprop15' then delete(Pacificprop15) end
+
     else
         loadAnimDict(animDict) TaskPlayAnim(PlayerPedId(), animDict, 'pickup_low', 3.0, 3.0, -1, 0, 0, 0, 0, 0) 
     end
-        TriggerServerEvent('Polar-Pacific:Server:Synapse'.. door ..'', prop)
-        TriggerServerEvent('Polar-Pacific:Server:StopInteract', door)
+        TriggerServerEvent('Polar-Pacific:Server:Synapse', door)    
         LocalPlayer.state:set('inv_busy', false, true)
         TriggerServerEvent('Polar-Pacific:Server:TargetRemove', door) 
 end)
@@ -1358,12 +1308,649 @@ end)
 
 
 RegisterNetEvent('Polar-Pacific:Client:ResetDoors', function()
-
+    if oxd then
+        doorlock(Pacificdoor1name, true)
+        doorlock(Pacificdoor2name, true)
+        doorlock(Pacificdoor3name, true)
+        doorlock(Pacificdoorcard1name, true)
+        doorlock(Pacificdoorcard2name, true)
+        doorlock(Config.VaultDoorName, true)
+       
+    else
     TriggerServerEvent('qb-doorlock:server:updateState', Pacificdoor1name, true, false, false, true, false, false)
     TriggerServerEvent('qb-doorlock:server:updateState', Pacificdoor2name, true, false, false, true, false, false)
     TriggerServerEvent('qb-doorlock:server:updateState', Pacificdoor3name, true, false, false, true, false, false)
     TriggerServerEvent('qb-doorlock:server:updateState', Pacificdoorcard1name, true, false, false, true, false, false)
     TriggerServerEvent('qb-doorlock:server:updateState', Pacificdoorcard2name, true, false, false, true, false, false)
-    TriggerServerEvent('qb-doorlock:server:updateState', Config.VaultDoorDoor, true, false, false, true, false, false)
-    
+    TriggerServerEvent('qb-doorlock:server:updateState', Config.VaultDoorName, true, false, false, true, false, false)
+ --   doorlock(Pacificdoor1name, true)
+  --  doorlock(Pacificdoor2name, true)
+  --  doorlock(Pacificdoor3name, true)
+  --  doorlock(Pacificdoorcard1name, true)
+  --  doorlock(Pacificdoorcard2name, true)
+ --   doorlock(Config.VaultDoorName, true)
+    end
 end)
+
+
+
+function playeritem(item, amount)
+    if Config.Framework == 'qb' then
+    return exports['qb-inventory']:HasItem(item, amount)
+    else
+        
+    end
+end
+  
+function notify(what, color)
+    if Config.Framework == 'qb' then
+        QBCore.Functions.Notify(what, color)
+    elseif Config.Framework == 'esx' then
+        if color == 'error' then colo = 'r' elseif color == 'success' then colo = 'g' end
+        ESX.ShowNotification(what, true, true, colo)
+    end
+end
+ 
+
+function tablecheck(p, table)
+    for _, v in ipairs(table) do
+        if v == p then
+            return true
+        end
+    end
+end
+
+local lasers = {}
+function beginlazers()
+    if Config.Lazers then
+   -- laser("first", vec3(-101.134003, 6467.113770, 33.004002), vec3(-104.083000, 6464.405762, 32.124001), 5, 106, 90, 205)
+   
+    lasers["moving1"] = Laser.new(
+        {vec3(-101.362999, 6461.002930, 31.698000), vec3(-100.135002, 6459.774902, 31.736000), vec3(-98.877998, 6458.518066, 31.739000)},
+        {vec3(-97.832001, 6464.497070, 31.802000), vec3(-96.651001, 6463.314941, 31.764999), vec3(-95.439003, 6462.103027, 31.730000)},
+        {travelTimeBetweenTargets = {1.0, 1.0}, waitTimeAtTargets = {0.0, 0.0}, name = "moving1"}
+      )
+    lasers["moving2"] = Laser.new(
+        {vec3(-93.833000, 6467.546875, 33.467999), vec3(-93.830002, 6467.542969, 33.466000), vec3(-93.830002, 6467.542969, 33.466000), vec3(-93.830002, 6467.542969, 33.466000), vec3(-93.830002, 6467.542969, 33.466000)},
+        {vec3(-97.891998, 6464.827148, 32.606998), vec3(-99.960999, 6466.895996, 31.788000), vec3(-96.339996, 6470.054199, 31.174999), vec3(-99.608002, 6468.919922, 31.895000), vec3(-97.908997, 6467.060059, 31.421000)},
+        {travelTimeBetweenTargets = {1.0, 1.0}, waitTimeAtTargets = {0.0, 0.0}, name = "moving2"}
+      )
+    lasers["moving3"] = Laser.new(
+        {vec3(-101.035004, 6460.296875, 33.442001), vec3(-101.038002, 6460.294922, 33.438000), vec3(-101.038002, 6460.294922, 33.438000), vec3(-101.038002, 6460.294922, 33.438000), vec3(-101.038002, 6460.294922, 33.438000)},
+        {vec3(-104.584000, 6457.172852, 33.353001), vec3(-106.407997, 6458.998047, 32.362999), vec3(-107.008003, 6461.537109, 31.837999), vec3(-105.745003, 6462.782227, 31.500999), vec3(-104.716003, 6463.830078, 31.556999)},
+        {travelTimeBetweenTargets = {1.0, 1.0}, waitTimeAtTargets = {0.0, 0.0}, name = "moving3"}
+      )
+
+    Wait(1000)
+    lasers["moving4"] = Laser.new(
+        {vec3(-102.453003, 6476.030762, 31.007000), vec3(-102.457001, 6476.026855, 32.174000), vec3(-102.422997, 6476.061035, 33.252998), vec3(-103.452003, 6475.032227, 33.266998), vec3(-103.518997, 6474.964844, 32.125999), vec3(-103.515999, 6474.967773, 30.927000), vec3(-104.871002, 6473.592773, 30.976999), vec3(-104.857002, 6473.626953, 32.292000), vec3(-104.888000, 6473.596191, 33.345001), vec3(-106.099998, 6473.138184, 33.379002), vec3(-106.987000, 6472.250000, 33.387001), vec3(-107.723999, 6471.514160, 33.366001), vec3(-108.564003, 6470.673828, 33.424999), vec3(-109.207001, 6470.030762, 33.380001), vec3(-110.007004, 6469.230957, 33.372002), vec3(-110.780998, 6468.457031, 33.355999), vec3(-111.714996, 6467.522949, 33.346001), vec3(-111.612000, 6466.727051, 33.313000), vec3(-112.360001, 6465.433105, 33.333000), vec3(-112.384003, 6465.409180, 32.091000), vec3(-111.553001, 6466.240234, 32.028000)},
+        {vec3(-97.475998, 6471.211914, 30.879000), vec3(-97.778000, 6471.341797, 32.146999), vec3(-97.443001, 6471.244141, 33.352001), vec3(-98.844002, 6469.842773, 33.129002), vec3(-98.775002, 6469.912109, 32.062000), vec3(-98.802002, 6469.884766, 31.040001), vec3(-100.688004, 6468.018066, 30.889999), vec3(-100.723999, 6467.981934, 32.084999), vec3(-100.719002, 6467.985840, 33.383999), vec3(-99.845001, 6464.816895, 33.507000), vec3(-100.197998, 6464.463867, 33.618999), vec3(-100.888000, 6463.772949, 33.648998), vec3(-101.519997, 6463.142090, 33.657001), vec3(-102.099998, 6462.562012, 33.637001), vec3(-104.275002, 6464.412109, 33.390999), vec3(-105.815002, 6462.890137, 33.473000), vec3(-106.945999, 6461.741211, 33.382000), vec3(-107.202003, 6461.484863, 33.333000), vec3(-107.915001, 6460.771973, 33.318001), vec3(-107.916000, 6460.770996, 32.182999), vec3(-107.225998, 6461.460938, 32.244999)},
+        {travelTimeBetweenTargets = {0.1, 1.0}, waitTimeAtTargets = {0.0, 0.0}, name = "moving4"}
+    )
+    Wait(1000)
+    Wait(1000)
+    lasers["moving5"] = Laser.new(
+        {vec3(-102.453003, 6476.030762, 31.007000), vec3(-102.457001, 6476.026855, 32.174000), vec3(-102.422997, 6476.061035, 33.252998), vec3(-103.452003, 6475.032227, 33.266998), vec3(-103.518997, 6474.964844, 32.125999), vec3(-103.515999, 6474.967773, 30.927000), vec3(-104.871002, 6473.592773, 30.976999), vec3(-104.857002, 6473.626953, 32.292000), vec3(-104.888000, 6473.596191, 33.345001), vec3(-106.099998, 6473.138184, 33.379002), vec3(-106.987000, 6472.250000, 33.387001), vec3(-107.723999, 6471.514160, 33.366001), vec3(-108.564003, 6470.673828, 33.424999), vec3(-109.207001, 6470.030762, 33.380001), vec3(-110.007004, 6469.230957, 33.372002), vec3(-110.780998, 6468.457031, 33.355999), vec3(-111.714996, 6467.522949, 33.346001), vec3(-111.612000, 6466.727051, 33.313000), vec3(-112.360001, 6465.433105, 33.333000), vec3(-112.384003, 6465.409180, 32.091000), vec3(-111.553001, 6466.240234, 32.028000)},
+        {vec3(-97.475998, 6471.211914, 30.879000), vec3(-97.778000, 6471.341797, 32.146999), vec3(-97.443001, 6471.244141, 33.352001), vec3(-98.844002, 6469.842773, 33.129002), vec3(-98.775002, 6469.912109, 32.062000), vec3(-98.802002, 6469.884766, 31.040001), vec3(-100.688004, 6468.018066, 30.889999), vec3(-100.723999, 6467.981934, 32.084999), vec3(-100.719002, 6467.985840, 33.383999), vec3(-99.845001, 6464.816895, 33.507000), vec3(-100.197998, 6464.463867, 33.618999), vec3(-100.888000, 6463.772949, 33.648998), vec3(-101.519997, 6463.142090, 33.657001), vec3(-102.099998, 6462.562012, 33.637001), vec3(-104.275002, 6464.412109, 33.390999), vec3(-105.815002, 6462.890137, 33.473000), vec3(-106.945999, 6461.741211, 33.382000), vec3(-107.202003, 6461.484863, 33.333000), vec3(-107.915001, 6460.771973, 33.318001), vec3(-107.916000, 6460.770996, 32.182999), vec3(-107.225998, 6461.460938, 32.244999)},
+        {travelTimeBetweenTargets = {0.1, 0.5}, waitTimeAtTargets = {0.0, 0.0}, name = "moving5"}
+      )
+    Wait(1000)
+    lasers["moving6"] = Laser.new(
+        {vec3(-102.453003, 6476.030762, 31.007000), vec3(-102.457001, 6476.026855, 32.174000), vec3(-102.422997, 6476.061035, 33.252998), vec3(-103.452003, 6475.032227, 33.266998), vec3(-103.518997, 6474.964844, 32.125999), vec3(-103.515999, 6474.967773, 30.927000), vec3(-104.871002, 6473.592773, 30.976999), vec3(-104.857002, 6473.626953, 32.292000), vec3(-104.888000, 6473.596191, 33.345001), vec3(-106.099998, 6473.138184, 33.379002), vec3(-106.987000, 6472.250000, 33.387001), vec3(-107.723999, 6471.514160, 33.366001), vec3(-108.564003, 6470.673828, 33.424999), vec3(-109.207001, 6470.030762, 33.380001), vec3(-110.007004, 6469.230957, 33.372002), vec3(-110.780998, 6468.457031, 33.355999), vec3(-111.714996, 6467.522949, 33.346001), vec3(-111.612000, 6466.727051, 33.313000), vec3(-112.360001, 6465.433105, 33.333000), vec3(-112.384003, 6465.409180, 32.091000), vec3(-111.553001, 6466.240234, 32.028000)},
+        {vec3(-97.475998, 6471.211914, 30.879000), vec3(-97.778000, 6471.341797, 32.146999), vec3(-97.443001, 6471.244141, 33.352001), vec3(-98.844002, 6469.842773, 33.129002), vec3(-98.775002, 6469.912109, 32.062000), vec3(-98.802002, 6469.884766, 31.040001), vec3(-100.688004, 6468.018066, 30.889999), vec3(-100.723999, 6467.981934, 32.084999), vec3(-100.719002, 6467.985840, 33.383999), vec3(-99.845001, 6464.816895, 33.507000), vec3(-100.197998, 6464.463867, 33.618999), vec3(-100.888000, 6463.772949, 33.648998), vec3(-101.519997, 6463.142090, 33.657001), vec3(-102.099998, 6462.562012, 33.637001), vec3(-104.275002, 6464.412109, 33.390999), vec3(-105.815002, 6462.890137, 33.473000), vec3(-106.945999, 6461.741211, 33.382000), vec3(-107.202003, 6461.484863, 33.333000), vec3(-107.915001, 6460.771973, 33.318001), vec3(-107.916000, 6460.770996, 32.182999), vec3(-107.225998, 6461.460938, 32.244999)},
+        {travelTimeBetweenTargets = {0.1, 0.8}, waitTimeAtTargets = {0.0, 0.0}, name = "moving6"}
+      )
+    Wait(2000)
+    lasers["moving7"] = Laser.new(
+        {vec3(-102.453003, 6476.030762, 31.007000), vec3(-102.457001, 6476.026855, 32.174000), vec3(-102.422997, 6476.061035, 33.252998), vec3(-103.452003, 6475.032227, 33.266998), vec3(-103.518997, 6474.964844, 32.125999), vec3(-103.515999, 6474.967773, 30.927000), vec3(-104.871002, 6473.592773, 30.976999), vec3(-104.857002, 6473.626953, 32.292000), vec3(-104.888000, 6473.596191, 33.345001), vec3(-106.099998, 6473.138184, 33.379002), vec3(-106.987000, 6472.250000, 33.387001), vec3(-107.723999, 6471.514160, 33.366001), vec3(-108.564003, 6470.673828, 33.424999), vec3(-109.207001, 6470.030762, 33.380001), vec3(-110.007004, 6469.230957, 33.372002), vec3(-110.780998, 6468.457031, 33.355999), vec3(-111.714996, 6467.522949, 33.346001), vec3(-111.612000, 6466.727051, 33.313000), vec3(-112.360001, 6465.433105, 33.333000), vec3(-112.384003, 6465.409180, 32.091000), vec3(-111.553001, 6466.240234, 32.028000)},
+        {vec3(-97.475998, 6471.211914, 30.879000), vec3(-97.778000, 6471.341797, 32.146999), vec3(-97.443001, 6471.244141, 33.352001), vec3(-98.844002, 6469.842773, 33.129002), vec3(-98.775002, 6469.912109, 32.062000), vec3(-98.802002, 6469.884766, 31.040001), vec3(-100.688004, 6468.018066, 30.889999), vec3(-100.723999, 6467.981934, 32.084999), vec3(-100.719002, 6467.985840, 33.383999), vec3(-99.845001, 6464.816895, 33.507000), vec3(-100.197998, 6464.463867, 33.618999), vec3(-100.888000, 6463.772949, 33.648998), vec3(-101.519997, 6463.142090, 33.657001), vec3(-102.099998, 6462.562012, 33.637001), vec3(-104.275002, 6464.412109, 33.390999), vec3(-105.815002, 6462.890137, 33.473000), vec3(-106.945999, 6461.741211, 33.382000), vec3(-107.202003, 6461.484863, 33.333000), vec3(-107.915001, 6460.771973, 33.318001), vec3(-107.916000, 6460.770996, 32.182999), vec3(-107.225998, 6461.460938, 32.244999)},
+        {travelTimeBetweenTargets = {0.1, 0.8}, waitTimeAtTargets = {0.0, 0.0}, name = "moving7"}
+      )
+    startlasers()
+
+    
+    end
+end
+
+function laser(names, startloc, endloc, d, r, g, b)
+    lasers[names] = Laser.new(
+        startloc,
+        {endloc},
+        {travelTimeBetweenTargets = {1.0, 1.0}, waitTimeAtTargets = {0.0, 0.0}, randomTargetSelection = true, name = names, maxDistance = d, color = {r, g, b, 255}}
+    )
+end
+
+function clear(v, pos)
+    disabled = false
+    if Config.LazerPolice then CallPolice() end
+    if Config.Lockdown then TriggerServerEvent('Polar-Pacific:Server:LockDown') end
+    if Config.Debug then print('name = ' .. v .. ' hitPos = ' .. pos) end
+    if Config.LazerSounds then TriggerServerEvent("InteractSound_SV:PlayWithinDistance", 50.0, "warehousealert", 0.35) end
+    lasers[v].clearOnPlayerHit()
+   
+    for v, table in pairs(lasers) do
+        
+        lasers[v].setActive(false)
+
+    end
+    
+end
+function changecolor()
+    while disabled do
+    for v, table in pairs(lasers) do
+        local chance = math.random(1,100)
+        if chance < 50 then lasers[v].setMoving(false) else lasers[v].setMoving(true) end
+        if chance < 20 then
+            lasers[v].setColor(106, 90, 205, 255)
+        elseif chance < 40 then
+            lasers[v].setColor(255, 165, 0, 255)
+        elseif chance < 60 then
+            lasers[v].setColor(238, 130, 238, 255)
+        elseif chance < 80 then
+            lasers[v].setColor(60, 179, 113, 255)
+        else
+            lasers[v].setColor(255, 0, 0, 255)
+        end
+    end
+    Wait(5000)
+    end
+end
+function startlasers()
+    for v, table in pairs(lasers) do
+        
+        
+        if disabled then 
+            lasers[v].setActive(true)
+
+        Wait(1)
+
+        local chance = math.random(1,100)
+        if chance < 50 then lasers[v].setMoving(false) else lasers[v].setMoving(true) end
+        if chance < 20 then
+            lasers[v].setMoving(true)
+            lasers[v].setColor(106, 90, 205, 255)
+        elseif chance < 40 then
+            lasers[v].setMoving(true)
+            lasers[v].setColor(255, 165, 0, 255)
+        elseif chance < 60 then
+            lasers[v].setMoving(true)
+            lasers[v].setColor(238, 130, 238, 255)
+        elseif chance < 80 then
+            lasers[v].setMoving(true)
+            lasers[v].setColor(60, 179, 113, 255)
+        else
+            lasers[v].setMoving(false)
+            lasers[v].setColor(255, 0, 0, 255)
+        end
+
+        lasers[v].onPlayerHit(function(playerBeingHit, hitPos)
+            if playerBeingHit then
+                
+                clear(v, hitPos)
+                
+            else
+                lasers[v].clearOnPlayerHit()
+            end
+        end)
+        end
+    end
+end
+
+RegisterNetEvent('Polar-Pacific:Client:StopLazers', function(data)
+    disabled = false
+    TriggerServerEvent('Polar-Pacific:Server:TargetRemove', data.id) 
+    notify('Security System Disabled In 10 Seconds', 'success')
+    Wait(10000)
+    if Config.LazerPolice then if Config.LazerPoliceDisableCall then CallPolice() end end
+    notify(text('lazers'), "success")
+    for v, table in pairs(lasers) do
+        
+        lasers[v].clearOnPlayerHit()
+        lasers[v].setActive(false)
+
+    end
+end)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function yellodrill(drillpos, drillrot, drillitems, door, animDict)
+    LocalPlayer.state:set("inv_busy", true, true)
+    RequestAnimDict(animDict) RequestModel("ch_prop_vault_drill_01a") RequestModel(bagcolor) while not HasAnimDictLoaded(animDict) or not HasModelLoaded("ch_prop_vault_drill_01a") or not HasModelLoaded(bagcolor) do Wait(100) end
+    local ped = PlayerPedId() local targetPosition, targetRotation = (vec3(GetEntityCoords(ped))), vec3(GetEntityRotation(ped)) 
+    local animPos = GetAnimInitialOffsetPosition(animDict, "top_left_enter", drillpos.x, drillpos.y, drillpos.z - 2)
+    FreezeEntityPosition(ped, true)
+
+    local bag = CreateObject(bagcolor, targetPosition, 1, 1, 0)
+    local drill = CreateObject('ch_prop_vault_drill_01a', targetPosition, 1, 1, 0) 
+
+    local netScene = NetworkCreateSynchronisedScene(animPos, targetRotation, 0, true, true, 1065353216, 0, 1.0) 
+    NetworkAddPedToSynchronisedScene(ped, netScene, animDict, "top_left_enter", 1.5, -4.0, 1, 16, 1148846080, 0) 
+    NetworkAddEntityToSynchronisedScene(bag, netScene, animDict, "enter_p_m_bag_var22_arm_s", 4.0, -8.0, 1)
+    NetworkAddEntityToSynchronisedScene(drill, netScene, animDict, "enter_ch_prop_vault_drill_01a", 4.0, -8.0, 1)
+
+    local netScene2 = NetworkCreateSynchronisedScene(animPos, targetRotation, 2, true, true, 1065353216, 0, 1.0) 
+    NetworkAddPedToSynchronisedScene(ped, netScene2, animDict, "action", 0, 0, 10, 16, 1148846080, 0) 
+    NetworkAddEntityToSynchronisedScene(bag, netScene2, animDict, "action_p_m_bag_var22_arm_s", 4.0, -80.0, 1)
+    NetworkAddEntityToSynchronisedScene(drill, netScene2, animDict, "action_ch_prop_vault_drill_01a", 4.0, -80.0, 1) 
+
+    local netScene3 = NetworkCreateSynchronisedScene(animPos, targetRotation, 2, true, true, 1065353216, 0, 1.0)
+    NetworkAddPedToSynchronisedScene(ped, netScene3, animDict, "exit", 0, 0, 1, 16, 1148846080, 0)
+    NetworkAddEntityToSynchronisedScene(bag, netScene3, animDict, "exit_p_m_bag_var22_arm_s", 4.0, -8.0, 1)
+    NetworkAddEntityToSynchronisedScene(drill, netScene3, animDict, "exit_ch_prop_vault_drill_01a", 4.0, -8.0, 1)
+
+    local netScene4 = NetworkCreateSynchronisedScene(animPos, targetRotation, 2, true, true, 1065353216, 0, 1.0)
+    NetworkAddPedToSynchronisedScene(ped, netScene4, animDict, "reward", 0, 0, 10, 16, 1148846080, 0) 
+    NetworkAddEntityToSynchronisedScene(bag, netScene4, animDict, "reward_p_m_bag_var22_arm_s", 4.0, -80.0, 1) 
+    NetworkAddEntityToSynchronisedScene(drill, netScene4, animDict, "reward_ch_prop_vault_drill_01a", 4.0, -80.0, 1)
+
+    SetEntityHeading(ped, drillrot) 
+
+        NetworkStartSynchronisedScene(netScene) Wait(3500) NetworkStopSynchronisedScene(netScene) 
+    
+        
+        NetworkStartSynchronisedScene(netScene2)
+    
+        Wait(7000)
+    
+       
+      
+        NetworkStopSynchronisedScene(netScene2)  NetworkStartSynchronisedScene(netScene4) Wait(3000)
+    
+        NetworkStopSynchronisedScene(netScene4) NetworkStartSynchronisedScene(netScene3) Wait(3000)
+        
+        NetworkStopSynchronisedScene(netScene3) 
+    
+        DeleteObject(bag) 
+        DeleteObject(drill)  
+        FreezeEntityPosition(ped, false)
+
+        TriggerServerEvent('Polar-Pacific:Server:TargetRemove', door)
+        goodies() TriggerServerEvent('Polar-Pacific:Server:RemoveItems', drillreward, amount)
+        local chance = math.random(1,100) if chance <= ydrillitemchance then TriggerServerEvent('Polar-Pacific:Server:RemoveItem', drillitems, 1) end
+        LocalPlayer.state:set("inv_busy", false, true)
+        
+    
+    
+
+ 
+  
+   -- TriggerServerEvent('Polar-Pacific:Server:StartInteract', door)
+   -- local chance = math.random(1,100) if chance <= ydrillitemchance then TriggerServerEvent('Polar-Pacific:Server:RemoveItem', drillitems, 1) end
+    
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-- hacking(door, loc)
+function hacking(door, loc)
+
+    local animDict = 'anim_heist@hs3f@ig1_hack_keypad@arcade@male@' RequestAnimDict(animDict) RequestModel('prop_phone_ing') RequestModel('hei_prop_hst_usb_drive')while not HasAnimDictLoaded(animDict) or not HasModelLoaded('prop_phone_ing') or not HasModelLoaded('hei_prop_hst_usb_drive') do Wait(100) end
+
+    local ped = PlayerPedId() local targetPosition, targetRotation = (vec3(GetEntityCoords(ped))), vec3(GetEntityRotation(ped)) SetEntityHeading(ped, loc.h)
+    local animPos = GetAnimInitialOffsetPosition(animDict, 'action_var_01', loc.x, loc.y, loc.z, loc.x, loc.y, loc.z, 0, 2) local animPos2 = GetAnimInitialOffsetPosition(animDict, 'hack_loop_var_01', loc.x, loc.y, loc.z, loc.x, loc.y, loc.z, 0, 2) local animPos3 = GetAnimInitialOffsetPosition(animDict, 'success_react_exit_var_01', loc.x, loc.y, loc.z, loc.x, loc.y, loc.z, 0, 2) FreezeEntityPosition(ped, true) local phone = CreateObject(GetHashKey('prop_phone_ing'), targetPosition, 1, 1, 0) local usb = CreateObject(GetHashKey('hei_prop_hst_usb_drive'), targetPosition, 1, 1, 0)
+    local netScene = NetworkCreateSynchronisedScene(animPos, targetRotation, 2, false, false, 1065353216, 0, 1.3) NetworkAddPedToSynchronisedScene(ped, netScene, animDict, 'action_var_01', 1.5, -4.0, 1, 16, 1148846080, 0)
+    NetworkAddEntityToSynchronisedScene(phone, netScene, animDict, 'action_var_01_prop_phone_ing', 4.0, -8.0, 1) NetworkAddEntityToSynchronisedScene(usb, netScene, animDict, 'action_var_01_ch_prop_ch_usb_drive01x', 4.0, -8.0, 1)
+    local netScene2 = NetworkCreateSynchronisedScene(animPos2, targetRotation, 2, false, true, 1065353216, 0, 1.3) NetworkAddPedToSynchronisedScene(ped, netScene2, animDict, 'hack_loop_var_01', 1.5, -4.0, 1, 16, 1148846080, 0)
+    NetworkAddEntityToSynchronisedScene(phone, netScene2, animDict, 'hack_loop_var_01_prop_phone_ing', 4.0, -8.0, 1) NetworkAddEntityToSynchronisedScene(usb, netScene2, animDict, 'hack_loop_var_01_ch_prop_ch_usb_drive01x', 4.0, -8.0, 1)
+    local netScene3 = NetworkCreateSynchronisedScene(animPos3, targetRotation, 2, false, false, 1065353216, 0, 1.3) NetworkAddPedToSynchronisedScene(ped, netScene3, animDict, 'success_react_exit_var_01', 1.5, -4.0, 1, 16, 1148846080, 0)
+    NetworkAddEntityToSynchronisedScene(phone, netScene3, animDict, 'success_react_exit_var_01_prop_phone_ing', 4.0, -8.0, 1) NetworkAddEntityToSynchronisedScene(usb, netScene3, animDict, 'success_react_exit_var_01_ch_prop_ch_usb_drive01x', 4.0, -8.0, 1) Wait(200) NetworkStartSynchronisedScene(netScene) Wait(4000) NetworkStartSynchronisedScene(netScene2) Wait(2000)
+
+    -- win
+
+        NetworkStartSynchronisedScene(netScene3)
+        Wait(4000)
+        NetworkStopSynchronisedScene(netScene3)
+        DeleteObject(usb)
+        DeleteObject(phone)
+        FreezeEntityPosition(ped, false)
+       
+   
+    -- lose
+
+        NetworkStartSynchronisedScene(netScene3)
+        Wait(4000)
+        NetworkStopSynchronisedScene(netScene3)
+        DeleteObject(usb)
+        DeleteObject(phone)
+        FreezeEntityPosition(ped, false)
+
+end
+
+
+
+
+
+
+
+
+
+RegisterNetEvent('Polar-Pacific:Client:PaintTarget', function(data)
+    local door = data.type
+    local case = data.case
+    if case then
+        if playeritem('weapon_switchblade') then
+            local chances = 50
+            local items = 'weapon_switchblade'
+        snatch(door, items, chances)
+        else notify(text('nolaserdrill'), "error") end
+    else
+        if playeritem(knifeitem) then
+
+       
+        HeistAnimation(door)
+        
+    else notify(text('noswitchblade'), "error") end
+    end
+end)
+
+
+local ArtHeist = {}
+
+   
+function HeistAnimation(door)
+
+    local object = doors[door]
+    local sceneRot = GetEntityRotation(object)
+    local scenePos2 = GetEntityCoords(object)
+    local scenePos = vec3(scenePos2.x, scenePos2.y, scenePos2.z-1)
+    local ped = PlayerPedId()
+    local pedCo, pedRotation = GetEntityCoords(ped), vector3(0.0, 0.0, 0.0)
+    local scenes = {false, false, false, false}
+    local animDict = "anim_heist@hs3f@ig11_steal_painting@male@"
+  
+    TriggerServerEvent('Polar-Pacific:Server:TargetRemove', door)
+   
+
+
+    RequestAnimDict(animDict) RequestModel(bagcolor) RequestModel('w_me_switchblade')
+    while not HasAnimDictLoaded(animDict) or not HasModelLoaded(bagcolor) or not HasModelLoaded('w_me_switchblade') do Wait(100) 
+    end
+
+  
+    local bag = CreateObject(bagcolor, pedCo, 1, 1, 0)
+    local knife = CreateObject('w_me_switchblade', pedCo, 1, 1, 0)
+    
+    
+    
+    
+    for i = 1, 10 do
+
+        ArtHeist[i] = NetworkCreateSynchronisedScene(scenePos.x, scenePos.y, scenePos.z, sceneRot, 2, true, false, 1065353216, 0, 1065353216)
+
+        NetworkAddPedToSynchronisedScene(ped, ArtHeist[i], animDict, 'ver_01_'..Config.PaintAnimations[i][1], 4.0, -4.0, 1033, 0, 1000.0, 0)
+        NetworkAddEntityToSynchronisedScene(object, ArtHeist[i], animDict, 'ver_01_'..Config.PaintAnimations[i][3], 1.0, -1.0, 1148846080)
+        NetworkAddEntityToSynchronisedScene(bag, ArtHeist[i], animDict, 'ver_01_'..Config.PaintAnimations[i][4], 1.0, -1.0, 1148846080)
+        NetworkAddEntityToSynchronisedScene(knife, ArtHeist[i], animDict, 'ver_01_'..Config.PaintAnimations[i][5], 1.0, -1.0, 1148846080)
+    end
+    LocalPlayer.state:set("inv_busy", true, true)
+    cam = CreateCam("DEFAULT_ANIMATED_CAMERA", true)
+    SetCamActive(cam, true)
+    RenderScriptCams(true, 0, 3000, 1, 0)
+    
+
+
+
+
+
+
+
+    SetPedComponentVariation(PlayerPedId(), 5, Config.HideBagID, 1, 1)
+    FreezeEntityPosition(ped, true)
+    NetworkStartSynchronisedScene(ArtHeist[1])
+    PlayCamAnim(cam, 'ver_01_top_left_enter_cam_ble', animDict, scenePos, sceneRot, 0, 2)
+    Wait(3000)
+    NetworkStartSynchronisedScene(ArtHeist[2])
+    PlayCamAnim(cam, 'ver_01_cutting_top_left_idle_cam', animDict, scenePos, sceneRot, 0, 2)
+    repeat
+       
+        if IsControlJustPressed(0, 38) then
+            scenes[1] = true
+        end
+        Wait(1)
+    until scenes[1] == true
+    NetworkStartSynchronisedScene(ArtHeist[3])
+    PlayCamAnim(cam, 'ver_01_cutting_top_left_to_right_cam', animDict, scenePos, sceneRot, 0, 2)
+    Wait(3000)
+    NetworkStartSynchronisedScene(ArtHeist[4])
+    PlayCamAnim(cam, 'ver_01_cutting_top_right_idle_cam', animDict, scenePos, sceneRot, 0, 2)
+    repeat
+        
+        if IsControlJustPressed(0, 38) then
+            scenes[2] = true
+        end
+        Wait(1)
+    until scenes[2] == true
+    NetworkStartSynchronisedScene(ArtHeist[5])
+    PlayCamAnim(cam, 'ver_01_cutting_right_top_to_bottom_cam', animDict, scenePos, sceneRot, 0, 2)
+    Wait(3000)
+    NetworkStartSynchronisedScene(ArtHeist[6])
+    PlayCamAnim(cam, 'ver_01_cutting_bottom_right_idle_cam', animDict, scenePos, sceneRot, 0, 2)
+    repeat
+        
+        if IsControlJustPressed(0, 38) then
+            scenes[3] = true
+        end
+        Wait(1)
+    until scenes[3] == true
+    NetworkStartSynchronisedScene(ArtHeist[7])
+    PlayCamAnim(cam, 'ver_01_cutting_bottom_right_to_left_cam', animDict, scenePos, sceneRot, 0, 2)
+    Wait(3000)
+    repeat
+        
+        if IsControlJustPressed(0, 38) then
+            scenes[4] = true
+        end
+        Wait(1)
+    until scenes[4] == true
+    NetworkStartSynchronisedScene(ArtHeist[9])
+    PlayCamAnim(cam, 'ver_01_cutting_left_top_to_bottom_cam', animDict, scenePos, sceneRot, 0, 2)
+    Wait(1500)
+    NetworkStartSynchronisedScene(ArtHeist[10])
+    RenderScriptCams(false, false, 0, 1, 0)
+    DestroyCam(cam, false)
+    Wait(7500)
+    
+
+    ClearPedTasks(ped)
+	FreezeEntityPosition(ped, false)
+
+    LocalPlayer.state:set("inv_busy", false, true)
+    
+    DeleteObject(bag)
+    DeleteObject(knife)
+    DeleteEntity(object)
+  
+    ArtHeist = {}
+    
+    TriggerServerEvent('Polar-Pacific:Server:Synapse', door)  
+   
+    scenes = {false, false, false, false}
+    
+    SetPedComponentVariation(PlayerPedId(), 5, Config.BagUseID, 1, 1)
+end
+
+
+function snatch(name, item, chances)
+    TriggerServerEvent('Polar-Pacific:Server:TargetRemove', name)
+    
+    LocalPlayer.state:set("inv_busy", true, true)
+    SetPedComponentVariation(PlayerPedId(), 5, Config.HideBagID, 1, 1)
+    RequestScriptAudioBank("DLC_HEI4/DLCHEI4_GENERIC_01", false)
+    
+    local dict = "anim@scripted@heist@ig16_glass_cut@male@"
+    RequestAnimDict(dict)  while not HasAnimDictLoaded(dict) do Wait(100)  end
+
+    local ptfx = "scr_ih_fin"
+    if not HasNamedPtfxAssetLoaded(ptfx) then  RequestNamedPtfxAsset(ptfx) end 
+    while not HasNamedPtfxAssetLoaded(ptfx) do Wait(100) end SetPtfxAssetNextCall(ptfx)
+
+    local ped = PlayerPedId()
+    local pedCoords = GetEntityCoords(ped)
+
+    local boneIndex = GetPedBoneIndex(ped, 0x49D9)
+
+   
+   
+    local displayEntityCoords = GetEntityCoords(doors[name])
+    local displayEntityRotation = GetEntityRotation(doors[name])
+
+
+    local entityHeading = GetEntityHeading(doors[name])
+
+    local offset2 = GetOffsetFromEntityInWorldCoords(doors[name], 0.0, 0.0, 0.0)
+    local offset = vec3(offset2.x, offset2.y, offset2.z -1.05)
+    Wait(50)
+    SetEntityHeading(ped, entityHeading)
+    SetEntityCoords(ped, offset.x , offset.y, offset.z)
+
+    local pedRotation = GetEntityRotation(ped)
+  
+    local bagEntity =  CreateObject(bagcolor,  vec3(offset.x, offset.y, offset.z - 4.0), 1, 1, 0) 
+    local glassEntity =  CreateObject("h4_prop_h4_glass_cut_01a",  vec3(offset.x, offset.y, offset.z - 5.0), 1, 1, 0) 
+    local cutterEntity = CreateObject("h4_prop_h4_cutter_01a",  vec3(offset.x, offset.y, offset.z - 6.0), 1, 1, 0) 
+    local newDisplayEntity = CreateObject("h4_prop_h4_glass_disp_01b",  vec3(offset.x, offset.y, offset.z - 8.0), 1, 1, 0) 
+   
+    SetEntityCollision(newDisplayEntity, false, true)
+    SetEntityCollision(bagEntity, false, true)
+    SetEntityCollision(glassEntity, false, true)
+    SetEntityCollision(cutterEntity, false, true)
+   
+    FreezeEntityPosition(newDisplayEntity, true)
+    FreezeEntityPosition(bagEntity, true)
+    FreezeEntityPosition(glassEntity, true)
+    FreezeEntityPosition(cutterEntity, true)
+
+    SetEntityRotation(newDisplayEntity, displayEntityRotation.x, displayEntityRotation.y, displayEntityRotation.z)
+
+   
+
+
+    
+
+    
+
+    local scene = NetworkCreateSynchronisedScene(offset.x, offset.y, offset.z, pedRotation.x, pedRotation.y, pedRotation.z, 2, false, false, 1065353216, 0, 1.3)
+    NetworkAddPedToSynchronisedScene(ped, scene, dict, "enter", 1.5, -4.0, 1, 16, 1148846080, 0)
+    NetworkAddEntityToSynchronisedScene(bagEntity, scene, dict, "enter_bag", 4.0, -8.0, 1)
+    NetworkAddEntityToSynchronisedScene(glassEntity, scene, dict, "enter_glass_display", 4.0, -8.0, 1)
+    NetworkAddEntityToSynchronisedScene(cutterEntity, scene, dict, "enter_cutter", 4.0, -8.0, 1)
+    NetworkStartSynchronisedScene(scene)
+    Wait(2900)
+    local scene = NetworkCreateSynchronisedScene(offset.x, offset.y, offset.z, pedRotation.x, pedRotation.y, pedRotation.z, 2, false, false, 1065353216, 0, 1.3)
+    NetworkAddPedToSynchronisedScene(ped, scene, dict, "idle", 1.5, -4.0, 1, 16, 1148846080, 0)
+    NetworkAddEntityToSynchronisedScene(bagEntity, scene, dict, "idle_bag", 4.0, -8.0, 1)
+    NetworkAddEntityToSynchronisedScene(glassEntity, scene, dict, "idle_glass_display", 4.0, -8.0, 1)
+    NetworkAddEntityToSynchronisedScene(cutterEntity, scene, dict, "idle_cutter", 4.0, -8.0, 1)
+    NetworkStartSynchronisedScene(scene)
+
+    
+
+    
+
+    local soundId = GetSoundId()
+    PlaySoundFromEntity(soundId, "StartCutting", cutterEntity, "DLC_H4_anims_glass_cutter_Sounds", true, 0)
+
+    local loop = StartNetworkedParticleFxLoopedOnEntity('scr_ih_fin_glass_cutter_cut', glassEntity,  0.005, -0.35, 1.29, 0.0, 0.0, 0.0, 1.0, false, false, false, 1065353216, 1065353216, 1065353216, 0)
+    SetParticleFxLoopedEvolution(loop, "power", 1, false)
+    
+
+    local scene = NetworkCreateSynchronisedScene(offset.x, offset.y, offset.z, pedRotation.x, pedRotation.y, pedRotation.z, 2, false, false, 1065353216, 0, 1.3)
+    NetworkAddPedToSynchronisedScene(ped, scene, dict, "cutting_loop", 1.5, -4.0, 1, 16, 1148846080, 0)
+    NetworkAddEntityToSynchronisedScene(bagEntity, scene, dict, "cutting_loop_bag", 4.0, -8.0, 1)
+    NetworkAddEntityToSynchronisedScene(glassEntity, scene, dict, "cutting_loop_glass_display", 4.0, -8.0, 1)
+    NetworkAddEntityToSynchronisedScene(cutterEntity, scene, dict, "cutting_loop_cutter", 4.0, -8.0, 1)
+    NetworkStartSynchronisedScene(scene)
+
+    
+    Wait(5000)
+    Wait(5000)
+
+    
+    SetEntityCoords(newDisplayEntity, displayEntityCoords.x, displayEntityCoords.y, displayEntityCoords.z -1.05)
+    DeleteEntity(displaycase[name])
+    SetEntityCollision(newDisplayEntity, true, true)
+    SetEntityAsNoLongerNeeded(newDisplayEntity)
+    if DoesEntityExist(itemstand[name]) then SetEntityAsNoLongerNeeded(itemstand[name]) end
+
+    local scene = NetworkCreateSynchronisedScene(offset.x, offset.y, offset.z, pedRotation.x, pedRotation.y, pedRotation.z, 2, false, false, 1065353216, 0, 1.3)
+    NetworkAddPedToSynchronisedScene(ped, scene, dict, "success", 1.5, -4.0, 1, 16, 1148846080, 0)
+    NetworkAddEntityToSynchronisedScene(bagEntity, scene, dict, "success_bag", 4.0, -8.0, 1)
+    NetworkAddEntityToSynchronisedScene(glassEntity, scene, dict, "success_glass_display", 4.0, -8.0, 1)
+    NetworkAddEntityToSynchronisedScene(cutterEntity, scene, dict, "success_cutter", 4.0, -8.0, 1)
+    NetworkStartSynchronisedScene(scene)
+    Wait(1700)
+
+    AttachEntityToEntity(doors[name], ped, boneIndex, 0.0, 0.0, 0.3, 0.0, 180.0, 0.0, false, false, false, false, 0, true)
+
+    Wait(1250)
+    
+    
+
+        
+    DeleteEntity(doors[name])
+   
+    TriggerServerEvent('Polar-Pacific:Server:Synapse', name) 
+    DeleteEntity(bagEntity)
+    DeleteEntity(glassEntity)
+    DeleteEntity(cutterEntity)
+   -- DeleteEntity(caseitem)
+    RemoveAnimDict(dict)
+    RemovePtfxAsset(ptfx)
+    StopSound(soundId)
+    ReleaseScriptAudioBank()
+    SetEntityCollision(newDisplayEntity, true, true)
+    ptfx = nil
+    soundId = nil
+    local chance = math.random(1,100) if chance <= chances then TriggerServerEvent('Polar-Pacific:Server:RemoveItem', item, 1) end
+    SetPedComponentVariation(PlayerPedId(), 5, Config.BagUseID, 1, 1)
+    LocalPlayer.state:set("inv_busy", false, true)
+end
+
+
+
+function doorlock(doorId, state)
+    local id = nil
+    if state == true then id = 1
+    elseif state == false then id = 0
+    end
+    TriggerEvent('ox_doorlock:setState', doorId, id)
+    print(doorId .. ' ' .. id)
+end

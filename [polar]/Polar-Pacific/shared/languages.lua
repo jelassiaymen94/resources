@@ -5,7 +5,14 @@ local English = {
     ['vaultopen'] = 'Vault Unlocked',
     ['nopolice'] = 'There are not enough Police',
     ['doorunlock'] = 'Door Unlocked!',
-
+    ['nodrill'] = 'You dont have a Drill',
+    ['nothermite'] = 'You dont have Thermite',
+    ['nokeycard'] = 'You dont have a Keycard',
+    ['nopcitem'] = 'You dont have a Hacking Device',
+    ['novaultitem'] = 'You dont have a Red Laptop',
+    ['lazers'] = 'Lazer System Disabled',
+    ['noswitchblade'] = 'You Dont have a Switchblade',
+    ['nolaserdrill'] = 'You Dont have a Laser Drill',
 }
 local French = {
     ['cooldown'] = 'You Cannot Thermite Right Now..',
@@ -14,7 +21,14 @@ local French = {
     ['vaultopen'] = 'Vault Unlocked',
     ['nopolice'] = 'There are not enough Police',
     ['doorunlock'] = 'Door Unlocked!',
-
+    ['nodrill'] = 'You dont have a Drill',
+    ['nothermite'] = 'You dont have Thermite',
+    ['nokeycard'] = 'You dont have a Keycard',
+    ['nopcitem'] = 'You dont have a Hacking Device',
+    ['novaultitem'] = 'You dont have a Red Laptop',
+    ['lazers'] = 'Lazer System Disabled',
+    ['noswitchblade'] = 'You Dont have a Switchblade',
+    ['nolaserdrill'] = 'You Dont have a Laser Drill',
 }
 
 
@@ -25,10 +39,5 @@ local French = {
 
 -- text('nopolice')
 function text(entry)
-    if Config.Language == 'English' then
 	return English[entry] -- change to your language
-    elseif Config.Language == 'French' then
-    return French[entry] -- change to your language
-
-    end
 end

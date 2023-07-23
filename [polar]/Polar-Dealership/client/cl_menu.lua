@@ -54,8 +54,8 @@ local PlacePlatform = function(model)
 
     QBCore.Functions.SpawnVehicle(model, function(veh)
         SetEntityHeading(veh, Config.Dealership[PlayerJob.name]["platform"].w)
-        SetVehicleNumberPlateText(veh, "DELIVERY")
-        --FreezeEntityPosition(veh, true)
+        SetVehicleNumberPlateText(veh, "FORSALE1")
+        FreezeEntityPosition(veh, true)
         TriggerEvent("vehiclekeys:client:SetOwner", QBCore.Functions.GetPlate(veh))
     end, vector3(Config.Dealership[PlayerJob.name]["platform"].xyz), true)
 end
@@ -226,7 +226,7 @@ RegisterNetEvent('Polar-Dealership:client:menu:OpenCheckOrder', function()
     for k, v in pairs(orderTable) do
         menu[#menu+1] = {
             header = QBCore.Shared.Vehicles[v.vehicle]["brand"].." "..QBCore.Shared.Vehicles[v.vehicle]["name"],
-            txt = "Expected delivery: "..v.date,
+            txt = "Expected Sale Ready Date: "..v.date,
             icon = 'fas fa-hourglass-start',
         }
     end
@@ -296,7 +296,28 @@ RegisterNetEvent('Polar-Dealership:client:menu:OrderBrand', function(data)
     end
     exports['qb-menu']:openMenu(menu)
 end)
-
+--- Method to spawn a vehicle at a certain showroom index location
+--- @param input string | number - index number for location
+--- @param model string - name of the vehicle model
+--- @return nil
+local SpawnVehicleD = function(input, model)
+    local position = tonumber(input)
+    if position > (#Config.Dealership[PlayerJob.name].delivery) then
+        QBCore.Functions.Notify('Incorrect Input', 'error', 2500)
+    else
+        local vehinarea = getVehiclesInArea(Config.Dealership[PlayerJob.name].delivery[position].xyz)
+        if #vehinarea ~= 0 then
+            for i=1, #vehinarea do 
+                QBCore.Functions.DeleteVehicle(vehinarea[i])
+            end
+        end
+        QBCore.Functions.SpawnVehicle(model, function(veh)
+            SetEntityHeading(veh, Config.Dealership[PlayerJob.name]["delivery"][position].w)
+            SetVehicleNumberPlateText(veh, "DELIVERY")
+            TriggerEvent("vehiclekeys:client:SetOwner", QBCore.Functions.GetPlate(veh))
+        end, vector3(Config.Dealership[PlayerJob.name]["delivery"][position].x, Config.Dealership[PlayerJob.name]["delivery"][position].y, Config.Dealership[PlayerJob.name]["delivery"][position].z), true)
+    end
+end
 RegisterNetEvent('Polar-Dealership:client:menu:OrderVehicle', function(data)
     local input = exports['qb-input']:ShowInput({
         header = "Order "..data.vehicle,
@@ -306,7 +327,7 @@ RegisterNetEvent('Polar-Dealership:client:menu:OrderVehicle', function(data)
                 type = 'text',
                 isRequired = true,
                 name = 'model',
-                text = 'Enter Modelname To Confirm'
+                text = 'Enter ' ..data.vehicle .. ' '
             }
         }
     })
@@ -317,7 +338,30 @@ RegisterNetEvent('Polar-Dealership:client:menu:OrderVehicle', function(data)
             -- ORDER VEHICLE
             QBCore.Functions.TriggerCallback('Polar-Dealership:server:BuyStock',function(result)
                 if result then
-                    QBCore.Functions.Notify(QBCore.Shared.Vehicles[data.vehicle]["brand"].." "..QBCore.Shared.Vehicles[data.vehicle]["name"].." ordered", "error", 2500)
+                    
+                    local model = data.vehicle
+                    local input = exports['qb-input']:ShowInput({
+                        header = "Place "..QBCore.Shared.Vehicles[model]["brand"].." "..QBCore.Shared.Vehicles[model]["name"],
+                        submitText = "Submit",
+                        inputs = {
+                            {
+                                type = 'number',
+                                isRequired = true,
+                                name = 'deliverys',
+                                text = 'Enter number of 1 to '..(#Config.Dealership[PlayerJob.name].delivery)
+                            }
+                        }
+                    })
+                    if input then
+                        if not input.deliverys then return end
+                        QBCore.Functions.Notify(QBCore.Shared.Vehicles[data.vehicle]["brand"].." "..QBCore.Shared.Vehicles[data.vehicle]["name"].." ordered", "error", 2500)
+                        SpawnVehicleD(input.deliverys, model)
+                    end
+                  
+
+
+
+
                 else
                     QBCore.Functions.Notify("Insufficient funds..", "error", 2500)
                 end
@@ -667,7 +711,7 @@ RegisterNetEvent('Polar-Dealership:client:menu:ShowroomPosition', function(data)
         if not input.platform then return end
         SpawnVehicle(input.platform, model)
     end
-    TriggerEvent('Polar-Dealership:client:menu:Showroom')
+ --   TriggerEvent('Polar-Dealership:client:menu:Showroom')
 end)
 
 RegisterNetEvent('Polar-Dealership:client:menu:ClearShowroom', function()

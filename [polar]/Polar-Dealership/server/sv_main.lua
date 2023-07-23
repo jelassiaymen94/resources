@@ -304,7 +304,7 @@ QBCore.Functions.CreateCallback('Polar-Dealership:server:BuyStock', function(sou
     local bank = math.floor(result)
     if price <= bank then
         -- Add to stock orders
-        MySQL.insert('INSERT INTO dealerships_orders (dealership, vehicle) VALUES (?, ?)', {dealership, model})
+        --MySQL.insert('INSERT INTO dealerships_orders (dealership, vehicle) VALUES (?, ?)', {dealership, model})
 
         -- Remove money from dealership
         exports['qb-management']:RemoveMoney(dealership, price)

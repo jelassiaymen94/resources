@@ -1,8 +1,11 @@
---if Config.Notify == 'qb' then 
-    local QBCore = exports[Config.Core]:GetCoreObject()
---elseif Config.Notify == 'esx' then
---    ESX = nil
---end
+local getplayer = nil
+if Config.Framework == 'qb' then 
+    QBCore = exports[Config.Core]:GetCoreObject()
+    getplayer = QBCore.Functions.GetPlayer(source)
+elseif Config.Framework == 'esx' then
+    ESX = nil
+    getplayer = ESX.GetPlayerFromId(source)
+end
 
 local item = nil
 local item2 = nil
@@ -24,84 +27,80 @@ local diamondtable = {
 
 }
 
+local oxinv = Config.OxIventory
 
-RegisterNetEvent('Polar-Pacific:Server:RemoveItems', function(item, amount) local src = source local Player = QBCore.Functions.GetPlayer(src) Wait(150) if amount == nil then Player.Functions.AddItem(item, 1) TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[item], "add", 1) else Player.Functions.AddItem(item, amount) TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[item], "add", amount) end end)
 
-function givet(item, min, max)
-    if item == 'markedbills' then
-        local chance = math.random(min, max)
-        local src = source local Player = QBCore.Functions.GetPlayer(src)
-        local info = {
-            worth = math.random(1,100)
-        }
-        Player.Functions.AddItem('markedbills', chance, false, info)
-        TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['markedbills'], "add", chance)
-    else
-    local src = source local Player = QBCore.Functions.GetPlayer(src)
-    
-    local chance = math.random(min, max)
-    if Player.Functions.AddItem(item, chance) then TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[item], "add", chance) end
+RegisterNetEvent('Polar-Pacific:Server:RemoveItems', function(item, amount) local src = source local Player = getplayer Wait(150) if amount == nil then if Config.Framework == 'qb' then Player.Functions.AddItem(item, 1) elseif  Config.Framework == 'esx' then getplayer.addInventoryItem(item, 1) end if Config.Framework == 'qb' then TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[item], "add", 1)  end else if Config.Framework == 'qb' then Player.Functions.AddItem(item, amount) elseif  Config.Framework == 'esx' then getplayer.addInventoryItem(item, amount) end if Config.Framework == 'qb' then TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[item], "add", amount)  end end end)
 
-    end
-end 
 function give(item, amount)
-    if item == 'markedbills' then
-        local src = source local Player = QBCore.Functions.GetPlayer(src)
+        local src = source local Player = getplayer
         local info = {
             worth = math.random(1,100)
         }
-        Player.Functions.AddItem('markedbills', 1, false, info)
-        TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['markedbills'], "add")
-    else
-        local src = source local Player = QBCore.Functions.GetPlayer(src)
-        Wait(150)
-        if amount == nil then
-            Player.Functions.AddItem(item, 1) TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[item], "add", 1)
-        else
-            Player.Functions.AddItem(item, amount) TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[item], "add", amount)
-        end
-    end
+        if amount == nil then amount = 1 end
+        if oxinv then
+            if Config.Framework == 'qb' then
+                exports.ox_inventory:AddItem(src, QBCore.Shared.Items[item], amount)
+                TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[item], "add")  
+            elseif Config.Framework == 'esx' then
+                exports.ox_inventory:AddItem(src, item, amount)
+            end
+        elseif Config.Framework == 'qb' then 
+            if item == 'markedbills' then
+                Player.Functions.AddItem(item, amount, false, info) 
+            else
+                Player.Functions.AddItem(item, amount, false) 
+            end
+        elseif  Config.Framework == 'esx' then 
+            getplayer.addInventoryItem(item, amount) 
+        end 
 end
 
-function pile(prop)
-    if prop ==    'ex_cash_pile_005' then item = 'markedbills' amount = math.random(1,5) give(item, amount)
-    elseif prop == 'h4_prop_h4_gold_stack_01a' then  item = 'goldbar' amount = math.random(1,3) give(item, amount)
-else
-    print('' .. prop .. ' does not have a giveitem')
-    end
-end
 
-function trolly(prop) 
-    if prop ==   'ch_prop_gold_trolly_01a' then 
-        local src = source
-        local min = 1
-        local max = 1
-        item = goldtable[math.random(1, #goldtable)]
-        local chance = math.random(1,100) if chance < 30 then givet(item, min, max) end
-        --print(chance)
-    elseif prop == 'ch_prop_ch_cash_trolly_01a' then 
-        local src = source
-        local min = 1
-        local max = 1
-        item = cashtable[math.random(1, #cashtable)]
-        local chance = math.random(1,100) if chance < 50 then givet(item, min, max) end
-        --print(chance)
-    elseif prop == 'ch_prop_diamond_trolly_01a' then   
-        local src = source
-        local min = 1
-        local max = 1
-        item = diamondtable[math.random(1, #diamondtable)]
-        local chance = math.random(1,100) if chance < 15 then givet(item, min, max) end
-        --print(chance)
-  
-else
-    print('' .. prop .. ' does not have a giveitem')
-    end
-end
 
 
 function hiya(prop)
-    if prop ==    'prop_cash_pile_01' then item = 'markedbills' amount = math.random(1,1) give(item, amount)
+    if prop == nil then print('ERROR') else
+
+    -- piles
+    if prop ==    'ex_cash_pile_005' then item = 'markedbills' amount = math.random(1,5) give(item, amount)
+    elseif prop == 'h4_prop_h4_gold_stack_01a' then  item = 'goldbar' amount = math.random(1,3) give(item, amount)
+
+    -- trolly
+    elseif prop ==    'ch_prop_ch_cash_trolly_01a' then item = cashtable[math.random(1, #cashtable)] amount = math.random(1,1) local chance = math.random(1,100) if chance < 50 then give(item, amount) end
+    elseif prop == 'ch_prop_gold_trolly_01a' then  item = goldtable[math.random(1, #goldtable)] amount = math.random(1,1)   local chance = math.random(1,100) if chance < 30 then give(item, amount) end
+    elseif prop == 'ch_prop_diamond_trolly_01a'then item = diamondtable[math.random(1, #diamondtable)] amount = math.random(1,1) local chance = math.random(1,100) if chance < 15 then give(item, amount) end 
+   
+    -- Paintings
+    elseif prop == 'ch_prop_vault_painting_01a' then item = 'goldbar' amount = math.random(1,1)  give(item, amount)
+    elseif prop == 'ch_prop_vault_painting_01b' then  item = 'goldbar' amount = math.random(1,1)    give(item, amount)
+    elseif prop == 'ch_prop_vault_painting_01c'then item = 'goldbar' amount = math.random(1,1)  give(item, amount)  
+    elseif prop == 'ch_prop_vault_painting_01d' then item = 'goldbar' amount = math.random(1,1)  give(item, amount) 
+    elseif prop == 'ch_prop_vault_painting_01e' then  item = 'goldbar' amount = math.random(1,1)    give(item, amount)
+    elseif prop == 'ch_prop_vault_painting_01f'then item = 'goldbar' amount = math.random(1,1)  give(item, amount) 
+    elseif prop == 'ch_prop_vault_painting_01g' then item = 'goldbar' amount = math.random(1,1)  give(item, amount)
+    elseif prop == 'ch_prop_vault_painting_01h' then  item = 'goldbar' amount = math.random(1,1)    give(item, amount)
+    elseif prop == 'ch_prop_vault_painting_01i'then item = 'goldbar' amount = math.random(1,1)  give(item, amount)  
+    elseif prop == 'ch_prop_vault_painting_01j' then item = 'goldbar' amount = math.random(1,1)  give(item, amount) 
+    elseif prop == 'h4_prop_h4_painting_01a' then  item = 'goldbar' amount = math.random(1,1)    give(item, amount)
+    elseif prop == 'h4_prop_h4_painting_01b'then item = 'goldbar' amount = math.random(1,1)  give(item, amount) 
+    elseif prop == 'h4_prop_h4_painting_01c' then  item = 'goldbar' amount = math.random(1,1)    give(item, amount)
+    elseif prop == 'h4_prop_h4_painting_01d'then item = 'goldbar' amount = math.random(1,1)  give(item, amount) 
+    elseif prop == 'h4_prop_h4_painting_01e' then  item = 'goldbar' amount = math.random(1,1)    give(item, amount)
+    elseif prop == 'h4_prop_h4_painting_01f'then item = 'goldbar' amount = math.random(1,1)  give(item, amount) 
+    elseif prop == 'h4_prop_h4_painting_01g' then  item = 'goldbar' amount = math.random(1,1)    give(item, amount)
+    elseif prop == 'h4_prop_h4_painting_01h'then item = 'goldbar' amount = math.random(1,1)  give(item, amount) 
+
+    -- case Drilling
+    elseif prop == 'h4_prop_h4_art_pant_01a' then  item = 'goldbar' amount = math.random(1,1)    give(item, amount)
+    elseif prop == 'h4_prop_h4_diamond_01a'then item = 'goldbar' amount = math.random(1,1)  give(item, amount) 
+    elseif prop == 'h4_prop_h4_necklace_01a'then item = 'goldbar' amount = math.random(1,1)  give(item, amount)    
+    elseif prop == 'h4_prop_h4_t_bottle_02a' then  item = 'goldbar' amount = math.random(1,1)    give(item, amount)
+    elseif prop == 'h4_prop_h4_t_bottle_02b'then item = 'goldbar' amount = math.random(1,1)  give(item, amount) 
+    elseif prop == 'h4_prop_h4_t_bottle_01a'then item = 'goldbar' amount = math.random(1,1)  give(item, amount) 
+
+    -- grabs & pickups
+    elseif prop ==    'prop_cash_pile_01' then item = 'markedbills' amount = math.random(1,1) give(item, amount)
     elseif prop == 'prop_cash_pile_02' then  item = 'markedbills' amount = math.random(1,1) give(item, amount)
     elseif prop == 'prop_anim_cash_pile_01'then item = 'markedbills' amount = math.random(1,1) give(item, amount)
     elseif prop ==  'prop_anim_cash_pile_02'then  item = 'markedbills' amount = math.random(1,1) give(item, amount)
@@ -154,18 +153,20 @@ function hiya(prop)
 else
     print('' .. prop .. ' does not have a giveitem')
     end
+    end
 end
 
 
 
 
 
-
-
-
-QBCore.Commands.Add("Pacific", "spawn props", {}, false, function(source, args)
+if Config.Framework == 'qb' then
+QBCore.Commands.Add("Pacific", "Set Player Metadata (God Only)", {}, false, function(source, args)
     TriggerEvent('Polar-Pacific:Server:StartTargets')
-  
-  
+    TriggerEvent('Polar-Pacific:Server:StartCooldown')
+    TriggerEvent('Polar-Pacific:Server:StartInteract', 'Pacificdoor1')
+    TriggerEvent('Polar-Pacific:Server:StartInteract', 'Pacificdoor2')
+    TriggerEvent('Polar-Pacific:Server:StartInteract', 'Pacificdoor3')
+    TriggerClientEvent('Polar-Pacific:Client:StartLoot', source)
 end, "god") 
-
+end

@@ -56,4 +56,46 @@ Config.ShelfSpecial = {
 
 
 
+Config.Paintings = {
+    'ch_prop_vault_painting_01a',
+    'ch_prop_vault_painting_01b',
+    'ch_prop_vault_painting_01c',
+    'ch_prop_vault_painting_01d',
+    'ch_prop_vault_painting_01e',
+    'ch_prop_vault_painting_01f',
+    'ch_prop_vault_painting_01g',
+    'ch_prop_vault_painting_01h',
+    'ch_prop_vault_painting_01i',
+    'ch_prop_vault_painting_01j',
+    'h4_prop_h4_painting_01a',
+    'h4_prop_h4_painting_01b',
+    'h4_prop_h4_painting_01c',
+    'h4_prop_h4_painting_01d',
+    'h4_prop_h4_painting_01e',
+    'h4_prop_h4_painting_01f',
+    'h4_prop_h4_painting_01g',
+    'h4_prop_h4_painting_01h',
+}
 
+
+Config.Cases = {
+    'h4_prop_h4_art_pant_01a',
+    'h4_prop_h4_diamond_01a',
+    'h4_prop_h4_necklace_01a',
+    'h4_prop_h4_t_bottle_02a',
+    'h4_prop_h4_t_bottle_02b',
+    'h4_prop_h4_t_bottle_01a',
+}
+
+Config.PaintAnimations = {
+    {"top_left_enter", "top_left_enter_ch_prop_ch_sec_cabinet_02a", "top_left_enter_ch_prop_vault_painting_01a", "top_left_enter_hei_p_m_bag_var22_arm_s", "top_left_enter_w_me_switchblade"},
+    {"cutting_top_left_idle", "cutting_top_left_idle_ch_prop_ch_sec_cabinet_02a", "cutting_top_left_idle_ch_prop_vault_painting_01a", "cutting_top_left_idle_hei_p_m_bag_var22_arm_s", "cutting_top_left_idle_w_me_switchblade"},
+    {"cutting_top_left_to_right", "cutting_top_left_to_right_ch_prop_ch_sec_cabinet_02a", "cutting_top_left_to_right_ch_prop_vault_painting_01a", "cutting_top_left_to_right_hei_p_m_bag_var22_arm_s", "cutting_top_left_to_right_w_me_switchblade"},
+    {"cutting_top_right_idle", "_cutting_top_right_idle_ch_prop_ch_sec_cabinet_02a", "cutting_top_right_idle_ch_prop_vault_painting_01a", "cutting_top_right_idle_hei_p_m_bag_var22_arm_s", "cutting_top_right_idle_w_me_switchblade"},
+    {"cutting_right_top_to_bottom", "cutting_right_top_to_bottom_ch_prop_ch_sec_cabinet_02a", "cutting_right_top_to_bottom_ch_prop_vault_painting_01a", "cutting_right_top_to_bottom_hei_p_m_bag_var22_arm_s", "cutting_right_top_to_bottom_w_me_switchblade"},
+    {"cutting_bottom_right_idle", "cutting_bottom_right_idle_ch_prop_ch_sec_cabinet_02a", "cutting_bottom_right_idle_ch_prop_vault_painting_01a", "cutting_bottom_right_idle_hei_p_m_bag_var22_arm_s", "cutting_bottom_right_idle_w_me_switchblade"},
+    {"cutting_bottom_right_to_left", "cutting_bottom_right_to_left_ch_prop_ch_sec_cabinet_02a", "cutting_bottom_right_to_left_ch_prop_vault_painting_01a", "cutting_bottom_right_to_left_hei_p_m_bag_var22_arm_s", "cutting_bottom_right_to_left_w_me_switchblade"},
+    {"cutting_bottom_left_idle", "cutting_bottom_left_idle_ch_prop_ch_sec_cabinet_02a", "cutting_bottom_left_idle_ch_prop_vault_painting_01a", "cutting_bottom_left_idle_hei_p_m_bag_var22_arm_s", "cutting_bottom_left_idle_w_me_switchblade"},
+    {"cutting_left_top_to_bottom", "cutting_left_top_to_bottom_ch_prop_ch_sec_cabinet_02a", "cutting_left_top_to_bottom_ch_prop_vault_painting_01a", "cutting_left_top_to_bottom_hei_p_m_bag_var22_arm_s", "cutting_left_top_to_bottom_w_me_switchblade"},
+    {"with_painting_exit", "with_painting_exit_ch_prop_ch_sec_cabinet_02a", "with_painting_exit_ch_prop_vault_painting_01a", "with_painting_exit_hei_p_m_bag_var22_arm_s", "with_painting_exit_w_me_switchblade"},
+}

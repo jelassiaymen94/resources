@@ -1,32 +1,48 @@
 local prop = nil
 
+local cash = nil
+local gold = nil
+local special = nil
 
 
 -- 1-6 and 31-40
 
 
 
+
 Config.paletoprop1 = {
-    vector4(-107.73, 6466.1, 32.7, 273.69),
+    vector4(1408.175, 1143.564, 114.5336, 180.0), --- locations, can be multiple but chooses 1 at random
 
 }
-function paletoprop1()
-    local cash = Config.Cash[math.random(1, #Config.Cash)]
-    local gold = Config.Gold[math.random(1, #Config.Gold)]
-    local special = Config.Special[math.random(1, #Config.Special)]
+function paletoprop1() -- should be same as door = 
+    local door = 'paletoprop1' -- name 
+
+    cash = Config.Cash[math.random(1, #Config.Cash)]
+    gold = Config.Gold[math.random(1, #Config.Gold)]
+    special = Config.Special[math.random(1, #Config.Special)]
     local location = Config.paletoprop1[math.random(1, #Config.paletoprop1)]
-   
+
+
+
+    -- chances calculation for probability
     local chance = math.random(1,100) 
-    if chance<=35 then   prop = cash 
-    elseif chance<=95 then  prop = gold
-    else   prop = special
+    if chance<=35 then   
+        prop = cash -- 35%
+    elseif chance<=95 then  
+        prop = gold -- 70%
+    else   
+        prop = special -- 5%
     end 
-    TriggerEvent('Polar-Paleto:Server:Setpaletoprop1', prop)
-    local paletoprop1 = true
-    TriggerClientEvent('Polar-Paleto:Client:AddTarget', -1, 'paletoprop1', paletoprop1, prop, vec4(location.x, location.y, location.z-1, location.w))
-    TriggerClientEvent('Polar-Paleto:Client:paletoprop1', -1, 'paletoprop1', prop, vec4(location.x, location.y, location.z-1, location.w))
-    
+   
+  
+   
+    bruh(door, prop, location)
 end
+
+
+
+
+
 
 
 Config.paletoprop2 = {
@@ -34,9 +50,8 @@ Config.paletoprop2 = {
 
 }
 function paletoprop2()
-    local cash = Config.Cash[math.random(1, #Config.Cash)]
-    local gold = Config.Gold[math.random(1, #Config.Gold)]
-    local special = Config.Special[math.random(1, #Config.Special)]
+    local door = 'paletoprop2'
+
     local location = Config.paletoprop2[math.random(1, #Config.paletoprop2)]
    
     local chance = math.random(1,100) 
@@ -44,21 +59,26 @@ function paletoprop2()
     elseif chance<=95 then  prop = gold
     else   prop = special
     end 
-    TriggerEvent('Polar-Paleto:Server:Setpaletoprop2', prop)
-    local paletoprop2 = true
-    TriggerClientEvent('Polar-Paleto:Client:AddTarget', -1, 'paletoprop2', paletoprop2, prop, vec4(location.x, location.y, location.z-1, location.w))
-    TriggerClientEvent('Polar-Paleto:Client:paletoprop2', -1, 'paletoprop2', prop, vec4(location.x, location.y, location.z-1, location.w))
-    
+
+   
+   
+    bruh(door, prop, location)
+
 end
 
 
+
+
+
+
+
+
+
 Config.paletoprop3 = {
-    vector4(-1070.19, 6467.78, 30.64, 117.29)
+    vector4(-103.1, 6470.74, 32.7, 194.94)
 }
 function paletoprop3()
-    local cash = Config.Cash[math.random(1, #Config.Cash)]
-    local gold = Config.Gold[math.random(1, #Config.Gold)]
-    local special = Config.Special[math.random(1, #Config.Special)]
+    
     local location = Config.paletoprop3[math.random(1, #Config.paletoprop3)]
    
     local chance = math.random(1,100) 
@@ -66,21 +86,28 @@ function paletoprop3()
     elseif chance<=95 then  prop = gold
     else   prop = special
     end 
-    TriggerEvent('Polar-Paleto:Server:Setpaletoprop3', prop)
-    local paletoprop3 = true
-    TriggerClientEvent('Polar-Paleto:Client:AddTarget', -1, 'paletoprop3', paletoprop3, prop, vec4(location.x, location.y, location.z-1, location.w))
-    TriggerClientEvent('Polar-Paleto:Client:paletoprop3', -1, 'paletoprop3', prop, vec4(location.x, location.y, location.z-1, location.w))
-    
+
+    local door = 'paletoprop3'
+
+    bruh(door, prop, location)
 end
 
+
+
+
+
+
+
+
+
+
+
 Config.paletoprop4 = {
-    vector4(-1030.13, 6470.7, 31.7, 217.88),
+    vector4(-114.09, 6471.44, 32.69, 16.24),
 
 }
 function paletoprop4()
-    local cash = Config.Cash[math.random(1, #Config.Cash)]
-    local gold = Config.Gold[math.random(1, #Config.Gold)]
-    local special = Config.Special[math.random(1, #Config.Special)]
+    
     local location = Config.paletoprop4[math.random(1, #Config.paletoprop4)]
    
     local chance = math.random(1,100) 
@@ -88,22 +115,19 @@ function paletoprop4()
     elseif chance<=95 then  prop = gold
     else   prop = special
     end 
-    TriggerEvent('Polar-Paleto:Server:Setpaletoprop4', prop)
-    local paletoprop4 = true
-    TriggerClientEvent('Polar-Paleto:Client:AddTarget', -1, 'paletoprop4', paletoprop4, prop, vec4(location.x, location.y, location.z-1, location.w))
-    TriggerClientEvent('Polar-Paleto:Client:paletoprop4', -1, 'paletoprop4', prop, vec4(location.x, location.y, location.z-1, location.w))
     
+    local door = 'paletoprop4'
+   
+    bruh(door, prop, location) 
 end
 
     
 Config.paletoprop5 = {
-    vector4(-1050.04, 6468.01, 31.08, 225.57),
+    vector4(-1050.04, 6468.01, 31.08, 225.57), -- ????????
 
 }
 function paletoprop5()
-    local cash = Config.Cash[math.random(1, #Config.Cash)]
-    local gold = Config.Gold[math.random(1, #Config.Gold)]
-    local special = Config.Special[math.random(1, #Config.Special)]
+    
     local location = Config.paletoprop5[math.random(1, #Config.paletoprop5)]
    
     local chance = math.random(1,100) 
@@ -111,23 +135,19 @@ function paletoprop5()
     elseif chance<=95 then  prop = gold
     else   prop = special
     end 
-    TriggerEvent('Polar-Paleto:Server:Setpaletoprop5', prop)
-    local paletoprop5 = true
-    TriggerClientEvent('Polar-Paleto:Client:AddTarget', -1, 'paletoprop5', paletoprop5, prop, vec4(location.x, location.y, location.z-1, location.w))
-    TriggerClientEvent('Polar-Paleto:Client:paletoprop5', -1, 'paletoprop5', prop, vec4(location.x, location.y, location.z-1, location.w))
-    
+
+    local door = 'paletoprop5'
+   
+    bruh(door, prop, location)
 end
 
 
 Config.paletoprop31 = {
-    vector4(-114.09, 6471.44, 32.69, 16.24),
     vector4(-113.13, 6472.56, 32.69, 93.0),
 
 }
 function paletoprop31()
-    local cash = Config.Cash[math.random(1, #Config.Cash)]
-    local gold = Config.Gold[math.random(1, #Config.Gold)]
-    local special = Config.Special[math.random(1, #Config.Special)]
+    
     local location = Config.paletoprop31[math.random(1, #Config.paletoprop31)]
    
     local chance = math.random(1,100) 
@@ -135,11 +155,10 @@ function paletoprop31()
     elseif chance<=95 then  prop = gold
     else   prop = special
     end 
-    TriggerEvent('Polar-Paleto:Server:Setpaletoprop31', prop)
-    local paletoprop31 = true
-    TriggerClientEvent('Polar-Paleto:Client:AddTarget', -1, 'paletoprop31', paletoprop31, prop, vec4(location.x, location.y, location.z-1, location.w))
-    TriggerClientEvent('Polar-Paleto:Client:paletoprop31', -1, 'paletoprop31', prop, vec4(location.x, location.y, location.z-1, location.w))
-    
+
+    local door = 'paletoprop31'
+   
+    bruh(door, prop, location) 
 end
 
 Config.paletoprop32 = {
@@ -149,9 +168,7 @@ Config.paletoprop32 = {
 
 }
 function paletoprop32()
-    local cash = Config.Cash[math.random(1, #Config.Cash)]
-    local gold = Config.Gold[math.random(1, #Config.Gold)]
-    local special = Config.Special[math.random(1, #Config.Special)]
+    
     local location = Config.paletoprop32[math.random(1, #Config.paletoprop32)]
    
     local chance = math.random(1,100) 
@@ -159,11 +176,10 @@ function paletoprop32()
     elseif chance<=85 then  prop = gold
     else   prop = special
     end 
-    TriggerEvent('Polar-Paleto:Server:Setpaletoprop32', prop)
-    local paletoprop32 = true
-    TriggerClientEvent('Polar-Paleto:Client:AddTarget', -1, 'paletoprop32', paletoprop32, prop, vec4(location.x, location.y, location.z-1, location.w))
-    TriggerClientEvent('Polar-Paleto:Client:paletoprop32', -1, 'paletoprop32', prop, vec4(location.x, location.y, location.z-1, location.w))
-    
+
+    local door = 'paletoprop32'
+   
+    bruh(door, prop, location) 
 end
 
 Config.paletoprop33 = {
@@ -173,9 +189,7 @@ Config.paletoprop33 = {
 
 }
 function paletoprop33()
-    local cash = Config.Cash[math.random(1, #Config.Cash)]
-    local gold = Config.Gold[math.random(1, #Config.Gold)]
-    local special = Config.Special[math.random(1, #Config.Special)]
+    
     local location = Config.paletoprop33[math.random(1, #Config.paletoprop33)]
    
     local chance = math.random(1,100) 
@@ -183,11 +197,10 @@ function paletoprop33()
     elseif chance<=75 then  prop = gold
     else   prop = special
     end 
-    TriggerEvent('Polar-Paleto:Server:Setpaletoprop33', prop)
-    local paletoprop33 = true
-    TriggerClientEvent('Polar-Paleto:Client:AddTarget', -1, 'paletoprop33', paletoprop33, prop, vec4(location.x, location.y, location.z-1, location.w))
-    TriggerClientEvent('Polar-Paleto:Client:paletoprop33', -1, 'paletoprop33', prop, vec4(location.x, location.y, location.z-1, location.w))
-    
+
+    local door = 'paletoprop33'
+  
+    bruh(door, prop, location)
 end
 
 Config.paletoprop34 = {
@@ -197,9 +210,7 @@ Config.paletoprop34 = {
 
 }
 function paletoprop34()
-    local cash = Config.Cash[math.random(1, #Config.Cash)]
-    local gold = Config.Gold[math.random(1, #Config.Gold)]
-    local special = Config.Special[math.random(1, #Config.Special)]
+    
     local location = Config.paletoprop34[math.random(1, #Config.paletoprop34)]
    
     local chance = math.random(1,100) 
@@ -207,11 +218,10 @@ function paletoprop34()
     elseif chance<=75 then  prop = gold
     else   prop = special
     end 
-    TriggerEvent('Polar-Paleto:Server:Setpaletoprop34', prop)
-    local paletoprop34 = true
-    TriggerClientEvent('Polar-Paleto:Client:AddTarget', -1, 'paletoprop34', paletoprop34, prop, vec4(location.x, location.y, location.z-1, location.w))
-    TriggerClientEvent('Polar-Paleto:Client:paletoprop34', -1, 'paletoprop34', prop, vec4(location.x, location.y, location.z-1, location.w))
-    
+
+    local door = 'paletoprop34'
+  
+    bruh(door, prop, location) 
 end
 
 Config.paletoprop35 = {
@@ -221,9 +231,7 @@ Config.paletoprop35 = {
 
 }
 function paletoprop35()
-    local cash = Config.Cash[math.random(1, #Config.Cash)]
-    local gold = Config.Gold[math.random(1, #Config.Gold)]
-    local special = Config.Special[math.random(1, #Config.Special)]
+    
     local location = Config.paletoprop35[math.random(1, #Config.paletoprop35)]
    
     local chance = math.random(1,100) 
@@ -231,9 +239,29 @@ function paletoprop35()
     elseif chance<= 75 then  prop = gold
     else   prop = special
     end 
-    TriggerEvent('Polar-Paleto:Server:Setpaletoprop35', prop)
-    local paletoprop35 = true
-    TriggerClientEvent('Polar-Paleto:Client:AddTarget', -1, 'paletoprop35', paletoprop35, prop, vec4(location.x, location.y, location.z-1, location.w))
-    TriggerClientEvent('Polar-Paleto:Client:paletoprop35', -1, 'paletoprop35', prop, vec4(location.x, location.y, location.z-1, location.w))
-    
+
+    local door = 'paletoprop35'
+  
+    bruh(door, prop, location)
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function bruh(door, prop, location)
+    TriggerEvent('Polar-Paleto:Server:SetPaletoProp', door, prop)
+    TriggerClientEvent('Polar-Paleto:Client:AddTarget', -1, door,  prop, vec4(location.x, location.y, location.z-1, location.w))
+    TriggerClientEvent('Polar-Paleto:Client:PaletoProp', -1, door, prop, vec4(location.x, location.y, location.z-1, location.w))
 end
