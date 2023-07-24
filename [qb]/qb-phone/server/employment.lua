@@ -22,7 +22,7 @@ local function getMyJobs(cid)
     return jobs, employees
 end
 
-local FirstStart = false
+local FirstStart = Config.FirstStart
 
 CreateThread(function()
     ---- Convertion Tool I guess LOL ----

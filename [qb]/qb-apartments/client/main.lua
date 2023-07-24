@@ -102,8 +102,40 @@ function CreateTarget(names, coords1, handler, labels, icons, his)
         { options = {{ event = handler, icon = icons, label = labels, id = names }}, distance = 1 }) 
     end 
 end
+CreateThread(function()
+exports['qb-target']:AddBoxZone("apartment", vector3(-271.01, -959.305, 32.692 - 1.12), 2.5, 2.3, {
+    name = "apartment",
+    heading = -20,
+        debugPoly = false,
+        minZ = 32.692 - 1.12 - 1,
+        maxZ = 32.692 - 1.12 + 1,
+    }, {
+        options = {
+            {
+                type = "client",
+                event = "apartments:client:EnterApartment",
+                icon = "fa-regular fa-building",
+                label = "Enter Apartment",
+            },
+            {
+                icon = "fa-solid fa-clipboard",
+                label = "Raid Apartment",
+                event = "qb-apartments:choose",
+                canInteract = function()
+                    local PlayerData = QBCore.Functions.GetPlayerData()
+                    local job = PlayerData.job
+                    local jobName = job.name
+                    local gradeAllowed = tonumber(job.grade.level) >= 3
+                    local onDuty = job.onduty
 
-
+                    return jobName == "police" and gradeAllowed and onDuty
+                end,
+            },
+           
+        },
+        distance = 1.5
+    })
+end)
 function SetInApartmentTargets()
     if not POIOffsets then
         -- do nothing
@@ -355,26 +387,6 @@ local targetlocations = {
     
 }
 
-CreateThread(function()
-
-    for k,v in pairs(targetlocations) do
-        exports['qb-target']:AddBoxZone(k, v, 1.0, 1.0, {
-            name = k,
-            heading = 35.0,
-            debugPoly = false,
-        }, {
-            options = {
-                {
-                    event = "qb-apartments:choose",
-                    icon = "far fa-clipboard",
-                    label = "Raid Apartment",
-                    job = 'police'
-                },
-            },
-            distance = 1.0
-        })
-    end
-end)
 
 RegisterNetEvent('qb-apartments:choose')
 AddEventHandler('qb-apartments:choose',function()

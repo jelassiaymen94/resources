@@ -90,24 +90,7 @@ CreateThread(function()
         })
     end
   
-    exports['qb-target']:AddBoxZone("apartment", vector3(-271.01, -959.305, 32.692 - 1.12), 2.5, 2.3, {
-        name = "apartment",
-        heading = -20,
-            debugPoly = false,
-            minZ = 32.692 - 1.12 - 1,
-            maxZ = 32.692 - 1.12 + 1,
-        }, {
-            options = {
-                {
-                    type = "client",
-                    event = "apartments:client:EnterApartment",
-                    icon = "fa-solid fa-bolt",
-                    label = "Enter Apartment",
-                }
-            },
-            distance = 1.5
-        })
-
+   
 
 end)
 

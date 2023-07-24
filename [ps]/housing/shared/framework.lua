@@ -54,6 +54,7 @@ Framework.qb = {
             {
                 options = {
                     {
+                        icon = "fa-solid fa-house",
                         label = "Enter Property",
                         action = enter,
                         canInteract = function()
@@ -62,6 +63,7 @@ Framework.qb = {
                         end,
                     },
                     {
+                        icon = "fa-solid fa-user-group",
                         label = "Showcase Property",
                         action = showcase,
                         canInteract = function()
@@ -73,6 +75,7 @@ Framework.qb = {
                         end,
                     },
                     {
+                        icon = "fa-solid fa-clipboard",
                         label = "Property Info",
                         action = showData,
                         canInteract = function()
@@ -84,6 +87,7 @@ Framework.qb = {
                         end,
                     },
                     {
+                        icon = "fa-solid fa-bell",
                         label = "Ring Doorbell",
                         action = enter,
                         canInteract = function()
@@ -92,6 +96,7 @@ Framework.qb = {
                         end,
                     },
                     {
+                        icon = "fa-solid fa-clipboard",
                         label = "Raid Property",
                         action = raid,
                         canInteract = function()
@@ -124,6 +129,7 @@ Framework.qb = {
         }, {
             options = {
                 {
+                    icon = "fa-regular fa-building",
                     label = "Enter Apartment",
                     action = enter,
                     canInteract = function()
@@ -132,10 +138,12 @@ Framework.qb = {
                     end,
                 },
                 {
-                    label = "See all apartments",
+                    icon = "fas fa-bolt",
+                    label = "See All Apartments",
                     action = seeAll,
                 },
                 {
+                    icon = "fa-solid fa-clipboard",
                     label = "Raid Apartment",
                     action = seeAllToRaid,
                     canInteract = function()
@@ -169,10 +177,12 @@ Framework.qb = {
             {
                 options = {
                     {
+                        icon = "fa-solid fa-door-open",
                         label = "Leave Property",
                         action = leave,
                     },
                     {
+                        icon = "fa-solid fa-bell",
                         label = "Check Door",
                         action = checkDoor,
                     },
@@ -207,6 +217,7 @@ Framework.qb = {
         exports["qb-target"]:AddTargetEntity(entity, {
             options = {
                 {
+                    icon = "fas fa-bolt",
                     label = label,
                     action = action,
                 },

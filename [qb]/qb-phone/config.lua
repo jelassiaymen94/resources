@@ -1,5 +1,13 @@
 Config = Config or {}
 
+
+
+
+
+Config.FirstStart = false -- used for setting up new employment jobs
+
+
+
 Config.RenewedBanking = true -- Either put this to true or false if you use Renewed Banking or not
 Config.RenewedFinances = true -- Either put this to true or false if you use Renewed Finances or not
 Config.RenewedCameras = true -- Either put this to true or false if you use Renewed Cameras or not
