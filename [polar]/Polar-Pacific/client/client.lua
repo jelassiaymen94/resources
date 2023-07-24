@@ -412,7 +412,7 @@ function CashAppear(grabModel)
     SetEntityInvincible(grabobj, true)
     SetEntityNoCollisionEntity(grabobj, ped)
     SetEntityVisible(grabobj, false, false)
-    AttachEntityToEntity(grabobj, ped, GetPedBoneIndex(PlayerPedId(), 60309), 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, false, false, false, false, 0, true)
+    AttachEntityToEntity(grabobj, PlayerPedId(), GetPedBoneIndex(PlayerPedId(), 60309), 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, false, false, false, false, 0, true)
     local startedGrabbing = GetGameTimer()
     CreateThread(function()
         while GetGameTimer() - startedGrabbing < 37000 do
@@ -434,7 +434,8 @@ function CashAppear(grabModel)
 end
 
 function grabloot(door, object)
-    
+    local grabModel = nil
+    TriggerServerEvent('Polar-Paleto:Server:TargetRemove', door)
     local prop = trollys[door]
     if prop == 'ch_prop_ch_cash_trolly_01a' then grabModel = 'hei_prop_heist_cash_pile'  end
     if prop == 'ch_prop_gold_trolly_01a' then grabModel = 'ch_prop_gold_bar_01a' end
@@ -448,14 +449,14 @@ function grabloot(door, object)
     loadAnimDict(animDict)
     loadModel(bagcolor)
     local bag = CreateObject(GetHashKey(bagcolor), pedCoords, true, false, false)
-    scene1 = NetworkCreateSynchronisedScene(prop2, rot, 2, true, false, 1065353216, 0, 1.3)
+    local scene1 = NetworkCreateSynchronisedScene(prop2, rot, 2, true, false, 1065353216, 0, 1.3)
     NetworkAddPedToSynchronisedScene(PlayerPedId(), scene1, animDict, 'intro', 1.5, -4.0, 1, 16, 1148846080, 0)
     NetworkAddEntityToSynchronisedScene(bag, scene1, animDict, 'bag_intro', 4.0, -8.0, 1)
-    scene2 =  NetworkCreateSynchronisedScene(prop2, rot, 2, true, false, 1065353216, 0, 1.3)
+    local scene2 =  NetworkCreateSynchronisedScene(prop2, rot, 2, true, false, 1065353216, 0, 1.3)
     NetworkAddPedToSynchronisedScene(PlayerPedId(), scene2, animDict, 'grab', 1.5, -4.0, 1, 16, 1148846080, 0)
     NetworkAddEntityToSynchronisedScene(bag, scene2, animDict, 'bag_grab', 4.0, -8.0, 1)
     NetworkAddEntityToSynchronisedScene(object, scene2, animDict, 'cart_cash_dissapear', 4.0, -8.0, 1)
-    scene3 =  NetworkCreateSynchronisedScene(prop2, rot, 2, true, false, 1065353216, 0, 1.3)
+    local scene3 =  NetworkCreateSynchronisedScene(prop2, rot, 2, true, false, 1065353216, 0, 1.3)
     NetworkAddPedToSynchronisedScene(PlayerPedId(), scene3, animDict, 'exit', 1.5, -4.0, 1, 16, 1148846080, 0)
     NetworkAddEntityToSynchronisedScene(bag, scene3, animDict, 'bag_exit', 4.0, -8.0, 1)
     NetworkStartSynchronisedScene(scene1)
@@ -701,6 +702,7 @@ function Animation(door, props)
             animDict = 'anim@scripted@heist@ig1_table_grab@cash@male@'
             loadAnimDict(animDict)
         end
+        TriggerServerEvent('Polar-Paleto:Server:TargetRemove', door)
         loadModel(bagcolor)
         local bag = CreateObject(GetHashKey(bagcolor), pedCo, 1, 1, 0)
         local scene1 = NetworkCreateSynchronisedScene(propCoords, 
@@ -1263,8 +1265,7 @@ RegisterNetEvent('Polar-Pacific:Client:Target', function(data)
     
    
    -- print(GetEntityRotation(doors[p]))
-   TriggerServerEvent('Polar-Pacific:Server:TargetRemove', p)
-
+   
     if tablecheck(p, trollytable) then
         grabloot(p, doors[p])
     else

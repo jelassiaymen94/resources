@@ -192,9 +192,9 @@ local function openHouseAnim()
     ClearPedTasks(PlayerPedId())
 end
 local objects = {}
-local function EnterApartment(house, apartmentId, new)
+function EnterApartment(house, apartmentId, new)
     TriggerServerEvent("InteractSound_SV:PlayOnSource", "houses_door_open", 0.1)
-    print(house)
+ 
     openHouseAnim()
     Wait(250)
     exports['Polar-Sub']:toggleProps()
@@ -227,7 +227,7 @@ local function EnterApartment(house, apartmentId, new)
                     end)
                 end
               
-
+               
 
                 Wait(100)
                 SetInApartmentTargets()
@@ -297,8 +297,13 @@ local function LeaveApartment(house)
     TriggerServerEvent("qb-apartments:returnBucket")
     DoScreenFadeOut(500)
     while not IsScreenFadedOut() do Wait(10) end
-    if DoesEntityExist(HouseObj) then DeleteEntity(HouseObj) end
-   
+        
+        for _, v in pairs(HouseObj) do
+            if DoesEntityExist(v) then
+                DeleteEntity(v)
+            end
+        end
+       
         TriggerEvent('qb-weathersync:client:EnableSync')
         SetEntityCoords(PlayerPedId(), Apartments.Locations[house].coords.enter.x, Apartments.Locations[house].coords.enter.y,Apartments.Locations[house].coords.enter.z)
         SetEntityHeading(PlayerPedId(), Apartments.Locations[house].coords.enter.w)
@@ -344,8 +349,11 @@ end
 AddEventHandler('onResourceStop', function(resource)
     if resource == GetCurrentResourceName() then
         if HouseObj ~= nil then
-            if DoesEntityExist(HouseObj) then DeleteEntity(HouseObj) end
-   
+            for _, v in pairs(HouseObj) do
+                if DoesEntityExist(v) then
+                    DeleteEntity(v)
+                end
+            end
                 CurrentApartment = nil
                 TriggerEvent('qb-weathersync:client:EnableSync')
                 DoScreenFadeIn(500)
@@ -409,6 +417,9 @@ local dialog = exports['qb-input']:ShowInput({
             if result then
                 if PlayerData.job.grade.level > 2 then
                     altaapartment = result.type
+
+                    SetClosestApartment()
+
                     EnterApartment(altaapartment, result.name)
                 else
                     QBCore.Functions.Notify("You are not high enough rank.", "error")
