@@ -769,6 +769,24 @@ function FormatItemInfo(itemData, dom) {
         } else if (itemData.type == "weapon") {
             $(".item-info-title").html("<p>" + itemData.label + "</p>");
             $(".item-info-stats").html('<p>Weight: ' + ((itemData.weight * itemData.amount) / 1000).toFixed(1) + ' | Amount: ' + itemData.amount)
+
+            if (itemData.name == 'weapon_microsmg3') {mags = 21}
+            if (itemData.name == 'weapon_pistol') {mags = 12}
+            if (itemData.name == 'weapon_dp9') {mags = 15}
+            if (itemData.name == 'weapon_microsmg2') {mags = 21}
+            if (itemData.name == 'weapon_fnx45') {mags = 15}
+            if (itemData.name == 'weapon_m9') {mags = 7}
+            if (itemData.name == 'weapon_pistol50') {mags = 9}
+            if (itemData.name == 'weapon_mp5') {mags = 20}
+            if (itemData.name == 'weapon_glock') {mags = 17}
+            
+            if (mags == undefined) {mags = 30}
+            bullets = itemData.info.ammo / mags
+            if (bullets == undefined) {bullets = 0}
+            four = math.random(1,7)
+            if (bullets < 1) {bullets = 'Like ' + four}
+            
+
             if (itemData.info.ammo == undefined) {
                 itemData.info.ammo = 0;
             } else {
@@ -784,20 +802,20 @@ function FormatItemInfo(itemData, dom) {
                     }
                 });
                 $(".item-info-description").html(
-                    "<p><strong>ID: </strong><span>" +
+                    "<p><strong>Serial: </strong><span>" +
                     itemData.info.serie +
-                    "</span></p><p><strong>Munition: </strong><span>" +
-                    itemData.info.ammo +
+                    "</span></p><p><strong>Mags: </strong><span>" +
+                    bullets +
                     "</span></p><p><strong>Attachments: </strong><span>" +
                     attachmentString +
                     "</span></p>"
                 );
             } else {
                 $(".item-info-description").html(
-                    "<p><strong>ID: </strong><span>" +
+                    "<p><strong>Serial: </strong><span>" +
                     itemData.info.serie +
-                    "</span></p><p><strong>Munition: </strong><span>" +
-                    itemData.info.ammo +
+                    "</span></p><p><strong>Mags: </strong><span>" +
+                    bullets +
                     "</span></p><p>" +
                     itemData.description +
                     "</p>"
@@ -2820,8 +2838,8 @@ var requiredItemOpen = false;
 
     Inventory.slots = 40;
 
-    Inventory.dropslots = 32;
-    Inventory.droplabel = "Drop";
+    Inventory.dropslots = 24;
+    Inventory.droplabel = "Ground";
     Inventory.dropmaxweight = 100000;
 
     Inventory.Error = function() {
@@ -2831,7 +2849,7 @@ var requiredItemOpen = false;
     Inventory.IsWeaponBlocked = function(WeaponName) {
         var DurabilityBlockedWeapons = [
             "weapon_unarmed",
-            "weapon_stickybomb",
+           
         ];
 
         var retval = false;
