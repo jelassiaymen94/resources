@@ -66,7 +66,7 @@ function closeInventory() {
 
 function openHudMenu() {
     Inventory.Close();
-    $.post('https://ps-inventory/OpenHudMenu');
+    $.post('https://qb-inventory/OpenHudMenu');
 }
 
 
@@ -110,7 +110,7 @@ function CanQuickMove() {
 //                         // if (item.shouldClose) {
 //                         //     Inventory.Close();
 //                         // }
-//                         $.post("https://ps-inventory/UseItem", JSON.stringify({
+//                         $.post("https://qb-inventory/UseItem", JSON.stringify({
 //                             inventory: "player",
 //                             item: item,
 //                         }));
@@ -127,7 +127,7 @@ $(document).on("dblclick", ".item-slot", function (e) {
     var ItemInventory = $(this).parent().attr("data-inventory");
     if (ItemData) {
         Inventory.Close();
-        $.post("https://ps-inventory/UseItem", JSON.stringify({
+        $.post("https://qb-inventory/UseItem", JSON.stringify({
             inventory: ItemInventory,
             item: ItemData,
         }));
@@ -237,7 +237,7 @@ $(document).on('click', '.weapon-attachments-back', function (e) {
 });
 
 function FormatAttachmentInfo(data) {
-    $.post("https://ps-inventory/GetWeaponData", JSON.stringify({
+    $.post("https://qb-inventory/GetWeaponData", JSON.stringify({
         weapon: data.name,
         ItemData: ClickedItemData
     }), function (data) {
@@ -303,7 +303,7 @@ function handleAttachmentDrag() {
         accept: ".weapon-attachment",
         hoverClass: 'weapon-attachments-remove-hover',
         drop: function (event, ui) {
-            $.post('https://ps-inventory/RemoveAttachment', JSON.stringify({
+            $.post('https://qb-inventory/RemoveAttachment', JSON.stringify({
                 AttachmentData: AttachmentDraggingData,
                 WeaponData: ClickedItemData,
             }), function (data) {
@@ -349,7 +349,7 @@ $(document).on('click', '#weapon-attachments', function (e) {
         AttachmentScreenActive = true;
         FormatAttachmentInfo(ClickedItemData);
     } else {
-        $.post('https://ps-inventory/Notify', JSON.stringify({
+        $.post('https://qb-inventory/Notify', JSON.stringify({
             message: "Attachments are unavailable for this gun.",
             type: "error"
         }))
@@ -968,7 +968,7 @@ function handleDragDrop() {
                 if (fromData.shouldClose) {
                     Inventory.Close();
                 }
-                $.post("https://ps-inventory/UseItem", JSON.stringify({
+                $.post("https://qb-inventory/UseItem", JSON.stringify({
                     inventory: fromInventory,
                     item: fromData,
                 }));
@@ -989,7 +989,7 @@ function handleDragDrop() {
                 amount = fromData.amount;
             }
             $.post(
-                "https://ps-inventory/GiveItem",
+                "https://qb-inventory/GiveItem",
                 JSON.stringify({
                     inventory: fromInventory,
                     item: fromData,
@@ -1011,7 +1011,7 @@ function handleDragDrop() {
             amount = $("#item-amount").val();
             if (amount == 0) { amount = fromData.amount }
             // $(this).css("background", "rgba(35,35,35, 0.7");
-            $.post("https://ps-inventory/DropItem", JSON.stringify({
+            $.post("https://qb-inventory/DropItem", JSON.stringify({
                 inventory: fromInventory,
                 item: fromData,
                 amount: parseInt(amount),
@@ -1125,13 +1125,13 @@ var combineslotData = null;
 $(document).on('click', '.CombineItem', function (e) {
     e.preventDefault();
     if (combineslotData.toData.combinable.anim != null) {
-        $.post('https://ps-inventory/combineWithAnim', JSON.stringify({
+        $.post('https://qb-inventory/combineWithAnim', JSON.stringify({
             combineData: combineslotData.toData.combinable,
             usedItem: combineslotData.toData.name,
             requiredItem: combineslotData.fromData.name
         }))
     } else {
-        $.post('https://ps-inventory/combineItem', JSON.stringify({
+        $.post('https://qb-inventory/combineItem', JSON.stringify({
             reward: combineslotData.toData.combinable.reward,
             toItem: combineslotData.toData.name,
             fromItem: combineslotData.fromData.name
@@ -1175,7 +1175,7 @@ function optionSwitch($fromSlot, $toSlot, $fromInv, $toInv, $toAmount, toData, f
         $fromInv.find("[data-slot=" + $fromSlot + "]").html('<div class="item-slot-img"><img src="images/' + toData.image + '" alt="' + toData.name + '" /></div><div class="item-slot-amount"><p>' + toData.amount + ' (' + ((toData.weight * toData.amount) / 1000).toFixed(2) + ')</p></div><div class="item-slot-label"><p>' + toData.label + '</p></div>');
     }
 
-    $.post("https://ps-inventory/SetInventoryData", JSON.stringify({
+    $.post("https://qb-inventory/SetInventoryData", JSON.stringify({
         fromInventory: $fromInv.attr("data-inventory"),
         toInventory: $toInv.attr("data-inventory"),
         fromSlot: $fromSlot,
@@ -1472,9 +1472,9 @@ function swap($fromSlot, $toSlot, $fromInv, $toInv, $toAmount) {
                     }
                 }
             }
-            $.post("https://ps-inventory/PlayDropSound", JSON.stringify({}));
+            $.post("https://qb-inventory/PlayDropSound", JSON.stringify({}));
             $.post(
-                "https://ps-inventory/SetInventoryData",
+                "https://qb-inventory/SetInventoryData",
                 JSON.stringify({
                     fromInventory: $fromInv.attr("data-inventory"),
                     toInventory: $toInv.attr("data-inventory"),
@@ -1491,7 +1491,7 @@ function swap($fromSlot, $toSlot, $fromInv, $toInv, $toAmount) {
                     isItemAllowed(fromData.name, toData.combinable.accept)
                 ) {
                     $.post(
-                        "https://ps-inventory/getCombineItem",
+                        "https://qb-inventory/getCombineItem",
                         JSON.stringify({ item: toData.combinable.reward }),
                         function (item) {
                             $(".combine-option-text").html(
@@ -1667,7 +1667,7 @@ function swap($fromSlot, $toSlot, $fromInv, $toInv, $toAmount) {
                     }
 
                     $.post(
-                        "https://ps-inventory/SetInventoryData",
+                        "https://qb-inventory/SetInventoryData",
                         JSON.stringify({
                             fromInventory: $fromInv.attr("data-inventory"),
                             toInventory: $toInv.attr("data-inventory"),
@@ -1713,7 +1713,7 @@ function swap($fromSlot, $toSlot, $fromInv, $toInv, $toAmount) {
                     }
 
                     $.post(
-                        "https://ps-inventory/SetInventoryData",
+                        "https://qb-inventory/SetInventoryData",
                         JSON.stringify({
                             fromInventory: $fromInv.attr("data-inventory"),
                             toInventory: $toInv.attr("data-inventory"),
@@ -1723,7 +1723,7 @@ function swap($fromSlot, $toSlot, $fromInv, $toInv, $toAmount) {
                         })
                     );
                 }
-                $.post("https://ps-inventory/PlayDropSound", JSON.stringify({}));
+                $.post("https://qb-inventory/PlayDropSound", JSON.stringify({}));
             } else if (
                 fromData.amount > $toAmount &&
                 (toData == undefined || toData == null)
@@ -1929,9 +1929,9 @@ function swap($fromSlot, $toSlot, $fromInv, $toInv, $toAmount) {
                         }
                     }
                 }
-                $.post("https://ps-inventory/PlayDropSound", JSON.stringify({}));
+                $.post("https://qb-inventory/PlayDropSound", JSON.stringify({}));
                 $.post(
-                    "https://ps-inventory/SetInventoryData",
+                    "https://qb-inventory/SetInventoryData",
                     JSON.stringify({
                         fromInventory: $fromInv.attr("data-inventory"),
                         toInventory: $toInv.attr("data-inventory"),
@@ -1970,7 +1970,7 @@ function InventoryError($elinv, $elslot) {
             .find("[data-slot=" + $elslot + "]")
             .css("background", "rgba(255, 255, 255, 0.05)");
     }, 500);
-    $.post("https://ps-inventory/PlayDropFail", JSON.stringify({}));
+    $.post("https://qb-inventory/PlayDropFail", JSON.stringify({}));
 }
 
 var requiredItemOpen = false;
@@ -1985,7 +1985,7 @@ var requiredItemOpen = false;
     Inventory.dropmaxweight = 1000000
 
     Inventory.Error = function () {
-        $.post("https://ps-inventory/PlayDropFail", JSON.stringify({}));
+        $.post("https://qb-inventory/PlayDropFail", JSON.stringify({}));
     }
 
     Inventory.IsWeaponBlocked = function (WeaponName) {
@@ -2294,7 +2294,7 @@ var requiredItemOpen = false;
             $("#rob-money").remove();
         }
 
-        $.post("https://ps-inventory/CloseInventory", JSON.stringify({}));
+        $.post("https://qb-inventory/CloseInventory", JSON.stringify({}));
 
         if (AttachmentScreenActive) {
             $("#qbus-inventory").css({ "left": "0vw" });
@@ -2515,7 +2515,7 @@ var requiredItemOpen = false;
     Inventory.Clickables = function () {
         $('.cloth').find('img').off()
         $('.cloth').find('img').click(function () {
-            $.post("https://ps-inventory/ChangeComponent", JSON.stringify({
+            $.post("https://qb-inventory/ChangeComponent", JSON.stringify({
                 component: $(this).attr('id')
             }));
         })
@@ -2537,10 +2537,10 @@ var requiredItemOpen = false;
         $('#clothing-menu').click(function () {
             if (isClothOpen == false) {
                 isClothOpen = true
-                $.post("https://ps-inventory/OpenClothMenu", JSON.stringify({ delete: isClothOpen }));
+                $.post("https://qb-inventory/OpenClothMenu", JSON.stringify({ delete: isClothOpen }));
             } else if (isClothOpen == true) {
                 isClothOpen = false
-                $.post("https://ps-inventory/OpenClothMenu", JSON.stringify({ delete: isClothOpen }));
+                $.post("https://qb-inventory/OpenClothMenu", JSON.stringify({ delete: isClothOpen }));
                 Inventory.Necessary()
             }
             $('.tooltip').remove()
@@ -2583,7 +2583,7 @@ var requiredItemOpen = false;
 $(document).on('click', '#rob-money', function (e) {
     e.preventDefault();
     var TargetId = $(this).data('TargetId');
-    $.post('https://ps-inventory/RobMoney', JSON.stringify({
+    $.post('https://qb-inventory/RobMoney', JSON.stringify({
         TargetId: TargetId
     }));
     $("#rob-money").remove();

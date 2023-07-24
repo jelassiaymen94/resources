@@ -179,7 +179,7 @@ local core_items = Config.core_items
 local function remove_item(src, Player, name, amount)
     local res = Player.Functions.RemoveItem(name, amount)
     if res then
-        TriggerClientEvent('ps-inventory:client:ItemBox', src, QBCore.Shared.Items[name], "remove")
+        TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[name], "remove")
     end
     return res
 end

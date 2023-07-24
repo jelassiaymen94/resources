@@ -5,7 +5,11 @@ local closestHouse
 local inRange
 local IsLockpicking = false
 local houseObj = {}
-local POIOffsets = nil
+
+local POIOffsets = {
+    exit = vec4(4.9, 4.35, 1.16, 176.61)
+   
+}
 local usingAdvanced = false
 local requiredItemsShowed = false
 local requiredItems = {}
@@ -44,19 +48,41 @@ local function openHouseAnim()
     Wait(400)
     ClearPedTasks(PlayerPedId())
 end
+function TeleportToInterior(x, y, z, h)
+    CreateThread(function()
+        SetEntityCoords(PlayerPedId(), x, y, z, 0, 0, 0, false)
+        SetEntityHeading(PlayerPedId(), h)
 
+        Wait(100)
+
+        DoScreenFadeIn(1000)
+    end)
+end
+l
 local function enterRobberyHouse(house)
     TriggerServerEvent("InteractSound_SV:PlayOnSource", "houses_door_open", 0.25)
     openHouseAnim()
     Wait(250)
     local coords = { x = Config.Houses[house]["coords"]["x"], y = Config.Houses[house]["coords"]["y"], z= Config.Houses[house]["coords"]["z"] - Config.MinZOffset}
-    local data
-    if Config.Houses[house]["tier"] == 1 then
-        data = exports['qb-interior']:CreateHouseRobbery(coords)
+   
+    DoScreenFadeOut(500)
+    while not IsScreenFadedOut() do
+        Wait(10)
     end
+	RequestModel('modernhotel_shell')
+	while not HasModelLoaded('modernhotel_shell') do
+	    Wait(1000)
+	end
+	local house = CreateObject('modernhotel_shell', coords.x, coords.y, coords.z, false, false, false)
+    FreezeEntityPosition(house, true)
+    houseObj[#houseObj+1] = house
+	TeleportToInterior(coords.x + POIOffsets.exit.x, coords.y + POIOffsets.exit.y, coords.z + POIOffsets.exit.z, POIOffsets.exit.h)
+
+
+
     Wait(100)
-    houseObj = data[1]
-    POIOffsets = data[2]
+  
+   
     inside = true
     currentHouse = house
     Wait(500)
@@ -70,7 +96,7 @@ local function leaveRobberyHouse(house)
     Wait(250)
     DoScreenFadeOut(250)
     Wait(500)
-    exports['qb-interior']:DespawnInterior(houseObj, function()
+    if DoesEntityExist(HouseObj) then DeleteEntity(HouseObj) end
         TriggerEvent('qb-weathersync:client:EnableSync')
         Wait(250)
         DoScreenFadeIn(250)
@@ -78,7 +104,7 @@ local function leaveRobberyHouse(house)
         SetEntityHeading(ped, Config.Houses[house]["coords"]["h"])
         inside = false
         currentHouse = nil
-    end)
+   
 end
 
 local function PoliceCall()

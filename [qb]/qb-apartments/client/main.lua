@@ -265,7 +265,8 @@ local function LeaveApartment(house)
     TriggerServerEvent("qb-apartments:returnBucket")
     DoScreenFadeOut(500)
     while not IsScreenFadedOut() do Wait(10) end
-    exports['qb-interior']:DespawnInterior(HouseObj, function()
+    if DoesEntityExist(HouseObj) then DeleteEntity(HouseObj) end
+   
         TriggerEvent('qb-weathersync:client:EnableSync')
         SetEntityCoords(PlayerPedId(), Apartments.Locations[house].coords.enter.x, Apartments.Locations[house].coords.enter.y,Apartments.Locations[house].coords.enter.z)
         SetEntityHeading(PlayerPedId(), Apartments.Locations[house].coords.enter.w)
@@ -281,7 +282,7 @@ local function LeaveApartment(house)
 
         DeleteApartmentTargets()
         
-    end)
+    
 end
 
 function SetClosestApartment()
@@ -311,7 +312,8 @@ end
 AddEventHandler('onResourceStop', function(resource)
     if resource == GetCurrentResourceName() then
         if HouseObj ~= nil then
-            exports['qb-interior']:DespawnInterior(HouseObj, function()
+            if DoesEntityExist(HouseObj) then DeleteEntity(HouseObj) end
+   
                 CurrentApartment = nil
                 TriggerEvent('qb-weathersync:client:EnableSync')
                 DoScreenFadeIn(500)
@@ -323,7 +325,7 @@ AddEventHandler('onResourceStop', function(resource)
                 Wait(1000)
                 InApartment = false
                 DoScreenFadeIn(1000)
-            end)
+          
         end
 
         

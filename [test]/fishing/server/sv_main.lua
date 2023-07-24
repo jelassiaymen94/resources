@@ -5,7 +5,7 @@ RegisterNetEvent('qb-fishing:server:RemoveBait', function()
     local Player = QBCore.Functions.GetPlayer(src)
     if not Player then return end
 
-    if exports['ps-inventory']:RemoveItem(Player.PlayerData.source, 'fishbait', 1, false) then
+    if exports['inventory']:RemoveItem(Player.PlayerData.source, 'fishbait', 1, false) then
         TriggerClientEvent('inventory:client:ItemBox', Player.PlayerData.source, QBCore.Shared.Items['fishbait'], 'remove', 1)
     end
 end)
@@ -66,7 +66,7 @@ RegisterNetEvent('qb-fishing:server:ReceiveFish', function()
         TriggerClientEvent('fishing:client:spawnFish', src, item)
     end
     
-    if exports['ps-inventory']:AddItem(Player.PlayerData.source, item, 1, false) then
+    if exports['inventory']:AddItem(Player.PlayerData.source, item, 1, false) then
         TriggerClientEvent('inventory:client:ItemBox', Player.PlayerData.source, QBCore.Shared.Items[item], 'add', 1)
         TriggerEvent('qb-log:server:CreateLog', 'fishing', 'Received Fish', 'blue', "**"..Player.PlayerData.name .. " (citizenid: "..Player.PlayerData.citizenid.." | id: "..Player.PlayerData.source..")** received 1x "..QBCore.Shared.Items[item].label)
     else

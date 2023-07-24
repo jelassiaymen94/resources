@@ -23,7 +23,7 @@ QBShared.Jobs = {
 			['1'] = {
                 name = "Manager",
 				isboss = true,
-bankAuth = true,
+                bankAuth = true,
                 payment = 0
             },
         },
@@ -36,9 +36,9 @@ bankAuth = true,
 			['1'] = { name = 'Novice', payment = 125 },
 			['2'] = { name = 'Experienced', payment = 125 },
 			['3'] = { name = 'Manager',  isboss = true,
-bankAuth = true,payment = 100 },
+                bankAuth = true,payment = 100 },
 			['4'] = { name = 'Owner', isboss = true,
-bankAuth = true, payment = 50 },
+                bankAuth = true, payment = 50 },
         },
 	},
 	['police'] = {
@@ -61,19 +61,19 @@ bankAuth = true, payment = 50 },
 			['3'] = {
                 name = 'Sergeant',
                 isboss = true,
-bankAuth = true,
+                bankAuth = true,
                 payment = 6750
             },
 			['4'] = {
                 name = 'Lieutenant',
                 isboss = true,
-bankAuth = true,
+                bankAuth = true,
                 payment = 6875
             },
 			['5'] = {
                 name = 'Chief',
 				isboss = true,
-bankAuth = true,
+                bankAuth = true,
                 payment = 7125
             },
             ['6'] = {
@@ -87,7 +87,7 @@ bankAuth = true,
             ['8'] = {
                 name = 'Commissioner',
                 isboss = true,
-bankAuth = true,
+                bankAuth = true,
                 payment = 9500
             },
             
@@ -105,13 +105,13 @@ bankAuth = true,
             ['1'] = {
                 name = 'Los Santos Taxi Manager',
                 isboss = true,
-bankAuth = true,
+                bankAuth = true,
                 payment = 750
             },
             ['2'] = {
                 name = 'Los Santos Taxi Owner',
                 isboss = true,
-bankAuth = true,
+                bankAuth = true,
               
                 payment = 1000
                 
@@ -133,14 +133,14 @@ bankAuth = true,
             ['2'] = {
                 name = "Vineyard Manager",
                 isboss = true,
-bankAuth = true,
+                bankAuth = true,
                 payment = 80
             },
             ['3'] = {
                 name = "Vineyard Owner",
                
                 isboss = true,
-bankAuth = true,
+                bankAuth = true,
                 payment = 60
             },
         },
@@ -161,21 +161,21 @@ bankAuth = true,
 			['2'] = {
                 name = 'Doctor',
                 isboss = true,
-bankAuth = true,
+                bankAuth = true,
                
                 payment = 5750
             },
 			['3'] = {
                 name = 'Surgeon',
                 isboss = true,
-bankAuth = true,
+                bankAuth = true,
                
                 payment = 5875
             },
 			['4'] = {
                 name = 'Chief',
 				isboss = true,
-bankAuth = true,
+                bankAuth = true,
               
                 payment = 6000
             },
@@ -196,14 +196,14 @@ bankAuth = true,
             ['2'] = {
                 name = 'Shift Manager',
                 isboss = true,
-bankAuth = true,
+                bankAuth = true,
               
                 payment = 1475
             },
             ['4'] = {
                 name = 'Owner',
                 isboss = true,
-bankAuth = true,
+                bankAuth = true,
              
                 payment = 1450
             },
@@ -225,13 +225,13 @@ bankAuth = true,
             ['2'] = {
                 name = 'Shift Manager',
                 isboss = true,
-bankAuth = true,
+                bankAuth = true,
                 payment = 2500
             },
             ['3'] = {
                 name = 'Owner',
                 isboss = true,
-bankAuth = true,
+                bankAuth = true,
               
                 payment = 3000
             },
@@ -253,13 +253,13 @@ bankAuth = true,
             ['2'] = {
                 name = 'Shift Manager',
                 isboss = true,
-bankAuth = true,
+                bankAuth = true,
                 payment = 3125
             },
             ['4'] = {
                 name = 'Owner',
                 isboss = true,
-bankAuth = true,
+                bankAuth = true,
                 payment = 3250
             },
         
@@ -281,13 +281,13 @@ bankAuth = true,
             ['2'] = {
                 name = 'Shift Manager',
                 isboss = true,
-bankAuth = true,
+                bankAuth = true,
                 payment = 150
             },
             ['4'] = {
                 name = 'Owner',
                 isboss = true,
-bankAuth = true,
+                bankAuth = true,
                 payment = 50
             },
         
@@ -309,13 +309,13 @@ bankAuth = true,
             ['2'] = {
                 name = 'Shift Manager',
                 isboss = true,
-bankAuth = true,
+                bankAuth = true,
                 payment = 150
             },
             ['4'] = {
                 name = 'Owner',
                 isboss = true,
-bankAuth = true,
+                bankAuth = true,
                 payment = 50
             },
         },
@@ -347,7 +347,7 @@ bankAuth = true,
             },
         },
     },
-	['realestate'] = {
+	['realtor'] = {
 		label = 'Real Estate',
 		defaultDuty = false,
 		offDutyPay = false,
@@ -363,13 +363,13 @@ bankAuth = true,
             ['2'] = {
                 name = 'Manager',
 				isboss = true,
-bankAuth = true,
+                bankAuth = true,
                 payment = 4500
             },
             ['3'] = {
                 name = 'Boss',
 				isboss = true,
-bankAuth = true,
+                bankAuth = true,
                 payment = 5000
             },
         },
@@ -402,13 +402,13 @@ bankAuth = true,
 			['4'] = {
                 name = 'Manager',
                 isboss = true,
-bankAuth = true,
+                bankAuth = true,
                 payment = 3875
             },
             ['5'] = {
                 name = 'Owner',
                 isboss = true,
-bankAuth = true,
+                bankAuth = true,
                 payment = 4000
                
             },
@@ -442,13 +442,13 @@ bankAuth = true,
 			['4'] = {
                 name = 'Manager',
                 isboss = true,
-bankAuth = true,
+                bankAuth = true,
                 payment = 80
             },
             ['5'] = {
                 name = 'Owner',
                 isboss = true,
-bankAuth = true,
+                bankAuth = true,
                 payment = 80
                
             },
@@ -556,13 +556,13 @@ bankAuth = true,
             name = 'Manager',
             payment = 3000,
             isboss = true,
-            bankAuth = true,
+                            bankAuth = true,
         },
         ['3'] = {
             name = 'Boss',
             payment = 3500,
             isboss = true,
-            bankAuth = true,
+                            bankAuth = true,
         },
     },
 },
@@ -686,8 +686,8 @@ bankAuth = true,
                 ['0'] = { name = 'Recruit', payment = 2000 },
                 ['1'] = { name = 'Employee', payment = 2200 },
                 ['2'] = { name = 'Experienced', payment = 2500 },
-                ['3'] = { name = 'Manager', isboss = true,bankAuth = true,payment = 3000 },
-                ['4'] = { name = 'Owner', isboss = true,bankAuth = true,payment = 3200 },
+                ['3'] = { name = 'Manager', isboss = true,                bankAuth = true,payment = 3000 },
+                ['4'] = { name = 'Owner', isboss = true,                bankAuth = true,payment = 3200 },
             },
         },
 	--[[['judge'] = {
@@ -698,7 +698,7 @@ bankAuth = true,
             ['0'] = {
                 name = 'Judge',
                 isboss = true,
-bankAuth = true,
+                bankAuth = true,
                 payment = 3000
             },
         },
@@ -711,25 +711,25 @@ bankAuth = true,
             ['0'] = {
                 name = 'Assistant',
                 isboss = true,
-bankAuth = true,
+                bankAuth = true,
                 payment = 6500
             },
             ['1'] = {
                 name = 'Council',
                 isboss = true,
-bankAuth = true,
+                bankAuth = true,
                 payment = 7000
             },
             ['2'] = {
                 name = 'Judge',
                 isboss = true,
-bankAuth = true,
+                bankAuth = true,
                 payment = 10000
             },
             ['3'] = {
                 name = 'Mayor',
                 isboss = true,
-bankAuth = true,
+                bankAuth = true,
                 payment = 11500
             },
         },
@@ -742,7 +742,7 @@ bankAuth = true,
             ['0'] = {
                 name = 'Lawyer',
                 isboss = true,
-bankAuth = true,
+                bankAuth = true,
                 payment = 3000
             },
         },
@@ -760,18 +760,18 @@ bankAuth = true,
                 name = 'Manager',
                 payment = 125,
                 isboss = true,
-bankAuth = true,
+                bankAuth = true,
             },
             ['2'] = {
                 name = 'Co-owner',
                 payment = 100,
                 isboss = true,
-bankAuth = true,
+                bankAuth = true,
             },
             ['3'] = {
                 name = 'Owner',
                 isboss = true,
-bankAuth = true,
+                bankAuth = true,
                 payment = 50
             },
         },
@@ -808,13 +808,13 @@ bankAuth = true,
             ['5'] = {
                 name = 'VP',
                 isboss = true,
-bankAuth = true,
+                bankAuth = true,
                 payment = 3125
             },
             ['6'] = {
                 name = 'CEO',
                 isboss = true,
-bankAuth = true,
+                bankAuth = true,
                 payment = 3250
             },
             
@@ -840,13 +840,13 @@ bankAuth = true,
             ['3'] = {
                 name = 'Arch Bishop',
                 isboss = true,
-bankAuth = true,
+                bankAuth = true,
                 payment = 3375
             },
             ['4'] = {
                 name = 'Pope',
                 isboss = true,
-bankAuth = true,
+                bankAuth = true,
                 payment = 3500
             },
             
@@ -873,19 +873,19 @@ bankAuth = true,
         ['3'] = {
             name = 'Producer / Manager',
             isboss = true,
-bankAuth = true,
+                bankAuth = true,
             payment = 2875
         },
         ['4'] = {
             name = 'VP',
             isboss = true,
-bankAuth = true,
+                bankAuth = true,
             payment = 3000
         },
         ['5'] = {
             name = 'CEO',
             isboss = true,
-bankAuth = true,
+                bankAuth = true,
             payment = 3125
         },
         
@@ -912,13 +912,13 @@ bankAuth = true,
         ['3'] = {
             name = 'Manager',
             isboss = true,
-bankAuth = true,
+                bankAuth = true,
             payment = 3250
         },
         ['4'] = {
             name = 'Owner',
             isboss = true,
-bankAuth = true,
+                bankAuth = true,
             payment = 3375
         },
         

@@ -193,7 +193,7 @@ Config.core_items = {
 
 
 -- K9 Settings
-Config.inventory_name = 'ps-inventory'
+Config.inventory_name = 'inventory'
 local illegal_items = {
     'weed_brick',
     'coke_small_brick',

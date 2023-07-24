@@ -32,7 +32,7 @@ RegisterNetEvent('qb-radio:Server:BreakRadio', function()
     local Player = QBCore.Functions.GetPlayer(src)
     if not Player then return end
 
-    if exports['ps-inventory']:RemoveItem(Player.PlayerData.source, "radio", 1, false) then -- item removed from inventory
+    if exports['inventory']:RemoveItem(Player.PlayerData.source, "radio", 1, false) then -- item removed from inventory
         TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items["radio"], 'remove', 1)
     end
 

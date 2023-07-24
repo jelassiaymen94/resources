@@ -4,7 +4,7 @@ local prop = nil
 -- 45 to 50
 
 Config.paletoprop45 = {
-    vector4(-118.95, 6455.08, 32.7, 90.0), --- locations, can be multiple but chooses 1 at random
+    vector4(-106.93, 6476.12, 31.63, 312.96), --- locations, can be multiple but chooses 1 at random
 
 }
 function paletoprop45() -- should be same as door = 

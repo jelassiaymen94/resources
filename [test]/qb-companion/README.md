@@ -43,7 +43,7 @@
 - [qb-target](https://github.com/BerkieBb/qb-target)
 - [qbcore framework](https://github.com/qbcore-framework)
 - [qb-menu](https://github.com/qbcore-framework/qb-menu)
-- [qbcore inventory](https://github.com/qbcore-framework/ps-inventory)
+- [qbcore inventory](https://github.com/qbcore-framework/inventory)
 - [lj-inventory](https://github.com/loljoshie/lj-inventory) -- in screenshot
 - [qb-shops](https://github.com/qbcore-framework/qb-shops)
 
@@ -562,7 +562,7 @@ function currentLvlExp(xp) {
 #K9
 
 - important steps for k9 to work
-- first open you inventory script ps-inventory/server/main.lua
+- first open you inventory script inventory/server/main.lua
 - find this event
 
 ```lua
