@@ -1,4 +1,4 @@
-local Freecam = exports['freecam']
+local Freecam = exports['Polar-FreeCam']
 
 local function CamThread()
     CreateThread(function()
