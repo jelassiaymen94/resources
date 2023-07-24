@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CVehicleModelInfoVarGlobal>    
+  <Wheels>
+    <Item/> <!-- VWT_SPORT --> 
+    <Item/> <!-- VWT_MUSCLE -->
+    <Item/> <!-- VWT_LOWRIDER -->
+    <Item/> <!-- VWT_SUV -->
+    <Item/> <!-- VWT_OFFROAD -->
+    <Item/> <!-- VWT_TUNER -->
+    <Item/> <!-- VWT_BIKE -->
+    <Item> <!-- VWT_HIEND -->
+  <Item>
+        <wheelName>wheel_mercedes_01</wheelName>
+        <wheelVariation />
+        <modShopLabel>Mercedes Wheel 1</modShopLabel>
+        <rimRadius value="0.348500"/>
+        <rear value="false"/>
+      </Item>
+  <Item>
+        <wheelName>wheel_mercedes_01chrome</wheelName>
+        <wheelVariation />
+        <modShopLabel>Mercedes Wheel 1 chrome</modShopLabel>
+        <rimRadius value="0.348500"/>
+        <rear value="false"/>
+      </Item>
+  <Item>
+        <wheelName>wheel_mercedes_01blackchrome</wheelName>
+        <wheelVariation />
+        <modShopLabel>Mercedes Wheel 1 black-chrome</modShopLabel>
+        <rimRadius value="0.348500"/>
+        <rear value="false"/>
+      </Item>
+  <Item>
+        <wheelName>wheel_mercedes_02</wheelName>
+        <wheelVariation />
+        <modShopLabel>Mercedes-AMG Alloy - 10-Spoke Design</modShopLabel>
+        <rimRadius value="0.348500"/>
+        <rear value="false"/>
+      </Item>
+  <Item>
+        <wheelName>wheel_mercedes_gad_01</wheelName>
+        <wheelVariation />
+        <modShopLabel>Mercedes GAD 1</modShopLabel>
+        <rimRadius value="0.348500"/>
+        <rear value="false"/>
+      </Item>
+  <Item>
+        <wheelName>wheel_mercedes_gad_02</wheelName>
+        <wheelVariation />
+        <modShopLabel>Mercedes GAD 2</modShopLabel>
+        <rimRadius value="0.348500"/>
+        <rear value="false"/>
+      </Item>
+	<Item>
+        <wheelName>wheel_sclass_01</wheelName>
+        <wheelVariation />
+        <modShopLabel>Mercedes S-Class 1</modShopLabel>
+        <rimRadius value="0.348500"/>
+        <rear value="false"/>
+  </Item>
+	<Item>
+        <wheelName>wheel_sclass_02</wheelName>
+        <wheelVariation />
+        <modShopLabel>Mercedes S-Class AMG Line</modShopLabel>
+        <rimRadius value="0.348500"/>
+        <rear value="false"/>
+  </Item>
+	<Item>
+        <wheelName>wheel_mercedesmaybach2015_01</wheelName>
+        <wheelVariation />
+        <modShopLabel>Mercedes-Maybach 2015</modShopLabel>
+        <rimRadius value="0.348500"/>
+        <rear value="false"/>
+  </Item>
+  <Item>
+        <wheelName>wheel_mercedesmaybach2018_01</wheelName>
+        <wheelVariation />
+        <modShopLabel>Mercedes-Maybach 2018 (1)</modShopLabel>
+        <rimRadius value="0.348500"/>
+        <rear value="false"/>
+  </Item>
+  <Item>
+        <wheelName>wheel_mercedesmaybach2018_02</wheelName>
+        <wheelVariation />
+        <modShopLabel>Mercedes-Maybach 2018 (2)</modShopLabel>
+        <rimRadius value="0.348500"/>
+        <rear value="false"/>
+  </Item>
+	</Item> 
+    <Item/> <!-- VWT_SUPERMOD1 -->
+    <Item/> <!-- VWT_SUPERMOD2 -->
+    <Item/>
+  </Wheels>
+</CVehicleModelInfoVarGlobal>
