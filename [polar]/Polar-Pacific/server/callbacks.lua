@@ -1,10 +1,10 @@
-local getplayer = nil
+
 if Config.Framework == 'qb' then 
     QBCore = exports[Config.Core]:GetCoreObject()
-    getplayer = QBCore.Functions.GetPlayer(source)
+  
 elseif Config.Framework == 'esx' then
     ESX = nil
-    getplayer = ESX.GetPlayerFromId(source)
+ 
 end
 
 local oxinv = Config.OxIventory
@@ -14,7 +14,7 @@ RegisterNetEvent('Polar-Pacific:Server:VaultClose', function() TriggerClientEven
 
 RegisterNetEvent('Polar-Pacific:Server:RemoveItem', function(item, amount) 
     local src = source 
-    local Player = getplayer
+    local Player = QBCore.Functions.GetPlayer(src)
 
     if Config.Framework == 'qb' then
         Player.Functions.RemoveItem(item, amount) 

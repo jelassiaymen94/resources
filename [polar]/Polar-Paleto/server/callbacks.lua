@@ -1,12 +1,12 @@
-local getplayer = nil
+
 if Config.Framework == 'qb' then 
     QBCore = exports[Config.Core]:GetCoreObject()
-    getplayer = QBCore.Functions.GetPlayer(source)
+   
 elseif Config.Framework == 'esx' then
     ESX = nil
-    getplayer = ESX.GetPlayerFromId(source)
+ 
 end
-
+local QBCore = exports[Config.Core]:GetCoreObject()
 local oxinv = Config.OxIventory
 
 RegisterNetEvent('Polar-Paleto:Server:VaultClose', function() TriggerClientEvent('QBCore:Notify', -1, "Vault Closes in 2 Minutes", 'error') SetTimeout(60000, function() TriggerClientEvent('QBCore:Notify', -1, "Vault Closes in 1 Minutes", 'error') SetTimeout(30000, function() TriggerClientEvent('QBCore:Notify', -1, "Vault Closes in 30 Seconds", 'error') SetTimeout(20000, function() TriggerClientEvent('QBCore:Notify', -1, "Vault Closes in 10 Seconds", 'error') SetTimeout(10000, function() TriggerClientEvent('Polar-Paleto:Client:Vault', -1, false) end) end) end) end) end)
@@ -14,7 +14,7 @@ RegisterNetEvent('Polar-Paleto:Server:VaultClose', function() TriggerClientEvent
 
 RegisterNetEvent('Polar-Paleto:Server:RemoveItem', function(item, amount) 
     local src = source 
-    local Player = getplayer
+    local Player = QBCore.Functions.GetPlayer(src)
 
     if Config.Framework == 'qb' then
         Player.Functions.RemoveItem(item, amount) 

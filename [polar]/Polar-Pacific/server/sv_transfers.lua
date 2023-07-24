@@ -3,7 +3,7 @@ if Config.Framework == 'qb' then
 elseif Config.Framework == 'esx' then
     ESX = nil
 end
-
+local QBCore = exports[Config.Core]:GetCoreObject()
 
 
 RegisterNetEvent('Polar-Pacific:Server:SetupTrolly1', function()

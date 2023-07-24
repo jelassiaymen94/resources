@@ -3,6 +3,7 @@ if Config.Framework == 'qb' then
 elseif Config.Framework == 'esx' then
     ESX = nil
 end
+
 AddEventHandler('onResourceStart', function(resource) if resource == GetCurrentResourceName() then Wait(100) if Config.Debug then print('Starting Props') end props() end end)
 RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function() Wait(100) if Config.Debug then print('Player Loaded Props Starting') end props() end)
 

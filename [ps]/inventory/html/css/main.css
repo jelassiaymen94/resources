@@ -63,7 +63,16 @@ input[type=number]::-webkit-outer-spin-button {
   margin: 0;
 }
 
+::-webkit-scrollbar {
+	width: 12px;
+    background: var(--color-secondary);
+    border-radius: 15px;
+}
 
+::-webkit-scrollbar-thumb {
+    background: #191b1f;
+    border-radius: 15px;
+}
 
 #progressbar {
     width: 112%;
@@ -251,6 +260,33 @@ body {
     z-index: 200;
 }
 
+.inv-help-options {
+    background: var(--color-primary);
+    height: 2.8rem;
+    width: 2.8rem; 
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: none;
+    text-shadow: none;
+    margin-left: 18%;
+    margin-top: 40%;
+    z-index: 9999;
+}
+
+.inv-help-options button {
+    background-color: transparent;
+    width: 2.8rem;
+    height: 2.8rem;
+    color: white;
+    border: none;
+    box-shadow: none;
+    text-shadow: none;
+    font-size: large;
+}
 
 .btn {
     box-shadow: none;
@@ -1245,7 +1281,6 @@ body {
         top: 15%;
         left: 29.2%;
         width: 26%;
-        bottom: 10%;
         max-width: 25.7%;
         height: 64.17%;
         max-height: 64.17%;

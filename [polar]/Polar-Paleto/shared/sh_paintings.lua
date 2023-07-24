@@ -22,7 +22,7 @@ end
 
 
 Config.paletoprop41 = {
-    vector4(-115.38, 6455.6, 32.44, 35.61), --- locations, can be multiple but chooses 1 at random
+   -- vector4(-115.38, 6455.6, 32.44, 35.61), --- locations, can be multiple but chooses 1 at random
 
 }
 function paletoprop41() -- should be same as door = 
@@ -40,7 +40,7 @@ end
 
 
 Config.paletoprop42 = {
-    vector4(-121.09, 6460.88, 32.44, 148.7), --- locations, can be multiple but chooses 1 at random
+   -- vector4(-121.09, 6460.88, 32.44, 148.7), --- locations, can be multiple but chooses 1 at random
 
 }
 function paletoprop42() -- should be same as door = 
@@ -57,7 +57,7 @@ end
 
 
 Config.paletoprop43 = {
-    vector4(-123.6, 6462.98, 32.44, 202.41), --- locations, can be multiple but chooses 1 at random
+  --  vector4(-123.6, 6462.98, 32.44, 202.41), --- locations, can be multiple but chooses 1 at random
 
 }
 function paletoprop43() -- should be same as door = 

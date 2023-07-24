@@ -446,7 +446,7 @@ RegisterNetEvent('inventory:client:OpenInventory', function(PlayerAmmo, inventor
 
         end)
         else
-            Wait(500)
+            --Wait(500)
            
             ToggleHotbar(false)
             if showBlur == true then

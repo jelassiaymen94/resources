@@ -1,10 +1,10 @@
-local getplayer = nil
+
 if Config.Framework == 'qb' then 
     QBCore = exports[Config.Core]:GetCoreObject()
-    getplayer = QBCore.Functions.GetPlayer(source)
+    
 elseif Config.Framework == 'esx' then
     ESX = nil
-    getplayer = ESX.GetPlayerFromId(source)
+   
 end
 
 local item = nil
@@ -31,10 +31,10 @@ local diamondtable = {
 local oxinv = Config.OxIventory
 
 
-RegisterNetEvent('Polar-Paleto:Server:RemoveItems', function(item, amount) local src = source local Player = getplayer Wait(150) if amount == nil then if Config.Framework == 'qb' then Player.Functions.AddItem(item, 1) elseif  Config.Framework == 'esx' then getplayer.addInventoryItem(item, 1) end if Config.Framework == 'qb' then TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[item], "add", 1)  end else if Config.Framework == 'qb' then Player.Functions.AddItem(item, amount) elseif  Config.Framework == 'esx' then getplayer.addInventoryItem(item, amount) end if Config.Framework == 'qb' then TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[item], "add", amount)  end end end)
+RegisterNetEvent('Polar-Paleto:Server:RemoveItems', function(item, amount) local src = source local Player = QBCore.Functions.GetPlayer(src) Wait(150) if amount == nil then if Config.Framework == 'qb' then Player.Functions.AddItem(item, 1) elseif  Config.Framework == 'esx' then QBCore.Functions.GetPlayer(src).addInventoryItem(item, 1) end if Config.Framework == 'qb' then TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[item], "add", 1)  end else if Config.Framework == 'qb' then Player.Functions.AddItem(item, amount) elseif  Config.Framework == 'esx' then QBCore.Functions.GetPlayer(src).addInventoryItem(item, amount) end if Config.Framework == 'qb' then TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[item], "add", amount)  end end end)
 
 function give(item, amount)
-        local src = source local Player = getplayer
+        local src = source local Player = QBCore.Functions.GetPlayer(src)
         local info = {
             worth = math.random(1,100)
         }
@@ -53,7 +53,7 @@ function give(item, amount)
                 Player.Functions.AddItem(item, amount, false) 
             end
         elseif  Config.Framework == 'esx' then 
-            getplayer.addInventoryItem(item, amount) 
+            QBCore.Functions.GetPlayer(src).addInventoryItem(item, amount) 
         end 
 end
 
