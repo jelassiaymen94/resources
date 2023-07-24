@@ -1,0 +1,26 @@
+{
+  "components": {
+    "uppr": {
+      "start": 22,
+      "end": 22
+    }
+  },
+  "props": {
+    },
+    "lhand": {
+      "start": 0,
+      "end": 0
+    },
+    "rhand": {
+      "start": 0,
+      "end": 0
+    },
+    "lwrist": {
+      "start": 4,
+      "end": 4
+    },
+    "rwrist": {
+      "start": 1,
+      "end": 1
+    }
+  }
