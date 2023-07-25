@@ -542,6 +542,30 @@ Config.ManPlayerModels = {
     'tony',
     'g_m_m_chigoon_02_m',
     'a_m_o_acult_01']]
+--[[
+    'ig_cesar_P',
+    'felly',
+    's_g_m_m_armlieut_01',
+    'ig_armgoon',
+    'kenta',
+    'joker',
+    'yakuza_let',
+    'ig_dyminz',
+    'ig_fildon',
+    'ig_raptox',
+    'a_c_deerwhite',
+    'a_c_boarwhite',
+    'Wolf',
+    'Lion',
+    'Bobcat',
+    'Malelion',
+    'Lepoard',
+    'Rangehorse',
+    'Fullhorse',
+    'Younghorse',
+    'Donkey',
+    'BrnBear',
+    'Skunk',]]
 }
 
 Config.LoadedManModels = {}
