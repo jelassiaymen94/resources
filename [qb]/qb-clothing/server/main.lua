@@ -97,7 +97,7 @@ end)
 
 local skin = nil
 
-QBCore.Commands.Add("setskin", "Set Skin of Player", {{ name = 'skin', help = 'Skin Name' } }, true, function(source, args)
+QBCore.Commands.Add("setskin", "Set Skin of Player (God Only)", {{ name = 'skin', help = 'Skin Name' } }, true, function(source, args)
     local skins = tostring(args[1]):lower()
     skin = skins
    
