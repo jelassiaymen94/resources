@@ -229,17 +229,10 @@ RegisterNetEvent('QBCore:Client:OnJobUpdate', function(JobInfo)
        policeblips()
 
    else
-      removepoliceblips()
-      exports['qb-core']:HideText()
+     
    end
 end)
 
-function removepoliceblips()
-
-   RemoveBlip(currentblip)
-
-
-end
 
 
 
@@ -383,7 +376,7 @@ function policeblips()
           local playerPos = GetEntityCoords(PlayerPedId())
           local nearestStore = FindNearestStore(playerPos, boats)
           if boatblip then
-              RemoveBlip(storeBlip)
+              RemoveBlip(boatblip)
               boatblip = nil
           end
           if nearestStore then
