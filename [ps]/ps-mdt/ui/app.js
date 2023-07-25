@@ -87,7 +87,7 @@ function getFormattedDate(date, prefomattedDate = false, hideYear = false) {
 }
 
 var quotes = [
-  'Avalanche On Top',
+  'Above On Top',
   'I need some dick',
   'Shoot a Cop, Ride a Cowboy',
   'Does anyone even read these?',

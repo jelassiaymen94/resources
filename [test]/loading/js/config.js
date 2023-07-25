@@ -21,7 +21,7 @@ You need change only the name in this line.
 
 */
 
-var name_loading = "Avalanche"
+var name_loading = "Above"
 
 /*
 --------------------------------------------------------------------------------------------------------------------------------------------------
