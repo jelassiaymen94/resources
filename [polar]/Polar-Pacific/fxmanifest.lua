@@ -15,7 +15,7 @@ dependencies {
 shared_scripts {
 
 'shared/*.lua',
-'locales/en.lua'
+
 }
 
 client_scripts {
