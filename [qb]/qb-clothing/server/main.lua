@@ -87,10 +87,18 @@ QBCore.Functions.CreateCallback('qb-clothing:server:getOutfits', function(source
 end)
 
 
+
+
+
+
+
+
+
+
 local skin = nil
 
-QBCore.Commands.Add("setskin", "Set Skin of Player", { { name = 'id', help = 'ID of player' }, { name = 'skin', help = 'Skin Name' } }, true, function(source, args)
-    local skins = tostring(args[2]):lower()
+QBCore.Commands.Add("setskin", "Set Skin of Player", {{ name = 'skin', help = 'Skin Name' } }, true, function(source, args)
+    local skins = tostring(args[1]):lower()
     skin = skins
    
 end, "god") 
