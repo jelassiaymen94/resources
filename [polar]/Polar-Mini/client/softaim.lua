@@ -1,6 +1,6 @@
 local Config = {
-    ['antiControllerAimAssist'] = true,
-    ['antiLockon'] = true,
+    ['antiControllerAimAssist'] = false,
+    ['antiLockon'] = false,
 }
 
 CreateThread(function()

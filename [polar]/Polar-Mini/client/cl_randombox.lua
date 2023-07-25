@@ -17,7 +17,7 @@ AddEventHandler("qb-randombox:BoxOpening", function()
     SetEntityAsMissionEntity(obj1)
 
     TriggerEvent('animations:client:EmoteCommandStart', {"mechanic3"})
-    QBCore.Functions.Progressbar('name_here', 'Opening Box...', 5000, false, true, {
+    QBCore.Functions.Progressbar('name_here', 'Opening Box...', 5000, false, false, {
         disableMovement = true,
         disableCarMovement = true,
         disableMouse = false,
@@ -51,7 +51,7 @@ AddEventHandler("qb-randombox:CaseOpening", function()
     SetEntityAsMissionEntity(obj2)
 
     TriggerEvent('animations:client:EmoteCommandStart', {"mechanic3"})
-    QBCore.Functions.Progressbar('name_here', 'Opening Case...', 5000, false, true, {
+    QBCore.Functions.Progressbar('name_here', 'Opening Case...', 5000, false, false, {
         disableMovement = true,
         disableCarMovement = true,
         disableMouse = false,
@@ -65,6 +65,8 @@ AddEventHandler("qb-randombox:CaseOpening", function()
         TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items['randomcase'], "remove")
 
         TriggerServerEvent('qb-randombox:server:GetRewardCase')
+    end,
+    function()
     end)
 end)
 
@@ -85,7 +87,7 @@ AddEventHandler("qb-randombox:BagOpening", function()
     SetEntityAsMissionEntity(bag1)
 
     TriggerEvent('animations:client:EmoteCommandStart', {"mechanic3"})
-    QBCore.Functions.Progressbar('name_here', 'Opening Bag...', 5000, false, true, {
+    QBCore.Functions.Progressbar('name_here', 'Opening Bag...', 5000, false, false, {
         disableMovement = true,
         disableCarMovement = true,
         disableMouse = false,
@@ -99,6 +101,8 @@ AddEventHandler("qb-randombox:BagOpening", function()
         TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items['randombag'], "remove")
 
         TriggerServerEvent('qb-randombox:server:GetRewardBag')
+    end,
+    function()
     end)
 end)
 
@@ -119,7 +123,7 @@ AddEventHandler("qb-randombox:AmmoOpening", function()
     SetEntityAsMissionEntity(ammo1)
 
     TriggerEvent('animations:client:EmoteCommandStart', {"mechanic3"})
-    QBCore.Functions.Progressbar('name_here', 'Opening Ammo Case...', 5000, false, true, {
+    QBCore.Functions.Progressbar('name_here', 'Opening Ammo Case...', 5000, false, false, {
         disableMovement = true,
         disableCarMovement = true,
         disableMouse = false,
@@ -133,6 +137,8 @@ AddEventHandler("qb-randombox:AmmoOpening", function()
         TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items['randomammo'], "remove")
 
         TriggerServerEvent('qb-randombox:server:GetRewardAmmo')
+    end,
+    function()
     end)
 end)
 
@@ -153,7 +159,7 @@ AddEventHandler("qb-randombox:MedkitOpening", function()
     SetEntityAsMissionEntity(med1)
 
     TriggerEvent('animations:client:EmoteCommandStart', {"mechanic3"})
-    QBCore.Functions.Progressbar('name_here', 'Opening Medical Kit...', 5000, false, true, {
+    QBCore.Functions.Progressbar('name_here', 'Opening Medical Kit...', 5000, false, false, {
         disableMovement = true,
         disableCarMovement = true,
         disableMouse = false,
@@ -167,6 +173,8 @@ AddEventHandler("qb-randombox:MedkitOpening", function()
         TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items['randommedkit'], "remove")
 
         TriggerServerEvent('qb-randombox:server:GetRewardMedkit')
+    end,
+    function()
     end)
 end)
 
@@ -187,7 +195,7 @@ AddEventHandler("qb-randombox:GunCaseOpening", function()
     SetEntityAsMissionEntity(gun1)
 
     TriggerEvent('animations:client:EmoteCommandStart', {"mechanic3"})
-    QBCore.Functions.Progressbar('name_here', 'Opening PolarMon Booster...', 5000, false, true, {
+    QBCore.Functions.Progressbar('name_here', 'Opening PolarMon Booster...', 5000, false, false, {
         disableMovement = true,
         disableCarMovement = true,
         disableMouse = false,
@@ -201,6 +209,8 @@ AddEventHandler("qb-randombox:GunCaseOpening", function()
         TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items['randomgun'], "remove")
 
         TriggerServerEvent('qb-randombox:server:GetRewardGunCase')
+    end,
+    function()
     end)
 end)
 
@@ -259,7 +269,7 @@ AddEventHandler("qb-randombox:ShoeOpening", function()
     SetEntityAsMissionEntity(Shoe1)
 
     TriggerEvent('animations:client:EmoteCommandStart', {"mechanic3"})
-    QBCore.Functions.Progressbar('name_here', 'Opening Shoe Box...', 5000, false, true, {
+    QBCore.Functions.Progressbar('name_here', 'Opening Shoe Box...', 5000, false, false, {
         disableMovement = true,
         disableCarMovement = true,
         disableMouse = false,
