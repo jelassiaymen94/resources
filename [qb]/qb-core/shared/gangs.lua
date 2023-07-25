@@ -22,6 +22,7 @@ QBShared.Gangs = {
             },
 			['3'] = {
                 name = 'Boss',
+                bankAuth = true,
 				isboss = true
             },
         },
@@ -40,6 +41,7 @@ QBShared.Gangs = {
             },
 			['3'] = {
                 name = 'Boss',
+                bankAuth = true,
 				isboss = true
             },
         },
@@ -58,6 +60,7 @@ QBShared.Gangs = {
             },
 			['3'] = {
                 name = 'Boss',
+                bankAuth = true,
 				isboss = true
             },
         },
@@ -76,6 +79,7 @@ QBShared.Gangs = {
             },
 			['3'] = {
                 name = 'Boss',
+                bankAuth = true,
 				isboss = true
             },
         },
@@ -94,6 +98,7 @@ QBShared.Gangs = {
             },
 			['3'] = {
                 name = 'Boss',
+                bankAuth = true,
 				isboss = true
             },
         },
@@ -112,6 +117,7 @@ QBShared.Gangs = {
             },
 			['3'] = {
                 name = 'Boss',
+                bankAuth = true,
 				isboss = true
             },
         },
@@ -130,6 +136,7 @@ QBShared.Gangs = {
             },
 			['3'] = {
                 name = 'Boss',
+                bankAuth = true,
 				isboss = true
             },
         },
@@ -148,6 +155,7 @@ QBShared.Gangs = {
             },
 			['3'] = {
                 name = 'Boss',
+                bankAuth = true,
 				isboss = true
             },
         },
@@ -167,6 +175,7 @@ QBShared.Gangs = {
             },
 			['3'] = {
                 name = 'Boss',
+                bankAuth = true,
 				isboss = true
             },
         },
