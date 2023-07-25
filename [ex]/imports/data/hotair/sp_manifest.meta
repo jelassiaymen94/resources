@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CScenarioPointManifest>
+    <VersionNumber value="0"/>
+    <RegionDefs>
+        <Item type="CScenarioPointRegionDef">
+            <Name>compcache:/w_balloon/balloon_festival_city_s</Name>
+            <AABB>
+                <min x="-2412.07642" y="-1882.61682" z="0.36824"/>
+                <max x="-965.484" y="-561.8999" z="420"/>
+            </AABB>
+        </Item>
+        <Item type="CScenarioPointRegionDef">
+            <Name>compcache:/w_balloon/balloon_tour_vinewood</Name>
+            <AABB>
+                <min x="-632.225" y="-103.713158" z="79.7553558"/>
+                <max x="1177.927" y="1165.87793" z="488.6703"/>
+            </AABB>
+        </Item>
+        <Item type="CScenarioPointRegionDef">
+            <Name>compcache:/w_balloon/balloon_festival_country_n</Name>
+            <AABB>
+                <min x="162.5766" y="3199.74146" z="30"/>
+                <max x="2189.08081" y="4765.625" z="630"/>
+            </AABB>
+        </Item>
+    </RegionDefs>
+    <Groups>
+        <Item type="CScenarioPointGroup">
+            <Name>balloon_festival_venice_beach</Name>
+            <EnabledByDefault value="true"/>
+        </Item>
+        <Item type="CScenarioPointGroup">
+            <Name>balloon_festival_venice_beach_race</Name>
+            <EnabledByDefault value="true"/>
+        </Item>
+        <Item type="CScenarioPointGroup">
+            <Name>balloon_tour_vinewood</Name>
+            <EnabledByDefault value="true"/>
+        </Item>
+        <Item type="CScenarioPointGroup">
+            <Name>balloon_festival_alamo_sea</Name>
+            <EnabledByDefault value="true"/>
+        </Item>
+    </Groups>
+    <InteriorNames/>
+</CScenarioPointManifest>

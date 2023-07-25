@@ -56,6 +56,21 @@ Config.Shells = {
             },
         }
     },
+     ["Gabz Motel"] = {
+        label = "Gabz Motel",
+        hash = 'gabz_mp_house_08_1_int',
+        doorOffset = { x = -0.5, y = -2.3, z = 0.0, h = 90.0, width = 1.5 },
+        stash = {
+            maxweight = 100000, 
+            slots = 12,
+        },
+        imgs = {
+            {
+                url = "https://cdn.discordapp.com/attachments/1101313033684394084/1101712181017460736/motel.webp",
+                label = "Motel",
+            },
+        }
+    },
 
     ["Modern Hotel"] = {
         label = "Modern Hotel",
