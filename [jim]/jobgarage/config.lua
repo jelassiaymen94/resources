@@ -100,7 +100,7 @@ Config = {
 				spawn =  vector4(381.46, -1625.76, 29.29, 319.89), -- dpd
 				out = vector4(392.77, -1632.79, 29.29, 47.55), --  vector4(381.46, -1625.76, 29.29, 319.89)
 				list = {
-					["npolvic"] = {
+					["npolvic"] = { -- npolvic
 						CustomName = "Crown Vic",
 						livery = 1,
 						rank = {0,1,2,3,4,5},
@@ -111,7 +111,7 @@ Config = {
 						
 						},
 					},
-					["npolchar"] = {
+					["npolchar"] = { -- npolchar
 						CustomName = "LSPD Dodge Charger",
 						livery = 1,
 						rank = {2,3,4,5},
@@ -125,7 +125,7 @@ Config = {
 						},
 					},
 					
-					["npolexp"] = {
+					["npolexp"] = { -- npolexp
 						CustomName = "Ford Explorer",
 						livery = 1,
 						rank = {1,2,3,4,5},
