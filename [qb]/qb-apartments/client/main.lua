@@ -319,7 +319,7 @@ local function LeaveApartment(house)
 
         DeleteApartmentTargets()
         
-    
+        exports['Polar-Sub']:toggleProps()
 end
 
 function SetClosestApartment()
