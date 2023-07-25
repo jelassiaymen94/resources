@@ -22,46 +22,7 @@ local isSpectating = false
 RegisterNetEvent('qb-admin:client:inventory', function(targetPed)
     TriggerServerEvent("inventory:server:OpenInventory", "otherplayer", targetPed)
 end)
-RegisterNetEvent('Polar-Admin:Client:Next', function(args)
 
-
-
-end)
-RegisterNetEvent('Polar-Admin:Client:Menu', function()
-
-    local first = {
-		{
-            header = 'Admin Stuff',
-            isMenuHeader = true
-        },
-		
-	}
-    QBCore.Functions.TriggerCallback('Polar-Admin:Server:Get', function(cb)
-        for _, v in pairs(cb) do
-            first[#first + 1] = {
-                header = v.header,
-                txt = v.txt,
-                icon = "fa-solid fa-bolt",
-                params = {
-                    event = "Polar-Admin:Client:Next",
-                    args = v.args
-                }
-            }
-        end
-        first[#first + 1] = {
-            header = 'Shit n Git',
-            icon = "fa-solid fa-angle-left",
-            params = {
-                event = "qb-gangmenu:client:OpenMenu",
-            }
-        }
-        exports['qb-menu']:openMenu(first)
-    end)
-	
-
-	
-	
-end)
 RegisterNetEvent('qb-admin:client:spectate', function(targetPed)
     local myPed = PlayerPedId()
     local targetplayer = GetPlayerFromServerId(targetPed)
@@ -88,10 +49,6 @@ end)
 
 RegisterNetEvent('qb-admin:client:SendReport', function(name, src, msg)
     TriggerServerEvent('qb-admin:server:SendReport', name, src, msg)
-end)
-
-RegisterNetEvent('qb-admin:client:SendStaffChat', function(name, msg)
-    TriggerServerEvent('qb-admin:server:Staffchat:addMessage', name, msg)
 end)
 
 local function getVehicleFromVehList(hash)
@@ -166,6 +123,23 @@ RegisterNetEvent('qb-admin:client:SetSpeed', function(speed)
     else
         SetRunSprintMultiplierForPlayer(ped, 1.0)
         SetSwimMultiplierForPlayer(ped, 1.0)
+    end
+end)
+
+RegisterNetEvent('qb-weapons:client:SetWeaponAmmoManual', function(weapon, ammo)
+    local ped = PlayerPedId()
+    if weapon ~= "current" then
+        weapon = weapon:upper()
+        SetPedAmmo(ped, GetHashKey(weapon), ammo)
+        QBCore.Functions.Notify(Lang:t("info.ammoforthe", {value = ammo, weapon = QBCore.Shared.Weapons[weapon]["label"]}), 'success')
+    else
+        weapon = GetSelectedPedWeapon(ped)
+        if weapon ~= nil then
+            SetPedAmmo(ped, weapon, ammo)
+            QBCore.Functions.Notify(Lang:t("info.ammoforthe", {value = ammo, weapon = QBCore.Shared.Weapons[weapon]["label"]}), 'success')
+        else
+            QBCore.Functions.Notify(Lang:t("error.no_weapon"), 'error')
+        end
     end
 end)
 
