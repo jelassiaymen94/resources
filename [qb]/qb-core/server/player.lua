@@ -85,7 +85,7 @@ function QBCore.Player.CheckPlayerData(source, PlayerData)
     PlayerData.charinfo.gender = PlayerData.charinfo.gender or 0
     PlayerData.charinfo.backstory = PlayerData.charinfo.backstory or 'placeholder backstory'
     PlayerData.charinfo.nationality = PlayerData.charinfo.nationality or 'USA'
-    PlayerData.charinfo.phone = PlayerData.charinfo.phone or QBCore.Functions.CreatePhoneNumber()
+    PlayerData.charinfo.phone = PlayerData.charinfo.phone or QBCore.Functions.CreatePhoneNumber(PlayerData.citizenid)
     PlayerData.charinfo.account = PlayerData.charinfo.account or QBCore.Functions.CreateAccountNumber()
     -- Metadata
     PlayerData.metadata = PlayerData.metadata or {}
@@ -846,11 +846,11 @@ function QBCore.Functions.CreateAccountNumber()
     return AccountNumber
 end
 
-function QBCore.Functions.CreatePhoneNumber()
+function QBCore.Functions.CreatePhoneNumber(id)
     local UniqueFound = false
     local PhoneNumber = nil
     while not UniqueFound do
-        PhoneNumber = math.random(100,999) .. math.random(1000000,9999999)
+        PhoneNumber = id .. math.random(100,999)
         local query = '%' .. PhoneNumber .. '%'
         local result = MySQL.prepare.await('SELECT COUNT(*) as count FROM players WHERE charinfo LIKE ?', { query })
         if result == 0 then
