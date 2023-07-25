@@ -6,7 +6,6 @@ description 'qb-pursuitmode'
 
 client_scripts { 
     "config.lua", 
-    "handling.lua", 
     "client.lua" 
 }
 
