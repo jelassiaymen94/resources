@@ -21,8 +21,7 @@ QBShared.Items = {
 
 
 
-	 ['WEAPON_BANANA'] 				     = {['name'] = 'WEAPON_BANANA', 			 	['label'] = 'Banana', 				['weight'] = 9000, 		['type'] = 'weapon', 	['ammotype'] = 'AMMO_BANANA_02',		['image'] = 'weapon_dp9.png', 			['unique'] = true, 		['useable'] = false, 	['description'] = 'Oh shit this is a new gun??'},
-	 
+	  
 	 
 	 
 	 ['weapon_dp9'] 				     = {['name'] = 'weapon_dp9', 			 	['label'] = 'Diamond Back 9', 				['weight'] = 9000, 		['type'] = 'weapon', 	['ammotype'] = 'AMMO_PISTOL',		['image'] = 'weapon_dp9.png', 			['unique'] = true, 		['useable'] = false, 	['description'] = 'Oh shit this is a new gun??'},
