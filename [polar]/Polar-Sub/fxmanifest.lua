@@ -8,7 +8,7 @@ version '1.0.0'
 shared_scripts {
 
 'shared/*.lua',
-'locales/en.lua',
+
 
 }
 
@@ -25,7 +25,6 @@ client_scripts {
 server_scripts {
 
 'server/*.lua',
-'richplayer.lua',
 '@oxmysql/lib/MySQL.lua',
 
 }
