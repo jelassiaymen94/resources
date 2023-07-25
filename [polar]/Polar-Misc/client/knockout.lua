@@ -5,13 +5,12 @@ local isdead = false
 
 CreateThread(function()
         while true do
-            Wait(100)
+            Wait(1)
             local ped = PlayerPedId()
             PlayerData = QBCore.Functions.GetPlayerData()
             if not knockedOut then
             if IsPedInMeleeCombat(ped) then
                 if (HasPedBeenDamagedByWeapon(ped, GetHashKey("WEAPON_UNARMED"), 0)) then
-                    print(count)
                     count += 1
                    if count > 2 then
                     if GetEntityHealth(ped) < 160 then

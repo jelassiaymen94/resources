@@ -13,7 +13,7 @@ end)
 RegisterNetEvent('QBCore:Client:OnPermissionUpdate', function(UserGroup)
     group = UserGroup
 end)
---[[
+
 CreateThread(function()
     while true do
         Wait(1000)
@@ -57,4 +57,4 @@ CreateThread(function()
             end
         end
     end
-end)]]
+end)
