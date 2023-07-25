@@ -78,19 +78,24 @@ RegisterNetEvent('weapons:client:AddAmmo', function(type, amount, itemData)
     local ped = PlayerPedId()
     local weapon = GetSelectedPedWeapon(ped)
     if CurrentWeaponData then
-        print()
-        if QBCore.Shared.Weapons[weapon]["ammotype"] == type:upper()
-        and QBCore.Shared.Weapons[weapon]["name"] ~= "weapon_unarmed"
-        then
 
+        if QBCore.Shared.Weapons[weapon]["ammotype"] == type:upper() then
+        if QBCore.Shared.Weapons[weapon]["name"] ~= "weapon_unarmed" then
 
-            
-            local total = GetAmmoInPedWeapon(ped, weapon)
-            local _, maxAmmo = GetMaxAmmo(ped, weapon)
-
-
-
-            if total < maxAmmo then
+            local sped = nil
+            local sub2 = nil
+            local ammo = GetAmmoInPedWeapon(ped, weapon)
+            local total = QBCore.Shared.Weapons[weapon]["maxammo"]
+            local sub = ammo + amount
+            if sub < total then 
+                sped = sub
+                sub2 = amount
+            else
+                sped = total
+                sub2 = total - ammo
+                QBCore.Functions.Notify(Lang:t('error.max_ammo'), "error")
+            end
+                SetCurrentPedWeapon(PlayerPedId(), GetHashKey('WEAPON_UNARMED'), true)
                 QBCore.Functions.Progressbar("taking_bullets", Lang:t('info.loading_bullets'), Config.ReloadTime, false, true, {
                     disableMovement = false,
                     disableCarMovement = false,
@@ -98,9 +103,11 @@ RegisterNetEvent('weapons:client:AddAmmo', function(type, amount, itemData)
                     disableCombat = true,
                 }, {}, {}, {}, function() -- Done
                     if QBCore.Shared.Weapons[weapon] then
-                        AddAmmoToPed(ped,weapon,amount)
-                        TaskReloadWeapon(ped)
-                        TriggerServerEvent("weapons:server:UpdateWeaponAmmo", CurrentWeaponData, total + amount)
+                        AddAmmoToPed(ped,weapon,sub2)
+                        --TaskReloadWeapon(ped)
+                        TriggerServerEvent("weapons:server:UpdateWeaponAmmo", CurrentWeaponData, sped)
+                        sub2 = nil
+                        sped = nil
                         TriggerServerEvent('weapons:server:removeWeaponAmmoItem', itemData)
                         TriggerEvent('inventory:client:ItemBox', QBCore.Shared.Items[itemData.name], "remove")
                         TriggerEvent('QBCore:Notify', Lang:t('success.reloaded'), "success")
@@ -108,12 +115,12 @@ RegisterNetEvent('weapons:client:AddAmmo', function(type, amount, itemData)
                 end, function()
                     QBCore.Functions.Notify(Lang:t('error.canceled'), "error")
                 end)
-            else
-                QBCore.Functions.Notify(Lang:t('error.max_ammo'), "error")
-            end
         else
             QBCore.Functions.Notify(Lang:t('error.no_weapon'), "error")
         end
+    else
+        QBCore.Functions.Notify(Lang:t('error.no_weapon'), "error")
+    end
     else
         QBCore.Functions.Notify(Lang:t('error.no_weapon'), "error")
     end

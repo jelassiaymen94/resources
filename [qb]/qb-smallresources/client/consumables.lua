@@ -501,6 +501,7 @@ RegisterNetEvent('consumables:client:ResetParachute', function()
 end)
 
 RegisterNetEvent('consumables:client:UseArmor', function()
+    SetCurrentPedWeapon(PlayerPedId(), GetHashKey('WEAPON_UNARMED'), true)
     TriggerEvent('animations:client:EmoteCommandStart', {"shakeoff"})
     if GetPedArmour(PlayerPedId()) >= 75 then QBCore.Functions.Notify('You already have enough armor on!', 'error') return end
     QBCore.Functions.Progressbar("use_armor", "Putting on the body armour..", 5000, false, true, {
@@ -517,6 +518,7 @@ RegisterNetEvent('consumables:client:UseArmor', function()
 end)
 
 RegisterNetEvent('consumables:client:Usepdarmor', function()
+    SetCurrentPedWeapon(PlayerPedId(), GetHashKey('WEAPON_UNARMED'), true)
     TriggerEvent('animations:client:EmoteCommandStart', {"shakeoff"})
     if GetPedArmour(PlayerPedId()) == 100 then QBCore.Functions.Notify('You already have enough armor on!', 'error') return end
     local ped = PlayerPedId()
