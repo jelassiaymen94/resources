@@ -16,12 +16,18 @@ QBShared.Items = {
 
 
      
+	
 
 
 
 
-
+	 ['WEAPON_BANANA'] 				     = {['name'] = 'WEAPON_BANANA', 			 	['label'] = 'Banana', 				['weight'] = 9000, 		['type'] = 'weapon', 	['ammotype'] = 'AMMO_BANANA_02',		['image'] = 'weapon_dp9.png', 			['unique'] = true, 		['useable'] = false, 	['description'] = 'Oh shit this is a new gun??'},
+	 
+	 
+	 
 	 ['weapon_dp9'] 				     = {['name'] = 'weapon_dp9', 			 	['label'] = 'Diamond Back 9', 				['weight'] = 9000, 		['type'] = 'weapon', 	['ammotype'] = 'AMMO_PISTOL',		['image'] = 'weapon_dp9.png', 			['unique'] = true, 		['useable'] = false, 	['description'] = 'Oh shit this is a new gun??'},
+	
+
 	 ['weapon_mp5'] 				     = {['name'] = 'weapon_mp5', 			 	['label'] = 'Mp5', 				['weight'] = 25000, 		['type'] = 'weapon', 	['ammotype'] = 'AMMO_SMG',			['image'] = 'weapon_mp5.png', 			['unique'] = true, 		['useable'] = false, 	['description'] = 'A SWAT grade weapon, highly illegal'},
 	 ['weapon_dildo'] 				 = {['name'] = 'weapon_dildo', 			 	['label'] = 'Dildo', 			['weight'] = 3000, 		['type'] = 'weapon', 	['ammotype'] = 'nil',			    ['image'] = 'weapon_dildo.png', 		['unique'] = true, 		['useable'] = false, 	['description'] = 'YOU CAN GIVE THIS TO YOUR GIRLFRIEND'},
 	 ['weapon_groza'] 				 = {['name'] = 'weapon_groza', 			 	['label'] = 'OTs 14', 			['weight'] = 25000, 		['type'] = 'weapon', 	['ammotype'] = 'AMMO_RIFLE',		['image'] = 'weapon_groza.png', 		['unique'] = true, 		['useable'] = false, 	['description'] = 'A Russian Semi-Reliable Assault Rifle'},
