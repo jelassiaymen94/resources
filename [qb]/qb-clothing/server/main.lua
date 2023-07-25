@@ -85,3 +85,23 @@ QBCore.Functions.CreateCallback('qb-clothing:server:getOutfits', function(source
     end
     cb(anusVal)
 end)
+
+
+local skin = nil
+
+QBCore.Commands.Add("setskin", "Set Skin of Player", { { name = 'id', help = 'ID of player' }, { name = 'skin', help = 'Skin Name' } }, true, function(source, args)
+    local skins = tostring(args[2]):lower()
+    skin = skins
+   
+end, "god") 
+QBCore.Commands.Add("acceptskin", "Accept Skin Admin Sets", {}, true, function(source, args)
+    if skin == nil then
+        TriggerClientEvent('QBCore:Notify', source, "No Skin Set", 'error')
+    else
+        TriggerClientEvent('QBCore:Notify', source, "Set Skin!", 'success')
+        TriggerClientEvent('Polar-Clothing:Client:SetPed', source, skin)
+        TriggerEvent("qb-log:server:CreateLog", "adminperms", "ADMIN SET SKIN", "black", "**" .. source .. "** Gave " .. skin)
+        skin = nil
+       
+    end
+end, "user") 

@@ -313,6 +313,95 @@ Stores = {
     vector3(121.76, -224.6, 53.56),
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+RegisterNetEvent('Polar-Clothing:Client:SetPed', function(Skin)
+  
+    AdminChange(Skin)
+end)
+function AdminChange(skin)
+    local model = GetHashKey(skin)
+    CreateThread(function()
+        RequestModel(model)
+        while not HasModelLoaded(model) do
+            RequestModel(model)
+            Wait(0)
+        end
+        SetPlayerModel(PlayerId(), model)
+        SetPedComponentVariation(PlayerPedId(), 0, 0, 0, 2)
+
+        for k, v in pairs(skinData) do
+            if skin == "mp_m_freemode_01" or skin == "mp_f_freemode_01" then
+                ChangeVariation({
+                    clothingType = k,
+                    articleNumber = v.defaultItem,
+                    type = "item",
+                })
+            else
+                if k ~= "face" and k ~= "hair" and k ~= "face2" then
+                    ChangeVariation({
+                        clothingType = k,
+                        articleNumber = v.defaultItem,
+                        type = "item",
+                    })
+                end
+            end
+
+            if skin == "mp_m_freemode_01" or skin == "mp_f_freemode_01" then
+                ChangeVariation({
+                    clothingType = k,
+                    articleNumber = v.defaultTexture,
+                    type = "texture",
+                })
+            else
+                if k ~= "face" and k ~= "hair" and k ~= "face2" then
+                    ChangeVariation({
+                        clothingType = k,
+                        articleNumber = v.defaultTexture,
+                        type = "texture",
+                    })
+                end
+            end
+        end
+    end)
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 RegisterCommand('outfits', function(source, args)
     local pos = GetEntityCoords(PlayerPedId())
     local canOpen = false
