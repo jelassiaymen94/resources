@@ -33,3 +33,11 @@ function pause()
     end
 end
 
+
+
+
+CreateThread(function()
+    SetWeaponDamageModifier("weapon_unarmed", 0.2)
+end)
+
+
