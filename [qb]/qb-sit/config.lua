@@ -1,6 +1,6 @@
 Config = {}
 
-Config.MaxDistance = 5
+Config.MaxDistance = 2
 
 Config.Color = 'rgb(100 100 100)'
 
