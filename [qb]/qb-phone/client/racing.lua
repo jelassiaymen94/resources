@@ -8,16 +8,8 @@ RegisterNUICallback('GetAvailableRaces', function(_, cb)
     end)
 end)
 
-RegisterNUICallback('JoinRace', function(data)
-    local veh = GetVehiclePedIsIn(PlayerPedId(), false)
-    local plate = GetVehicleNumberPlateText(veh)
-    if IsPedInAnyVehicle(PlayerPedId()) then
-        if GetPedInVehicleSeat(veh, -1) == PlayerPedId() then
-            TriggerServerEvent('qb-lapraces:server:JoinRace', data.RaceData, plate)
-        end
-    else
-        QBCore.Functions.Notify('You need to be in a vehicle')
-    end
+RegisterNUICallback('JoinRace', function(data, cb)
+    TriggerServerEvent('qb-lapraces:server:JoinRace', data.RaceData)
     cb("ok")
 end)
 
@@ -51,9 +43,8 @@ RegisterNUICallback('GetTrackData', function(data, cb)
     end, data.RaceId)
 end)
 
-
 RegisterNUICallback('SetupRace', function(data, cb)
-    TriggerServerEvent('qb-lapraces:server:SetupRace', data.RaceId, tonumber(data.AmountOfLaps), data.isPhasing)
+    TriggerServerEvent('qb-lapraces:server:SetupRace', data.RaceId, tonumber(data.AmountOfLaps))
     cb("ok")
 end)
 
@@ -62,19 +53,20 @@ RegisterNUICallback('HasCreatedRace', function(_, cb)
         cb(HasCreated)
     end)
 end)
-RegisterNUICallback('IsInRace', function(data, cb)
-    local InRace = exports['pug-racing']:IsInRace()
+
+RegisterNUICallback('IsInRace', function(_, cb)
+    local InRace = exports['qb-lapraces']:IsInRace()
     cb(InRace)
 end)
 
 RegisterNUICallback('IsAuthorizedToCreateRaces', function(data, cb)
     QBCore.Functions.TriggerCallback('qb-lapraces:server:IsAuthorizedToCreateRaces', function(IsAuthorized, NameAvailable)
-        local data = {
+        local sendData = {
             IsAuthorized = IsAuthorized,
-            IsBusy = exports['pug-racing']:IsInEditor(),
+            IsBusy = exports['qb-lapraces']:IsInEditor(),
             IsNameAvailable = NameAvailable,
         }
-        cb(data)
+        cb(sendData)
     end, data.TrackName)
 end)
 
@@ -88,33 +80,31 @@ RegisterNUICallback('GetRacingLeaderboards', function(_, cb)
         cb(Races)
     end)
 end)
+
 RegisterNUICallback('RaceDistanceCheck', function(data, cb)
     QBCore.Functions.TriggerCallback('qb-lapraces:server:GetRacingData', function(RaceData)
-        if RaceData then
-            local ped = PlayerPedId()
-            local coords = GetEntityCoords(ped)
-            local checkpointcoords = RaceData.Checkpoints[1].coords
-            local dist = #(coords - vector3(checkpointcoords.x, checkpointcoords.y, checkpointcoords.z))
-            if dist <= 115.0 then
-                if data.Joined then
-                    TriggerEvent('qb-lapraces:client:WaitingDistanceCheck')
-                end
-                cb(true)
-            else
-                QBCore.Functions.Notify('You\'re too far away from the race. GPS set.', "error", 5000)
-                SetNewWaypoint(checkpointcoords.x, checkpointcoords.y)
-                cb(false)
+        local ped = PlayerPedId()
+        local coords = GetEntityCoords(ped)
+        local checkpointcoords = RaceData.Checkpoints[1].coords
+        local dist = #(coords - vector3(checkpointcoords.x, checkpointcoords.y, checkpointcoords.z))
+        if dist <= 115.0 then
+            if data.Joined then
+                TriggerEvent('qb-lapraces:client:WaitingDistanceCheck')
             end
+            cb(true)
         else
-            QBCore.Functions.Notify('You need to select a race.', "error", 5000)
+            QBCore.Functions.Notify('You\'re too far away from the race. GPS set.', "error", 5000)
+            SetNewWaypoint(checkpointcoords.x, checkpointcoords.y)
+            cb(false)
         end
     end, data.RaceId)
 end)
+
 RegisterNUICallback('IsBusyCheck', function(data, cb)
     if data.check == "editor" then
-        cb(exports['pug-racing']:IsInEditor())
+        cb(exports['qb-lapraces']:IsInEditor())
     else
-        cb(exports['pug-racing']:IsInRace())
+        cb(exports['qb-lapraces']:IsInRace())
     end
 end)
 

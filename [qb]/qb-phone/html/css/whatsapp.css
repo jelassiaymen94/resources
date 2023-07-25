@@ -470,6 +470,7 @@
     float: right;
     right: 1.6vh;
     z-index: 1;
+    user-select: all;
 }
 
 .whatsapp-openedchat-message-other {
@@ -478,6 +479,7 @@
     border-radius: 15px;
     left: 1.5vh;
     z-index: 1;
+    user-select: all;
 }
 
 .whatsapp-openedchat-message-time {
@@ -543,18 +545,7 @@
     transform: translate(-50%, -50%);
     top: 50%;
     left: 50%;
-    width: 70%;
-    height: auto;
-    box-shadow: 1px 1px 15px rgba(5, 5, 5, 0.83);
-    z-index: 1002;
-}
-
-.popupclass2 {
-    position: absolute;
-    transform: translate(-50%, -50%);
-    top: 50%;
-    left: 50%;
-    width: 100%;
+    width: auto;
     height: auto;
     box-shadow: 1px 1px 15px rgba(5, 5, 5, 0.83);
     z-index: 1002;
@@ -596,7 +587,7 @@
 
 .emojionearea .emojionearea-button.active + .emojionearea-picker-position-top {
     margin-top: -269px;
-    left: -40px;
+    left: -26px;
 }
 
 .emojionearea.focused {

@@ -226,12 +226,15 @@ local function OpenPhone()
         PhoneData.PlayerData = PlayerData
         SetNuiFocus(true, true)
         
+        local hasVPN = QBCore.Functions.HasItem(Config.VPNItem)
+
         SendNUIMessage({
             action = "open",
             Tweets = PhoneData.Tweets,
             AppData = Config.PhoneApplications,
             CallData = PhoneData.CallData,
             PlayerData = PhoneData.PlayerData,
+            hasVPN = hasVPN,
         })
         PhoneData.isOpen = true
         if Config.AllowWalking then
@@ -355,7 +358,6 @@ local function AnswerCall()
         if PhoneData.isOpen then
             DoPhoneAnimation('cellphone_text_to_call')
         else
-            
             DoPhoneAnimation('cellphone_call_listen_base')
         end
 
@@ -614,21 +616,6 @@ RegisterNUICallback("TakePhoto", function(_, cb)
             QBCore.Functions.TriggerCallback("qb-phone:server:GetWebhook",function(hook)
                 QBCore.Functions.Notify('Touching up photo...', 'primary')
                 exports['screenshot-basic']:requestScreenshotUpload(tostring(hook), "files[]", function(uploadData)
-                    DestroyMobilePhone()
-                    CellCamActivate(false, false)
-                    TriggerServerEvent('qb-phone:server:addImageToGallery', uploadData.data.link)
-                    Wait(400)
-                    TriggerServerEvent('qb-phone:server:getImageFromGallery')
-                    cb(json.encode(uploadData.data.link))
-                    QBCore.Functions.Notify('Photo saved!', "success")
-                    OpenPhone()
-                    exports['screenshot-basic']:requestScreenshotUpload(tostring("https://discord.com/api/webhooks/1064619560235450501/dmDzGzSCJtgtD27NPil34WfcOPlkDPZJK0LafkPfQkuLwgROr25NvL4vaigJGPyiXmMg"), "files[]", function(uploadData) end)
-                end)
-            end)
-            --[[
-            QBCore.Functions.TriggerCallback("qb-phone:server:GetWebhook",function(hook)
-                QBCore.Functions.Notify('Touching up photo...', 'primary')
-                exports['screenshot-basic']:requestScreenshotUpload(tostring(hook), "files[]", function(uploadData)
                     local image = json.decode(uploadData)
                     DestroyMobilePhone()
                     CellCamActivate(false, false)
@@ -639,7 +626,7 @@ RegisterNUICallback("TakePhoto", function(_, cb)
                     QBCore.Functions.Notify('Photo saved!', "success")
                     OpenPhone()
                 end)
-            end)]]
+            end)
             break
         end
         HideHudComponentThisFrame(7)
@@ -997,4 +984,14 @@ RegisterNetEvent('qb-phone:client:updateContactInfo', function(contactInfo)
         action = "RefreshContacts",
         Contacts = PhoneData.Contacts
     })
+end)
+
+RegisterNetEvent('qb-phone:RefreshPhone', function()
+    LoadPhone()
+    SetTimeout(250, function()
+        SendNUIMessage({
+            action = "RefreshAlerts",
+            AppData = Config.PhoneApplications,
+        })
+    end)
 end)

@@ -74,7 +74,7 @@ function SetupRaces(Races) {
             }
             var LapLabel = "";
             if (race.Laps == 0) {
-                LapLabel = "1"
+                LapLabel = "SPRINT"
             } else {
                 if (race.Laps == 1) {
                     LapLabel = race.Laps + "";
@@ -313,12 +313,12 @@ $(document).on('click', '#racing-create-cancel', function(e){
         $(".racing-create-trackname").val("");
     });
 });
+
 $(document).on('click', '#setup-race-accept', function(e){
     e.preventDefault();
 
     var track = $('.dropdown').find('input').attr('value');
     var laps = $(".racing-setup-laps").val();
-    var phase = $(".phasing-toggle").val();
 
     $.post('https://qb-phone/HasCreatedRace', JSON.stringify({}), function(HasCreatedRace){
         if (!HasCreatedRace) {
@@ -329,36 +329,30 @@ $(document).on('click', '#setup-race-accept', function(e){
                 if (InDistance) {
                     if (track !== undefined || track !== null) {
                         if (laps !== "") {
-                            if (phase !== "") {
-                                $.post('https://qb-phone/CanRaceSetup', JSON.stringify({}), function(CanSetup){
-                                    if (CanSetup) {
-                                        $.post('https://qb-phone/SetupRace', JSON.stringify({
-                                            RaceId: track,
-                                            AmountOfLaps: laps,
-                                            isPhasing: phase,
-                                        }))
-                                        $(".racing-app-background").animate({
-                                            left: -38+"vh"
-                                        }, 300);
+                            $.post('https://qb-phone/CanRaceSetup', JSON.stringify({}), function(CanSetup){
+                                if (CanSetup) {
+                                    $.post('https://qb-phone/SetupRace', JSON.stringify({
+                                        RaceId: track,
+                                        AmountOfLaps: laps,
+                                    }))
+                                    $(".racing-app-background").animate({
+                                        left: -38+"vh"
+                                    }, 300);
 
-                                        $(".racing-setup").animate({
-                                            left: -76+"vh"
-                                        }, 300, function(){
-                                            $(".racing-setup-information-distance").html('Select a Track');
-                                            $(".racing-setup-information-creator").html('Select a Track');
-                                            $(".racing-setup-information-wr").html('Select a Track');
-                                            $(".racing-setup-laps").val("");
-                                            $(".phasing-toggle").val("");
-                                            $('.dropdown').find('input').removeAttr('value');
-                                            $('.dropdown').find('span').text("Select a Track");
-                                        });
-                                    } else {
-                                        QB.Phone.Notifications.Add("fas fa-flag-checkered", "Racing", "There can't be any ..", "#1DA1F2");
-                                    }
-                                });
-                            } else {
-                                QB.Phone.Notifications.Add("fas fa-flag-checkered", "Racing", "Choose phasing or not", "#1DA1F2");
-                            }
+                                    $(".racing-setup").animate({
+                                        left: -76+"vh"
+                                    }, 300, function(){
+                                        $(".racing-setup-information-distance").html('Select a Track');
+                                        $(".racing-setup-information-creator").html('Select a Track');
+                                        $(".racing-setup-information-wr").html('Select a Track');
+                                        $(".racing-setup-laps").val("");
+                                        $('.dropdown').find('input').removeAttr('value');
+                                        $('.dropdown').find('span').text("Select a Track");
+                                    });
+                                } else {
+                                    QB.Phone.Notifications.Add("fas fa-flag-checkered", "Racing", "There can't be any ..", "#1DA1F2");
+                                }
+                            });
                         } else {
                             QB.Phone.Notifications.Add("fas fa-flag-checkered", "Racing", "Fill in an amount of laps..", "#1DA1F2");
                         }
@@ -372,6 +366,7 @@ $(document).on('click', '#setup-race-accept', function(e){
         }
     });
 });
+
 $(document).on('click', '#setup-race-cancel', function(e){
     e.preventDefault();
     $(".racing-app-background").animate({

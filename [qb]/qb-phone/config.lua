@@ -1,25 +1,25 @@
 Config = Config or {}
 
-
-
-
-
-Config.FirstStart = false -- used for setting up new employment jobs
-
-
+-- Configs for Payment and Banking
 
 Config.RenewedBanking = true -- Either put this to true or false if you use Renewed Banking or not
 Config.RenewedFinances = true -- Either put this to true or false if you use Renewed Finances or not
 Config.RenewedCameras = true -- Either put this to true or false if you use Renewed Cameras or not
 
+Config.BillingCommissions = { -- This is a percentage (0.10) == 10%
+    mechanic = 0.10
+}
+
+Config.FirstStart = false
+
 -- Web hook for camera ( NOT GO PRO )
---Config.Webhook = 'https://discord.com/api/webhooks/1064619560235450501/dmDzGzSCJtgtD27NPil34WfcOPlkDPZJK0LafkPfQkuLwgROr25NvL4vaigJGPyiXmMg'
 Config.Webhook = 'imgur'
+
 -- Item name for pings app ( Having a VPN sends an anonymous ping, else sends the players name)
 Config.VPNItem = 'vpn'
 
 -- The garage the vehicle goes to when you sell a car to a player
-Config.SellGarage = 'legionsquare'
+Config.SellGarage = 'altastreet'
 
 -- How Long Does The Player Have To Accept The Ping - This Is In Seconds
 Config.Timeout = 360
@@ -38,7 +38,7 @@ Config.MailDuration = 72 -- How many hours to load Mails (72 will load the past 
 
 Config.RepeatTimeout = 4000
 Config.CallRepeats = 10
-Config.AllowWalking = true -- Allow walking and driving with phone out
+Config.AllowWalking = false -- Allow walking and driving with phone out
 
 
 Config.PhoneApplications = {
