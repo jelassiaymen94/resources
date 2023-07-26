@@ -5,7 +5,7 @@ local vehicleDevMode = false
 local banreason = 'Unknown'
 local kickreason = 'Unknown'
 local menuLocation = 'topright' -- e.g. topright (default), topleft, bottomright, bottomleft
-
+local QBCore = exports['qb-core']:GetCoreObject()
 -- Main Menus
 local menu1 = MenuV:CreateMenu(false, Lang:t("menu.admin_menu"), menuLocation, 220, 20, 60, 'size-125', 'none', 'menuv', 'test1')
 local menu2 = MenuV:CreateMenu(false, Lang:t("menu.admin_options"), menuLocation, 220, 20, 60, 'size-125', 'none', 'menuv', 'test2')
