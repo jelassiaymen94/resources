@@ -119,13 +119,6 @@ local menu2_admin_display_blips = menu2:AddCheckbox({
     description = Lang:t("desc.blips_desc")
 })
 
---give weapons
-menu2:AddButton({
-    icon = '🎁',
-    label = Lang:t("menu.spawn_weapons"),
-    value = menu15,
-    description = Lang:t("desc.spawn_weapons_desc")
-})
 
 -- Server Options Menu Buttons
 local menu3_server_weather = menu3:AddButton({
@@ -328,7 +321,7 @@ local menu7_dev_noclip = menu7:AddCheckbox({
 menu7:AddButton({
     icon = '🔍',
     label = Lang:t("menu.entity_view_options"),
-    value = menu14,
+    value = menu6,
     description = Lang:t("desc.entity_view_desc")
 })
 
@@ -414,20 +407,6 @@ menu2_admin_god_mode:On('change', function(_, _, _)
         SetPlayerInvincible(PlayerId(), false)
     end
 end)
-
--- Weapons list
-for _,v in pairs(QBCore.Shared.Weapons) do
-    menu15:AddButton({icon = '🎁',
-        label = v.label ,
-        value = v.value ,
-        description = Lang:t("desc.spawn_weapons_desc"),
-        select = function(_)
-            TriggerServerEvent('qb-admin:giveWeapon', v.name)
-            QBCore.Functions.Notify(Lang:t("success.spawn_weapon"))
-        end
-    })
-end
-
 
 --[[
     Player Management Options functions
@@ -910,7 +889,7 @@ end)
 --[[
     Developer Options functions
 --]]
-local entity_view_distance = menu14:AddSlider({
+local entity_view_distance = menu6:AddSlider({
     icon = '📏',
     label = Lang:t("menu.entity_view_distance"),
     value = GetCurrentEntityViewDistance(),
@@ -957,35 +936,35 @@ local entity_view_distance = menu14:AddSlider({
     }}
 })
 
-local entity_view_copy_info = menu14:AddButton({
+local entity_view_copy_info = menu6:AddButton({
     icon = '📋',
     label = Lang:t("menu.entity_view_freeaim_copy"),
     value = 'freeaimEntity',
     description = Lang:t("desc.entity_view_freeaim_copy_desc")
 })
 
-local entity_view_freeaim = menu14:AddCheckbox({
+local entity_view_freeaim = menu6:AddCheckbox({
     icon = '🔫',
     label = Lang:t("menu.entity_view_freeaim"),
     value = nil,
     description = Lang:t("desc.entity_view_freeaim_desc")
 })
 
-local entity_view_vehicle = menu14:AddCheckbox({
+local entity_view_vehicle = menu6:AddCheckbox({
     icon = '🚗',
     label = Lang:t("menu.entity_view_vehicles"),
     value = nil,
     description = Lang:t("desc.entity_view_vehicles_desc")
 })
 
-local entity_view_ped = menu14:AddCheckbox({
+local entity_view_ped = menu6:AddCheckbox({
     icon = '🧍‍♂‍',
     label = Lang:t("menu.entity_view_peds"),
     value = nil,
     description = Lang:t("desc.entity_view_peds_desc")
 })
 
-local entity_view_object = menu14:AddCheckbox({
+local entity_view_object = menu6:AddCheckbox({
     icon = '📦',
     label = Lang:t("menu.entity_view_objects"),
     value = nil,
@@ -1199,22 +1178,5 @@ local function OpenDealerMenu(dealer)
             description = Lang:t("desc.dealerremove_desc") .. " " .. dealer["name"]
         }
     }
-    for _, v in ipairs(elements) do
-        EditDealer:AddButton({
-            icon = v.icon,
-            label = ' ' .. v.label,
-            value = v.value,
-            description = v.description,
-            select = function(btn)
-                local values = btn.Value
-                if values == "goto" then
-                    TriggerServerEvent('QBCore:CallCommand', "dealergoto", { dealer["name"] })
-                elseif values == "remove" then
-                    TriggerServerEvent('QBCore:CallCommand', "deletedealer", { dealer["name"] })
-                    EditDealer:Close()
-                    menu6:Close()
-                end
-            end
-        })
-    end
+    
 end
