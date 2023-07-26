@@ -36,7 +36,7 @@ QBCore.Functions.CreateCallback('Polar-Tattoos:PurchaseTattoo', function(source,
 
      cb(true)
 
-    TriggerClientEvent('Apply:Tattoo', source, tattoo, tattooList)
+    TriggerClientEvent('Polar-Tattoos:Client:ApplyTatoo', source, tattoo, tattooList)
     else
         TriggerClientEvent('QBCore:Notify', source, "not enough cash", "error")
     end
@@ -45,7 +45,7 @@ end)
 
 
 
-RegisterNetEvent("Polar-Tattoos:server:RemoveTattoo", function(tattooList)
+RegisterNetEvent("Polar-Tattoos:Server:RemoveTattoo", function(tattooList)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
 

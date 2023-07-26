@@ -1,4 +1,4 @@
-local QBCore = exports[Config.CoreObject]:GetCoreObject()
+local QBCore = exports['qb-core']:GetCoreObject()
 local currentTattoos = {}
 local cam = nil
 local opacity = 1
@@ -6,9 +6,33 @@ local Clothing = {}
 local Tattoshopprice = {}
 local Tattoshoppriceended = {}
 local ClothingSaveAs = false
-
-RegisterNetEvent('Apply:Tattoo')
-AddEventHandler('Apply:Tattoo', function(tats)
+local AllTattooList = json.decode(LoadResourceFile(GetCurrentResourceName(), 'tattoos.json'))
+local TattooCats = {
+	{"ZONE_HEAD", "Head", {vec(0.0, 0.7, 0.7), vec(0.7, 0.0, 0.7), vec(0.0, -0.7, 0.7), vec(-0.7, 0.0, 0.7)}, vec(0.0, 0.0, 0.5)},
+	{"ZONE_LEFT_LEG", "Left Leg", {vec(-0.2, 0.7, -0.7), vec(-0.7, 0.0, -0.7), vec(-0.2, -0.7, -0.7)}, vec(-0.2, 0.0, -0.6)},
+	{"ZONE_LEFT_ARM", "Left Arm", {vec(-0.4, 0.5, 0.2), vec(-0.7, 0.0, 0.2), vec(-0.4, -0.5, 0.2)}, vec(-0.2, 0.0, 0.2)},
+	{"ZONE_RIGHT_LEG", "Right Leg", {vec(0.2, 0.7, -0.7), vec(0.7, 0.0, -0.7), vec(0.2, -0.7, -0.7)}, vec(0.2, 0.0, -0.6)},
+	{"ZONE_TORSO", "Torso", {vec(0.0, 0.7, 0.2), vec(0.0, -0.7, 0.2)}, vec(0.0, 0.0, 0.2)},
+	{"ZONE_RIGHT_ARM", "Right Arm", {vec(0.4, 0.5, 0.2), vec(0.7, 0.0, 0.2), vec(0.4, -0.5, 0.2)}, vec(0.2, 0.0, 0.2)},
+}
+local targetlocs = {
+	[1] = vector3(1322.14, -1656.16, 53.16 - 1.12),
+    [2] = vector3(326.11, 181.97, 104.47 - 1.12),
+    [3] = vector3(-1154.97, -1429.57, 5.84 - 1.12),
+    [4] = vector3(-3171.14, 1079.47, 21.72 - 1.12),
+  --  [5] = vector3(1867.09, 3747.26, 33.91 - 1.12), -- pillbox
+  --  [6] = vector3(-296.83, 6199.8, 32.35 - 1.12), -- viceroy
+}
+local Shops = {
+	vec(1322.6, -1651.9, 51.2),
+	vec(-1153.6, -1425.6, 4.9),
+	vec(322.1, 180.4, 103.5),
+	vec(-3170.0, 1075.0, 20.8),
+	vec(1864.6, 3747.7, 33.0),
+	vec(-293.7, 6200.0, 31.4)
+}
+RegisterNetEvent('Polar-Tattoos:Client:ApplyTatoo')
+AddEventHandler('Polar-Tattoos:Client:ApplyTatoo', function(tats)
     QBCore.Functions.TriggerCallback('Polar-Tattoos:GetPlayerTattoos', function(tattooList)
         if tattooList then
 			ClearPedDecorations(PlayerPedId())
@@ -44,14 +68,15 @@ local function refreshTattoos()
     end)
 end
 
-RegisterNetEvent(Config.Core..':Client:OnPlayerLoaded', function()
+RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function()
 	Wait(5000)
 	refreshTattoos()
+	targets()
 end)
 
 CreateThread(function()
 	AddTextEntry("Tattoos", "Tattoo Shop")
-	for k, v in pairs(Config.Shops) do
+	for k, v in pairs(Shops) do
 		local blip = AddBlipForCoord(v)
 		SetBlipSprite(blip, 75)
 		SetBlipColour(blip, 0)
@@ -61,7 +86,33 @@ CreateThread(function()
 		EndTextCommandSetBlipName(blip)
 	end
 end)
+CreateThread(function()
+	targets()
+end)
+function targets()
 
+	for k, v in pairs(targetlocs) do
+        exports['qb-target']:AddBoxZone("tattoshops"..k, vector3(v.x, v.y, v.z), 1.5, 1.5, {
+            name = "tattoshops"..k,
+            heading = -72,
+            debugPoly = false,
+            minZ = v.z - 2,
+            maxZ = v.z + 2,
+        }, {
+            options = {
+                {
+                    type = "client",
+                    event = "Polar-Tattoos:Client:GoToMeno",
+                    icon = "fa-solid fa-pen",
+                    label = "Tattoo Shop",
+                }
+            },
+            distance = 1.5
+        })
+    end
+
+
+end
 
 
 function DrawTattoo(collection, name)
@@ -147,7 +198,7 @@ function GetNaked()
 					["mask"]         = { item = 0, texture = 0},  -- Masker
 				},
 			}
-			TriggerEvent(Config.TriggerName..'clothing:client:loadOutfit', nakedMale)
+			TriggerEvent('qb-clothing:Client:loadOutfit', nakedMale)
 		else
 			local nakedFemale = {
 				outfitData = {
@@ -164,12 +215,12 @@ function GetNaked()
 					["mask"]         = { item = 0, texture = 0},  -- Masker
 				},
 			}
-			TriggerEvent(Config.TriggerName..'clothing:client:loadOutfit', nakedFemale)
+			TriggerEvent('qb-clothing:Client:loadOutfit', nakedFemale)
 		end
 end
 
 function ResetSkin()
-	TriggerServerEvent(Config.TriggerName.."clothes:loadPlayerSkin")
+	TriggerServerEvent("qb-clothes:loadPlayerSkin")
 	Wait(100)
 	ClearPedDecorations(PlayerPedId())
 	for k, v in pairs(currentTattoos) do
@@ -201,7 +252,7 @@ function ResetSkin2()
 				["mask"]        = { item = Clothing[1]["Prop"], texture = Clothing[1]["Texture"]},  -- Masker
 			},
 		}
-		TriggerEvent(Config.TriggerName..'clothing:client:loadOutfit', resetSkin)
+		TriggerEvent('qb-clothing:Client:loadOutfit', resetSkin)
 	end
 end
 
@@ -221,12 +272,12 @@ function RemoveTattoo(name, label)
 			table.remove(currentTattoos, k)
 		end
 	end
-	TriggerServerEvent("Polar-Tattoos:server:RemoveTattoo", currentTattoos)
+	TriggerServerEvent("Polar-Tattoos:Server:RemoveTattoo", currentTattoos)
 	QBCore.Functions.Notify("You have removed the " .. GetLabelText(label) .. " tattoo", 'success')
 end
 
-RegisterNetEvent('Polar-Tattoos:client:SetaCameraForSell', function(data)
-	for k, v in pairs(Config.TattooCats) do
+RegisterNetEvent('Polar-Tattoos:Client:SetaCameraForSell', function(data)
+	for k, v in pairs(TattooCats) do
 		if v[1] == data.db2[1] then
 			if not DoesCamExist(cam) then
 				cam = CreateCam("DEFAULT_SCRIPTED_CAMERA", 1)
@@ -244,13 +295,13 @@ RegisterNetEvent('Polar-Tattoos:client:SetaCameraForSell', function(data)
 		{
             header = '< Go Back',
             params = {
-                event = Config.TriggerName..'tatto:client:gobacktattolist'
+                event = 'Polar-Tattoos:Client:gobacktattolist'
             }
         },
 		{
             header = '🔄 Change Camera',
             params = {
-                event = Config.TriggerName..'tatto:client:changecamera',
+                event = 'Polar-Tattoos:Client:changecamera',
 				args = data.db2[1]
             }
         },
@@ -259,7 +310,7 @@ RegisterNetEvent('Polar-Tattoos:client:SetaCameraForSell', function(data)
 		header = "Apply tatto",
 		txt = "$"..data.db.Price,
 		params = {
-			event = Config.TriggerName.."tattoo:client:EndOftattoIsaccept",
+			event = "Polar-Tattoos:Client:EndOftattoIsaccept",
 			args = {["price"] = data.db.Price, ["Collection"] = data.db.Collection, ["HashNameFemale"] = data.db.HashNameFemale, ["HashNameMale"] = data.db.HashNameMale, ["name"] = data.db.Name},
 		}
 	}
@@ -269,12 +320,12 @@ RegisterNetEvent('Polar-Tattoos:client:SetaCameraForSell', function(data)
 	else
 		DrawTattoo(data.db.Collection, data.db.HashNameFemale)
 	end
-	exports[Config.TriggerName..'menu']:openMenu(Tattoshoppriceended)
+	exports['qb-menu']:openMenu(Tattoshoppriceended)
 end)
 
 local cameraname = 1
-RegisterNetEvent(Config.TriggerName..'tatto:client:changecamera', function(data)
-	for k, v in pairs(Config.TattooCats) do
+RegisterNetEvent('Polar-Tattoos:Client:changecamera', function(data)
+	for k, v in pairs(TattooCats) do
 		if v[1] == data then
 			if not DoesCamExist(cam) then
 				cam = CreateCam("DEFAULT_SCRIPTED_CAMERA", 1)
@@ -293,10 +344,10 @@ RegisterNetEvent(Config.TriggerName..'tatto:client:changecamera', function(data)
 			end
 		end
 	end
-	exports[Config.TriggerName..'menu']:openMenu(Tattoshoppriceended)
+	exports['qb-menu']:openMenu(Tattoshoppriceended)
 end)
 
-RegisterNetEvent('Polar-Tattoos:client:EndOftattoIsaccept', function(data)
+RegisterNetEvent('Polar-Tattoos:Client:EndOftattoIsaccept', function(data)
 	if DoesCamExist(cam) then
 		DetachCam(cam)
 		SetCamActive(cam, false)
@@ -310,7 +361,7 @@ RegisterNetEvent('Polar-Tattoos:client:EndOftattoIsaccept', function(data)
 	end
 end)
 
-RegisterNetEvent(Config.TriggerName..'tatto:client:gobacktattolist', function()
+RegisterNetEvent('Polar-Tattoos:Client:gobacktattolist', function()
 	if DoesCamExist(cam) then
 		DetachCam(cam)
 		SetCamActive(cam, false)
@@ -318,10 +369,10 @@ RegisterNetEvent(Config.TriggerName..'tatto:client:gobacktattolist', function()
 		DestroyCam(cam, false)
 	end
 	refreshTattoos()
-	exports[Config.TriggerName..'menu']:openMenu(Tattoshopprice)
+	exports['qb-menu']:openMenu(Tattoshopprice)
 end)
 
-RegisterNetEvent(Config.TriggerName..'tatto:client:Removing', function()
+RegisterNetEvent('Polar-Tattoos:Client:Remove', function()
 	if DoesCamExist(cam) then
 		DetachCam(cam)
 		SetCamActive(cam, false)
@@ -329,10 +380,10 @@ RegisterNetEvent(Config.TriggerName..'tatto:client:Removing', function()
 		DestroyCam(cam, false)
 	end
 	GetNaked()
-	exports[Config.TriggerName..'menu']:openMenu(Tattoshopprice)
+	exports['qb-menu']:openMenu(Tattoshopprice)
 end)
 
-RegisterNetEvent(Config.TriggerName..'tatto:client:Wear', function()
+RegisterNetEvent('Polar-Tattoos:Client:Wear', function()
 	if DoesCamExist(cam) then
 		DetachCam(cam)
 		SetCamActive(cam, false)
@@ -340,10 +391,10 @@ RegisterNetEvent(Config.TriggerName..'tatto:client:Wear', function()
 		DestroyCam(cam, false)
 	end
 	ResetSkin2()
-	exports[Config.TriggerName..'menu']:openMenu(Tattoshopprice)
+	exports['qb-menu']:openMenu(Tattoshopprice)
 end)
 
-RegisterNetEvent('Polar-Tattoos:client:OpenTattooMenu', function(data)
+RegisterNetEvent('Polar-Tattoos:Client:OpenTattooMenu', function(data)
 	Tattoshopprice = {
 		{
 			header = "Tattoos for "..data[2],
@@ -352,23 +403,23 @@ RegisterNetEvent('Polar-Tattoos:client:OpenTattooMenu', function(data)
 		{
             header = '< Go Back',
             params = {
-                event = Config.TriggerName..'tatto:client:GoToMeno'
+                event = 'Polar-Tattoos:Client:GoToMeno'
             }
         },
-		{
-            header = '✖ Removing clothes',
+		--[[{
+            header = '✖ Remove clothes',
             params = {
-                event = Config.TriggerName..'tatto:client:Removing'
+                event = 'Polar-Tattoos:Client:Remove'
             }
         },
 		{
             header = '♻ Wear clothes',
             params = {
-                event = Config.TriggerName..'tatto:client:Wear'
+                event = 'Polar-Tattoos:Client:Wear'
             }
-        },
+        },]]
 	}
-	for _, tattoo in pairs(Config.AllTattooList) do
+	for _, tattoo in pairs(AllTattooList) do
 		if tattoo.Zone == data[1] then
 			if GetEntityModel(PlayerPedId()) == 'mp_m_freemode_01' then
 				if tattoo.HashNameMale ~= '' then
@@ -376,9 +427,9 @@ RegisterNetEvent('Polar-Tattoos:client:OpenTattooMenu', function(data)
 						if v.nameHash == tattoo.HashNameMale then
 							Tattoshopprice[#Tattoshopprice+1] = {
 								header = "[✔] "..GetLabelText(tattoo.Name).." (Already have)",
-								txt = "Select for forced remove",
+								txt = "Select to Remove",
 								params = {
-									event = Config.TriggerName.."tattoo:client:deletetattoo",
+									event = "Polar-Tattoos:Client:DeleteTattoo",
 									args = {db = tattoo, db2 = data},
 								}
 							}
@@ -389,7 +440,7 @@ RegisterNetEvent('Polar-Tattoos:client:OpenTattooMenu', function(data)
 						header = "["..(#Tattoshopprice+1).."] "..GetLabelText(tattoo.Name),
 						txt = "$"..tattoo.Price,
 						params = {
-							event = Config.TriggerName.."tattoo:client:SetaCameraForSell",
+							event = "Polar-Tattoos:Client:SetaCameraForSell",
 							args = {db = tattoo, db2 = data},
 						}
 					}
@@ -400,9 +451,9 @@ RegisterNetEvent('Polar-Tattoos:client:OpenTattooMenu', function(data)
 						if v.nameHash == tattoo.HashNameFemale then
 							Tattoshopprice[#Tattoshopprice+1] = {
 								header = "[✔] "..GetLabelText(tattoo.Name).." (Already have)",
-								txt = "Select for forced remove",
+								txt = "Select to Remove",
 								params = {
-									event = Config.TriggerName.."tattoo:client:deletetattoo",
+									event = "Polar-Tattoos:Client:DeleteTattoo",
 									args = {db = tattoo, db2 = data},
 								}
 							}
@@ -413,7 +464,7 @@ RegisterNetEvent('Polar-Tattoos:client:OpenTattooMenu', function(data)
 						header = "["..(#Tattoshopprice+1).."] "..GetLabelText(tattoo.Name),
 						txt = "$"..tattoo.Price,
 						params = {
-							event = Config.TriggerName.."tattoo:client:SetaCameraForSell",
+							event = "Polar-Tattoos:Client:SetaCameraForSell",
 							args = {db = tattoo, db2 = data},
 						}
 					}
@@ -426,13 +477,13 @@ RegisterNetEvent('Polar-Tattoos:client:OpenTattooMenu', function(data)
 		header = "⬅ Leave Tatto Shop",
 		txt = "",
 		params = {
-			event = Config.TriggerName.."menu:closeMenu",
+			event = "qb-menu:closeMenu",
 		}
 	}
-	exports[Config.TriggerName..'menu']:openMenu(Tattoshopprice)
+	exports['qb-menu']:openMenu(Tattoshopprice)
 end)
 
-RegisterNetEvent('Polar-Tattoos:client:deletetattoo', function(data)
+RegisterNetEvent('Polar-Tattoos:Client:DeleteTattoo', function(data)
 	refreshTattoos()
 	Wait(100)
 	if GetEntityModel(PlayerPedId()) == 'mp_m_freemode_01' then
@@ -442,11 +493,11 @@ RegisterNetEvent('Polar-Tattoos:client:deletetattoo', function(data)
 	end
 end)
 
-RegisterNetEvent('Polar-Tattoos:client:settattos', function()
+RegisterNetEvent('Polar-Tattoos:Client:settattos', function()
 	refreshTattoos()
 end)
 
-RegisterNetEvent(Config.TriggerName..'tatto:client:GoToMeno', function(data)
+RegisterNetEvent('Polar-Tattoos:Client:GoToMeno', function(data)
 	refreshTattoos()
 	if DoesCamExist(cam) then
 		DetachCam(cam)
@@ -461,12 +512,12 @@ RegisterNetEvent(Config.TriggerName..'tatto:client:GoToMeno', function(data)
 			isMenuHeader = true
 		},
 	}
-	for k, v in pairs(Config.TattooCats) do
+	for k, v in pairs(TattooCats) do
 		Tattoshoplocal[#Tattoshoplocal+1] = {
 			header = v[2],
 			txt = "Tattoo for "..v[2],
 			params = {
-				event = Config.TriggerName.."tattoo:client:OpenTattooMenu",
+				event = "Polar-Tattoos:Client:OpenTattooMenu",
 				args = v,
 			}
 		}
@@ -476,10 +527,10 @@ RegisterNetEvent(Config.TriggerName..'tatto:client:GoToMeno', function(data)
 		header = "⬅ Leave Tatto Shop",
 		txt = "",
 		params = {
-			event = Config.TriggerName.."menu:closeMenu",
+			event = "qb-menu:closeMenu",
 		}
 	}
-	exports[Config.TriggerName..'menu']:openMenu(Tattoshoplocal)
+	exports['qb-menu']:openMenu(Tattoshoplocal)
 end)
 
 

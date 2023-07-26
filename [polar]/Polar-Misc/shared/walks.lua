@@ -12,14 +12,7 @@ Config.Locations = { -- Edit the various interaction points for players or creat
     [1] = vector3(-576.19, -209.92, 38.77), -- burgershot
    -- [2] = vector3(-817.39, -1236.78, 7.34), -- viceroy
 },
-["tattoshops"] = {
-    [1] = vector3(1322.14, -1656.16, 53.16 - 1.12),
-    [2] = vector3(326.11, 181.97, 104.47 - 1.12),
-    [3] = vector3(-1154.97, -1429.57, 5.84 - 1.12),
-    [4] = vector3(-3171.14, 1079.47, 21.72 - 1.12),
-  --  [5] = vector3(1867.09, 3747.26, 33.91 - 1.12), -- pillbox
-  --  [6] = vector3(-296.83, 6199.8, 32.35 - 1.12), -- viceroy
-},
+
 
 
 

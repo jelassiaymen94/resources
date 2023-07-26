@@ -1,7 +1,7 @@
 fx_version 'cerulean'
 game 'gta5'
 
-description 'Tattoo'
+description 'Polar-Tattoos'
 version '1.0.0'
 
 dependencies {
