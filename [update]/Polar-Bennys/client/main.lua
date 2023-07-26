@@ -1,16 +1,9 @@
 local QBCore = exports['qb-core']:GetCoreObject()
-local inBenny = false
 
-CreateThread(function()
-    while true do
-        Wait(1000)
-        if not IsPedInAnyVehicle(PlayerPedId()) and inBenny then         
-            exports['qb-radialmenu']:AddOption(5)
-        end
-    end
-end)
 
-RegisterNetEvent("Polar-Bennys:client:repair", function()
+
+
+RegisterNetEvent("Polar-Bennys:Client:Repair", function()
     SendNUIMessage({sound = "wrench", volume = 0.5})
     QBCore.Functions.Progressbar("repair_car", "Repairing Vehicle...", 15000, false, true, {
         disableMovement = true,
@@ -21,4 +14,42 @@ RegisterNetEvent("Polar-Bennys:client:repair", function()
         TriggerEvent('iens:repaira')
         TriggerEvent('vehiclemod:client:fixEverything')
     end)
+end)
+
+
+
+
+
+
+
+local Downbenny = PolyZone:Create({
+    vector2(789.39, -835.61),
+    vector2(789.39, -771.21),
+    vector2(851.52, -771.21),
+    vector2(851.52, -835.61)
+  }, {
+	debugPoly=false,
+    name="downbenny",
+    --minZ = 30.89,
+    --maxZ = 31.06,
+})
+
+Downbenny:onPlayerInOut(function(isPointInside)
+    if isPointInside then
+       
+        if IsPedInAnyVehicle(PlayerPedId()) then 
+            pp = exports['qb-radialmenu']:AddOption( {
+                id = 'downbenny',
+                title = 'Repair',
+                icon = 'bolt',
+                type = 'server',
+                --job = 'police',
+                event = 'Polar-Bennys:Server:Repair',
+                shouldClose = true
+            }, pp)
+        end
+    else
+       
+        exports['qb-radialmenu']:RemoveOption(pp)
+    end
 end)
