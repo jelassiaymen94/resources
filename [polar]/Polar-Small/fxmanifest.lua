@@ -29,18 +29,11 @@ server_scripts {
 
 }
 
-
-ui_page {
-    'html/index.html',
-}
+ui_page "ui/index.html"
 files {
-    'html/index.html',
-    'html/*.css',
-    'html/*.js',
+	"ui/index.html",
+	"ui/sounds/*.ogg",
 }
 
-exports {
-    "StartLockPickCircle"
-}
 
 lua54 'yes'
