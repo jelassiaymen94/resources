@@ -709,7 +709,7 @@ function Animation(door, props)
         RemoveAnimDict(animDict)
     else
         model = bagcolor animDict = 'anim@scripted@heist@ig1_table_grab@cash@male@' 
-       
+        
             local playerCoords = GetEntityCoords(PlayerPedId())
             local propCoords = GetEntityCoords(props)
             local direction = vector3(propCoords.x - playerCoords.x, propCoords.y - playerCoords.y, propCoords.z - playerCoords.z)
@@ -738,7 +738,7 @@ function Animation(door, props)
     Wait(100)
     Wait(100)
     Wait(100)
-    AttachEntityToEntity(props, ped, GetPedBoneIndex(PlayerPedId(), 0xFA60), 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, false, false, false, true, 0, true)
+    AttachEntityToEntity(props, PlayerPedId(), GetPedBoneIndex(PlayerPedId(), 0xFA60), 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, false, false, false, true, 0, true)
     Wait(300) SetEntityVisible(props, false, false)
     NetworkStartSynchronisedScene(scene3) Wait(900) ClearPedTasks(PlayerPedId()) DeleteObject(bag) SetPedComponentVariation(PlayerPedId(), 5, Config.BagUseID, 0, 1)
     LocalPlayer.state:set('inv_busy', false, true)  
@@ -791,7 +791,7 @@ RegisterNetEvent('Polar-Paleto:client:keycard', function(door, position, rot, it
     if playeritem(carditem) then
         if oxd then  doorlock(door, 0)  else TriggerServerEvent('qb-doorlock:server:updateState', door, false, false, false, true, false, false) end 
     local chance = math.random(1,100) local pos = GetEntityCoords(PlayerPedId()) local animDict = "anim@heists@keycard@" loadAnimDict(animDict) local prop = 'vw_prop_vw_key_card_01a' loadModel(prop) local prop2 =  CreateObject(prop, pos.x, pos.y, pos.z + 0.2,  true,  true, true)
-    FreezeEntityPosition(PlayerPedId(), true) AttachEntityToEntity(prop2, ped, GetPedBoneIndex(PlayerPedId(), 28422), 0, 0, 0, 0, 0, 180.0, true, true, false, true, 1, true) SetEntityHeading(PlayerPedId(), position.w) SetEntityCoords(PlayerPedId(), vector3(position.x, position.y,position.z-1)) if chance <= carditemchance then TriggerServerEvent('Polar-Paleto:Server:RemoveItem', item, 1) end 
+    FreezeEntityPosition(PlayerPedId(), true) AttachEntityToEntity(prop2, PlayerPedId(), GetPedBoneIndex(PlayerPedId(), 28422), 0, 0, 0, 0, 0, 180.0, true, true, false, true, 1, true) SetEntityHeading(PlayerPedId(), position.w) SetEntityCoords(PlayerPedId(), vector3(position.x, position.y,position.z-1)) if chance <= carditemchance then TriggerServerEvent('Polar-Paleto:Server:RemoveItem', item, 1) end 
     TaskPlayAnim(PlayerPedId(), animDict, "enter", 5.0, 1.0, -1, 16, 0, 0, 0, 0) Wait(1000) TaskPlayAnim(PlayerPedId(), animDict, "idle_a", 5.0, 1.0, -1, 16, 0, 0, 0, 0) Wait(5000) TaskPlayAnim(PlayerPedId(), animDict, "exit", 5.0, 1.0, -1, 16, 0, 0, 0, 0) Wait(1000) StopAnimTask(PlayerPedId(), animDict, "exit", 16.0)  DeleteEntity(prop2) FreezeEntityPosition(PlayerPedId(), false) TriggerServerEvent('qb-doorlock:server:updateState', door, false, false, false, true, false, false)  notify(text('doorunlock'), "success", 2500)
     RemoveAnimDict(animDict) else  notify(text('nokeycard'), "error") end
 end)
@@ -1286,8 +1286,15 @@ RegisterNetEvent('Polar-Paleto:Client:PickupTarget', function(data)
         TriggerServerEvent('Polar-Paleto:Server:RemoveProp', door)
         RemoveAnimDict(animDict)
     else
+        animDict = 'random@domestic'
         loadAnimDict(animDict) TaskPlayAnim(PlayerPedId(), animDict, 'pickup_low', 3.0, 3.0, -1, 0, 0, 0, 0, 0) 
         TriggerServerEvent('Polar-Paleto:Server:TargetRemove', door) 
+       
+        Wait(500)
+        
+        AttachEntityToEntity(doors[door], PlayerPedId(), GetPedBoneIndex(PlayerPedId(), 58867), 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, false, false, false, true, 0, true)
+        Wait(1000) SetEntityVisible(doors[door], false, false)
+
         TriggerServerEvent('Polar-Paleto:Server:RemoveProp', door)
         RemoveAnimDict(animDict)
     end
@@ -1975,7 +1982,7 @@ function snatch(name, item, chances)
     NetworkStartSynchronisedScene(scene)
     Wait(1700)
 
-    AttachEntityToEntity(doors[name], ped, boneIndex, 0.0, 0.0, 0.3, 0.0, 180.0, 0.0, false, false, false, false, 0, true)
+    AttachEntityToEntity(doors[name], PlayerPedId(), boneIndex, 0.0, 0.0, 0.3, 0.0, 180.0, 0.0, false, false, false, false, 0, true)
 
     Wait(1250)
     

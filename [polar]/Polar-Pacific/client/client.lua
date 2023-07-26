@@ -1307,8 +1307,15 @@ RegisterNetEvent('Polar-Pacific:Client:PickupTarget', function(data)
         TriggerServerEvent('Polar-Pacific:Server:RemoveProp', door)
         RemoveAnimDict(animDict)
     else
+        animDict = 'random@domestic'
         loadAnimDict(animDict) TaskPlayAnim(PlayerPedId(), animDict, 'pickup_low', 3.0, 3.0, -1, 0, 0, 0, 0, 0) 
         TriggerServerEvent('Polar-Pacific:Server:TargetRemove', door) 
+       
+        Wait(500)
+        
+        AttachEntityToEntity(doors[door], PlayerPedId(), GetPedBoneIndex(PlayerPedId(), 58867), 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, false, false, false, true, 0, true)
+        Wait(1000) SetEntityVisible(doors[door], false, false)
+
         TriggerServerEvent('Polar-Pacific:Server:RemoveProp', door)
         RemoveAnimDict(animDict)
     end
