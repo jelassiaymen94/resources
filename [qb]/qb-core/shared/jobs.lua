@@ -460,6 +460,33 @@ QBShared.Jobs = {
 		offDutyPay = false,
 		grades = {
             ['0'] = {
+                name = 'Mechanic Recruit',
+                payment = 3000
+            },
+            ['1'] = {
+                name = 'Mechanic',
+                payment = 3250
+            },
+            ['2'] = {
+                name = 'Mechanic Manager',
+                payment = 3375,
+                isboss = true,
+                bankAuth = true,
+            },
+            ['3'] = {
+                name = 'Mechanic Owner',
+                payment = 3500,
+                isboss = true,
+                bankAuth = true,
+            },
+        },
+    },
+    ['lostmech'] = {
+		label = 'lostmechanic',
+		defaultDuty = false,
+		offDutyPay = false,
+		grades = {
+            ['0'] = {
                 name = 'Lost MC Mechanic Recruit',
                 payment = 3000
             },
@@ -481,28 +508,27 @@ QBShared.Jobs = {
             },
         },
     },
-
-	['lostmech'] = { -- NOT USED!! Lost MC is using Mechanic so that the bank accounts link
+	['aodmech'] = { -- smd
 		label = 'Mechanic',
 		defaultDuty = false,
 		offDutyPay = false,
 		grades = {
             ['0'] = {
-                name = 'Lost MC Mechanic Recruit',
+                name = 'AOD MC Mechanic Recruit',
                 payment = 3000
             },
             ['1'] = {
-                name = 'Lost MC Mechanic',
+                name = 'AOD MC Mechanic',
                 payment = 3250
             },
             ['2'] = {
-                name = 'Lost MC Mechanic Manager',
+                name = 'AOD MC Mechanic Manager',
                 payment = 3375,
                 isboss = true,
                 bankAuth = true,
             },
             ['3'] = {
-                name = 'Lost MC Mechanic Owner',
+                name = 'AOD MC Mechanic Owner',
                 payment = 3500,
                 isboss = true,
                 bankAuth = true,
