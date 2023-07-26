@@ -74,8 +74,8 @@ Config.Scripts = {
     -- just export name lmao
     ["core"] = "qb-core",
     -- loadPlayerClothing event
-    ["loadplayerclothing"] = "qb-clothing:client:loadPlayerClothing",
-    ["CreateFirstCharacter"] = "qb-clothes:client:CreateFirstCharacter",
+    ["loadplayerclothing"] = "Polar-Clothing:client:loadPlayerClothing",
+    ["CreateFirstCharacter"] = "Polar-Clothes:client:CreateFirstCharacter",
     -- just export name
     ["fivem-appearance"] = "fivem-appearance",
     -- weathersync

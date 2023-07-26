@@ -215,7 +215,7 @@ end)
 RegisterNetEvent('qb-admin:server:cloth', function(player)
     local src = source
     if QBCore.Functions.HasPermission(src, permissions['clothing']) or IsPlayerAceAllowed(src, 'command') then
-        TriggerClientEvent('qb-clothing:client:openMenu', player.id)
+        TriggerClientEvent('Polar-Clothing:client:openMenu', player.id)
     else
         BanPlayer(src)
     end

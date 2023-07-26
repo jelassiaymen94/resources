@@ -222,7 +222,7 @@ function EnterApartment(house, apartmentId, new)
                     TeleportToInterior(coords.x - -5.06, coords.y - -4.01, coords.z + 1.16, POIOffsets.exit.h)
                 if new then
                     SetTimeout(750, function()
-                        TriggerEvent('qb-clothes:client:CreateFirstCharacter')
+                        TriggerEvent('Polar-Clothes:client:CreateFirstCharacter')
                         new = false
                     end)
                 end
@@ -269,7 +269,7 @@ function EnterApartment(house, apartmentId, new)
                 TeleportToInterior(coords.x - -5.06, coords.y - -4.01, coords.z + 1.16, POIOffsets.exit.h)
             if new then
                 SetTimeout(750, function()
-                    TriggerEvent('qb-clothes:client:CreateFirstCharacter')
+                    TriggerEvent('Polar-Clothes:client:CreateFirstCharacter')
                     new = false
                 end)
             end
@@ -560,7 +560,7 @@ end)
 
 RegisterNetEvent('apartments:client:ChangeOutfit', function()
     TriggerServerEvent("InteractSound_SV:PlayOnSource", "Clothes1", 0.4)
-    TriggerEvent('qb-clothing:client:openOutfitMenu')
+    TriggerEvent('Polar-Clothing:client:openOutfitMenu')
 end)
 
 RegisterNetEvent('apartments:client:Logout', function()

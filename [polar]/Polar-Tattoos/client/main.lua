@@ -198,7 +198,7 @@ function GetNaked()
 					["mask"]         = { item = 0, texture = 0},  -- Masker
 				},
 			}
-			TriggerEvent('qb-clothing:Client:loadOutfit', nakedMale)
+			TriggerEvent('Polar-Clothing:Client:loadOutfit', nakedMale)
 		else
 			local nakedFemale = {
 				outfitData = {
@@ -215,12 +215,12 @@ function GetNaked()
 					["mask"]         = { item = 0, texture = 0},  -- Masker
 				},
 			}
-			TriggerEvent('qb-clothing:Client:loadOutfit', nakedFemale)
+			TriggerEvent('Polar-Clothing:Client:loadOutfit', nakedFemale)
 		end
 end
 
 function ResetSkin()
-	TriggerServerEvent("qb-clothes:loadPlayerSkin")
+	TriggerServerEvent("Polar-Clothes:loadPlayerSkin")
 	Wait(100)
 	ClearPedDecorations(PlayerPedId())
 	for k, v in pairs(currentTattoos) do
@@ -252,7 +252,7 @@ function ResetSkin2()
 				["mask"]        = { item = Clothing[1]["Prop"], texture = Clothing[1]["Texture"]},  -- Masker
 			},
 		}
-		TriggerEvent('qb-clothing:Client:loadOutfit', resetSkin)
+		TriggerEvent('Polar-Clothing:Client:loadOutfit', resetSkin)
 	end
 end
 

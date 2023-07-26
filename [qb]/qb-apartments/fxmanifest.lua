@@ -25,7 +25,7 @@ client_scripts {
 
 dependencies {
 	'qb-core',
-	'qb-clothing',
+	'Polar-Clothing',
 	'qb-weathersync'
 }
 

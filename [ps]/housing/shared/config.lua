@@ -504,7 +504,7 @@ Config.FurnitureTypes = {
         Framework[Config.Target].AddTargetEntity(entity, "Clothing", function()
             local heading = GetEntityHeading(cache.ped)
             SetEntityHeading(cache.ped, heading - 180.0)
-            TriggerEvent("qb-clothing:client:openOutfitMenu")
+            TriggerEvent("Polar-Clothing:client:openOutfitMenu")
         end)
 
         local property = Property.Get(property_id)

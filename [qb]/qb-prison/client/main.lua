@@ -73,9 +73,9 @@ local function ApplyClothes()
 			ResetPedMovementClipset(playerPed, 0)
 			local gender = QBCore.Functions.GetPlayerData().charinfo.gender
 			if gender == 0 then
-				TriggerEvent('qb-clothing:client:loadOutfit', Config.Uniforms.male)
+				TriggerEvent('Polar-Clothing:client:loadOutfit', Config.Uniforms.male)
 			else
-				TriggerEvent('qb-clothing:client:loadOutfit', Config.Uniforms.female)
+				TriggerEvent('Polar-Clothing:client:loadOutfit', Config.Uniforms.female)
 			end
 		end)
 	end
@@ -297,7 +297,7 @@ RegisterNetEvent('prison:client:Leave', function()
 		while not IsScreenFadedOut() do
 			Wait(10)
 		end
-		TriggerServerEvent('qb-clothes:loadPlayerSkin')
+		TriggerServerEvent('Polar-Clothes:loadPlayerSkin')
 		SetEntityCoords(PlayerPedId(), Config.Locations["outside"].coords.x, Config.Locations["outside"].coords.y, Config.Locations["outside"].coords.z, 0, 0, 0, false)
 		SetEntityHeading(PlayerPedId(), Config.Locations["outside"].coords.w)
 
@@ -329,7 +329,7 @@ RegisterNetEvent('prison:client:UnjailPerson', function()
 		while not IsScreenFadedOut() do
 			Wait(10)
 		end
-		TriggerServerEvent('qb-clothes:loadPlayerSkin')
+		TriggerServerEvent('Polar-Clothes:loadPlayerSkin')
 		SetEntityCoords(PlayerPedId(), Config.Locations["outside"].coords.x, Config.Locations["outside"].coords.y, Config.Locations["outside"].coords.z, 0, 0, 0, false)
 		SetEntityHeading(PlayerPedId(), Config.Locations["outside"].coords.w)
 		Wait(500)

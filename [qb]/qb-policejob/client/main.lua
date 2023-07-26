@@ -62,7 +62,7 @@ AddEventHandler('QBCore:Client:OnPlayerLoaded', function()
                 }
             }
         }
-        TriggerEvent('qb-clothing:client:loadOutfit', trackerClothingData)
+        TriggerEvent('Polar-Clothing:client:loadOutfit', trackerClothingData)
     else
         local trackerClothingData = {
             outfitData = {
@@ -72,7 +72,7 @@ AddEventHandler('QBCore:Client:OnPlayerLoaded', function()
                 }
             }
         }
-        TriggerEvent('qb-clothing:client:loadOutfit', trackerClothingData)
+        TriggerEvent('Polar-Clothing:client:loadOutfit', trackerClothingData)
     end
 
     if PlayerJob and PlayerJob.name ~= "police" then
