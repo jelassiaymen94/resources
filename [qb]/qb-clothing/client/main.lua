@@ -2175,16 +2175,16 @@ RegisterNetEvent('Polar-Clothing:client:Refreshskin', function()
         local playerPed = PlayerPedId()
         local health = GetEntityHealth(playerPed)
         reloadSkin(health)
-    
+        exports['Polar-Tattoos']:Refresh()
     
     
 end)
-  
+--[[
 RegisterCommand("refreshskin", function()
     local playerPed = PlayerPedId()
     local health = GetEntityHealth(playerPed)
     reloadSkin(health)
-end)
+end)]]
 
 function reloadSkin(health)
     local model

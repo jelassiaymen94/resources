@@ -7,24 +7,41 @@ local Tattoshopprice = {}
 local Tattoshoppriceended = {}
 local ClothingSaveAs = false
 
+RegisterNetEvent('Apply:Tattoo')
+AddEventHandler('Apply:Tattoo', function(tats)
+    QBCore.Functions.TriggerCallback('Polar-Tattoos:GetPlayerTattoos', function(tattooList)
+        if tattooList then
+			ClearPedDecorations(PlayerPedId())
+            for k, v in pairs(tattooList) do
+                SetPedDecoration(PlayerPedId(), v.collection, v.nameHash)
+            end
+            currentTattoos = tattooList
+        end
+    end)
+end)
+--exports['Polar-Tattoos']:Refresh()
+exports('Refresh', function()
+    QBCore.Functions.TriggerCallback('Polar-Tattoos:GetPlayerTattoos', function(tattooList)
+        if tattooList then
+			ClearPedDecorations(PlayerPedId())
+            for k, v in pairs(tattooList) do
+                SetPedDecoration(PlayerPedId(), v.collection, v.nameHash)
+            end
+            currentTattoos = tattooList
+        end
+    end)
+end)
+
 local function refreshTattoos()
-	QBCore.Functions.TriggerCallback(Config.TriggerName..'tattooshop:GetPlayerTattoos', function(tattooList)
-		if tattooList then
+	QBCore.Functions.TriggerCallback('Polar-Tattoos:GetPlayerTattoos', function(tattooList)
+        if tattooList then
 			ClearPedDecorations(PlayerPedId())
-			for k, v in pairs(tattooList) do
-				if v.Count ~= nil then
-					for i = 1, v.Count do
-						SetPedDecoration(PlayerPedId(), v.collection, v.nameHash)
-					end
-				else
-					SetPedDecoration(PlayerPedId(), v.collection, v.nameHash)
-				end
-			end
-			currentTattoos = tattooList
-		else
-			ClearPedDecorations(PlayerPedId())
-		end
-	end)
+            for k, v in pairs(tattooList) do
+                SetPedDecoration(PlayerPedId(), v.collection, v.nameHash)
+            end
+            currentTattoos = tattooList
+        end
+    end)
 end
 
 RegisterNetEvent(Config.Core..':Client:OnPlayerLoaded', function()
@@ -45,9 +62,7 @@ CreateThread(function()
 	end
 end)
 
-RegisterCommand("refreshtattoos", function()
-	refreshTattoos()
-end)
+
 
 function DrawTattoo(collection, name)
 	ClearPedDecorations(PlayerPedId())
@@ -116,7 +131,7 @@ function GetNaked()
 		Clothing[11]["Prop"] = GetPedDrawableVariation(PlayerPedId(), 11)
 		Clothing[11]["Texture"] = GetPedTextureVariation(PlayerPedId(), 11)
 	end
-		if GetEntityModel(PlayerPedId()) == `mp_m_freemode_01` then
+		if GetEntityModel(PlayerPedId()) == 'mp_m_freemode_01' then
 			local nakedMale = {
 				outfitData = {
 					["pants"]       = { item = 14, texture = 0},  -- Broek
@@ -191,7 +206,7 @@ function ResetSkin2()
 end
 
 function BuyTattoo(collection, name, label, price)
-	QBCore.Functions.TriggerCallback(Config.TriggerName..'tattooshop:PurchaseTattoo', function(success)
+	QBCore.Functions.TriggerCallback('Polar-Tattoos:PurchaseTattoo', function(success)
 		if success then
 			table.insert(currentTattoos, {collection = collection, nameHash = name, Count = opacity})
 		else
@@ -206,11 +221,11 @@ function RemoveTattoo(name, label)
 			table.remove(currentTattoos, k)
 		end
 	end
-	TriggerServerEvent(Config.TriggerName.."tattooshop:server:RemoveTattoo", currentTattoos)
+	TriggerServerEvent("Polar-Tattoos:server:RemoveTattoo", currentTattoos)
 	QBCore.Functions.Notify("You have removed the " .. GetLabelText(label) .. " tattoo", 'success')
 end
 
-RegisterNetEvent(Config.TriggerName..'tattoo:client:SetaCameraForSell', function(data)
+RegisterNetEvent('Polar-Tattoos:client:SetaCameraForSell', function(data)
 	for k, v in pairs(Config.TattooCats) do
 		if v[1] == data.db2[1] then
 			if not DoesCamExist(cam) then
@@ -249,7 +264,7 @@ RegisterNetEvent(Config.TriggerName..'tattoo:client:SetaCameraForSell', function
 		}
 	}
 
-	if GetEntityModel(PlayerPedId()) == `mp_m_freemode_01` then
+	if GetEntityModel(PlayerPedId()) == 'mp_m_freemode_01' then
 		DrawTattoo(data.db.Collection, data.db.HashNameMale)
 	else
 		DrawTattoo(data.db.Collection, data.db.HashNameFemale)
@@ -281,14 +296,14 @@ RegisterNetEvent(Config.TriggerName..'tatto:client:changecamera', function(data)
 	exports[Config.TriggerName..'menu']:openMenu(Tattoshoppriceended)
 end)
 
-RegisterNetEvent(Config.TriggerName..'tattoo:client:EndOftattoIsaccept', function(data)
+RegisterNetEvent('Polar-Tattoos:client:EndOftattoIsaccept', function(data)
 	if DoesCamExist(cam) then
 		DetachCam(cam)
 		SetCamActive(cam, false)
 		RenderScriptCams(false, false, 0, 1, 0)
 		DestroyCam(cam, false)
 	end
-	if GetEntityModel(PlayerPedId()) == `mp_m_freemode_01` then
+	if GetEntityModel(PlayerPedId()) == 'mp_m_freemode_01' then
 		BuyTattoo(data.Collection, data.HashNameMale, data.name, data.price)
 	else
 		BuyTattoo(data.Collection, data.HashNameFemale, data.name, data.price)
@@ -328,7 +343,7 @@ RegisterNetEvent(Config.TriggerName..'tatto:client:Wear', function()
 	exports[Config.TriggerName..'menu']:openMenu(Tattoshopprice)
 end)
 
-RegisterNetEvent(Config.TriggerName..'tattoo:client:OpenTattooMenu', function(data)
+RegisterNetEvent('Polar-Tattoos:client:OpenTattooMenu', function(data)
 	Tattoshopprice = {
 		{
 			header = "Tattoos for "..data[2],
@@ -355,7 +370,7 @@ RegisterNetEvent(Config.TriggerName..'tattoo:client:OpenTattooMenu', function(da
 	}
 	for _, tattoo in pairs(Config.AllTattooList) do
 		if tattoo.Zone == data[1] then
-			if GetEntityModel(PlayerPedId()) == `mp_m_freemode_01` then
+			if GetEntityModel(PlayerPedId()) == 'mp_m_freemode_01' then
 				if tattoo.HashNameMale ~= '' then
 					for k, v in pairs(currentTattoos) do
 						if v.nameHash == tattoo.HashNameMale then
@@ -417,17 +432,17 @@ RegisterNetEvent(Config.TriggerName..'tattoo:client:OpenTattooMenu', function(da
 	exports[Config.TriggerName..'menu']:openMenu(Tattoshopprice)
 end)
 
-RegisterNetEvent(Config.TriggerName..'tattoo:client:deletetattoo', function(data)
+RegisterNetEvent('Polar-Tattoos:client:deletetattoo', function(data)
 	refreshTattoos()
 	Wait(100)
-	if GetEntityModel(PlayerPedId()) == `mp_m_freemode_01` then
+	if GetEntityModel(PlayerPedId()) == 'mp_m_freemode_01' then
 		RemoveTattoo(data.db.HashNameMale, data.db.Name)
 	else
 		RemoveTattoo(data.db.HashNameFemale, data.db.Name)
 	end
 end)
 
-RegisterNetEvent(Config.TriggerName..'tattoo:server:settattos', function()
+RegisterNetEvent('Polar-Tattoos:client:settattos', function()
 	refreshTattoos()
 end)
 
