@@ -22,24 +22,61 @@ end)
 
 
 
-local Downbenny = PolyZone:Create({
-    vector2(789.39, -835.61),
-    vector2(789.39, -771.21),
-    vector2(851.52, -771.21),
-    vector2(851.52, -835.61)
+local paleto = PolyZone:Create({
+    vector2(90.15, 6602.65),
+    vector2(104.55, 6589.77),
+    vector2(121.97, 6604.92),
+    vector2(106.44, 6617.80)
   }, {
 	debugPoly=false,
-    name="downbenny",
+    name="paletobenny",
     --minZ = 30.89,
     --maxZ = 31.06,
 })
 
-Downbenny:onPlayerInOut(function(isPointInside)
+paleto:onPlayerInOut(function(isPointInside)
     if isPointInside then
        
         if IsPedInAnyVehicle(PlayerPedId()) then 
             pp = exports['qb-radialmenu']:AddOption( {
-                id = 'downbenny',
+                id = 'paletobenny',
+                title = 'Repair',
+                icon = 'bolt',
+                type = 'server',
+                --job = 'police',
+                event = 'Polar-Bennys:Server:Repair',
+                shouldClose = true
+            }, pp)
+        end
+    else
+       
+        exports['qb-radialmenu']:RemoveOption(pp)
+    end
+end)
+
+
+
+
+
+
+local sandybenny = PolyZone:Create({
+    vector2(1170.08, 2637.12),
+    vector2(1170.83, 2623.11),
+    vector2(1190.91, 2623.11),
+    vector2(1189.39, 2637.50)
+  }, {
+	debugPoly=false,
+    name="sandy",
+    --minZ = 30.89,
+    --maxZ = 31.06,
+})
+
+sandybenny:onPlayerInOut(function(isPointInside)
+    if isPointInside then
+       
+        if IsPedInAnyVehicle(PlayerPedId()) then 
+            pp = exports['qb-radialmenu']:AddOption( {
+                id = 'sandy',
                 title = 'Repair',
                 icon = 'bolt',
                 type = 'server',

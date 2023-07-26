@@ -4,7 +4,7 @@ local prop = nil
 -- 40 to 45
 
 Config.paletoprop40 = {
-    vector4(-100.49, 6466.01, 32.63, 315.37), --- locations, can be multiple but chooses 1 at random
+    vector4(-100.63, 6465.9, 31.63, 316.18), --- locations, can be multiple but chooses 1 at random
 
 }
 function paletoprop40() -- should be same as door = 
@@ -75,6 +75,6 @@ end
 
 function bruhppp(door, prop, location)
     TriggerEvent('Polar-Paleto:Server:SetPaletoProp', door, prop)
-    TriggerClientEvent('Polar-Paleto:Client:AddPaintTarget', -1, door,  prop, vec4(location.x, location.y, location.z-1, location.w))
-    TriggerClientEvent('Polar-Paleto:Client:PaletoProp', -1, door, prop, vec4(location.x, location.y, location.z-1, location.w))
+    TriggerClientEvent('Polar-Paleto:Client:AddPaintTarget', -1, door,  prop, vec4(location.x, location.y, location.z, location.w))
+    TriggerClientEvent('Polar-Paleto:Client:PaletoProp', -1, door, prop, vec4(location.x, location.y, location.z, location.w))
 end

@@ -38,6 +38,7 @@ local pcitem = 'btc' -- comes from pc completion
 local vaultitem = 'laptop_blue' -- item for vault
 local vaultitemchance = 50 -- chance for item to be removed
 
+local laserdrillitem = 'drill' -- laser drill to cutout glass
 local yellowdrillitem = 'drill' -- item for deposit boxes (2 sections, yellow drill)
 local ydrillitemchance = 50 -- chance for yellow drill to break
 local drillitem = 'drill' -- item for deposit boxes (regular)
@@ -70,7 +71,18 @@ local memname = "memorygame"
 
 
 
-
+local trollytable = {
+    'paletoprop16',
+    'paletoprop17',
+    'paletoprop18', 
+    'paletoprop19', 
+    'paletoprop20',
+    'paletoprop26', 
+    'paletoprop27', 
+    'paletoprop28', 
+    'paletoprop29', 
+    'paletoprop30',
+}
 
 
 
@@ -114,35 +126,7 @@ local vaultloc = vector3(-1307.85, -816.5, 17.82)
 
 local hi = Config.Debug
 
-local paintingtable = {
-    'paletoprop40',
-    'paletoprop41',
-    'paletoprop42',
-    'paletoprop43',
-    'paletoprop44',
-    'paletoprop45',
 
-}
-local casetable = {
-    'paletoprop45',
-    'paletoprop46',
-    'paletoprop47',
-    'paletoprop48',
-    'paletoprop49',
-    'paletoprop50',
-}
-local trollytable = {
-    'paletoprop16',
-    'paletoprop17',
-    'paletoprop18', 
-    'paletoprop19', 
-    'paletoprop20',
-    'paletoprop26', 
-    'paletoprop27', 
-    'paletoprop28', 
-    'paletoprop29', 
-    'paletoprop30',
-}
 local proptable = {
     'paletoprop1', 'paletoprop2', 'paletoprop3', 'paletoprop4', 'paletoprop5', 'paletoprop6', 'paletoprop7', 'paletoprop8', 'paletoprop9', 'paletoprop10', 'paletoprop11', 'paletoprop12','paletoprop13', 'paletoprop14', 'paletoprop15',
     'paletoprop16', 'paletoprop17',  'paletoprop18', 'paletoprop19', 'paletoprop20', 'paletoprop21', 'paletoprop22', 'paletoprop23', 'paletoprop24', 'paletoprop25', 'paletoprop26','paletoprop27', 'paletoprop28', 'paletoprop29',
@@ -303,11 +287,11 @@ function drill(drillpos, drillrot) local pedCo = GetEntityCoords(PlayerPedId()) 
     TriggerEvent('Drilling:Start',function(success) if success then                             
     StopSound(soundId) NetworkStartSynchronisedScene(scene5) PlayCamAnim(cam, 'drill_straight_end_cam', animDict, drillpos, drillrot, 0, 2)
     Wait(GetAnimDuration(animDict, 'drill_straight_end') * 1000) NetworkStartSynchronisedScene(scene6) PlayCamAnim(cam, 'exit_cam', animDict, drillpos, drillrot, 0, 2) Wait(GetAnimDuration(animDict, 'exit') * 1000)
-    RenderScriptCams(false, false, 0, 1, 0) DestroyCam(cam, false) ClearPedTasks(PlayerPedId()) DeleteObject(bag) DeleteObject(laserDrill) LocalPlayer.state:set('inv_busy', false, true) 
+    RenderScriptCams(false, false, 0, 1, 0) DestroyCam(cam, false) ClearPedTasks(PlayerPedId()) DeleteObject(bag) DeleteObject(laserDrill) LocalPlayer.state:set('inv_busy', false, true) RemoveAnimDict(animDict)
     return true
     else
         StopSound(soundId) NetworkStartSynchronisedScene(scene4) PlayCamAnim(cam, 'drill_straight_fail_cam', animDict, drillpos, drillrot, 0, 2) Wait(GetAnimDuration(animDict, 'drill_straight_fail') * 1000 - 1500)
-        RenderScriptCams(false, false, 0, 1, 0) DestroyCam(cam, false) ClearPedTasks(PlayerPedId())  DeleteObject(bag) DeleteObject(laserDrill) LocalPlayer.state:set('inv_busy', false, true) 
+        RenderScriptCams(false, false, 0, 1, 0) DestroyCam(cam, false) ClearPedTasks(PlayerPedId())  DeleteObject(bag) DeleteObject(laserDrill) LocalPlayer.state:set('inv_busy', false, true) RemoveAnimDict(animDict)
     return false
     end
     end)
@@ -518,6 +502,7 @@ function grabloot(door, object)
     SetPedComponentVariation(PlayerPedId(), 5, Config.BagUseID, 0, 1)
     LocalPlayer.state:set('inv_busy', false, true) -- Not Busy
     SetEntityAsNoLongerNeeded(object)
+    RemoveAnimDict(animDict)
 end
 
 
@@ -713,6 +698,7 @@ function Animation(door, props)
         SetPedComponentVariation(PlayerPedId(), 5, Config.BagUseID, 0, 1)
         LocalPlayer.state:set('inv_busy', false, true) 
         TriggerServerEvent('Polar-Paleto:Server:Synapse', door, sped)  
+        RemoveAnimDict(animDict)
     else
         model = bagcolor animDict = 'anim@scripted@heist@ig1_table_grab@cash@male@' 
        
@@ -748,8 +734,8 @@ function Animation(door, props)
     LocalPlayer.state:set('inv_busy', false, true)  
     TriggerServerEvent('Polar-Paleto:Server:Synapse', door, sped)  
 
-      
-
+    TriggerServerEvent('Polar-Paleto:Server:RemoveProp', door)
+    RemoveAnimDict(animDict)
         end
     end
 end 
@@ -797,7 +783,7 @@ RegisterNetEvent('Polar-Paleto:client:keycard', function(door, position, rot, it
     local chance = math.random(1,100) local pos = GetEntityCoords(PlayerPedId()) local animDict = "anim@heists@keycard@" loadAnimDict(animDict) local prop = 'vw_prop_vw_key_card_01a' loadModel(prop) local prop2 =  CreateObject(prop, pos.x, pos.y, pos.z + 0.2,  true,  true, true)
     FreezeEntityPosition(PlayerPedId(), true) AttachEntityToEntity(prop2, ped, GetPedBoneIndex(PlayerPedId(), 28422), 0, 0, 0, 0, 0, 180.0, true, true, false, true, 1, true) SetEntityHeading(PlayerPedId(), position.w) SetEntityCoords(PlayerPedId(), vector3(position.x, position.y,position.z-1)) if chance <= carditemchance then TriggerServerEvent('Polar-Paleto:Server:RemoveItem', item, 1) end 
     TaskPlayAnim(PlayerPedId(), animDict, "enter", 5.0, 1.0, -1, 16, 0, 0, 0, 0) Wait(1000) TaskPlayAnim(PlayerPedId(), animDict, "idle_a", 5.0, 1.0, -1, 16, 0, 0, 0, 0) Wait(5000) TaskPlayAnim(PlayerPedId(), animDict, "exit", 5.0, 1.0, -1, 16, 0, 0, 0, 0) Wait(1000) StopAnimTask(PlayerPedId(), animDict, "exit", 16.0)  DeleteEntity(prop2) FreezeEntityPosition(PlayerPedId(), false) TriggerServerEvent('qb-doorlock:server:updateState', door, false, false, false, true, false, false)  notify(text('doorunlock'), "success", 2500)
-    else  notify(text('nokeycard'), "error") end
+    RemoveAnimDict(animDict) else  notify(text('nokeycard'), "error") end
 end)
 
 
@@ -852,6 +838,7 @@ function next(door, loc)
         DeleteObject(laptop)
         FreezeEntityPosition(ped, false)
         LocalPlayer.state:set('inv_busy', false, true) 
+        RemoveAnimDict(animDict)
         return true
     else
    -- if door == vaultdoorname then
@@ -869,6 +856,7 @@ function next(door, loc)
             DeleteObject(laptop)
             FreezeEntityPosition(ped, false)
             LocalPlayer.state:set('inv_busy', false, true) 
+            RemoveAnimDict(animDict)
             return true
         else
             local chance = math.random(1,100)
@@ -882,6 +870,7 @@ function next(door, loc)
             DeleteObject(laptop)
             FreezeEntityPosition(ped, false)
             LocalPlayer.state:set('inv_busy', false, true) 
+            RemoveAnimDict(animDict)
             return false
         end
     end)
@@ -1207,7 +1196,12 @@ end)
 
 
 
-
+RegisterNetEvent('Polar-Paleto:Client:RemoveProp', function(door) 
+    if hi then print(doors[door]) end
+   
+            
+    if DoesEntityExist(doors[door]) then DeleteEntity(doors[door]) end 
+end)
 
 
 
@@ -1221,9 +1215,9 @@ RegisterNetEvent('Polar-Paleto:Client:TargetRemove', function(door)
     else  
         exports['qb-target']:RemoveZone(door) 
     end
-    if tablecheck(door, paintingtable) then return end
-    if tablecheck(door, casetable) then return end
-    if tablecheck(door, trollytable) then return end
+   -- if tablecheck(door, paintingtable) then return end
+  --  if tablecheck(door, casetable) then return end
+  --  if tablecheck(door, trollytable) then return end
        
         
             
@@ -1232,7 +1226,7 @@ RegisterNetEvent('Polar-Paleto:Client:TargetRemove', function(door)
       --  print(targets[door])
        -- print(doors[door])
             
-    if DoesEntityExist(doors[door]) then DeleteEntity(doors[door]) end 
+    -- if DoesEntityExist(doors[door]) then DeleteEntity(doors[door]) end 
 end)
 
 RegisterNetEvent('Polar-Paleto:Client:SetTrollyProp', function(door, prop)
@@ -1279,13 +1273,17 @@ RegisterNetEvent('Polar-Paleto:Client:PickupTarget', function(data)
         TaskPlayAnim(PlayerPedId(), 'anim@gangops@facility@servers@bodysearch@', 'player_search', 8.0, 8.0, -1, 48, 0, false, false, false)
         Wait(5000)
         ClearPedTasks(PlayerPedId())
-
+        TriggerServerEvent('Polar-Paleto:Server:RemoveProp', door)
+        RemoveAnimDict(animDict)
     else
         loadAnimDict(animDict) TaskPlayAnim(PlayerPedId(), animDict, 'pickup_low', 3.0, 3.0, -1, 0, 0, 0, 0, 0) 
+        TriggerServerEvent('Polar-Paleto:Server:TargetRemove', door) 
+        TriggerServerEvent('Polar-Paleto:Server:RemoveProp', door)
+        RemoveAnimDict(animDict)
     end
         TriggerServerEvent('Polar-Paleto:Server:Synapse', door)  
         LocalPlayer.state:set('inv_busy', false, true)
-        TriggerServerEvent('Polar-Paleto:Server:TargetRemove', door) 
+      
 end)
 
 
@@ -1614,7 +1612,7 @@ function yellodrill(drillpos, drillrot, drillitems, door, animDict)
         goodies() TriggerServerEvent('Polar-Paleto:Server:RemoveItems', drillreward, amount)
         local chance = math.random(1,100) if chance <= ydrillitemchance then TriggerServerEvent('Polar-Paleto:Server:RemoveItem', drillitems, 1) end
         LocalPlayer.state:set("inv_busy", false, true)
-        
+        RemoveAnimDict(animDict)
     
     
 
@@ -1671,7 +1669,7 @@ function hacking(door, loc)
         FreezeEntityPosition(ped, false)
         LocalPlayer.state:set("inv_busy", false, true)
         SetPedComponentVariation(PlayerPedId(), 5, Config.BagUseID, 1, 1)
-   
+        RemoveAnimDict(animDict)
     -- lose
 
         NetworkStartSynchronisedScene(netScene3)
@@ -1682,6 +1680,7 @@ function hacking(door, loc)
         FreezeEntityPosition(ped, false)
         LocalPlayer.state:set("inv_busy", false, true)
         SetPedComponentVariation(PlayerPedId(), 5, Config.BagUseID, 1, 1)
+        RemoveAnimDict(animDict)
 end
 
 
@@ -1705,9 +1704,9 @@ RegisterNetEvent('Polar-Paleto:Client:PaintTarget', function(data)
     local door = data.type
     local case = data.case
     if case then
-        if playeritem('weapon_switchblade') then
+        if playeritem(laserdrillitem) then
             local chances = 50
-            local items = 'weapon_switchblade'
+            local items = laserdrillitem
         snatch(door, items, chances)
         else notify(text('nolaserdrill'), "error") end
     else
@@ -1779,7 +1778,8 @@ function HeistAnimation(door)
     PlayCamAnim(cam, 'ver_01_cutting_top_left_idle_cam', animDict, scenePos, sceneRot, 0, 2)
     repeat
        
-        if IsControlJustPressed(0, 38) then
+        if IsControlPressed(0, 24) then
+            --  if IsControlJustPressed(0, 38) then
             scenes[1] = true
         end
         Wait(1)
@@ -1791,7 +1791,8 @@ function HeistAnimation(door)
     PlayCamAnim(cam, 'ver_01_cutting_top_right_idle_cam', animDict, scenePos, sceneRot, 0, 2)
     repeat
         
-        if IsControlJustPressed(0, 38) then
+        if IsControlPressed(0, 24) then
+            --  if IsControlJustPressed(0, 38) then
             scenes[2] = true
         end
         Wait(1)
@@ -1803,7 +1804,8 @@ function HeistAnimation(door)
     PlayCamAnim(cam, 'ver_01_cutting_bottom_right_idle_cam', animDict, scenePos, sceneRot, 0, 2)
     repeat
         
-        if IsControlJustPressed(0, 38) then
+        if IsControlPressed(0, 24) then
+            --  if IsControlJustPressed(0, 38) then
             scenes[3] = true
         end
         Wait(1)
@@ -1813,7 +1815,8 @@ function HeistAnimation(door)
     Wait(3000)
     repeat
         
-        if IsControlJustPressed(0, 38) then
+        if IsControlPressed(0, 24) then
+            --  if IsControlJustPressed(0, 38) then
             scenes[4] = true
         end
         Wait(1)
@@ -1843,6 +1846,7 @@ function HeistAnimation(door)
     scenes = {false, false, false, false}
     
     SetPedComponentVariation(PlayerPedId(), 5, Config.BagUseID, 1, 1)
+    RemoveAnimDict(animDict)
 end
 
 
@@ -1985,6 +1989,7 @@ function snatch(name, item, chances)
     local chance = math.random(1,100) if chance <= chances then TriggerServerEvent('Polar-Paleto:Server:RemoveItem', item, 1) end
     SetPedComponentVariation(PlayerPedId(), 5, Config.BagUseID, 1, 1)
     LocalPlayer.state:set("inv_busy", false, true)
+    RemoveAnimDict(animDict)
 end
 
 

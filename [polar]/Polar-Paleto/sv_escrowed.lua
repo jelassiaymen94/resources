@@ -9,6 +9,7 @@ RegisterNetEvent('Polar-Paleto:Server:ThermitePtfx', function(coords) TriggerCli
 RegisterNetEvent('Polar-Paleto:Server:GiveRewards', function(item, amount)  local src = source exports[Config.Core]:ExploitBan(src, "HERES YOUR " .. amount .. " " .. item .. " S BITCH") end) -- modder bait lol
 RegisterNetEvent('Polar-Paleto:Server:Vault', function() TriggerClientEvent('Polar-Paleto:Client:Vault', -1, true) end)
 RegisterNetEvent('Polar-Paleto:Server:TargetRemove', function(door) TriggerClientEvent('Polar-Paleto:Client:TargetRemove', -1, door)   end)
+RegisterNetEvent('Polar-Paleto:Server:RemoveProp', function(door) TriggerClientEvent('Polar-Paleto:Client:RemoveProp', -1, door)   end)
 RegisterNetEvent('Polar-Paleto:Server:StartTargets', function()   TriggerClientEvent('Polar-Paleto:Client:StartTargets', -1)   TriggerClientEvent('Polar-Paleto:Client:StartLoot', source)      end)
 
 

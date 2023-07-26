@@ -4,7 +4,7 @@ local prop = nil
 -- 45 to 50
 
 Config.paletoprop45 = {
-    vector4(-103.08, 6478.02, 31.63, 313.69), --- locations, can be multiple but chooses 1 at random
+    vector4(-103.07, 6477.94, 31.63, 316.64), --- locations, can be multiple but chooses 1 at random
 
 }
 function paletoprop45() -- should be same as door = 
@@ -71,11 +71,11 @@ end
 
 function bruhpppc(door, prop, location)
     TriggerEvent('Polar-Paleto:Server:SetPaletoProp', door, prop)
-    TriggerClientEvent('Polar-Paleto:Client:AddPaintTarget', -1, door, prop, vec4(location.x, location.y, location.z-1, location.w), true)
-    if prop == 'h4_prop_h4_diamond_01a' then TriggerClientEvent('Polar-Paleto:Client:PaletoProp', -1, door, prop, vec4(location.x, location.y, location.z-1, location.w)) TriggerClientEvent('Polar-Paleto:Client:PaletoProp', -1, door, 'h4_prop_h4_diamond_disp_01a', vec4(location.x, location.y, location.z-1.2, location.w), true, 1)
-    elseif prop == 'h4_prop_h4_necklace_01a' then TriggerClientEvent('Polar-Paleto:Client:PaletoProp', -1, door, prop, vec4(location.x, location.y, location.z-1, location.w)) TriggerClientEvent('Polar-Paleto:Client:PaletoProp', -1, door, 'h4_prop_h4_neck_disp_01a', vec4(location.x, location.y, location.z-1.2, location.w), true, 1) 
+    TriggerClientEvent('Polar-Paleto:Client:AddPaintTarget', -1, door, prop, vec4(location.x, location.y, location.z+0.2, location.w), true)
+    if prop == 'h4_prop_h4_diamond_01a' then TriggerClientEvent('Polar-Paleto:Client:PaletoProp', -1, door, prop, vec4(location.x, location.y, location.z+0.2, location.w)) TriggerClientEvent('Polar-Paleto:Client:PaletoProp', -1, door, 'h4_prop_h4_diamond_disp_01a', vec4(location.x, location.y, location.z, location.w), true, 1)
+    elseif prop == 'h4_prop_h4_necklace_01a' then TriggerClientEvent('Polar-Paleto:Client:PaletoProp', -1, door, prop, vec4(location.x, location.y, location.z+0.2, location.w)) TriggerClientEvent('Polar-Paleto:Client:PaletoProp', -1, door, 'h4_prop_h4_neck_disp_01a', vec4(location.x, location.y, location.z, location.w), true, 1) 
     else
-        TriggerClientEvent('Polar-Paleto:Client:PaletoProp', -1, door, prop, vec4(location.x, location.y, location.z-1.17, location.w))
+        TriggerClientEvent('Polar-Paleto:Client:PaletoProp', -1, door, prop, vec4(location.x, location.y, location.z, location.w))
     end -- itemstand
-    TriggerClientEvent('Polar-Paleto:Client:PaletoProp', -1, door, 'h4_prop_h4_glass_disp_01a', vec4(location.x, location.y, location.z-2.2, location.w), true, 2) -- displaycase
+    TriggerClientEvent('Polar-Paleto:Client:PaletoProp', -1, door, 'h4_prop_h4_glass_disp_01a', vec4(location.x, location.y, location.z-1, location.w), true, 2) -- displaycase
 end

@@ -320,7 +320,7 @@ end
 
 local bennysgarages = {
    vector3(109.49, 6623.03, 31.79),
-   
+   vector3(1179.85, 2642.36, 37.81)
 
 
 }
