@@ -517,7 +517,7 @@ function grabloot(door, object)
     ClearPedTasks(PlayerPedId())
     SetPedComponentVariation(PlayerPedId(), 5, Config.BagUseID, 0, 1)
     LocalPlayer.state:set('inv_busy', false, true) -- Not Busy
-    SetEntityAsNoLongerNeeded(prop)
+    SetEntityAsNoLongerNeeded(object)
 end
 
 
@@ -1247,6 +1247,7 @@ RegisterNetEvent('Polar-Paleto:Client:Target', function(data)
    -- print(GetEntityRotation(doors[p]))
    
     if tablecheck(p, trollytable) then
+        --print(doors[p])
         grabloot(p, doors[p])
     else
         Animation(p, doors[p])  

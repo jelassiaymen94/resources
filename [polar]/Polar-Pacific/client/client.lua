@@ -535,6 +535,7 @@ function grabloot(door, object)
     ClearPedTasks(PlayerPedId())
     SetPedComponentVariation(PlayerPedId(), 5, Config.BagUseID, 0, 1)
     LocalPlayer.state:set('inv_busy', false, true) -- Not Busy
+    SetEntityAsNoLongerNeeded(object)
 end
 
 
