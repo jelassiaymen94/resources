@@ -27,6 +27,7 @@ function goodies()
     end 
 end
 
+local spam = Config.TrollySpam
 
 local knifeitem = 'weapon_switchblade' -- item for paintings
 
@@ -430,6 +431,8 @@ function grabloot(door, object)
     CashAppear(grabModel)
     NetworkStartSynchronisedScene(scene2)
     Wait(1000)
+ 
+    if spam then
      TriggerServerEvent('Polar-Paleto:Server:Synapse', door)  
     Wait(1000)
      TriggerServerEvent('Polar-Paleto:Server:Synapse', door)   
@@ -494,7 +497,12 @@ function grabloot(door, object)
     Wait(1000)
      TriggerServerEvent('Polar-Paleto:Server:Synapse', door)    
     Wait(1000)
+    else
+        Wait(8000)
+        Wait(18000)
+        Wait(10000)
      TriggerServerEvent('Polar-Paleto:Server:Synapse', door)    
+    end
     NetworkStartSynchronisedScene(scene3)
     Wait(2000)
     DeleteObject(bag)
@@ -727,10 +735,12 @@ function Animation(door, props)
     FreezeEntityPosition(props, true)
     SetEntityInvincible(props, true)
     SetEntityNoCollisionEntity(props, ped)
-    AttachEntityToEntity(props, ped, GetPedBoneIndex(PlayerPedId(), 58866), 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, false, false, false, true, 0, true)
-    SetEntityRotation(props, 0.0, 0.0, 2, 2)
-    Wait(500) SetEntityVisible(props, false, false)
-    NetworkStartSynchronisedScene(scene3) Wait(1000) ClearPedTasks(PlayerPedId()) DeleteObject(bag) SetPedComponentVariation(PlayerPedId(), 5, Config.BagUseID, 0, 1)
+    Wait(100)
+    Wait(100)
+    Wait(100)
+    AttachEntityToEntity(props, ped, GetPedBoneIndex(PlayerPedId(), 0xFA60), 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, false, false, false, true, 0, true)
+    Wait(300) SetEntityVisible(props, false, false)
+    NetworkStartSynchronisedScene(scene3) Wait(900) ClearPedTasks(PlayerPedId()) DeleteObject(bag) SetPedComponentVariation(PlayerPedId(), 5, Config.BagUseID, 0, 1)
     LocalPlayer.state:set('inv_busy', false, true)  
     TriggerServerEvent('Polar-Paleto:Server:Synapse', door, sped)  
 

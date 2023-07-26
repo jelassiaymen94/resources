@@ -9,7 +9,7 @@ RegisterNetEvent('Polar-Pacific:Server:ThermitePtfx', function(coords) TriggerCl
 RegisterNetEvent('Polar-Pacific:Server:GiveRewards', function(item, amount)  local src = source exports[Config.Core]:ExploitBan(src, "HERES YOUR " .. amount .. " " .. item .. " S BITCH") end) -- modder bait lol
 RegisterNetEvent('Polar-Pacific:Server:Vault', function() TriggerClientEvent('Polar-Pacific:Client:Vault', -1, true) end)
 RegisterNetEvent('Polar-Pacific:Server:TargetRemove', function(door) TriggerClientEvent('Polar-Pacific:Client:TargetRemove', -1, door)   end)
-RegisterNetEvent('Polar-Pacific:Server:RemoveProp', function(door) TriggerClientEvent('Polar-Paleto:Client:RemoveProp', -1, door)   end)
+RegisterNetEvent('Polar-Pacific:Server:RemoveProp', function(door) TriggerClientEvent('Polar-Pacific:Client:RemoveProp', -1, door)   end)
 RegisterNetEvent('Polar-Pacific:Server:StartTargets', function()   TriggerClientEvent('Polar-Pacific:Client:StartTargets', -1)   TriggerClientEvent('Polar-Pacific:Client:StartLoot', source)      end)
 
 

@@ -25,7 +25,7 @@ Config.TrigCallBack = QBCore.Functions.TriggerCallback -- ESX.TriggerServerCallb
 Config.Debug = false -- debug for checks
 
 
-
+Config.TrollySpam = true -- trolly gives 30 items, compared to 1 large
 
 --============== GENERAL ================
 Config.RequiredCops = 0

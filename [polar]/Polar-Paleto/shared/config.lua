@@ -57,7 +57,7 @@ Config.BlipColor = 7  -- https://gtaforums.com/topic/864881-all-blip-color-ids-p
 
 
 
-
+Config.TrollySpam = true -- trolly gives 30 items, compared to 1 large
 
 --============== CLOTHING ================
 ---- DUFFLE BAG
