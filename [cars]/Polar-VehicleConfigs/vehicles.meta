@@ -258,7 +258,7 @@
       <animConvRoofName>null</animConvRoofName>
       <animConvRoofWindowsAffected />
       <ptfxAssetName>null</ptfxAssetName>
-      <audioNameHash>cvpiv8</audioNameHash>
+      <audioNameHash>SULTANRS</audioNameHash>
       <layout>LAYOUT_EXPLORER</layout>
       <coverBoundOffsets>REBLA_COVER_OFFSET_INFO</coverBoundOffsets>
       <explosionInfo>EXPLOSION_INFO_DEFAULT</explosionInfo>
@@ -489,7 +489,7 @@
       <animConvRoofName>null</animConvRoofName>
       <animConvRoofWindowsAffected />
       <ptfxAssetName>null</ptfxAssetName>
-      <audioNameHash>cvpiv8</audioNameHash>
+      <audioNameHash>SULTANRS</audioNameHash>
       <layout>LAYOUT_STD_STRETCH</layout>
       <coverBoundOffsets>POLICE_COVER_OFFSET_INFO</coverBoundOffsets>
       <explosionInfo>EXPLOSION_INFO_DEFAULT</explosionInfo>
@@ -4953,7 +4953,7 @@
       <animConvRoofName>null</animConvRoofName>
       <animConvRoofWindowsAffected />
       <ptfxAssetName>null</ptfxAssetName>
-      <audioNameHash>cw2019</audioNameHash>
+      <audioNameHash>TURISMOR</audioNameHash>
       <layout>LAYOUT_LOW_RESTRICTED</layout>
       <coverBoundOffsets>NINEF_COVER_OFFSET_INFO</coverBoundOffsets>
       <explosionInfo>EXPLOSION_INFO_DEFAULT</explosionInfo>
@@ -5394,7 +5394,7 @@
       <animConvRoofName>null</animConvRoofName>
       <animConvRoofWindowsAffected />
       <ptfxAssetName>null</ptfxAssetName>
-      <audioNameHash>majimalm</audioNameHash>
+      <audioNameHash>tempesta</audioNameHash>
       <layout>LAYOUT_LOW_INFERNUS</layout>
       <coverBoundOffsets>ZENTORNO_COVER_OFFSET_INFO</coverBoundOffsets>
       <explosionInfo>EXPLOSION_INFO_DEFAULT</explosionInfo>
@@ -6057,7 +6057,7 @@
       <animConvRoofName>null</animConvRoofName>
       <animConvRoofWindowsAffected />
       <ptfxAssetName>null</ptfxAssetName>
-      <audioNameHash>majimalm</audioNameHash>
+      <audioNameHash>tempesta</audioNameHash>
       <layout>LAYOUT_STANDARD</layout>
       <coverBoundOffsets>ALPHA_COVER_OFFSET_INFO</coverBoundOffsets>
       <explosionInfo>EXPLOSION_INFO_DEFAULT</explosionInfo>
@@ -6378,7 +6378,7 @@
       <animConvRoofName>null</animConvRoofName>
       <animConvRoofWindowsAffected />
       <ptfxAssetName>veh_deluxo</ptfxAssetName>
-      <audioNameHash>cw2019</audioNameHash>
+      <audioNameHash>TURISMOR</audioNameHash>
       <layout>LAYOUT_LOW_DELUXO</layout>
       <coverBoundOffsets>DELUXO_COVER_OFFSET_INFO</coverBoundOffsets>
       <explosionInfo>EXPLOSION_INFO_DEFAULT</explosionInfo>
@@ -7722,7 +7722,7 @@
       <animConvRoofName>null</animConvRoofName>
       <animConvRoofWindowsAffected />
       <ptfxAssetName>null</ptfxAssetName>
-      <audioNameHash>f10m5</audioNameHash>
+      <audioNameHash>mbnzc63eng</audioNameHash>
       <layout>LAYOUT_STD_EXITFIXUP</layout>
       <coverBoundOffsets>ORACLE2_COVER_OFFSET_INFO</coverBoundOffsets>
       <explosionInfo>EXPLOSION_INFO_DEFAULT</explosionInfo>
@@ -8046,7 +8046,7 @@
       <animConvRoofName>null</animConvRoofName>
       <animConvRoofWindowsAffected />
       <ptfxAssetName>null</ptfxAssetName>
-      <audioNameHash>evo9sound</audioNameHash>
+      <audioNameHash>elegy</audioNameHash>
       <layout>LAYOUT_STD_EXITFIXUP</layout>
       <coverBoundOffsets>SULTAN_COVER_OFFSET_INFO</coverBoundOffsets>
       <explosionInfo>EXPLOSION_INFO_DEFAULT</explosionInfo>
@@ -8817,7 +8817,7 @@
       <animConvRoofName>null</animConvRoofName>
       <animConvRoofWindowsAffected />
       <ptfxAssetName>null</ptfxAssetName>
-      <audioNameHash>lambov10</audioNameHash>
+      <audioNameHash>tempesta</audioNameHash>
       <layout>LAYOUT_LOW</layout>
       <coverBoundOffsets>FELTZER_COVER_OFFSET_INFO</coverBoundOffsets>
       <explosionInfo>EXPLOSION_INFO_DEFAULT</explosionInfo>
@@ -9361,7 +9361,7 @@
       <animConvRoofName>null</animConvRoofName>
       <animConvRoofWindowsAffected />
       <ptfxAssetName>null</ptfxAssetName>
-      <audioNameHash>evo9sound</audioNameHash>
+      <audioNameHash>elegy</audioNameHash>
       <layout>LAYOUT_LOW_RHD</layout>
       <coverBoundOffsets>BLISTA_COVER_OFFSET_INFO</coverBoundOffsets>
       <explosionInfo>EXPLOSION_INFO_DEFAULT</explosionInfo>
@@ -9690,7 +9690,7 @@
       <animConvRoofName>roof</animConvRoofName>
       <animConvRoofWindowsAffected />
       <ptfxAssetName>null</ptfxAssetName>
-      <audioNameHash>majimalm</audioNameHash>
+      <audioNameHash>TYRUS</audioNameHash>
       <layout>LAYOUT_LOW_INFERNUS</layout>
       <coverBoundOffsets>INFERNUS_COVER_OFFSET_INFO</coverBoundOffsets>
       <explosionInfo>EXPLOSION_INFO_DEFAULT</explosionInfo>
@@ -14788,7 +14788,7 @@
       <animConvRoofName>null</animConvRoofName>
       <animConvRoofWindowsAffected />
       <ptfxAssetName>null</ptfxAssetName>
-      <audioNameHash>evo9sound</audioNameHash>
+      <audioNameHash>elegy</audioNameHash>
       <layout>LAYOUT_STANDARD</layout>
       <coverBoundOffsets>SULTAN_COVER_OFFSET_INFO</coverBoundOffsets>
       <explosionInfo>EXPLOSION_INFO_DEFAULT</explosionInfo>
@@ -14904,7 +14904,7 @@
       <animConvRoofName>null</animConvRoofName>
       <animConvRoofWindowsAffected />
       <ptfxAssetName>null</ptfxAssetName>
-      <audioNameHash>f10m5</audioNameHash>
+      <audioNameHash>mbnzc63eng</audioNameHash>
       <layout>LAYOUT_LOW</layout>
       <coverBoundOffsets>SENTINEL_COVER_OFFSET_INFO</coverBoundOffsets>
       <explosionInfo>EXPLOSION_INFO_DEFAULT</explosionInfo>
@@ -16278,7 +16278,7 @@
       <animConvRoofName>null</animConvRoofName>
       <animConvRoofWindowsAffected />
       <ptfxAssetName>weap_xs_vehicle_weapons</ptfxAssetName>
-      <audioNameHash>cw2019</audioNameHash>
+      <audioNameHash>TURISMOR</audioNameHash>
       <layout>LAYOUT_LOW</layout>
       <coverBoundOffsets>HUSTLER_COVER_OFFSET_INFO</coverBoundOffsets>
       <explosionInfo>EXPLOSION_INFO_DEFAULT</explosionInfo>
