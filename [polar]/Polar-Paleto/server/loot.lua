@@ -15,19 +15,48 @@ local amount = nil
 
 local cashtable = {
     'markedbills',
+    'dirtyband',
 
 }
 local goldtable = {
     'goldbar',
-
+    'valuablegoods',
+    'goldchip',
 }
 
 local diamondtable = {
     'diamond',
-
+    'captainskull',
+    'saphire',
+    'bluediamond',
+    'redruby',
+    'yellow-diamond',
 }
-
-
+local drilltable = {
+    'diamond',
+    'captainskull',
+    'saphire',
+    'bluediamond',
+    'redruby',
+    'yellow-diamond',
+    'goldbar',  'goldbar', 'goldbar', 'goldbar',
+    'valuablegoods', 'valuablegoods', 'valuablegoods',
+    'goldchip',
+    'markedbills',
+    'dirtyband', 'dirtyband', 'dirtyband', 'dirtyband', 'dirtyband', 'dirtyband', 'dirtyband', 'dirtyband',
+    --'',
+}
+RegisterNetEvent('Polar-Paleto:Drill', function(door)
+   -- print(door)
+    if door == nil then return end
+   -- local times = math.random(1,5) 
+    
+   -- for i = 1, times do
+        item = drilltable[math.random(1, #drilltable)] 
+        give(item, 1)
+   -- end
+  
+end)
 local oxinv = Config.OxIventory
 
 
@@ -37,7 +66,7 @@ RegisterNetEvent('Polar-Paleto:Server:RemoveItems', function(item, amount)
     Wait(150) 
     if amount == nil then amount = 1 end
     if Config.Framework == 'qb' then 
-        if onxinv then
+        if oxinv then
             exports.ox_inventory:AddItem(src, QBCore.Shared.Items[item], amount)
             TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[item], "add", amount)  
         else
@@ -45,7 +74,7 @@ RegisterNetEvent('Polar-Paleto:Server:RemoveItems', function(item, amount)
             TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[item], "add", amount)  
         end
     elseif  Config.Framework == 'esx' then 
-        if onxinv then
+        if oxinv then
             exports.ox_inventory:AddItem(src, QBCore.Shared.Items[item], amount)
         else
             Player.addInventoryItem(item, amount) 
@@ -56,11 +85,11 @@ end)
 function give(item, amount)
         local src = source local Player = QBCore.Functions.GetPlayer(src)
         local info = {
-            worth = math.random(1,100)
+            worth = math.random(1000,10000)
         }
     if amount == nil then amount = 1 end
     if Config.Framework == 'qb' then 
-        if onxinv then
+        if oxinv then
             exports.ox_inventory:AddItem(src, QBCore.Shared.Items[item], amount)
             TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[item], "add", amount)  
         else
@@ -73,7 +102,7 @@ function give(item, amount)
             end
         end
     elseif  Config.Framework == 'esx' then 
-        if onxinv then
+        if oxinv then
             exports.ox_inventory:AddItem(src, QBCore.Shared.Items[item], amount)
         else
             Player.addInventoryItem(item, amount) 
@@ -84,102 +113,24 @@ end
 
 
 
-function hiya(prop)
-    if prop == nil then print('ERROR') else
-
-    -- piles
-    if prop ==    'ex_cash_pile_005' then item = 'markedbills' amount = math.random(1,5) give(item, amount)
-    elseif prop == 'h4_prop_h4_gold_stack_01a' then  item = 'goldbar' amount = math.random(1,3) give(item, amount)
-
-    -- trolly
-    elseif prop ==    'ch_prop_ch_cash_trolly_01a' then item = cashtable[math.random(1, #cashtable)] amount = math.random(1,1) local chance = math.random(1,100) if chance < 50 then give(item, amount) end
-    elseif prop == 'ch_prop_gold_trolly_01a' then  item = goldtable[math.random(1, #goldtable)] amount = math.random(1,1)   local chance = math.random(1,100) if chance < 30 then give(item, amount) end
-    elseif prop == 'ch_prop_diamond_trolly_01a'then item = diamondtable[math.random(1, #diamondtable)] amount = math.random(1,1) local chance = math.random(1,100) if chance < 15 then give(item, amount) end 
-   
-    -- Paintings
-    elseif prop == 'ch_prop_vault_painting_01a' then item = 'goldbar' amount = math.random(1,1)  give(item, amount)
-    elseif prop == 'ch_prop_vault_painting_01b' then  item = 'goldbar' amount = math.random(1,1)    give(item, amount)
-    elseif prop == 'ch_prop_vault_painting_01c'then item = 'goldbar' amount = math.random(1,1)  give(item, amount)  
-    elseif prop == 'ch_prop_vault_painting_01d' then item = 'goldbar' amount = math.random(1,1)  give(item, amount) 
-    elseif prop == 'ch_prop_vault_painting_01e' then  item = 'goldbar' amount = math.random(1,1)    give(item, amount)
-    elseif prop == 'ch_prop_vault_painting_01f'then item = 'goldbar' amount = math.random(1,1)  give(item, amount) 
-    elseif prop == 'ch_prop_vault_painting_01g' then item = 'goldbar' amount = math.random(1,1)  give(item, amount)
-    elseif prop == 'ch_prop_vault_painting_01h' then  item = 'goldbar' amount = math.random(1,1)    give(item, amount)
-    elseif prop == 'ch_prop_vault_painting_01i'then item = 'goldbar' amount = math.random(1,1)  give(item, amount)  
-    elseif prop == 'ch_prop_vault_painting_01j' then item = 'goldbar' amount = math.random(1,1)  give(item, amount) 
-    elseif prop == 'h4_prop_h4_painting_01a' then  item = 'goldbar' amount = math.random(1,1)    give(item, amount)
-    elseif prop == 'h4_prop_h4_painting_01b'then item = 'goldbar' amount = math.random(1,1)  give(item, amount) 
-    elseif prop == 'h4_prop_h4_painting_01c' then  item = 'goldbar' amount = math.random(1,1)    give(item, amount)
-    elseif prop == 'h4_prop_h4_painting_01d'then item = 'goldbar' amount = math.random(1,1)  give(item, amount) 
-    elseif prop == 'h4_prop_h4_painting_01e' then  item = 'goldbar' amount = math.random(1,1)    give(item, amount)
-    elseif prop == 'h4_prop_h4_painting_01f'then item = 'goldbar' amount = math.random(1,1)  give(item, amount) 
-    elseif prop == 'h4_prop_h4_painting_01g' then  item = 'goldbar' amount = math.random(1,1)    give(item, amount)
-    elseif prop == 'h4_prop_h4_painting_01h'then item = 'goldbar' amount = math.random(1,1)  give(item, amount) 
-
-    -- case Drilling
-    elseif prop == 'h4_prop_h4_art_pant_01a' then  item = 'goldbar' amount = math.random(1,1)    give(item, amount)
-    elseif prop == 'h4_prop_h4_diamond_01a'then item = 'goldbar' amount = math.random(1,1)  give(item, amount) 
-    elseif prop == 'h4_prop_h4_necklace_01a'then item = 'goldbar' amount = math.random(1,1)  give(item, amount)    
-    elseif prop == 'h4_prop_h4_t_bottle_02a' then  item = 'goldbar' amount = math.random(1,1)    give(item, amount)
-    elseif prop == 'h4_prop_h4_t_bottle_02b'then item = 'goldbar' amount = math.random(1,1)  give(item, amount) 
-    elseif prop == 'h4_prop_h4_t_bottle_01a'then item = 'goldbar' amount = math.random(1,1)  give(item, amount) 
-
-    -- grabs & pickups
-    elseif prop ==    'prop_cash_pile_01' then item = 'markedbills' amount = math.random(1,1) give(item, amount)
-    elseif prop == 'prop_cash_pile_02' then  item = 'markedbills' amount = math.random(1,1) give(item, amount)
-    elseif prop == 'prop_anim_cash_pile_01'then item = 'markedbills' amount = math.random(1,1) give(item, amount)
-    elseif prop ==  'prop_anim_cash_pile_02'then  item = 'markedbills' amount = math.random(1,1) give(item, amount)
-    elseif prop ==  'bkr_prop_bkr_cash_roll_01' then  item = 'markedbills' amount = math.random(1,1) give(item, amount)
-    
-    elseif prop ==  'ch_prop_gold_bar_01a' then  item = 'goldbar' amount = math.random(1,1) give(item, amount)
-    elseif prop ==  'hei_prop_heist_gold_bar' then  item = 'goldbar' amount = math.random(1,1) give(item, amount)
-    elseif prop ==  'prop_gold_bar' then item = 'goldbar' amount = math.random(1,1) give(item, amount)
-    
-    elseif prop ==    'prop_peyote_gold_01' then  item = 'goldbar' amount = math.random(1,5) give(item, amount)
-    elseif prop ==    'ex_prop_exec_award_gold' then  item = 'goldbar' amount = math.random(1,5) give(item, amount)
-    elseif prop ==    'xs_prop_trophy_goldbag_01a' then  item = 'goldbar' amount = math.random(1,5) give(item, amount)
-    elseif prop ==    'vw_prop_vw_pogo_gold_01a' then  item = 'goldbar' amount = math.random(1,5) give(item, amount)
-    elseif prop ==    'h4_prop_h4_gold_coin_01a' then  item = 'goldbar' amount = math.random(1,5) give(item, amount)
-    elseif prop ==    'vw_prop_casino_art_egg_01a' then  item = 'goldbar' amount = math.random(1,5) give(item, amount)
-    elseif prop ==    'vw_prop_casino_art_miniature_09a' then  item = 'goldbar' amount = math.random(1,5) give(item, amount)
-    elseif prop ==    'vw_prop_casino_art_miniature_09b' then  item = 'goldbar' amount = math.random(1,5) give(item, amount)
-    elseif prop ==    'vw_prop_casino_art_miniature_09c' then  item = 'goldbar' amount = math.random(1,5) give(item, amount)
-    elseif prop ==   'vw_prop_casino_art_miniature_05a' then  item = 'goldbar' amount = math.random(1,5) give(item, amount)
-    elseif prop ==    'vw_prop_casino_art_miniature_05b' then  item = 'goldbar' amount = math.random(1,5) give(item, amount)
-    elseif prop ==    'vw_prop_casino_art_miniature_05c' then  item = 'goldbar' amount = math.random(1,5) give(item, amount)
-    elseif prop ==    'vw_prop_casino_art_car_09a' then  item = 'goldbar' amount = math.random(1,5) give(item, amount)
-    elseif prop ==    'vw_prop_casino_art_bird_01a' then  item = 'goldbar' amount = math.random(1,5) give(item, amount)
-    elseif prop ==    'vw_prop_casino_art_car_11a' then  item = 'goldbar' amount = math.random(1,5) give(item, amount)
-    elseif prop ==    'vw_prop_casino_art_grenade_01a' then  item = 'goldbar' amount = math.random(1,5) give(item, amount)
-    elseif prop ==     'vw_prop_casino_art_grenade_01b' then  item = 'goldbar' amount = math.random(1,5) give(item, amount)
-    elseif prop ==    'vw_prop_casino_art_grenade_01c' then  item = 'goldbar' amount = math.random(1,5) give(item, amount)
-    elseif prop ==    'vw_prop_art_pug_02a' then  item = 'goldbar' amount = math.random(1,5) give(item, amount)
-    elseif prop ==     'vw_prop_casino_art_basketball_02a' then  item = 'goldbar' amount = math.random(1,5) give(item, amount)
-    elseif prop ==    'vw_prop_miniature_yacht_01a' then  item = 'goldbar' amount = math.random(1,5) give(item, amount)
-    elseif prop ==    'vw_prop_miniature_yacht_01b' then  item = 'goldbar' amount = math.random(1,5) give(item, amount)
-    elseif prop ==    'vw_prop_miniature_yacht_01c' then  item = 'goldbar' amount = math.random(1,5) give(item, amount)
-    elseif prop ==   'vw_prop_casino_art_horse_01a' then  item = 'goldbar' amount = math.random(1,5) give(item, amount)
-    elseif prop ==     'vw_prop_casino_art_panther_01c' then  item = 'goldbar' amount = math.random(1,5) give(item, amount)
-    
-    elseif prop ==     'v_res_r_fighorse' then  item = 'goldbar' amount = math.random(1,5) give(item, amount)
-    elseif prop ==     'v_res_r_fighorsestnd' then  item = 'goldbar' amount = math.random(1,5) give(item, amount)
-    elseif prop ==     'ch_prop_ch_trophy_monkey_01a' then  item = 'goldbar' amount = math.random(1,5) give(item, amount)
-    elseif prop ==     'ch_prop_ch_trophy_racer_01a' then  item = 'goldbar' amount = math.random(1,5) give(item, amount)
-    elseif prop ==     'ch_prop_ch_trophy_strife_01a' then  item = 'goldbar' amount = math.random(1,5) give(item, amount)
-    elseif prop ==     'vw_prop_casino_art_skull_01b' then  item = 'goldbar' amount = math.random(1,5) give(item, amount)
-    elseif prop ==     'vw_prop_casino_art_skull_02b' then  item = 'goldbar' amount = math.random(1,5) give(item, amount)
-    elseif prop ==     'vw_prop_casino_art_figurines_01a' then  item = 'goldbar' amount = math.random(1,5) give(item, amount)
-    elseif prop ==     'vw_prop_casino_art_figurines_02a' then  item = 'goldbar' amount = math.random(1,5) give(item, amount)
-    elseif prop ==     'vw_prop_casino_art_lampf_01a' then  item = 'goldbar' amount = math.random(1,5) give(item, amount)
-    elseif prop ==     'vw_prop_toy_sculpture_01a' then  item = 'goldbar' amount = math.random(1,5) give(item, amount)
-    elseif prop ==     'vw_prop_vw_chips_pile_01a' then  item = 'goldbar' amount = math.random(1,5) give(item, amount)
-    elseif prop ==     'vw_prop_vw_chips_pile_02a' then  item = 'goldbar' amount = math.random(1,5) give(item, amount)
- 
-else
-    print('' .. prop .. ' does not have a giveitem')
-    end
+function hiya(name)
+    if name ==    'ch_prop_ch_cash_trolly_01a' then item = cashtable[math.random(1, #cashtable)] amount = math.random(1,1) local chance = math.random(1,100) if chance < 50 then give(item, amount)
+    elseif name == 'ch_prop_gold_trolly_01a' then  item = goldtable[math.random(1, #goldtable)] amount = math.random(1,1)   local chance = math.random(1,100) if chance < 30 then give(item, amount) end
+    elseif name == 'ch_prop_diamond_trolly_01a'then item = diamondtable[math.random(1, #diamondtable)] amount = math.random(1,1) local chance = math.random(1,100) if chance < 15 then give(item, amount) end 
+    else
+        if name == nil then print('ERROR') return end
+            for _, data in ipairs(Config.LootProps) do
+                if data.prop == name then
+                local item = data.item
+                local amount = math.random(data.amountmin,data.amountmax)
+                give(item, amount)
+                return 
+                end
+            end
+        end
     end
 end
+
 
 
 

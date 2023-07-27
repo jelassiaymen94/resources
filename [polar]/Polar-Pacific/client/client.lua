@@ -10,22 +10,6 @@ local amount = nil
 
 --============== CONFIG ====================================================================================================================================================
 
-local drillreward = nil
-function goodies()  
-    local chance = math.random(1,100) 
-    if chance <= 25 then 
-        drillreward = 'band' 
-        amount = 3 
-    elseif 
-        chance <= 50 then 
-        drillreward = 'band' 
-        amount = 2 
-    elseif 
-        chance <=100 then 
-        drillreward = 'band' 
-        amount = 1 
-    end 
-end
 
 
 local knifeitem = 'weapon_switchblade' -- item for paintings
@@ -275,7 +259,7 @@ function PlantThermite(pp, door)
 end
 function loadAnimDict(dict) while not HasAnimDictLoaded(dict) do RequestAnimDict(dict) Wait(50) end end
 function loadModel(model) if type(model) == 'number' then model = model else model = GetHashKey(model) end while not HasModelLoaded(model) do RequestModel(model) Wait(0) end end
-function drill(drillpos, drillrot) local pedCo = GetEntityCoords(PlayerPedId()) LocalPlayer.state:set('inv_busy', true, true) local coords, pedRotation = GetEntityCoords(PlayerPedId()), GetEntityRotation(PlayerPedId()) local animDict = 'anim_heist@hs3f@ig9_vault_drill@laser_drill@' loadAnimDict(animDict) local bagModel = bagcolor loadModel(bagModel) local laserDrillModel = 'hei_prop_heist_drill' loadModel(laserDrillModel) RequestAmbientAudioBank('DLC_HEIST_FLEECA_SOUNDSET', 0) RequestAmbientAudioBank('DLC_MPHEIST\\HEIST_FLEECA_DRILL', 0) 
+function drill(drillpos, drillrot, door) local pedCo = GetEntityCoords(PlayerPedId()) LocalPlayer.state:set('inv_busy', true, true) local coords, pedRotation = GetEntityCoords(PlayerPedId()), GetEntityRotation(PlayerPedId()) local animDict = 'anim_heist@hs3f@ig9_vault_drill@laser_drill@' loadAnimDict(animDict) local bagModel = bagcolor loadModel(bagModel) local laserDrillModel = 'hei_prop_heist_drill' loadModel(laserDrillModel) RequestAmbientAudioBank('DLC_HEIST_FLEECA_SOUNDSET', 0) RequestAmbientAudioBank('DLC_MPHEIST\\HEIST_FLEECA_DRILL', 0) 
     RequestAmbientAudioBank('DLC_MPHEIST\\HEIST_FLEECA_DRILL_2', 0) 
     soundId = GetSoundId()
     cam = CreateCam('DEFAULT_ANIMATED_CAMERA', true) SetCamActive(cam, true) RenderScriptCams(true, 0, 3000, 1, 0) bag = CreateObject(GetHashKey(bagModel), coords, 1, 0, 0) laserDrill = CreateObject(GetHashKey(laserDrillModel), coords, 1, 0, 0)
@@ -286,11 +270,17 @@ function drill(drillpos, drillrot) local pedCo = GetEntityCoords(PlayerPedId()) 
     StopSound(soundId) NetworkStartSynchronisedScene(scene5) PlayCamAnim(cam, 'drill_straight_end_cam', animDict, drillpos, drillrot, 0, 2)
     Wait(GetAnimDuration(animDict, 'drill_straight_end') * 1000) NetworkStartSynchronisedScene(scene6) PlayCamAnim(cam, 'exit_cam', animDict, drillpos, drillrot, 0, 2) Wait(GetAnimDuration(animDict, 'exit') * 1000)
     RenderScriptCams(false, false, 0, 1, 0) DestroyCam(cam, false) ClearPedTasks(PlayerPedId()) DeleteObject(bag) DeleteObject(laserDrill) LocalPlayer.state:set('inv_busy', false, true) RemoveAnimDict(animDict)
-    return true
+    TriggerServerEvent('Polar-Pacific:Drill', door)
+    SetPedComponentVariation(PlayerPedId(), 5, Config.BagUseID, 0, 1)
+    
+    local chance = math.random(1,100) if chance <= drillitemchance then TriggerServerEvent('Polar-Pacific:Server:RemoveItem', drillitem, 1) end
+    TriggerServerEvent('Polar-Pacific:Server:TargetRemove', door) 
     else
         StopSound(soundId) NetworkStartSynchronisedScene(scene4) PlayCamAnim(cam, 'drill_straight_fail_cam', animDict, drillpos, drillrot, 0, 2) Wait(GetAnimDuration(animDict, 'drill_straight_fail') * 1000 - 1500)
         RenderScriptCams(false, false, 0, 1, 0) DestroyCam(cam, false) ClearPedTasks(PlayerPedId())  DeleteObject(bag) DeleteObject(laserDrill) LocalPlayer.state:set('inv_busy', false, true) RemoveAnimDict(animDict)
-    return false
+        SetPedComponentVariation(PlayerPedId(), 5, Config.BagUseID, 0, 1)
+        TriggerServerEvent('Polar-Pacific:Server:StartInteract', door)
+        local chance = math.random(1,100) if chance <= drillitemchance then TriggerServerEvent('Polar-Pacific:Server:RemoveItem', drillitem, 1) end
     end
     end)
 end
@@ -605,6 +595,7 @@ RegisterNetEvent('Polar-Pacific:Client:Vault', function(opens)
         if entHeading > open then
             SetEntityHeading(object, entHeading + 1)
             entHeading = entHeading - 0.501
+            PlaySoundFrontend(-1, "OPENING", "MP_PROPERTIES_ELEVATOR_DOORS" , 1)
         else
             FreezeEntityPosition(object, true)
             TriggerServerEvent('Polar-Pacific:Server:VaultClose')
@@ -624,6 +615,7 @@ RegisterNetEvent('Polar-Pacific:Client:Vault', function(opens)
             if entHeading < closed then
                 SetEntityHeading(object, entHeading)
                 entHeading = entHeading + 0.501
+                PlaySoundFrontend(-1, "OPENING", "MP_PROPERTIES_ELEVATOR_DOORS" , 1)
             else
                 FreezeEntityPosition(object, true)
                 
@@ -821,39 +813,51 @@ end)
 
 function next(door, loc)
     if door == vaultdoorname then
-    SetEntityCoords(ped, vec3(loc.x, loc.y, loc.z-1))
+
+    --SetEntityCoords(ped, vec3(loc.x, loc.y, loc.z-1))
     local animDict = 'anim@heists@ornate_bank@hack'
     loadAnimDict(animDict)
     loadModel('hei_prop_hst_laptop')
     loadModel(bagcolor)
+    loadModel('hei_prop_heist_card_hack_02')
     local ped = PlayerPedId()
     local targetPosition, targetRotation = (vec3(GetEntityCoords(ped))), vec3(GetEntityRotation(ped))
     SetPedComponentVariation(ped, 5, Config.HideBagID, 1, 1)
     SetEntityHeading(ped, loc.w)
-    local animPos = GetAnimInitialOffsetPosition(animDict, 'hack_enter', loc.x, loc.y, loc.z-0.445, loc.x, loc.y, loc.z, 0, 2)
-    local animPos2 = GetAnimInitialOffsetPosition(animDict, 'hack_loop', loc.x, loc.y, loc.z-0.445, loc.x, loc.y, loc.z, 0, 2)
-    local animPos3 = GetAnimInitialOffsetPosition(animDict, 'hack_exit', loc.x, loc.y, loc.z-0.445, loc.x, loc.y, loc.z, 0, 2)
+    local heading = GetEntityHeading(PlayerPedId())
+    local step = 0.5
+   -- local x, y, z = table.unpack(GetEntityCoords(PlayerPedId()))
+    local headingRadians = math.rad(heading)
+    local forwardX = step * math.sin(-headingRadians)
+    local forwardY = step * math.cos(headingRadians)
+    local x = loc.x + forwardX
+    local y = loc.y + forwardY
+    local z = loc.z+0.5
 
     FreezeEntityPosition(ped, true)
-    local netScene = NetworkCreateSynchronisedScene(animPos, targetRotation, 2, false, false, 1065353216, 0, 1.3)
+    local netScene = NetworkCreateSynchronisedScene(vec3(x,y,z), targetRotation, 2, false, false, 1065353216, 0, 1.3)
     local bag = CreateObject(GetHashKey(bagcolor), targetPosition, 1, 1, 0)
     local laptop = CreateObject(GetHashKey('hei_prop_hst_laptop'), targetPosition, 1, 1, 0)
+    local card = CreateObject(GetHashKey("hei_prop_heist_card_hack_02"), targetPosition, 1, 1, 0)
 
     NetworkAddPedToSynchronisedScene(ped, netScene, animDict, 'hack_enter', 1.5, -4.0, 1, 16, 1148846080, 0)
     NetworkAddEntityToSynchronisedScene(bag, netScene, animDict, 'hack_enter_bag', 4.0, -8.0, 1)
     NetworkAddEntityToSynchronisedScene(laptop, netScene, animDict, 'hack_enter_laptop', 4.0, -8.0, 1)
+    NetworkAddEntityToSynchronisedScene(card, netScene, animDict, "hack_enter_card", 4.0, -8.0, 1)
 
-    local netScene2 = NetworkCreateSynchronisedScene(animPos2, targetRotation, 2, false, true, 1065353216, 0, 1.3)
+    local netScene2 = NetworkCreateSynchronisedScene(vec3(x,y,z), targetRotation, 2, false, true, 1065353216, 0, 1.3)
     NetworkAddPedToSynchronisedScene(ped, netScene2, animDict, 'hack_loop', 1.5, -4.0, 1, 16, 1148846080, 0)
     NetworkAddEntityToSynchronisedScene(bag, netScene2, animDict, 'hack_loop_bag', 4.0, -8.0, 1)
     NetworkAddEntityToSynchronisedScene(laptop, netScene2, animDict, 'hack_loop_laptop', 4.0, -8.0, 1)
+    NetworkAddEntityToSynchronisedScene(card, netScene2, animDict, "hack_loop_card", 4.0, -8.0, 1)
 
-    local netScene3 = NetworkCreateSynchronisedScene(animPos3, targetRotation, 2, false, false, 1065353216, 0, 1.3)
+    local netScene3 = NetworkCreateSynchronisedScene(vec3(x,y,z), targetRotation, 2, false, false, 1065353216, 0, 1.3)
     NetworkAddPedToSynchronisedScene(ped, netScene3, animDict, 'hack_exit', 1.5, -4.0, 1, 16, 1148846080, 0)
     NetworkAddEntityToSynchronisedScene(bag, netScene3, animDict, 'hack_exit_bag', 4.0, -8.0, 1)
     NetworkAddEntityToSynchronisedScene(laptop, netScene3, animDict, 'hack_exit_laptop', 4.0, -8.0, 1)
+    NetworkAddEntityToSynchronisedScene(card, netScene3, animDict, "hack_exit_card", 4.0, -8.0, 1)
 
-    Wait(200)
+    --Wait(200)
     NetworkStartSynchronisedScene(netScene)
     Wait(6300)
     NetworkStartSynchronisedScene(netScene2)
@@ -893,6 +897,7 @@ function next(door, loc)
             FreezeEntityPosition(ped, false)
             LocalPlayer.state:set('inv_busy', false, true) 
             RemoveAnimDict(animDict)
+            PlaySoundFrontend(-1, "HACKING_SUCCESS", "", true)
             return true
         else
             local chance = math.random(1,100)
@@ -907,6 +912,7 @@ function next(door, loc)
             FreezeEntityPosition(ped, false)
             LocalPlayer.state:set('inv_busy', false, true) 
             RemoveAnimDict(animDict)
+            PlaySoundFrontend(-1, "HACKING_FAILURE", "", false)
             return false
         end
 
@@ -916,20 +922,28 @@ function next(door, loc)
 
     elseif door == fingerprintdoor then
      
-        
-
-
-
             local animDict = 'anim_heist@hs3f@ig1_hack_keypad@arcade@male@' RequestAnimDict(animDict) RequestModel('prop_phone_ing') RequestModel('hei_prop_hst_usb_drive')while not HasAnimDictLoaded(animDict) or not HasModelLoaded('prop_phone_ing') or not HasModelLoaded('hei_prop_hst_usb_drive') do Wait(100) end
 
-            local ped = PlayerPedId() local targetPosition, targetRotation = (vec3(GetEntityCoords(ped))), vec3(GetEntityRotation(ped)) SetEntityHeading(ped, loc.h)
-            local animPos = GetAnimInitialOffsetPosition(animDict, 'action_var_01', loc.x, loc.y, loc.z, loc.x, loc.y, loc.z, 0, 2) local animPos2 = GetAnimInitialOffsetPosition(animDict, 'hack_loop_var_01', loc.x, loc.y, loc.z, loc.x, loc.y, loc.z, 0, 2) local animPos3 = GetAnimInitialOffsetPosition(animDict, 'success_react_exit_var_01', loc.x, loc.y, loc.z, loc.x, loc.y, loc.z, 0, 2) FreezeEntityPosition(ped, true) local phone = CreateObject(GetHashKey('prop_phone_ing'), targetPosition, 1, 1, 0) local usb = CreateObject(GetHashKey('hei_prop_hst_usb_drive'), targetPosition, 1, 1, 0)
-            local netScene = NetworkCreateSynchronisedScene(animPos, targetRotation, 2, false, false, 1065353216, 0, 1.3) NetworkAddPedToSynchronisedScene(ped, netScene, animDict, 'action_var_01', 1.5, -4.0, 1, 16, 1148846080, 0)
+            local ped = PlayerPedId() 
+            local targetPosition, targetRotation = (vec3(GetEntityCoords(ped))), vec3(GetEntityRotation(ped))
+            SetEntityHeading(ped, loc.w)
+            
+            local heading = GetEntityHeading(PlayerPedId())
+            local step = 0.5
+            local x, y, z = table.unpack(GetEntityCoords(PlayerPedId()))
+            local headingRadians = math.rad(heading)
+            local forwardX = step * math.sin(-headingRadians)
+            local forwardY = step * math.cos(headingRadians)
+            local x = loc.x + forwardX
+            local y = loc.y + forwardY
+            local z = loc.z+0.5
+            FreezeEntityPosition(ped, true) local phone = CreateObject(GetHashKey('prop_phone_ing'), vec3(x,y,z), 1, 1, 0) local usb = CreateObject(GetHashKey('hei_prop_hst_usb_drive'), targetPosition, 1, 1, 0)
+            local netScene = NetworkCreateSynchronisedScene(vec3(x,y,z), targetRotation, 2, false, false, 1065353216, 0, 1.3) NetworkAddPedToSynchronisedScene(ped, netScene, animDict, 'action_var_01', 1.5, -4.0, 1, 16, 1148846080, 0)
             NetworkAddEntityToSynchronisedScene(phone, netScene, animDict, 'action_var_01_prop_phone_ing', 4.0, -8.0, 1) NetworkAddEntityToSynchronisedScene(usb, netScene, animDict, 'action_var_01_ch_prop_ch_usb_drive01x', 4.0, -8.0, 1)
-            local netScene2 = NetworkCreateSynchronisedScene(animPos2, targetRotation, 2, false, true, 1065353216, 0, 1.3) NetworkAddPedToSynchronisedScene(ped, netScene2, animDict, 'hack_loop_var_01', 1.5, -4.0, 1, 16, 1148846080, 0)
+            local netScene2 = NetworkCreateSynchronisedScene(vec3(x,y,z), targetRotation, 2, false, true, 1065353216, 0, 1.3) NetworkAddPedToSynchronisedScene(ped, netScene2, animDict, 'hack_loop_var_01', 1.5, -4.0, 1, 16, 1148846080, 0)
             NetworkAddEntityToSynchronisedScene(phone, netScene2, animDict, 'hack_loop_var_01_prop_phone_ing', 4.0, -8.0, 1) NetworkAddEntityToSynchronisedScene(usb, netScene2, animDict, 'hack_loop_var_01_ch_prop_ch_usb_drive01x', 4.0, -8.0, 1)
-            local netScene3 = NetworkCreateSynchronisedScene(animPos3, targetRotation, 2, false, false, 1065353216, 0, 1.3) NetworkAddPedToSynchronisedScene(ped, netScene3, animDict, 'success_react_exit_var_01', 1.5, -4.0, 1, 16, 1148846080, 0)
-            NetworkAddEntityToSynchronisedScene(phone, netScene3, animDict, 'success_react_exit_var_01_prop_phone_ing', 4.0, -8.0, 1) NetworkAddEntityToSynchronisedScene(usb, netScene3, animDict, 'success_react_exit_var_01_ch_prop_ch_usb_drive01x', 4.0, -8.0, 1) Wait(200) NetworkStartSynchronisedScene(netScene) Wait(4000) NetworkStartSynchronisedScene(netScene2) Wait(2000)
+            local netScene3 = NetworkCreateSynchronisedScene(vec3(x,y,z), targetRotation, 2, false, false, 1065353216, 0, 1.3) NetworkAddPedToSynchronisedScene(ped, netScene3, animDict, 'success_react_exit_var_01', 1.5, -4.0, 1, 16, 1148846080, 0)
+            NetworkAddEntityToSynchronisedScene(phone, netScene3, animDict, 'success_react_exit_var_01_prop_phone_ing', 4.0, -8.0, 1) NetworkAddEntityToSynchronisedScene(usb, netScene3, animDict, 'success_react_exit_var_01_ch_prop_ch_usb_drive01x', 4.0, -8.0, 1) NetworkStartSynchronisedScene(netScene) Wait(4000) NetworkStartSynchronisedScene(netScene2) Wait(2000)
         
             LocalPlayer.state:set('inv_busy', true, true) 
             TriggerEvent("".. fingerhack ..":Start", 4, 1, 1, function(outcome, reason) 
@@ -948,6 +962,7 @@ function next(door, loc)
                 RemoveAnimDict(animDict)
                 LocalPlayer.state:set('inv_busy', false, true) 
                 notify(text('doorunlock'), "success", 2500)
+                PlaySoundFrontend(-1, "HACKING_SUCCESS", "", true)
                 return true
             -- lose
             elseif outcome == false then -- fail
@@ -962,12 +977,14 @@ function next(door, loc)
                 RemoveAnimDict(animDict)
                 LocalPlayer.state:set('inv_busy', false, true)
                 TriggerServerEvent('Polar-Pacific:Server:StartInteract', door) 
+                PlaySoundFrontend(-1, "HACKING_FAILURE", "", false)
                 return false
            
         end end)
         
     end
 end
+
 function hack(door)
     LocalPlayer.state:set('inv_busy', true, true) 
     TriggerServerEvent('Polar-Pacific:Server:StopInteract', door)
@@ -1045,20 +1062,9 @@ RegisterNetEvent('Polar-Pacific:client:DrillStart', function(drillpos, drillrot,
     if playeritem(drillitem) then
     SetPedComponentVariation(ped, 5, Config.HideBagID, 1, 1)
     TriggerServerEvent('Polar-Pacific:Server:StopInteract', door)
-        
-   
     
-    if drill(drillpos, drillrot) then
-        goodies() TriggerServerEvent('Polar-Pacific:Server:RemoveItems', drillreward, amount)
-        SetPedComponentVariation(PlayerPedId(), 5, Config.BagUseID, 0, 1)
-        
-        local chance = math.random(1,100) if chance <= drillitemchance then TriggerServerEvent('Polar-Pacific:Server:RemoveItem', drillitem, 1) end
-        TriggerServerEvent('Polar-Pacific:Server:TargetRemove', door) 
-    else
-        SetPedComponentVariation(PlayerPedId(), 5, Config.BagUseID, 0, 1)
-        TriggerServerEvent('Polar-Pacific:Server:StartInteract', door)
-        local chance = math.random(1,100) if chance <= drillitemchance then TriggerServerEvent('Polar-Pacific:Server:RemoveItem', drillitem, 1) end
-    end
+    drill(drillpos, drillrot)
+    
     else  notify(text('nodrill'), "error") end
     end
 end)
@@ -1697,7 +1703,7 @@ function yellodrill(drillpos, drillrot, drillitems, door, animDict)
         FreezeEntityPosition(ped, false)
 
         TriggerServerEvent('Polar-Pacific:Server:TargetRemove', door)
-        goodies() TriggerServerEvent('Polar-Pacific:Server:RemoveItems', drillreward, amount)
+        TriggerServerEvent('Polar-Pacific:Drill', door)
         local chance = math.random(1,100) if chance <= ydrillitemchance then TriggerServerEvent('Polar-Pacific:Server:RemoveItem', drillitems, 1) end
         LocalPlayer.state:set("inv_busy", false, true)
         RemoveAnimDict(animDict)
@@ -1751,13 +1757,12 @@ end)
 
 local ArtHeist = {}
 
-   
 function HeistAnimation(door)
 
     local object = doors[door]
     local sceneRot = GetEntityRotation(object)
     local scenePos2 = GetEntityCoords(object)
-    local scenePos = vec3(scenePos2.x, scenePos2.y, scenePos2.z-1)
+    local heading = GetEntityHeading(object)
     local ped = PlayerPedId()
     local pedCo, pedRotation = GetEntityCoords(ped), vector3(0.0, 0.0, 0.0)
     local scenes = {false, false, false, false}
@@ -1774,13 +1779,20 @@ function HeistAnimation(door)
   
     local bag = CreateObject(bagcolor, pedCo, 1, 1, 0)
     local knife = CreateObject('w_me_switchblade', pedCo, 1, 1, 0)
-    
-    
-    
-    
+
+   
+    local step = -0.425
+    local headingRadians = math.rad(heading)
+    local forwardX = step * math.sin(-headingRadians)
+    local forwardY = step * math.cos(headingRadians)
+    local x = scenePos2.x + forwardX
+    local y = scenePos2.y + forwardY
+    local z = scenePos2.z-1.16
+    local veca = vec3(x,y,z)
+
     for i = 1, 10 do
 
-        ArtHeist[i] = NetworkCreateSynchronisedScene(scenePos.x, scenePos.y, scenePos.z, sceneRot, 2, true, false, 1065353216, 0, 1065353216)
+        ArtHeist[i] = NetworkCreateSynchronisedScene(veca, sceneRot, 2, true, false, 1065353216, 0, 1065353216)
 
         NetworkAddPedToSynchronisedScene(ped, ArtHeist[i], animDict, 'ver_01_'..Config.PaintAnimations[i][1], 4.0, -4.0, 1033, 0, 1000.0, 0)
         NetworkAddEntityToSynchronisedScene(object, ArtHeist[i], animDict, 'ver_01_'..Config.PaintAnimations[i][3], 1.0, -1.0, 1148846080)
@@ -1802,10 +1814,10 @@ function HeistAnimation(door)
     SetPedComponentVariation(PlayerPedId(), 5, Config.HideBagID, 1, 1)
     FreezeEntityPosition(ped, true)
     NetworkStartSynchronisedScene(ArtHeist[1])
-    PlayCamAnim(cam, 'ver_01_top_left_enter_cam_ble', animDict, scenePos, sceneRot, 0, 2)
+    PlayCamAnim(cam, 'ver_01_top_left_enter_cam_ble', animDict, veca, sceneRot, 0, 2)
     Wait(3000)
     NetworkStartSynchronisedScene(ArtHeist[2])
-    PlayCamAnim(cam, 'ver_01_cutting_top_left_idle_cam', animDict, scenePos, sceneRot, 0, 2)
+    PlayCamAnim(cam, 'ver_01_cutting_top_left_idle_cam', animDict, veca, sceneRot, 0, 2)
     repeat
        
         if IsControlPressed(0, 24) then
@@ -1815,10 +1827,10 @@ function HeistAnimation(door)
         Wait(1)
     until scenes[1] == true
     NetworkStartSynchronisedScene(ArtHeist[3])
-    PlayCamAnim(cam, 'ver_01_cutting_top_left_to_right_cam', animDict, scenePos, sceneRot, 0, 2)
+    PlayCamAnim(cam, 'ver_01_cutting_top_left_to_right_cam', animDict, veca, sceneRot, 0, 2)
     Wait(3000)
     NetworkStartSynchronisedScene(ArtHeist[4])
-    PlayCamAnim(cam, 'ver_01_cutting_top_right_idle_cam', animDict, scenePos, sceneRot, 0, 2)
+    PlayCamAnim(cam, 'ver_01_cutting_top_right_idle_cam', animDict, veca, sceneRot, 0, 2)
     repeat
         
         if IsControlPressed(0, 24) then
@@ -1828,10 +1840,10 @@ function HeistAnimation(door)
         Wait(1)
     until scenes[2] == true
     NetworkStartSynchronisedScene(ArtHeist[5])
-    PlayCamAnim(cam, 'ver_01_cutting_right_top_to_bottom_cam', animDict, scenePos, sceneRot, 0, 2)
+    PlayCamAnim(cam, 'ver_01_cutting_right_top_to_bottom_cam', animDict, veca, sceneRot, 0, 2)
     Wait(3000)
     NetworkStartSynchronisedScene(ArtHeist[6])
-    PlayCamAnim(cam, 'ver_01_cutting_bottom_right_idle_cam', animDict, scenePos, sceneRot, 0, 2)
+    PlayCamAnim(cam, 'ver_01_cutting_bottom_right_idle_cam', animDict, veca, sceneRot, 0, 2)
     repeat
         
         if IsControlPressed(0, 24) then
@@ -1841,7 +1853,7 @@ function HeistAnimation(door)
         Wait(1)
     until scenes[3] == true
     NetworkStartSynchronisedScene(ArtHeist[7])
-    PlayCamAnim(cam, 'ver_01_cutting_bottom_right_to_left_cam', animDict, scenePos, sceneRot, 0, 2)
+    PlayCamAnim(cam, 'ver_01_cutting_bottom_right_to_left_cam', animDict, veca, sceneRot, 0, 2)
     Wait(3000)
     repeat
         if IsControlPressed(0, 24) then
@@ -1851,7 +1863,7 @@ function HeistAnimation(door)
         Wait(1)
     until scenes[4] == true
     NetworkStartSynchronisedScene(ArtHeist[9])
-    PlayCamAnim(cam, 'ver_01_cutting_left_top_to_bottom_cam', animDict, scenePos, sceneRot, 0, 2)
+    PlayCamAnim(cam, 'ver_01_cutting_left_top_to_bottom_cam', animDict, veca, sceneRot, 0, 2)
     Wait(1500)
     NetworkStartSynchronisedScene(ArtHeist[10])
     RenderScriptCams(false, false, 0, 1, 0)
@@ -1897,8 +1909,9 @@ function snatch(name, item, chances)
     local pedCoords = GetEntityCoords(ped)
 
     local boneIndex = GetPedBoneIndex(ped, 0x49D9)
-
-   
+    loadModel("h4_prop_h4_glass_cut_01a")
+    loadModel("h4_prop_h4_cutter_01a")
+    loadModel("h4_prop_h4_glass_disp_01b")
    
     local displayEntityCoords = GetEntityCoords(doors[name])
     local displayEntityRotation = GetEntityRotation(doors[name])
@@ -1907,16 +1920,15 @@ function snatch(name, item, chances)
     local entityHeading = GetEntityHeading(doors[name])
 
     local offset2 = GetOffsetFromEntityInWorldCoords(doors[name], 0.0, 0.0, 0.0)
-    local offset = vec3(offset2.x, offset2.y, offset2.z -1.05)
+    local offset = vec3(offset2.x, offset2.y, offset2.z -1.035)
     Wait(50)
     SetEntityHeading(ped, entityHeading)
     SetEntityCoords(ped, offset.x , offset.y, offset.z)
 
     local pedRotation = GetEntityRotation(ped)
-  
+    local cutterEntity = CreateObject("h4_prop_h4_cutter_01a",  vec3(offset.x, offset.y, offset.z - 6.0), 1, 1, 0) 
     local bagEntity =  CreateObject(bagcolor,  vec3(offset.x, offset.y, offset.z - 4.0), 1, 1, 0) 
     local glassEntity =  CreateObject("h4_prop_h4_glass_cut_01a",  vec3(offset.x, offset.y, offset.z - 5.0), 1, 1, 0) 
-    local cutterEntity = CreateObject("h4_prop_h4_cutter_01a",  vec3(offset.x, offset.y, offset.z - 6.0), 1, 1, 0) 
     local newDisplayEntity = CreateObject("h4_prop_h4_glass_disp_01b",  vec3(offset.x, offset.y, offset.z - 8.0), 1, 1, 0) 
    
     SetEntityCollision(newDisplayEntity, false, true)
@@ -1940,9 +1952,9 @@ function snatch(name, item, chances)
 
     local scene = NetworkCreateSynchronisedScene(offset.x, offset.y, offset.z, pedRotation.x, pedRotation.y, pedRotation.z, 2, false, false, 1065353216, 0, 1.3)
     NetworkAddPedToSynchronisedScene(ped, scene, dict, "enter", 1.5, -4.0, 1, 16, 1148846080, 0)
+    NetworkAddEntityToSynchronisedScene(cutterEntity, scene, dict, "enter_cutter", 4.0, -8.0, 1)
     NetworkAddEntityToSynchronisedScene(bagEntity, scene, dict, "enter_bag", 4.0, -8.0, 1)
     NetworkAddEntityToSynchronisedScene(glassEntity, scene, dict, "enter_glass_display", 4.0, -8.0, 1)
-    NetworkAddEntityToSynchronisedScene(cutterEntity, scene, dict, "enter_cutter", 4.0, -8.0, 1)
     NetworkStartSynchronisedScene(scene)
     Wait(2900)
     local scene = NetworkCreateSynchronisedScene(offset.x, offset.y, offset.z, pedRotation.x, pedRotation.y, pedRotation.z, 2, false, false, 1065353216, 0, 1.3)
@@ -1975,7 +1987,7 @@ function snatch(name, item, chances)
     Wait(5000)
 
     
-    SetEntityCoords(newDisplayEntity, displayEntityCoords.x, displayEntityCoords.y, displayEntityCoords.z -1.05)
+    SetEntityCoords(newDisplayEntity, displayEntityCoords.x, displayEntityCoords.y, displayEntityCoords.z -1.035)
     DeleteEntity(displaycase[name])
     SetEntityCollision(newDisplayEntity, true, true)
     SetEntityAsNoLongerNeeded(newDisplayEntity)

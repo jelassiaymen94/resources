@@ -4,7 +4,7 @@ local prop = nil
 -- 45 to 50
 
 Config.Pacificprop45 = {
-    vector4(249.61, 220.56, 101.68, 66.44), --- locations, can be multiple but chooses 1 at random
+    vector4(252.41, 215.93, 101.68, 160.15), --- locations, can be multiple but chooses 1 at random
 
 }
 function Pacificprop45() -- should be same as door = 
@@ -21,7 +21,7 @@ end
 
 
 Config.Pacificprop46 = {
-    vector4(249.1, 218.73, 101.68, 71.09), --- locations, can be multiple but chooses 1 at random
+    vector4(249.8, 220.87, 101.68, 68.96), --- locations, can be multiple but chooses 1 at random
 
 }
 function Pacificprop46() -- should be same as door = 
