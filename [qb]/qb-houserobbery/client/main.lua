@@ -58,7 +58,7 @@ function TeleportToInterior(x, y, z, h)
         DoScreenFadeIn(1000)
     end)
 end
-l
+
 local function enterRobberyHouse(house)
     TriggerServerEvent("InteractSound_SV:PlayOnSource", "houses_door_open", 0.25)
     openHouseAnim()
