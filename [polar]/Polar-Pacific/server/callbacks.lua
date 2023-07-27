@@ -161,6 +161,12 @@ function reset()
 end
 
 
+RegisterNetEvent('Polar-Pacific:Doorlock', function(doorid, id)
+    local door = exports.ox_doorlock:getDoorFromName(doorid)
+    TriggerEvent('ox_doorlock:setState', door.id, id)
+   
+end)
+
 RegisterNetEvent('Polar-Pacific:Server:LockDown', function()
     Pacificstart = false
     Pacificdoor1 = false

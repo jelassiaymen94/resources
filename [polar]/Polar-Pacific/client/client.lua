@@ -2006,11 +2006,7 @@ end
 
 
 
+
 function doorlock(doorId, state)
-    local id = nil
-    if state == true then id = 1
-    elseif state == false then id = 0
-    end
-    TriggerEvent('ox_doorlock:setState', doorId, id)
-    print(doorId .. ' ' .. id)
+    TriggerServerEvent('Polar-Pacific:Doorlock', doorId, state)
 end

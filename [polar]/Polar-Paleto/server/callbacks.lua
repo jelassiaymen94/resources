@@ -29,15 +29,12 @@ RegisterNetEvent('Polar-Paleto:Server:RemoveItem', function(item, amount)
 end)
 
 
-RegisterNetEvent('Polar-Doorlock', function(doorid, id)
+RegisterNetEvent('Polar-Paleto:Doorlock', function(doorid, id)
     local door = exports.ox_doorlock:getDoorFromName(doorid)
-    TriggerEvent('ox_doorlock:setState', door, id)
-    print(doorid .. ' ' .. id)
+    TriggerEvent('ox_doorlock:setState', door.id, id)
    
 end)
-AddEventHandler('ox_doorlock:stateChanged', function(source, doorId, state)
-    print('fuck you ' .. doorId)
-end)
+
 
 local paletostartname = 'paletostart'
 local paletodoor1name = 'paletodoor1'

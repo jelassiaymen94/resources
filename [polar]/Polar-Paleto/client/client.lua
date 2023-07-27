@@ -2011,5 +2011,5 @@ end
 
 
 function doorlock(doorId, state)
-    TriggerServerEvent('Polar-Doorlock', doorId, state)
+    TriggerServerEvent('Polar-Paleto:Doorlock', doorId, state)
 end
