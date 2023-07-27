@@ -145,7 +145,7 @@ local doortable = {
 
 
 
-AddEventHandler('onResourceStop', function(resource) if resource ~= GetCurrentResourceName() then return end  TriggerEvent('Polar-Paleto:Client:ResetProps') TriggerEvent('Polar-Paleto:Client:ResetDoors') TriggerEvent('Polar-Paleto:Client:ResetPropsKeypads') resetstuff() LocalPlayer.state:set('inv_busy', false, true) end)
+AddEventHandler('onResourceStop', function(resource) if resource ~= GetCurrentResourceName() then return end  TriggerServerEvent('Polar-Paleto:Server:Restart')   TriggerEvent('Polar-Paleto:Client:ResetProps') TriggerEvent('Polar-Paleto:Client:ResetDoors') TriggerEvent('Polar-Paleto:Client:ResetPropsKeypads') resetstuff() LocalPlayer.state:set('inv_busy', false, true) end)
 AddEventHandler('onResourceStart', function(resource) if resource == GetCurrentResourceName() then Wait(100) if hi then print('Starting Targets')  end starttarget() blip()  end end)
 RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function() Wait(100) if hi then print('Player Loaded Targets Starting') end starttarget() blip()  end)
 RegisterNetEvent('police:SetCopCount', function(amount) CurrentCops = amount end)

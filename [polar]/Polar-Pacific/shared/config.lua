@@ -6,7 +6,7 @@ Config.img = "ps-inventory/html/images/"
 --==========================================================================
 
 
-
+Config.PolarWade = true
 
 --============== CORE ================ Change if esx
 Config.Framework = 'qb' -- or 'esx'

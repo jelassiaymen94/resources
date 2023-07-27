@@ -15,22 +15,31 @@ RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function()
 end)
 
 local cops = 0
-local store = true
-local jewel = false
-local armoredtruck = false
-local home = false
-local fleeca = true
-local paleto = true
-local pacific = false
+local pable = {}
+local table = {}
+local hable = {}
+RegisterNetEvent('police:SetCopCount', function(amount) cops = amount end)
 
-
-
+function tablecheck(name)
+    local p = table[name]
+    if p == true then 
+        pable[name] = 'Not Available'
+        hable[name] = true
+    else
+        pable[name] = 'Available'
+        hable[name] = false
+    end
+end
+function policecheck(name, amount)
+    if cops >= amount then
+        pable[name] = 'Available'
+        hable[name] = false
+    else
+        pable[name] = 'Not Available'
+        hable[name] = true
+    end
+end
 RegisterNetEvent('Polar-Wade:Client:Banks', function()
-    
-   
-   
-    
-   
     exports['qb-menu']:openMenu({
     {
             
@@ -42,23 +51,23 @@ RegisterNetEvent('Polar-Wade:Client:Banks', function()
     {
         icon = "fa-solid fa-circle-info",
         header = "Fleeca Bank",
-        disabled = fleecatype,
-        text = fleecatext,
+        disabled = hable["Fleeca"],
+        text = pable["Fleeca"],
         isMenuHeader = true,
         
     },
     {
         icon = "fa-solid fa-circle-info",
         header = "Paleto Bank",
-        disabled = paletotype,
-        text = paletotext,
+        disabled = hable["Paleto"],
+        text = pable["Paleto"],
         isMenuHeader = true,
     },
     {
         icon = "fa-solid fa-circle-info",
         header = "Pacific Standard",
-        disabled = pacifictype,
-        text = pacifictext,
+        disabled = hable["Pacific"],
+        text = pable["Pacific"],
         isMenuHeader = true,
     },
     {
@@ -72,9 +81,6 @@ RegisterNetEvent('Polar-Wade:Client:Banks', function()
 
 end)
 RegisterNetEvent('Polar-Wade:Client:AvailableRobberies', function()
-   
-   
-  
     exports['qb-menu']:openMenu({
 
     {
@@ -87,29 +93,29 @@ RegisterNetEvent('Polar-Wade:Client:AvailableRobberies', function()
     {
         icon = "fa-solid fa-circle-info",
         header = "Properties",
-        disabled = hometype,
-        text = hometext,
+        disabled = hable["House"],
+        text = pable["House"],
         isMenuHeader = true,
     },
     {
         icon = "fa-solid fa-circle-info",
         header = "Convenience Store",
-        disabled = storetype,
-        text = storetext,
+        disabled = hable["Store"],
+        text = pable["Store"],
         isMenuHeader = true,
     },
     {
         icon = "fa-solid fa-circle-info",
         header = "Vangelico Jewellery",
-       disabled = jeweltype,
-       text = jeweltext,
+       disabled = hable["Jewelry"],
+       text = pable["Jewelry"],
         isMenuHeader = true,
     },
     {
         icon = "fa-solid fa-circle-info",
         header = "Armored Trucks",
-        disabled = trucktype,
-        text = trucktext,
+        disabled = hable["ArmoredTruck"],
+        text = pable["ArmoredTruck"],
         isMenuHeader = true,
     },
     {
@@ -224,249 +230,50 @@ end
 
 
 RegisterNetEvent('Polar-Wade:Client:Types', function(data)
-    number = data.numeral
-    QBCore.Functions.TriggerCallback('Polar-Wade:Server:pacific', function(pacific1)
-        pacific = pacific1
+    local number = data.numeral
+
+        QBCore.Functions.TriggerCallback('Polar-Wade:Server:Table', function(tables)
+            table = tables
+        
+        
         end)
-       Wait(25)
-        QBCore.Functions.TriggerCallback('Polar-Wade:Server:paleto', function(paleto1)
-            paleto = paleto1
-            end)
-            Wait(25)
-            QBCore.Functions.TriggerCallback('Polar-Wade:Server:fleeca', function(fleeca1)
-                fleeca = fleeca1
-                end)
-                Wait(25)
-    QBCore.Functions.TriggerCallback('Polar-Wade:Server:Store', function(store1)
-        store = store1
-        print(store)
-        end)
+
+        Wait(100)
+
+        tablecheck("House")
+        policecheck("House", 1)
+
+        tablecheck("Store")
+        policecheck("Store", 2)
+       
+        tablecheck("Jewelry")
+        policecheck("Jewelry", 3)
+        
+        tablecheck("ArmoredTruck")
+        policecheck("ArmoredTruck", 4)
+        
+        tablecheck("Pacific")
+        policecheck("Pacific", 4)
+        
+        tablecheck("Fleeca")
+        policecheck("Fleeca", 4)
+        
+        tablecheck("Paleto")
+        policecheck("Paleto", 3)
+
         Wait(25)
-        QBCore.Functions.TriggerCallback('Polar-Wade:Server:House', function(home1)
-            home = home1
-            --print(home)
-            end)
-            Wait(25)
-        QBCore.Functions.TriggerCallback('Polar-Wade:Server:Jewel', function(jewel1)
-            jewel = jewel1
-            --print(jewel)
-            end)
-            Wait(25)
-            QBCore.Functions.TriggerCallback('Polar-Wade:Server:armorstruck', function(armortruck1)
-                armoredtruck = armortruck1
-               -- print(armoredtruck)
-                end)
-                Wait(25)
-    QBCore.Functions.TriggerCallback('Polar-Wade:Server:cops', function(amount)
-        cops = amount
-        
-       
-       -- cops = 1
-        print(cops)
-    if cops == 0 then
 
-        hometype = true
-        hometext = 'Not Available'
-        storetype = true
-        storetext = 'Not Available'
-        jeweltype = true
-        jeweltext = 'Not Available'
-        trucktype = true
-        trucktext = 'Not Available'
-        paletotype = true
-        paletotext = 'Not Available'
-        pacifictype = true
-        pacifictext = 'Not Available'
-        fleecatype = true
-        fleecatext = 'Not Available'
+    if number == 1 then
 
-        if number == 1 then
-            TriggerEvent('Polar-Wade:Client:AvailableRobberies')
-        elseif number == 2 then
-            TriggerEvent('Polar-Wade:Client:Banks')
+        TriggerEvent('Polar-Wade:Client:AvailableRobberies')
+
+    elseif number == 2 then
+
+        TriggerEvent('Polar-Wade:Client:Banks')
     
-        end
-    elseif cops == 1 then
-        
-        storetype = true
-        storetext = 'Not Available'
-        jeweltype = true
-        jeweltext = 'Not Available'
-        trucktype = true
-        trucktext = 'Not Available'
-        paletotype = true
-        paletotext = 'Not Available'
-        pacifictype = true
-        pacifictext = 'Not Available'
-        fleecatype = true
-        fleecatext = 'Not Available'
-
-        if home == false then
-            hometype = false
-            hometext = 'Available'
-        else
-            hometype = true
-            hometext = 'Not Available'
-        end
-       
-        if number == 1 then
-            TriggerEvent('Polar-Wade:Client:AvailableRobberies')
-        elseif number == 2 then
-            TriggerEvent('Polar-Wade:Client:Banks')
-    
-        end
-    elseif cops == 2 then
-       
-        jeweltype = true
-        jeweltext = 'Not Available'
-        trucktype = true
-        trucktext = 'Not Available'
-        paletotype = true
-        paletotext = 'Not Available'
-        pacifictype = true
-        pacifictext = 'Not Available'
-        fleecatype = true
-        fleecatext = 'Not Available'
-
-        if home == false then
-            hometype = false
-            hometext = 'Available'
-        else
-            hometype = true
-            hometext = 'Not Available'
-        end
-        
-        if store == false then
-            storetype = false
-            storetext = 'Available'
-        else
-            storetype = true
-            storetext = 'Not Available'
-        end
-        if number == 1 then
-            TriggerEvent('Polar-Wade:Client:AvailableRobberies')
-        elseif number == 2 then
-            TriggerEvent('Polar-Wade:Client:Banks')
-    
-        end
-
-    elseif cops == 3 then
-
-        paletotype = true
-        paletotext = 'Not Available'
-        pacifictype = true
-        pacifictext = 'Not Available'
-        fleecatype = true
-        fleecatext = 'Not Available'
-
-        if jewel == false then
-            jeweltype = false
-            jeweltext = 'Available'
-        else
-            jeweltype = true
-            jeweltext = 'Not Available'
-        end
-
-        if home == false then
-            hometype = false
-            hometext = 'Available'
-        else
-            hometype = true
-            hometext = 'Not Available'
-        end
-
-        if store == false then
-            storetype = false
-            storetext = 'Available'
-        else
-            storetype = true
-            storetext = 'Not Available'
-        end
-
-        if armoredtruck == false then
-            trucktype = false
-            trucktext = 'Available'
-        else
-            trucktype = true
-            trucktext = 'Not Available'
-        end
-        if number == 1 then
-            TriggerEvent('Polar-Wade:Client:AvailableRobberies')
-        elseif number == 2 then
-            TriggerEvent('Polar-Wade:Client:Banks')
-    
-        end
-    elseif cops >= 4 then
-
-        if jewel == false then
-            jeweltype = false
-            jeweltext = 'Available'
-        else
-            jeweltype = true
-            jeweltext = 'Not Available'
-        end
-
-        if home == false then
-            hometype = false
-            hometext = 'Available'
-        else
-            hometype = true
-            hometext = 'Not Available'
-        end
-
-        if store == false then
-            storetype = false
-            storetext = 'Available'
-        else
-            storetype = true
-            storetext = 'Not Available'
-        end
-
-        if armoredtruck == false then
-            trucktype = false
-            trucktext = 'Available'
-        else
-            trucktype = true
-            trucktext = 'Not Available'
-        end
-
-        if fleeca == false then
-            fleecatype = false
-            fleecatext = 'Available'
-        else
-            fleecatype = true
-            fleecatext = 'Not Available'
-        end
-
-        if paleto == false then
-            paletotype = false
-            paletotext = 'Available'
-        else
-            paletotype = true
-            paletotext = 'Not Available'
-            
-        end
-
-        if pacific == false then
-            pacifictype = false
-            pacifictext = 'Available'
-        else
-            pacifictype = true
-            pacifictext = 'Not Available'
-        end
-        if number == 1 then
-            TriggerEvent('Polar-Wade:Client:AvailableRobberies')
-        elseif number == 2 then
-            TriggerEvent('Polar-Wade:Client:Banks')
-    
-        end
-    else
-
-        print('none')
-        
     end
-    end)
+end)
     
 
-end)
+
 

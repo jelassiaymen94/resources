@@ -144,7 +144,7 @@ local doortable = {
 
 }
 
-AddEventHandler('onResourceStop', function(resource) if resource ~= GetCurrentResourceName() then return end  TriggerEvent('Polar-Pacific:Client:ResetProps') TriggerEvent('Polar-Pacific:Client:ResetDoors') TriggerEvent('Polar-Pacific:Client:ResetPropsKeypads') resetstuff() LocalPlayer.state:set('inv_busy', false, true) end)
+AddEventHandler('onResourceStop', function(resource) if resource ~= GetCurrentResourceName() then return end  TriggerServerEvent('Polar-Pacific:Server:Restart')  TriggerEvent('Polar-Pacific:Client:ResetProps') TriggerEvent('Polar-Pacific:Client:ResetDoors') TriggerEvent('Polar-Pacific:Client:ResetPropsKeypads') resetstuff() LocalPlayer.state:set('inv_busy', false, true) end)
 AddEventHandler('onResourceStart', function(resource) if resource == GetCurrentResourceName() then Wait(100) if hi then print('Starting Targets')  end starttarget() blip()  end end)
 RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function() Wait(100) if hi then print('Player Loaded Targets Starting') end starttarget() blip()  end)
 RegisterNetEvent('police:SetCopCount', function(amount) CurrentCops = amount end)

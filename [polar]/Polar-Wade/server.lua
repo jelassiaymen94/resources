@@ -1,13 +1,13 @@
 local QBCore = exports['qb-core']:GetCoreObject()
 
 
-local jewel1 = false
-local store1 = false
-local armortruck1 = false
-local pacific1 = false
-local home1 = false
-local paleto1 = false
-local fleeca1 = false
+local Jewelry = false
+local Store = true
+local ArmoredTruck = false
+local Pacific = false
+local House = false
+local Paleto = false
+local Fleeca = false
 
 RegisterNetEvent('Polar-Wade:Server:buyshit', function(ped)
     local src = source
@@ -32,106 +32,26 @@ RegisterNetEvent('Polar-Wade:Server:buyshit', function(ped)
     TriggerClientEvent('QBCore:Notify', src, "Here's the contraband, Good Luck!")
 end)
 
+local table = {}
 
-function unarmoredtruck()
-
-    armortruck1 = false
-
-end
-function unjewellery()
-
-    jewel1 = false
-
-end
-function unstorerobbery()
-
-    store1 = false
-
-end exports('unstorerobbery', unstorerobbery)
-function unhouserobbery()
-
-    home1 = false
-
-end exports('unhouserobbery', unhouserobbery)
-function unfleecarobbery()
-
-    fleeca1 = false
-
-end exports('unfleecarobbery', unfleecarobbery)
-function unpaletorobbery()
-
-    paleto1 = false
-
-end exports('unpaletorobbery', unpaletorobbery)
-function unpacificrobbery()
-
-    pacific1 = false
-
-end exports('unpacificrobbery', unpacificrobbery)
+exports('Paleto', function(rob) if rob then Paleto = false else Paleto = true end end)
+exports('Pacific', function(rob) if rob then Pacific = false else Pacific = true end end)
+exports('Store', function(rob) if rob then Store = false else Store = true end end)
+exports('Jewelry', function(rob) if rob then Jewelry = false else Jewelry = true end end)
+exports('ArmoredTruck', function(rob) if rob then ArmoredTruck = false else ArmoredTruck = true end end)
+exports('Fleeca', function(rob) if rob then Fleeca = false else Fleeca = true end end)
+exports('House', function(rob) if rob then House = false else House = true end end)
 
 
-function armoredtruck()
-
-    armortruck1 = true
-
-end exports('armoredtruck', armoredtruck)
-function jewellery()
-
-    jewel1 = true
-
-end exports('jewellery', jewellery)
-function storerobbery()
-
-    store1 = true
-
-end exports('storerobbery', storerobbery)
-function houserobbery()
-
-    home1 = true
-
-end exports('houserobbery', houserobbery)
-function fleecarobbery()
-
-    fleeca1 = true
-
-end exports('fleecarobbery', fleecarobbery)
-function paletorobbery()
-
-    paleto1 = true
-
-end exports('paletorobbery', paletorobbery)
-function pacificrobbery()
-
-    pacific1 = true
-
-end exports('pacificrobbery', pacificrobbery)
-
-QBCore.Functions.CreateCallback("Polar-Wade:Server:House", function(source, cb)
-    cb(home1)
-end)
-
-QBCore.Functions.CreateCallback("Polar-Wade:Server:Store", function(source, cb)
-    cb(store1)
-end)
-
-QBCore.Functions.CreateCallback("Polar-Wade:Server:Jewel", function(source, cb)
-    cb(jewel1)
-end)
-
-QBCore.Functions.CreateCallback("Polar-Wade:Server:armorstruck", function(source, cb)
-    cb(armortruck1)
-end)
-
-QBCore.Functions.CreateCallback("Polar-Wade:Server:pacific", function(source, cb)
-    cb(pacific1)
-end)
-
-QBCore.Functions.CreateCallback("Polar-Wade:Server:paleto", function(source, cb)
-    cb(paleto1)
-end)
-
-QBCore.Functions.CreateCallback("Polar-Wade:Server:fleeca", function(source, cb)
-    cb(fleeca1)
+QBCore.Functions.CreateCallback("Polar-Wade:Server:Table", function(source, cb) 
+    table["House"] = House
+    table["Store"] = Store
+    table["Jewelry"] = Jewelry
+    table["ArmoredTruck"] = ArmoredTruck
+    table["Pacific"] = Fleeca
+    table["Fleeca"] = Paleto
+    table["Paleto"] = Paleto
+    cb(table) 
 end)
 
 

@@ -10,7 +10,7 @@ local QBCore = exports[Config.Core]:GetCoreObject()
 local oxinv = Config.OxIventory
 
 RegisterNetEvent('Polar-Paleto:Server:VaultClose', function() TriggerClientEvent('QBCore:Notify', -1, "Vault Closes in 2 Minutes", 'error') SetTimeout(60000, function() TriggerClientEvent('QBCore:Notify', -1, "Vault Closes in 1 Minutes", 'error') SetTimeout(30000, function() TriggerClientEvent('QBCore:Notify', -1, "Vault Closes in 30 Seconds", 'error') SetTimeout(20000, function() TriggerClientEvent('QBCore:Notify', -1, "Vault Closes in 10 Seconds", 'error') SetTimeout(10000, function() TriggerClientEvent('Polar-Paleto:Client:Vault', -1, false) end) end) end) end) end)
-
+RegisterNetEvent('Polar-Paleto:Server:Restart', function()  if Config.PolarWade then exports["Polar-Wade"]:Paleto(false) end  end)
 
 RegisterNetEvent('Polar-Paleto:Server:RemoveItem', function(item, amount) 
     local src = source 
@@ -115,7 +115,14 @@ Config.CallBack('Polar-Paleto:Door' .. Config.Pc3name, function(source, cb) cb(p
 Config.CallBack('Polar-Paleto:Door' .. doorcard1name, function(source, cb) cb(paletodoorcard1) end) 
 Config.CallBack('Polar-Paleto:Door' .. doorcard2name, function(source, cb)  cb(paletodoorcard2) end) 
 
-local time = (Config.CooldownTime * 60000) RegisterNetEvent('Polar-Paleto:Server:StartCooldown', function(door) SetTimeout(time, function() reset() end) end)
+local time = (Config.CooldownTime * 60000) 
+RegisterNetEvent('Polar-Paleto:Server:StartCooldown', function(door)
+    if Config.PolarWade then exports["Polar-Wade"]:Paleto(true) end
+    SetTimeout(time, function() 
+        reset() 
+        if Config.PolarWade then exports["Polar-Wade"]:Paleto(false) end 
+    end) 
+end)
 
 
 function reset()

@@ -10,7 +10,7 @@ end
 local oxinv = Config.OxIventory
 
 RegisterNetEvent('Polar-Pacific:Server:VaultClose', function() TriggerClientEvent('QBCore:Notify', -1, "Vault Closes in 6 Minutes", 'error') SetTimeout(300000, function() TriggerClientEvent('QBCore:Notify', -1, "Vault Closes in 1 Minutes", 'error') SetTimeout(60000, function()  TriggerClientEvent('Polar-Pacific:Client:Vault', -1, true) end) end) end)
-
+RegisterNetEvent('Polar-Pacific:Server:Restart', function()  if Config.PolarWade then exports["Polar-Wade"]:Pacific(false) end  end)
 
 RegisterNetEvent('Polar-Pacific:Server:RemoveItem', function(item, amount) 
     local src = source 
@@ -131,8 +131,14 @@ Config.CallBack('Polar-Pacific:Door' .. Config.Pc3name, function(source, cb) cb(
 Config.CallBack('Polar-Pacific:Door' .. doorcard1name, function(source, cb) cb(Pacificdoorcard1) end) 
 Config.CallBack('Polar-Pacific:Door' .. doorcard2name, function(source, cb)  cb(Pacificdoorcard2) end) 
 
-local time = (Config.CooldownTime * 60000) RegisterNetEvent('Polar-Pacific:Server:StartCooldown', function(door) SetTimeout(time, function() reset() end) end)
-
+local time = (Config.CooldownTime * 60000) 
+RegisterNetEvent('Polar-Pacific:Server:StartCooldown', function(door)
+    if Config.PolarWade then exports["Polar-Wade"]:Pacific(true) end
+    SetTimeout(time, function() 
+        reset() 
+        if Config.PolarWade then exports["Polar-Wade"]:Pacific(false) end 
+    end) 
+end)
 
 function reset()
     Pacificstart = true
