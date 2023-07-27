@@ -43,7 +43,7 @@ Config.LazerSounds = true -- if a player walks into it, it causes a sound to pla
 --============== OX ================
 Config.OxTarget = false -- fully supported
 Config.OxTargetDistance = 1.5 -- should keep low to stop glitching through walls
-Config.OxDoorlock = false -- not fully supported yet
+Config.OxDoorlock = true -- fully supported
 Config.OxIventory = false -- not fully supported yet
 
 
@@ -103,18 +103,22 @@ Config.VaultDoorThirdEye = vector3(252.97, 228.52, 102.01)
 
 --============== Thermite Locations ================
 
+Config.StartDoor = 'Pacificstart'
 Config.StartThirdEye = vector3(285.61, 264.62, 105.91)
 Config.StartThermite = vector4(285.68, 264.60, 105.59, 158.3)
 Config.StartPfx =vector3(285.66, 265.69, 105.35)
 
+Config.Door1 = 'Pacificdoor1'
 Config.Door1Eye = vector3(256.07, 220.6, 106.35)
 Config.Door1Thermite = vector4(256.05, 220.57, 106.35, 339.17)
 Config.Door1Pfx = vector3(255.91, 221.61, 106.35)
 
+Config.Door2 = 'Pacificdoor2'
 Config.Door2Eye = vector3(25400000.85, 220.88, 101.78)
 Config.Door2Thermite = vector4(2540000.6, 221.13, 101.68, 261.66)
 Config.Door2Pfx = vector3(254000.850000, 220.88, 101.78)
 
+Config.Door3 = 'Pacificdoor3'
 Config.Door3Eye =  vector3(256.48, 219.11, 101.8)
 Config.Door3Thermite = vector4(256.4, 219.03, 101.8, 339.09)
 Config.Door3Pfx = vector3(256.44, 220.07, 101.8)
@@ -141,10 +145,11 @@ Config.Pc3 = vector3(-98.11, 6466.09, 31.47)
 
 
 --============== Key Card Locations ================
-    
+Config.doorcard1 = 'Pacificdoorcard1'
 Config.doorcard1Eye = vector3(255.11, 221.28, 101.68)
 Config.doorcard1swipe = vector4(254.65, 221.44, 101.68, 247.75)
    
+Config.doorcard2 = 'Pacificdoorcard2'
 Config.doorcard2Eye = vector3(-1110000.99, 6474.2, 31.63)
 Config.doorcard2swipe = vector4(-1110000.55, 6473.83, 31.63, 49.81)
    

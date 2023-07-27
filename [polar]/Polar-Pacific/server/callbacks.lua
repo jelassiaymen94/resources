@@ -28,21 +28,16 @@ RegisterNetEvent('Polar-Pacific:Server:RemoveItem', function(item, amount)
     end
 end)
 
-
-local Pacificstartname = 'Pacificstart'
-local Pacificdoor1name = 'Pacificdoor1'
-local Pacificdoor2name = 'Pacificdoor2'
-local Pacificdoor3name = 'Pacificdoor3'
-local Pacificdoorcard1name = 'Pacificdoorcard1'
-local Pacificdoorcard2name = 'Pacificdoorcard2'
-
-
-
+local startdoorname = Config.StartDoor
+local door1name = Config.Door1
+local door2name = Config.Door2
+local door3name = Config.Door3
+local doorcard1name = Config.doorcard1
+local doorcard2name = Config.doorcard2
 
 local Pacificpc1 = true
 local Pacificpc2 = true
 local Pacificpc3 = true
-
 
 local Pacificstart = true 
 local Pacificdoor1 = false
@@ -72,15 +67,17 @@ Config.CallBack('Polar-Pacific:Pacificdrill8', function(source, cb) cb(Pacificdr
 
 local Pacificvault = true
 Config.CallBack('Polar-Pacific:VaultCheck', function(source, cb)  cb(Pacificvault) end) 
+local Pacificfingerdoor = true
+Config.CallBack('Polar-Pacific:FingerCheck', function(source, cb)  cb(Pacificfingerdoor) end) 
 
 RegisterNetEvent('Polar-Pacific:Server:StopInteract', function(door)
     if door == nil then return end
-    if door == Pacificstartname then Pacificstart = false end
-    if door == Pacificdoor1name then Pacificdoor1 = false end
-    if door == Pacificdoor2name then Pacificdoor2 = false end
-    if door == Pacificdoor3name then Pacificdoor3 = false end
-    if door == Pacificdoorcard1name then Pacificdoorcard1 = false end
-    if door == Pacificdoorcard2name then Pacificdoorcard2 = false end
+    if door == startdoorname then Pacificstart = false end
+    if door == door1name then Pacificdoor1 = false end
+    if door == door2name then Pacificdoor2 = false end
+    if door == door3name then Pacificdoor3 = false end
+    if door == doorcard1name then Pacificdoorcard1 = false end
+    if door == doorcard2name then Pacificdoorcard2 = false end
     if door == Config.Pc1name then Pacificpc1 = false end
     if door == Config.Pc2name then Pacificpc2 = false end
     if door == Config.Pc3name then Pacificpc3 = false end
@@ -94,15 +91,16 @@ RegisterNetEvent('Polar-Pacific:Server:StopInteract', function(door)
     if door == 'Pacificdrill7' then Pacificdrill7 = false end
     if door == 'Pacificdrill8' then Pacificdrill8 = false end
 
+    if door == Config.FingerDoorName then Pacificfingerdoor = false end
     if door == 'Pacificvault' then Pacificvault = false end
 end)
 RegisterNetEvent('Polar-Pacific:Server:StartInteract', function(door)
-    if door == Pacificstartname then Pacificstart = true end
-    if door == Pacificdoor1name then Pacificdoor1 = true end
-    if door == Pacificdoor2name then Pacificdoor2 = true end
-    if door == Pacificdoor3name then Pacificdoor3 = true end
-    if door == Pacificdoorcard1name then Pacificdoorcard1 = true end
-    if door == Pacificdoorcard2name then Pacificdoorcard2 = true end
+    if door == startdoorname then Pacificstart = true end
+    if door == door1name then Pacificdoor1 = true end
+    if door == door2name then Pacificdoor2 = true end
+    if door == door3name then Pacificdoor3 = true end
+    if door == doorcard1name then Pacificdoorcard1 = true end
+    if door == doorcard2name then Pacificdoorcard2 = true end
 
     if door == Config.Pc1name then Pacificpc1 = true end
     if door == Config.Pc2name then Pacificpc2 = true end
@@ -117,20 +115,21 @@ RegisterNetEvent('Polar-Pacific:Server:StartInteract', function(door)
     if door == 'Pacificdrill7' then Pacificdrill7 = true end
     if door == 'Pacificdrill8' then Pacificdrill8 = true end
 
+    if door == Config.FingerDoorName then Pacificfingerdoor = true end
     if door == 'Pacificvault' then Pacificvault = true end
 end)
 
 
 Config.CallBack('Polar-Pacific:DoorCheckstart', function(source, cb) cb(Pacificstart) end) 
 
-Config.CallBack('Polar-Pacific:Door' .. Pacificdoor1name, function(source, cb) cb(Pacificdoor1) end) 
-Config.CallBack('Polar-Pacific:Door' .. Pacificdoor2name, function(source, cb)  cb(Pacificdoor2) end) 
-Config.CallBack('Polar-Pacific:Door' .. Pacificdoor3name, function(source, cb) cb(Pacificdoor3) end) 
+Config.CallBack('Polar-Pacific:Door' .. door1name, function(source, cb) cb(Pacificdoor1) end) 
+Config.CallBack('Polar-Pacific:Door' .. door2name, function(source, cb)  cb(Pacificdoor2) end) 
+Config.CallBack('Polar-Pacific:Door' .. door3name, function(source, cb) cb(Pacificdoor3) end) 
 Config.CallBack('Polar-Pacific:Door' .. Config.Pc1name, function(source, cb) cb(Pacificpc1) end) 
 Config.CallBack('Polar-Pacific:Door' .. Config.Pc2name, function(source, cb)  cb(Pacificpc2) end) 
 Config.CallBack('Polar-Pacific:Door' .. Config.Pc3name, function(source, cb) cb(Pacificpc3) end) 
-Config.CallBack('Polar-Pacific:Door' .. Pacificdoorcard1name, function(source, cb) cb(Pacificdoorcard1) end) 
-Config.CallBack('Polar-Pacific:Door' .. Pacificdoorcard2name, function(source, cb)  cb(Pacificdoorcard2) end) 
+Config.CallBack('Polar-Pacific:Door' .. doorcard1name, function(source, cb) cb(Pacificdoorcard1) end) 
+Config.CallBack('Polar-Pacific:Door' .. doorcard2name, function(source, cb)  cb(Pacificdoorcard2) end) 
 
 local time = (Config.CooldownTime * 60000) RegisterNetEvent('Polar-Pacific:Server:StartCooldown', function(door) SetTimeout(time, function() reset() end) end)
 
@@ -151,7 +150,8 @@ function reset()
     Pacificdrill1 = true
 
     Pacificvault = true
-
+    Pacificfingerdoor = true
+    
     TriggerClientEvent('Polar-Pacific:Client:ResetProps', -1)
 
     TriggerClientEvent('Polar-Pacific:Client:ResetDoors', -1)
@@ -163,6 +163,7 @@ end
 
 RegisterNetEvent('Polar-Pacific:Doorlock', function(doorid, id)
     local door = exports.ox_doorlock:getDoorFromName(doorid)
+    if door == nil then return end
     TriggerEvent('ox_doorlock:setState', door.id, id)
    
 end)
@@ -180,5 +181,6 @@ RegisterNetEvent('Polar-Pacific:Server:LockDown', function()
     Pacificdrill1 = false
     Pacificdrill1 = false
 
+    Pacificfingerdoor = false
     Pacificvault = false
 end)

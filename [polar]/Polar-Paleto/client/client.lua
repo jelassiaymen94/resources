@@ -135,21 +135,20 @@ local proptable = {
     'paletoprop42', 'paletoprop43', 'paletoprop44', 'paletoprop45', 'paletoprop46', 'paletoprop47', 'paletoprop48', 'paletoprop49', 'paletoprop50',
 }
 
-local paletostartname = 'paletostart'
-local paletodoor1name = 'paletodoor1'
-local paletodoor2name = 'paletodoor2'
-local paletodoor3name = 'paletodoor3'
-local paletodoorcard1name = 'paletodoorcard1'
-local paletodoorcard2name = 'paletodoorcard2'
-
+local startdoorname = Config.StartDoor
+local door1name = Config.Door1
+local door2name = Config.Door2
+local door3name = Config.Door3
+local doorcard1name = Config.doorcard1
+local doorcard2name = Config.doorcard2
 
 local doortable = {
     
-    paletodoor1name,
-    paletodoor2name,
-    paletodoor3name,
-    paletodoorcard1name,
-    paletodoorcard2name,
+    door1name,
+    door2name,
+    door3name,
+    doorcard1name,
+    doorcard2name,
     Config.Pc1name,
     Config.Pc2name,
     Config.Pc3name,
@@ -171,7 +170,7 @@ RegisterNetEvent("Polar-Paleto:Client:ThermitePtfx", function(coords) if not Has
 
 local callback = Config.TrigCallBack -- QBCore.Functions.TriggerCallback ESX.TriggerServerCallback
 
-RegisterNetEvent('Polar-Paleto:client:start', function()  pp = vector4(-109.43, 6483.32, 31.47, 224.11) door = paletostartname coords = vector3(-109.46, 6484.36, 31.27)
+RegisterNetEvent('Polar-Paleto:client:start', function()  pp = vector4(-109.43, 6483.32, 31.47, 224.11) door = startdoorname coords = vector3(-109.46, 6484.36, 31.27)
     if CurrentCops >= Config.RequiredCops then
     if playeritem(thermiteitem) then
     callback('Polar-Paleto:DoorCheckstart', function(result) if result then
@@ -327,7 +326,8 @@ end
 local paletodrill1loc = nil local paletodrill1name = nil local paletodrill2loc = nil local paletodrill2name = nil
 function other()
     CreateTarget(vaultdoorname, vaultanimloc, "Polar-Paleto:Client:VaultHack", "Hack", "fas fa-bolt", Config.Debug)
-
+    CreateTarget(fingerprintdoor, Config.FingerEye, "Polar-Paleto:Client:VaultHack", "Hack", "fas fa-bolt", Config.Debug)
+ 
 
    drill1()
 
@@ -799,6 +799,7 @@ end)
 
 
 function next(door, loc)
+    if door == vaultdoorname then
     SetEntityCoords(ped, vec3(loc.x, loc.y, loc.z-1))
     local animDict = 'anim@heists@ornate_bank@hack'
     loadAnimDict(animDict)
@@ -836,7 +837,9 @@ function next(door, loc)
     Wait(6300)
     NetworkStartSynchronisedScene(netScene2)
     Wait(2000)
+
     if hi then
+
         local chance = math.random(1,100)
         if chance <= vaultitemchance then TriggerServerEvent('Polar-Paleto:Server:RemoveItem', vaultitem, 1) end
         Wait(4000)
@@ -850,8 +853,9 @@ function next(door, loc)
         LocalPlayer.state:set('inv_busy', false, true) 
         RemoveAnimDict(animDict)
         return true
+
     else
-   -- if door == vaultdoorname then
+               
         LocalPlayer.state:set('inv_busy', true, true) 
     exports[hackname]:OpenHackingGame(10, 5, 3, function(Success) 
         if Success then
@@ -883,42 +887,64 @@ function next(door, loc)
             RemoveAnimDict(animDict)
             return false
         end
+
     end)
-      --[[
-        elseif door == fingerprintdoor then
+
+    end
+
+    elseif door == fingerprintdoor then
      
+        
+
+
+
+            local animDict = 'anim_heist@hs3f@ig1_hack_keypad@arcade@male@' RequestAnimDict(animDict) RequestModel('prop_phone_ing') RequestModel('hei_prop_hst_usb_drive')while not HasAnimDictLoaded(animDict) or not HasModelLoaded('prop_phone_ing') or not HasModelLoaded('hei_prop_hst_usb_drive') do Wait(100) end
+
+            local ped = PlayerPedId() local targetPosition, targetRotation = (vec3(GetEntityCoords(ped))), vec3(GetEntityRotation(ped)) SetEntityHeading(ped, loc.h)
+            local animPos = GetAnimInitialOffsetPosition(animDict, 'action_var_01', loc.x, loc.y, loc.z, loc.x, loc.y, loc.z, 0, 2) local animPos2 = GetAnimInitialOffsetPosition(animDict, 'hack_loop_var_01', loc.x, loc.y, loc.z, loc.x, loc.y, loc.z, 0, 2) local animPos3 = GetAnimInitialOffsetPosition(animDict, 'success_react_exit_var_01', loc.x, loc.y, loc.z, loc.x, loc.y, loc.z, 0, 2) FreezeEntityPosition(ped, true) local phone = CreateObject(GetHashKey('prop_phone_ing'), targetPosition, 1, 1, 0) local usb = CreateObject(GetHashKey('hei_prop_hst_usb_drive'), targetPosition, 1, 1, 0)
+            local netScene = NetworkCreateSynchronisedScene(animPos, targetRotation, 2, false, false, 1065353216, 0, 1.3) NetworkAddPedToSynchronisedScene(ped, netScene, animDict, 'action_var_01', 1.5, -4.0, 1, 16, 1148846080, 0)
+            NetworkAddEntityToSynchronisedScene(phone, netScene, animDict, 'action_var_01_prop_phone_ing', 4.0, -8.0, 1) NetworkAddEntityToSynchronisedScene(usb, netScene, animDict, 'action_var_01_ch_prop_ch_usb_drive01x', 4.0, -8.0, 1)
+            local netScene2 = NetworkCreateSynchronisedScene(animPos2, targetRotation, 2, false, true, 1065353216, 0, 1.3) NetworkAddPedToSynchronisedScene(ped, netScene2, animDict, 'hack_loop_var_01', 1.5, -4.0, 1, 16, 1148846080, 0)
+            NetworkAddEntityToSynchronisedScene(phone, netScene2, animDict, 'hack_loop_var_01_prop_phone_ing', 4.0, -8.0, 1) NetworkAddEntityToSynchronisedScene(usb, netScene2, animDict, 'hack_loop_var_01_ch_prop_ch_usb_drive01x', 4.0, -8.0, 1)
+            local netScene3 = NetworkCreateSynchronisedScene(animPos3, targetRotation, 2, false, false, 1065353216, 0, 1.3) NetworkAddPedToSynchronisedScene(ped, netScene3, animDict, 'success_react_exit_var_01', 1.5, -4.0, 1, 16, 1148846080, 0)
+            NetworkAddEntityToSynchronisedScene(phone, netScene3, animDict, 'success_react_exit_var_01_prop_phone_ing', 4.0, -8.0, 1) NetworkAddEntityToSynchronisedScene(usb, netScene3, animDict, 'success_react_exit_var_01_ch_prop_ch_usb_drive01x', 4.0, -8.0, 1) Wait(200) NetworkStartSynchronisedScene(netScene) Wait(4000) NetworkStartSynchronisedScene(netScene2) Wait(2000)
+        
             LocalPlayer.state:set('inv_busy', true, true) 
-        TriggerEvent("".. fingerhack ..":Start", 4, 1, 1, function(outcome, reason) 
-        if outcome == true then -- success
-            local chance = math.random(1,100)
-            if chance <= vaultitemchance then TriggerServerEvent('Polar-Paleto:Server:RemoveItem', vaultitem, 1) end
-            doorlock(door, false)
-            Wait(4000)
-            NetworkStartSynchronisedScene(netScene3)
-            Wait(4500)
-            NetworkStopSynchronisedScene(netScene3)
-            DeleteObject(bag)
-            SetPedComponentVariation(ped, 5, Config.BagUseID, 0, 1)
-            DeleteObject(laptop)
-            FreezeEntityPosition(ped, false)
-            LocalPlayer.state:set('inv_busy', false, true) 
-            notify(text('doorunlock'), "success", 2500)
-            TriggerServerEvent('Polar-Paleto:Server:TargetRemove', door) 
-        elseif outcome == false then -- fail
-            local chance = math.random(1,100)
-            if chance <= vaultitemchance then TriggerServerEvent('Polar-Paleto:Server:RemoveItem', vaultitem, 1) end
-            Wait(4000)
-            NetworkStartSynchronisedScene(netScene3)
-            Wait(4500)
-            NetworkStopSynchronisedScene(netScene3)
-            DeleteObject(bag)
-            SetPedComponentVariation(ped, 5, Config.BagUseID, 0, 1)
-            DeleteObject(laptop)
-            FreezeEntityPosition(ped, false)
-            LocalPlayer.state:set('inv_busy', false, true)
-            TriggerServerEvent('Polar-Paleto:Server:StartInteract', door) 
+            TriggerEvent("".. fingerhack ..":Start", 4, 1, 1, function(outcome, reason) 
+                if outcome == true then -- success
+                TriggerServerEvent('Polar-Paleto:Server:TargetRemove', door)
+                local chance = math.random(1,100)
+                if chance <= vaultitemchance then TriggerServerEvent('Polar-Paleto:Server:RemoveItem', vaultitem, 1) end
+                if oxd then  doorlock(door, false)
+                else TriggerServerEvent('qb-doorlock:server:updateState', door, false, false, false, true, false, false) end
+                NetworkStartSynchronisedScene(netScene3)
+                Wait(4000)
+                NetworkStopSynchronisedScene(netScene3)
+                DeleteObject(usb)
+                DeleteObject(phone)
+                FreezeEntityPosition(ped, false)
+                RemoveAnimDict(animDict)
+                LocalPlayer.state:set('inv_busy', false, true) 
+                notify(text('doorunlock'), "success", 2500)
+                
+                return true
+            -- lose
+            elseif outcome == false then -- fail
+                local chance = math.random(1,100)
+                if chance <= vaultitemchance then TriggerServerEvent('Polar-Paleto:Server:RemoveItem', vaultitem, 1) end
+                NetworkStartSynchronisedScene(netScene3)
+                Wait(4000)
+                NetworkStopSynchronisedScene(netScene3)
+                DeleteObject(usb)
+                DeleteObject(phone)
+                FreezeEntityPosition(ped, false)
+                RemoveAnimDict(animDict)
+                LocalPlayer.state:set('inv_busy', false, true)
+                TriggerServerEvent('Polar-Paleto:Server:StartInteract', door) 
+                return false
+           
         end end)
-        end ]]
+        
     end
 end
 function hack(door)
@@ -937,33 +963,36 @@ function hack(door)
     SetEntityHeading(ped, loc.w)
     SetEntityCoords(ped, vec3(loc.x, loc.y, loc.z-1))
     if Config.Framework == 'esx' then
-        if door == fingerprintdoor then
-            hacking(door, loc)
-        else
         if next(door, loc) then
+            if door == fingerprintdoor then
+                TriggerServerEvent('Polar-Paleto:Server:TargetRemove', door) 
+            else
             notify(text('vaultopen'), "success", 2500)
             TriggerServerEvent('Polar-Paleto:Server:TargetRemove', door) 
             vaultdone()
+            end
         else
             TriggerServerEvent('Polar-Paleto:Server:StartInteract', door)
         end
-        end
+       
     else
     QBCore.Functions.Progressbar("door", "Connecting to Door ..", math.random(5000, 7500), false, true, {
     disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true,
     }, { animDict = "anim@gangops@facility@servers@", anim = "hotwire", flags = 16,
     }, {}, {}, function() StopAnimTask(ped, "anim@gangops@facility@servers@", "hotwire", 1.0)
-        if door == fingerprintdoor then
-
-        else
+        
         if next(door, loc) then
+            if door == fingerprintdoor then
+                TriggerServerEvent('Polar-Paleto:Server:TargetRemove', door) 
+            else
             notify(text('vaultopen'), "success", 2500)
             TriggerServerEvent('Polar-Paleto:Server:TargetRemove', door) 
             vaultdone()
+            end
         else
             TriggerServerEvent('Polar-Paleto:Server:StartInteract', door)
         end
-        end
+       
     end, function() StopAnimTask(ped, "anim@gangops@facility@servers@", "hotwire", 1.0)
         TriggerServerEvent('Polar-Paleto:Server:StartInteract', door)
         LocalPlayer.state:set('inv_busy', false, true) 
@@ -1017,11 +1046,23 @@ end)
 function vaultdone() TriggerServerEvent('Polar-Paleto:Server:Vault') end
 RegisterNetEvent('Polar-Paleto:Client:VaultHack', function(data) 
     if playeritem(vaultitem) then
-    callback('Polar-Paleto:VaultCheck', function(result) if result then 
-        hack(targets[data.id])
-    else
-        notify(text('sometingelse'), "error")
-    end end)
+        if data.id == fingerprintdoor then
+            callback('Polar-Paleto:FingerCheck', function(result) if result then 
+               
+                    hack(data.id)
+              
+            else
+                notify(text('sometingelse'), "error")
+            end end)
+        else
+            callback('Polar-Paleto:VaultCheck', function(result) if result then 
+               
+                        hack(data.id)
+                   
+            else
+                notify(text('sometingelse'), "error")
+            end end)
+        end
     else notify(text('novaultitem'), "error") end
 end)
 
@@ -1064,10 +1105,10 @@ function starttarget()
     ------ DOOR THERMITE
     if oxt then
         exports.ox_target:addBoxZone({ coords = Config.StartThirdEye, size = vec3(1, 1, 1), rotation = 1, debug = hi,
-        options = {{  name = paletostartname, icon = "fas fa-fire", label = "Thermite", event = 'Polar-Paleto:client:start', canInteract = function(_, distance) return distance <= Config.OxTargetDistance end }, } })
+        options = {{  name = startdoorname, icon = "fas fa-fire", label = "Thermite", event = 'Polar-Paleto:client:start', canInteract = function(_, distance) return distance <= Config.OxTargetDistance end }, } })
     else
     
-    exports['qb-target']:AddBoxZone(paletostartname, Config.StartThirdEye, 1, 1, { name = paletostartname, heading = 0.0, debug = hi, minZ = Config.StartThirdEye.z-1, maxZ =  Config.StartThirdEye.z+1,}, 
+    exports['qb-target']:AddBoxZone(startdoorname, Config.StartThirdEye, 1, 1, { name = startdoorname, heading = 0.0, debug = hi, minZ = Config.StartThirdEye.z-1, maxZ =  Config.StartThirdEye.z+1,}, 
     { options = {{ event = "Polar-Paleto:client:start", icon = "fas fa-fire", label = "Thermite"}}, distance = 1 }) 
 
     end
@@ -1092,12 +1133,12 @@ end)
 RegisterNetEvent('Polar-Paleto:Client:StartTargets', function()
     beginlazers()
 
-    CreateTarget(paletodoor1name, vec3(Config.Door1Eye.x, Config.Door1Eye.y, Config.Door1Eye.z + 0.2), "Polar-Paleto:Client:Door", "Thermite", "fas fa-fire", Config.Debug)
-    CreateTarget(paletodoor2name, vec3(Config.Door2Eye.x, Config.Door2Eye.y, Config.Door2Eye.z + 0.2), "Polar-Paleto:Client:Door", "Thermite", "fas fa-fire", Config.Debug)
-    CreateTarget(paletodoor3name, vec3(Config.Door3Eye.x, Config.Door3Eye.y, Config.Door3Eye.z + 0.2), "Polar-Paleto:Client:Door", "Thermite", "fas fa-fire", Config.Debug)
+    CreateTarget(door1name, vec3(Config.Door1Eye.x, Config.Door1Eye.y, Config.Door1Eye.z + 0.2), "Polar-Paleto:Client:Door", "Thermite", "fas fa-fire", Config.Debug)
+    CreateTarget(door2name, vec3(Config.Door2Eye.x, Config.Door2Eye.y, Config.Door2Eye.z + 0.2), "Polar-Paleto:Client:Door", "Thermite", "fas fa-fire", Config.Debug)
+    CreateTarget(door3name, vec3(Config.Door3Eye.x, Config.Door3Eye.y, Config.Door3Eye.z + 0.2), "Polar-Paleto:Client:Door", "Thermite", "fas fa-fire", Config.Debug)
 
-    CreateTarget(paletodoorcard1name, vec3(Config.doorcard1Eye.x, Config.doorcard1Eye.y, Config.doorcard1Eye.z + 0.2), "Polar-Paleto:Client:doorcard", "Insert Card", "fas fa-bolt", Config.Debug)
-    CreateTarget(paletodoorcard2name, vec3(Config.doorcard2Eye.x, Config.doorcard2Eye.y, Config.doorcard2Eye.z + 0.2), "Polar-Paleto:Client:doorcard", "Insert Card", "fas fa-bolt", Config.Debug)
+    CreateTarget(doorcard1name, vec3(Config.doorcard1Eye.x, Config.doorcard1Eye.y, Config.doorcard1Eye.z + 0.2), "Polar-Paleto:Client:doorcard", "Insert Card", "fas fa-bolt", Config.Debug)
+    CreateTarget(doorcard2name, vec3(Config.doorcard2Eye.x, Config.doorcard2Eye.y, Config.doorcard2Eye.z + 0.2), "Polar-Paleto:Client:doorcard", "Insert Card", "fas fa-bolt", Config.Debug)
    
     CreateTarget(Config.Pc1name, Config.Pc1, "Polar-Paleto:Client:HackComputer", "Hack", "fas fa-bolt", Config.Debug)
     CreateTarget(Config.Pc2name, Config.Pc2, "Polar-Paleto:Client:HackComputer", "Hack", "fas fa-bolt", Config.Debug)
@@ -1114,13 +1155,13 @@ end)
 RegisterNetEvent('Polar-Paleto:Client:Door', function(data)
     local name = data.id
     door = name
-    if name == paletodoor1name then
+    if name == door1name then
     pp = vec4(Config.Door1Thermite.x, Config.Door1Thermite.y, Config.Door1Thermite.z + 0.2, Config.Door1Thermite.w) 
     coords =  Config.Door1Pfx 
-    elseif name == paletodoor2name then
+    elseif name == door2name then
         pp = vec4(Config.Door2Thermite.x, Config.Door2Thermite.y, Config.Door2Thermite.z + 0.2, Config.Door2Thermite.w) 
         coords =  Config.Door2Pfx 
-    elseif name == paletodoor3name then
+    elseif name == door3name then
         pp = vec4(Config.Door3Thermite.x, Config.Door3Thermite.y, Config.Door3Thermite.z + 0.2, Config.Door3Thermite.w) 
         coords =  Config.Door3Pfx 
     end
@@ -1134,9 +1175,9 @@ RegisterNetEvent('Polar-Paleto:Client:doorcard', function(data)
     item = carditem  
     rot = vector3(0.0, 0.0, 37.0) 
     door = data.id
-    if door == paletodoorcard1name then
+    if door == doorcard1name then
         position = Config.doorcard1swipe 
-    elseif door == paletodoorcard2name then
+    elseif door == doorcard2name then
         position = Config.doorcard2swipe 
     end
     TriggerEvent('Polar-Paleto:client:keycard', door, position, rot, item) 
@@ -1307,25 +1348,27 @@ end)
 
 RegisterNetEvent('Polar-Paleto:Client:ResetDoors', function()
     if oxd then
-        doorlock(paletodoor1name, 1)
-        doorlock(paletodoor2name, 1)
-        doorlock(paletodoor3name, 1)
-        doorlock(paletodoorcard1name, 1)
-        doorlock(paletodoorcard2name, 1)
+        doorlock(door1name, 1)
+        doorlock(door2name, 1)
+        doorlock(door3name, 1)
+        doorlock(doorcard1name, 1)
+        doorlock(doorcard2name, 1)
+        doorlock(Config.FingerDoorName, true)
         doorlock(Config.VaultDoorName, 1)
        
     else
-    TriggerServerEvent('qb-doorlock:server:updateState', paletodoor1name, true, false, false, true, false, false)
-    TriggerServerEvent('qb-doorlock:server:updateState', paletodoor2name, true, false, false, true, false, false)
-    TriggerServerEvent('qb-doorlock:server:updateState', paletodoor3name, true, false, false, true, false, false)
-    TriggerServerEvent('qb-doorlock:server:updateState', paletodoorcard1name, true, false, false, true, false, false)
-    TriggerServerEvent('qb-doorlock:server:updateState', paletodoorcard2name, true, false, false, true, false, false)
+    TriggerServerEvent('qb-doorlock:server:updateState', door1name, true, false, false, true, false, false)
+    TriggerServerEvent('qb-doorlock:server:updateState', door2name, true, false, false, true, false, false)
+    TriggerServerEvent('qb-doorlock:server:updateState', door3name, true, false, false, true, false, false)
+    TriggerServerEvent('qb-doorlock:server:updateState', doorcard1name, true, false, false, true, false, false)
+    TriggerServerEvent('qb-doorlock:server:updateState', doorcard2name, true, false, false, true, false, false)
+    TriggerServerEvent('qb-doorlock:server:updateState', Config.FingerDoorName, true, false, false, true, false, false)
     TriggerServerEvent('qb-doorlock:server:updateState', Config.VaultDoorName, true, false, false, true, false, false)
- --   doorlock(paletodoor1name, true)
-  --  doorlock(paletodoor2name, true)
-  --  doorlock(paletodoor3name, true)
-  --  doorlock(paletodoorcard1name, true)
-  --  doorlock(paletodoorcard2name, true)
+ --   doorlock(door1name, true)
+  --  doorlock(door2name, true)
+  --  doorlock(door3name, true)
+  --  doorlock(doorcard1name, true)
+  --  doorlock(doorcard2name, true)
  --   doorlock(Config.VaultDoorName, true)
     end
 end)
@@ -1649,56 +1692,6 @@ end
 
 
 
-
-
-
-
-
-
-
--- hacking(door, loc)
-function hacking(door, loc)
-    LocalPlayer.state:set("inv_busy", true, true)
-    local animDict = 'anim_heist@hs3f@ig1_hack_keypad@arcade@male@' RequestAnimDict(animDict) RequestModel('prop_phone_ing') RequestModel('hei_prop_hst_usb_drive')while not HasAnimDictLoaded(animDict) or not HasModelLoaded('prop_phone_ing') or not HasModelLoaded('hei_prop_hst_usb_drive') do Wait(100) end
-    SetPedComponentVariation(PlayerPedId(), 5, Config.HideBagID, 1, 1)
-    local ped = PlayerPedId() local targetPosition, targetRotation = (vec3(GetEntityCoords(ped))), vec3(GetEntityRotation(ped)) SetEntityHeading(ped, loc.h)
-    local animPos = GetAnimInitialOffsetPosition(animDict, 'action_var_01', loc.x, loc.y, loc.z, loc.x, loc.y, loc.z, 0, 2) local animPos2 = GetAnimInitialOffsetPosition(animDict, 'hack_loop_var_01', loc.x, loc.y, loc.z, loc.x, loc.y, loc.z, 0, 2) local animPos3 = GetAnimInitialOffsetPosition(animDict, 'success_react_exit_var_01', loc.x, loc.y, loc.z, loc.x, loc.y, loc.z, 0, 2) FreezeEntityPosition(ped, true) local phone = CreateObject(GetHashKey('prop_phone_ing'), targetPosition, 1, 1, 0) local usb = CreateObject(GetHashKey('hei_prop_hst_usb_drive'), targetPosition, 1, 1, 0)
-    local netScene = NetworkCreateSynchronisedScene(animPos, targetRotation, 2, false, false, 1065353216, 0, 1.3) NetworkAddPedToSynchronisedScene(ped, netScene, animDict, 'action_var_01', 1.5, -4.0, 1, 16, 1148846080, 0)
-    NetworkAddEntityToSynchronisedScene(phone, netScene, animDict, 'action_var_01_prop_phone_ing', 4.0, -8.0, 1) 
-    NetworkAddEntityToSynchronisedScene(usb, netScene, animDict, 'action_var_01_ch_prop_ch_usb_drive01x', 4.0, -8.0, 1)
-    local netScene2 = NetworkCreateSynchronisedScene(animPos2, targetRotation, 2, false, true, 1065353216, 0, 1.3) 
-    NetworkAddPedToSynchronisedScene(ped, netScene2, animDict, 'hack_loop_var_01', 1.5, -4.0, 1, 16, 1148846080, 0)
-    NetworkAddEntityToSynchronisedScene(phone, netScene2, animDict, 'hack_loop_var_01_prop_phone_ing', 4.0, -8.0, 1) 
-    NetworkAddEntityToSynchronisedScene(usb, netScene2, animDict, 'hack_loop_var_01_ch_prop_ch_usb_drive01x', 4.0, -8.0, 1)
-    local netScene3 = NetworkCreateSynchronisedScene(animPos3, targetRotation, 2, false, false, 1065353216, 0, 1.3) 
-    NetworkAddPedToSynchronisedScene(ped, netScene3, animDict, 'success_react_exit_var_01', 1.5, -4.0, 1, 16, 1148846080, 0)
-    NetworkAddEntityToSynchronisedScene(phone, netScene3, animDict, 'success_react_exit_var_01_prop_phone_ing', 4.0, -8.0, 1) 
-    NetworkAddEntityToSynchronisedScene(usb, netScene3, animDict, 'success_react_exit_var_01_ch_prop_ch_usb_drive01x', 4.0, -8.0, 1) Wait(200) 
-    NetworkStartSynchronisedScene(netScene) Wait(4000) NetworkStartSynchronisedScene(netScene2) Wait(2000)
-
-    -- win
-
-        NetworkStartSynchronisedScene(netScene3)
-        Wait(4000)
-        NetworkStopSynchronisedScene(netScene3)
-        DeleteObject(usb)
-        DeleteObject(phone)
-        FreezeEntityPosition(ped, false)
-        LocalPlayer.state:set("inv_busy", false, true)
-        SetPedComponentVariation(PlayerPedId(), 5, Config.BagUseID, 1, 1)
-        RemoveAnimDict(animDict)
-    -- lose
-
-        NetworkStartSynchronisedScene(netScene3)
-        Wait(4000)
-        NetworkStopSynchronisedScene(netScene3)
-        DeleteObject(usb)
-        DeleteObject(phone)
-        FreezeEntityPosition(ped, false)
-        LocalPlayer.state:set("inv_busy", false, true)
-        SetPedComponentVariation(PlayerPedId(), 5, Config.BagUseID, 1, 1)
-        RemoveAnimDict(animDict)
-end
 
 
 
