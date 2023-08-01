@@ -1,7 +1,7 @@
 Translations = {
     ui = {
-        server_name = "Lazzy Roleplay",
-        welcome_message = "Welcome To Lazzy Roleplay",
+        server_name = "Above",
+        welcome_message = "Welcome To Above",
         select_char = "Select your character",
         govname = "Not a goverment",
         create_title = "Please fill all the information below before you go to the city",
@@ -10,12 +10,6 @@ Translations = {
         male = "Male",
         female = "Female",
         dob = "Date Of Birth",
-        job = "Job",
-        nationality = "Nationality",
-        grade = "Grade",
-        phone = "Phone",
-        yes = "Yes",
-        no = "No",
     },
     notification = {
         firstname_fail = "Please fill your firstname",
@@ -25,8 +19,8 @@ Translations = {
         nationality_fail = "Please fill your nationality",
         dob_fail = "Please fill your date of birth",
         dob_fail2 = "Your date of birth can't be below 1970-01-01 or higher than 2017-12-01",
-        firstname_char = "First name needs to be at least 6 characters",
-        lastname_char = "Last name needs to be at least 6 characters"
+        firstname_char = "First name needs to be at least 2 characters",
+        lastname_char = "Last name needs to be at least 3 characters"
 
     },
     placeholders = {

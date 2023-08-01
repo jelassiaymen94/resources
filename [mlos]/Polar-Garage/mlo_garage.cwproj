@@ -1,0 +1,31 @@
+<CodeWalkerProject>
+  <Name>New CodeWalker Project</Name>
+  <Version value="1" />
+  <YmapFilenames>
+    <Item>stream\mlo_garage.ymap</Item>
+    <Item>..\..\..\..\..\mlo\old garage\bt1_01_strm_0.ymap</Item>
+  </YmapFilenames>
+  <YtypFilenames>
+    <Item>stream\mlo_garage.ytyp</Item>
+  </YtypFilenames>
+  <YbnFilenames>
+    <Item>stream\bt1_01_0.ybn</Item>
+    <Item>stream\hi@bt1_01_0.ybn</Item>
+    <Item>stream\mlo_garage_mlo.ybn</Item>
+  </YbnFilenames>
+  <YndFilenames />
+  <YnvFilenames />
+  <TrainsFilenames />
+  <ScenarioFilenames />
+  <AudioRelFilenames />
+  <YdrFilenames>
+    <Item>stream\bh1_rd2_cp1_stairs_main.ydr</Item>
+    <Item>stream\bt1_01_crnrb2.ydr</Item>
+    <Item>stream\bt1_01_crnrb2_ovl.ydr</Item>
+    <Item>stream\bt1_01_grdnoshad.ydr</Item>
+    <Item>stream\mlo_garage_shell.ydr</Item>
+  </YdrFilenames>
+  <YddFilenames />
+  <YftFilenames />
+  <YtdFilenames />
+</CodeWalkerProject>
