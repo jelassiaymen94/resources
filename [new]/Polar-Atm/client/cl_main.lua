@@ -19,15 +19,15 @@ CreateThread(function()
         GetHashKey("loq_atm_03_console")
     }
 
-    exports[AD.Target]:AddTargetModel(models, {
+    exports[Config.Target]:AddTargetModel(models, {
         options = {
             {
-                event = "ad_atmrobbery:crack", 
-                icon = AD.CrackIcon, 
-                label = AD.TextCrack
+                event = "Polar-Atm:Client:BreakAtm", 
+                icon = Config.CrackIcon, 
+                label = Config.TextCrack,
+                item = 'weapon_switchblade'
             }
         }, 
-        job = {"all"},
         distance = 2.5
     })
 end)
@@ -43,18 +43,18 @@ CreateThread(function()
                 texto = false
                 buttons = false
 
-                TriggerServerEvent("ad_atmrobbery:delesrsdsa")
+                TriggerServerEvent("Polar-Atm:Server:RemoveRope")
 
-                local ped = PlayerPedId()
+                
                 local obj = GetATM()
 
-                TaskTurnPedToFaceEntity(ped, obj.atmprope, 1000)
-                TaskPlayAnim(ped, "mini@repair", "fixing_a_ped", 2.0, 2.0, -1, 1, 0, false, false, false)
+                TaskTurnPedToFaceEntity(PlayerPedId(), obj.atmprope, 1000)
+                TaskPlayAnim(PlayerPedId(), "mini@repair", "fixing_a_ped", 2.0, 2.0, -1, 1, 0, false, false, false)
+                Wait(3000)
+                --local finished = exports[Config.ProgressBar]:taskBar(Config.ProgressTime, Config.TextAttach)
 
-                local finished = exports[AD.ProgressBar]:taskBar(AD.ProgressTime, AD.TextAttach)
-
-                if finished == 100 then
-                    ClearPedTasks(ped)
+                --if finished == 100 then
+                    ClearPedTasks(PlayerPedId())
                     local propo1 = nil
                     local propo2 = nil
                     local atmcoords = GetEntityCoords(obj.atmprope)
@@ -85,72 +85,71 @@ CreateThread(function()
     
                     atm = false    
 
-                    Citizen.Wait(200)
+                    Wait(200)
     
                     local dpratm = ObjToNet(obj.atmprope)
                     local netveh = VehToNet(vehicle)
                     local propsdad = ObjToNet(propo2)
-                    TriggerServerEvent("ad_atmrobbery:attro2", dpratm, atmcoords.x, atmcoords.y, atmcoords.z, netveh, propsdad)
+                    TriggerServerEvent("Polar-Atm:Server:AtmCoords", dpratm, atmcoords.x, atmcoords.y, atmcoords.z, netveh, propsdad)
                     SetEntityCoords(obj.atmprope, atmcoords.x, atmcoords.y, atmcoords.z - 10.0)
 
                     local car = true
                     while car do
                         if IsPedInAnyVehicle(ped) then
-                            Citizen.Wait(math.random(25000, 45000))
-                            local jksdf = ObjToNet(propo2)
-                            TriggerServerEvent("ad_atmrobbery:propas", jksdf)
+                            Wait(math.random(25000, 45000))
+                            local prop = ObjToNet(propo2)
+                            TriggerServerEvent("Polar-Atm:Server:SyncProp", prop)
                             car = false
                         end
-                        Citizen.Wait(0)
+                        Wait(0)
                     end
-                end
+                --end
             end
-            Citizen.Wait(0)
+            Wait(0)
         else
-            Citizen.Wait(500)
+            Wait(500)
         end 
     end
 end)
 
-RegisterNetEvent("ad_atmrobbery:userope")
-AddEventHandler("ad_atmrobbery:userope", function()
-    local ped = PlayerPedId()
+RegisterNetEvent("Polar-Atm:Client:UseRope", function()
     local veh = QBCore.Functions.GetClosestVehicle(GetEntityCoords(PlayerPedId()))
     vehicle = veh
-    if not IsPedInAnyVehicle(ped, false) then
-    TaskTurnPedToFaceEntity(ped, vehicle, 1000)
+    if not IsPedInAnyVehicle(PlayerPedId(), false) then
+    TaskTurnPedToFaceEntity(PlayerPedId(), vehicle, 1000)
     loadAnimDict("mini@repair")
-    TaskPlayAnim(ped, "mini@repair", "fixing_a_ped", 2.0, 2.0, -1, 1, 0, false, false, false)
-    local finished = exports[AD.ProgressBar]:taskBar(AD.ProgressTime, AD.TextAttach)
+    TaskPlayAnim(PlayerPedId(), "mini@repair", "fixing_a_ped", 2.0, 2.0, -1, 1, 0, false, false, false)
 
-    if finished == 100 then
-        ClearPedTasks(ped)
-        TriggerServerEvent("ad_atmrobbery:clrspawn")
+
+        Wait(3000)
+
+
+        ClearPedTasks(PlayerPedId())
+        TriggerServerEvent("Polar-Atm:Server:AddRope")
         atm = true
         texto = true
         local networkveh = VehToNet(vehicle)
-        local metworkped = PedToNet(ped)
+        local metworkped = PedToNet(PlayerPedId())
         while atm do
-            local plrcoords = GetEntityCoords(ped)
-            TriggerServerEvent("ad_atmrobbery:attro1", networkveh, metworkped)
+            local plrcoords = GetEntityCoords(PlayerPedId())
+            TriggerServerEvent("Polar-Atm:Server:NetworkSync", networkveh, metworkped)
             if texto then
-                DrawText(plrcoords.x, plrcoords.y, plrcoords.z, AD.Text, AD.TextLength)
+                DrawText(plrcoords.x, plrcoords.y, plrcoords.z, Config.Text, Config.TextLength)
             end
             buttons = true
-            Citizen.Wait(0)
-        end
+            Wait(0)
+
+
     end
 end
 end)
 
-RegisterNetEvent("ad_atmrobbery:clrspawn")
-AddEventHandler("ad_atmrobbery:clrspawn", function()
+RegisterNetEvent("Polar-Atm:Client:AddRope", function()
     RopeLoadTextures()
     rope = AddRope(1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 1.0, 1, 7.0, 1.0, 0, 0, 0, 0, 0, 0)
 end)
 
-RegisterNetEvent("ad_atmrobbery:attro1")
-AddEventHandler("ad_atmrobbery:attro1", function(obh1, obj1)
+RegisterNetEvent("Polar-Atm:Client:NetworkSync", function(obh1, obj1)
     local obo1 = NetToEnt(obh1)
     local obo2 = NetToEnt(obj1)
     local ocoords = GetEntityCoords(obo2)
@@ -158,8 +157,7 @@ AddEventHandler("ad_atmrobbery:attro1", function(obh1, obj1)
     SlideObject(rope, ocoords.x, ocoords.y, ocoords.z, 1.0, 1.0, 1.0, true)
 end)
 
-RegisterNetEvent("ad_atmrobbery:attro2")
-AddEventHandler("ad_atmrobbery:attro2", function(atmo, atmco1, atmco2, atmco3, obh1, obj1)
+RegisterNetEvent("Polar-Atm:Client:AtmCoords", function(atmo, atmco1, atmco2, atmco3, obh1, obj1)
     NetworkRequestControlOfEntity(atmo)
     local obo1 = NetToEnt(obh1)
     local obo2 = NetToEnt(obj1)
@@ -169,40 +167,34 @@ AddEventHandler("ad_atmrobbery:attro2", function(atmo, atmco1, atmco2, atmco3, o
     AttachEntitiesToRope(rope, obo1, obo2, GetOffsetFromEntityInWorldCoords(obo1, 0, -2.3, 0.5), propocoord.x, propocoord.y, propocoord.z + 1.0, 7.0, 0, 0, "rope_attach_a", "rope_attach_b")
 end)
 
-RegisterNetEvent("ad_atmrobbery:propas")
-AddEventHandler("ad_atmrobbery:propas", function(obh)
-    local obo = NetToEnt(obh)
+RegisterNetEvent("Polar-Atm:Client:SyncProp", function(obj)
+    local obo = NetToEnt(obj)
     FreezeEntityPosition(obo, false)
     SetObjectPhysicsParams(obo, 170.0, -1.0, 30.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0)
 end)
 
-RegisterNetEvent("ad_atmrobbery:crack")
-AddEventHandler("ad_atmrobbery:crack", function()
+RegisterNetEvent("Polar-Atm:Client:BreakAtm", function()
+
     loadAnimDict("mini@repair")
     TaskPlayAnim(PlayerPedId(), "mini@repair", "fixing_a_ped", 2.0, 2.0, -1, 1, 0, false, false, false)
-    local prosp = GetTasd()
-    local finished = exports[AD.ProgressBar]:taskBar(AD.ProgressTime, AD.TextTCrack)
+    local prosp = GetObj()
 
-    if finished == 100 then
-        local jkdffsdf = ObjToNet(prosp)
+
+
+       Wait(3000)
+
+
+
+        local send = ObjToNet(prosp)
         ClearPedTasks(PlayerPedId())
-        TriggerServerEvent("ad_atmrobbery:deles", jkdffsdf)
-        TriggerServerEvent("ad_atmrobbery:delesr", rope)
+        TriggerServerEvent("Polar-Atm:Server:DeleteEntity", send)
+        TriggerServerEvent("Polar-Atm:Client:DeleteRope", rope)
         TriggerServerEvent("ad_atmrobbery:reward")
-    end
+
 end)
 
-RegisterNetEvent("ad_atmrobbery:deles")
-AddEventHandler("ad_atmrobbery:deles", function(obh)
-    local obo = NetToEnt(obh)
-    DeleteEntity(obo)
-end)
-
-RegisterNetEvent("ad_atmrobbery:delesr")
-AddEventHandler("ad_atmrobbery:delesr", function(rope)
-    DeleteRope(rope)
-    rope = nil
-end)
+RegisterNetEvent("Polar-Atm:Client:DeleteEntity", function(obh) local obo = NetToEnt(obh) DeleteEntity(obo) end)
+RegisterNetEvent("Polar-Atm:Client:DeleteRope", function(rope) DeleteRope(rope) rope = nil end)
 
 function GetATM()
     for k,v in pairs({"prop_atm_02", "prop_atm_03", "prop_fleeca_atm"}) do 
@@ -218,7 +210,7 @@ function GetATM()
     return nil
 end
 
-function GetTasd()
+function GetObj()
     for k,v in pairs({"loq_fleeca_atm_console", "loq_atm_02_console", "loq_atm_03_console"}) do 
         local obj = GetClosestObjectOfType(GetEntityCoords(PlayerPedId()), 5.0, GetHashKey(v))
         if DoesEntityExist(obj) then
@@ -240,7 +232,7 @@ function loadExistModel(hash)
         RequestModel(hash)
     
         while not HasModelLoaded(hash) do
-            Citizen.Wait(1)
+            Wait(1)
         end
     end
 end
@@ -248,6 +240,6 @@ end
 function loadAnimDict(dict)
     while not HasAnimDictLoaded(dict) do
         RequestAnimDict(dict)
-        Citizen.Wait(10)
+        Wait(10)
     end
 end
