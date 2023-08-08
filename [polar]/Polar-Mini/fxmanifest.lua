@@ -38,17 +38,5 @@ files {
 }
 
 
-
---[[
-ui_page 'html/index.html'
-
-
-files {
-    'html/index.html',
-    'html/style.css',
-    'html/reset.css',
-    'html/listener.js'
-}
-]]
-
+dependency '/assetpacks'
 lua54 'yes'

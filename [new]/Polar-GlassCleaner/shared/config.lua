@@ -8,7 +8,7 @@ Config.OxTarget = false
 
 
 
-
+Config.JobTime = 15 -- minutes / cooldown on per job
 
 
 
@@ -25,8 +25,8 @@ Config.OxTarget = false
 
 --============== BLIPS -=============
 Config.BlipName = "Location" -- blip name
-Config.BlipSprite = 267 -- https://docs.fivem.net/docs/game-references/blips/ -- picture of blip
-Config.BlipColor = 7  -- https://gtaforums.com/topic/864881-all-blip-color-ids-pictured/ -- color of blip
+Config.BlipSprite = 682 -- https://docs.fivem.net/docs/game-references/blips/ -- picture of blip
+Config.BlipColor = 40  -- https://gtaforums.com/topic/864881-all-blip-color-ids-pictured/ -- color of blip
 
 
 

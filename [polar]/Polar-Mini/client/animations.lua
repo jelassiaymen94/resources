@@ -1,44 +1,31 @@
+RegisterCommand("startclipping", function(source, args, rawCommand)
+  startclipping()
+end, false)
 
 
-
-
-
-
-
-local prevPos = nil
-
-local inAnim = false
-
-
-CreateThread(function()
-   -- while true do 
-     --   local currentPos = GetEntityCoords(PlayerPedId())
-        --    if currentPos == prevPos then
-        --        if inAnim then else
-        --            print('1')
-                -- PlayAnimation('move_m@generic_idles@std', 'idle_e')
-        --        end
-        --    else
-         --       prevPos =  currentPos
-       --     end
-     --   Wait(1000)
-   -- end
-end)
-
-
-
-
-function PlayAnimation(dict, anim)
-    inAnim = true
-        
-     
-    RequestAnimDict(dict)
-    while not HasAnimDictLoaded(dict) do
-        Wait(0)
-    end
-    print('2')
-    TaskPlayAnim(PlayerPedId(), dict, anim, 8.0, 8.0, -1, 1, 0, false, false, false)
-    print('3')
-    Wait(5000)
-    inAnim = false
+function startclipping()
+  CreateThread(function()
+	  while(true) do
+		  Wait(10)
+		  if(IsRecording()) then
+			  if(IsControlJustPressed(1,170)) then
+				  StopRecordingAndSaveClip()
+			  end
+			
+			  if(IsControlJustPressed(1,289)) then
+				  StopRecordingAndDiscardClip()
+			  end
+		  else
+		
+			  if(IsControlJustPressed(1,288)) then
+				  StartRecording(1)
+			  end
+		  end
+		
+		  if(IsControlJustPressed(1,57)) then
+			  NetworkSessionLeaveSinglePlayer()
+			  ActivateRockstarEditor()
+		  end
+	  end
+  end)
 end

@@ -4,24 +4,32 @@ local oxt = Config.OxTarget
 
 
 local cranes = nil
+local onjob = false
 
-
+AddEventHandler('onResourceStop', function(resource) if resource ~= GetCurrentResourceName() then return end TriggerEvent('Polar-GlassCleaner:Client:RemoveCraneProp', cranes)  end)
 RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function() Wait(100) starttarget()  end)
 
 
-RegisterNetEvent('Polar-GlassCleaner:Client:CraneProp', function(prop, var) 
+RegisterNetEvent('Polar-GlassCleaner:Client:CraneProp', function(prop, var, max, min) 
     loadModel(prop) 
    
     cranes =  CreateObject(prop, var.x, var.y, var.z,  true,  true, true) 
     SetEntityHeading(cranes, var.w) 
-    cranetarget(cranes)
+   
+    cranetarget(cranes, max, min)
+
+    addblip(cranes)
 end)
 
+function addblip(entity)
+    local blip = AddBlipForEntity(entity) SetBlipSprite(blip, 304) SetBlipDisplay(blip, 6) SetBlipScale(blip, 0.6) SetBlipAsShortRange(blip, true)
+    SetBlipColour(blip, 5) BeginTextCommandSetBlipName("STRING") AddTextComponentSubstringPlayerName("Lift") EndTextCommandSetBlipName(blip)
+end
 
 RegisterNetEvent('Polar-GlassCleaner:Client:RemoveCraneProp', function(entity) if DoesEntityExist(entity) then DeleteEntity(entity) end end)
 
 
-function cranetarget(entity)
+function cranetarget(entity, maxs, mins)
     exports['qb-target']:AddTargetEntity(entity, {
         options = {
             {
@@ -30,6 +38,7 @@ function cranetarget(entity)
                 icon = "fas fa-bolt",
                 label = "Move Up",
                 cranes = entity,
+                max = maxs,
             },
             {
                 type = "Client",
@@ -44,25 +53,46 @@ function cranetarget(entity)
                 icon = "fas fa-bolt",
                 label = "Move Down",
                 cranes = entity,
+                min = mins,
             },
         },
         distance = 1.0
     })
 end
-
+RegisterNetEvent('Polar-GlassCleaner:Client:Timer', function()
+    CreateThread(function()
+        local time = Config.JobTime * 1000 * 60
+        Wait(time)
+        TriggerEvent('Polar-GlassCleaner:Client:RemoveCraneProp', cranes)
+        onjob = false
+    end)
+end)
 RegisterNetEvent('Polar-GlassCleaner:Client:StartJob', function()
-    local prop = 'bkr_int_w04_tread_platform'
-    local loc = vector4(-254.89, -692.78, 111.26, 158.5)
-    TriggerEvent('Polar-GlassCleaner:Client:CraneProp', prop, loc)
-   
+    if onjob then QBCore.Functions.Notify("You Need to Wait for the Job to Finish", 'error', 2500) return end
+    onjob = true
+
+    TriggerEvent('Polar-GlassCleaner:Client:Timer')
+
+    local prop = 'sf_prop_sf_hydro_platform_01a'
+    local loc = vector4(-254.49, -692.15, 31.67, 167.75)
+    local max = 110.0
+    TriggerEvent('Polar-GlassCleaner:Client:CraneProp', prop, loc, max, loc.z)
+    
+
+
+
     local target = 'spot1'
     local loc = vector3(-254.89, -692.78, 109.26)
+    Wait(50)
     TriggerServerEvent('Polar-GlassCleaner:Server:TargetAdd', target, loc)
+
 
     local target = 'spot2'
     local loc = vector3(-254.89, -692.78, 106.26)
+    Wait(50)
     TriggerServerEvent('Polar-GlassCleaner:Server:TargetAdd', target, loc)
 
+    
 end)
 RegisterNetEvent('Polar-GlassCleaner:Client:FinishJob', function()
     TriggerEvent('Polar-GlassCleaner:Client:RemoveCraneProp', cranes)
@@ -73,7 +103,7 @@ end)
 function starttarget()
     exports['qb-target']:SpawnPed({
         model = 'a_m_m_genfat_01',
-        coords = vector4(-258.35, -684.24, 32.39, 170.63),
+        coords = vector4(-258.35, -684.24, 33.39, 170.63),
         minusOne = true,
         freeze = true,
         invincible = false,
@@ -96,6 +126,8 @@ function starttarget()
             distance = 1.5,
         },
     })
+
+    blip(vector4(-258.35, -684.24, 33.39, 170.63))
 end
 
 
@@ -137,47 +169,65 @@ local moving = false
 
 
 RegisterNetEvent('Polar-GlassCleaner:Client:MoveUp', function(data)
+    moving = false
+    Wait(1)
     moving = true
     Wait(50)
-    FreezeEntityPosition(data.entity, false)
+    local ent = data.entity
+    FreezeEntityPosition(ent, true)
     while moving do 
     local loc = GetEntityCoords(data.cranes)
-    SetEntityCoords(vec3(loc.x, loc.y, loc.z+0.1))
-    Wait(100)
+    if loc.z < data.max then
+    SetEntityCoords(ent, vec3(loc.x, loc.y, loc.z+0.101))
+    Wait(10)
+    else moving = false end
     end
 end)
-
-
 RegisterNetEvent('Polar-GlassCleaner:Client:MoveDown', function(data)
+    moving = false
+    Wait(1)
     moving = true
     Wait(50)
-    FreezeEntityPosition(data.entity, false)
+    local ent = data.entity
+    FreezeEntityPosition(ent, true)
     while moving do 
     local loc = GetEntityCoords(data.cranes)
-    SetEntityCoords(vec3(loc.x, loc.y, loc.z-0.1))
-    Wait(100)
+    if loc.z > data.min then
+    SetEntityCoords(ent, vec3(loc.x, loc.y, loc.z-0.01))
+    Wait(10)
+    else moving = false end
     end
 end)
-
-
 RegisterNetEvent('Polar-GlassCleaner:Client:Stop', function(data)
     local loc = GetEntityCoords(data.cranes)
     moving = false
-    FreezeEntityPosition(data.entity, true)
-
+    local ent = data.entity
+    FreezeEntityPosition(ent, true)
 end)
+
 ---================ ========================
 
 
 
 
-
+RegisterNetEvent('Polar-GlassCleaner:Client:TargetRemove', function(target) exports['qb-target']:RemoveZone(target) end)
 
 
 RegisterNetEvent('Polar-GlassCleaner:Client:Clean', function(data)
     local target = data.id
     TriggerServerEvent('Polar-GlassCleaner:Server:TargetRemove', target)
-    print('removed ' .. target)
+    
+    TriggerEvent('animations:client:EmoteCommandStart', {"clean2"})
+
+    QBCore.Functions.Progressbar('window', 'Cleaning Window', math.random(6000,8000), false, true, {
+        disableMovement = true, disableCarMovement = false, disableMouse = false, disableCombat = true,
+        }, {}, {}, {}, function()
+        TriggerServerEvent('Polar-GlassCleaner:Server:Pay', target)
+        emptyHands(PlayerPedId(), true)
+    end, function() 
+           
+        emptyHands(PlayerPedId(), true)
+    end)
 end)
 
 RegisterNetEvent('Polar-GlassCleaner:Client:TargetAdd', function(target, loc) 
@@ -199,11 +249,14 @@ end
 
 
 
-
+function emptyHands(playerPed, dpemote)
+	if dpemote then TriggerEvent('animations:client:EmoteCommandStart', {"c"}) ClearPedTasks(playerPed)
+	else ClearPedTasks(playerPed) end
+end
 
 
 function blip(loc)
-    local blip = AddBlipForCoord(vec3(loc.x, loc.y, loc.z)) SetBlipSprite (blip, Config.BlipSprite) SetBlipDisplay(blip, 6) SetBlipScale (blip, 0.6) SetBlipAsShortRange(blip, true)
+    local blip = AddBlipForCoord(vec3(loc.x, loc.y, loc.z)) SetBlipSprite(blip, Config.BlipSprite) SetBlipDisplay(blip, 6) SetBlipScale(blip, 0.6) SetBlipAsShortRange(blip, true)
     SetBlipColour(blip, Config.BlipColor) BeginTextCommandSetBlipName("STRING") AddTextComponentSubstringPlayerName(Config.BlipName) EndTextCommandSetBlipName(blip)
 end
 

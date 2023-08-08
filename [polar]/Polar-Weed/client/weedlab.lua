@@ -134,7 +134,7 @@ RegisterNetEvent('Polar-Weed:Client:LargeJointMake', function()
         ClearPedTasks(PlayerPedId())
         RemoveAnimDict('amb@medic@standing@kneel@base')
         RemoveAnimDict('anim@gangops@facility@servers@bodysearch@')
-end)
+    end)
 RegisterNetEvent('Polar-Weed:Client:SmallJointMake', function() 
     local ped = PlayerPedId() RequestAnimDict('amb@medic@standing@kneel@base') RequestAnimDict('anim@gangops@facility@servers@bodysearch@')
     while not HasAnimDictLoaded('amb@medic@standing@kneel@base') or not HasAnimDictLoaded('anim@gangops@facility@servers@bodysearch@') do Wait(0) end
