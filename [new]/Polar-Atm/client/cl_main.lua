@@ -123,7 +123,7 @@ CreateThread(function()
 end)
 
 RegisterNetEvent("Polar-Atm:Client:UseRope", function()
-    callback('Polar-Atms:CooldownCheck', function(result) if result then
+    Config.TrigCallBack('Polar-Atms:CooldownCheck', function(result) if result then
         if CurrentCops >= Config.MinimumPolice then
             if playeritem(Config.RopeItem) then
     local veh = QBCore.Functions.GetClosestVehicle(GetEntityCoords(PlayerPedId()))

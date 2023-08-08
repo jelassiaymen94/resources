@@ -1,5 +1,5 @@
 Config = {} or Config
-
+local QBCore = exports['qb-core']:GetCoreObject()
 
 
 Config.Target = "qb-target"
@@ -9,6 +9,8 @@ Config.CrackIcon = "fas fa-recycle"
 
 
 
+Config.CallBack =  QBCore.Functions.CreateCallback -- ESX.RegisterServerCallback
+Config.TrigCallBack = QBCore.Functions.TriggerCallback -- ESX.TriggerServerCallback
 
 
 Config.TextCrack = "Crack ATM"
