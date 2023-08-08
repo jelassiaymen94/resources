@@ -142,10 +142,10 @@ function SetInApartmentTargets()
         return
     end
     
-    local entrancePos = vector3(Apartments.Locations[ClosestHouse].coords.enter.x - POIOffsets.exit.x, Apartments.Locations[ClosestHouse].coords.enter.y - POIOffsets.exit.y , Apartments.Locations[ClosestHouse].coords.enter.z - CurrentOffset + POIOffsets.exit.z + 2)--vector3(-275.09, -960.75, 2.23)
-    local stashPos = vector3(Apartments.Locations[ClosestHouse].coords.enter.x - POIOffsets.stash.x, Apartments.Locations[ClosestHouse].coords.enter.y - POIOffsets.stash.y, Apartments.Locations[ClosestHouse].coords.enter.z - CurrentOffset + POIOffsets.stash.z+ 2)--vector3(-271.41, -959.79, 2.23)
-    local outfitsPos = vector3(Apartments.Locations[ClosestHouse].coords.enter.x - POIOffsets.clothes.x, Apartments.Locations[ClosestHouse].coords.enter.y - POIOffsets.clothes.y, Apartments.Locations[ClosestHouse].coords.enter.z - CurrentOffset + POIOffsets.clothes.z+ 2)--vector3(-271.31, -955.26, 2.23)
-    local logoutPos = vector3(Apartments.Locations[ClosestHouse].coords.enter.x - POIOffsets.logout.x, Apartments.Locations[ClosestHouse].coords.enter.y + POIOffsets.logout.y, Apartments.Locations[ClosestHouse].coords.enter.z - CurrentOffset + POIOffsets.logout.z + 2)--vector3(-267.56, -957.68, 2.23)
+    local entrancePos = vector3(Apartments.Locations["apartment3"].coords.enter.x - POIOffsets.exit.x, Apartments.Locations["apartment3"].coords.enter.y - POIOffsets.exit.y , Apartments.Locations["apartment3"].coords.enter.z - CurrentOffset + POIOffsets.exit.z + 2)--vector3(-275.09, -960.75, 2.23)
+    local stashPos = vector3(Apartments.Locations["apartment3"].coords.enter.x - POIOffsets.stash.x, Apartments.Locations["apartment3"].coords.enter.y - POIOffsets.stash.y, Apartments.Locations["apartment3"].coords.enter.z - CurrentOffset + POIOffsets.stash.z+ 2)--vector3(-271.41, -959.79, 2.23)
+    local outfitsPos = vector3(Apartments.Locations["apartment3"].coords.enter.x - POIOffsets.clothes.x, Apartments.Locations["apartment3"].coords.enter.y - POIOffsets.clothes.y, Apartments.Locations["apartment3"].coords.enter.z - CurrentOffset + POIOffsets.clothes.z+ 2)--vector3(-271.31, -955.26, 2.23)
+    local logoutPos = vector3(Apartments.Locations["apartment3"].coords.enter.x - POIOffsets.logout.x, Apartments.Locations["apartment3"].coords.enter.y + POIOffsets.logout.y, Apartments.Locations["apartment3"].coords.enter.z - CurrentOffset + POIOffsets.logout.z + 2)--vector3(-267.56, -957.68, 2.23)
    
     CreateTarget('stashPos', stashPos, "apartments:client:OpenStash", "Open", "fas fa-bolt", false)
     CreateTarget('outfitsPos', outfitsPos, "apartments:client:ChangeOutfit", "Outfits", "fas fa-bolt", false)
@@ -168,7 +168,7 @@ end
 function TeleportToInterior(x, y, z, h)
     CreateThread(function()
         SetEntityCoords(PlayerPedId(), x, y, z, 0, 0, 0, false)
-        SetEntityHeading(PlayerPedId(), 175)
+        --SetEntityHeading(PlayerPedId(), 175)
 
         Wait(100)
 
@@ -489,7 +489,7 @@ RegisterNetEvent('apartments:client:SpawnInApartment', function(apartmentId, apa
             return
         end
     end
-    ClosestHouse = apartment
+    ClosestHouse = "apartment3"
     EnterApartment(apartment, apartmentId, true)
     IsOwned = true
 end)

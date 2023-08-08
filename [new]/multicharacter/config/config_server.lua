@@ -13,6 +13,6 @@ Config.StarterMoney = {
 }
 
 openSpawnSelector = function(src, cData)
-        DoScreenFadeOut(800)
+        
         TriggerClientEvent('apartments:client:setupSpawnUI', src, cData)
 end

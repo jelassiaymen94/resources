@@ -296,6 +296,7 @@ RegisterNUICallback('selectCharacter', function(data, cb)
 	isMenuOpened = false
 	local cData = data.cData
 	DoScreenFadeOut(800)
+	Wait(500)
 	TriggerServerEvent('multicharacter:CharacterChosen', cData)
 	Wait(1000)
 	DestroyCam(startCam, false)

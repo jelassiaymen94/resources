@@ -58,6 +58,8 @@ RegisterNUICallback('register', function(data, cb)
                 SetPlayerModel(PlayerId(), model)
                 SetModelAsNoLongerNeeded(model)
             end
+            DoScreenFadeOut(800)
+	        Wait(500)
             TriggerServerEvent('multicharacter:createCharacter', {
                 firstname = data.firstname,
                 lastname = data.lastname,
