@@ -1,7 +1,5 @@
+Config = {} or Config
 
-
-Config = {}
-local QBCore = exports['qb-core']:GetCoreObject()
 
 
 Config.Target = "qb-target"
