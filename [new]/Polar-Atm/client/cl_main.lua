@@ -264,12 +264,6 @@ function loadAnimDict(dict)
 end
 
 function playeritem(item, amount)
-    if Config.Framework == 'qb' then
     return exports['inventory']:HasItem(item, amount)
-    else
-    if exports.ox_inventory:GetItemCount(item) > 0 then
-    return true
-    else return false
-    end
 end
 end
