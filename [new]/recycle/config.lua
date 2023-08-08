@@ -16,16 +16,16 @@ Config = {
 
 	Minigame = "qb-skillbar", -- Enable minigame when searching. qb-skillbar/qb-lock/ps-ui
 
-	OutsideTele = vector4(746.75518798828, -1399.5516357422, 26.609373092651, 180.86077880859),
+	OutsideTele = vector4(55.91, 6472.03, 31.43, 226.26),
 	InsideTele = vector4(736.95355224609, -1374.2559814453, 12.635090827942, 266.58343505859),
 
 	Locations =  {
 		['Recycle'] = {
-			{ name = "Recycle Center", coords = vector4(744.68, -1401.77, 26.55, 248.73), blipTrue = true, sprite = 365, col = 2, model = 'G_M_M_ChemWork_01', scenario = "WORLD_HUMAN_CLIPBOARD", },
+			{ name = "Los Santos Recycling Center", coords = vector4(53.22, 6467.72, 31.43, 259.8), blipTrue = true, sprite = 365, col = 2, model = 'G_M_M_ChemWork_01', scenario = "WORLD_HUMAN_CLIPBOARD", },
 		},
 		['Trade'] ={
 			{ name = "Recyclable Trader", coords = vector4(742.36309814453, -1373.9674072266, 12.631042480469, 234.4), blipTrue = false, sprite = 365, col = 2, model = 'G_M_M_ChemWork_01', scenario = "WORLD_HUMAN_CLIPBOARD", },
-		},
+		}, 
 		['BottleBanks'] = {
 			--{ name = "Bottle Bank", coords = vector4(757.06, -1399.68, 26.57 , 178.1), blipTrue = true, sprite = 642, col = 2, model = 'G_M_M_ChemWork_01', scenario = "WORLD_HUMAN_CLIPBOARD", },
 			--{ name = "Bottle Bank", coords = vector4(84.01, -220.32, 54.64 , 337.89), blipTrue = true, sprite = 642, col = 2, model = 'G_M_M_ChemWork_01', scenario = "WORLD_HUMAN_CLIPBOARD", },
@@ -138,7 +138,7 @@ Config = {
 "firework4",	"firework4",	"firework4",	"firework4",	"firework4",	"firework4",														
 "walkstick",	"walkstick",	"walkstick",	"walkstick",																
 "binoculars",	"binoculars",	"binoculars",	"binoculars",																
-"snowball",	"snowball",	"snowball",	"snowball",	"snowball",	"snowball",	"snowball",													
+"weapon_dildo",											
 "lighter",	"lighter",	"lighter",	"lighter",	"lighter",	"lighter",	"lighter",													
 "ducttape",	"ducttape",	"ducttape",	"ducttape",	"ducttape",	"ducttape",	"ducttape",	"ducttape",	"ducttape",	"ducttape",										
 "randombag",	"randombag",	"randombag",	"randombag",	"randombag",															
@@ -151,7 +151,7 @@ Config = {
 "radio",	"radio",	"radio",	"radio",	"radio",	"radio",	"radio",													
 "drugbag",	"drugbag",	"drugbag",	"drugbag",	"drugbag",	"drugbag",	"drugbag",	"drugbag",	"drugbag",	"drugbag",										
 "fishingrod",	"fishingrod",	"fishingrod",	"fishingrod",	"fishingrod",															
-"fishingbait",	"fishingbait",	"fishingbait",	"fishingbait",	"fishingbait",	"fishingbait",	"fishingbait",													
+"fishbait",	"fishbait",	"fishbait",	"fishbait",	"fishbait",	"fishbait",	"fishbait",													
 "drillbit",	"drillbit",	"drillbit",	"drillbit",	"drillbit",	"drillbit",														
 "pickaxe",	"pickaxe",	"pickaxe",	"pickaxe",	"pickaxe",	"pickaxe",	"pickaxe",													
 "pistol_ammo",	"pistol_ammo",	"pistol_ammo",	"pistol_ammo",	"pistol_ammo",	"pistol_ammo",	"pistol_ammo",													

@@ -69,7 +69,7 @@ CreateThread(function()
 	--Make Targets
 	local price = "" if Config.PayAtDoor then price = " ($"..Config.PayAtDoor..")" end
 	Targets["RecyclingEnter"] =
-		exports['qb-target']:AddBoxZone("RecyclingEnter", vector3(746.82, -1398.93, 26.55), 0.4, 1.6, { name="RecyclingEnter", debugPoly=Config.Debug, minZ=25.2, maxZ=28.0 },
+		exports['qb-target']:AddBoxZone("RecyclingEnter", vector3(55.6, 6472.08, 31.43), 1.4, 1.6, { name="RecyclingEnter", debugPoly=Config.Debug, minZ=25.2, maxZ=28.0 },
 			{ options = { { event = "jim-recycle:TeleWareHouse", icon = "fas fa-recycle", label = Loc[Config.Lan].target["enter"]..price, enter = true, job = Config.JobRole }, },
 			distance = 1.5 })
 
