@@ -1,51 +1,53 @@
+local QBCore = exports['qb-core']:GetCoreObject()
+
+
+conf = {
+    ["IsEnabled"] = false, -- If set to true, then discord rich presence will be enabled
+    ["ApplicationId"] = '00000000000000000', -- The discord application id
+    ["IconLarge"] = 'logo_name', -- The name of the large icon
+    ["IconLargeHoverText"] = 'This is a Large icon with text', -- The hover text of the large icon
+    ["IconSmall"] = 'small_logo_name', -- The name of the small icon
+    ["IconSmallHoverText"] = 'This is a Small icon with text', -- The hover text of the small icon
+    ["UpdateRate"] = 60000, -- How often the player count should be updated
+    ["ShowPlayerCount"] = true, -- If set to true the player count will be displayed in the rich presence
+    ["MaxPlayers"] = 48, -- Maximum amount of players
+    ["Buttons"] = {
+        {
+            text = 'First Button!',
+            url = 'fivem://connect/localhost:30120'
+        },
+        {
+            text = 'Second Button!',
+            url = 'fivem://connect/localhost:30120'
+        }
+    }
+}
+
+
+
 CreateThread(function()
-	while true do
-        -- This is the Application ID (Replace this with you own)
-		SetDiscordAppId(1027420054675001404)
+    while conf.IsEnabled do
+        SetDiscordAppId(conf.ApplicationId)
+        SetDiscordRichPresenceAsset(conf.IconLarge)
+        SetDiscordRichPresenceAssetText(conf.IconLargeHoverText)
+        SetDiscordRichPresenceAssetSmall(conf.IconSmall)
+        SetDiscordRichPresenceAssetSmallText(conf.IconSmallHoverText)
 
-        -- Here you will have to put the image name for the "large" icon.
-		SetDiscordRichPresenceAsset('avalanche')
-        
-        -- (11-11-2018) New Natives:
-        
-        -- Here you can add hover text for the "large" icon.
-        SetDiscordRichPresenceAssetText('Blake Dev')
-       
-        -- Here you will have to put the image name for the "small" icon.
-       -- SetDiscordRichPresenceAssetSmall('avalanche')
+        if conf.ShowPlayerCount then
+            QBCore.Functions.TriggerCallback('smallresources:server:GetCurrentPlayers', function(result)
+                SetRichPresence('Players: ' .. result .. '/' .. conf.MaxPlayers)
+            end)
+        end
 
-        -- Here you can add hover text for the "small" icon.
-        SetDiscordRichPresenceAssetSmallText('Blake Dev')
-
-
-        -- (26-02-2021) New Native:
-      
-		
-        -- This is the Application ID (Replace this with you own)
-		
-		
-    
-        --[[ 
-            Here you can add buttons that will display in your Discord Status,
-            First paramater is the button index (0 or 1), second is the title and 
-            last is the url (this has to start with "fivem://connect/" or "https://") 
-        ]]--
-        SetDiscordRichPresenceAction(0, "Join Server", "https://cfx.re/join/7xlg3r")-- cfx.re/join/8geyqb
-        SetDiscordRichPresenceAction(1, "Discord", "https://discord.gg/MJCjWtcMwU")
-
-        Wait(1500)
-        players = {}
-        for i = 0, 24 do
-            if NetworkIsPlayerActive( i ) then
-                table.insert( players, i )
+        if conf.Buttons and type(conf.Buttons) == "table" then
+            for i,v in pairs(conf.Buttons) do
+                SetDiscordRichPresenceAction(i - 1,
+                    v.text,
+                    v.url
+                )
             end
         end
-       -- SetRichPresence("‍AS | "..GetPlayerName(PlayerId()) .. " - ID: " ..GetPlayerServerId(PlayerId()).. " - " .. #players + 0 .. "/24 Players")\
-      
 
-     --  SetRichPresence("" .. #players + 1 .. "/24 Players")
-
-
-		Wait(30000)
-	end
+        Wait(conf.UpdateRate)
+    end
 end)

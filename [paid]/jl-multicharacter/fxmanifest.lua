@@ -2,60 +2,46 @@ fx_version 'cerulean'
 
 game 'gta5'
 
-author "JustLazzy"
 
-description 'JL Multicharacter'
+description 'multicharacter'
 
-version '1.3.2'
+version '1.0.0'
 
 lua54 'yes'
 
 shared_scripts {
-    '@ox_lib/init.lua',
-    'shared/config.lua',
-    'shared/functions/*.lua',
     '@qb-core/shared/locale.lua',
     'locales/en.lua',
-    'badwords.lua',
+    'config.lua',
+    'badwords.lua'
 }
 
 server_scripts {
     '@oxmysql/lib/MySQL.lua',
-    'server/server.lua',
-    'server/checker.lua'
+    'server/server_custom.lua',
+    'server/server.lua'
 }
 
 client_scripts {
-    'client/functions.lua',
-    'client/utils.lua',
-    'client/nui.lua',
-    'client/client.lua'
+    'client/*.lua'
 }
 
 ui_page "html/index.html"
 
 files {
-    "theme.json",
     "html/index.html",
     "html/js/index.js",
+    'html/js/index.js.map',
     "html/assets/index.css",
     "html/assets/logo.png",
-    "html/assets/pop.ogg",
+    "html/assets/pop.ogg"
 }
 
 escrow_ignore {
-    'shared/config.lua',
-    'shared/functions/*.lua',
+    'config.lua',
     'locales/*.lua',
     'badwords.lua',
-    'server/server.lua',
-    'client/functions.lua',
-    'client/utils.lua',
-    'client/client.lua',
-
-    -- For Open Source
-    -- 'client/nui.lua',
-    -- 'server/checker.lua',
+    'server/server_custom.lua'
 }
 
 dependency '/assetpacks'

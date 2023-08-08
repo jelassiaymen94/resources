@@ -144,7 +144,7 @@ tableloop = function()
     bike()
     Wait(1000)
     super()
-    print('Cars Cycled!')
+   -- print('Cars Cycled!')
     SetTimeout(60*1000*time, tableloop)
 end 
 function car()
@@ -179,7 +179,7 @@ function super()
        
 
         carstock[i] = {i, car[1], car[2]}
-        print(json.encode(carstock[i]))
+     --   print(json.encode(carstock[i]))
         
     end
 end
