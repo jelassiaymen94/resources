@@ -1,11 +1,15 @@
 RegisterCommand("startclipping", function(source, args, rawCommand)
+	clipping = true
   startclipping()
 end, false)
+RegisterCommand("stopclipping", function(source, args, rawCommand)
+	clipping = false
+  end, false)
 
+local clipping = true
 
 function startclipping()
-  CreateThread(function()
-	  while(true) do
+	while clipping do
 		  Wait(10)
 		  if(IsRecording()) then
 			  if(IsControlJustPressed(1,170)) then
@@ -26,6 +30,5 @@ function startclipping()
 			  NetworkSessionLeaveSinglePlayer()
 			  ActivateRockstarEditor()
 		  end
-	  end
-  end)
+	end
 end
