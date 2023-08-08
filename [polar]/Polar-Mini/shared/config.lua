@@ -189,3 +189,16 @@ Config.Blips = {
     {title= "Boat Rentals", colour= 42, id= 455, x= -753.55, y= -1512.24, z= 5.02}, 
     {title= "Boat Rentals", colour= 42, id= 455, x= -1604.4263, y= 5257.0586, z= 5.02}, 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -14,7 +14,8 @@ QBShared.Items = {
 	['airdrop'] 					 = {['name'] = 'airdrop', 			 	  	  	['label'] = 'Supply Signal', 				['weight'] = 15000, 		['type'] = 'item', 		['image'] = 'weapon_smokegrenade.png', 			['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,	    ['description'] = 'A military grade air drop, big no no', ["decay"] = 30.0, ["delete"] = false },
 	
 
-
+	['shovel'] 				 		 = {['name'] = 'shovel', 			    		['label'] = 'Shovel', 					['weight'] = 15000, 	['type'] = 'item', 		['image'] = 'shovel.png', 				['unique'] = false, 	['useable'] = false, 	['shouldClose'] = false,   ['combinable'] = nil,   ['description'] = 'Get Digging!'},
+        ["grub"] 						 = {["name"] = "grub",  					["label"] = "Grub",  					["weight"] = 100, 	["type"] = "item",  		["image"] = "grub.png",  				["unique"] = false,  ["useable"] = false,    ["shouldClose"] = false,  	['combinable'] = nil,	["description"] = "That's what you get for robbing graves..", },
      
 	
 

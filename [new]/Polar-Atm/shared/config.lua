@@ -38,3 +38,11 @@ local French = {
 function text(entry)
 	return English[entry] -- change to your language
 end
+
+function policeAlert(loc)
+    exports["qb-dispatch"]:CustomAlert({
+        coords = vector3(loc.x, loc.y, loc.z), message = "Suspicious Activity",
+        dispatchCode = "10-16", description = "", radius = 10,
+        sprite = 58,  color = 46, scale = 1.0,  length = 1,
+    })         
+end

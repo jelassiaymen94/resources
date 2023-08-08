@@ -1,7 +1,6 @@
-name "Jim-Recycle"
-author "Jimathy"
+
 version "v2.5"
-description "Recycling Script By Jimathy"
+description ""
 fx_version "cerulean"
 game "gta5"
 

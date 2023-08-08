@@ -275,8 +275,8 @@ function EnterApartment(house, apartmentId, new)
                 end)
             end
            Wait(100)
-            HouseObj = data[1]
-            POIOffsets = data[2]
+            HouseObj = house
+          --  POIOffsets = data[2]
             InApartment = true
             CurrentApartment = apartmentId
             Wait(500)
@@ -475,6 +475,26 @@ RegisterNetEvent('apartments:client:setupSpawnUI', function(cData)
             TriggerServerEvent("apartments:server:CreateApartment", 'apartment3', 'Alta Street Apartment')
             TriggerServerEvent('QBCore:Server:OnPlayerLoaded')
             TriggerEvent('QBCore:Client:OnPlayerLoaded')
+
+            local src = source
+            local Player = QBCore.Functions.GetPlayer(src)
+            for _, v in pairs(QBCore.Shared.StarterItems) do
+                local info = {}
+                if v.item == "id_card" then
+                    info.citizenid = Player.PlayerData.citizenid
+                    info.firstname = Player.PlayerData.charinfo.firstname
+                    info.lastname = Player.PlayerData.charinfo.lastname
+                    info.birthdate = Player.PlayerData.charinfo.birthdate
+                    info.gender = Player.PlayerData.charinfo.gender
+                    info.nationality = Player.PlayerData.charinfo.nationality
+                elseif v.item == "driver_license" then
+                    info.firstname = Player.PlayerData.charinfo.firstname
+                    info.lastname = Player.PlayerData.charinfo.lastname
+                    info.birthdate = Player.PlayerData.charinfo.birthdate
+                    info.type = "Class C Driver License"
+                end
+                Player.Functions.AddItem(v.item, v.amount, false, info)
+            end
         end
     end, cData.citizenid)
 end)
