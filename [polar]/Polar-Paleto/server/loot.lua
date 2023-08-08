@@ -112,14 +112,16 @@ end
 
 
 
-
 function hiya(name)
-    if name ==    'ch_prop_ch_cash_trolly_01a' then item = cashtable[math.random(1, #cashtable)] amount = math.random(1,1) local chance = math.random(1,100) if chance < 50 then give(item, amount)
+   
+    if name ==    'ch_prop_ch_cash_trolly_01a' then item = cashtable[math.random(1, #cashtable)] amount = math.random(1,1) local chance = math.random(1,100) if chance < 50 then give(item, amount) end
     elseif name == 'ch_prop_gold_trolly_01a' then  item = goldtable[math.random(1, #goldtable)] amount = math.random(1,1)   local chance = math.random(1,100) if chance < 30 then give(item, amount) end
     elseif name == 'ch_prop_diamond_trolly_01a'then item = diamondtable[math.random(1, #diamondtable)] amount = math.random(1,1) local chance = math.random(1,100) if chance < 15 then give(item, amount) end 
     else
+       
         if name == nil then print('ERROR') return end
             for _, data in ipairs(Config.LootProps) do
+                
                 if data.prop == name then
                 local item = data.item
                 local amount = math.random(data.amountmin,data.amountmax)
@@ -127,7 +129,6 @@ function hiya(name)
                 return 
                 end
             end
-        end
     end
 end
 

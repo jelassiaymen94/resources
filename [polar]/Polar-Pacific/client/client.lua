@@ -410,6 +410,7 @@ end
 
 function grabloot(door, object)
     local grabModel = nil
+    local object2 = object
     TriggerServerEvent('Polar-Pacific:Server:TargetRemove', door)
     local prop = trollys[door]
     if prop == 'ch_prop_ch_cash_trolly_01a' then grabModel = 'hei_prop_heist_cash_pile'  end
@@ -430,7 +431,7 @@ function grabloot(door, object)
     local scene2 =  NetworkCreateSynchronisedScene(prop2, rot, 2, true, false, 1065353216, 0, 1.3)
     NetworkAddPedToSynchronisedScene(PlayerPedId(), scene2, animDict, 'grab', 1.5, -4.0, 1, 16, 1148846080, 0)
     NetworkAddEntityToSynchronisedScene(bag, scene2, animDict, 'bag_grab', 4.0, -8.0, 1)
-    NetworkAddEntityToSynchronisedScene(object, scene2, animDict, 'cart_cash_dissapear', 4.0, -8.0, 1)
+    NetworkAddEntityToSynchronisedScene(object2, scene2, animDict, 'cart_cash_dissapear', 4.0, -8.0, 1)
     local scene3 =  NetworkCreateSynchronisedScene(prop2, rot, 2, true, false, 1065353216, 0, 1.3)
     NetworkAddPedToSynchronisedScene(PlayerPedId(), scene3, animDict, 'exit', 1.5, -4.0, 1, 16, 1148846080, 0)
     NetworkAddEntityToSynchronisedScene(bag, scene3, animDict, 'bag_exit', 4.0, -8.0, 1)
@@ -748,11 +749,11 @@ function Animation(door, props)
     NetworkStartSynchronisedScene(scene2)
     FreezeEntityPosition(props, true)
     SetEntityInvincible(props, true)
-    SetEntityNoCollisionEntity(props, ped)
+    SetEntityNoCollisionEntity(props, PlayerPedId())
     Wait(100)
     Wait(100)
     Wait(100)
-    AttachEntityToEntity(props, ped, GetPedBoneIndex(PlayerPedId(), 0xFA60), 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, false, false, false, true, 0, true)
+    AttachEntityToEntity(props, PlayerPedId(), GetPedBoneIndex(PlayerPedId(), 0xFA60), 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, false, false, false, true, 0, true)
     Wait(300) SetEntityVisible(props, false, false)
     NetworkStartSynchronisedScene(scene3) Wait(900) ClearPedTasks(PlayerPedId()) DeleteObject(bag) SetPedComponentVariation(PlayerPedId(), 5, Config.BagUseID, 0, 1)
     LocalPlayer.state:set('inv_busy', false, true)  

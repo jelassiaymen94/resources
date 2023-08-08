@@ -1,5 +1,103 @@
 local QBCore = exports['qb-core']:GetCoreObject()
 
+
+
+local time = 30
+
+
+local carstock = {}
+local bikestock = {}
+local jdmstock = {}
+
+
+
+local jdmamount = 10
+local jdmtable = {
+
+    [1] = {'adder', 100},
+    [2] = {'thrax', 100},
+    [3] = {'zentorno', 100},
+    [4] = {'neon', 100},
+    [5] = {'dubsta', 100},
+    [6] = {'bati', 100},
+    [7] = {'felon2', 100},
+    [8] = {'felon', 100},
+    [9] = {'windsor', 100},
+    [10] = {'oracle', 100},
+    [11] = {'f620', 100},
+    [12] = {'r32', 100},
+    [13] = {'gtr', 100},
+    [14]= {'r35', 100},
+    [15] = {'r8h', 100},
+    [16] = {'akuma', 100},
+    [17] = {'blade', 100},
+    [18] = {'dominator', 100},
+    [19] = {'gt63', 100},
+    [20] = {'720s', 100},
+
+}
+
+
+
+local bikeamount = 10
+local biketable = {
+
+    [1] = {'adder', 100},
+    [2] = {'thrax', 100},
+    [3] = {'zentorno', 100},
+    [4] = {'neon', 100},
+    [5] = {'dubsta', 100},
+    [6] = {'bati', 100},
+    [7] = {'felon2', 100},
+    [8] = {'felon', 100},
+    [9] = {'windsor', 100},
+    [10] = {'oracle', 100},
+    [11] = {'f620', 100},
+    [12] = {'r32', 100},
+    [13] = {'gtr', 100},
+    [14]= {'r35', 100},
+    [15] = {'r8h', 100},
+    [16] = {'akuma', 100},
+    [17] = {'blade', 100},
+    [18] = {'dominator', 100},
+    [19] = {'gt63', 100},
+    [20] = {'720s', 100},
+
+}
+
+
+
+local caramount = 5
+local cartable = {
+
+    [1] = {'adder', 100},
+    [2] = {'thrax', 100},
+    [3] = {'zentorno', 100},
+    [4] = {'neon', 100},
+    [5] = {'dubsta', 100},
+    [6] = {'bati', 100},
+    [7] = {'felon2', 100},
+    [8] = {'felon', 100},
+    [9] = {'windsor', 100},
+    [10] = {'oracle', 100},
+    [11] = {'f620', 100},
+    [12] = {'r32', 100},
+    [13] = {'gtr', 100},
+    [14]= {'r35', 100},
+    [15] = {'r8h', 100},
+    [16] = {'akuma', 100},
+    [17] = {'blade', 100},
+    [18] = {'dominator', 100},
+    [19] = {'gt63', 100},
+    [20] = {'720s', 100},
+
+}
+
+
+
+
+
+
 local GeneratePlate = function()
     local plate = QBCore.Shared.RandomInt(1) .. QBCore.Shared.RandomStr(2) .. QBCore.Shared.RandomInt(3) .. QBCore.Shared.RandomStr(2)
     local result = MySQL.scalar.await('SELECT plate FROM player_vehicles WHERE plate = ?', {plate})
@@ -24,6 +122,167 @@ CheckOrders = function()
     end)
     SetTimeout(60*60*1000, CheckOrders) -- 60 min interval
 end
+
+
+
+
+
+
+
+
+
+
+tableloop = function()
+
+    carstock = {}
+    bikestock = {}
+    jdmstock = {}
+
+    Wait(1000)
+    car()
+    Wait(1000)
+    bike()
+    Wait(1000)
+    super()
+    print('Cars Cycled!')
+    SetTimeout(60*1000*time, tableloop)
+end 
+function car()
+    local carcount = 0
+    for k, v in ipairs(jdmtable) do
+        carcount += 1       
+        if carcount > jdmamount then return end
+       -- print(k)
+       -- print('car')
+       -- print(json.encode(v))
+
+        jdmstock[k] = {k, v}
+    end
+end
+function bike()
+    local bikecount = 0
+    for k, v in ipairs(biketable) do
+        bikecount += 1       
+        if bikecount > bikeamount then return end
+      --  print(k)
+      --  print('bike')
+      --  print(json.encode(v))
+
+        bikestock[k] = {k, v}
+    end
+end
+function super()
+    for i = 1, caramount do 
+    local car = cartable[math.random(1, #cartable)]
+ 
+       
+       
+
+        carstock[i] = {i, car[1], car[2]}
+        print(json.encode(carstock[i]))
+        
+    end
+end
+
+RegisterNetEvent('Polar-Dealership:Server:RemoveCar', function(car, tablename, number)
+    if tablename == 'cartable' then
+        carstock[number] = nil 
+    elseif tablename == 'biketable' then
+        bikestock[number] = nil 
+    elseif tablename == 'jdmtable' then
+        jdmstock[number] = nil 
+    end
+end)
+
+QBCore.Functions.CreateCallback('Polar-Dealerships:GrabPrice', function(source, cb, table, car) 
+    local price = nil
+    for k, v in ipairs(table) do
+        print(k) print(v)
+        if k == car then
+
+            
+            cb(v) 
+            return true
+        end
+    end
+end) 
+
+QBCore.Functions.CreateCallback('Polar-Dealership:jdmtable', function(source, cb) cb(jdmstock) end) 
+QBCore.Functions.CreateCallback('Polar-Dealership:biketable', function(source, cb) cb(bikestock) end) 
+QBCore.Functions.CreateCallback('Polar-Dealership:cartable', function(source, cb) cb(carstock) end) 
+
+
+
+
+
+
+QBCore.Functions.CreateCallback('Polar-Dealership:RemoveMoney', function(source, cb, amount2) 
+    local src = source
+    local Player = QBCore.Functions.GetPlayer(src)
+    if not Player then return end 
+    local job = Player.PlayerData.job.name
+    local result = exports['qb-management']:GetAccount(job)
+    local bank = math.floor(result)
+    local amount = math.floor(amount2)
+    if amount <= bank then
+           
+       -- Player.Functions.RemoveMoney('bank', amount, "dealership car buy")
+
+          
+        exports['qb-management']:RemoveMoney(job, amount)
+        local newBalance = exports['qb-management']:GetAccount(job)
+
+            
+          
+        TriggerEvent("qb-log:server:CreateLog", "importmoney", "Car Buy ", "red", "**" .. Player.PlayerData.name .. "** (citizenid: *" .. Player.PlayerData.citizenid .. "* | id: *" .. Player.PlayerData.source .. ")*: Withdrew **" .. amount .. "**. New balance: "..newBalance)
+        cb(true)
+    else
+        TriggerClientEvent('QBCore:Notify', src, "There is not enough money on the bank account.", "error", 2500)
+        cb(false)
+    end
+end) 
+
+QBCore.Functions.CreateCallback('Polar-Dealership:SellCar', function(source, cb, target, amount2)
+    local src = source
+    local Player = QBCore.Functions.GetPlayer(target)
+    if not Player then return end
+    local job = Player.PlayerData.job.name
+    local sourceBank = Player.PlayerData.money.bank
+    local amount = math.floor(amount2)
+    if amount <= sourceBank then
+           
+        Player.Functions.RemoveMoney('bank', amount, "Car Bought")
+
+          
+        exports['qb-management']:AddMoney(job, amount)
+        local newBalance = exports['qb-management']:GetAccount(job)
+
+        cb(true)
+    else
+        TriggerClientEvent('QBCore:Notify', target, "There is not enough money in your bank account.", "error", 2500)
+        cb(false)
+    end
+end)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 RegisterServerEvent('Polar-Dealership:server:withdrawBank', function(amount, society)
     local src = source
@@ -321,18 +580,20 @@ QBCore.Functions.CreateCallback('Polar-Dealership:server:BuyStock', function(sou
     end
 end)
 
-QBCore.Commands.Add("sellcar", "Sell a car from the showroom (Dealerships only)", {{name = "ID", help = "Player ID"}} , true, function(source, args)
+QBCore.Commands.Add("sellcar", "Sell a car from the showroom (Dealerships only)", {{name = "ID", help = "Player ID"}, {name = "AMOUNT", help = "Vehicle Sale Price Amount"}} , true, function(source, args)
     local src = source
     local sourcePlayer = QBCore.Functions.GetPlayer(src)
     if not sourcePlayer then return end
     local targetPlayer = QBCore.Functions.GetPlayer(tonumber(args[1]))
+    local amount = tonumber(args[2])
     if not targetPlayer then return end
 
     if Config.Dealership[sourcePlayer.PlayerData.job.name] then
         local target = targetPlayer.PlayerData.source
         local targetName = targetPlayer.PlayerData.name
         local job = sourcePlayer.PlayerData.job.name
-        TriggerClientEvent('Polar-Dealership:client:sellConfirm', src, target, targetName, job)
+        local bankroll = sourcePlayer.PlayerData.money
+        TriggerClientEvent('Polar-Dealership:client:sellConfirm', src, target, targetName, job, bankroll, amount)
     end
 end)
 
@@ -370,5 +631,6 @@ CreateThread(function()
     end
     
     -- Check orders loop
+    tableloop()
     CheckOrders()
 end)

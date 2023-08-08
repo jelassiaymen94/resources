@@ -201,14 +201,14 @@ RegisterNetEvent('Polar-Dealership:client:menu:OpenOrder', function()
                 event = "Polar-Dealership:client:menu:OpenCheckOrder",
             }
         },
-        {
+        --[[{
             header = "Order Vehicle",
             txt = "Order new vehicle..",
             icon = "fas fa-clipboard-list",
             params = {
                 event = "Polar-Dealership:client:menu:OpenOrderVehicle",
             }
-        }
+        }]]
     })
 end)
 

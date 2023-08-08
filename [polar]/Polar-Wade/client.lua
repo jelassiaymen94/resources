@@ -14,7 +14,7 @@ RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function()
     
 end)
 
-local cops = 0
+local cops = 5
 local pable = {}
 local table = {}
 local hable = {}

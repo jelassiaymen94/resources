@@ -1,4 +1,63 @@
 local QBCore = exports['qb-core']:GetCoreObject()
+
+
+
+
+local spawns = {
+    jdmtable = { -- jdm
+        inside = vector4(-1072.78, -62.94, -94.6, 179.18),
+        car = vector4(843.14, -2432.53, 27.85, 177.6),
+        person = vector4(853.4, -2433.96, 28.04, 173.59),
+        target = vector3(853.36, -2432.69, 28.07),
+        targete = vector3(-1072.8, -62.62, -94.6),
+    },
+    biketable = { -- bikes
+        inside = vector4(231.15, -1006.59, -99.0, 3.97),
+        car = vector4(-1470.45, -925.04, 10.1, 325.51),
+        person = vector4(-1469.15, -928.48, 10.16, 320.05),
+        target = vector3(-1469.86, -928.98, 10.19),
+        targete = vector3(231.4, -1006.68, -99.0),
+    },
+    cartable = { -- car
+        inside = vector4(-1266.85, -3049.56, -48.49, 7.42),
+        car = vector4(-1141.45, -3413.93, 13.95, 333.48),
+        person = vector4(-1152.64, -3410.74, 13.95, 328.2),
+        target = vector3(-1153.45, -3412.07, 13.95),
+        targete = vector3(-1267.1, -3049.9, -48.49),
+    },
+}
+
+
+
+
+
+
+
+function SetupGarageTargets()
+    CreateTarget("jdmtable", spawns["jdmtable"].target, "Polar-Dealership:Client:Garage", "Enter JDM Garage", "fas fa-bolt", false)
+    CreateTarget("biketable", spawns["biketable"].target, "Polar-Dealership:Client:Garage", "Enter Bike Garage", "fas fa-bolt", false)
+    CreateTarget("cartable", spawns["cartable"].target, "Polar-Dealership:Client:Garage", "Enter Car Garage", "fas fa-bolt", false)
+  
+   
+end 
+
+
+  
+
+function setupexittarget(name)
+    CreateTarget(name, spawns[name].targete, "Polar-Dealership:Client:ExitGarage", "Exit Garage", "fas fa-bolt", false)
+end
+
+
+RegisterNetEvent('Polar-Dealership:Client:ExitGarage', function(data)
+    local name = data.id
+    outsidespawnp(spawns[name].person)
+    clearcars()
+end)
+
+
+
+
 local isLoggedIn = false
 
 local DealershipBossMenu = nil
@@ -101,6 +160,7 @@ end
 RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function()
     PlayerJob = QBCore.Functions.GetPlayerData().job
     SetupPoly()
+    SetupGarageTargets()
 end)
 
 RegisterNetEvent('QBCore:Client:OnPlayerUnload', function()
@@ -134,6 +194,8 @@ AddEventHandler('onResourceStop', function (resourceName)
         exports['qb-radialmenu']:RemoveOption(radialmenuOption)
         radialmenuOption = nil
     end
+
+    clearcars()
 end)
 
 AddEventHandler('onResourceStart', function(resource)
@@ -155,7 +217,7 @@ RegisterNetEvent('Polar-Dealership:client:OpenShowroom', function()
 end)
 
 
-RegisterNetEvent('Polar-Dealership:client:sellConfirm',function(target, targetName, job)
+RegisterNetEvent('Polar-Dealership:client:sellConfirm',function(target, targetName, job, money, amount)
     if Config.Dealership[PlayerJob.name] then
         if IsPedInAnyVehicle(PlayerPedId(), false) then
             local veh = GetVehiclePedIsIn(PlayerPedId())
@@ -176,6 +238,8 @@ RegisterNetEvent('Polar-Dealership:client:sellConfirm',function(target, targetNa
                
                 if vehmodel ~= nil then
                     -- SET OWNER
+                    QBCore.Functions.TriggerCallback('Polar-Dealership:SellCar', function(result) 
+                    if result then
                     TriggerServerEvent('Polar-Dealership:server:setOwner', vehmodel, hash, target, job)
 
                   
@@ -183,7 +247,10 @@ RegisterNetEvent('Polar-Dealership:client:sellConfirm',function(target, targetNa
 
                     
                     Wait(2000)
-                    TriggerServerEvent('qb-vehicletuning:server:SaveVehicleProps', QBCore.Functions.GetVehicleProperties(veh))
+                    TriggerServerEvent('qb-vehicletuning:server:SaveVehicleProps', QBCore.Functions.GetVehicleProperties(veh))  
+                    else
+                        print('no bank')
+                    end end, target, amount)
                 else
                     QBCore.Functions.Notify("You cannot do this!","error")
                 end
@@ -246,4 +313,242 @@ CreateThread(function()
 	AddTextComponentSubstringPlayerName("Tuner Shop")
 	EndTextCommandSetBlipName(tunerblip)
 ]]
+end)
+--- Method to find all vehicles within 1 meter radius of a given location
+--- @param coords vec3 - location
+--- @return vehinarea array - array with all vehicle entities
+local getVehiclesInAreas = function(coords)
+    local vehinarea = {}
+    local vehicles = GetGamePool('CVehicle')
+    for i=1, #vehicles, 1 do
+        local vehicleCoords = GetEntityCoords(vehicles[i])
+        local distance = #(vehicleCoords - coords)
+        if distance < 1 then
+            vehinarea[#vehinarea+1] = vehicles[i]
+        end
+    end
+    return vehinarea
+end
+
+
+CreateThread(function()
+    SetupGarageTargets()
+
+
+end)
+
+
+local garagetable = {}
+local despawntable = {}
+
+local sound = Config.Sound
+
+function CreateTarget(names, coords1, handler, labels, icons, his)
+
+    exports['qb-target']:AddBoxZone(names,  coords1, 1.5, 1.5, { name =  names, heading = 28.69, debug = his, minZ = coords1.z-0.5, maxZ =  coords1.z+0.5,}, 
+    { options = {{ event = handler, icon = icons, label = labels, id = names }}, distance = 2 }) 
+
+end
+
+
+
+
+RegisterNetEvent('Polar-Dealership:Client:Garage', function(data) 
+    local tab = data.id
+    QBCore.Functions.TriggerCallback('Polar-Dealership:' .. tab, function(result) 
+    if result then 
+
+        
+        garagetable[tab] = result
+            
+           
+        enterwarehouse(spawns[tab].inside)
+        setupexittarget(tab)
+        for _, v in ipairs(result) do
+           
+           
+            
+            print(json.encode(v))
+            print(json.encode(v[1]))
+            print(json.encode(v[2]))
+            print(json.encode(v[3]))
+            getspot(tab, json.encode(v[2]))
+            
+        end
+        
+    
+    end end)
+   
+end)
+
+function clearcars()
+    clearcars2("biketable")
+    clearcars2("cartable")
+    clearcars2("jdmtable")
+end
+
+
+function clearcars2(table)
+    for k, v in pairs(Config.GarageSpots[table]) do
+        vehinarea = getVehiclesInAreas(vector3(v.x, v.y, v.z))
+        for i=1, #vehinarea do
+            QBCore.Functions.DeleteVehicle(vehinarea[i])
+        end
+    end
+end
+
+function checkprice(table, model)
+    for k, v in ipairs(garagetable[table]) do
+        if json.encode(v[2]):gsub('"', '') == model then 
+            local price = nil
+            Wait(100)
+            price = json.encode(v[3])
+            openmenu(model, price, table, k)
+        else
+     
+        end
+    end
+end
+
+function getspot(table, model)
+    local spot = Config.GarageSpots[table][math.random(1, #Config.GarageSpots[table])]
+    local vehinarea = getVehiclesInAreas(vec3(spot.x, spot.y, spot.z))
+    if #vehinarea ~= 0 then 
+        Wait(100)
+        getspot(table, model)
+    else
+        
+        spawncar(model, spot, table)
+    end
+end
+
+function spawncar(model, loc, table)
+    local car = nil
+    local p = model:gsub('"', '')
+    QBCore.Functions.SpawnVehicle(p, function(veh)
+        SetEntityHeading(loc.w)
+        SetVehicleNumberPlateText(veh, "FORSALE")
+        FreezeEntityPosition(veh, true)
+        SetModelAsNoLongerNeeded(model)
+        despawntable[p] = veh
+        car = veh
+       -- TriggerEvent("vehiclekeys:client:SetOwner", QBCore.Functions.GetPlate(veh))
+    end, vector3(loc.x, loc.y, loc.z), true)
+    exports['qb-target']:AddTargetEntity(car, {
+        options = {
+            {
+                type = "client",
+                event = "Polar-Dealership:client:CheckPrice",
+                icon = "fas fa-car",
+                label = "Check Price",
+                cars = car,
+                tables = table,
+                model = p,
+            },
+        },
+        distance = 3.0
+    })
+end
+
+function outsidespawn(model, loc)
+
+    QBCore.Functions.SpawnVehicle(model, function(veh)
+        SetEntityHeading(loc.w)
+        SetVehicleNumberPlateText(veh, "DELIVERY")
+       -- FreezeEntityPosition(veh, true)
+        SetModelAsNoLongerNeeded(model)
+        TriggerEvent("vehiclekeys:client:SetOwner", QBCore.Functions.GetPlate(veh))
+    end, vector3(loc.x, loc.y, loc.z), true)
+
+end
+function outsidespawnp(coord)
+    SetupGarageTargets()
+
+    Wait(100) if sound then TriggerServerEvent("InteractSound_SV:PlayOnSource", "LockerOpen", 0.1) end 
+    DoScreenFadeOut(800) Wait(1850) SetEntityCoords(PlayerPedId(), coord.x, coord.y, coord.z-1.0) SetEntityHeading(PlayerPedId(), coord.w) DoScreenFadeIn(900) ClearPedTasks(PlayerPedId())
+end
+function enterwarehouse(coord)
+    Wait(100) if sound then TriggerServerEvent("InteractSound_SV:PlayOnSource", "LockerOpen", 0.1) end 
+    DoScreenFadeOut(800) Wait(1850) SetEntityCoords(PlayerPedId(), coord.x, coord.y, coord.z-1.0) SetEntityHeading(PlayerPedId(), coord.w) DoScreenFadeIn(900) ClearPedTasks(PlayerPedId())
+end
+RegisterNetEvent('Polar-Dealership:client:CheckPrice', function(data)
+    local p = data.cars
+    local table = data.tables
+    local model = data.model
+    checkprice(table, model)
+end)
+
+
+function openmenu(model, price, table, number)
+    local title = QBCore.Shared.Vehicles[model]["brand"].." "..QBCore.Shared.Vehicles[model]["name"]
+    exports['qb-menu']:openMenu({
+    {
+        header = title .. " <p> ",
+        icon = "fa-solid fa-clipboard",
+        isMenuHeader = true
+    },
+    {
+        header = "Spawn Code: " .. model,
+        text = "Save This for Delivery",
+        icon = "fa-solid fa-clipboard",
+        isMenuHeader = true
+    },
+    {
+        header = price,
+        icon = "fa-solid fa-dollar-sign",
+        text = '',
+        isMenuHeader = true
+    },
+    {
+        header = "Buy Vehicle",
+        icon = "fa-solid fa-car",
+        params = {
+            event = "Polar-Dealerships:Client:BuyVehicle",
+            args = {
+                [1] = price,
+                [2] = model,
+                [3] = table,
+                [4] = number,
+            },
+        }
+    },
+    {
+        header = 'Close Menu',
+        icon = "fa-solid fa-angle-left",
+        params = {
+            event = 'Polar-Dealerships:Client:Close'
+        }
+    },
+    })
+end
+
+RegisterNetEvent('Polar-Dealerships:Client:BuyVehicle', function(args)
+    local price = args[1]
+    local model = args[2]
+    local table = args[3]
+    local number = args[4]
+    QBCore.Functions.TriggerCallback('Polar-Dealership:RemoveMoney', function(result) 
+       if result then 
+        
+        QBCore.Functions.Notify('Vehicle Purchased!', 'success', 2500)
+       -- print(table)
+       -- print(model)
+      
+        
+        TriggerServerEvent('Polar-Dealership:Server:RemoveCar', model, table, number)
+       
+        outsidespawn(model, spawns[table].car)
+
+        outsidespawnp(spawns[table].person)
+
+        clearcars()
+
+       else
+            QBCore.Functions.Notify('Not Enough Money!', 'error', 2500)
+        
+       end
+    end, price)
+   
+    
+    
 end)

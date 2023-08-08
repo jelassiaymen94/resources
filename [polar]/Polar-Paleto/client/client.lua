@@ -391,11 +391,12 @@ end
 
 function grabloot(door, object)
     local grabModel = nil
+    local object2 = object
     TriggerServerEvent('Polar-Paleto:Server:TargetRemove', door)
     local prop = trollys[door]
     if prop == 'ch_prop_ch_cash_trolly_01a' then grabModel = 'hei_prop_heist_cash_pile'  end
     if prop == 'ch_prop_gold_trolly_01a' then grabModel = 'ch_prop_gold_bar_01a' end
-    if prop == 'ch_prop_caseitem_trolly_01a' then grabModel = 'ch_prop_vault_dimaondbox_01a' end
+    if prop == 'ch_prop_diamond_trolly_01a' then grabModel = 'ch_prop_vault_dimaondbox_01a' end
     local prop2 = GetEntityCoords(object)
     local rot = GetEntityRotation(object)
     SetPedComponentVariation(PlayerPedId(), 5, Config.HideBagID, 1, 1)
@@ -405,13 +406,13 @@ function grabloot(door, object)
     loadAnimDict(animDict)
     loadModel(bagcolor)
     local bag = CreateObject(GetHashKey(bagcolor), pedCoords, true, false, false)
-    local  scene1 = NetworkCreateSynchronisedScene(prop2, rot, 2, true, false, 1065353216, 0, 1.3)
+    local scene1 = NetworkCreateSynchronisedScene(prop2, rot, 2, true, false, 1065353216, 0, 1.3)
     NetworkAddPedToSynchronisedScene(PlayerPedId(), scene1, animDict, 'intro', 1.5, -4.0, 1, 16, 1148846080, 0)
     NetworkAddEntityToSynchronisedScene(bag, scene1, animDict, 'bag_intro', 4.0, -8.0, 1)
     local scene2 =  NetworkCreateSynchronisedScene(prop2, rot, 2, true, false, 1065353216, 0, 1.3)
     NetworkAddPedToSynchronisedScene(PlayerPedId(), scene2, animDict, 'grab', 1.5, -4.0, 1, 16, 1148846080, 0)
     NetworkAddEntityToSynchronisedScene(bag, scene2, animDict, 'bag_grab', 4.0, -8.0, 1)
-    NetworkAddEntityToSynchronisedScene(object, scene2, animDict, 'cart_cash_dissapear', 4.0, -8.0, 1)
+    NetworkAddEntityToSynchronisedScene(object2, scene2, animDict, 'cart_cash_dissapear', 4.0, -8.0, 1)
     local scene3 =  NetworkCreateSynchronisedScene(prop2, rot, 2, true, false, 1065353216, 0, 1.3)
     NetworkAddPedToSynchronisedScene(PlayerPedId(), scene3, animDict, 'exit', 1.5, -4.0, 1, 16, 1148846080, 0)
     NetworkAddEntityToSynchronisedScene(bag, scene3, animDict, 'bag_exit', 4.0, -8.0, 1)
@@ -725,7 +726,7 @@ function Animation(door, props)
     NetworkStartSynchronisedScene(scene2)
     FreezeEntityPosition(props, true)
     SetEntityInvincible(props, true)
-    SetEntityNoCollisionEntity(props, ped)
+    SetEntityNoCollisionEntity(props, PlayerPedId())
     Wait(100)
     Wait(100)
     Wait(100)

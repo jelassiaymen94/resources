@@ -21,6 +21,7 @@ end
 Config.CallBack =  QBCore.Functions.CreateCallback -- ESX.RegisterServerCallback
 Config.TrigCallBack = QBCore.Functions.TriggerCallback -- ESX.TriggerServerCallback
 
+       
 
 Config.Debug = true -- debug for checks
 
