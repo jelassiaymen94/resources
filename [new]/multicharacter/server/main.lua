@@ -60,8 +60,8 @@ RegisterNetEvent('multicharacter:createCharacter', function(data)
         until hasDonePreloading[src]
         QBCore.Commands.Refresh(src)
         starters[src] = true
-
-		TriggerClientEvent('apartments:client:setupSpawnUI', src)
+		
+		TriggerClientEvent('apartments:client:setupSpawnUI', src, data)
 
 		
 

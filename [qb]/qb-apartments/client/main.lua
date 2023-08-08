@@ -168,7 +168,7 @@ end
 function TeleportToInterior(x, y, z, h)
     CreateThread(function()
         SetEntityCoords(PlayerPedId(), x, y, z, 0, 0, 0, false)
-        SetEntityHeading(PlayerPedId(), h)
+        SetEntityHeading(PlayerPedId(), 175)
 
         Wait(100)
 
@@ -219,7 +219,7 @@ function EnterApartment(house, apartmentId, new)
                 local house = CreateObject('modernhotel_shell', coords.x, coords.y, coords.z, false, false, false)
                 FreezeEntityPosition(house, true)
                 objects[#objects+1] = house
-                    TeleportToInterior(coords.x - -5.06, coords.y - -4.01, coords.z + 1.16, POIOffsets.exit.h-180)
+                    TeleportToInterior(coords.x - -5.06, coords.y - -4.01, coords.z + 1.16, POIOffsets.exit.h)
                     
                 if new then
                     SetTimeout(750, function()
@@ -252,7 +252,7 @@ function EnterApartment(house, apartmentId, new)
             TriggerServerEvent("InteractSound_SV:PlayOnSource", "houses_door_open", 0.1)
             TriggerServerEvent("apartments:server:AddObject", apartmentId, house, CurrentOffset)
             local coords = { x = Apartments.Locations[ClosestHouse].coords.enter.x, y = Apartments.Locations[ClosestHouse].coords.enter.y, z = Apartments.Locations[ClosestHouse].coords.enter.z - CurrentOffset}
-            POIOffsets.exit = json.decode('{"x": -5.26, "y": -4.21, "z": -0.66, "h": 179.79}')
+            POIOffsets.exit = json.decode('{"x": -5.26, "y": -4.21, "z": -0.66, "h": 0.79}')
             POIOffsets.clothes = json.decode('{"x": -3.14, "y": 2.824, "z": -0.66}')
             POIOffsets.stash = json.decode('{"x": -6.11, "y": -0.06, "z": -1.16}')
             POIOffsets.logout = json.decode('{"x": 5000000000000000000000000.19, "y": -1.59, "z": -0.66}')
@@ -434,7 +434,8 @@ RegisterNetEvent('apartments:client:setupSpawnUI', function(cData)
       
         if result then
             if Apartments.Starting then
-                
+
+
                 TriggerEvent("apartments:client:SetHomeBlip", result.type)
                 TriggerEvent('ivs_spawns:openMenu', lastLocation)
 
@@ -442,6 +443,26 @@ RegisterNetEvent('apartments:client:setupSpawnUI', function(cData)
             else
            -- TriggerEvent('qb-spawn:client:setupSpawns', cData, false, nil)
            -- TriggerEvent('qb-spawn:client:openUI', true)
+                local src = source
+                local Player = QBCore.Functions.GetPlayer(src)
+                for _, v in pairs(QBCore.Shared.StarterItems) do
+                    local info = {}
+                    if v.item == "id_card" then
+                        info.citizenid = Player.PlayerData.citizenid
+                        info.firstname = Player.PlayerData.charinfo.firstname
+                        info.lastname = Player.PlayerData.charinfo.lastname
+                        info.birthdate = Player.PlayerData.charinfo.birthdate
+                        info.gender = Player.PlayerData.charinfo.gender
+                        info.nationality = Player.PlayerData.charinfo.nationality
+                    elseif v.item == "driver_license" then
+                        info.firstname = Player.PlayerData.charinfo.firstname
+                        info.lastname = Player.PlayerData.charinfo.lastname
+                        info.birthdate = Player.PlayerData.charinfo.birthdate
+                        info.type = "Class C Driver License"
+                    end
+                    Player.Functions.AddItem(v.item, v.amount, false, info)
+                end
+
            TriggerServerEvent("apartments:server:CreateApartment", 'apartment3', 'Alta Street Apartment')
            TriggerServerEvent('QBCore:Server:OnPlayerLoaded')
            TriggerEvent('QBCore:Client:OnPlayerLoaded')
