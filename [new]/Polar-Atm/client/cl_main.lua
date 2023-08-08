@@ -40,6 +40,7 @@ RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function() Wait(100) starttarge
 CreateThread(function()
     while true do
         if buttons == true then
+           
             if IsControlJustPressed(1, 73) then
 
                 atm = false
@@ -105,7 +106,7 @@ CreateThread(function()
 
                     local car = true
                     while car do
-                        if IsPedInAnyVehicle(ped) then
+                        if IsPedInAnyVehicle(PlayerPedId()) then
                             Wait(math.random(25000, 45000))
                             local prop = ObjToNet(propo2)
                             TriggerServerEvent("Polar-Atm:Server:SyncProp", prop)
@@ -123,9 +124,10 @@ CreateThread(function()
 end)
 
 RegisterNetEvent("Polar-Atm:Client:UseRope", function()
-    Config.TrigCallBack('Polar-Atms:CooldownCheck', function(result) if result then
+    QBCore.Functions.TriggerCallback('Polar-Atm:CooldownCheck', function(result) if result then
         if CurrentCops >= Config.MinimumPolice then
             if playeritem(Config.RopeItem) then
+                
     local veh = QBCore.Functions.GetClosestVehicle(GetEntityCoords(PlayerPedId()))
     vehicle = veh
     if not IsPedInAnyVehicle(PlayerPedId(), false) then
@@ -263,8 +265,41 @@ function loadAnimDict(dict)
     end
 end
 
-function playeritem(item, amount)
-    return exports['inventory']:HasItem(item, amount)
+local PlayerData = nil
+function playeritem(items, amount)
+        PlayerData = QBCore.Functions.GetPlayerData()
+        local isTable = type(items) == 'table'
+        local isArray = isTable and table.type(items) == 'array' or false
+        local totalItems = #items
+        local count = 0
+        local kvIndex = 2
+        if isTable and not isArray then
+            totalItems = 0
+            for _ in pairs(items) do 
+                local totalItems2 = totalItems + 1 
+                totalItems = totalItems2
+            end
+            kvIndex = 1
+        end
+        for _, itemData in pairs(PlayerData.items) do
+            if isTable then
+                for k, v in pairs(items) do
+                    local itemKV = {k, v}
+                    if itemData and itemData.name == itemKV[kvIndex] and ((amount and itemData.amount >= amount) or (not isArray and itemData.amount >= v) or (not amount and isArray)) then
+                        local count2 = count + 1 
+                        count = count2
+                    end
+                end
+                if count == totalItems then
+                    return true
+                end
+            else -- Single item as string
+                if itemData and itemData.name == items and (not amount or (itemData and amount and itemData.amount >= amount)) then
+    return true
+                end
+            end
+        end
+    return false
 end
 
 function notify(what, color)

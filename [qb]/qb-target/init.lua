@@ -117,7 +117,7 @@ Config.GlobalVehicleOptions = {
 		end
 	},
 	{
-		type = "client",
+		type = "Client",
 		event = "Polar-Atm:Client:UseRope",
 		icon = "fas fa-chevron-circle-left",
 		label = "Attach Rope",

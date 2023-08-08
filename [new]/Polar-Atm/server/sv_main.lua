@@ -12,7 +12,7 @@ RegisterNetEvent('Polar-Atm:Server:StartCooldown', function()
     end) 
 end)
 
-Config.CallBack('Polar-Atm:CooldownCheck', function(source, cb)  cb(cooldown) end) 
+QBCore.Functions.CreateCallback('Polar-Atm:CooldownCheck', function(source, cb)  cb(cooldown) end) 
 
 function reset()
     print('Atm Robbery Cooldown Reset')
