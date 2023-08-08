@@ -219,7 +219,8 @@ function EnterApartment(house, apartmentId, new)
                 local house = CreateObject('modernhotel_shell', coords.x, coords.y, coords.z, false, false, false)
                 FreezeEntityPosition(house, true)
                 objects[#objects+1] = house
-                    TeleportToInterior(coords.x - -5.06, coords.y - -4.01, coords.z + 1.16, POIOffsets.exit.h)
+                    TeleportToInterior(coords.x - -5.06, coords.y - -4.01, coords.z + 1.16, POIOffsets.exit.h-180)
+                    
                 if new then
                     SetTimeout(750, function()
                         TriggerEvent('Polar-Clothes:client:CreateFirstCharacter')
@@ -433,6 +434,7 @@ RegisterNetEvent('apartments:client:setupSpawnUI', function(cData)
       
         if result then
             if Apartments.Starting then
+                
                 TriggerEvent("apartments:client:SetHomeBlip", result.type)
                 TriggerEvent('ivs_spawns:openMenu', lastLocation)
 

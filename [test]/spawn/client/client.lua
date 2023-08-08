@@ -21,7 +21,8 @@ end)
 ]]
 
 RegisterNetEvent('ivs_spawns:openMenu', function(lastLocation)
-
+  --DoScreenFadeIn(900)
+  --Wait(500)
   toggleNuiFrame(true)
   --debugPrint('Show NUI frame')
   --print(Config.LastLocation)

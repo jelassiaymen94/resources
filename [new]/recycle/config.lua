@@ -1,0 +1,187 @@
+
+
+Config = {
+	Lan = "en",
+	Debug = false, -- Toggle Debug Mode
+	Blips = true, -- Enable Blips?
+	BlipNamer = false, -- Enable to Name Blips different things, disable if you already have too many blips as this will group them together
+	Pedspawn = true, -- Do you want to spawn peds for main locations?
+	img = "inventory/html/images/", -- Set this to your inventory
+	JimMenu = true, -- If using updated qb-menu icons, set this true
+	JobRole = nil, -- Whats the job role you want to use this? "nil" for none
+	EnableOpeningHours = true, -- Enable opening hours? If disabled you can always open the pawnshop.
+	OpenHour = 9, -- From what hour should the pawnshop be open?
+	CloseHour = 21, -- From what hour should the pawnshop be closed?
+	PayAtDoor = nil, -- Set to nil stop turn this off, set to a number to enable
+
+	Minigame = "qb-skillbar", -- Enable minigame when searching. qb-skillbar/qb-lock/ps-ui
+
+	OutsideTele = vector4(746.75518798828, -1399.5516357422, 26.609373092651, 180.86077880859),
+	InsideTele = vector4(736.95355224609, -1374.2559814453, 12.635090827942, 266.58343505859),
+
+	Locations =  {
+		['Recycle'] = {
+			{ name = "Recycle Center", coords = vector4(744.68, -1401.77, 26.55, 248.73), blipTrue = true, sprite = 365, col = 2, model = 'G_M_M_ChemWork_01', scenario = "WORLD_HUMAN_CLIPBOARD", },
+		},
+		['Trade'] ={
+			{ name = "Recyclable Trader", coords = vector4(742.36309814453, -1373.9674072266, 12.631042480469, 234.4), blipTrue = false, sprite = 365, col = 2, model = 'G_M_M_ChemWork_01', scenario = "WORLD_HUMAN_CLIPBOARD", },
+		},
+		['BottleBanks'] = {
+			--{ name = "Bottle Bank", coords = vector4(757.06, -1399.68, 26.57 , 178.1), blipTrue = true, sprite = 642, col = 2, model = 'G_M_M_ChemWork_01', scenario = "WORLD_HUMAN_CLIPBOARD", },
+			--{ name = "Bottle Bank", coords = vector4(84.01, -220.32, 54.64 , 337.89), blipTrue = true, sprite = 642, col = 2, model = 'G_M_M_ChemWork_01', scenario = "WORLD_HUMAN_CLIPBOARD", },
+			---{ name = "Bottle Bank", coords = vector4(31.88, -1315.58, 29.52 , 357.19), blipTrue = true, sprite = 642, col = 2, model = 'G_M_M_ChemWork_01', scenario = "WORLD_HUMAN_CLIPBOARD", },
+			--{ name = "Bottle Bank", coords = vector4(29.08, -1769.99, 29.61 , 50.0), blipTrue = true, sprite = 642, col = 2, model = 'G_M_M_ChemWork_01', scenario = "WORLD_HUMAN_CLIPBOARD", },
+			--{ name = "Bottle Bank", coords = vector4(394.08, -877.48, 29.35 , 310.12), blipTrue = true, sprite = 642, col = 2, model = 'G_M_M_ChemWork_01', scenario = "WORLD_HUMAN_CLIPBOARD", },
+			--{ name = "Bottle Bank", coords = vector4(-1267.97, -812.08, 17.11 , 128.12), blipTrue = true, sprite = 642, col = 2, model = 'G_M_M_ChemWork_01', scenario = "WORLD_HUMAN_CLIPBOARD", },
+		},
+	},
+	Prices = {
+		['copper'] = 10,
+		['plastic'] = 10,
+		['metalscrap'] = 10,
+		['steel'] = 10,
+		['glass'] = 10,
+		['iron'] = 10,
+		['rubber'] = 10,
+		['aluminum'] = 10,
+		['bottle'] = 5,
+		['can'] = 5,
+	},
+	TradeTable = {
+		"copper",
+		"plastic",
+		"metalscrap",
+		"steel",
+		"glass",
+		"iron",
+		"rubber",
+		"aluminum",
+		"bottle",
+		"can",
+	},
+	DumpItems = {
+		"weapon_shoe","weapon_shoe","weapon_shoe","weapon_shoe","weapon_shoe",
+"recyclablematerial",	"recyclablematerial",	"recyclablematerial",	"recyclablematerial",	"recyclablematerial",	"recyclablematerial",	"recyclablematerial",	"recyclablematerial",	"recyclablematerial",	"recyclablematerial",	"recyclablematerial",	"recyclablematerial",	"recyclablematerial",	"recyclablematerial",	"recyclablematerial",	"recyclablematerial",	"recyclablematerial",	"recyclablematerial",	"recyclablematerial",	"recyclablematerial",
+"plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic", "plastic",	"plastic",	"plastic",	"plastic",	"plastic", "plastic",	"plastic",	"plastic",	"plastic",	"plastic","plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic",	"plastic", "plastic",	"plastic",	"plastic",	"plastic",	"plastic", "plastic",	"plastic",	"plastic",	"plastic",	"plastic",
+"rubber",	"rubber",	"rubber",	"rubber",	"rubber",	"rubber",	"rubber",	"rubber",	"rubber",	"rubber",	"rubber",	"rubber",	"rubber",	"rubber",	"rubber",	"rubber",	"rubber",	"rubber",	"rubber",	"rubber",
+"wires",	"wires",	"wires",	"wires",	"wires",	"wires",	"wires",	"wires",	"wires",	"wires",	
+"metalscrap", "metalscrap", "metalscrap", "metalscrap", "metalscrap", "metalscrap", "metalscrap", "metalscrap", "metalscrap", "metalscrap", "metalscrap", "metalscrap", "metalscrap", "metalscrap", "metalscrap", "metalscrap", "metalscrap", "metalscrap", "metalscrap", "metalscrap", "metalscrap", "metalscrap", "metalscrap", "metalscrap","metalscrap", "metalscrap", "metalscrap", "metalscrap", "metalscrap", "metalscrap", "metalscrap", "metalscrap", "metalscrap", "metalscrap", "metalscrap", "metalscrap", "metalscrap", "metalscrap", "metalscrap", "metalscrap", "metalscrap", "metalscrap", "metalscrap", "metalscrap", "metalscrap", "metalscrap", "metalscrap", "metalscrap", "metalscrap","metalscrap", "metalscrap", "metalscrap", "metalscrap", "metalscrap", "metalscrap", "metalscrap", "metalscrap", "metalscrap", "metalscrap","metalscrap", 
+
+"steel",	"steel",	"steel",	"steel",	"steel",	"steel",	"steel",	"steel",	"steel",	"steel",	"steel",	"steel",	"steel",	"steel",	"steel",	"steel",	"steel",	"steel",	"steel",	"steel",
+"glass",	"glass",	"glass",	"glass",	"glass",	"glass",	"glass",	"glass",	"glass",	"glass",	"glass",	"glass",	"glass",	"glass",	"glass",	"glass",	"glass",	"glass",	"glass",	"glass", "glass",	"glass",	"glass",
+"iron",	"iron",	"iron",	"iron",	"iron",	"iron",	"iron",	"iron",	"iron",	"iron",	"iron",	"iron",	"iron",	"iron",	"iron",	"iron",	"iron",	"iron",	"iron",	"iron","iron",	"iron",	"iron",	"iron",	"iron",	"iron",	"iron",	"iron",	"iron",	"iron",	"iron",	"iron",	"iron",	"iron",	"iron",	"iron",	"iron",	"iron",	"iron",	"iron",
+
+"aluminum",	"aluminum",	"aluminum",	"aluminum",	"aluminum",	"aluminum",	"aluminum",	"aluminum",	"aluminum",	"aluminum",	"aluminum",	"aluminum",	"aluminum",	"aluminum",	"aluminum",	"aluminum",	"aluminum",	"aluminum",	"aluminum",	"aluminum",
+"copper",	"copper",	"copper",	"copper",	"copper",	"copper",	"copper",	"copper",	"copper",	"copper",	"copper",	"copper",	"copper",	"copper",	"copper",	"copper",	"copper",	"copper",	"copper",	"copper",
+"carbon",	"carbon",	"carbon",	"carbon",	"carbon",	"carbon",	"carbon",	"carbon",	"carbon",	"carbon",	"carbon",	"carbon",	"carbon",	"carbon",	"carbon",	"carbon",	"carbon",	"carbon",	"carbon",	"carbon",
+"charcoal",	"charcoal",	"charcoal",	"charcoal",	"charcoal",	"charcoal",	"charcoal",	"charcoal",	"charcoal",	"charcoal",	"charcoal",	"charcoal",	"charcoal",	"charcoal",	"charcoal",	"charcoal",	"charcoal",	"charcoal",	"charcoal",	"charcoal",
+"stone",	"stone",	"stone",	"stone",	"stone",	"stone",	"stone",	"stone",	"stone",	"stone",	"stone",	"stone",	"stone",	"stone",	"stone",	"stone",	"stone",	"stone",	"stone",	"stone",
+--"hydrochloric_acid",	"hydrochloric_acid",	"hydrochloric_acid",	"hydrochloric_acid",	"hydrochloric_acid",	"hydrochloric_acid",	"hydrochloric_acid",													
+"weed_nutrition",	"weed_nutrition",	"weed_nutrition",	"weed_nutrition",	"weed_nutrition",	"weed_nutrition",	"weed_nutrition",	"weed_nutrition",	"weed_nutrition",	"weed_nutrition",										
+"female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", "female_seed", 
+"male_seed", "male_seed", "male_seed", 
+"purifiedwater",	"purifiedwater",	"purifiedwater",	"purifiedwater",	"purifiedwater",	"purifiedwater",	"purifiedwater",	"purifiedwater",	"purifiedwater",	"purifiedwater",																								
+--"sodium_hydroxide",	"sodium_hydroxide",	"sodium_hydroxide",	"sodium_hydroxide",	"sodium_hydroxide",	"sodium_hydroxide",	"sodium_hydroxide",													
+"weapon_switchblade", "weapon_switchblade", "weapon_switchblade", "weapon_switchblade",	"weapon_knife",	"weapon_knife",	"weapon_knife",	"weapon_knife",															
+"weapon_crowbar",	"weapon_crowbar",	"weapon_crowbar",	"weapon_crowbar",	"weapon_crowbar",															
+"weapon_hammer",	"weapon_hammer",	"weapon_hammer",																	
+"weapon_pistol",	"weapon_pistol",	"weapon_pistol",						
+"aluminumoxide","aluminumoxide","aluminumoxide","aluminumoxide",
+"diamond_necklace_silver",	"diamond_necklace_silver",	"diamond_necklace_silver",	"diamond_necklace_silver",	"diamond_necklace_silver",	"diamond_necklace_silver",														
+"silverchain",	"silverchain",	"silverchain",	"silverchain",	"silverchain",	"silverchain",	"silverchain",	"silverchain",	"silverchain",	"silverchain",										
+"ruby_necklace",	"ruby_necklace",	"ruby_necklace",	"ruby_necklace",	"ruby_necklace",	"ruby_necklace",	"ruby_necklace",	"ruby_necklace",												
+"goldchain","goldchain",	"goldchain","goldchain",	"goldchain","goldchain",	"goldchain","goldchain",	"goldchain","goldchain",	"goldchain","goldchain",	"goldchain","goldchain",	"goldchain","goldchain",	"goldchain","goldchain",											
+"sapphire_necklace",	"sapphire_necklace",	"sapphire_necklace",	"sapphire_necklace",	"sapphire_necklace",	"sapphire_necklace",	"sapphire_necklace",													
+"silver_ring",	"silver_ring",	"silver_ring",	"silver_ring",	"silver_ring",	"silver_ring",	"silver_ring",	"silver_ring",	"silver_ring",	"silver_ring",										
+"uncut_sapphire",	"uncut_sapphire",	"uncut_sapphire",	"uncut_sapphire",	"uncut_sapphire",															
+"rolex",	"rolex",	"rolex",	"rolex",	"rolex",	"rolex",	"rolex",													
+"diamondring",	"diamondring",	"diamondring",	"diamondring",	"diamondring",															
+"uncut_diamond",	"uncut_diamond",	"uncut_diamond",																	
+"goldingot",	"goldingot",	"goldingot",	"goldingot",	"goldingot",															
+"silveringot",	"silveringot",	"silveringot",	"silveringot",	"silveringot",	"silveringot",														
+"dong",																
+"bottle",	"bottle",	"bottle",	"bottle",	"bottle",	"bottle",	"bottle",	"bottle",	"bottle",	"bottle",	"bottle",	"bottle",	"bottle",	"bottle",	"bottle",	"bottle",	"bottle",	"bottle",	"bottle",	"bottle",
+"cloth",	"cloth",	"cloth",	"cloth",	"cloth",	"cloth",	"cloth",	"cloth",	"cloth",	"cloth",	"cloth",	"cloth",	"cloth",	"cloth",	"cloth",	"cloth",	"cloth",	"cloth",	"cloth",	"cloth",
+"rock",	"rock",	"rock",	"rock",	"rock",	"rock",	"rock",	"rock",	"rock",	"rock",	"rock",	"rock",	"rock",	"rock",	"rock",	"rock",	"rock",	"rock",	"rock",	"rock",
+"flower",	"flower",	"flower",	"flower",	"flower",	"flower",	"flower",	"flower",	"flower",	"flower",	"flower",	"flower",	"flower",	"flower",	"flower",	"flower",	"flower",	"flower",	"flower",	"flower",
+"can",	"can",	"can",	"can",	"can",	"can",	"can",	"can",	"can",	"can",	"can",	"can",	"can",	"can",	"can",	"can",	"can",	"can",	"can",	"can",
+"ted",	"ted",	"ted",	"ted",	"ted",	"ted",	"ted",	"ted",	"ted",	"ted",	"ted",	"ted",	"ted",	"ted",	"ted",	"ted",	"ted",	"ted",	"ted",	"ted",
+"bubble",	"bubble",	"bubble",	"bubble",	"bubble",	"bubble",	"bubble",	"bubble",	"bubble",	"bubble",	"bubble",	"bubble",	"bubble",	"bubble",	"bubble",	"bubble",	"bubble",	"bubble",	"bubble",	"bubble",
+"hentai",	"hentai",	"hentai",	"hentai",	"hentai",	"hentai",	"hentai",	"hentai",	"hentai",	"hentai",	"hentai",	"hentai",	"hentai",	"hentai",	"hentai",	"hentai",	"hentai",	"hentai",	"hentai",	"hentai",
+"phone",	"phone",	"phone",	"phone",	"phone",	"phone",	"phone",													
+"iphone",	"iphone",	"iphone",	"iphone",	"iphone",	"iphone",	"iphone",													
+"samsungphone",	"samsungphone",	"samsungphone",	"samsungphone",	"samsungphone",	"samsungphone",	"samsungphone",													
+"tablet",	"tablet",	"tablet",	"tablet",	"tablet",	"tablet",	"tablet",													
+"painting",	"painting",	"painting",	"painting",	"painting",															
+"microwave",	"microwave",	"microwave",	"microwave",	"microwave",															
+"television",	"television",	"television",	"television",	"television",															
+"megaphone",	"megaphone",	"megaphone",	"megaphone",	"megaphone",															
+"randomgun", "randomgun",
+"washkey",	"washkey",															
+--"craftingkey",	"craftingkey",																		
+"apple_juice",	"apple_juice",	"apple_juice",	"apple_juice",	"apple_juice",	"apple_juice",	"apple_juice",	"apple_juice",	"apple_juice",	"apple_juice",	"apple_juice",	"apple_juice",								
+"raw_ham",	"raw_ham",	"raw_ham",	"raw_ham",	"raw_ham",	"raw_ham",	"raw_ham",	"raw_ham",	"raw_ham",	"raw_ham",	"raw_ham",	"raw_ham",								
+"raw_bacon",	"raw_bacon",	"raw_bacon",	"raw_bacon",	"raw_bacon",	"raw_bacon",	"raw_bacon",	"raw_bacon",	"raw_bacon",	"raw_bacon",	"raw_bacon",	"raw_bacon",								
+"raw_beef",	"raw_beef",	"raw_beef",	"raw_beef",	"raw_beef",	"raw_beef",	"raw_beef",	"raw_beef",	"raw_beef",	"raw_beef",	"raw_beef",	"raw_beef",								
+"bandage",	"bandage",	"bandage",	"bandage",	"bandage",	"bandage",	"bandage",	"bandage",	"bandage",	"bandage",	"bandage",	"bandage",								
+"sprunklight",	"sprunklight",	"sprunklight",	"sprunklight",	"sprunklight",	"sprunklight",	"sprunklight",	"sprunklight",	"sprunklight",	"sprunklight",	"sprunklight",	"sprunklight",								
+"ecolalight",	"ecolalight",	"ecolalight",	"ecolalight",	"ecolalight",	"ecolalight",	"ecolalight",	"ecolalight",	"ecolalight",	"ecolalight",	"ecolalight",	"ecolalight",								
+"ecola",	"ecola",	"ecola",	"ecola",	"ecola",	"ecola",	"ecola",	"ecola",	"ecola",	"ecola",	"ecola",	"ecola",								
+"pumpkin",	"pumpkin",	"pumpkin",	"pumpkin",	"pumpkin",	"pumpkin",	"pumpkin",	"pumpkin",	"pumpkin",	"pumpkin",	"pumpkin",	"pumpkin",								
+"beer",	"beer",	"beer",	"beer",	"beer",	"beer",	"beer",	"beer",	"beer",	"beer",	"beer",	"beer",								
+"whiskey",	"whiskey",	"whiskey",	"whiskey",	"whiskey",	"whiskey",	"whiskey",	"whiskey",	"whiskey",	"whiskey",	"whiskey",	"whiskey",								
+"tosti",	"tosti",	"tosti",	"tosti",	"tosti",	"tosti",	"tosti",	"tosti",	"tosti",	"tosti",	"tosti",	"tosti",								
+"sandwich",	"sandwich",	"sandwich",	"sandwich",	"sandwich",	"sandwich",	"sandwich",	"sandwich",	"sandwich",	"sandwich",	"sandwich",	"sandwich",								
+"water_bottle",	"water_bottle",	"water_bottle",	"water_bottle",	"water_bottle",	"water_bottle",	"water_bottle",	"water_bottle",	"water_bottle",	"water_bottle",	"water_bottle",	"water_bottle",								
+"sprunk",	"sprunk",	"sprunk",	"sprunk",	"sprunk",	"sprunk",	"sprunk",	"sprunk",	"sprunk",	"sprunk",	"sprunk",	"sprunk",								
+"firework3",	"firework3",	"firework3",	"firework3",	"firework3",	"firework3",														
+"firework4",	"firework4",	"firework4",	"firework4",	"firework4",	"firework4",														
+"walkstick",	"walkstick",	"walkstick",	"walkstick",																
+"binoculars",	"binoculars",	"binoculars",	"binoculars",																
+"snowball",	"snowball",	"snowball",	"snowball",	"snowball",	"snowball",	"snowball",													
+"lighter",	"lighter",	"lighter",	"lighter",	"lighter",	"lighter",	"lighter",													
+"ducttape",	"ducttape",	"ducttape",	"ducttape",	"ducttape",	"ducttape",	"ducttape",	"ducttape",	"ducttape",	"ducttape",										
+"randombag",	"randombag",	"randombag",	"randombag",	"randombag",															
+"welcomeguide",															
+"paper",	"paper",	"paper",	"paper",	"paper",	"paper",	"paper",	"paper",	"paper",	"paper",										
+"rolling_paper",	"rolling_paper",	"rolling_paper",	"rolling_paper",	"rolling_paper",	"rolling_paper",	"rolling_paper",	"rolling_paper",	"rolling_paper",	"rolling_paper",										
+"screwdriverset",	"screwdriverset",	"screwdriverset",	"screwdriverset",	"screwdriverset",	"screwdriverset",	"screwdriverset",	"screwdriverset",	"screwdriverset",	"screwdriverset",										
+"lockpick",	"lockpick",	"lockpick",	"lockpick",	"lockpick",	"lockpick",	"lockpick",													
+"advancedlockpick",	"advancedlockpick",	"advancedlockpick",	"advancedlockpick",	"advancedlockpick",																													
+"radio",	"radio",	"radio",	"radio",	"radio",	"radio",	"radio",													
+"drugbag",	"drugbag",	"drugbag",	"drugbag",	"drugbag",	"drugbag",	"drugbag",	"drugbag",	"drugbag",	"drugbag",										
+"fishingrod",	"fishingrod",	"fishingrod",	"fishingrod",	"fishingrod",															
+"fishingbait",	"fishingbait",	"fishingbait",	"fishingbait",	"fishingbait",	"fishingbait",	"fishingbait",													
+"drillbit",	"drillbit",	"drillbit",	"drillbit",	"drillbit",	"drillbit",														
+"pickaxe",	"pickaxe",	"pickaxe",	"pickaxe",	"pickaxe",	"pickaxe",	"pickaxe",													
+"pistol_ammo",	"pistol_ammo",	"pistol_ammo",	"pistol_ammo",	"pistol_ammo",	"pistol_ammo",	"pistol_ammo",													
+"1ozhigh","1ozhigh","1ozhigh",
+"meth",	"meth",
+"cokebag",																		
+"tomato",	"tomato",	"tomato",	"tomato",	"tomato",	"tomato",	"tomato",	"tomato",	"tomato",	"tomato",										
+"tomatopaste",	"tomatopaste",	"tomatopaste",	"tomatopaste",	"tomatopaste",	"tomatopaste",	"tomatopaste",	"tomatopaste",	"tomatopaste",	"tomatopaste",				
+	},
+	ScrapItems = {
+		"steel",
+		"copper",
+		"iron",
+		"glass",
+		"bottle",
+		"can",
+	},
+	RecycleAmounts = {
+		recycleMin = 5,
+		recycleMax = 25,
+
+		tenMin = 2,
+		tenMax = 8,
+
+		hundMin = 40,
+		hundMax = 80,
+
+		thouMin = 600,
+		thouMax = 900,
+	}
+}
+
+Loc = {}

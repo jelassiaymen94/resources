@@ -190,7 +190,7 @@ Config.PhoneApplications = {
         slot = 12,
         Alerts = 0,
     },
-    ["houses"] = {
+    --[[["houses"] = {
         app = "houses",
         color = "#42a042",
         color2 = "#3f9e4a",
@@ -201,7 +201,7 @@ Config.PhoneApplications = {
         blockedjobs = {},
         slot = 13,
         Alerts = 0,
-    },
+    },]]
     ["crypto"] = {
         app = "crypto",
         color = "#000000",
@@ -234,7 +234,7 @@ Config.PhoneApplications = {
         tooltipText = "Employment",
         job = false,
         blockedjobs = {},
-        slot = 24,
+        slot = 13,
         Alerts = 0,
     },
     ["lsbn"] = {
