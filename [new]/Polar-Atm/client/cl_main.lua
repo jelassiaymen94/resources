@@ -5,7 +5,9 @@ local atm = false
 local texto = false
 local vehicle = nil
 
-CreateThread(function()
+local CurrentCops = 0
+
+function starttarget()
     loadExistModel("loq_atm_02_console")
     loadExistModel("loq_atm_02_des")
     loadExistModel("loq_atm_03_console")
@@ -30,35 +32,43 @@ CreateThread(function()
         }, 
         distance = 2.5
     })
-end)
+end
+
+RegisterNetEvent('police:SetCopCount', function(amount) CurrentCops = amount end)
+RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function() Wait(100) starttarget()  end)
 
 CreateThread(function()
     while true do
         if buttons == true then
             if IsControlJustPressed(1, 73) then
+
                 atm = false
                 buttons = false
-                TriggerServerEvent("ad_atmrobbery:delesr", rope)
+                TriggerServerEvent("Polar-Atm:Server:DeleteRope", rope)
+
             elseif IsControlJustPressed(1, 38) then
+
+                TriggerServerEvent('Polar-Atms:Server:StartCooldown')
+
                 texto = false
                 buttons = false
-
-                TriggerServerEvent("Polar-Atm:Server:RemoveRope")
+                TriggerServerEvent('Polar-Atm:Server:RemoveItem', Config.RopeItem, 1)
+                
 
                 
                 local obj = GetATM()
-
-                TaskTurnPedToFaceEntity(PlayerPedId(), obj.atmprope, 1000)
+                TaskTurnPedToFaceEntity(PlayerPedId(), obj.atmprop, 1000)
                 TaskPlayAnim(PlayerPedId(), "mini@repair", "fixing_a_ped", 2.0, 2.0, -1, 1, 0, false, false, false)
-                Wait(3000)
-                --local finished = exports[Config.ProgressBar]:taskBar(Config.ProgressTime, Config.TextAttach)
 
-                --if finished == 100 then
+
+                Wait(3000)
+                
+
                     ClearPedTasks(PlayerPedId())
                     local propo1 = nil
                     local propo2 = nil
-                    local atmcoords = GetEntityCoords(obj.atmprope)
-                    local atmheading = GetEntityHeading(obj.atmprope)
+                    local atmcoords = GetEntityCoords(obj.atmprop)
+                    local atmheading = GetEntityHeading(obj.atmprop)
     
                     if obj.type == "prop_atm_02" then
                         propo1 = CreateObject("loq_atm_02_des", vector3(atmcoords.x, atmcoords.y, atmcoords.z + 0.35), true)
@@ -87,11 +97,11 @@ CreateThread(function()
 
                     Wait(200)
     
-                    local dpratm = ObjToNet(obj.atmprope)
+                    local dpratm = ObjToNet(obj.atmprop)
                     local netveh = VehToNet(vehicle)
                     local propsdad = ObjToNet(propo2)
                     TriggerServerEvent("Polar-Atm:Server:AtmCoords", dpratm, atmcoords.x, atmcoords.y, atmcoords.z, netveh, propsdad)
-                    SetEntityCoords(obj.atmprope, atmcoords.x, atmcoords.y, atmcoords.z - 10.0)
+                    SetEntityCoords(obj.atmprop, atmcoords.x, atmcoords.y, atmcoords.z - 10.0)
 
                     local car = true
                     while car do
@@ -103,7 +113,7 @@ CreateThread(function()
                         end
                         Wait(0)
                     end
-                --end
+               
             end
             Wait(0)
         else
@@ -113,6 +123,9 @@ CreateThread(function()
 end)
 
 RegisterNetEvent("Polar-Atm:Client:UseRope", function()
+    callback('Polar-Atms:CooldownCheck', function(result) if result then
+        if CurrentCops >= Config.MinimumPolice then
+            if playeritem(Config.RopeItem) then
     local veh = QBCore.Functions.GetClosestVehicle(GetEntityCoords(PlayerPedId()))
     vehicle = veh
     if not IsPedInAnyVehicle(PlayerPedId(), false) then
@@ -140,9 +153,15 @@ RegisterNetEvent("Polar-Atm:Client:UseRope", function()
             Wait(0)
 
 
-    end
-end
+            end
+        end
+    else notify(text('norope'), "error") end
+    else notify(text('nopolice'), "error") end
+    else
+        notify(text('cooldown'), "error")
+    end end)
 end)
+
 
 RegisterNetEvent("Polar-Atm:Client:AddRope", function()
     RopeLoadTextures()
@@ -189,7 +208,7 @@ RegisterNetEvent("Polar-Atm:Client:BreakAtm", function()
         ClearPedTasks(PlayerPedId())
         TriggerServerEvent("Polar-Atm:Server:DeleteEntity", send)
         TriggerServerEvent("Polar-Atm:Client:DeleteRope", rope)
-        TriggerServerEvent("ad_atmrobbery:reward")
+        TriggerServerEvent("Polar-Atm:Server:Reward", send)
 
 end)
 
@@ -200,11 +219,11 @@ function GetATM()
     for k,v in pairs({"prop_atm_02", "prop_atm_03", "prop_fleeca_atm"}) do 
         local obj = GetClosestObjectOfType(GetEntityCoords(PlayerPedId()), 5.0, GetHashKey(v))
         if DoesEntityExist(obj) then
-            local ahio = {
-                atmprope = obj,
+            local table = {
+                atmprop = obj,
                 type = v
             }
-            return ahio
+            return table
         end
     end
     return nil
@@ -242,4 +261,15 @@ function loadAnimDict(dict)
         RequestAnimDict(dict)
         Wait(10)
     end
+end
+
+function playeritem(item, amount)
+    if Config.Framework == 'qb' then
+    return exports['inventory']:HasItem(item, amount)
+    else
+    if exports.ox_inventory:GetItemCount(item) > 0 then
+    return true
+    else return false
+    end
+end
 end

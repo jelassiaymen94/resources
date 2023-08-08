@@ -2,27 +2,44 @@ local QBCore = exports['qb-core']:GetCoreObject()
 
 -- SERVER SIDE
 
- RegisterServerEvent("ad_atmrobbery:reward")
- AddEventHandler("ad_atmrobbery:reward", function()
-     local Player = QBCore.Functions.GetPlayer(source)
-     local Cash = Config.Cash
-     if Config.NormalCash then
-    -- xPlayer.addAccountMoney(Config.NormalCashName, Cash)
-     --TriggerClientEvent("esx:showNotification", source, Config.GotCash..Cash.."$")
-     else
-         --xPlayer.addAccountMoney(Config.BlackMoneyName, Cash)
-     end
+local cooldown = true
+
+local time = (Config.CooldownTime * 60000) 
+RegisterNetEvent('Polar-Atm:Server:StartCooldown', function()
+     cooldown = false 
+     SetTimeout(time, function() 
+        reset() 
+    end) 
+end)
+
+Config.CallBack('Polar-Atm:CooldownCheck', function(source, cb)  cb(cooldown) end) 
+
+function reset()
+    print('Atm Robbery Cooldown Reset')
+    cooldown = true
+
+
+end
+
+
+RegisterNetEvent('Polar-Atm:Server:Reward', function(send)
+    if send ~= nil then
+        local src = source
+        exports['inventory']:AddItem(src, "diamond", 1, false)
+        TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items["diamond"], "add", 1)
+    else
+        print('error')
+    end
 end)
 
 
-
-RegisterServerEvent("Polar-Atm:Server:RemoveRope", function()
-    local Player = QBCore.Functions.GetPlayer(source)
-   -- if xPlayer.hasItem(Config.RopeItemName, Config.RopeItemCount) then
-   -- xPlayer.removeInventoryItem(Config.RopeItemName, Config.RopeItemCount)
-   -- TriggerClientEvent("esx:showNotification", source, Config.UseRopeNotify)
-    --else
--- TriggerClientEvent("esx:showNotification", source, Config.DontHaveRope)
-   -- end
+RegisterNetEvent('Polar-Atms:Server:RemoveItem', function(item, amount) 
+    local src = source 
+    local Player = QBCore.Functions.GetPlayer(src) 
+    Player.Functions.RemoveItem(item, amount) 
+    if oxinv then
+        exports.ox_inventory:RemoveItem(src, QBCore.Shared.Items[item], amount)
+    else
+        TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[item], "remove", amount) 
+    end
 end)
-
