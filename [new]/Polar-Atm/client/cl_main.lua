@@ -266,4 +266,7 @@ end
 function playeritem(item, amount)
     return exports['inventory']:HasItem(item, amount)
 end
+
+function notify(what, color)
+    QBCore.Functions.Notify(what, color)
 end
