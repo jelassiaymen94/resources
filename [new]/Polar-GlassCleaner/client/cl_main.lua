@@ -52,15 +52,15 @@ end
 
 RegisterNetEvent('Polar-GlassCleaner:Client:StartJob', function()
     local prop = 'bkr_int_w04_tread_platform'
-    local loc = vec3(1,2,3)
+    local loc = vector4(-254.89, -692.78, 111.26, 158.5)
     TriggerEvent('Polar-GlassCleaner:Client:CraneProp', prop, loc)
    
     local target = 'spot1'
-    local loc = vec3(1,2,3)
+    local loc = vector3(-254.89, -692.78, 109.26)
     TriggerServerEvent('Polar-GlassCleaner:Server:TargetAdd', target, loc)
 
     local target = 'spot2'
-    local loc = vec3(1,2,3)
+    local loc = vector3(-254.89, -692.78, 106.26)
     TriggerServerEvent('Polar-GlassCleaner:Server:TargetAdd', target, loc)
 
 end)
@@ -73,7 +73,7 @@ end)
 function starttarget()
     exports['qb-target']:SpawnPed({
         model = 'a_m_m_genfat_01',
-        coords = vector4(-1287.84, -3040.71, -48.78, 264.96),
+        coords = vector4(-258.35, -684.24, 32.39, 170.63),
         minusOne = true,
         freeze = true,
         invincible = false,
