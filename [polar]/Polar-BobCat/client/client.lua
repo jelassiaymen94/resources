@@ -1549,7 +1549,7 @@ end)
 
 function playeritem(item, amount)
     if Config.Notify == 'qb' then
-    return exports['ps-inventory']:HasItem(item, amount)
+    return exports['inventory']:HasItem(item, amount)
     else
         
     end

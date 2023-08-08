@@ -163,7 +163,7 @@ RegisterNetEvent("housing:server:createApartmentStash", function(citizenId, prop
     end
 
     -- This will create the stash for the apartment (without requiring player to have first opened and placed item in it)
-    TriggerEvent('qb-inventory:server:SaveStashItems', stashId, items)
+    TriggerEvent('inventory:server:SaveStashItems', stashId, items)
 end)
 
 RegisterNetEvent('qb-apartments:returnBucket', function()

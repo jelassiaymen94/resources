@@ -9,7 +9,7 @@ Polar ATM ROBBERY Script
 
 -  Qb-Target
 
--  ps-inventory
+-  inventory
 
 -  Qb-Core
 

@@ -40,7 +40,7 @@ local alerttime = math.random(1500,2500)
 
 local ForceCheck = false
 function playeritem(item, amount)
-    return exports['ps-inventory']:HasItem(item, amount)
+    return exports['inventory']:HasItem(item, amount)
 end
   
 function notify(what, color)

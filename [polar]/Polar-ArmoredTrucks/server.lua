@@ -11,7 +11,7 @@ RegisterServerEvent("Polar-ArmoredTrucks:server:removeCard", function()
 
 
     if chance < 26 then
-    exports['ps-inventory']:RemoveItem(src, "hacking_device", 1) 
+    exports['inventory']:RemoveItem(src, "hacking_device", 1) 
     TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items["hacking_device"], "remove", 1)  
     else
         
@@ -93,7 +93,7 @@ RegisterNetEvent('Polar-BankTruck:server:BankNotes', function()
     local amount = 1
     local info = {worth = math.random(10000, 30000)}
     Wait(50)
-    exports['ps-inventory']:AddItem(src, item, amount, false, info)
+    exports['inventory']:AddItem(src, item, amount, false, info)
     TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[item], "add", amount) 
 
 
@@ -131,29 +131,29 @@ function sped()
 
 
     if tier == 1 then
-        exports['ps-inventory']:AddItem(src, "goldbar", 1, false)
+        exports['inventory']:AddItem(src, "goldbar", 1, false)
         TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items["goldbar"], "add", 1)
         TriggerEvent("qb-log:server:CreateLog", "banktrucks", "Banktruck Rewards", "default", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' Received the following from the bank truck. **Loot**: '.."1".. ' x '.. "markedbills")
     elseif tier == 2 then
-        exports['ps-inventory']:AddItem(src, "diamond", 1, false)
+        exports['inventory']:AddItem(src, "diamond", 1, false)
         TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items["diamond"], "add", 1)
         TriggerEvent("qb-log:server:CreateLog", "banktrucks", "Banktruck Rewards", "default", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' Received the following from the bank truck. **Loot**: '.."3".. ' x '.. "markedbills")
     elseif tier == 3 then
         local item = 'emerald'
         local amount = math.random(1,1)
-        exports['ps-inventory']:AddItem(src, item, amount, false)
+        exports['inventory']:AddItem(src, item, amount, false)
         TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[item], "add", amount)
         TriggerEvent("qb-log:server:CreateLog", "banktrucks", "Banktruck Rewards", "black", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' Received the following from the bank truck. **Loot**: '..amount.. ' x '.. item "")
     elseif tier == 4 then
-        exports['ps-inventory']:AddItem(src, "ruby", 1, false)
+        exports['inventory']:AddItem(src, "ruby", 1, false)
         TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items["ruby"], "add", 1)
         TriggerEvent("qb-log:server:CreateLog", "banktrucks", "Banktruck Rewards", "black", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' Received the following from the bank truck. **Loot**: '.."1".. ' x '.. "security_card_04")
     elseif tier == 5 then
-        exports['ps-inventory']:AddItem(src, "sapphire", 1, false)
+        exports['inventory']:AddItem(src, "sapphire", 1, false)
         TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items["sapphire"], "add", 1)
         TriggerEvent("qb-log:server:CreateLog", "banktrucks", "Banktruck Rewards", "green", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' Received the following from the bank truck. **Loot**: '.."1".. ' x '.. "security_card_01")
     elseif tier == 6 then
-        exports['ps-inventory']:AddItem(src, "bluediamond", 1, false)
+        exports['inventory']:AddItem(src, "bluediamond", 1, false)
         TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items["bluediamond"], "add", 1)
         TriggerEvent("qb-log:server:CreateLog", "banktrucks", "Banktruck Rewards", "yellow", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' Received the following from the bank truck. **Loot**: '.."1".. ' x '.. "security_card_02")       
     end

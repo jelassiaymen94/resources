@@ -212,7 +212,7 @@ body {
     max-height: 132%;
     float: right;
     overflow-x: hidden;
-    overflow-y: hidden;
+    overflow-y: scroll;
     z-index: 100;
 }
 

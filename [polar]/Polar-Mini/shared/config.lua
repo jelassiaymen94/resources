@@ -1,5 +1,5 @@
 Config = {} or Config
-Config.img = "ps-inventory/html/images/"
+Config.img = "inventory/html/images/"
 Config.Debug = false
 
 

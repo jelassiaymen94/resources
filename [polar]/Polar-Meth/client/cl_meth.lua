@@ -23,7 +23,7 @@ function playeritem(item, amount)
     if item == nil then print('error, item == nil') return end
     if amount == nil then amount = 1 end
     if Config.Framework == 'qb' then
-    return exports['ps-inventory']:HasItem(item, amount)
+    return exports['inventory']:HasItem(item, amount)
     else
         
     end

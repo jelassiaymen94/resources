@@ -9,7 +9,7 @@ Polar Meth Script
 
 -  Qb-Target
 
--  ps-inventory (Can be Changed Easily)
+-  inventory (Can be Changed Easily)
 
 -  Qb-Core
 
@@ -52,7 +52,7 @@ Polar Meth Script
 * **qb-smallresources>server>logs**
 Add ["meth"] = '',
 
-* **ps-inventory>html>images**
+* **inventory>html>images**
 Add all Images
 
 

@@ -41,7 +41,7 @@ https://github.com/christikat/glow_minigames
 
 Add ["banktrucks"] = '',
 
-* **qb-inventory>html>images**
+* **inventory>html>images**
 
 
 

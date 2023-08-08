@@ -9,7 +9,7 @@ Some updates inspired from Project Sloth
 
 -  Qb-Target
 
--  ps-inventory (Can be Changed Easily)
+-  inventory (Can be Changed Easily)
 
 -  Qb-Core
 
@@ -97,10 +97,10 @@ Some updates inspired from Project Sloth
 * **qb-smallresources>server>logs**
 Add ["weed"] = '',
 
-* **ps-inventory>html>images**
+* **inventory>html>images**
 Add all Images
 
-* **ps-inventory>html/js/app.js** look for the ```function FormatItemInfo```
+* **inventory>html/js/app.js** look for the ```function FormatItemInfo```
 Add Items
 
         } else if (itemData.name == "1ozhigh") {

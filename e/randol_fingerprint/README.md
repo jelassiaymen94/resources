@@ -29,5 +29,5 @@ In order for police to get this item, just add it to the police armory list or m
 
 # [image]
 
-This folder has the image for the item. Drag and drop the png into ps-inventory > html > images (or whatever inventory you are using)
+This folder has the image for the item. Drag and drop the png into inventory > html > images (or whatever inventory you are using)
 

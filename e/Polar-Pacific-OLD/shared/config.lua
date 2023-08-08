@@ -5,9 +5,9 @@ Config.Core = 'qb-core'
 Config.Target = 'qb-target'
 Config.Menu = 'qb-menu'
 Config.Input = 'qb-input'
-Config.Inventory = 'ps-inventory'
+Config.Inventory = 'inventory'
 Config.Skillbar = 'qb-skillbar'
-Config.img = "ps-inventory/html/images/"
+Config.img = "inventory/html/images/"
 --==========================================================================
 
 
