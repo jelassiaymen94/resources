@@ -106,8 +106,8 @@ function poop()
         Citizen.Wait(50)
     end
 end
- 
-Citizen.CreateThread(function()
+RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function() Wait(100) targets()  end)
+function targets()
     exports['qb-target']:SpawnPed({
         spawnNow = true,
         name = 'casino',
@@ -124,7 +124,7 @@ Citizen.CreateThread(function()
                 action = function() 
                     Teleport(PlayerPedId(), vector4(1089.6083984375,206.60050964355,-48.999725341797, 0.0))
                 end,
-                icon = "fas fa-wrench",
+                icon = "fas fa-bolt",
                 label = 'Enter Casino',
             },
         },
@@ -147,7 +147,7 @@ Citizen.CreateThread(function()
                 action = function() 
                     Teleport(PlayerPedId(), vector4(934.8568, 46.18341, 81.09571, 143.6066))
                 end,
-                icon = "fas fa-wrench",
+                icon = "fas fa-bolt",
                 label = 'Exit Casino',
             },
         },
@@ -175,74 +175,7 @@ Citizen.CreateThread(function()
             distance = 2.5, 
         },
     })
-    exports['qb-target']:SpawnPed({
-        spawnNow = true,
-        name = 'casinocounter',
-        model = 'u_f_m_casinocash_01', 
-        coords = vector4(1117.457, 219.2687, -49.43512, 97.06356), 
-        minusOne = true,
-        freeze = true, 
-        invincible = true, 
-        blockevents = true, 
-        scenario = 'WORLD_HUMAN_GUARD_STAND', 
-        target = { 
-        options = { 
-            { 
-                icon = "fas fa-wrench",
-                label = 'Buy Chips',
-                action = function(entity) 
-                    local dialog = exports[Casino.InputScriptName]:ShowInput({
-                        header = 'Buy Chips Amount',
-                        submitText = "Submit",
-                        inputs = {
-                            {
-                                type = 'text', -- number doesn't accept decimals??
-                                isRequired = true,
-                                name = 'amount',
-                                text = ''
-                            }
-                        }
-                    })
-                    if dialog then
-                        if not dialog.amount then return end
-                        TriggerServerEvent('casino:Chips', "buy", dialog.amount)
-                    end
-                end,
-            },
-            { 
-                action = function(entity) 
-                    local dialog = exports[Casino.InputScriptName]:ShowInput({
-                        header = 'Sell Chips Amount',
-                        submitText = "Submit",
-                        inputs = {
-                            {
-                                type = 'text', -- number doesn't accept decimals??
-                                isRequired = true,
-                                name = 'amount',
-                                text = ''
-                            }
-                        }
-                    })
-                    if dialog then
-                        if not dialog.amount then return end
-                        TriggerServerEvent('casino:Chips', "sell", dialog.amount)
-                    end
-                end,
-                icon = "fas fa-wrench",
-                label = 'Sell Chips',
-            },
-            { 
-                icon = "fas fa-wrench",
-                label = 'Buy Wheel Token',
-                action = function() 
-                    TriggerServerEvent('casino:grabToken')
-                end,
-            },
-        },
-            distance = 2.5, 
-        },
-    })
-end)
+end
 
 RegisterNetEvent('casino:foodCat', function() 
     local casinoFoodPlace = {

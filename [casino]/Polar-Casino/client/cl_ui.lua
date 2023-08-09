@@ -26,10 +26,4 @@ function HideCasinoUi()
 	})
 end
 
--- RegisterCommand('test', function()
--- 	exports['casinoUi']:DrawCasinoUi('show', "Diamond Casino Blackjack</p>Balance: $5000Test</br>Bet: 10000Test") 
---     Wait(3700)
--- 	exports['casinoUi']:HideCasinoUi('hide') 
--- end, false)
-
 

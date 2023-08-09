@@ -926,7 +926,7 @@ AddEventHandler(
 
 function casinoNuiUpdateGame(rulettIndex, ido, statusz)
     if chipamount == nil then return end
-    exports['casinoUi']:DrawCasinoUi('show', "The Diamond Casino & Resort Rulette </p> Time Left: " .. string.format('%s %s', ido, "Seconds") .. "</p> Available chips: ".. math.floor(chipamount))
+    exports['Polar-Casino']:DrawCasinoUi('show', "The Diamond Casino & Resort Rulette </p> Time Left: " .. string.format('%s %s', ido, "Seconds") .. "</p> Available chips: ".. math.floor(chipamount))
 
     what = string.format('%s %s', ido, "Seconds")
 end
@@ -934,7 +934,7 @@ end
 RegisterNetEvent('casino:nui:updateChips', function(amount)
     chipamount = amount
 
-    --exports['casinoUi']:HideCasinoUi('hide') 
+    exports['Polar-Casino']:HideCasinoUi('hide') 
 end)
 
 

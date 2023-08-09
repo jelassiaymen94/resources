@@ -65,7 +65,7 @@ AddEventHandler('vns_cs_wheel:give', function(s, price)
 	local Player = QBCore.Functions.GetPlayer(_s)
 	isRoll = false
 	if price.type == 'car' then
-		TriggerClientEvent('QBCore:Notify', _s, 'You won the car')
+		TriggerClientEvent('QBCore:Notify', _s, 'You Won The Car And Its Waiting Outside!!')
 		
 		local plate = GeneratePlate()
 		MySQL.Async.insert('INSERT INTO player_vehicles (license, citizenid, vehicle, hash, mods, plate, state) VALUES (@license, @citizenid, @vehicle, @hash, @mods, @plate, @state)', {
@@ -82,13 +82,13 @@ AddEventHandler('vns_cs_wheel:give', function(s, price)
 			elseif price.type == 'nothing' then
 
 
-				TriggerClientEvent('QBCore:Notify', _s, 'You Won Nothing!')
+				TriggerClientEvent('QBCore:Notify', _s, 'You Won Nothing!!!!')
 
 
 			elseif price.type == 'crypto' then
 
 
-				TriggerClientEvent('QBCore:Notify', _s, 'You have won Package #'..price.name..' ')
+				TriggerClientEvent('QBCore:Notify', _s, 'You Won '..price.count..' Diamond Casino Chips')
 				exports['qb-phone']:AddCrypto(_s, "dcc", price.count)
 
 			
@@ -99,7 +99,7 @@ AddEventHandler('vns_cs_wheel:give', function(s, price)
 				local item = 'water_bottle'
 				local amount = 1
 				Player.Functions.AddItem(item, amount)
-				TriggerClientEvent('QBCore:Notify', _s, 'You won '..item..'x '..QBCore.Shared.Items[item]["label"])
+				TriggerClientEvent('QBCore:Notify', _s, 'You Won '..item..' '..QBCore.Shared.Items[item]["label"])
 				TriggerClientEvent('inventory:client:ItemBox', _s, QBCore.Shared.Items[item], "add")
 
 
@@ -109,7 +109,7 @@ AddEventHandler('vns_cs_wheel:give', function(s, price)
 				local item = 'water_bottle'
 				local amount = 1
 				Player.Functions.AddItem(item, amount)
-				TriggerClientEvent('QBCore:Notify', _s, 'You won '..item..'x '..QBCore.Shared.Items[item]["label"])
+				TriggerClientEvent('QBCore:Notify', _s, 'You Won '..item..' '..QBCore.Shared.Items[item]["label"])
 				TriggerClientEvent('inventory:client:ItemBox', _s, QBCore.Shared.Items[item], "add")
 
 
@@ -119,7 +119,7 @@ AddEventHandler('vns_cs_wheel:give', function(s, price)
 				local item = 'water_bottle'
 				local amount = 1
 				Player.Functions.AddItem(item, amount)
-				TriggerClientEvent('QBCore:Notify', _s, 'You won '..item..'x '..QBCore.Shared.Items[item]["label"])
+				TriggerClientEvent('QBCore:Notify', _s, 'You Won '..item..' '..QBCore.Shared.Items[item]["label"])
 				TriggerClientEvent('inventory:client:ItemBox', _s, QBCore.Shared.Items[item], "add")
 
 
@@ -128,7 +128,7 @@ AddEventHandler('vns_cs_wheel:give', function(s, price)
 
 
 				Player.Functions.AddMoney('cash', price.count)
-				TriggerClientEvent('QBCore:Notify', _s, 'You won '..price.count..'$')
+				TriggerClientEvent('QBCore:Notify', _s, 'You Won '..price.count..'$')
 
 
 			end
