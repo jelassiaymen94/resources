@@ -301,22 +301,6 @@ Citizen.CreateThread(function()
                 end)
             end
         end
-        if waitingForStandOrHitState and sittingAtBlackjackTable and blackjackGameInProgress then 
-            if IsDisabledControlJustPressed(0, 22) then --hit
-                waitingForStandOrHitState = false
-                TriggerServerEvent("Blackjack:hitBlackjack",globalGameId,globalNextCardCount)
-                drawTimerBar = false
-                standOrHitThisRound = true
-                requestCard()
-            end
-            if IsControlJustPressed(0, 202) then --stand
-                waitingForStandOrHitState = false
-                TriggerServerEvent("Blackjack:standBlackjack",globalGameId,globalNextCardCount)
-                drawTimerBar = false
-                standOrHitThisRound = true
-                declineCard()
-            end
-        end
         Wait(0)
     end
 end)
@@ -454,7 +438,8 @@ AddEventHandler("Blackjack:beginBetsBlackjack",function(gameID,tableId)
     drawCurrentHand = false
     standOrHitThisRound = false
     canExitBlackjack = true
-    waitingForBetState = true
+    bjmenu()
+    --waitingForBetState = true
     dealerPed = getDealerFromTableId(tableId)
     PlayAmbientSpeech1(dealerPed,"MINIGAME_DEALER_PLACE_BET","SPEECH_PARAMS_FORCE_NORMAL_CLEAR",1)
     currentBetAmount = 0
@@ -475,7 +460,106 @@ AddEventHandler("Blackjack:beginBetsBlackjack",function(gameID,tableId)
         end
     end)
 end)
+function bjmenu()
+	local menu = {
+		{
+			isMenuHeader = true,
+            header = "Diamond Casino BlackJack",
+            txt = "Where Dreams Come True!",
+            icon = "fa-solid fa-gem",
+        },
+        {
+            header = "Make Bet!",
+            txt = "Make that Bank Roll!",
+            icon = "fas fa-bolt",
+            params = {
+                event = "Polar-Casino:Client:CustomBet",
+            }
+        },
+        {
+            header = "Max Bet",
+            txt = "Bet 2,000 Chips!",
+            icon = "fa-solid fa-coins",
+            params = {
+                event = "Polar-Casino:Client:MaxBet",
+            }
+        },
+        {
+            header = "Stand Up",
+            txt = "",
+            icon = "fa-solid fa-circle-xmark",
+            params = {
+                event = "menu",
+            }
+        }
+    }
 
+	exports['qb-menu']:openMenu(menu)
+end
+function midbet()
+    local menu = {
+		{
+			isMenuHeader = true,
+            header = "Diamond Casino BlackJack",
+            txt = "Where Dreams Come True!",
+            icon = "fa-solid fa-gem",
+        },
+        {
+            header = "Hit",
+            txt = "Make that Bank Roll!",
+            icon = "fas fa-bolt",
+            params = {
+                event = "Polar-Casino:Client:Hit",
+            }
+        },
+        {
+            header = "Stand",
+            txt = "Be a Pussy",
+            icon = "fa-solid fa-coins",
+            params = {
+                event = "Polar-Casino:Client:Stand",
+            }
+        },
+    }
+
+	exports['qb-menu']:openMenu(menu)
+end
+RegisterNetEvent('Polar-Casino:Client:Hit', function()
+    waitingForStandOrHitState = false
+    TriggerServerEvent("Blackjack:hitBlackjack",globalGameId,globalNextCardCount)
+    drawTimerBar = false
+    standOrHitThisRound = true
+    requestCard()
+end)
+RegisterNetEvent('Polar-Casino:Client:Stand', function()
+    waitingForStandOrHitState = false
+    TriggerServerEvent("Blackjack:standBlackjack",globalGameId,globalNextCardCount)
+    drawTimerBar = false
+    standOrHitThisRound = true
+    declineCard()
+end)
+RegisterNetEvent('Polar-Casino:Client:MaxBet', function()
+    TriggerServerEvent("Blackjack:setBlackjackBet",globalGameId,2000,closestChair)
+    closestDealerPed = getClosestDealer()
+    PlayAmbientSpeech1(closestDealerPed,"MINIGAME_DEALER_PLACE_CHIPS","SPEECH_PARAMS_FORCE_NORMAL_CLEAR",1) --TODO check this is the right sound?
+    putBetOnTable()
+    Wait(1000)
+    
+
+end)
+RegisterNetEvent('Polar-Casino:Client:CustomBet', function()
+    local tmpInput = getGenericTextInput("Bet Amount")
+    if tonumber(tmpInput) then
+        tmpInput = tonumber(tmpInput) 
+        if tmpInput > 0 and tmpInput <= 2000 then
+            TriggerServerEvent("Blackjack:setBlackjackBet",globalGameId,tmpInput,closestChair)
+            closestDealerPed = getClosestDealer()
+            PlayAmbientSpeech1(closestDealerPed,"MINIGAME_DEALER_PLACE_CHIPS","SPEECH_PARAMS_FORCE_NORMAL_CLEAR",1) --TODO check this is the right sound?
+            putBetOnTable()
+            Wait(1000)
+        end
+    end
+end)
 RegisterNetEvent("Blackjack:beginCardGiveOut")
 AddEventHandler("Blackjack:beginCardGiveOut",function(gameId,cardData,chairId,cardIndex,gotCurrentHand,tableId)
     blackjackGameInProgress = true
@@ -791,6 +875,7 @@ function startDealing(dealerPed,gameId,cardData,chairId,cardIndex,gotCurrentHand
             cardObjectOffsetRotation = blackjack_func_398(blackjack_func_368(fakeChairIdForDealerTurn))
         end
         if closestChair == chairId and sittingAtBlackjackTable then
+            midbet()
             bettingInstructional = setupBlackjackMidBetScaleform("instructional_buttons")
         end
         --soundID = GetSoundId()
@@ -823,7 +908,8 @@ function startStandOrHit(gameId,dealerPed,chairId,actuallyPlaying)
     end
     TaskPlayAnim(dealerPed, "anim_casino_b@amb@casino@games@blackjack@dealer", genderAnimString .. "dealer_focus_player_0" .. chairAnimId .. "_idle", 3.0, 1.0, -1, 2, 0, 0, 0, 0 )
     if actuallyPlaying then
-        waitingForPlayerToHitOrStand = true
+        --waitingForPlayerToHitOrStand = true
+        midbet()
     end
 end
 
