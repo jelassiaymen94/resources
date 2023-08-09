@@ -448,6 +448,8 @@ RegisterNetEvent('apartments:client:setupSpawnUI', function(cData)
                 for _, v in pairs(QBCore.Shared.StarterItems) do
                     local info = {}
                     if v.item == "id_card" then
+                        print(v.item)
+                        print('h')
                         info.citizenid = Player.PlayerData.citizenid
                         info.firstname = Player.PlayerData.charinfo.firstname
                         info.lastname = Player.PlayerData.charinfo.lastname
@@ -480,6 +482,7 @@ RegisterNetEvent('apartments:client:setupSpawnUI', function(cData)
             local Player = QBCore.Functions.GetPlayer(src)
             for _, v in pairs(QBCore.Shared.StarterItems) do
                 local info = {}
+                print(v.item)
                 if v.item == "id_card" then
                     info.citizenid = Player.PlayerData.citizenid
                     info.firstname = Player.PlayerData.charinfo.firstname
