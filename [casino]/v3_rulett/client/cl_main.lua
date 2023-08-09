@@ -901,11 +901,11 @@ AddEventHandler(
 RegisterNetEvent('client:rulett:updateStatusz')
 AddEventHandler(
     'client:rulett:updateStatusz',
-    function(rulettIndex, ido, statusz)
+    function(rulettIndex, ido, statusz, amount)
         if Rulettek[rulettIndex] ~= nil then
             Rulettek[rulettIndex].ido = ido
             Rulettek[rulettIndex].statusz = statusz
-            casinoNuiUpdateGame(rulettIndex, ido, statusz)
+            casinoNuiUpdateGame(rulettIndex, ido, statusz, amount)
         end
     end
 )
