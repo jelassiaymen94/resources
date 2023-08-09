@@ -292,7 +292,7 @@ end)
 RegisterNetEvent("vns_cs_wheel:startroll")
 AddEventHandler("vns_cs_wheel:startroll", function(s, index, p)
 	Citizen.Wait(550)
-	print(index)
+	--print(index)
 	SetEntityVisible(_lights1, false, 0)
 	SetEntityVisible(_lights2, true, 0)
 	win = (index - 1) * 18 + 0.0

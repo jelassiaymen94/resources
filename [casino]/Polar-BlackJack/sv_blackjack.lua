@@ -153,7 +153,7 @@ for i=0,3,1 do
             end
             if game_ready then
                 local gameId = math.random(1000,10000000)
-                print("generated gameId",gameId)
+               --print("generated gameId",gameId)
                 blackjackGameData[gameId] = {} --init game data
                 blackjackGameInProgress[gameId] = false
                 for k,v in pairs(players_ready) do 
@@ -169,9 +169,9 @@ for i=0,3,1 do
                         if v ~= nil then
                             local playerBetted = false 
                             betAmount = v[1]
-                            -- print("betAmount: " .. tostring(betAmount))
-                            -- print("v: " .. tostring(v))
-                            -- print("vdump: " .. dump(blackjackGameData[gameId][k]))
+                            ----print("betAmount: " .. tostring(betAmount))
+                            ----print("v: " .. tostring(v))
+                            ----print("vdump: " .. dump(blackjackGameData[gameId][k]))
                             if betAmount ~= nil and betAmount > 0 then 
                                 playerBetted = true
                             end
@@ -247,7 +247,7 @@ for i=0,3,1 do
                                                 secondsWaited = secondsWaited + 0.1
                                                 ----print("response to stand or hit is still false")
                                             end
-                                            print("response received! [ok]")
+                                           --print("response received! [ok]")
                                             if blackjackGameData[gameId][source][2][nextCardCount] == true then --if hit 
                                                 --print("response was hit")
                                                 nextCardCount = nextCardCount + 1
@@ -637,16 +637,16 @@ function dump(o)
  end
 
 -- RegisterCommand("debugtableserver",function()
---     print("blackjackTables")
---     print("===============")
---     print(dump(blackjackTables))
---     print("blackjackGameData")
---     print("===============")
---     print(dump(blackjackGameData))
+--    --print("blackjackTables")
+--    --print("===============")
+--    --print(dump(blackjackTables))
+--    --print("blackjackGameData")
+--    --print("===============")
+--    --print(dump(blackjackGameData))
 -- end)
 
 -- RegisterCommand("debugcarddata",function()
---     print("carddata")
---     print("===============")
---     print(dump(blackjackGameData[1024]))
+--    --print("carddata")
+--    --print("===============")
+--    --print(dump(blackjackGameData[1024]))
 -- end)
