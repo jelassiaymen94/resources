@@ -98,22 +98,7 @@ RegisterNetEvent('Polar-Dealership:client:menu:OpenBossMenu', function()
                 event = "Polar-Dealership:client:menu:OpenEmployees",
             }
         },
-        {
-            header = "Hire Employee",
-            txt = "(Must be unemployed)",
-            icon = "fas fa-universal-access",
-            params = {
-                event = "Polar-Dealership:client:menu:OpenHire",
-            }
-        },
-        {
-            header = "Order Vehicle",
-            txt = "",
-            icon = "fas fa-clipboard-list",
-            params = {
-                event = "Polar-Dealership:client:menu:OpenOrder",
-            }
-        }
+
     }
     if PlayerJob.grade.level >= Config.Dealership[PlayerJob.name].moneyMenuThreshold then
         menu[#menu+1] = {

@@ -9,14 +9,16 @@ QBShared.Items = {
 	["sharkpet"] = { ["name"] = "sharkpet", ["label"] = "Shark", ["weight"] = 5000, ["type"] = "item", ["image"] = "A_C_Husky.png", ["unique"] = true, ["useable"] = true, ["shouldClose"] = true, ["combinable"] = nil, ["description"] = "Shark is your royal companion!" , ["decay"] = 30.0, ["delete"] = false },
 	["cranepet"] = { ["name"] = "cranepet", ["label"] = "Crane", ["weight"] = 5000, ["type"] = "item", ["image"] = "A_C_Husky.png", ["unique"] = true, ["useable"] = true, ["shouldClose"] = true, ["combinable"] = nil, ["description"] = "Crane is your royal companion!" , ["decay"] = 30.0, ["delete"] = false },
 
-
+	["casino_goldchip"] 			 = {["name"] = "casino_goldchip", 			 ["label"] = "Casino Chip", 			["weight"] = 0, 		["type"] = "item", 		["image"] = "casino_goldchip.png", 				["unique"] = false, 	["useable"] = false, 	["shouldClose"] = false,   ["combinable"] = nil,   ["description"] = "Diamond Casino Chip"},
+	["casino_member"] 				 = {["name"] = "casino_member", 			 ["label"] = "Casino Membership", 		["weight"] = 500, 		["type"] = "item", 		["image"] = "casino_member.png", 				["unique"] = true, 		["useable"] = false, 	["shouldClose"] = false,   ["combinable"] = nil,   ["description"] = "Diamond Casino Member Card"},
+	["casino_vip"] 					 = {["name"] = "casino_vip", 			 	 ["label"] = "V.I.P Membership", 		["weight"] = 500, 		["type"] = "item", 		["image"] = "casino_vip.png", 				    ["unique"] = true, 		["useable"] = false, 	["shouldClose"] = false,   ["combinable"] = nil,   ["description"] = "Diamond Casino V.I.P Card"},
 
 	['airdrop'] 					 = {['name'] = 'airdrop', 			 	  	  	['label'] = 'Supply Signal', 				['weight'] = 15000, 		['type'] = 'item', 		['image'] = 'weapon_smokegrenade.png', 			['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,	    ['description'] = 'A military grade air drop, big no no', ["decay"] = 30.0, ["delete"] = false },
 	
 
 	['shovel'] 				 		 = {['name'] = 'shovel', 			    		['label'] = 'Shovel', 					['weight'] = 15000, 	['type'] = 'item', 		['image'] = 'shovel.png', 				['unique'] = false, 	['useable'] = false, 	['shouldClose'] = false,   ['combinable'] = nil,   ['description'] = 'Get Digging!'},
-        ["grub"] 						 = {["name"] = "grub",  					["label"] = "Grub",  					["weight"] = 100, 	["type"] = "item",  		["image"] = "grub.png",  				["unique"] = false,  ["useable"] = false,    ["shouldClose"] = false,  	['combinable'] = nil,	["description"] = "That's what you get for robbing graves..", },
-     
+	["grub"] 						 = {["name"] = "grub",  					["label"] = "Grub",  					["weight"] = 100, 	["type"] = "item",  		["image"] = "grub.png",  				["unique"] = false,  ["useable"] = false,    ["shouldClose"] = false,  	['combinable'] = nil,	["description"] = "That's what you get for robbing graves..", },
+    ['detector']                   = {['name'] = 'detector',          ['label'] = 'Detector',          ['weight'] = 100,       ['type'] = 'item',    ['image'] = 'detector.png',        ['unique'] = false, ['useable'] = true, ['shouldClose'] = true, ['combinable'] = nil, ['description']  = 'Go find some things'},
 	
 
 

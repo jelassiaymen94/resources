@@ -1,7 +1,7 @@
 
 local QBCore = exports['qb-core']:GetCoreObject()
 
-local gravess = Config.Graves
+
 
 CementaryLocation = {}
 local blipSpawned = false
@@ -10,32 +10,33 @@ local blipSpawned = false
 local isDigging = false
 
 
-AddEventHandler('onResourceStop', function(resourceName)
-    if GetCurrentResourceName() == resourceName then
-      
-    end
-end)
+AddEventHandler('onResourceStop', function(resourceName) if GetCurrentResourceName() == resourceName then removetargets()  end end)
 
 
 local ZoneSpawned = false 
-local ZoneCreated = {}
 
-CreateThread(function()
-  graves()
+
+function removetargets() for k, v in pairs(Config.Graves) do  exports['qb-target']:RemoveZone(k)  end end
+RegisterNetEvent('Polar-Graves:Client:TargetRemove', function(target) exports['qb-target']:RemoveZone(target)  end)
+
+RegisterNetEvent('Polar-Graves:Client:Reset', function()
+    print('Res')
+    ZoneSpawned = false
+    removetargets()
+    Wait(1000)
+    graves()
+    TriggerEvent('qb-phone:client:CustomNotification', 'Los Santos Cemetary', 'New Bodies have been dumped', 'fas fa-file-invoice-dollar', '#b3e0f2', '10000')
 end)
+
 function graves()
-    for k, v in pairs(gravess) do
+    for k, v in pairs(Config.Graves) do
         if ZoneSpawned then
             return
         end
 
-        for k, v in pairs(gravess) do
-            if not ZoneCreated[k] then
-                ZoneCreated[k] = {}
-            end
-
-            ZoneCreated[k] = exports['qb-target']:AddBoxZone(v["GraveName"], v["Coords"], 1, 1, {
-                name = v["GraveName"],
+        for k, v in pairs(Config.Graves) do
+            exports['qb-target']:AddBoxZone(k, v["coords"], 1, 1, {
+                name = k,
                 heading = 0.0,
                 debugPoly = false,
             }, {
@@ -44,6 +45,8 @@ function graves()
                         icon = "fa-solid fa-trowel",
                         label = "Dig Grave",
                         event = "Graverobbery:Client:StartDigging",
+                        item = 'shovel',
+                        hi = k,
                     },
                 },
         
@@ -53,22 +56,26 @@ function graves()
             ZoneSpawned = true
         end
     end
-
 end
-RegisterNetEvent('Graverobbery:Client:ResetGrave', function(OldGrave, state)
-    gravess[OldGrave].Looted = state
-end)
-RegisterNetEvent("Graverobbery:Client:StartDigging", function()
-    GravepoliceAlert(GetEntityCoords(PlayerPedId()))
+
+
+
+
+RegisterNetEvent("Graverobbery:Client:StartDigging", function(data)
+    local target = data.hi
     if isDigging == false and QBCore.Functions.HasItem('shovel') then
         local ped = PlayerPedId()
         local playerPos = GetEntityCoords(ped)
-        for k, v in pairs(gravess) do
-            local dist = #(GetEntityCoords(ped) - vector3(gravess[k]["Coords"].x, gravess[k]["Coords"].y, gravess[k]["Coords"].z))
+        for k, v in pairs(Config.Graves) do
+            local dist = #(GetEntityCoords(ped) - v["coords"])
             if dist <= 1.5 then
-                if gravess[k].Looted == false then
-                    gravess[k].Looted = true
-                    CurGrave = k
+                TriggerServerEvent('Polar-Graves:Server:TargetRemove', target)
+                    local CurGrave = k
+                    exports["qb-dispatch"]:CustomAlert({
+                        coords = v["coords"], message = "Suspicious Activity",
+                        dispatchCode = "10-16", description = "Possible Grave Digging", radius = 10,
+                        sprite = 58,  color = 46, scale = 1.0,  length = 1,
+                    })   
                     QBCore.Functions.Progressbar("digging", "Digging...", math.random(8000, 15000), false, true, {
                         disableMovement = true,
                         disableCarMovement = false,
@@ -81,20 +88,20 @@ RegisterNetEvent("Graverobbery:Client:StartDigging", function()
                     }, {}, {}, function() -- Done
                         Diggin = true
                         ClearPedTasks(PlayerPedId())
-                        TriggerServerEvent('Graverobbery:Server:SetGraveState', CurGrave)
                         TriggerServerEvent('Graverobbery:Server:GiveItems', CurGrave)
-                       
+                        TriggerServerEvent('Polar-Graves:Server:GraveSet')
                     end, function() -- Cancel
                         ClearPedTasks(PlayerPedId())
                         QBCore.Functions.Notify("Cancelled.", "error")
-                        gravess[k].Looted = false
+                       
                     end)
-                elseif gravess[k].Looted == true then
-                    QBCore.Functions.Notify('Seems like someone beat you to it!', 'error', 5000)
-                end
             end
         end
     end
 end)
 
 
+
+function Notify(text, type, time)
+    QBCore.Functions.Notify(text, type, time)
+end

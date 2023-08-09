@@ -40,6 +40,15 @@ local function hasEnough(src, type, amount)
     end
 end exports("hasEnough", hasEnough)
 
+-- exports['qb-phone']:hasEnough(Player, type, amount)
+local function getAmount(src, type)
+    if not src then return end
+    local Player = QBCore.Functions.GetPlayer(src)
+    if not Player  then return end
+    local Crypto = Player.PlayerData.metadata.crypto
+    if not Crypto then return end
+    return Crypto[type]
+end exports("getAmount", getAmount)
 
 -- exports['qb-phone']:AddCrypto(Player, type, amount)
 local function AddCrypto(src, type, amount)

@@ -432,4 +432,12 @@ Config.CryptoCoins = {
         value = 150,
         purchase = false
     },
+    {
+        label = 'Casino Chips',
+        abbrev = 'DCC',
+        icon = 'fa-regular fa-gem',
+        metadata = 'dcc',
+        value = 1,
+        purchase = true
+    },
 }
