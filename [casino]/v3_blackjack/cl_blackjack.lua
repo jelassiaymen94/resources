@@ -226,6 +226,10 @@ Citizen.CreateThread(function()
                     currentBetAmount = currentBetAmount + 100
                     Wait(200)
                 end
+            end    
+            if IsControlPressed(0, 44) then -- Max Bet
+                    currentBetAmount = 2000
+                    Wait(200)
             end            
             if IsControlPressed(0, 173) then --Decrease bet [pagedown]
                 if currentBetAmount >= 100 then 
@@ -2602,7 +2606,7 @@ function setupBlackjackInstructionalScaleform(scaleform)
     PopScaleformMovieFunctionVoid()
 
     PushScaleformMovieFunction(scaleform, "SET_DATA_SLOT")
-    PushScaleformMovieFunctionParameterInt(1)
+    PushScaleformMovieFunctionParameterInt(5)
     Button(GetControlInstructionalButton(2, 194, true)) -- The button to display
     ButtonMessage("Leave Table") --BACKSPACE
     PopScaleformMovieFunctionVoid()
@@ -2631,6 +2635,11 @@ function setupBlackjackInstructionalScaleform(scaleform)
     ButtonMessage("Custom Bet") --Page Up
     PopScaleformMovieFunctionVoid()
 
+    PushScaleformMovieFunction(scaleform, "SET_DATA_SLOT")
+    PushScaleformMovieFunctionParameterInt(1)
+    Button(GetControlInstructionalButton(2, 44, true))
+    ButtonMessage("Max Bet") --Page Up
+    PopScaleformMovieFunctionVoid()
     --PushScaleformMovieFunction(scaleform, "SET_DATA_SLOT")
     --PushScaleformMovieFunctionParameterInt(4)
     --Button(GetControlInstructionalButton(2, 22, true))
