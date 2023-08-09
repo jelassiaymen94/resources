@@ -45,7 +45,8 @@ AddEventHandler(
     function(rulettIndex, chairData)
         local source = source
         local chairId = chairData.chairId
-
+        TriggerClientEvent('casino:nui:updateChips', source, getPlayerChips(source))
+        TriggerClientEvent('Polar-')
         if aktivRulettek[rulettIndex] ~= nil  then
             if aktivRulettek[rulettIndex].chairsUsed[chairId] ~= nil  then
                 return r_showNotification(source, _U('chair_used'))
@@ -137,7 +138,7 @@ Citizen.CreateThread(
                 if v.statusz == false  then
                     if v.ido > 0  then
                         aktivRulettek[rulettIndex].ido = v.ido - 1
-                        TriggerClientEvent('client:rulett:updateStatusz', -1, rulettIndex, v.ido, v.statusz, getPlayerChips(-1))
+                        TriggerClientEvent('client:rulett:updateStatusz', -1, rulettIndex, v.ido, v.statusz)
                     end
 
                     if v.ido < 1  then
@@ -151,7 +152,7 @@ Citizen.CreateThread(
 
                         aktivRulettek[rulettIndex].statusz = true
                         aktivRulettek[rulettIndex].WinningBetIndex = WinningBetIndex
-                        TriggerClientEvent('client:rulett:updateStatusz', -1, rulettIndex, v.ido, v.statusz, getPlayerChips(-1))
+                        TriggerClientEvent('client:rulett:updateStatusz', -1, rulettIndex, v.ido, v.statusz)
 
                         Citizen.CreateThread(
                             function()
@@ -170,7 +171,7 @@ Citizen.CreateThread(
                                     if countTablePlayers(rulettIndex) < 1  then
                                         aktivRulettek[rulettIndex] = nil -- deleting the table from srv
                                         Config.DebugMsg(string.format('Rulett table id %s, stopped because no one using it.', rulettIndex))
-                                        TriggerClientEvent('client:rulett:updateStatusz', -1, rulettIndex, nil, nil, getPlayerChips(-1))
+                                        TriggerClientEvent('client:rulett:updateStatusz', -1, rulettIndex, nil, nil)
                                     else
                                         aktivRulettek[rulettIndex].statusz = false
                                         aktivRulettek[rulettIndex].ido = Config.RouletteStart
