@@ -5,19 +5,25 @@ local car = Config.Cars[math.random(#Config.Cars)]
 QBCore.Functions.CreateCallback('vns_cs_wheel:getcar', function(source, cb)
 	cb(car)
 end)
-
+Citizen.CreateThread(function()
+	while true do
+		Wait(1000*60)
+		if os.date('%H:%M') == Config.LimitedSpins then
+			exports.oxmysql:execute('UPDATE players SET wheel = 0')
+		end
+	end
+end)
 RegisterServerEvent('vns_cs_wheel:getwheel')
 AddEventHandler('vns_cs_wheel:getwheel', function()
-    local _source = source
-    local Player = QBCore.Functions.GetPlayer(_source)
+    local src = source
+    local Player = QBCore.Functions.GetPlayer(src)
     if not isRoll then
-
-		--if Player.Functions.RemoveItem("wheeltoken", 1) then
-			TriggerEvent("vns_cs_wheel:startwheel", Player, _source)
-			--Player.Functions.RemoveItem("wheeltoken", 1)
-		--else
-		--	TriggerClientEvent('QBCore:Notify', _source, 'You don\'t have wheel token to spin the wheel')
-		--end
+		local result = exports.oxmysql:scalarSync('SELECT wheel FROM players where citizenid= ?', {Player.PlayerData.citizenid})
+		if result == '0' then
+			TriggerEvent("vns_cs_wheel:startwheel", Player, src)
+		else
+			TriggerClientEvent('QBCore:Notify', src, "You have already had a spin on the wheel today", "error")
+		end
 	end
 end)	
 local harp = false
@@ -26,9 +32,10 @@ RegisterNetEvent('Polar-Casino:Client:StartWheelSpin', function()
 end)
 RegisterServerEvent('vns_cs_wheel:startwheel')
 AddEventHandler('vns_cs_wheel:startwheel', function(Player, source)
-    local _source = source
+    local src = source
     if not isRoll then
         if Player ~= nil then
+			exports.oxmysql:execute('UPDATE players SET wheel = 1 where citizenid= ?', {Player.PlayerData.citizenid})
 			isRoll = true
 			local rnd = math.random(1, 1000)
 			local price = 0
@@ -40,9 +47,9 @@ AddEventHandler('vns_cs_wheel:startwheel', function(Player, source)
 					break
 				end
 			end
-			TriggerClientEvent("vns_cs_wheel:syncanim", _source, priceIndex)
+			TriggerClientEvent("vns_cs_wheel:syncanim", src, priceIndex)
 			while true do   
-				if harp then TriggerClientEvent("vns_cs_wheel:startroll", -1, _source, priceIndex, price) 
+				if harp then TriggerClientEvent("vns_cs_wheel:startroll", -1, src, priceIndex, price) 
 					break 
 					harp = false
 				end
