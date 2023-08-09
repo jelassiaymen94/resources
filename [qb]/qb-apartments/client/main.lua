@@ -431,58 +431,25 @@ local dialog = exports['qb-input']:ShowInput({
 end)
 RegisterNetEvent('apartments:client:setupSpawnUI', function(cData)
     QBCore.Functions.TriggerCallback('apartments:GetOwnedApartment', function(result)
-      
         if result then
-            if Apartments.Starting then
-
+          
 
                 TriggerEvent("apartments:client:SetHomeBlip", result.type)
                 TriggerEvent('ivs_spawns:openMenu', lastLocation)
 
                 
-            else
-           -- TriggerEvent('qb-spawn:client:setupSpawns', cData, false, nil)
-           -- TriggerEvent('qb-spawn:client:openUI', true)
-                local src = source
-                local Player = QBCore.Functions.GetPlayer(src)
-                for _, v in pairs(QBCore.Shared.StarterItems) do
-                    local info = {}
-                    if v.item == "id_card" then
-                        print(v.item)
-                        print('h')
-                        info.citizenid = Player.PlayerData.citizenid
-                        info.firstname = Player.PlayerData.charinfo.firstname
-                        info.lastname = Player.PlayerData.charinfo.lastname
-                        info.birthdate = Player.PlayerData.charinfo.birthdate
-                        info.gender = Player.PlayerData.charinfo.gender
-                        info.nationality = Player.PlayerData.charinfo.nationality
-                    elseif v.item == "driver_license" then
-                        info.firstname = Player.PlayerData.charinfo.firstname
-                        info.lastname = Player.PlayerData.charinfo.lastname
-                        info.birthdate = Player.PlayerData.charinfo.birthdate
-                        info.type = "Class C Driver License"
-                    end
-                    Player.Functions.AddItem(v.item, v.amount, false, info)
-                end
-
-           TriggerServerEvent("apartments:server:CreateApartment", 'apartment3', 'Alta Street Apartment')
-           TriggerServerEvent('QBCore:Server:OnPlayerLoaded')
-           TriggerEvent('QBCore:Client:OnPlayerLoaded')
-
-
-
-               
-            end
+        
         else
             TriggerServerEvent("apartments:server:CreateApartment", 'apartment3', 'Alta Street Apartment')
             TriggerServerEvent('QBCore:Server:OnPlayerLoaded')
             TriggerEvent('QBCore:Client:OnPlayerLoaded')
 
+            Wait(5000)
+
             local src = source
             local Player = QBCore.Functions.GetPlayer(src)
             for _, v in pairs(QBCore.Shared.StarterItems) do
                 local info = {}
-                print(v.item)
                 if v.item == "id_card" then
                     info.citizenid = Player.PlayerData.citizenid
                     info.firstname = Player.PlayerData.charinfo.firstname
