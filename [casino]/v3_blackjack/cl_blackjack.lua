@@ -469,11 +469,29 @@ RegisterNetEvent('Polar-Casino:Client:BlackJackHandle', function()
             icon = "fa-solid fa-gem",
         },
         {
-            header = "Make Bet!",
+            header = "Make Custom Bet!",
             txt = "Make that Bank Roll!",
             icon = "fas fa-bolt",
             params = {
                 event = "Polar-Casino:Client:CustomBet",
+            }
+        },
+        {
+            header = "Mini Bet",
+            txt = "Bet 100 Chips!",
+            icon = "fa-solid fa-coins",
+            params = {
+                event = "Polar-Casino:Client:MaxBet",
+                amount = 100
+            }
+        },
+        {
+            header = "Medium Bet",
+            txt = "Bet 500 Chips!",
+            icon = "fa-solid fa-coins",
+            params = {
+                event = "Polar-Casino:Client:MaxBet",
+                amount = 500
             }
         },
         {
@@ -482,6 +500,7 @@ RegisterNetEvent('Polar-Casino:Client:BlackJackHandle', function()
             icon = "fa-solid fa-coins",
             params = {
                 event = "Polar-Casino:Client:MaxBet",
+                amount = 2000
             }
         },
         {
@@ -538,25 +557,26 @@ RegisterNetEvent('Polar-Casino:Client:Stand', function()
     standOrHitThisRound = true
     declineCard()
 end)
-RegisterNetEvent('Polar-Casino:Client:MaxBet', function()
-    TriggerServerEvent("Blackjack:setBlackjackBet",globalGameId,2000,closestChair)
+RegisterNetEvent('Polar-Casino:Client:MaxBet', function(data)
+    TriggerServerEvent("Blackjack:setBlackjackBet",globalGameId,data.amount,closestChair)
     closestDealerPed = getClosestDealer()
     PlayAmbientSpeech1(closestDealerPed,"MINIGAME_DEALER_PLACE_CHIPS","SPEECH_PARAMS_FORCE_NORMAL_CLEAR",1) --TODO check this is the right sound?
     putBetOnTable()
     Wait(1000)
-    
-
 end)
 RegisterNetEvent('Polar-Casino:Client:CustomBet', function()
     local tmpInput = getGenericTextInput("Bet Amount")
     if tonumber(tmpInput) then
         tmpInput = tonumber(tmpInput) 
-        if tmpInput > 0 and tmpInput <= 2000 then
+        if tmpInput > 9 and tmpInput <= 2000 then
             TriggerServerEvent("Blackjack:setBlackjackBet",globalGameId,tmpInput,closestChair)
             closestDealerPed = getClosestDealer()
             PlayAmbientSpeech1(closestDealerPed,"MINIGAME_DEALER_PLACE_CHIPS","SPEECH_PARAMS_FORCE_NORMAL_CLEAR",1) --TODO check this is the right sound?
             putBetOnTable()
             Wait(1000)
+        else
+            TriggerEvent("QBCore:Notify", 'The Minimum Bet is $10 and the Max is $2000')
+            TriggerEvent('Polar-Casino:Client:BlackJackHandle')
         end
     end
 end)
