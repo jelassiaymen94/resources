@@ -921,7 +921,7 @@ AddEventHandler(
 )
 
 function casinoNuiUpdateGame(rulettIndex, ido, statusz, amount)
-    exports['casinoUi']:DrawCasinoUi('show', "The Diamond Casino & Resort Rulette </p> Time Left: " .. string.format('%s %s', ido, "Seconds") .. "</p> Available chips: "..math.floor(amount))
+    exports['casinoUi']:DrawCasinoUi('show', "The Diamond Casino & Resort Rulette </p> Time Left: " .. string.format('%s %s', ido, "Seconds") .. "</p> Available chips: ".. amount)
 
 
 end
