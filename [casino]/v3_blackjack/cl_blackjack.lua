@@ -438,7 +438,7 @@ AddEventHandler("Blackjack:beginBetsBlackjack",function(gameID,tableId)
     drawCurrentHand = false
     standOrHitThisRound = false
     canExitBlackjack = true
-    bjmenu()
+    TriggerEvent('Polar-Casino:Client:BlackJackHandle')
     --waitingForBetState = true
     dealerPed = getDealerFromTableId(tableId)
     PlayAmbientSpeech1(dealerPed,"MINIGAME_DEALER_PLACE_BET","SPEECH_PARAMS_FORCE_NORMAL_CLEAR",1)
@@ -460,7 +460,7 @@ AddEventHandler("Blackjack:beginBetsBlackjack",function(gameID,tableId)
         end
     end)
 end)
-function bjmenu()
+RegisterNetEvent('Polar-Casino:Client:BlackJackHandle', function()
 	local menu = {
 		{
 			isMenuHeader = true,
@@ -495,7 +495,7 @@ function bjmenu()
     }
 
 	exports['qb-menu']:openMenu(menu)
-end
+end)
 function midbet()
     local menu = {
 		{
@@ -875,7 +875,7 @@ function startDealing(dealerPed,gameId,cardData,chairId,cardIndex,gotCurrentHand
             cardObjectOffsetRotation = blackjack_func_398(blackjack_func_368(fakeChairIdForDealerTurn))
         end
         if closestChair == chairId and sittingAtBlackjackTable then
-            midbet()
+            --midbet()
             bettingInstructional = setupBlackjackMidBetScaleform("instructional_buttons")
         end
         --soundID = GetSoundId()

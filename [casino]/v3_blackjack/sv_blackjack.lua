@@ -110,7 +110,7 @@ AddEventHandler("Blackjack:setBlackjackBet",function(gameId,betAmount,chairId)
                         TriggerClientEvent("Blackjack:syncChipsPropBlackjack",-1,betAmount,chairId)
                         TriggerClientEvent("QBCore:Notify",source,"Placed bet for " .. tostring(betAmount) .. " Chips", "success", 9000, "Blackjack")
                     else 
-                       -- TriggerClientEvent("QBCore:Notify",source,"You don't have enough chips", "error", 9000, "Blackjack")
+                        TriggerClientEvent('Polar-Casino:Client:BlackJackHandle', source)
                     end
                 end
             end
