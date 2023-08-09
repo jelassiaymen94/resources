@@ -919,15 +919,16 @@ AddEventHandler(
         end
     end
 )
-
+local what = nil
 function casinoNuiUpdateGame(rulettIndex, ido, statusz, amount)
-    exports['casinoUi']:DrawCasinoUi('show', "The Diamond Casino & Resort Rulette </p> Time Left: " .. string.format('%s %s', ido, "Seconds") .. "</p> Available chips: ".. amount)
+    --exports['casinoUi']:DrawCasinoUi('show', "The Diamond Casino & Resort Rulette </p> Time Left: " .. string.format('%s %s', ido, "Seconds") .. "</p> Available chips: ".. amount)
 
-
+    what = string.format('%s %s', ido, "Seconds")
 end
 
 RegisterNetEvent('casino:nui:updateChips', function(amount)
-    exports['casinoUi']:DrawCasinoUi('show', "The Diamond Casino & Resort Rulette </p> Available chips: "..math.floor(amount))
+    exports['casinoUi']:DrawCasinoUi('show', "The Diamond Casino & Resort Rulette </p> Time Left: " .. what .. "</p> Available chips: ".. amount)
+
 
     --exports['casinoUi']:HideCasinoUi('hide') 
 end)
