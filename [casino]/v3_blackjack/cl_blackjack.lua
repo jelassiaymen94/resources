@@ -211,7 +211,7 @@ Citizen.CreateThread(function()
                 end
             end
             if IsControlJustPressed(0, 201) then --Submit bet [Enter]
-                if tonumber(currentBetAmount) >= 199 then
+                if tonumber(currentBetAmount) >= 1 then
                     TriggerServerEvent("Blackjack:setBlackjackBet",globalGameId,currentBetAmount,closestChair)
                     closestDealerPed = getClosestDealer()
                     PlayAmbientSpeech1(closestDealerPed,"MINIGAME_DEALER_PLACE_CHIPS","SPEECH_PARAMS_FORCE_NORMAL_CLEAR",1) --TODO check this is the right sound?
@@ -221,16 +221,16 @@ Citizen.CreateThread(function()
                     Framework.Functions.Notify("Invalid bet amount", "error", 9000, "Blackjack")
                 end
             end
-            if IsControlPressed(0, 10) then --Increase bet [pageup]
+            if IsControlPressed(0, 172) then --Increase bet [pageup]
                 if currentBetAmount <= 1900 then 
                     currentBetAmount = currentBetAmount + 100
-                    Wait(100)
+                    Wait(200)
                 end
             end            
-            if IsControlPressed(0, 11) then --Decrease bet [pagedown]
+            if IsControlPressed(0, 173) then --Decrease bet [pagedown]
                 if currentBetAmount >= 100 then 
                     currentBetAmount = currentBetAmount - 100
-                    Wait(100)
+                    Wait(200)
                 end
             end
         end
@@ -2615,14 +2615,20 @@ function setupBlackjackInstructionalScaleform(scaleform)
 
     PushScaleformMovieFunction(scaleform, "SET_DATA_SLOT")
     PushScaleformMovieFunctionParameterInt(2)
-    Button(GetControlInstructionalButton(2, 11, true))
+    Button(GetControlInstructionalButton(2, 173, true))
     ButtonMessage("Reduce Bet") --Page Down
     PopScaleformMovieFunctionVoid()
 
     PushScaleformMovieFunction(scaleform, "SET_DATA_SLOT")
     PushScaleformMovieFunctionParameterInt(3)
-    Button(GetControlInstructionalButton(2, 10, true))
+    Button(GetControlInstructionalButton(2, 172, true))
     ButtonMessage("Increase Bet") --Page Up
+    PopScaleformMovieFunctionVoid()
+
+    PushScaleformMovieFunction(scaleform, "SET_DATA_SLOT")
+    PushScaleformMovieFunctionParameterInt(4)
+    Button(GetControlInstructionalButton(2, 22, true))
+    ButtonMessage("Custom Bet") --Page Up
     PopScaleformMovieFunctionVoid()
 
     --PushScaleformMovieFunction(scaleform, "SET_DATA_SLOT")
