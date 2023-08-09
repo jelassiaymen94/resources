@@ -108,7 +108,7 @@ AddEventHandler("Blackjack:setBlackjackBet",function(gameId,betAmount,chairId)
                         --print("GameId: " .. tostring(gameId) .. " source: " .. tostring(source) .. " has placed a bet of " .. tostring(betAmount))
                         TriggerClientEvent("Blackjack:successBlackjackBet",source)
                         TriggerClientEvent("Blackjack:syncChipsPropBlackjack",-1,betAmount,chairId)
-                        TriggerClientEvent("QBCore:Notify",source,"Placed bet for " .. tostring(betAmount) .. "x chips", "success", 9000, "Blackjack")
+                        TriggerClientEvent("QBCore:Notify",source,"Placed bet for " .. tostring(betAmount) .. " Chips", "success", 9000, "Blackjack")
                     else 
                        -- TriggerClientEvent("QBCore:Notify",source,"You don't have enough chips", "error", 9000, "Blackjack")
                     end
@@ -263,7 +263,7 @@ for i=0,3,1 do
                                                     nextCardCount = 0
                                                     blackjackGameData[gameId][source]["status"] = "bust"
                                                     local lostAmount = blackjackGameData[gameId][source][1]
-                                                    TriggerClientEvent("QBCore:Notify",source," - "..tostring(lostAmount).."x Chips", "error", 9000, "Blackjack")
+                                                    TriggerClientEvent("QBCore:Notify",source," - "..tostring(lostAmount).." Chips", "error", 9000, "Blackjack")
                                                     if lostAmount > 10000000 then
                                                         --TriggerClientEvent('mythic_notify:client:SendAlert',  -1, { type = 'inform', text = "Diamond Gazino | " .. GetPlayerName(source) .. " az �nce " .. tostring(getMoneyStringFormatted(lostAmount)) .. " �ip kaybetti!" })
                                                     end
