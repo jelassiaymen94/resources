@@ -453,30 +453,27 @@ RegisterNetEvent('Polar-Casino:Client:BlackJackHandle', function()
             header = "Mini Bet",
             txt = "Bet 100 Chips!",
             icon = "fa-solid fa-coins",
-            amount = 100,
             params = {
                 event = "Polar-Casino:Client:MaxBet",
-                
+                args = {amount = 100},
             }
         },
         {
             header = "Medium Bet",
             txt = "Bet 500 Chips!",
             icon = "fa-solid fa-coins",
-            amount = 500,
             params = {
                 event = "Polar-Casino:Client:MaxBet",
-                
+                args = {amount = 500},
             }
         },
         {
             header = "Max Bet",
             txt = "Bet 2,000 Chips!",
             icon = "fa-solid fa-coins",
-            amount = 2000,
             params = {
                 event = "Polar-Casino:Client:MaxBet",
-                
+                args = {amount = 2000},
             }
         },
         {
