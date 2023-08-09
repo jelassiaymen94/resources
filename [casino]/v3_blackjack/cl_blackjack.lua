@@ -272,34 +272,7 @@ Citizen.CreateThread(function()
     while true do
         if sittingAtBlackjackTable and canExitBlackjack then
             SetPedCapsule(PlayerPedId(),0.2) 
-            if IsControlJustPressed(0, 202) and not waitingForSitDownState then  --Leave seat [backspace]
-                shouldForceIdleCardGames = false
-                Wait(0)
-                blackjackAnimDictToLoad = "anim_casino_b@amb@casino@games@shared@player@"
-                RequestAnimDict(blackjackAnimDictToLoad)
-                while not HasAnimDictLoaded(blackjackAnimDictToLoad) do 
-                    RequestAnimDict(blackjackAnimDictToLoad)
-                    Wait(0)
-                end
-                --FreezeEntityPosition(GetPlayerPed(-1),false)
-                --SetEntityCollision(GetPlayerPed(-1),true,true)
-                NetworkStopSynchronisedScene(Local_198f_255)
-                TaskPlayAnim(GetPlayerPed(-1), blackjackAnimDictToLoad, "sit_exit_left", 1.0, 1.0, 2500, 0)              
-                --SetPlayerControl(PlayerId(),1,256,0)
-                sittingAtBlackjackTable = false
-                timeoutHowToBlackjack = true
-                blackjackInstructional = nil
-                bettingInstructional = nil
-                waitingForBetState = false
-                drawCurrentHand = false
-                drawTimerBar = false
-                TriggerServerEvent("Blackjack:leaveBlackjackTable")
-                closestDealerPed, closestDealerPedDistance = getClosestDealer()
-                PlayAmbientSpeech1(closestDealerPed,"MINIGAME_DEALER_LEAVE_NEUTRAL_GAME","SPEECH_PARAMS_FORCE_NORMAL_CLEAR",1)
-                SetTimeout(5000,function()
-                    timeoutHowToBlackjack = false
-                end)
-            end
+         
         end
         Wait(0)
     end
@@ -508,7 +481,7 @@ RegisterNetEvent('Polar-Casino:Client:BlackJackHandle', function()
             txt = "",
             icon = "fa-solid fa-circle-xmark",
             params = {
-                event = "menu",
+                event = "Polar-Casino:Client:StandUp",
             }
         }
     }
@@ -543,6 +516,34 @@ function midbet()
 
 	exports['qb-menu']:openMenu(menu)
 end
+RegisterNetEvent('Polar-Casino:Client:StandUp', function()
+    shouldForceIdleCardGames = false
+    Wait(0)
+    blackjackAnimDictToLoad = "anim_casino_b@amb@casino@games@shared@player@"
+    RequestAnimDict(blackjackAnimDictToLoad)
+    while not HasAnimDictLoaded(blackjackAnimDictToLoad) do 
+        RequestAnimDict(blackjackAnimDictToLoad)
+        Wait(0)
+    end
+    --FreezeEntityPosition(GetPlayerPed(-1),false)
+    --SetEntityCollision(GetPlayerPed(-1),true,true)
+    NetworkStopSynchronisedScene(Local_198f_255)
+    TaskPlayAnim(GetPlayerPed(-1), blackjackAnimDictToLoad, "sit_exit_left", 1.0, 1.0, 2500, 0)              
+    --SetPlayerControl(PlayerId(),1,256,0)
+    sittingAtBlackjackTable = false
+    timeoutHowToBlackjack = true
+    blackjackInstructional = nil
+    bettingInstructional = nil
+    waitingForBetState = false
+    drawCurrentHand = false
+    drawTimerBar = false
+    TriggerServerEvent("Blackjack:leaveBlackjackTable")
+    closestDealerPed, closestDealerPedDistance = getClosestDealer()
+    PlayAmbientSpeech1(closestDealerPed,"MINIGAME_DEALER_LEAVE_NEUTRAL_GAME","SPEECH_PARAMS_FORCE_NORMAL_CLEAR",1)
+    SetTimeout(5000,function()
+        timeoutHowToBlackjack = false
+    end)
+end)
 RegisterNetEvent('Polar-Casino:Client:Hit', function()
     waitingForStandOrHitState = false
     TriggerServerEvent("Blackjack:hitBlackjack",globalGameId,globalNextCardCount)
