@@ -681,6 +681,8 @@ createRulettAsztal = function(index, data)
                 PlayEntityAnim(self.tableObject, 'intro_wheel', LIB, 1000.0, false, true, true, 0, 136704)
                 PlayEntityAnim(self.tableObject, 'loop_wheel', LIB, 1000.0, false, true, false, 0, 136704)
 
+                Wait(5000)
+
                 PlayEntityAnim(self.ballObject, string.format('exit_%s_ball', tickRate), LIB, 1000.0, false, true, false, 0, 136704)
                 PlayEntityAnim(self.tableObject, string.format('exit_%s_wheel', tickRate), LIB, 1000.0, false, true, false, 0, 136704)
 
@@ -919,39 +921,17 @@ AddEventHandler(
 )
 
 function casinoNuiUpdateGame(rulettIndex, ido, statusz)
-    if selectedRulett == rulettIndex then
-        if not statusz then
-            SendNUIMessage(
-                {
-                    action = 'setGameInfo',
-                    header = _U('starting_soon'),
-                    szoveg = string.format('%s %s', ido, _U('seconds'))
-                }
-            )
-        else
-            SendNUIMessage(
-                {
-                    action = 'setGameInfo',
-                    header = _U('game_going_on'),
-                    szoveg = nil
-                }
-            )
-        end
-    end
+    exports['casinoUi']:DrawCasinoUi('show', "The Diamond Casino & Resort Rulette </p> Time Left: " .. string.format('%s %s', ido, "Seconds") .. "</p> Available chips: "..math.floor(amount))
+
+
 end
 
-RegisterNetEvent('casino:nui:updateChips')
-AddEventHandler(
-    'casino:nui:updateChips',
-    function(amount)
-        SendNUIMessage(
-            {
-                action = 'setCurrentChips',
-                amount = amount
-            }
-        )
-    end
-)
+RegisterNetEvent('casino:nui:updateChips', function(amount)
+    exports['casinoUi']:DrawCasinoUi('show', "The Diamond Casino & Resort Rulette </p> Available chips: "..math.floor(amount))
+
+    --exports['casinoUi']:HideCasinoUi('hide') 
+end)
+
 
 function getClosestChairData(tableObject)
     local localPlayer = PlayerPedId()
