@@ -171,8 +171,7 @@ RegisterNetEvent('qb-rental:client:openMenu', function(data)
                     }
                 }
             }
-        end
-    end
+        end 
     elseif menu == "truck" then
     for k=1, #Config.Vehicles.truck do
         local veh = QBCore.Shared.Vehicles[Config.Vehicles.truck[k].model]
