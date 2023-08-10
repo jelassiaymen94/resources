@@ -2,7 +2,7 @@ game 'gta5'
 fx_version 'adamant'
 
 shared_scripts { 
-	'@v3_casino/config.lua'
+	'@Polar-Casino/config.lua'
 }
 
 client_scripts {
