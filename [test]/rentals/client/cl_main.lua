@@ -370,6 +370,17 @@ RegisterNetEvent('qb-rental:client:spawncar', function(data)
                     SpawnVehicle = true
                     print()
                 end, Config.Locations.vehicle3.spawnpoint, true)
+            elseif menu == "truck" then
+                QBCore.Functions.SpawnVehicle(model, function(vehicle)
+                    SetEntityHeading(vehicle, Config.Locations.truck.spawnpoint.w)
+                    -- TaskWarpPedIntoVehicle(player, vehicle, -1)
+                    TriggerEvent("vehiclekeys:client:SetOwner", GetVehicleNumberPlateText(vehicle))
+                    SetVehicleEngineOn(vehicle, true, true)
+                    SetVehicleDirtLevel(vehicle, 0.0)
+                    exports[Config.FuelExport]:SetFuel(vehicle, 100)
+                    SpawnVehicle = true
+                    print()
+                end, Config.Locations.truck.spawnpoint, true)
             elseif menu == "aircraft" then
                 QBCore.Functions.SpawnVehicle(model, function(vehicle)
                     SetEntityHeading(vehicle, Config.Locations.aircraft.spawnpoint.w)
