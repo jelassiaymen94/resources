@@ -29,50 +29,7 @@ CreateThread(function()
 	end
 end)
 
-Citizen.CreateThread(function()
-	if Config.ChangeCharacterPoint and Config.ChangeCharacterPoint.enable and Config.ChangeCharacterPoint.blip then
-		local blipSett = Config.ChangeCharacterPoint.blip
-		local blip = AddBlipForCoord(Config.ChangeCharacterPoint.coords)
-		SetBlipSprite(blip, blipSett.sprite)
-		SetBlipDisplay(blip, 4)
-		SetBlipScale(blip, blipSett.scale)
-		SetBlipColour(blip, blipSett.color)
-		SetBlipAsShortRange(blip, true)
-		BeginTextCommandSetBlipName("STRING")
-		AddTextComponentString(blipSett.name)
-		EndTextCommandSetBlipName(blip)
-	end
-	local inRange = false
-    local shown = false
-	while Config.ChangeCharacterPoint and Config.ChangeCharacterPoint.enable do
-		inRange = false
-		local sleep = true
-		if Config.ChangeCharacterPoint then
-			local myPed = PlayerPedId()
-			local myCoords = GetEntityCoords(myPed)
-			local distance = #(myCoords - Config.ChangeCharacterPoint.coords)
-			if distance < 20.0 then
-				sleep = false
-				DrawMarker(Config.ChangeCharacterPoint.marker.id, Config.ChangeCharacterPoint.coords, 0, 0, 0, 0, 0, 0, Config.ChangeCharacterPoint.marker.size, Config.ChangeCharacterPoint.marker.rgba[1], Config.ChangeCharacterPoint.marker.rgba[2], Config.ChangeCharacterPoint.marker.rgba[3], Config.ChangeCharacterPoint.marker.rgba[4], false, false, false, Config.ChangeCharacterPoint.marker.rotate, nil, nil, nil)
-				if distance < 1.0 then
-					inRange = true
-					if IsControlJustPressed(0, 38) then
-						inRange = false
-						TriggerServerEvent('multicharacter:relog')
-					end
-				end
-			end
-		end
-		if inRange and not shown then
-            shown = true
-			exports['qb-core']:DrawText(Config.Translate['helpnotification.change_character'], 'left')
-        elseif not inRange and shown then
-            shown = false
-            exports['qb-core']:HideText()
-        end
-		Citizen.Wait(sleep and 1000 or 1)
-	end
-end)
+
 
 RegisterNetEvent('multicharacter:SetupCharacters')
 AddEventHandler('multicharacter:SetupCharacters', function()
