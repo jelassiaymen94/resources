@@ -3,7 +3,7 @@ game 'gta5'
 
 shared_scripts { 
 	'config.lua',
-	'@v3_casino/config.lua'
+	'@Polar-Casino/config.lua'
 }
 
 server_scripts {
