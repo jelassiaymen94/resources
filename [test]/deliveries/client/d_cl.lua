@@ -220,7 +220,7 @@ CreateThread(function()
     SetBlipAsShortRange(mainBlip, true)
     SetBlipColour(mainBlip, 24)
     BeginTextCommandSetBlipName("STRING")
-    AddTextComponentSubstringPlayerName("Delivery")
+    AddTextComponentSubstringPlayerName("Go Postal")
     EndTextCommandSetBlipName(mainBlip)
 
     Wait(2500) -- QB target sometimes dosnt load it straight away and fucks it up, so I just wait a bit.

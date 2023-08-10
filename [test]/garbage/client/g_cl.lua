@@ -252,7 +252,7 @@ CreateThread(function()
     SetBlipAsShortRange(mainBlip, true)
     SetBlipColour(mainBlip, 39)
     BeginTextCommandSetBlipName("STRING")
-    AddTextComponentSubstringPlayerName("Sanitation")
+    AddTextComponentSubstringPlayerName("AR Sanitation")
     EndTextCommandSetBlipName(mainBlip)
 
     exports['qb-target']:AddGlobalVehicle({
