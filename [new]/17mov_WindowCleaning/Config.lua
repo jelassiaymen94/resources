@@ -3,7 +3,7 @@ Config = {}
 Config.useModernUI = true              -- In March 2023 the jobs have passed huge rework, and the UI has been changed. Set it to false, to use OLD no longer supported UI.
 Config.splitReward = true          -- This option work's only when useModernUI is false. If this option is true, the payout is: (Config.OnePercentWorth * Progress ) / PartyCount, if false then: (Config.OnePercentWorth * Progress)
 
-Config.UseBuiltInNotifications = false   -- Set to false if you want to use ur framework notification style. Otherwise, the built in modern notifications will be used.=
+Config.UseBuiltInNotifications = true   -- Set to false if you want to use ur framework notification style. Otherwise, the built in modern notifications will be used.=
 
 Config.letBossSplitReward = false                    -- If it's true, then boss can manage whole party rewards percent in menu. If you'll set it to false, then everybody will get same amount.
 Config.multiplyRewardWhileWorkingInGroup = true     -- If it's false, then reward will stay by default. For example $1000 for completing whole job. If you'll set it to true, then the payout will depend on how many players is there in the group. For example, if for full job there's $1000, then if player will work in 4 member group, the reward will be $4000. (baseReward * partyCount)
@@ -12,14 +12,14 @@ Config.DefaultBucket = 0                        -- Set here default bucket for y
 Config.UseTarget = true                        -- Change it to true if you want to use a target system. All setings about the target system are under target.lua file.
 Config.RequiredJob = "none"                     -- Set to "none" if you dont want using jobs. If you are using target, you have to set "job" parameter inside every export in target.lua
 Config.RequireJobAlsoForFriends = false          -- If it's false, then only host needs to have the job, if it's true then everybody from group needs to have the Config.RequiredJob
-Config.RequireOneFriendMinimum = true          -- Set to true if you want to force players to create teams
+Config.RequireOneFriendMinimum = false          -- Set to true if you want to force players to create teams
 
 Config.JobVehicleModel = "speedo"                 -- Model of the company car
 Config.EnableVehicleTeleporting = true          -- If its true, then the script will teleport the host to the company vehicle. If its false, then the company vehicle will apeear, but the whole squad need to go enter the car manually
 Config.PenaltyAmount = 500                      -- Penalty that is levied when a player finishes work without a company vehicle
 Config.DeleteVehicleWithPenalty = false         -- Delete Vehicle even if its not company veh
 Config.DontPayRewardWithoutVehicle = true      -- Set to true if you want to dont pay reward to players who want's to end without company vehicle (accepting the penalty)
-Config.JobCooldown = 10 * 60 -- 10 * 60            -- 0 minutes cooldown between making jobs (in brackets there's example for 10 minutes)
+Config.JobCooldown = 0 * 60 -- 10 * 60            -- 0 minutes cooldown between making jobs (in brackets there's example for 10 minutes)
 Config.GiveKeysToAllLobby = true                -- Set to false if you want to give keys only for group creator while starting job
 Config.ProgressBarOffset = "25px"                   -- Value in px of counter offset on screen
 Config.ProgressBarAlign = "bottom-right"            -- Align of the progressbar
