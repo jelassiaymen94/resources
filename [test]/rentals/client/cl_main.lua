@@ -313,6 +313,11 @@ RegisterNetEvent('qb-rental:client:spawncar', function(data)
             QBCore.Functions.Notify(label, "error", 4500)
             return
         end 
+    elseif menu == "truck" then
+        if IsAnyVehicleNearPoint(Config.Locations.truck.spawnpoint.x, Config.Locations.truck.spawnpoint.y, Config.Locations.truck.spawnpoint.z, 2.0) then 
+            QBCore.Functions.Notify(label, "error", 4500)
+            return
+        end 
     elseif menu == "boat" then
         if IsAnyVehicleNearPoint(Config.Locations.boat.spawnpoint.x, Config.Locations.boat.spawnpoint.y, Config.Locations.boat.spawnpoint.z, 10.0) then 
             QBCore.Functions.Notify(label, "error", 4500)

@@ -86,6 +86,10 @@ Config.Vehicles = {
             model = 'hauler', --DONT CHANGE PLEASE
             money = 500,
         },
+        [2] = {
+            model = 'phantom', --DONT CHANGE PLEASE
+            money = 500,
+        },
     },
     air = {
         [1] = {
