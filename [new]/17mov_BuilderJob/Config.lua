@@ -52,7 +52,7 @@ Config.Blips = { -- Here you can configure Company blip.
     [1] = {
         Sprite = 801,
         Color = 69,
-        Scale = 0.8,
+        Scale = 0.6,
         Pos = vector3(926.47, -1560.25, 30.74),
         Label = 'Los Santos Construction'
     },
