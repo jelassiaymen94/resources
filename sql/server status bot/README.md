@@ -1,4 +1,5 @@
-## Basic documentation is located here [https://fivem.cloudless.space/](https://fivem.cloudless.space/)
+## Need Hosting for this bot?
+> You can use code `Cloudless` to save **20%** on your first order!!! Website: https://impulsehosting.net/. 
 
 ### FiveM Server Status
 [![](https://img.shields.io/github/forks/TheONLYGod1/FivemServerStatus?label=Fork&style=social)](https://github.com/TheONLYGod1/FivemServerStatus/fork)
