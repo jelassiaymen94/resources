@@ -75,6 +75,10 @@ Config = {
 		--	{ name = "petwaterbottleportable", price = 500, amount = 50 },
 		--	{ name = "petnametag", price = 1500, amount = 50 },
 		--	{ name = "scissors", price = 1000, amount = 5, },
+			{ name = "detector", price = 425, amount = 25, },
+			{ name = "shovel", price = 155, amount = 25, },
+			{ name = "weapon_hammer", price = 5, amount = 50, },
+		--	{ name = "cleaningkit", price = 5, amount = 50, },
 			{ name = "cleaningkit", price = 5, amount = 50, },
 			{ name = "fishbait", price = 25, amount = math.random(250,500)},
 			
