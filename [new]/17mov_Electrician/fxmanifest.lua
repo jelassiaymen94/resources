@@ -33,9 +33,7 @@ escrow_ignore {
     "stream/*.**",
 }
 
-dependencies {
-    'Howdy-Minigame'
-}
+
 
 data_file 'VEHICLE_METADATA_FILE'    'stream/vehicles.meta'
 data_file 'CARCOLS_FILE'             'stream/carcols.meta'
