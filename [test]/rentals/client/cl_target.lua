@@ -115,5 +115,19 @@ CreateThread(function(data)
                 distance = 3.0
                 })
 
-
+                exports['qb-target']:AddCircleZone("BoatPed3", vector3(-308.6725, -2447.0972, 1.8159), 0.4, { 
+                    name = "boatped3", 
+                    debugPoly = false,
+                    }, {
+                    options = {
+                        {
+                            type = "client",
+                            event = "qb-rental:client:openMenu",
+                            icon = "fas fa-car",
+                            label = "Rent Truck",
+                            MenuType = "truck"
+                        },
+                    },
+                    distance = 3.0
+                    })
 end)

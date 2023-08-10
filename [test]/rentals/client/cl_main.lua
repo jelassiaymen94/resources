@@ -173,6 +173,24 @@ RegisterNetEvent('qb-rental:client:openMenu', function(data)
             }
         end
     end
+    elseif menu == "truck" then
+    for k=1, #Config.Vehicles.truck do
+        local veh = QBCore.Shared.Vehicles[Config.Vehicles.truck[k].model]
+        local name = veh and ('%s %s'):format(veh.brand, veh.name) or Config.Vehicles.truck[k].model:sub(1,1):upper()..Config.Vehicles.truck[k].model:sub(2)
+        vehMenu[#vehMenu+1] = {
+            id = k+1,
+            header = name,
+            txt = ("$%s"):format(comma_value(Config.Vehicles.truck[k].money)),
+            params = {
+                event = "qb-rental:client:spawncar",
+                args = {
+                    model = Config.Vehicles.truck[k].model,
+                    money = Config.Vehicles.truck[k].money,
+                }
+            }
+        }
+    end
+end
     exports['qb-menu']:openMenu(vehMenu)
 end)
 
@@ -218,6 +236,12 @@ local CreateNPC = function()
     TaskStartScenarioInPlace(created_ped, 'WORLD_HUMAN_CLIPBOARD', 0, true)
 
     created_ped = CreatePed(5, Config.Locations.boat3.pedhash, Config.Locations.boat3.coords.x, Config.Locations.boat3.coords.y, Config.Locations.boat3.coords.z, Config.Locations.boat3.coords.w, false, true)
+    FreezeEntityPosition(created_ped, true)
+    SetEntityInvincible(created_ped, true)
+    SetBlockingOfNonTemporaryEvents(created_ped, true)
+    TaskStartScenarioInPlace(created_ped, 'WORLD_HUMAN_CLIPBOARD', 0, true)
+
+    created_ped = CreatePed(5, Config.Locations.truck.pedhash, Config.Locations.truck.coords.x, Config.Locations.truck.coords.y, Config.Locations.truck.coords.z, Config.Locations.truck.coords.w, false, true)
     FreezeEntityPosition(created_ped, true)
     SetEntityInvincible(created_ped, true)
     SetBlockingOfNonTemporaryEvents(created_ped, true)

@@ -184,7 +184,7 @@ end)
 AddEventHandler('onResourceStart', function(resource)
     if resource == GetCurrentResourceName() then
         Wait(100)
-        start()
+      --  start()
       --  blip()
     end
 end)
@@ -216,7 +216,6 @@ function blip()
     SetBlipColour(blip, 39) BeginTextCommandSetBlipName("STRING") AddTextComponentSubstringPlayerName('Los Santos Trucking') EndTextCommandSetBlipName(blip)
 end
 function start()
-
     for i = 1, #TruckPeds do
         exports['qb-target']:SpawnPed({
             model = TruckPeds[i].model,
@@ -243,7 +242,6 @@ function start()
                 distance = 2.5,
             },
         })
-    
     end
 end
 function getjob()

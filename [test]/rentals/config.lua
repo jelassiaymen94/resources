@@ -22,6 +22,11 @@ Config.Locations = {
         spawnpoint = vector4(-135.2698, 6336.2402, 31.4905, 134.5961),
     },
 
+    truck = {
+        coords = vector4(1740.26, -1605.27, 112.5, 130.56),
+        pedhash = `s_m_m_trucker_01`,
+        spawnpoint = vector4(1739.27, -1633.49, 112.48, 99.52),
+    },
 
     aircraft = {
         coords = vector4(-1686.57, -3149.22, 12.99, 240.88),
@@ -68,12 +73,18 @@ Config.Vehicles = {
             money = 500,
         },
         [3] = {
-            model = 'hauler', --DONT CHANGE PLEASE
+            model = 'sanchez', --DONT CHANGE PLEASE
             money = 3200,
         },
         [4] = {
             model = 'speedo', --DONT CHANGE PLEASE
             money = 1200,
+        },
+    },
+    truck = {
+        [1] = {
+            model = 'hauler', --DONT CHANGE PLEASE
+            money = 100,
         },
     },
     air = {

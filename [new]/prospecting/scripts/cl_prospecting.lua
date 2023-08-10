@@ -548,7 +548,7 @@ CreateThread(function()
             SetBlipAlpha(blip2, 128)
             SetBlipAsShortRange(blip2, true)
             BeginTextCommandSetBlipName("STRING")
-            AddTextComponentString("Prospecting")
+            AddTextComponentString("Littered Beach")
             EndTextCommandSetBlipName(blip2)
         end
     end
