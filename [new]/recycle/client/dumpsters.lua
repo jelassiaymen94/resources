@@ -79,10 +79,15 @@ RegisterNetEvent('jim-recycle:Dumpsters:Search', function()
                                 pos = math.random(10, 30),
                                 width = math.random(10, 20),
                             }, function()
+                                if math.random(1,100) < 40 then
                                 TriggerEvent("QBCore:Notify", Loc[Config.Lan].success["get_trash"], "success")
                                 startSearching(GetEntityCoords(dumpster))
                                 searched[i+1] = dumpster
                                 Citizen.Wait(1000)
+                                else
+                                    TriggerEvent("QBCore:Notify", Loc[Config.Lan].error["nothing"], "error")
+                                    Citizen.Wait(1000)
+                                end
                             end, function()
                                 TriggerEvent("QBCore:Notify", Loc[Config.Lan].error["nothing"], "error")
                                 searched[i+1] = dumpster
