@@ -4,7 +4,7 @@ local count = 0
 local isdead = false
 
 CreateThread(function()
-        while true do
+        --while true do
             Wait(100)
             local ped = PlayerPedId()
             PlayerData = QBCore.Functions.GetPlayerData()
@@ -41,7 +41,7 @@ CreateThread(function()
                         end
                     end
                 end
-            end
+           -- end
             end
             if PlayerData['isdead']then
                  SetTimecycleModifier("")
