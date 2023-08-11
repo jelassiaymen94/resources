@@ -80,7 +80,7 @@ Config = {
 			{ name = "weapon_hammer", price = 5, amount = 50, },
 		--	{ name = "cleaningkit", price = 5, amount = 50, },
 			{ name = "cleaningkit", price = 5, amount = 50, },
-			{ name = "fishbait", price = 25, amount = math.random(250,500)},
+			--{ name = "fishbait", price = 25, amount = math.random(250,500)},
 			{ name = "screwdriverset", price = 2500, amount = 20, },
 		},
 		["weedshop"] = {
