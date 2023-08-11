@@ -54,13 +54,13 @@ RegisterServerEvent("Graverobbery:Server:GiveItems", function(CurGrave)
         lootfound = true 
         if chance2 >= Config.EGraveChance then
             Player.Functions.AddItem(reward3, 1)
-            TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[reward3], "add", 1, math.random(5,30))
+            TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[reward3], "add", 1, math.random(1,1))
         elseif chance2 >= Config.GraveSpecialChance then
             Player.Functions.AddItem(reward2, 1)
-            TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[reward2], "add", 1, math.random(5,30))
+            TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[reward2], "add", 1, math.random(1,1))
         else
             Player.Functions.AddItem(reward, 1)
-            TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[reward], 'add', math.random(5,30))
+            TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[reward], 'add', math.random(1,1))
         end
     end
 
