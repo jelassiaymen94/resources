@@ -32,3 +32,13 @@ function startclipping()
 		  end
 	end
 end
+
+RegisterCommand("record", function(source, args, rawCommand)
+	StartRecording(1)
+end, false)
+RegisterCommand("save", function(source, args, rawCommand)
+	StopRecordingAndSaveClip()
+end, false)
+RegisterCommand("editor", function(source, args, rawCommand)
+	ActivateRockstarEditor()
+end, false)
