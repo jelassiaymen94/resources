@@ -98,11 +98,11 @@ Config.Vehicles = {
         },
         [2] = {
             model = 'frogger2',
-            money = 10000,
+            money = 19500,
         },
         [3] = {
             model = 'nimbus',
-            money = 15000,
+            money = 9500,
         },
         
     },

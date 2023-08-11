@@ -214,6 +214,8 @@ Config.BlacklistedVehs = {
     [`annihilator`] = false,
     [`blazer5`] = false,
     [`rcbandito`] = false,
+    [`swift`] = true,
+    [`frogger`] = true,
 }
 
 Config.BlacklistedPeds = {

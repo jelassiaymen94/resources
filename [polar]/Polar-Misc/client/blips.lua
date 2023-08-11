@@ -3,7 +3,7 @@ local QBCore = exports['qb-core']:GetCoreObject()
 
     CreateThread(function()
 
-        -- altruist camp
+        --[[ altruist camp
         local altruist = AddBlipForCoord(vector3(-1119.58, 4927.58, 218.5))
         SetBlipSprite (altruist, 269)
         SetBlipDisplay(altruist, 6) 
@@ -13,7 +13,7 @@ local QBCore = exports['qb-core']:GetCoreObject()
         BeginTextCommandSetBlipName("STRING")
         AddTextComponentSubstringPlayerName("The Altruists")
         EndTextCommandSetBlipName(altruist)
-
+]]
 
          -- boilingbroke
          local boilingbroke = AddBlipForCoord(vector3(1697.24, 2581.79, 52.81))
@@ -126,7 +126,7 @@ local QBCore = exports['qb-core']:GetCoreObject()
          BeginTextCommandSetBlipName("STRING")
          AddTextComponentSubstringPlayerName("Dirt Bike Race by S.A.M.S.!")
          EndTextCommandSetBlipName(event)
-         ]]
+         
          -- churhc of rockford
          local blip = AddBlipForCoord(vector3(-766.1784, -24.1005, 21.0794))
          SetBlipSprite (blip, 279)
@@ -138,7 +138,7 @@ local QBCore = exports['qb-core']:GetCoreObject()
          AddTextComponentString("Church of Rockford")
          EndTextCommandSetBlipName(blip)
 
-         --[[
+         
          local blip = AddBlipForCoord(vector3(-816.96, -702.77, 0.06))
          SetBlipSprite (blip, 671)
          SetBlipDisplay(blip, 6) 

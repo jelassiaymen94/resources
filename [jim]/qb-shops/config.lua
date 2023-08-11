@@ -81,7 +81,7 @@ Config = {
 		--	{ name = "cleaningkit", price = 5, amount = 50, },
 			{ name = "cleaningkit", price = 5, amount = 50, },
 			{ name = "fishbait", price = 25, amount = math.random(250,500)},
-			
+			{ name = "screwdriverset", price = 2500, amount = 20, },
 		},
 		["weedshop"] = {
 			--{ name = "joint", price = 100, amount = 30, },
@@ -101,7 +101,7 @@ Config = {
 			{ name = "fishingrod", price = 1000, amount = math.random(15,25),},
 			{ name = "fishbait", price = 25, amount = math.random(250,500)},
 			{ name = "jerry_can", price = 2500, amount = 5, },
-			{ name = "screwdriverset", price = 2500, amount = 20, },
+			
 		},
 		
 		["leisureshop"] = {
