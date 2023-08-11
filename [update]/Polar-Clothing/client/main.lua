@@ -100,7 +100,7 @@ local skinData = {
         fdefaultTexture = 0,
     },
     ["arms"] = {
-        item = 0,
+        item = 15,
         texture = 0,
         defaultItem = 15,
         defaultTexture = 0,
@@ -108,7 +108,7 @@ local skinData = {
         fdefaultTexture = 0,
     },
     ["t-shirt"] = {
-        item = 1,
+        item = 15,
         texture = 0,
         defaultItem = 15,
         defaultTexture = 0,
@@ -116,7 +116,7 @@ local skinData = {
         fdefaultTexture = 0,
     },
     ["torso2"] = {
-        item = 0,
+        item = -1,
         texture = 0,
         defaultItem = -1,
         defaultTexture = 0,
@@ -140,7 +140,7 @@ local skinData = {
         fdefaultTexture = 0,
     },
     ["shoes"] = {
-        item = 0,
+        item = 138,
         texture = 0,
         defaultItem = 138,
         defaultTexture = 0,
