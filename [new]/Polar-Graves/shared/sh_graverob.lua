@@ -5,7 +5,7 @@ Config.GraveItem = "shovel"
 Config.BreakChance = 55 
 Config.GraveSpecialChance = 90 -- 10 % chance of getting reward
 Config.EGraveChance = 99 -- 1%
-Config.GraveRewardChance = 25 -- 75 % chance of reward
+Config.GraveRewardChance = 55 -- 45 % chance of reward
 Config.GraveRewards ={
     "bones", "bones",
     "bonepowder", "bonepowder",
@@ -33,7 +33,7 @@ Config.SGraveRewards = {
     "weapon_ball",
     "weapon_shiv",
     "weapon_golfclub",
-    
+
     "dirtyband",
     "rolex",
     "goldbar",
