@@ -37,21 +37,16 @@ RegisterServerEvent('Polar-ArmoredTrucks:server:receiveItem', function(netId)
 	local src = source
     local Player = QBCore.Functions.GetPlayer(src)
     if not Player then return end
-    print(netId)
-    print(entity)
+    if netId == nil then return end
+   
     local entity = NetworkGetEntityFromNetworkId(netId)
-    if not DoesEntityExist(entity) then return end
-    if GetEntityModel(entity) ~= 'stockade' then
-       -- exports['qb-core']:ExploitBan(src, "banktrucks-no-stockade")
-       -- return
-    end
-    
+  
     local plate = GetVehicleNumberPlateText(entity)
     if lootedtrucks[plate] then return end
     lootedtrucks[plate] = true
     TriggerClientEvent('Polar-ArmoredTrucks:client:UpdateLooted', -1, plate)
 
-    -- inked money bags
+   
     reward()
 end)
 
