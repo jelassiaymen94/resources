@@ -88,7 +88,15 @@ local function AddItem(id, name, amount)
         xPlayer.addInventoryItem(name, amount)
     end
 end
-
+function RemoveItem(src) 
+    local chance = math.random(1,100) 
+    if chance < 25 then
+    local src = source 
+    local Player = QBCore.Functions.GetPlayer(src)
+    Player.Functions.RemoveItem(Config.DetectorItem, 1) 
+    TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.DetectorItem], "remove", 1)  
+    end    
+end
 function OnCollected(player, resource, data, x, y, z)
     
     local items = {}
@@ -104,6 +112,7 @@ function OnCollected(player, resource, data, x, y, z)
     local item = items[math.random(1, #items)]
     local amount = math.random(item.min, item.max)
     AddItem(player, item.name, amount)
+    RemoveItem(player)
 end
 
 --[[ Export handling ]]

@@ -577,28 +577,30 @@ Config.UseTarget = GetConvar('UseTarget', 'false') == 'true'
 
 -- width, length, minZ and maxZ are for the size and height of the PolyZone
 Config.Stores = {
-    [1] = {shopType = 'clothing', coords = vector3(-1448.72, -238.91, 49.81), width = 5, length = 5}, --644
-    [2] = {shopType = 'clothing', coords = vector3(1693.54, 4830.79, 42.07), width = 5, length = 5}, --2014
-    [3] = {shopType = 'clothing', coords = vector3(-1199.32, -769.85, 17.31), width = 5, length = 5}, --342
-    [4] = {shopType = 'clothing', coords = vector3(426.22, -798.37, 29.49), width = 5, length = 5}, --215
-    [5] = {shopType = 'clothing', coords = vector3(-165.53, -302.4, 39.73), width = 5, length = 5}, --539
-    [6] = {shopType = 'clothing', coords = vector3(74.64, -1400.79, 29.38), width = 5, length = 5}, --134
-    [7] = {shopType = 'clothing', coords = vector3(-829.6, -1076.86, 11.33), width = 5, length = 5}, -- 354
-    [8] = {shopType = 'clothing', coords = vector3(-1450.711, -236.83, 48.809), width = 5, length = 5},
-    [9] = {shopType = 'clothing', coords = vector3(11.15, 6517.19, 31.88), width = 5, length = 5}, -- 3020
-    [10] = {shopType = 'clothing', coords = vector3(612.51, 2756.6, 42.09), width = 5, length = 5}, -- 930
-    [11] = {shopType = 'clothing', coords = vector3(1188.79, 2710.86, 38.22), width = 5, length = 5}, --940
-    [12] = {shopType = 'clothing', coords = vector3(-3166.18, 1048.37, 20.86), width = 5, length = 5}, -- 908
-    [13] = {shopType = 'clothing', coords = vector3(-1107.81, 2705.86, 19.11), width = 5, length = 5}, -- 1005
+    [1] = {shopType = 'clothing', coords = vector3(-1448.24, -239.18, 49.77), width = 5, length = 5}, --644
+    [2] = {shopType = 'clothing', coords = vector3(1691.94, 4823.18, 42.22), width = 5, length = 5}, --2014
+    [3] = {shopType = 'clothing', coords = vector3(-1196.03, -770.87, 17.98), width = 5, length = 5}, --342
+    [4] = {shopType = 'clothing', coords = vector3(423.57, -805.52, 29.65), width = 5, length = 5}, --215
+    [5] = {shopType = 'clothing', coords = vector3(-166.29, -302.19, 39.69), width = 5, length = 5}, --539
+    [6] = {shopType = 'clothing', coords = vector3(77.5, -1393.65, 29.53), width = 5, length = 5}, --134
+    [7] = {shopType = 'clothing', coords = vector3(-821.89, -1075.75, 11.49), width = 5, length = 5}, -- 354
+    [8] = {shopType = 'clothing', coords = vector3(-1447.93, -239.46, 49.77), width = 5, length = 5},
+    [9] = {shopType = 'clothing', coords = vector3(3.7, 6514.54, 32.04), width = 5, length = 5}, -- 3020
+    [10] = {shopType = 'clothing', coords = vector3(619.76, 2761.77, 42.28), width = 5, length = 5}, -- 930
+    [11] = {shopType = 'clothing', coords = vector3(1195.94, 2708.6, 38.38), width = 5, length = 5}, --940
+    [12] = {shopType = 'clothing', coords = vector3(-3172.38, 1050.99, 21.06), width = 5, length = 5}, -- 908
+    [13] = {shopType = 'clothing', coords = vector3(-1100.8, 2708.69, 19.27), width = 5, length = 5}, -- 1005
+
     --[14] = {shopType = 'clothing', coords = vector3(-1207.65, -1456.88, 4.3784737586975), width = 5, length = 5},
-    [14] = {shopType = 'clothing', coords = vector3(129.91, -218.86, 54.56), width = 5, length = 5}, -- 583
-    [15] = {shopType = 'barber', coords = vector3(-814.15, -182.41, 37.57), width = 5, length = 5}, -- 682
-    [16] = {shopType = 'barber', coords = vector3(135.66, -1710.88, 29.29), width = 5, length = 5}, -- 129
-    [17] = {shopType = 'barber', coords = vector3(-1285.77, -1118.07, 6.99), width = 5, length = 5}, -- 314
-    [18] = {shopType = 'barber', coords = vector3(1933.98, 3728.12, 32.84), width = 5, length = 5}, -- 1034
-    [19] = {shopType = 'barber', coords = vector3(1209.29, -472.77, 66.21), width = 5, length = 5}, -- 436
-    [20] = {shopType = 'barber', coords = vector3(-32.66, -149.28, 57.08), width = 5, length = 5}, -- 571
-    [21] = {shopType = 'barber', coords = vector3(-280.91, 6229.79, 31.7), width = 5, length = 5} -- 3012
+
+   -- [14] = {shopType = 'clothing', coords = vector3(123.44, -216.5, 54.75), width = 5, length = 5}, -- 583
+    [15] = {shopType = 'barber', coords = vector3(-814.41, -182.26, 37.62), width = 5, length = 5}, -- 682
+    [16] = {shopType = 'barber', coords = vector3(136.68, -1710.78, 29.33), width = 5, length = 5}, -- 129
+    [17] = {shopType = 'barber', coords = vector3(-1285.18, -1118.19, 7.17), width = 5, length = 5}, -- 314
+    [18] = {shopType = 'barber', coords = vector3(1933.85, 3728.78, 32.86), width = 5, length = 5}, -- 1034
+    [19] = {shopType = 'barber', coords = vector3(1209.76, -473.39, 66.22), width = 5, length = 5}, -- 436
+    [20] = {shopType = 'barber', coords = vector3(-33.37, -149.74, 57.09), width = 5, length = 5}, -- 571
+    [21] = {shopType = 'barber', coords = vector3(-280.8, 6228.95, 31.71), width = 5, length = 5} -- 3012
 }
 
 -- set isGang to true if the requiredJob is a gang
