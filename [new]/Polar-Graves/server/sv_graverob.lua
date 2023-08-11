@@ -14,10 +14,11 @@ RegisterNetEvent('Polar-Graves:Server:GraveSet', function() number += 1 if numbe
 RegisterNetEvent('Polar-Graves:Server:TargetRemove', function(target)  TriggerClientEvent('Polar-Graves:Client:TargetRemove', -1, target) end)
 
 CreateThread(function()
+    while true do 
     Wait(math.random(3000, 6000))
 
     ResetGraveTimer()
-
+    end
 end)
 
 
