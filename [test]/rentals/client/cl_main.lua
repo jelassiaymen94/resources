@@ -267,6 +267,11 @@ local SpawnNPC = function()
         while not HasModelLoaded(Config.Locations.aircraft.pedhash) do
             Wait(1)
         end
+         -- Truck Rentals
+         RequestModel(Config.Locations.truck.pedhash)
+         while not HasModelLoaded(Config.Locations.truck.pedhash) do
+             Wait(1)
+         end
         -- Boat Rentals
         RequestModel(Config.Locations.boat.pedhash)
         while not HasModelLoaded(Config.Locations.boat.pedhash) do
