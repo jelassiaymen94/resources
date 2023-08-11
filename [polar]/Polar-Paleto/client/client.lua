@@ -736,7 +736,7 @@ function Animation(door, props)
     LocalPlayer.state:set('inv_busy', false, true)  
     TriggerServerEvent('Polar-Paleto:Server:Synapse', door, sped)  
     TriggerServerEvent('Polar-Paleto:Server:RemoveProp2', door)
-    TriggerServerEvent('Polar-Paleto:Server:RemoveProp', door)
+  --  TriggerServerEvent('Polar-Paleto:Server:RemoveProp', door)
     RemoveAnimDict(animDict)
         end
     end
