@@ -59,8 +59,9 @@ RegisterServerEvent("Graverobbery:Server:GiveItems", function(CurGrave)
             Player.Functions.AddItem(reward2, 1)
             TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[reward2], "add", 1)
         else
-            Player.Functions.AddItem(reward, 1)
-            TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[reward], 'add', math.random(1,2))
+            local amount2 = math.random(1,2)
+            Player.Functions.AddItem(reward, amount2)
+            TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[reward], 'add', amount2)
         end
     end
 

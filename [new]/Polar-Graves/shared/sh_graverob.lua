@@ -2,7 +2,7 @@ Config = {} or Config
 
 
 Config.GraveItem = "shovel"
-Config.BreakChance = 55 
+Config.BreakChance = 85 
 Config.GraveSpecialChance = 90 -- 10 % chance of getting reward
 Config.EGraveChance = 99 -- 1%
 Config.GraveRewardChance = 55 -- 45 % chance of reward
