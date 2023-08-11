@@ -191,7 +191,7 @@ RegisterNetEvent('Polar-ArmoredTrucks:Server:UnCooldown', function()
 
 end)
 RegisterNetEvent('Polar-ArmoredTrucks:Server:Cooldown2', function()
-    exports['Polar-Wade']:armoredtruck()
+    exports['Polar-Wade']:ArmoredTruck()
     CooldownCheck = true
 
 end)
