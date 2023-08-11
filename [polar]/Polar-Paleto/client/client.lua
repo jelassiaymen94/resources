@@ -521,13 +521,13 @@ local zone = PolyZone:Create({
 zone:onPlayerInOut(function(isPointInside)
     if isPointInside then
         if not Config.Vault then
-        VaultForceClose() 
+       -- VaultForceClose() 
        
         end
     else
         if not Config.Vault then
             
-            VaultForceClose() 
+        --    VaultForceClose() 
            
          end
     end
