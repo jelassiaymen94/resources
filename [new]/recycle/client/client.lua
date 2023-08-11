@@ -69,8 +69,8 @@ CreateThread(function()
 	--Make Targets
 	local price = "" if Config.PayAtDoor then price = " ($"..Config.PayAtDoor..")" end
 	Targets["RecyclingEnter"] =
-		exports['qb-target']:AddBoxZone("RecyclingEnter", vector3(55.6, 6472.08, 31.43), 1.4, 1.6, { name="RecyclingEnter", debugPoly=Config.Debug, minZ=25.2, maxZ=28.0 },
-			{ options = { { event = "jim-recycle:TeleWareHouse", icon = "fas fa-recycle", label = Loc[Config.Lan].target["enter"]..price, enter = true, job = Config.JobRole }, },
+		exports['qb-target']:AddBoxZone("RecyclingEnter", vector3(55.6, 6472.78, 31.43), 1.4, 1.6, { name="RecyclingEnter", debugPoly=Config.Debug, minZ=31.2, maxZ=32.0 },
+			{ options = { { event = "jim-recycle:TeleWareHouse", icon = "fas fa-recycle", label = Loc[Config.Lan].target["enter"]..price, enter = true }, },
 			distance = 1.5 })
 
 	Targets["RecyclingExit"] =
@@ -80,7 +80,7 @@ CreateThread(function()
 
 	Targets["RecycleDuty"] =
 		exports['qb-target']:AddCircleZone("RecycleDuty", vector3(739.55, -1376.5, 12.64), 0.45, { name="RecycleDuty", debugPoly=Config.Debug, useZ=true, },
-			{ options = { { event = "jim-recycle:dutytoggle", icon = "fas fa-hard-hat", label = Loc[Config.Lan].target["duty"], job = Config.JobRole }, },
+			{ options = { { event = "jim-recycle:dutytoggle", icon = "fas fa-hard-hat", label = Loc[Config.Lan].target["duty"] }, },
 			distance = 1.5 })
 	--Recyclable Material Trader
 	for i = 1, #Config.Locations["Trade"] do
@@ -100,7 +100,7 @@ CreateThread(function()
 	for i = 1, #Config.Locations["BottleBanks"] do
 		Targets["BottleBank"..i] =
 			exports['qb-target']:AddCircleZone("BottleBank"..i, Config.Locations["BottleBanks"][i].coords.xyz, 1.2,	{ name="BottleBank"..i, debugPoly=Config.Debug, useZ=true, },
-				{ options = { { event = "jim-recycle:Bottle:Menu", icon = "fas fa-certificate", label = Loc[Config.Lan].target["sell_bottles"], job = Config.JobRole  }, },
+				{ options = { { event = "jim-recycle:Bottle:Menu", icon = "fas fa-certificate", label = Loc[Config.Lan].target["sell_bottles"]  }, },
 				distance = 1.5 })
 	end
 end)
