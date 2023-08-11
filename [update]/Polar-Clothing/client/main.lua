@@ -539,13 +539,19 @@ if Config.UseTarget then
                 debugPoly = false,
                 minZ = v.coords.z-1,
                 maxZ = v.coords.z+1,
-            }, {
+            }, { 
                 options = {
                     {
                         type = "client",
                         action = opts.action,
                         icon = opts.icon,
                         label = opts.label,
+                    },
+                    {
+                        type = "client",
+                        event = "Polar-Clothing:client:openOutfitMenu",
+                        icon = 'fas fa-bolt',
+                        label = "Outfits",
                     },
                 },
                 distance = 3
