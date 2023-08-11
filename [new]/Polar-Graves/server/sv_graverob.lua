@@ -39,7 +39,7 @@ RegisterServerEvent("Graverobbery:Server:GiveItems", function(CurGrave)
     end
 
     local chance = math.random(1, 100)
-    local amount = math.random(2,10)
+    local amount = math.random(1,5)
 
     for i = 1, amount do
 
@@ -59,7 +59,7 @@ RegisterServerEvent("Graverobbery:Server:GiveItems", function(CurGrave)
             Player.Functions.AddItem(reward2, 1)
             TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[reward2], "add", 1)
         else
-            local amount2 = math.random(1,2)
+            local amount2 = math.random(1,1)
             Player.Functions.AddItem(reward, amount2)
             TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[reward], 'add', amount2)
         end
