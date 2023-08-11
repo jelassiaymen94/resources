@@ -15,7 +15,7 @@ RegisterNetEvent('Polar-Graves:Server:TargetRemove', function(target)  TriggerCl
 
 CreateThread(function()
     while true do 
-    Wait(math.random(3000, 6000))
+    Wait(math.random(30000, 60000))
 
     ResetGraveTimer()
     end
