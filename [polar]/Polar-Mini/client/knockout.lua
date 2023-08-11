@@ -14,7 +14,7 @@ CreateThread(function()
                     print(count)
                     count += 1
                    if count > 2 then
-                    if GetEntityHealth(ped) < 160 then
+                    if GetEntityHealth(ped) < 180 then
                         knockedOut = true
                         local time = math.random(15000,20000)
                         SetPedToRagdoll(ped, time+1000, time+1000, 0, 0, 0, 0)
