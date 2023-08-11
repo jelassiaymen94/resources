@@ -732,11 +732,10 @@ function Animation(door, props)
     Wait(100)
     AttachEntityToEntity(props, PlayerPedId(), GetPedBoneIndex(PlayerPedId(), 0xFA60), 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, false, false, false, true, 0, true)
     Wait(300) SetEntityVisible(props, false, false)
-    DeleteEntity(props)
     NetworkStartSynchronisedScene(scene3) Wait(900) ClearPedTasks(PlayerPedId()) DeleteObject(bag) SetPedComponentVariation(PlayerPedId(), 5, Config.BagUseID, 0, 1)
     LocalPlayer.state:set('inv_busy', false, true)  
     TriggerServerEvent('Polar-Paleto:Server:Synapse', door, sped)  
-
+    TriggerServerEvent('Polar-Paleto:Server:RemoveProp2', door)
     TriggerServerEvent('Polar-Paleto:Server:RemoveProp', door)
     RemoveAnimDict(animDict)
         end
