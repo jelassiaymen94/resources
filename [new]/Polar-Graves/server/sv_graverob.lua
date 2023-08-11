@@ -28,18 +28,33 @@ RegisterServerEvent("Graverobbery:Server:GiveItems", function(CurGrave)
     if CurGrave == nil then return end
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
-    local reward = Config.GraveRewards[math.random(1, #Config.GraveRewards)]
     local lootfound = false
+
+   
+    local chance3 = math.random(1,100)
+    local chance2 = math.random(1,100)
     local chance = math.random(1, 100)
-    if chance <= Config.GraveRewardChance then 
-        lootfound = true
-        Player.Functions.AddItem(reward, 1)
-        TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[reward], 'add')
-    end
-    if chance >= Config.GraveSpecialChance then
+
+    for i = 1, math.random(1,5) do
+
+        local reward = Config.GraveRewards[math.random(1, #Config.GraveRewards)]
+        local reward2 = Config.SGraveRewards[math.random(1, #Config.SGraveRewards)]
+        local reward3 = Config.EGraveRewards[math.random(1, #Config.EGraveRewards)]
+
+    if chance >= Config.GraveRewardChance then 
         lootfound = true 
-        Player.Functions.AddItem(Config.GraveChanceItem, 1)
-        TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.GraveChanceItem], "add", 1)
+        if chance >= Config.EGraveChance then
+            Player.Functions.AddItem(reward3, 1)
+            TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[reward3], "add", 1, math.random(5,30))
+        elseif chance2 >= Config.GraveSpecialChance then
+            Player.Functions.AddItem(reward2, 1)
+            TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[reward2], "add", 1, math.random(5,30))
+        else
+            Player.Functions.AddItem(reward, 1)
+            TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[reward], 'add', math.random(5,30))
+        end
+    end
+
     end
     if lootfound == true then 
         TriggerClientEvent('QBCore:Notify', src, 'You found something!', 'success', 3500)

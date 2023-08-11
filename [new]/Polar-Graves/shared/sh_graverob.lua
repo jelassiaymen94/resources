@@ -2,20 +2,54 @@ Config = {} or Config
 
 
 
-Config.GraveSpecialChance = 75
-Config.GraveChanceItem = "weapon_pistol"
-Config.GraveRewardChance = 90
+Config.GraveSpecialChance = 25 -- 75 % chance of getting reward
+Config.EGraveChance = 95 -- 5%
+Config.GraveRewardChance = 75 -- 25 % chance of special reward
 Config.GraveRewards ={
-    "rolex",
-    "diamond_ring",
-    "goldchain",
-    "10kgoldchain",
-    "goldbar",
+    "bones",
+    "bonepowder",
+    "wood",
+    "cloth",
+    "copper",
     "grub",
+
 }
+Config.SGraveRewards = {
+
+    "emerald_ring",
+    "sapphire_ring",
+    "ruby_ring",
+    "diamond_ring",
+    "gold_ring",
+
+    "emerald_earring",
+    "sapphire_earring",
+    "ruby_earring",
+    "diamond_earring",
+    "goldearring",
+
+    "dirtyband",
+    "rolex",
+    "goldbar",
+
+}
+Config.EGraveRewards = {
+
+    "deed",
+    "captainskull",
+    "tequillabottle3",
+    "tequillabottle2",
+    "valuablegoods",
+    "alienegg",
+    "weapon_shoe",
+    "weapon_ball",
+    "weapon_shiv",
+    "weapon_golfclub",
+    "weapon_pistol",
+    "weapon_fnx45",
 
 
-
+}
 Config.Graves = {
 
     [1] = { ["coords"] = vector3(-1752.37, -205.8, 56.79), },
@@ -27,8 +61,6 @@ Config.Graves = {
     [7] = { ["coords"] = vector3(-1752.89, -219.91, 55.08),  },
     [8] = {  ["coords"] = vector3(-1752.42, -213.23, 56.1), },
     [9] = { ["coords"] = vector3(-1746.37, -216.41, 55.93), },
-
-
 
 
 }

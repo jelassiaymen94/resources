@@ -18,7 +18,7 @@ local ZoneSpawned = false
 
 function removetargets() for k, v in pairs(Config.Graves) do  exports['qb-target']:RemoveZone(k)  end end
 RegisterNetEvent('Polar-Graves:Client:TargetRemove', function(target) exports['qb-target']:RemoveZone(target)  end)
-RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function() Wait(100) graves()  end)
+--RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function() Wait(100) graves()  end)
 
 RegisterNetEvent('Polar-Graves:Client:Reset', function()
     print('Res')
