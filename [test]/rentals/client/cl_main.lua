@@ -195,52 +195,52 @@ end)
 
 local CreateNPC = function()
     -- Vehicle Rentals
-    created_ped = CreatePed(5, Config.Locations.vehicle.pedhash, Config.Locations.vehicle.coords.x, Config.Locations.vehicle.coords.y, Config.Locations.vehicle.coords.z, Config.Locations.vehicle.coords.w, false, true)
+    local created_ped1 = CreatePed(5, Config.Locations.vehicle.pedhash, Config.Locations.vehicle.coords.x, Config.Locations.vehicle.coords.y, Config.Locations.vehicle.coords.z, Config.Locations.vehicle.coords.w, false, true)
     FreezeEntityPosition(created_ped, true)
     SetEntityInvincible(created_ped, true)
     SetBlockingOfNonTemporaryEvents(created_ped, true)
     TaskStartScenarioInPlace(created_ped, 'WORLD_HUMAN_CLIPBOARD', 0, true)
 
 
-    created_ped = CreatePed(5, Config.Locations.vehicle2.pedhash, Config.Locations.vehicle2.coords.x, Config.Locations.vehicle2.coords.y, Config.Locations.vehicle2.coords.z, Config.Locations.vehicle2.coords.w, false, true)
+    local created_ped2 = CreatePed(5, Config.Locations.vehicle2.pedhash, Config.Locations.vehicle2.coords.x, Config.Locations.vehicle2.coords.y, Config.Locations.vehicle2.coords.z, Config.Locations.vehicle2.coords.w, false, true)
     FreezeEntityPosition(created_ped, true)
     SetEntityInvincible(created_ped, true)
     SetBlockingOfNonTemporaryEvents(created_ped, true)
     TaskStartScenarioInPlace(created_ped, 'WORLD_HUMAN_CLIPBOARD', 0, true)
 
-    created_ped = CreatePed(5, Config.Locations.vehicle3.pedhash, Config.Locations.vehicle3.coords.x, Config.Locations.vehicle3.coords.y, Config.Locations.vehicle3.coords.z, Config.Locations.vehicle3.coords.w, false, true)
+    local created_ped3 = CreatePed(5, Config.Locations.vehicle3.pedhash, Config.Locations.vehicle3.coords.x, Config.Locations.vehicle3.coords.y, Config.Locations.vehicle3.coords.z, Config.Locations.vehicle3.coords.w, false, true)
     FreezeEntityPosition(created_ped, true)
     SetEntityInvincible(created_ped, true)
     SetBlockingOfNonTemporaryEvents(created_ped, true)
     TaskStartScenarioInPlace(created_ped, 'WORLD_HUMAN_CLIPBOARD', 0, true)
 
     -- Aircraft Rentals
-    created_ped = CreatePed(5, Config.Locations.aircraft.pedhash, Config.Locations.aircraft.coords.x, Config.Locations.aircraft.coords.y, Config.Locations.aircraft.coords.z, Config.Locations.aircraft.coords.w, false, true)
+    local created_ped4 = CreatePed(5, Config.Locations.aircraft.pedhash, Config.Locations.aircraft.coords.x, Config.Locations.aircraft.coords.y, Config.Locations.aircraft.coords.z, Config.Locations.aircraft.coords.w, false, true)
     FreezeEntityPosition(created_ped, true)
     SetEntityInvincible(created_ped, true)
     SetBlockingOfNonTemporaryEvents(created_ped, true)
     TaskStartScenarioInPlace(created_ped, 'WORLD_HUMAN_CLIPBOARD', 0, true)
 
     -- Boat Rentals
-    created_ped = CreatePed(5, Config.Locations.boat.pedhash, Config.Locations.boat.coords.x, Config.Locations.boat.coords.y, Config.Locations.boat.coords.z, Config.Locations.boat.coords.w, false, true)
+    local created_ped5 = CreatePed(5, Config.Locations.boat.pedhash, Config.Locations.boat.coords.x, Config.Locations.boat.coords.y, Config.Locations.boat.coords.z, Config.Locations.boat.coords.w, false, true)
     FreezeEntityPosition(created_ped, true)
     SetEntityInvincible(created_ped, true)
     SetBlockingOfNonTemporaryEvents(created_ped, true)
     TaskStartScenarioInPlace(created_ped, 'WORLD_HUMAN_CLIPBOARD', 0, true)
 
-    created_ped = CreatePed(5, Config.Locations.boat2.pedhash, Config.Locations.boat2.coords.x, Config.Locations.boat2.coords.y, Config.Locations.boat2.coords.z, Config.Locations.boat2.coords.w, false, true)
+    local created_ped6 = CreatePed(5, Config.Locations.boat2.pedhash, Config.Locations.boat2.coords.x, Config.Locations.boat2.coords.y, Config.Locations.boat2.coords.z, Config.Locations.boat2.coords.w, false, true)
     FreezeEntityPosition(created_ped, true)
     SetEntityInvincible(created_ped, true)
     SetBlockingOfNonTemporaryEvents(created_ped, true)
     TaskStartScenarioInPlace(created_ped, 'WORLD_HUMAN_CLIPBOARD', 0, true)
 
-    created_ped = CreatePed(5, Config.Locations.boat3.pedhash, Config.Locations.boat3.coords.x, Config.Locations.boat3.coords.y, Config.Locations.boat3.coords.z, Config.Locations.boat3.coords.w, false, true)
+    local created_ped7 = CreatePed(5, Config.Locations.boat3.pedhash, Config.Locations.boat3.coords.x, Config.Locations.boat3.coords.y, Config.Locations.boat3.coords.z, Config.Locations.boat3.coords.w, false, true)
     FreezeEntityPosition(created_ped, true)
     SetEntityInvincible(created_ped, true)
     SetBlockingOfNonTemporaryEvents(created_ped, true)
     TaskStartScenarioInPlace(created_ped, 'WORLD_HUMAN_CLIPBOARD', 0, true)
 
-    created_ped = CreatePed(5, Config.Locations.truck.pedhash, Config.Locations.truck.coords.x, Config.Locations.truck.coords.y, Config.Locations.truck.coords.z, Config.Locations.truck.coords.w, false, true)
+    local created_ped8 = CreatePed(5, Config.Locations.truck.pedhash, Config.Locations.truck.coords.x, Config.Locations.truck.coords.y, Config.Locations.truck.coords.z, Config.Locations.truck.coords.w, false, true)
     FreezeEntityPosition(created_ped, true)
     SetEntityInvincible(created_ped, true)
     SetBlockingOfNonTemporaryEvents(created_ped, true)
