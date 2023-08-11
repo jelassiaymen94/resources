@@ -38,8 +38,9 @@ RegisterServerEvent("Graverobbery:Server:GiveItems", function(CurGrave)
     end
 
     local chance = math.random(1, 100)
+    local amount = math.random(2,10)
 
-    for i = 1, math.random(1,5) do
+    for i = 1, amount do
 
         local chance3 = math.random(1,100)
         local chance2 = math.random(1,100)
