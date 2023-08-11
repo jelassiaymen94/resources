@@ -1288,7 +1288,7 @@ RegisterNetEvent('Polar-Pacific:Client:RemoveProp2', function(door)
     if hi then print(doors) end
    
             
-    if DoesEntityExist(doors) then DeleteEntity(doors) end 
+   DeleteEntity(doors)
 end)
 
 
@@ -1296,7 +1296,7 @@ RegisterNetEvent('Polar-Pacific:Client:RemoveProp', function(door)
     if hi then print(doors[door]) end
    
             
-    if DoesEntityExist(doors[door]) then DeleteEntity(doors[door]) end 
+    DeleteEntity(doors[door])
 end)
 
 
