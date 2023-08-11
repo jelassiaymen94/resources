@@ -95,6 +95,7 @@ function RemoveItem(src)
     local Player = QBCore.Functions.GetPlayer(src)
     Player.Functions.RemoveItem(Config.DetectorItem, 1) 
     TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.DetectorItem], "remove", 1)  
+    TriggerClientEvent('QBCore:Notify', src, 'Your Detector Broke.', 'error', 3500)
     end    
 end
 function OnCollected(player, resource, data, x, y, z)

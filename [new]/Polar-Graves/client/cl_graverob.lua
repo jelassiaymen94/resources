@@ -21,7 +21,7 @@ RegisterNetEvent('Polar-Graves:Client:TargetRemove', function(target) exports['q
 --RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function() Wait(100) graves()  end)
 
 RegisterNetEvent('Polar-Graves:Client:Reset', function()
-    print('Res')
+   -- print('Res')
     ZoneSpawned = false
     removetargets()
     Wait(2000)
@@ -46,7 +46,7 @@ function graves()
                         icon = "fa-solid fa-trowel",
                         label = "Dig Grave",
                         event = "Graverobbery:Client:StartDigging",
-                        item = 'shovel',
+                        item = Config.GraveItem,
                         hi = k,
                     },
                 },

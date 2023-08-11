@@ -30,12 +30,19 @@ RegisterServerEvent("Graverobbery:Server:GiveItems", function(CurGrave)
     local Player = QBCore.Functions.GetPlayer(src)
     local lootfound = false
 
-   
-    local chance3 = math.random(1,100)
-    local chance2 = math.random(1,100)
+    local chance4 = math.random(1,100)
+    if chance4 > Config.BreakChance then 
+        Player.Functions.RemoveItem(Config.GraveItem, 1) 
+        TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.GraveItem], "remove", 1)  
+        TriggerClientEvent('QBCore:Notify', src, 'Your Shovel Broke.', 'error', 3500)
+    end
+    
     local chance = math.random(1, 100)
 
     for i = 1, math.random(1,5) do
+
+        local chance3 = math.random(1,100)
+        local chance2 = math.random(1,100)
 
         local reward = Config.GraveRewards[math.random(1, #Config.GraveRewards)]
         local reward2 = Config.SGraveRewards[math.random(1, #Config.SGraveRewards)]
