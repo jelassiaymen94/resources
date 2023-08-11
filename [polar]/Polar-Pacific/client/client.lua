@@ -813,7 +813,7 @@ end)
 
 
 function next(door, loc)
-    if door == vaultdoorname then
+   -- if door == vaultdoorname then
 
     --SetEntityCoords(ped, vec3(loc.x, loc.y, loc.z-1))
     local animDict = 'anim@heists@ornate_bank@hack'
@@ -921,7 +921,7 @@ function next(door, loc)
 
     end
 
-    elseif door == fingerprintdoor then
+  --[[ elseif door == fingerprintdoor then
      
             local animDict = 'anim_heist@hs3f@ig1_hack_keypad@arcade@male@' RequestAnimDict(animDict) RequestModel('prop_phone_ing') RequestModel('hei_prop_hst_usb_drive')while not HasAnimDictLoaded(animDict) or not HasModelLoaded('prop_phone_ing') or not HasModelLoaded('hei_prop_hst_usb_drive') do Wait(100) end
 
@@ -983,7 +983,7 @@ function next(door, loc)
            
         end end)
         
-    end
+    end]]
 end
 
 function hack(door)
