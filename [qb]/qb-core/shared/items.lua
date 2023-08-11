@@ -5,8 +5,9 @@ QBShared.Items = {
 
 	["bonepowder"] 					 	 	 = {["name"] = "bonepowder",  	    						["label"] = "Dust",	 				["weight"] = 250, 		["type"] = "item", 		["image"] = "gunpowder.png", 						["unique"] = false, 	["useable"] = false, 	["shouldClose"] = false,   	["combinable"] = nil,   	 ["description"] = "some dust from a coffin or a dead body", ["decay"] = 30.0, ["delete"] = false },
 	["bones"] 					 	 	 = {["name"] = "bones",  	    						["label"] = "Bones",	 				["weight"] = 250, 		["type"] = "item", 		["image"] = "bones.png", 						["unique"] = false, 	["useable"] = false, 	["shouldClose"] = false,   	["combinable"] = nil,   	 ["description"] = "some bones from a coffin or a dead body", ["decay"] = 30.0, ["delete"] = false },
+	["mask15"] 					 	 	 = {["name"] = "mask15",  	    						["label"] = "mask15",	 				["weight"] = 250, 		["type"] = "item", 		["image"] = "bones.png", 						["unique"] = true, 	["useable"] = true, 	["shouldClose"] = false,   	["combinable"] = nil,   	 ["description"] = "some bones from a coffin or a dead body", ["decay"] = 30.0, ["delete"] = false },
 	
-
+	
 	["monkeypet"] = { ["name"] = "monkeypet", ["label"] = "Monkey", ["weight"] = 5000, ["type"] = "item", ["image"] = "A_C_Husky.png", ["unique"] = true, ["useable"] = true, ["shouldClose"] = true, ["combinable"] = nil, ["description"] = "Monkey is your royal companion!" , ["decay"] = 30.0, ["delete"] = false },
 	["sharkpet"] = { ["name"] = "sharkpet", ["label"] = "Shark", ["weight"] = 5000, ["type"] = "item", ["image"] = "A_C_Husky.png", ["unique"] = true, ["useable"] = true, ["shouldClose"] = true, ["combinable"] = nil, ["description"] = "Shark is your royal companion!" , ["decay"] = 30.0, ["delete"] = false },
 	["cranepet"] = { ["name"] = "cranepet", ["label"] = "Crane", ["weight"] = 5000, ["type"] = "item", ["image"] = "A_C_Husky.png", ["unique"] = true, ["useable"] = true, ["shouldClose"] = true, ["combinable"] = nil, ["description"] = "Crane is your royal companion!" , ["decay"] = 30.0, ["delete"] = false },
