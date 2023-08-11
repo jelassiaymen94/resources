@@ -18,12 +18,13 @@ local ZoneSpawned = false
 
 function removetargets() for k, v in pairs(Config.Graves) do  exports['qb-target']:RemoveZone(k)  end end
 RegisterNetEvent('Polar-Graves:Client:TargetRemove', function(target) exports['qb-target']:RemoveZone(target)  end)
+RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function() Wait(100) graves()  end)
 
 RegisterNetEvent('Polar-Graves:Client:Reset', function()
     print('Res')
     ZoneSpawned = false
     removetargets()
-    Wait(1000)
+    Wait(2000)
     graves()
     TriggerEvent('qb-phone:client:CustomNotification', 'Los Santos Cemetary', 'New Bodies have been dumped', 'fas fa-file-invoice-dollar', '#b3e0f2', '10000')
 end)

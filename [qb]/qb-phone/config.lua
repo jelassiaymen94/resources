@@ -435,7 +435,7 @@ Config.CryptoCoins = {
     {
         label = 'Casino Chips',
         abbrev = 'DCC',
-        icon = 'fa-solid fa-coins',
+        icon = 'fas fa-coins',
         metadata = 'dcc',
         value = 1,
         purchase = true
