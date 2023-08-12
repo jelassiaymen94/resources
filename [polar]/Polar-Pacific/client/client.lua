@@ -760,7 +760,7 @@ function Animation(door, props)
     LocalPlayer.state:set('inv_busy', false, true)  
     TriggerServerEvent('Polar-Pacific:Server:Synapse', door, sped)  
             
-    TriggerServerEvent('Polar-Pacific:Server:RemoveProp2', props)
+
     RemoveAnimDict(animDict)
 
         end
@@ -1287,8 +1287,8 @@ end)
 RegisterNetEvent('Polar-Pacific:Client:RemoveProp2', function(door) 
     if hi then print(door) end
    
-            
-    if DoesEntityExist(door) then DeleteEntity(door) end
+    print(door)
+    if DoesEntityExist(door) then print('del') DeleteEntity(door) end
 end)
 
 
