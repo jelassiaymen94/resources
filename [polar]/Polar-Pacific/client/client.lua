@@ -1285,12 +1285,7 @@ end)
 
 
 
-RegisterNetEvent('Polar-Pacific:Client:RemoveProp2', function(door) 
-    if hi then print(door) end
-   
-    print(door)
-    if DoesEntityExist(door) then print('del') DeleteEntity(door) end
-end)
+
 
 
 RegisterNetEvent('Polar-Pacific:Client:RemoveProp', function(door) 
@@ -2017,7 +2012,7 @@ function snatch(name, item, chances)
     
 
     --TriggerServerEvent('Polar-Pacific:Server:RemoveProp2', doors)
-    TriggerServerEvent('Polar-Pacific:Server:RemoveProp', door)
+    TriggerServerEvent('Polar-Pacific:Server:RemoveProp', name)
     
    
     TriggerServerEvent('Polar-Pacific:Server:Synapse', name) 

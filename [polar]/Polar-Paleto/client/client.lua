@@ -735,10 +735,7 @@ function Animation(door, props)
     NetworkStartSynchronisedScene(scene3) Wait(900) ClearPedTasks(PlayerPedId()) DeleteObject(bag) SetPedComponentVariation(PlayerPedId(), 5, Config.BagUseID, 0, 1)
     LocalPlayer.state:set('inv_busy', false, true)  
     TriggerServerEvent('Polar-Paleto:Server:Synapse', door, sped)  
-    print(doors[props])
-    print(doors[props])
-   -- TriggerServerEvent('Polar-Paleto:Server:RemoveProp2', props)
-   -- TriggerServerEvent('Polar-Paleto:Server:RemoveProp', props)
+    TriggerServerEvent('Polar-Paleto:Server:RemoveProp', door)
     RemoveAnimDict(animDict)
         end
     end
@@ -2002,7 +1999,7 @@ function snatch(name, item, chances)
     
 
         
-    DeleteEntity(doors[name])
+    TriggerServerEvent('Polar-Paleto:Server:RemoveProp', name)
    
     TriggerServerEvent('Polar-Paleto:Server:Synapse', name) 
     DeleteEntity(bagEntity)
