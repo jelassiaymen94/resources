@@ -553,7 +553,7 @@ end)
 
 RegisterNetEvent('Polar-stores:Client:RemoveProp', function(door) 
     if hi then print(doors[door]) end
-   
+    print(json.encode(doors[door]))
             
     if DoesEntityExist(doors[door]) then DeleteEntity(doors[door]) end
 end)

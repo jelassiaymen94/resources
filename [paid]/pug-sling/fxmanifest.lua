@@ -10,11 +10,11 @@ shared_scripts {
 	'config.lua'
 }
 
-server_script{
-    'server.lua',
-    
-}
-
+server_script 'server.lua'
 client_script 'client.lua'
 
+escrow_ignore {
+    'config.lua',
+    'server.lua',
+}
 dependency '/assetpacks'
