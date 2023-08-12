@@ -398,7 +398,7 @@ function grabloot(door, object)
     local object2 = object
     TriggerServerEvent('Polar-Paleto:Server:TrollyModelSync', door, GetEntityCoords(object))
     TriggerServerEvent('Polar-Paleto:Server:TargetRemove', door)
-    Wait(100)
+    Wait(500)
     local prop = trollys[door]
     if prop == 'ch_prop_ch_cash_trolly_01a' then grabModel = 'hei_prop_heist_cash_pile'   end
     if prop == 'ch_prop_gold_trolly_01a' then grabModel = 'ch_prop_gold_bar_01a'  end
@@ -410,7 +410,7 @@ function grabloot(door, object)
     loadAnimDict(animDict)
     loadModel(bagcolor)
     
-    local sceneObject = GetClosestObjectOfType(trolylp[door], 2.0, GetHashKey(trollys[door]), 0, 0, 0)
+    sceneObject = GetClosestObjectOfType(trolylp[door], 2.0, GetHashKey(trollys[door]), 0, 0, 0)
     print(sceneObject)
     while not NetworkHasControlOfEntity(sceneObject) do
         Wait(1)
@@ -419,14 +419,14 @@ function grabloot(door, object)
     end
 
     local bag = CreateObject(GetHashKey(bagcolor), pedCoords, true, false, false)
-    local scene1 = NetworkCreateSynchronisedScene(GetEntityCoords(sceneObject), GetEntityRotation(sceneObject), 2, true, false, 1065353216, 0, 1.3)
+    scene1 = NetworkCreateSynchronisedScene(GetEntityCoords(sceneObject), GetEntityRotation(sceneObject), 2, true, false, 1065353216, 0, 1.3)
     NetworkAddPedToSynchronisedScene(PlayerPedId(), scene1, animDict, 'intro', 1.5, -4.0, 1, 16, 1148846080, 0)
     NetworkAddEntityToSynchronisedScene(bag, scene1, animDict, 'bag_intro', 4.0, -8.0, 1)
-    local scene2 =  NetworkCreateSynchronisedScene(GetEntityCoords(sceneObject), GetEntityRotation(sceneObject), 2, true, false, 1065353216, 0, 1.3)
+    scene2 =  NetworkCreateSynchronisedScene(GetEntityCoords(sceneObject), GetEntityRotation(sceneObject), 2, true, false, 1065353216, 0, 1.3)
     NetworkAddPedToSynchronisedScene(PlayerPedId(), scene2, animDict, 'grab', 1.5, -4.0, 1, 16, 1148846080, 0)
     NetworkAddEntityToSynchronisedScene(bag, scene2, animDict, 'bag_grab', 4.0, -8.0, 1)
     NetworkAddEntityToSynchronisedScene(sceneObject, scene2, animDict, 'cart_cash_dissapear', 4.0, -8.0, 1)
-    local scene3 =  NetworkCreateSynchronisedScene(GetEntityCoords(sceneObject), GetEntityRotation(sceneObject), 2, true, false, 1065353216, 0, 1.3)
+    scene3 =  NetworkCreateSynchronisedScene(GetEntityCoords(sceneObject), GetEntityRotation(sceneObject), 2, true, false, 1065353216, 0, 1.3)
     NetworkAddPedToSynchronisedScene(PlayerPedId(), scene3, animDict, 'exit', 1.5, -4.0, 1, 16, 1148846080, 0)
     NetworkAddEntityToSynchronisedScene(bag, scene3, animDict, 'bag_exit', 4.0, -8.0, 1)
     NetworkStartSynchronisedScene(scene1)
