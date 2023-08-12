@@ -396,9 +396,7 @@ end)
 function grabloot(door, object)
     local grabModel = nil
     local object2 = object
-    TriggerServerEvent('Polar-Paleto:Server:TrollyModelSync', door, GetEntityCoords(object))
     TriggerServerEvent('Polar-Paleto:Server:TargetRemove', door)
-    Wait(500)
     local prop = trollys[door]
     if prop == 'ch_prop_ch_cash_trolly_01a' then grabModel = 'hei_prop_heist_cash_pile'   end
     if prop == 'ch_prop_gold_trolly_01a' then grabModel = 'ch_prop_gold_bar_01a'  end
@@ -1326,6 +1324,8 @@ RegisterNetEvent('Polar-Paleto:Client:Target', function(data)
    
     if tablecheck(p, trollytable) then
         --print(doors[p])
+        TriggerServerEvent('Polar-Paleto:Server:TrollyModelSync', p, GetEntityCoords(doors[p]))
+        Wait(500)
         grabloot(p, doors[p])
     else
         Animation(p, doors[p])  
