@@ -15,7 +15,7 @@ Config.LootProps = {
 
     {prop = 'vw_prop_vw_coin_01a', item = 'coin', amountmin = 1, amountmax = 1},
 
-    {prop = 'v_res_fa_tintomsoup', item = 'ingredients', amountmin = 1, amountmax = 1},
+   -- {prop = 'v_res_fa_tintomsoup', item = 'ingredients', amountmin = 1, amountmax = 1},
     {prop = 'v_ret_247_vegsoup1', item = 'ingredients', amountmin = 1, amountmax = 1},
     {prop = 'v_ret_247_tomsoup1', item = 'ingredients', amountmin = 1, amountmax = 1},
 
@@ -107,7 +107,7 @@ Config.Cash = {
 
     'v_ret_247_tomsoup1',
     'v_ret_247_vegsoup1',
-    'v_res_fa_tintomsoup',
+   
 
     'xs_prop_chips_tube_wl',
     'ng_proc_food_chips01a',
