@@ -19,7 +19,7 @@ function storesprop1(store) -- should be same as door =
 
     -- chances calculation for probability
     local chance = math.random(1,100) 
-    if chance<=35 then   
+    if chance<=70 then   
         prop = cash -- 35%
     elseif chance<=95 then  
         prop = gold -- 70%
@@ -42,13 +42,14 @@ function storesprop2(store)
     special = Config.Special[math.random(1, #Config.Special)]
  
     local location = Config.Names[store]["GrabLocations2"][math.random(1, #Config.Names[store]["GrabLocations2"])]
-
     local chance = math.random(1,100) 
-    if chance<=35 then   prop = cash 
-    elseif chance<=95 then  prop = gold
-    else   prop = special
+    if chance<=70 then   
+        prop = cash -- 35%
+    elseif chance<=95 then  
+        prop = gold -- 70%
+    else   
+        prop = special -- 5%
     end 
-
    
    
     bruh(door, prop, location)
@@ -66,9 +67,12 @@ function storesprop3(store)
     local location = Config.Names[store]["GrabLocations3"][math.random(1, #Config.Names[store]["GrabLocations3"])]
    
     local chance = math.random(1,100) 
-    if chance<=35 then   prop = cash 
-    elseif chance<=95 then  prop = gold
-    else   prop = special
+    if chance<=70 then   
+        prop = cash -- 35%
+    elseif chance<=95 then  
+        prop = gold -- 70%
+    else   
+        prop = special -- 5%
     end 
 
     local door = 'storesprop3'
@@ -89,9 +93,12 @@ function storesprop4(store)
    
    
     local chance = math.random(1,100) 
-    if chance<=35 then   prop = cash 
-    elseif chance<=95 then  prop = gold
-    else   prop = special
+    if chance<=70 then   
+        prop = cash -- 35%
+    elseif chance<=95 then  
+        prop = gold -- 70%
+    else   
+        prop = special -- 5%
     end 
     
     local door = 'storesprop4'
@@ -109,9 +116,12 @@ function storesprop5(store)
    
    
     local chance = math.random(1,100) 
-    if chance<=35 then   prop = cash 
-    elseif chance<=95 then  prop = gold
-    else   prop = special
+    if chance<=70 then   
+        prop = cash -- 35%
+    elseif chance<=95 then  
+        prop = gold -- 70%
+    else   
+        prop = special -- 5%
     end 
 
     local door = 'storesprop5'

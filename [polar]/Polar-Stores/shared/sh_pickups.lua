@@ -17,9 +17,12 @@ function storesprop6(store)
     local location = Config.Names[store]["PickupLocations1"][math.random(1, #Config.Names[store]["PickupLocations1"])]
    
     local chance = math.random(1,100) 
-    if chance<=50 then   prop = cash 
-    elseif chance<=95 then  prop = gold
-    else prop = special
+    if chance<=70 then   
+        prop = cash -- 35%
+    elseif chance<=95 then  
+        prop = gold -- 70%
+    else   
+        prop = special -- 5%
     end 
     
     pbruh(door, prop, location)  
@@ -36,9 +39,12 @@ function storesprop7(store)
     local location = Config.Names[store]["PickupLocations2"][math.random(1, #Config.Names[store]["PickupLocations2"])]
    
     local chance = math.random(1,100) 
-    if chance<=50 then   prop = cash 
-    elseif chance<=95 then  prop = gold
-    else   prop = special
+    if chance<=70 then   
+        prop = cash -- 35%
+    elseif chance<=95 then  
+        prop = gold -- 70%
+    else   
+        prop = special -- 5%
     end 
     
     pbruh(door, prop, location) 
@@ -56,9 +62,12 @@ function storesprop8(store)
     local location = Config.Names[store]["PickupLocations3"][math.random(1, #Config.Names[store]["PickupLocations3"])]
 
     local chance = math.random(1,100) 
-    if chance<=50 then   prop = cash 
-    elseif chance<=95 then  prop = gold
-    else  prop = special
+    if chance<=70 then   
+        prop = cash -- 35%
+    elseif chance<=95 then  
+        prop = gold -- 70%
+    else   
+        prop = special -- 5%
     end 
  
     pbruh(door, prop, location) 
@@ -78,11 +87,13 @@ function storesprop9(store)
     local location = Config.Names[store]["PickupLocations4"][math.random(1, #Config.Names[store]["PickupLocations4"])]
 
     local chance = math.random(1,100) 
-    if chance<=50 then   prop = cash 
-    elseif chance<=95 then  prop = gold
-    else   prop = special
+    if chance<=70 then   
+        prop = cash -- 35%
+    elseif chance<=95 then  
+        prop = gold -- 70%
+    else   
+        prop = special -- 5%
     end 
-   
     pbruh(door, prop, location) 
 
 end
@@ -106,9 +117,12 @@ function storesprop10(store)
     local location = Config.Names[store]["PickupLocations5"][math.random(1, #Config.Names[store]["PickupLocations5"])] 
 
     local chance = math.random(1,100) 
-    if chance<=10 then   prop = cash 
-    elseif chance<=25 then  prop = gold
-    else  prop = special
+    if chance<=70 then   
+        prop = cash -- 35%
+    elseif chance<=95 then  
+        prop = gold -- 70%
+    else   
+        prop = special -- 5%
     end 
    
     pbruh(door, prop, location)
