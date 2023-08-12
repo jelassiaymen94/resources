@@ -114,14 +114,14 @@ Config.Door1Thermite = vector4(256.05, 220.57, 106.35, 339.17)
 Config.Door1Pfx = vector3(255.91, 221.61, 106.35)
 
 Config.Door2 = 'Pacificdoor2'
-Config.Door2Eye = vector3(25400000.85, 220.88, 101.78)
-Config.Door2Thermite = vector4(2540000.6, 221.13, 101.68, 261.66)
-Config.Door2Pfx = vector3(254000.850000, 220.88, 101.78)
+Config.Door2Eye =  vector3(256.48, 219.11, 101.8)
+Config.Door2Thermite = vector4(256.4, 219.03, 101.8, 339.09)
+Config.Door2Pfx = vector3(256.44, 220.07, 101.8)
 
 Config.Door3 = 'Pacificdoor3'
-Config.Door3Eye =  vector3(256.48, 219.11, 101.8)
-Config.Door3Thermite = vector4(256.4, 219.03, 101.8, 339.09)
-Config.Door3Pfx = vector3(256.44, 220.07, 101.8)
+Config.Door3Eye =  vector3(2560000.48, 219.11, 101.8)
+Config.Door3Thermite = vector4(25600000.4, 219.03, 101.8, 339.09)
+Config.Door3Pfx = vector3(2560000.44, 220.07, 101.8)
    
 Config.LazerName = 'PacificLazerButton'
 Config.LazerLocation = vector4(-94.82, 6463.06, 31.54, 128.47)

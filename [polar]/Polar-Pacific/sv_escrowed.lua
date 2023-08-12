@@ -11,7 +11,4 @@ RegisterNetEvent('Polar-Pacific:Server:Vault', function() TriggerClientEvent('Po
 RegisterNetEvent('Polar-Pacific:Server:TargetRemove', function(door) TriggerClientEvent('Polar-Pacific:Client:TargetRemove', -1, door)   end)
 RegisterNetEvent('Polar-Pacific:Server:RemoveProp', function(door) TriggerClientEvent('Polar-Pacific:Client:RemoveProp', -1, door)   end)
 RegisterNetEvent('Polar-Pacific:Server:StartTargets', function()   TriggerClientEvent('Polar-Pacific:Client:StartTargets', -1)   TriggerClientEvent('Polar-Pacific:Client:StartLoot', source)      end)
-
-
-
-
+RegisterNetEvent('Polar-Pacific:Server:DestroyPad', function(name) TriggerClientEvent('Polar-Pacific:Client:DestroyPad', name) end)

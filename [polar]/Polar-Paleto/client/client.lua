@@ -247,7 +247,7 @@ end)
 function ThermiteEffect(door, coords)
     if door == 'paletostart' then if Config.LazerPolice then if Config.Debug then print('Lazer Police Call') else CallPolice() end end end
     RequestAnimDict("anim@heists@ornate_bank@thermal_charge") while not HasAnimDictLoaded("anim@heists@ornate_bank@thermal_charge") do Wait(50) end Wait(1500)
-    TriggerServerEvent("Polar-Paleto:Server:ThermitePtfx", vec3(coords.x, coords.y, coords.z+0.2)) Wait(500) TaskPlayAnim(PlayerPedId(), "anim@heists@ornate_bank@thermal_charge", "cover_eyes_intro", 8.0, 8.0, 1000, 36, 1, 0, 0, 0) TaskPlayAnim(PlayerPedId(), "anim@heists@ornate_bank@thermal_charge", "cover_eyes_loop", 8.0, 8.0, 3000, 49, 1, 0, 0, 0) TriggerEvent('Polar-Paleto:Client:DestroyPad', door) Wait(thermitetime) ClearPedTasks(PlayerPedId())  if oxd then  doorlock(door, 0)
+    TriggerServerEvent("Polar-Paleto:Server:ThermitePtfx", vec3(coords.x, coords.y, coords.z+0.2)) Wait(500) TaskPlayAnim(PlayerPedId(), "anim@heists@ornate_bank@thermal_charge", "cover_eyes_intro", 8.0, 8.0, 1000, 36, 1, 0, 0, 0) TaskPlayAnim(PlayerPedId(), "anim@heists@ornate_bank@thermal_charge", "cover_eyes_loop", 8.0, 8.0, 3000, 49, 1, 0, 0, 0) TriggerEvent('Polar-Paleto:Server:DestroyPad', door) Wait(thermitetime) ClearPedTasks(PlayerPedId())  if oxd then  doorlock(door, 0)
     else TriggerServerEvent('qb-doorlock:server:updateState', door, false, false, false, true, false, false) end
  end 
 function PlantThermite(pp, door)
@@ -1872,7 +1872,7 @@ function HeistAnimation(door)
     DeleteEntity(object)
   
     ArtHeist = {}
-    
+    TriggerServerEvent('Polar-Pacific:Server:RemoveProp', door)
     TriggerServerEvent('Polar-Paleto:Server:Synapse', door)  
    
     scenes = {false, false, false, false}
