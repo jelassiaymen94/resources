@@ -7,50 +7,8 @@ local item3 = nil
 local item4 = nil
 local amount = nil
 
-local cashtable = {
-    'markedbills',
-    'dirtyband',
 
-}
-local goldtable = {
-    'goldbar',
-    'valuablegoods',
-    'goldchip',
-}
 
-local diamondtable = {
-    'diamond',
-    'captainskull',
-    'saphire',
-    'bluediamond',
-    'redruby',
-    'yellow-diamond',
-}
-local drilltable = {
-    'diamond',
-    'captainskull',
-    'saphire',
-    'bluediamond',
-    'redruby',
-    'yellow-diamond',
-    'goldbar',  'goldbar', 'goldbar', 'goldbar',
-    'valuablegoods', 'valuablegoods', 'valuablegoods',
-    'goldchip',
-    'markedbills',
-    'dirtyband', 'dirtyband', 'dirtyband', 'dirtyband', 'dirtyband', 'dirtyband', 'dirtyband', 'dirtyband',
-    --'',
-}
-RegisterNetEvent('Polar-stores:Drill', function(door)
-   -- print(door)
-    if door == nil then return end
-   -- local times = math.random(1,5) 
-    
-   -- for i = 1, times do
-        item = drilltable[math.random(1, #drilltable)] 
-        give(item, 1)
-   -- end
-  
-end)
 local oxinv = Config.OxIventory
 
 

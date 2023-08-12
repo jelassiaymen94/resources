@@ -8,7 +8,44 @@ QBShared.Items = {
 	["mask15"] 					 	 	 = {["name"] = "mask15",  	    						["label"] = "mask15",	 				["weight"] = 250, 		["type"] = "item", 		["image"] = "bones.png", 						["unique"] = true, 	["useable"] = true, 	["shouldClose"] = false,   	["combinable"] = nil,   	 ["description"] = "some bones from a coffin or a dead body", ["decay"] = 30.0, ["delete"] = false },
 	
 	['rope'] 			 = {['name'] = 'rope', 							['label'] = 'Rope', 		['weight'] = 1000, 		['type'] = 'item', 		['image'] = 'rope.png', 			['unique'] = true, 		['useable'] = false, 	['shouldClose'] = false,   ['combinable'] = nil,   ['description'] = 'rope that shit up mf', ["decay"] = 30.0, ["delete"] = false },
+
+
+
+
+
+
+
+
+	["cigarbox"] 					 	 	 = {["name"] = "cigarbox",  	    						["label"] = "Box Of Cigars",	 				["weight"] = 2250, 		["type"] = "item", 		["image"] = "np_69-cigar-box.png", 						["unique"] = false, 	["useable"] = true, 	["shouldClose"] = false,   	["combinable"] = nil,   	 ["description"] = "a box of cigars used for smoking", ["decay"] = 30.0, ["delete"] = false },
+	["cigar"] 					 	 	 = {["name"] = "cigar",  	    						["label"] = "Cigar",	 				["weight"] = 750, 		["type"] = "item", 		["image"] = "np_cigar.png", 						["unique"] = false, 	["useable"] = true, 	["shouldClose"] = false,   	["combinable"] = nil,   	 ["description"] = "a cigar used for smoking", ["decay"] = 30.0, ["delete"] = false },
+	["cigarette"] 					 	 	 = {["name"] = "cigarette",  	    						["label"] = "Cigarette",	 				["weight"] = 750, 		["type"] = "item", 		["image"] = "np_cigarette.png", 						["unique"] = false, 	["useable"] = true, 	["shouldClose"] = false,   	["combinable"] = nil,   	 ["description"] = "smoke that shit you nic addict", ["decay"] = 30.0, ["delete"] = false },
+	["chocolatebar"] 					 	 	 = {["name"] = "chocolatebar",  	    						["label"] = "Chocolate Bar",	 				["weight"] = 750, 		["type"] = "item", 		["image"] = "np_chocolate-bar.png", 						["unique"] = false, 	["useable"] = true, 	["shouldClose"] = false,   	["combinable"] = nil,   	 ["description"] = "a good ol fashion chocolate bar", ["decay"] = 30.0, ["delete"] = false },
+	["cigbox"] 					 	 	 = {["name"] = "cigbox",  	    						["label"] = "Box Of Cigs",	 				["weight"] = 1250, 		["type"] = "item", 		["image"] = "np_69-brand-pack.png", 						["unique"] = false, 	["useable"] = true, 	["shouldClose"] = false,   	["combinable"] = nil,   	 ["description"] = "A box of them good old redwoods", ["decay"] = 30.0, ["delete"] = false },
+	["donut"] 					= {["name"] = "donut",					["label"] = "Donut",					["weight"] = 750,		["type"] = "item",		["image"] = "tbdonut.png",					["unique"] = false, 	["useable"] = true,		["shouldClose"] = true,		["combinable"] = nil,	["description"] = "", ['hunger'] = math.random(90, 150) , ["decay"] = 30.0, ["delete"] = false },
+
+
 	
+
+	["sprunk"] 						= {["name"] = "sprunk",  	    	 		["label"] = "Sprunk",		 			["weight"] = 750, 		["type"] = "item", 		["image"] = "np_sprunk.png", 					["unique"] = false, 	["useable"] = true, 	["shouldClose"] = true,   	["combinable"] = nil,   ["description"] = "", ['thirst'] = math.random(90, 150) , ["decay"] = 30.0, ["delete"] = false },
+	["sprunklight"] 				= {["name"] = "sprunklight",  	    	 	["label"] = "Sprunk Light",		 		["weight"] = 750, 		["type"] = "item", 		["image"] = "np_sprunk.png", 				["unique"] = false, 	["useable"] = true, 	["shouldClose"] = true,   	["combinable"] = nil,   ["description"] = "", ['thirst'] = math.random(90, 150) , ["decay"] = 30.0, ["delete"] = false },
+	["ecola"] 						= {["name"] = "ecola",  	    	 		["label"] = "eCola",		 			["weight"] = 750, 		["type"] = "item", 		["image"] = "ecola.png", 					["unique"] = false, 	["useable"] = true, 	["shouldClose"] = true,   	["combinable"] = nil,   ["description"] = "", ['thirst'] = math.random(90, 150) , ["decay"] = 30.0, ["delete"] = false },
+	["ecolalight"] 					= {["name"] = "ecolalight",  	    	 	["label"] = "eCola Light",		 		["weight"] = 750, 		["type"] = "item", 		["image"] = "ecolalight.png", 				["unique"] = false, 	["useable"] = true, 	["shouldClose"] = true,   	["combinable"] = nil,   ["description"] = "", ['thirst'] = math.random(90, 150) , ["decay"] = 30.0, ["delete"] = false },
+
+	["orange"] 				 			 = {["name"] = "orange",  	     						["label"] = "Orange",	 				["weight"] = 750, 		["type"] = "item", 		["image"] = "orange.png", 						["unique"] = false, 	["useable"] = false, 	["shouldClose"] = false,   	["combinable"] = nil,   ["description"] = "An Orange." , ["decay"] = 30.0, ["delete"] = false },
+	["apple"] 				 	 	     = {["name"] = "apple",								["label"] = "Apple",					["weight"] = 750,		["type"] = "item",		["image"] = "apples.png",						["unique"] = false,		["useable"] = true,		["shouldClose"] = true,	   ["combinable"] = nil,   ["description"] = "An Apple", ["decay"] = 30.0, ["delete"] = false },
+	["pineapple"] 					 	 = {["name"] = "pineapple",								["label"] = "Pineapple",				["weight"] = 750,		["type"] = "item",		["image"] = "pineapple.png",					["unique"] = false,		["useable"] = true,		["shouldClose"] = true,	   ["combinable"] = nil,   ["description"] = "A Pineapple", ["decay"] = 30.0, ["delete"] = false },
+	["ingredients"] 					 	 = {["name"] = "ingredients",								["label"] = "Food Ingredients",				["weight"] = 1000,		["type"] = "item",		["image"] = "np_ingredients.png",					["unique"] = false,		["useable"] = true,		["shouldClose"] = true,	   ["combinable"] = nil,   ["description"] = "Food Ingredients", ["decay"] = 30.0, ["delete"] = false },
+
+	["coin"]					= {["name"] = "coin",					["label"] = "Diamond Casino Chip",		["weight"] = 1000, 		["type"] = "item", 		["image"] = "casinochips.png", 			["useable"] = false, 	 	     ["description"] = "Highly Valuable Coin", ["decay"] = 30.0, ["delete"] = false },
+	
+	
+	
+
+
+
+
+
+
 
 	["monkeypet"] = { ["name"] = "monkeypet", ["label"] = "Monkey", ["weight"] = 5000, ["type"] = "item", ["image"] = "A_C_Husky.png", ["unique"] = true, ["useable"] = true, ["shouldClose"] = true, ["combinable"] = nil, ["description"] = "Monkey is your royal companion!" , ["decay"] = 30.0, ["delete"] = false },
 	["sharkpet"] = { ["name"] = "sharkpet", ["label"] = "Shark", ["weight"] = 5000, ["type"] = "item", ["image"] = "A_C_Husky.png", ["unique"] = true, ["useable"] = true, ["shouldClose"] = true, ["combinable"] = nil, ["description"] = "Shark is your royal companion!" , ["decay"] = 30.0, ["delete"] = false },
@@ -736,10 +773,7 @@ QBShared.Items = {
 --['wetbud'] 						 = {['name'] = 'wetbud', 			  	  		['label'] = 'Wet Bud', 					['weight'] = 2500, 		['type'] = 'item', 		['image'] = 'weed_og-kush_bud.png', 				['unique'] = false, 	['useable'] = false, 	['shouldClose'] = true,    ['combinable'] = nil,   ['description'] = 'Wet Bud', ["decay"] = 30.0, ["delete"] = false },
 
 --MISC food
-["apples"] 				 	 	     = {["name"] = "apples",								["label"] = "Apples",					["weight"] = 100,		["type"] = "item",		["image"] = "apples.png",						["unique"] = false,		["useable"] = true,		["shouldClose"] = true,	   ["combinable"] = nil,   ["description"] = "Food Ingredients", ["decay"] = 30.0, ["delete"] = false },
 ["pickle"] 							 = {["name"] = "pickle",  	     						["label"] = "Pickle",	 		 		["weight"] = 200, 		["type"] = "item", 		["image"] = "pickle.png", 						["unique"] = false, 	["useable"] = true, 	["shouldClose"] = true,   	["combinable"] = nil,   ["description"] = "Food Ingredients" , ["decay"] = 30.0, ["delete"] = false },
-["pineapple"] 					 	 = {["name"] = "pineapple",								["label"] = "Pineapple",				["weight"] = 1000,		["type"] = "item",		["image"] = "pineapple.png",					["unique"] = false,		["useable"] = true,		["shouldClose"] = true,	   ["combinable"] = nil,   ["description"] = "Food Ingredients", ["decay"] = 30.0, ["delete"] = false },
-["orange"] 				 			 = {["name"] = "orange",  	     						["label"] = "Orange",	 				["weight"] = 1000, 		["type"] = "item", 		["image"] = "orange.png", 						["unique"] = false, 	["useable"] = false, 	["shouldClose"] = false,   	["combinable"] = nil,   ["description"] = "An Orange." , ["decay"] = 30.0, ["delete"] = false },
 ["blueberry"] 						 = {["name"] = "blueberry",  			    			["label"] = "Blueberry",		 		["weight"] = 1000, 		["type"] = "item", 		["image"] = "blueberry.png", 					["unique"] = false, 	["useable"] = true, 	["shouldClose"] = true,   	["combinable"] = nil,   ["description"] = "" , ["decay"] = 30.0, ["delete"] = false },
 ["boba"] 							 = {["name"] = "boba",  			     				["label"] = "Boba",	 					["weight"] = 1000, 		["type"] = "item", 		["image"] = "boba.png", 						["unique"] = false, 	["useable"] = true, 	["shouldClose"] = true,   	["combinable"] = nil,   ["description"] = "" , ["decay"] = 30.0, ["delete"] = false },
 ["lime"] 				 			 = {["name"] = "lime",  	     						["label"] = "Lime",	 					["weight"] = 200, 		["type"] = "item", 		["image"] = "lime.png", 						["unique"] = false, 	["useable"] = false, 	["shouldClose"] = false,   	["combinable"] = nil,   ["description"] = "A Lime." , ["decay"] = 30.0, ["delete"] = false },
@@ -906,11 +940,6 @@ QBShared.Items = {
 
 
 
---SODA
-["sprunk"] 						= {["name"] = "sprunk",  	    	 		["label"] = "Sprunk",		 			["weight"] = 100, 		["type"] = "item", 		["image"] = "np_sprunk.png", 					["unique"] = false, 	["useable"] = true, 	["shouldClose"] = true,   	["combinable"] = nil,   ["description"] = "", ['thirst'] = math.random(90, 150) , ["decay"] = 30.0, ["delete"] = false },
-["sprunklight"] 				= {["name"] = "sprunklight",  	    	 	["label"] = "Sprunk Light",		 		["weight"] = 100, 		["type"] = "item", 		["image"] = "np_sprunk.png", 				["unique"] = false, 	["useable"] = true, 	["shouldClose"] = true,   	["combinable"] = nil,   ["description"] = "", ['thirst'] = math.random(90, 150) , ["decay"] = 30.0, ["delete"] = false },
-["ecola"] 						= {["name"] = "ecola",  	    	 		["label"] = "eCola",		 			["weight"] = 100, 		["type"] = "item", 		["image"] = "ecola.png", 					["unique"] = false, 	["useable"] = true, 	["shouldClose"] = true,   	["combinable"] = nil,   ["description"] = "", ['thirst'] = math.random(90, 150) , ["decay"] = 30.0, ["delete"] = false },
-["ecolalight"] 					= {["name"] = "ecolalight",  	    	 	["label"] = "eCola Light",		 		["weight"] = 100, 		["type"] = "item", 		["image"] = "ecolalight.png", 				["unique"] = false, 	["useable"] = true, 	["shouldClose"] = true,   	["combinable"] = nil,   ["description"] = "", ['thirst'] = math.random(90, 150) , ["decay"] = 30.0, ["delete"] = false },
 
 
 -- Bakery
@@ -923,7 +952,6 @@ QBShared.Items = {
 ["tbchoccroiss"] 			 	= {["name"] = "tbblcroiss",  		     	["label"] = "Bloody Cross",	 			["weight"] = 200, 		["type"] = "item", 		["image"] = "tbblcroiss.png", 				["unique"] = false, 	["useable"] = true, 	["shouldClose"] = true,   	["combinable"] = nil,   ["description"] = "", ['hunger'] = math.random(90, 150) , ["decay"] = 30.0, ["delete"] = false },
 ["tbcupcake"] 				 	= {["name"] = "tbcupcake",  		     	["label"] = "CupCake",	 				["weight"] = 200, 		["type"] = "item", 		["image"] = "tbcupcake.png", 				["unique"] = false, 	["useable"] = true, 	["shouldClose"] = true,   	["combinable"] = nil,   ["description"] = "", ['hunger'] = math.random(90, 150) , ["decay"] = 30.0, ["delete"] = false },
 ["tbsweetroll"] 				= {["name"] = "tbsweetroll",  		     	["label"] = "Sweet Roll",	 			["weight"] = 200, 		["type"] = "item", 		["image"] = "tbsweetroll.png", 				["unique"] = false, 	["useable"] = true, 	["shouldClose"] = true,   	["combinable"] = nil,   ["description"] = "", ['hunger'] = math.random(90, 150) , ["decay"] = 30.0, ["delete"] = false },
-["tbdonut"] 					= {["name"] = "tbdonut",					["label"] = "Donut",					["weight"] = 500,		["type"] = "item",		["image"] = "tbdonut.png",					["unique"] = false, 	["useable"] = true,		["shouldClose"] = true,		["combinable"] = nil,	["description"] = "", ['hunger'] = math.random(90, 150) , ["decay"] = 30.0, ["delete"] = false },
 ["tblongjohn"] 					= {["name"] = "tblongjohn",					["label"] = "Long John",				["weight"] = 500,		["type"] = "item",		["image"] = "tblongjohn.png",				["unique"] = false, 	["useable"] = true,		["shouldClose"] = true,		["combinable"] = nil,	["description"] = "", ['hunger'] = math.random(90, 150) , ["decay"] = 30.0, ["delete"] = false },
 ["tbcakebase"] 					= {["name"] = "tbcakebase",					["label"] = "Cake Base",				["weight"] = 500,		["type"] = "item",		["image"] = "tbcakebase.png",				["unique"] = true, 		["useable"] = true,		["shouldClose"] = true,		["combinable"] = nil,	["description"] = "", ['hunger'] = math.random(90, 150) , ["decay"] = 30.0, ["delete"] = false },
 

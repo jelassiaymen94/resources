@@ -1,44 +1,60 @@
 Config.LootProps = {
 
 
-    {prop = 'ex_cash_pile_005', item = 'dirtyband', amountmin = 3, amountmax = 10},
-    {prop = 'h4_prop_h4_gold_stack_01a', item = 'goldbar', amountmin = 3, amountmax = 6},
+    {prop = 'sf_prop_sf_apple_01a', item = 'apple', amountmin = 1, amountmax = 3},
+    {prop = 'xm3_prop_xm3_pineapple_01a', item = 'pineapple', amountmin = 1, amountmax = 3},
 
-    {prop = 'ch_prop_vault_painting_01a', item = 'paintinga', amountmin = 1, amountmax = 1},
-    {prop = 'ch_prop_vault_painting_01b', item = 'paintinga', amountmin = 1, amountmax = 1},
-    {prop = 'ch_prop_vault_painting_01c', item = 'paintinga', amountmin = 1, amountmax = 1},
-    {prop = 'ch_prop_vault_painting_01d', item = 'paintinga', amountmin = 1, amountmax = 1},
-    {prop = 'ch_prop_vault_painting_01e', item = 'paintinga', amountmin = 1, amountmax = 1},
-    {prop = 'ch_prop_vault_painting_01f', item = 'paintingb', amountmin = 1, amountmax = 1},
-    {prop = 'ch_prop_vault_painting_01g', item = 'paintingb', amountmin = 1, amountmax = 1},
-    {prop = 'ch_prop_vault_painting_01h', item = 'paintingd', amountmin = 1, amountmax = 1},
-    {prop = 'ch_prop_vault_painting_01i', item = 'paintingd', amountmin = 1, amountmax = 1},
-    {prop = 'ch_prop_vault_painting_01j', item = 'paintingd', amountmin = 1, amountmax = 1},
-    {prop = 'h4_prop_h4_painting_01a', item = 'paintingb', amountmin = 1, amountmax = 1},
-    {prop = 'h4_prop_h4_painting_01b', item = 'paintingb', amountmin = 1, amountmax = 1},
-    {prop = 'h4_prop_h4_painting_01c', item = 'paintingb', amountmin = 1, amountmax = 1},
-    {prop = 'h4_prop_h4_painting_01d', item = 'paintingd', amountmin = 1, amountmax = 1},
-    {prop = 'h4_prop_h4_painting_01e', item = 'paintingc', amountmin = 1, amountmax = 1},
-    {prop = 'h4_prop_h4_painting_01f', item = 'paintingc', amountmin = 1, amountmax = 1},
-    {prop = 'h4_prop_h4_painting_01g', item = 'paintingc', amountmin = 1, amountmax = 1},
-    {prop = 'h4_prop_h4_painting_01h', item = 'paintingc', amountmin = 1, amountmax = 1},
+    {prop = 'v_res_fa_shoebox3', item = 'weapon_shoe', amountmin = 1, amountmax = 1},
 
-    {prop = 'h4_prop_h4_art_pant_01a', item = 'bluepanther', amountmin = 1, amountmax = 1},
-    {prop = 'h4_prop_h4_diamond_01a', item = 'pinkdiamond', amountmin = 1, amountmax = 1},
-    {prop = 'h4_prop_h4_necklace_01a', item = 'rubynecklace1', amountmin = 1, amountmax = 1},
-    {prop = 'h4_prop_h4_t_bottle_02a', item = 'tequillabottle1', amountmin = 1, amountmax = 1},
-    {prop = 'h4_prop_h4_t_bottle_02b', item = 'tequillabottle2', amountmin = 1, amountmax = 1},
-    {prop = 'h4_prop_h4_t_bottle_01a', item = 'tequillabottle3', amountmin = 1, amountmax = 1},
+    {prop = 'ng_proc_food_chips01a', item = 'ingredients', amountmin = 1, amountmax = 1},
+    {prop = 'xs_prop_chips_tube_wl', item = 'ingredients', amountmin = 1, amountmax = 1},
 
-    {prop = 'prop_cash_pile_01', item = 'dirtyband', amountmin = 1, amountmax = 1},
-    {prop = 'prop_cash_pile_02', item = 'dirtyband', amountmin = 1, amountmax = 1},
-    {prop = 'prop_anim_cash_pile_01', item = 'dirtyband', amountmin = 1, amountmax = 1},
-    {prop = 'prop_anim_cash_pile_02', item = 'dirtyband', amountmin = 1, amountmax = 1},
-    {prop = 'bkr_prop_bkr_cash_roll_01', item = 'dirtyband', amountmin = 3, amountmax = 4},
+    {prop = 'vw_prop_chip_100dollar_st', item = 'coin', amountmin = 3, amountmax = 8},
+    {prop = 'vw_prop_chip_1kdollar_st', item = 'coin', amountmin = 1, amountmax = 3},
+    {prop = 'vw_prop_plaq_1kdollar_x1', item = 'coin', amountmin = 2, amountmax = 4},
 
-    {prop = 'ch_prop_gold_bar_01a', item = 'goldbar', amountmin = 1, amountmax = 1},
-    {prop = 'hei_prop_heist_gold_bar', item = 'goldbar', amountmin = 1, amountmax = 1},
-    {prop = 'prop_gold_bar', item = 'goldbar', amountmin = 1, amountmax = 1},
+    {prop = 'vw_prop_vw_coin_01a', item = 'coin', amountmin = 1, amountmax = 1},
+
+    {prop = 'v_res_fa_tintomsoup', item = 'ingredients', amountmin = 1, amountmax = 1},
+    {prop = 'v_ret_247_vegsoup1', item = 'ingredients', amountmin = 1, amountmax = 1},
+    {prop = 'v_ret_247_tomsoup1', item = 'ingredients', amountmin = 1, amountmax = 1},
+
+    {prop = 'ng_proc_sodacan_01a', item = 'sprunk', amountmin = 1, amountmax = 1},
+    {prop = 'ng_proc_sodacan_01b', item = 'sprunklight', amountmin = 1, amountmax = 1},
+    {prop = 'ng_proc_sodabot_01a', item = 'ecola', amountmin = 1, amountmax = 1},
+    {prop = 'ng_proc_sodacup_01a', item = 'ecolalight', amountmin = 1, amountmax = 1},
+    {prop = 'ng_proc_sodacup_01c', item = 'sprunk', amountmin = 1, amountmax = 1},
+    {prop = 'bkr_prop_coke_bakingsoda', item = 'bakingsoda', amountmin = 1, amountmax = 1},
+
+
+    {prop = 'v_res_fa_cereal01', item = 'ingredients', amountmin = 1, amountmax = 1},
+    {prop = 'v_res_fa_cereal02', item = 'ingredients', amountmin = 1, amountmax = 1},
+    {prop = 'v_res_tt_cereal02', item = 'ingredients', amountmin = 1, amountmax = 1},
+
+    {prop = 'prop_wine_bot_01', item = 'wine', amountmin = 1, amountmax = 1},
+    {prop = 'prop_wine_bot_02', item = 'wine', amountmin = 1, amountmax = 1},
+    {prop = 'prop_wine_rose', item = 'wine', amountmin = 1, amountmax = 1},
+
+    {prop = 'prop_whiskey_bottle', item = 'whiskey', amountmin = 1, amountmax = 1},
+
+    {prop = 'v_ret_ml_beerpis1', item = 'beer', amountmin = 1, amountmax = 1},
+    {prop = 'prop_amb_beer_bottle', item = 'beer', amountmin = 1, amountmax = 1},
+    {prop = 'prop_cs_beer_bot_02', item = 'beer', amountmin = 1, amountmax = 1},
+    {prop = 'prop_beer_am', item = 'beer', amountmin = 1, amountmax = 1},
+
+    {prop = 'prop_vodka_bottle', item = 'vodka', amountmin = 1, amountmax = 1},
+
+    {prop = 'sf_prop_sf_art_box_cig_01a', item = 'cigarbox', amountmin = 1, amountmax = 1},
+    {prop = 'prop_cs_ciggy_01', item = 'cigarette', amountmin = 1, amountmax = 1},
+    {prop = 'prop_cigar_02', item = 'cigar', amountmin = 1, amountmax = 1},
+    {prop = 'v_res_tt_cigs01', item = 'cigbox', amountmin = 1, amountmax = 1},
+
+    {prop = 'prop_choc_pq', item = 'chocolatebar', amountmin = 1, amountmax = 1},
+
+    {prop = 'prop_food_cb_donuts', item = 'donut', amountmin = 2, amountmax = 4},
+    {prop = 'prop_donut_02', item = 'donut', amountmin = 1, amountmax = 1},
+    {prop = 'prop_amb_donut', item = 'donut', amountmin = 1, amountmax = 1},
+
 
     {prop = 'prop_peyote_gold_01', item = 'valuablegoods', amountmin = 1, amountmax = 1},
     {prop = 'ex_prop_exec_award_gold', item = 'valuablegoods', amountmin = 1, amountmax = 1},
@@ -47,45 +63,6 @@ Config.LootProps = {
     {prop = 'h4_prop_h4_gold_coin_01a', item = 'valuablegoods', amountmin = 1, amountmax = 1},
     {prop = 'vw_prop_casino_art_egg_01a', item = 'alienegg', amountmin = 1, amountmax = 1},
 
-    {prop = 'vw_prop_casino_art_miniature_09a', item = 'valuablegoods', amountmin = 1, amountmax = 1},
-    {prop = 'vw_prop_casino_art_miniature_09b', item = 'valuablegoods', amountmin = 1, amountmax = 1},
-    {prop = 'vw_prop_casino_art_miniature_09c', item = 'valuablegoods', amountmin = 1, amountmax = 1},
-
-    {prop = 'vw_prop_casino_art_miniature_05a', item = 'goldtower', amountmin = 1, amountmax = 1},
-    {prop = 'vw_prop_casino_art_miniature_05b', item = 'goldtower', amountmin = 1, amountmax = 1},
-    {prop = 'vw_prop_casino_art_miniature_05c', item = 'goldtower', amountmin = 1, amountmax = 1},
-
-    {prop = 'vw_prop_casino_art_car_09a', item = 'valuablegoods', amountmin = 1, amountmax = 1},
-    {prop = 'vw_prop_casino_art_bird_01a', item = 'exoticbird', amountmin = 1, amountmax = 1},
-    {prop = 'vw_prop_casino_art_car_11a', item = 'valuablegoods', amountmin = 1, amountmax = 1},
-
-    {prop = 'vw_prop_casino_art_grenade_01a', item = 'goldgrenade', amountmin = 1, amountmax = 1},
-    {prop = 'vw_prop_casino_art_grenade_01b', item = 'goldgrenade', amountmin = 1, amountmax = 1},
-    {prop = 'vw_prop_casino_art_grenade_01c', item = 'goldgrenade', amountmin = 1, amountmax = 1},
-
-    {prop = 'vw_prop_art_pug_02a', item = 'exoticdog', amountmin = 1, amountmax = 1},
-    {prop = 'vw_prop_casino_art_basketball_02a', item = 'goldbasketball', amountmin = 1, amountmax = 1},
-
-    {prop = 'vw_prop_miniature_yacht_01a', item = 'exoticyacht', amountmin = 1, amountmax = 1},
-    {prop = 'vw_prop_miniature_yacht_01b', item = 'exoticyacht', amountmin = 1, amountmax = 1},
-    {prop = 'vw_prop_miniature_yacht_01c', item = 'exoticyacht', amountmin = 1, amountmax = 1},
-
-    {prop = 'vw_prop_casino_art_horse_01a', item = 'exotichorse', amountmin = 1, amountmax = 1},
-    {prop = 'vw_prop_casino_art_panther_01c', item = 'exoticcat', amountmin = 1, amountmax = 1},
-
-    {prop = 'v_res_r_fighorse', item = 'exotichorse', amountmin = 1, amountmax = 1},
-    {prop = 'v_res_r_fighorsestnd', item = 'exotichorse', amountmin = 1, amountmax = 1},
-    {prop = 'ch_prop_ch_trophy_monkey_01a', item = 'valuablegoods', amountmin = 1, amountmax = 1},
-    {prop = 'ch_prop_ch_trophy_racer_01a', item = 'valuablegoods', amountmin = 1, amountmax = 1},
-    {prop = 'ch_prop_ch_trophy_strife_01a', item = 'valuablegoods', amountmin = 1, amountmax = 1},
-    {prop = 'vw_prop_casino_art_skull_01b', item = 'exoticskull', amountmin = 1, amountmax = 1},
-    {prop = 'vw_prop_casino_art_skull_02b', item = 'exoticskull', amountmin = 1, amountmax = 1},
-    {prop = 'vw_prop_casino_art_figurines_01a', item = 'valuablegoods', amountmin = 1, amountmax = 1},
-    {prop = 'vw_prop_casino_art_figurines_01b', item = 'valuablegoods', amountmin = 1, amountmax = 1},
-    {prop = 'vw_prop_casino_art_lampf_01a', item = 'valuablegoods', amountmin = 1, amountmax = 1},
-    {prop = 'vw_prop_toy_sculpture_01a', item = 'valuablegoods', amountmin = 1, amountmax = 1},
-    {prop = 'vw_prop_vw_chips_pile_01a', item = 'exoticchips', amountmin = 1, amountmax = 1},
-    {prop = 'vw_prop_vw_chips_pile_02a', item = 'exoticchips', amountmin = 1, amountmax = 1},
 
 }
 Config.Cash = {
