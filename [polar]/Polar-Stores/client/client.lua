@@ -411,28 +411,32 @@ RegisterNetEvent('Polar-stores:Client:Safe', function(data)
     else  notify(text('sometingelse'), "error") end end)
 end)
 
-
+function loop(what)
+    while what do
+    loadAnimDict("veh@break_in@0h@p_m_one@")
+    TaskPlayAnim(PlayerPedId(), "veh@break_in@0h@p_m_one@", "low_force_entry_ds", 3.0, 3.0, -1, 16, 0, 0, 0, 0)
+    end
+end
 RegisterNetEvent('Polar-stores:Client:Register', function(data)
     local name = data.id
     callback('Polar-stores:Door' .. name, function(result) if result then 
     if playeritem(registeritem) then
         TriggerServerEvent('Polar-stores:Server:StopInteract', name)
-        loadAnimDict("veh@break_in@0h@p_m_one@")
-        TaskPlayAnim(PlayerPedId(), "veh@break_in@0h@p_m_one@", "low_force_entry_ds", 3.0, 3.0, -1, 16, 0, 0, 0, 0)
+        loop(true)
     exports[circleexport]:Circle(function(success)
         if success then
             ClearPedTasks(PlayerPedId())
             QBCore.Functions.Progressbar("door", "Stealing Money ..", math.random(5000, 7500), false, true, {
                 disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true,
-                }, { animDict = "veh@break_in@0h@p_m_one@", anim = "low_force_entry_ds", flags = 16,
-                }, {}, {}, function() 
-                    --StopAnimTask(ped, "anim@gangops@facility@servers@", "hotwire", 1.0)
+                }, {}, {}, {}, function() 
+                    loop(false)
+                    ClearPedTasks(PlayerPedId())
                     TriggerServerEvent('Polar-stores:Server:TargetRemove', name)
                     
 
                 end, function() 
-                   -- StopAnimTask(ped, "anim@gangops@facility@servers@", "hotwire", 1.0)
                     TriggerServerEvent('Polar-stores:Server:StartInteract', name)
+                    loop(false)
                     ClearPedTasks(PlayerPedId())
 
                 end)
@@ -440,8 +444,9 @@ RegisterNetEvent('Polar-stores:Client:Register', function(data)
 
            
         else
-            TriggerServerEvent('Polar-stores:Server:StartInteract', name)
+            loop(false)
             ClearPedTasks(PlayerPedId())
+            TriggerServerEvent('Polar-stores:Server:StartInteract', name)
 
             
 
@@ -457,8 +462,7 @@ end)
 RegisterNetEvent('Polar-stores:Client:Door', function(data)
     local name = data.id
     local store = data.whote
-    print(name)
-    print(store)
+    loop(true)
     callback('Polar-stores:Door1', function(result) if result then 
         if playeritem(dooritem) then
         TriggerServerEvent('Polar-stores:Server:StopInteract', name)
@@ -467,9 +471,8 @@ RegisterNetEvent('Polar-stores:Client:Door', function(data)
 
                 QBCore.Functions.Progressbar("door", "Disabling System ..", math.random(5000, 7500), false, true, {
                     disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true,
-                    }, { animDict = "anim@gangops@facility@servers@", anim = "hotwire", flags = 16,
-                    }, {}, {}, function() 
-                        --StopAnimTask(ped, "anim@gangops@facility@servers@", "hotwire", 1.0)
+                    }, {}, {}, {}, function() 
+                       
                         if oxd then doorlock(Config.Names[store]["Door1Name"], false) 
                         else 
                         TriggerServerEvent('qb-doorlock:server:updateState', Config.Names[store]["Door1Name"], false, false, false, true, false, false)
@@ -482,7 +485,8 @@ RegisterNetEvent('Polar-stores:Client:Door', function(data)
 
 
                     end, function() 
-                       -- StopAnimTask(ped, "anim@gangops@facility@servers@", "hotwire", 1.0)
+                        loop(false)
+                        ClearPedTasks(PlayerPedId())
                         TriggerServerEvent('Polar-stores:Server:StartInteract', name)
 
                     end)
@@ -491,7 +495,8 @@ RegisterNetEvent('Polar-stores:Client:Door', function(data)
                
             else
 
-
+                loop(false)
+                ClearPedTasks(PlayerPedId())
                 TriggerServerEvent('Polar-stores:Server:StartInteract', name)
 
                 
