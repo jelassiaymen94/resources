@@ -13,6 +13,8 @@ local QBCore = exports['qb-core']:GetCoreObject()
 
 
 local function checkItems(Player, items)
+	print('1')
+	if Player == nil then return end
 	if type(items) == 'table' then
 		local count = 0
 		local finalcount = 0
