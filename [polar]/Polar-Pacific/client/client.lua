@@ -760,7 +760,7 @@ function Animation(door, props)
     LocalPlayer.state:set('inv_busy', false, true)  
     TriggerServerEvent('Polar-Pacific:Server:Synapse', door, sped)  
             
-    TriggerServerEvent('Polar-Pacific:Server:RemoveProp', props)
+    TriggerServerEvent('Polar-Pacific:Server:RemoveProp2', props)
     RemoveAnimDict(animDict)
 
         end
