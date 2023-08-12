@@ -220,6 +220,7 @@ end)
 
 function Animation(door)
     local props = doors[door]
+    local propCoords = GetEntityCoords(props)
     model = bagcolor animDict = 'anim@scripted@heist@ig1_table_grab@cash@male@' 
        
     local playerCoords = GetEntityCoords(PlayerPedId())
