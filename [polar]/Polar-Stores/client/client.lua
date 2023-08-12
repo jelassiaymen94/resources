@@ -601,11 +601,10 @@ RegisterNetEvent('esx:playerLoaded', function(xPlayer)
 end)
 local PlayerData = nil
 function playeritem(items, amount)
-        if Config.Framework == 'qb' then    
+        
         PlayerData = QBCore.Functions.GetPlayerData()
-        else
-        PlayerData = ESX.PlayerData
-        end
+        
+        
         local isTable = type(items) == 'table'
         local isArray = isTable and table.type(items) == 'array' or false
         local totalItems = #items
@@ -636,8 +635,9 @@ function playeritem(items, amount)
                     return true
                 end
             end
-        end
+        
         return false
+        end
 end
   
   
