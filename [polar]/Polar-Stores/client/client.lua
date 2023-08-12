@@ -385,7 +385,7 @@ end)
 
 RegisterNetEvent('Polar-stores:Client:Door', function(data)
     local name = data.id
-    callback('Polar-stores:Door' .. name, function(result) if result then 
+    callback('Polar-stores:Door1', function(result) if result then 
         TriggerServerEvent('Polar-stores:Server:StopInteract', name)
         exports[circleexport]:Circle(function(success)
             if success then
@@ -432,7 +432,7 @@ end)
 
 RegisterNetEvent('Polar-stores:Client:Door2', function(data)
     local name = data.id
-    callback('Polar-stores:Door' .. name, function(result) if result then 
+    callback('Polar-stores:Door2', function(result) if result then 
         TriggerServerEvent('Polar-stores:Server:StopInteract', name)
         exports[circleexport]:Circle(function(success)
             if success then
