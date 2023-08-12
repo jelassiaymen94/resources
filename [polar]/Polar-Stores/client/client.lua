@@ -579,7 +579,9 @@ end)
 
 
 RegisterNetEvent('Polar-stores:Client:ResetDoors', function(store)
+    if store == nil then return end 
     if oxd then
+       
         doorlock(Config.Names[store]["Door1Name"], false)
         doorlock(Config.Names[store]["Door2Name"], true)
       
