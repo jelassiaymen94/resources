@@ -1,11 +1,7 @@
 
-if Config.Framework == 'qb' then 
-    QBCore = exports[Config.Core]:GetCoreObject()
+
+local QBCore = exports['qb-core']:GetCoreObject()
   
-elseif Config.Framework == 'esx' then
-    ESX = nil
- 
-end
 
 local store = nil
 RegisterNetEvent('Polar-stores:Server:SetStore', function(stores)

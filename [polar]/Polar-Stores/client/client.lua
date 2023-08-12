@@ -1,8 +1,6 @@
-if Config.Framework == 'qb' then 
-    QBCore = exports[Config.Core]:GetCoreObject()
-elseif Config.Framework == 'esx' then
-    ESX = nil
-end
+
+local QBCore = exports['qb-core']:GetCoreObject()
+
 local amount = nil
 
 
@@ -117,12 +115,9 @@ local proptable = {
 
 local store = nil
 
-local doortable = {
-    Config.Names[store]["Door1Name"],
-    Config.Names[store]["Door2Name"],
-    Config.ComputerName
+local doortable = {}
 
-}
+
 
 AddEventHandler('onResourceStop', function(resource) if resource ~= GetCurrentResourceName() then return end  TriggerServerEvent('Polar-stores:Server:Restart')  TriggerEvent('Polar-stores:Client:ResetProps') TriggerEvent('Polar-stores:Client:ResetDoors') resetstuff() LocalPlayer.state:set('inv_busy', false, true) end)
 AddEventHandler('onResourceStart', function(resource) if resource == GetCurrentResourceName() then Wait(100) if hi then print('Starting Targets')  end peds() end end)
@@ -137,11 +132,18 @@ RegisterNetEvent('Polar-Stores:Client:StartStore', function()
         if playeritem(boxitem) then
 
             callback('Polar-stores:Cooldown', function(result) if result then
-                TriggerServerEvent('Polar-stores:Server:StartCooldown')
-                TriggerServerEvent('Polar-stores:Server:StartInteract', 'storesdoor1')
-                TriggerServerEvent('Polar-stores:Server:StartInteract', 'storesdoor2')
-                TriggerServerEvent('Polar-stores:Server:StartInteract', 'storesdoor3')
-                TriggerServerEvent('Polar-stores:Server:StartTargets')
+                local random = math.random(1,100)
+                if random < 101 then store = "Store1" elseif random < 50 then store = 'Store2' elseif random < 75 then store = 'Store3' else store = 'Store4' end
+                Wait(500)
+                doortable = {
+                    Config.Names[store]["Door1Name"],
+                    Config.Names[store]["Door2Name"],
+                    Config.ComputerName
+                
+                }
+
+                TriggerServerEvent('Polar-stores:Server:StartCooldown', store)
+                TriggerServerEvent('Polar-stores:Server:StartTargets', store)
             else
                 notify(text('cooldown'), "error")
             end end)
@@ -155,9 +157,9 @@ end)
 local blip = nil
 local what = false
 
-RegisterNetEvent('Polar-stores:Client:GrabLoc', function(name, loc)
+RegisterNetEvent('Polar-stores:Client:GrabLoc', function(store)
    
-    blip(loc)
+    blip(Config.Names[store]["ComputerEye"])
     
 
 
@@ -311,13 +313,12 @@ end)
 
 
 
-RegisterNetEvent('Polar-stores:Client:StartLoot', function()
-    local random = math.random(1,100)
-    if random < 101 then store = "Store1" elseif random < 50 then store = 'Store2' elseif random < 75 then store = 'Store3' else store = 'Store4' end
+RegisterNetEvent('Polar-stores:Client:StartLoot', function(store)
+   
 
     Wait(500)
     TriggerServerEvent('Polar-stores:Server:SetStore', store)
-    
+
     TriggerServerEvent('Polar-stores:Server:SetupGrab1', store)
 
     TriggerServerEvent('Polar-stores:Server:SetupPickup1', store)

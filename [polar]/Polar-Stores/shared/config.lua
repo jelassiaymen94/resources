@@ -1,7 +1,6 @@
 Config = {} or Config
 
 --==========================================================================
-Config.Core = 'qb-core' -- for escrowed part
 Config.img = "inventory/html/images/"
 --==========================================================================
 
@@ -9,12 +8,9 @@ Config.img = "inventory/html/images/"
 Config.PolarWade = true
 
 --============== CORE ================ Change if esx
-Config.Framework = 'qb' -- or 'esx'
-if Config.Framework == 'qb' then 
-    QBCore = exports[Config.Core]:GetCoreObject()
-elseif Config.Framework == 'esx' then
-    ESX = nil
-end
+
+local QBCore = exports['qb-core']:GetCoreObject()
+
 Config.CallBack =  QBCore.Functions.CreateCallback -- ESX.RegisterServerCallback
 Config.TrigCallBack = QBCore.Functions.TriggerCallback -- ESX.TriggerServerCallback
 
