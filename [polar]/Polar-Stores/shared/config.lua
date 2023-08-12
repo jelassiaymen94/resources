@@ -33,9 +33,9 @@ Config = {
     OxIventory = false,
 
 
-    BlipColor = 7,
-    BlipSprite = 267,
-    BlipName = "Robbery" ,
+    BlipColor = 5,
+    BlipSprite = 304,
+    BlipName = "Location" ,
 
     CallBack =  QBCore.Functions.CreateCallback ,
     TrigCallBack = QBCore.Functions.TriggerCallback,

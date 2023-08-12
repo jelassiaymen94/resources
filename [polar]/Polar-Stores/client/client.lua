@@ -474,6 +474,7 @@ RegisterNetEvent('Polar-stores:Client:Door', function(data)
                         else 
                         TriggerServerEvent('qb-doorlock:server:updateState', Config.Names[store]["Door1Name"], false, false, false, true, false, false)
                         end
+                        RemoveBlip(blip)
                         CallPolice(GetEntityCoords(PlayerPedId()))
                         TriggerServerEvent('Polar-stores:Server:TargetRemove', name)
 
