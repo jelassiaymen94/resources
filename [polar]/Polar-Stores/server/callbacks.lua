@@ -37,6 +37,7 @@ local register = true
 local cooldown = true
 local door1 = true
 local door2 = true
+local safe = true
 
 RegisterNetEvent('Polar-stores:Server:StopInteract', function(door)
     if door == nil then return end
@@ -44,6 +45,7 @@ RegisterNetEvent('Polar-stores:Server:StopInteract', function(door)
     if door == Config.RegisterName then register = false end
     if door == Config.Names[store]["Door1Name"] then door1 = false end
     if door == Config.Names[store]["Door2Name"] then door2 = false end
+    if door == Config.SafeName then safe = false end
 end)
 RegisterNetEvent('Polar-stores:Server:StartInteract', function(door)
     if door == nil then return end
@@ -51,14 +53,15 @@ RegisterNetEvent('Polar-stores:Server:StartInteract', function(door)
     if door == Config.RegisterName then register = true end
     if door == Config.Names[store]["Door1Name"] then door1 = true end
     if door == Config.Names[store]["Door2Name"] then door2 = true end
+    if door == Config.SafeName then safe = true end
 end)
-
 
 Config.CallBack('Polar-stores:Cooldown', function(source, cb) cb(cooldown) end) 
 Config.CallBack('Polar-stores:Door' .. Config.ComputerName, function(source, cb) cb(storespc) end) 
 Config.CallBack('Polar-stores:Door' .. Config.RegisterName, function(source, cb)  cb(register) end) 
 Config.CallBack('Polar-stores:Door1', function(source, cb) cb(door1) end) 
 Config.CallBack('Polar-stores:Door2', function(source, cb)  cb(door2) end) 
+Config.CallBack('Polar-stores:Safe', function(source, cb)  cb(door2) end) 
 
 local time = (Config.CooldownTime * 60000) 
 RegisterNetEvent('Polar-stores:Server:StartCooldown', function()
@@ -74,6 +77,7 @@ function reset()
     cooldown = true
     storespc = true
     register = true
+    safe = true
     
     TriggerClientEvent('Polar-stores:Client:ResetProps', -1)
 

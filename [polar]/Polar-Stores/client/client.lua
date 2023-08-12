@@ -340,7 +340,45 @@ RegisterNetEvent('Polar-stores:Client:StartTargets', function(store)
  
 end)
 
+RegisterNetEvent('Polar-stores:Client:Safe', function(data)
+    local name = data.id
+    callback('Polar-stores:Safe', function(result) if result then 
+    TriggerServerEvent('Polar-stores:Server:StopInteract', name)
+    if playeritem(safeitem) then
+    exports[circleexport]:Circle(function(success)
+        if success then
 
+            QBCore.Functions.Progressbar("door", "Stealing Money ..", math.random(5000, 7500), false, true, {
+                disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true,
+                }, { animDict = "anim@gangops@facility@servers@", anim = "hotwire", flags = 16,
+                }, {}, {}, function() 
+                    StopAnimTask(ped, "anim@gangops@facility@servers@", "hotwire", 1.0)
+                    TriggerServerEvent('Polar-stores:Server:TargetRemove', name)
+                    
+
+                end, function() 
+                    StopAnimTask(ped, "anim@gangops@facility@servers@", "hotwire", 1.0)
+                    TriggerServerEvent('Polar-stores:Server:StartInteract', name)
+
+
+                end)
+
+
+           
+        else
+            TriggerServerEvent('Polar-stores:Server:StartInteract', name)
+
+
+
+            
+
+
+
+        end
+    end, 2, 20)
+    else notify(text('nosafe'), "error") end
+    else  notify(text('sometingelse'), "error") end end)
+end)
 
 
 RegisterNetEvent('Polar-stores:Client:Register', function(data)
