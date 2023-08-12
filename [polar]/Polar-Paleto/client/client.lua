@@ -388,26 +388,30 @@ function CashAppear(grabModel)
         DeleteObject(grabobj)
     end)
 end
+local trolylp = {}
+RegisterNetEvent('Polar-Paleto:Client:TrollyModelSync', function(name, loc)
+    trolylp[name] = {loc, name}
 
+
+end)
 function grabloot(door, object)
     local grabModel = nil
     local object2 = object
+    TriggerServerEvent('Polar-Paleto:Server:TrollyModelSync', door)
     TriggerServerEvent('Polar-Paleto:Server:TargetRemove', door)
     local prop = trollys[door]
     if prop == 'ch_prop_ch_cash_trolly_01a' then grabModel = 'hei_prop_heist_cash_pile'   end
     if prop == 'ch_prop_gold_trolly_01a' then grabModel = 'ch_prop_gold_bar_01a'  end
     if prop == 'ch_prop_diamond_trolly_01a' then grabModel = 'ch_prop_vault_dimaondbox_01a' end
-    local prop2 = GetEntityCoords(object)
-    local rot = GetEntityRotation(object)
     SetPedComponentVariation(PlayerPedId(), 5, Config.HideBagID, 1, 1)
     LocalPlayer.state:set('inv_busy', true, true) -- Busy
     local pedCoords, pedRotation = GetEntityCoords(PlayerPedId()), vector3(0.0, 0.0, 0.0)
     local animDict = 'anim@heists@ornate_bank@grab_cash'
     loadAnimDict(animDict)
     loadModel(bagcolor)
-    local sceneObject = GetClosestObjectOfType(GetEntityCoords(object), 2.0, GetHashKey(prop), 0, 0, 0)
-    print(sceneObject)
-    print(GetHashKey(prop))
+    
+    local sceneObject = GetClosestObjectOfType(trolylp[door][2], 2.0, trolylp[door][1], 0, 0, 0)
+    
     while not NetworkHasControlOfEntity(sceneObject) do
         Wait(1)
         print('error')
