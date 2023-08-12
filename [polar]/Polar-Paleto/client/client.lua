@@ -343,7 +343,7 @@ function adddrillspot(loc, name)
         targets[name] = exports.ox_target:addBoxZone({ coords = vector3(loc.x, loc.y, loc.z), size = vec3(1, 1, 1), rotation = 1, debug = hi,
         options = {{  event = "Polar-Paleto:Client:Drill", door = name, head = loc.w, coords = vec3(loc.x, loc.y, loc.z), icon = "fas fa-bolt", label = "Drill Lockbox" }, } })
     else
-        exports['qb-target']:AddBoxZone(name,  vector3(loc.x, loc.y, loc.z), 0.25, 0.25, { name = name, heading = loc.w, debug = hi, minZ = loc.z-1, maxZ =  loc.z+1,}, 
+        exports['qb-target']:AddBoxZone(name,  vector3(loc.x, loc.y, loc.z), 1.25, 1.25, { name = name, heading = loc.w, debug = hi, minZ = loc.z-1, maxZ =  loc.z+1,}, 
         { options = {{ event = "Polar-Paleto:Client:Drill", door = name, head = loc.w, coords = vec3(loc.x, loc.y, loc.z), icon = "fas fa-bolt", label = "Drill Lockbox"}}, distance = 1 }) 
     end
 end
