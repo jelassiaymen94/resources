@@ -1887,7 +1887,8 @@ function HeistAnimation(door)
     ArtHeist = {}
     
     TriggerServerEvent('Polar-Pacific:Server:Synapse', door)  
-   
+    TriggerServerEvent('Polar-Pacific:Server:RemoveProp', door)
+    
     scenes = {false, false, false, false}
     
     SetPedComponentVariation(PlayerPedId(), 5, Config.BagUseID, 1, 1)
