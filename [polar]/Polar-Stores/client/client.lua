@@ -304,15 +304,6 @@ end)
 
 
 
-function next(door, loc)
-   
-
-   
-    
-end
-
-
-
 
 
 
@@ -323,7 +314,7 @@ end
 RegisterNetEvent('Polar-stores:Client:StartLoot', function()
     local random = math.random(1,100)
     local store = nil
-    if random < 25 then store = "Store1" elseif random < 50 then store = 'Store2' elseif random < 75 then store = 'Store3' else store = 'Store4' end
+    if random < 101 then store = "Store1" elseif random < 50 then store = 'Store2' elseif random < 75 then store = 'Store3' else store = 'Store4' end
 
     Wait(500)
 
@@ -343,12 +334,50 @@ RegisterNetEvent('Polar-stores:Client:StartTargets', function(store)
 
     CreateTarget(Config.ComputerName, Config.Names[store]["ComputerEye"], "Polar-stores:Client:HackComputer", "Hack", "fas fa-bolt", Config.Debug)
  
-
+    CreateTarget(Config.Names[store]["RegisterName"], Config.Names[store]["RegisterEye"], "Polar-stores:Client:Register", "Steal", "fas fa-bolt", Config.Debug)
+ 
    
 end)
 
 
---- Thermites
+
+
+RegisterNetEvent('Polar-stores:Client:Register', function(data)
+    local name = data.id
+    exports[circleexport]:Circle(function(success)
+        if success then
+
+            QBCore.Functions.Progressbar("door", "Stealing Money ..", math.random(5000, 7500), false, true, {
+                disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true,
+                }, { animDict = "anim@gangops@facility@servers@", anim = "hotwire", flags = 16,
+                }, {}, {}, function() 
+                    StopAnimTask(ped, "anim@gangops@facility@servers@", "hotwire", 1.0)
+
+                    
+
+                end, function() 
+                    StopAnimTask(ped, "anim@gangops@facility@servers@", "hotwire", 1.0)
+                 
+
+
+                end)
+
+
+           
+        else
+
+
+
+
+            
+
+
+
+        end
+    end, 2, 20)
+end)
+
+
 RegisterNetEvent('Polar-stores:Client:Door', function(data)
     local name = data.id
     callback('Polar-stores:Door' .. name, function(result) if result then 
