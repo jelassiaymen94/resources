@@ -54,11 +54,11 @@ CreateThread(function()
 
       
 
-        if DoesEntityExist(PlayerPedId()) and not IsEntityDead(PlayerPedId()) then
-           
+            
 
             for k, v in ipairs(Config.WeaponsOnBack) do
                 if playeritem("weapon_assaultrifle") then
+                    print('hi')
                     print(json.encode(v.model))
                 end
             end
@@ -80,7 +80,6 @@ CreateThread(function()
                     TriggerEvent('weaponBack:removeWeapon', weaponHash)
                 end
             end
-        end
     end
 end)
 
