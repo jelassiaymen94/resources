@@ -31,7 +31,7 @@ AddEventHandler('weaponBack:equipWeapon', function(weaponHash)
     end
 end)
 
-
+local weaponsOnBack = {}
 
 
 RegisterNetEvent('weaponBack:removeWeapon')
@@ -64,7 +64,7 @@ Citizen.CreateThread(function()
                     TriggerEvent('weaponBack:equipWeapon', weaponHash)
                 end
             end
-            
+
             for weaponHash, weaponObject in pairs(weaponsOnBack) do
                 if not table.includes(currentWeapons, weaponHash) then
                     DeleteEntity(weaponObject)
