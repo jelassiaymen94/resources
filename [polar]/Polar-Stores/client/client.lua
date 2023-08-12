@@ -427,6 +427,7 @@ end)
 
 RegisterNetEvent('Polar-stores:Client:Door', function(data)
     local name = data.id
+    print(name)
     callback('Polar-stores:Door1', function(result) if result then 
         if playeritem(dooritem) then
         TriggerServerEvent('Polar-stores:Server:StopInteract', name)
