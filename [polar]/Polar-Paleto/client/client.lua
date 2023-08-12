@@ -405,7 +405,7 @@ function grabloot(door, object)
     local animDict = 'anim@heists@ornate_bank@grab_cash'
     loadAnimDict(animDict)
     loadModel(bagcolor)
-    local sceneObject = GetClosestObjectOfType(GetEntityCoords(object), 2.0, GetHashKey(prop), false, false, false)
+    sceneObject = GetClosestObjectOfType(GetEntityCoords(object), 2.0, GetHashKey(prop), 0, 0, 0)
  
     while not NetworkHasControlOfEntity(sceneObject) do
         Wait(1)
