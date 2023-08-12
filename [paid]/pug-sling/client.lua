@@ -40,7 +40,7 @@ AddEventHandler('weaponBack:removeWeapon', function(weaponHash)
         DeleteEntity(weaponsOnBack[weaponHash])
         weaponsOnBack[weaponHash] = nil
         weaponPlacements[weaponHash] = nil
-    end
+    
 end)
 
 CreateThread(function()
