@@ -543,7 +543,7 @@ RegisterNetEvent('Polar-stores:Client:storesProp', function(door, prop, var)
     loadModel(prop) 
     doors[door] =  CreateObject(prop, var.x, var.y, var.z,  true,  true, true) 
     SetEntityHeading(doors[door], var.w) 
-    --print(doors[door])
+    print(doors[door])
    
 end)
 
@@ -553,8 +553,8 @@ end)
 
 RegisterNetEvent('Polar-stores:Client:RemoveProp', function(door) 
     if hi then print(doors[door]) end
-    print(json.encode(doors[door]))
-            
+  
+    if DoesEntityExist(json.encode(doors[door])) then DeleteEntity(json.encode(doors[door])) end
     if DoesEntityExist(doors[door]) then DeleteEntity(doors[door]) end
 end)
 
