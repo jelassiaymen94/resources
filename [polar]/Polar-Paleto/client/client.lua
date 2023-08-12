@@ -389,10 +389,16 @@ function CashAppear(grabModel)
     end)
 end
 local trolylp = {}
+RegisterNetEvent('Polar-Paleto:Client:TrollyModelSync', function(name, loc)
+    trolylp[name] = loc
 
+
+end)
 function grabloot(door, object)
     local grabModel = nil
     local object2 = object
+    print(GetEntityCoords(object))
+    TriggerServerEvent('Polar-Paleto:Server:TrollyModelSync', door, GetEntityCoords(object))
     TriggerServerEvent('Polar-Paleto:Server:TargetRemove', door)
     local prop = trollys[door]
     if prop == 'ch_prop_ch_cash_trolly_01a' then grabModel = 'hei_prop_heist_cash_pile'   end
@@ -405,7 +411,13 @@ function grabloot(door, object)
     loadAnimDict(animDict)
     loadModel(bagcolor)
     
-   
+    local sceneObject = GetClosestObjectOfType(GetEntityCoords(object), 2.0, GetHashKey(object), 0, 0, 0)
+    
+    while not NetworkHasControlOfEntity(sceneObject) do
+        Wait(1)
+        --print('error')
+        NetworkRequestControlOfEntity(sceneObject)
+    end
 
     local bag = CreateObject(GetHashKey(bagcolor), pedCoords, true, false, false)
     local scene1 = NetworkCreateSynchronisedScene(GetEntityCoords(object2), GetEntityRotation(object2), 2, true, false, 1065353216, 0, 1.3)
@@ -504,7 +516,7 @@ function grabloot(door, object)
     SetEntityAsNoLongerNeeded(object)
     RemoveAnimDict(animDict)
 
-    local object2 = nil
+    local sceneObject = nil
 end
 
 
