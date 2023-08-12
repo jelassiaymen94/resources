@@ -63,7 +63,7 @@ function start()
             for k, v in pairs(Config.WeaponsOnBack) do
                 --print(json.encode(Config.WeaponsOnBack[k]))
                 local hi = json.encode(Config.WeaponsOnBack[k])
-                if playeritem(hi.name) then
+                if playeritem(hi.name, 1, source) then
                     local hi = json.encode(v.hash)
                     local hi2 = json.encode(v.model)
                     local hi3 = json.encode(v.name)
@@ -99,8 +99,8 @@ RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function() Wait(100) start() en
 
 
 local PlayerData = nil
-function playeritem(items, amount)
-        PlayerData = QBCore.Functions.GetPlayerData()
+function playeritem(items, amount, src)
+        PlayerData = QBCore.Functions.GetPlayerData(src)
         local isTable = type(items) == 'table'
         local isArray = isTable and table.type(items) == 'array' or false
         local totalItems = #items
