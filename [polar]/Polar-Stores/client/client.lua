@@ -544,7 +544,7 @@ end
 
 RegisterNetEvent('Polar-stores:Client:storesProp', function(door, prop, var) 
     loadModel(prop) 
-    doors[door] =  CreateObject(prop, var.x, var.y, var.z,  true,  true, true) 
+    doors[door] =  CreateObject(prop, var.x, var.y, var.z,  false,  true, true) 
     SetEntityHeading(doors[door], var.w) 
 
 end)
