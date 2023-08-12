@@ -387,14 +387,16 @@ end)
 RegisterNetEvent('Polar-stores:Client:Register', function(data)
     local name = data.id
     callback('Polar-stores:Door' .. name, function(result) if result then 
-    TriggerServerEvent('Polar-stores:Server:StopInteract', name)
     if playeritem(registeritem) then
+        TriggerServerEvent('Polar-stores:Server:StopInteract', name)
+        loadAnimDict("veh@break_in@0h@p_m_one@")
+        TaskPlayAnim(PlayerPedId(), "veh@break_in@0h@p_m_one@", "low_force_entry_ds", 3.0, 3.0, -1, 16, 0, 0, 0, 0)
     exports[circleexport]:Circle(function(success)
         if success then
-
+            ClearPedTasks(PlayerPedId())
             QBCore.Functions.Progressbar("door", "Stealing Money ..", math.random(5000, 7500), false, true, {
                 disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true,
-                }, { animDict = "anim@gangops@facility@servers@", anim = "hotwire", flags = 16,
+                }, { animDict = "veh@break_in@0h@p_m_one@", anim = "low_force_entry_ds", flags = 16,
                 }, {}, {}, function() 
                     --StopAnimTask(ped, "anim@gangops@facility@servers@", "hotwire", 1.0)
                     TriggerServerEvent('Polar-stores:Server:TargetRemove', name)
@@ -403,7 +405,7 @@ RegisterNetEvent('Polar-stores:Client:Register', function(data)
                 end, function() 
                    -- StopAnimTask(ped, "anim@gangops@facility@servers@", "hotwire", 1.0)
                     TriggerServerEvent('Polar-stores:Server:StartInteract', name)
-
+                    ClearPedTasks(PlayerPedId())
 
                 end)
 
@@ -411,8 +413,7 @@ RegisterNetEvent('Polar-stores:Client:Register', function(data)
            
         else
             TriggerServerEvent('Polar-stores:Server:StartInteract', name)
-
-
+            ClearPedTasks(PlayerPedId())
 
             
 
