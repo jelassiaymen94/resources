@@ -7,7 +7,7 @@ Config.LootProps = {
     {prop = 'v_res_fa_shoebox3', item = 'weapon_shoe', amountmin = 1, amountmax = 1},
 
     {prop = 'ng_proc_food_chips01a', item = 'ingredients', amountmin = 1, amountmax = 1},
-    {prop = 'xs_prop_chips_tube_wl', item = 'ingredients', amountmin = 1, amountmax = 1},
+  --  {prop = 'xs_prop_chips_tube_wl', item = 'ingredients', amountmin = 1, amountmax = 1},
 
     {prop = 'vw_prop_chip_100dollar_st', item = 'coin', amountmin = 3, amountmax = 8},
     {prop = 'vw_prop_chip_1kdollar_st', item = 'coin', amountmin = 1, amountmax = 3},
@@ -15,7 +15,7 @@ Config.LootProps = {
 
     {prop = 'vw_prop_vw_coin_01a', item = 'coin', amountmin = 1, amountmax = 1},
 
-   -- {prop = 'v_res_fa_tintomsoup', item = 'ingredients', amountmin = 1, amountmax = 1},
+    {prop = 'v_res_fa_tintomsoup', item = 'ingredients', amountmin = 1, amountmax = 1},
     {prop = 'v_ret_247_vegsoup1', item = 'ingredients', amountmin = 1, amountmax = 1},
     {prop = 'v_ret_247_tomsoup1', item = 'ingredients', amountmin = 1, amountmax = 1},
 
@@ -109,7 +109,7 @@ Config.Cash = {
     'v_ret_247_vegsoup1',
    
 
-    'xs_prop_chips_tube_wl',
+    'v_res_fa_tintomsoup',
     'ng_proc_food_chips01a',
     'v_res_fa_shoebox3',
     'xm3_prop_xm3_pineapple_01a',
