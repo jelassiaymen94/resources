@@ -61,7 +61,7 @@ local closed = 158.92
 local vaultloc = vector3(255.23, 223.98, 102.39)
 
 local hi = Config.Debug
-CreateThread(function() peds() end)
+--CreateThread(function() peds() end)
 function peds()
    
     if Config.Debug then print('starting') end

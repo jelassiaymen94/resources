@@ -63,14 +63,19 @@ function start()
             for k, v in pairs(Config.WeaponsOnBack) do
                 --print(json.encode(Config.WeaponsOnBack[k]))
                 local hi = json.encode(Config.WeaponsOnBack[k])
-                if playeritem(hi.name, 1, source) then
+                QBCore.Functions.TriggerCallback('pug-sling:server:checkItems', function(result)
+                if result then
+                    
                     local hi = json.encode(v.hash)
                     local hi2 = json.encode(v.model)
                     local hi3 = json.encode(v.name)
                     print(hi)
                     print(hi2)
                     print(hi3)
+
                 end
+                end, hi.name)
+              
             end
           
        
@@ -97,40 +102,3 @@ end
 RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function() Wait(100) start() end)
 
 
-
-local PlayerData = nil
-function playeritem(items, amount, src)
-        PlayerData = QBCore.Functions.GetPlayerData(src)
-        local isTable = type(items) == 'table'
-        local isArray = isTable and table.type(items) == 'array' or false
-        local totalItems = #items
-        local count = 0
-        local kvIndex = 2
-        if isTable and not isArray then
-            totalItems = 0
-            for _ in pairs(items) do 
-                local totalItems2 = totalItems + 1 
-                totalItems = totalItems2
-            end
-            kvIndex = 1
-        end
-        for _, itemData in pairs(PlayerData.items) do
-            if isTable then
-                for k, v in pairs(items) do
-                    local itemKV = {k, v}
-                    if itemData and itemData.name == itemKV[kvIndex] and ((amount and itemData.amount >= amount) or (not isArray and itemData.amount >= v) or (not amount and isArray)) then
-                        local count2 = count + 1 
-                        count = count2
-                    end
-                end
-                if count == totalItems then
-                    return true
-                end
-            else -- Single item as string
-                if itemData and itemData.name == items and (not amount or (itemData and amount and itemData.amount >= amount)) then
-    return true
-                end
-            end
-        end
-    return false
-end
