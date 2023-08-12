@@ -397,7 +397,6 @@ end)
 function grabloot(door, object)
     local grabModel = nil
     local object2 = object
-    print(GetEntityCoords(object))
     TriggerServerEvent('Polar-Paleto:Server:TrollyModelSync', door, GetEntityCoords(object))
     TriggerServerEvent('Polar-Paleto:Server:TargetRemove', door)
     local prop = trollys[door]
@@ -411,7 +410,7 @@ function grabloot(door, object)
     loadAnimDict(animDict)
     loadModel(bagcolor)
     
-    local sceneObject = GetClosestObjectOfType(GetEntityCoords(object), 2.0, GetHashKey(object), 0, 0, 0)
+    local sceneObject = GetClosestObjectOfType(trolylp[door], 2.0, trollys[door], 0, 0, 0)
     
     while not NetworkHasControlOfEntity(sceneObject) do
         Wait(1)
