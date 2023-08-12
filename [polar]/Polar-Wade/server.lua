@@ -2,7 +2,7 @@ local QBCore = exports['qb-core']:GetCoreObject()
 
 
 local Jewelry = false
-local Store = true
+local Stores = true
 local ArmoredTruck = false
 local Pacific = false
 local House = false
@@ -36,7 +36,7 @@ local table = {}
 
 exports('Paleto', function(rob) if rob then Paleto = false else Paleto = true end end)
 exports('Pacific', function(rob) if rob then Pacific = false else Pacific = true end end)
-exports('Store', function(rob) if rob then Store = false else Store = true end end)
+exports('Stores', function(rob) if rob then Stores = false else Stores = true end end)
 exports('Jewelry', function(rob) if rob then Jewelry = false else Jewelry = true end end)
 exports('ArmoredTruck', function(rob) if rob then ArmoredTruck = false else ArmoredTruck = true end end)
 exports('Fleeca', function(rob) if rob then Fleeca = false else Fleeca = true end end)
@@ -45,7 +45,7 @@ exports('House', function(rob) if rob then House = false else House = true end e
 
 QBCore.Functions.CreateCallback("Polar-Wade:Server:Table", function(source, cb) 
     table["House"] = House
-    table["Store"] = Store
+    table["Stores"] = Stores
     table["Jewelry"] = Jewelry
     table["ArmoredTruck"] = ArmoredTruck
     table["Pacific"] = Fleeca
