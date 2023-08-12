@@ -415,7 +415,7 @@ function grabloot(door, object)
     
     while not NetworkHasControlOfEntity(sceneObject) do
         Wait(1)
-        print('error')
+        --print('error')
         NetworkRequestControlOfEntity(sceneObject)
     end
 
