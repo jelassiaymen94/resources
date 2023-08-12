@@ -34,13 +34,12 @@ end
 
 
 
-QBCore.Functions.CreateCallback('pug-sling:server:checkItems', function(source, cb, items)
+QBCore.Functions.CreateCallback('pug-sling:server:checkItems', function(source, cb, item)
 	local src = source
     local Player = QBCore.Functions.GetPlayer(src)
-    
-	print(items)
+    print(item)
     for a, b in pairs(Player.PlayerData.items) do
-    if b.name == items then
+    if b.name == item then
     	cb(true)
 	else
 		cb(false)
