@@ -14,7 +14,7 @@ RegisterNetEvent('qb-randombox:server:GetRewardBox', function()
         if Luck == Odd then
             local random = Config.LuckAmountBox
             Player.Functions.AddItem(Config.LuckItemBox, random)
-            TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.LuckItemBox], 'add')
+            TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.LuckItemBox], 'add', random)
         
         end
     end)
@@ -33,7 +33,7 @@ RegisterNetEvent('qb-randombox:server:GetRewardCase', function()
         if Luck == Odd then
             local random = Config.LuckAmountCase
             Player.Functions.AddItem(Config.LuckItemCase, random)
-            TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.LuckItemCase], 'add')
+            TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.LuckItemCase], 'add', random)
         
         end
     end)
@@ -52,7 +52,7 @@ RegisterNetEvent('qb-randombox:server:GetRewardBag', function()
         if Luck == Odd then
             local random = Config.LuckAmountBag
             Player.Functions.AddItem(Config.LuckItemBag, random)
-            TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.LuckItemBag], 'add')
+            TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.LuckItemBag], 'add', random)
         
         end
     end)

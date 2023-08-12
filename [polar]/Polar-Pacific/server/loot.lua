@@ -67,8 +67,8 @@ RegisterNetEvent('Polar-Pacific:Server:RemoveItems', function(item, amount)
     if amount == nil then amount = 1 end
     if Config.Framework == 'qb' then 
         if oxinv then
-            exports.ox_inventory:AddItem(src, QBCore.Shared.Items[item], amount)
-            TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[item], "add", amount)  
+            exports.ox_inventory:AddItem(src, QBCore.Shared.Items[item], 1)
+            TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[item], "add", 1)  
         else
             Player.Functions.AddItem(item, amount) 
             TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[item], "add", amount)  
