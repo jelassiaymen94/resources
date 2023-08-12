@@ -596,11 +596,8 @@ RegisterNetEvent('Polar-stores:Client:ResetDoors', function(store)
 end)
 
 local PlayerData = nil
-function playeritem(items)
-        
+function playeritem(items, amount)
         PlayerData = QBCore.Functions.GetPlayerData()
-        
-        
         local isTable = type(items) == 'table'
         local isArray = isTable and table.type(items) == 'array' or false
         local totalItems = #items
@@ -628,13 +625,13 @@ function playeritem(items)
                 end
             else -- Single item as string
                 if itemData and itemData.name == items and (not amount or (itemData and amount and itemData.amount >= amount)) then
-                    return true
+    return true
                 end
             end
-        
-        return false
         end
+    return false
 end
+
   
   
 function notify(what, color)
