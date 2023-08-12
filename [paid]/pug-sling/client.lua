@@ -31,32 +31,39 @@ AddEventHandler('weaponBack:equipWeapon', function(weaponHash)
     end
 end)
 
+local weapons = {}
 local weaponsOnBack = {}
-
+local currentWeapons = {}
 
 RegisterNetEvent('weaponBack:removeWeapon')
 AddEventHandler('weaponBack:removeWeapon', function(weaponHash)
-    if weaponsOnBack[weaponHash] then
         DeleteEntity(weaponsOnBack[weaponHash])
         weaponsOnBack[weaponHash] = nil
         weaponPlacements[weaponHash] = nil
     end
 end)
-Citizen.CreateThread(function()
+
+CreateThread(function()
+    for k, v in ipairs(Config.WeaponsOnBack) do
+        weapons[k] = v
+    end
+end)
+CreateThread(function()
     while true do
-        Citizen.Wait(Config.LoopSpeed)
+        Wait(Config.LoopSpeed)
 
       
 
         if DoesEntityExist(PlayerPedId()) and not IsEntityDead(PlayerPedId()) then
-            local currentWeapons = {}
+           
 
-            for i = 1, #Config.WeaponsOnBack do
-                local weaponHash = Config.WeaponsOnBack[i].hash
+            for k, v in ipairs(Config.WeaponsOnBack) do
                 if playeritem("weapon_assaultrifle") then
-                    table.insert(currentWeapons, weaponHash)
+                    print(json.encode(v.model))
                 end
             end
+          
+       
 
             for i = 1, #currentWeapons do
                 local weaponHash = currentWeapons[i]
