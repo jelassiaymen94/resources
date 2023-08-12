@@ -171,7 +171,7 @@ end
 function start(veh)
 
     TriggerServerEvent("Polar-ArmoredTrucks:server:removeCard")
-    QBCore.Functions.Notify('RUN!', "error", 4000)
+    --QBCore.Functions.Notify('RUN!', "error", 4000)
     TriggerEvent('Polar-ArmoredTrucks:Client:Startup', veh)
 
 
@@ -183,7 +183,7 @@ RegisterNetEvent('Polar-ArmoredTrucks:Client:Startup', function(veh)
     {}, {}, {}, 
     function() -- Done
 
-     
+        
     
     robTruck(veh)
     end, function()
@@ -219,7 +219,7 @@ function minigame(veh)
 
     if chance < 101 then
         local thermiteinfo = { time = 30, squares = 4, errors = 4}
-        
+        TriggerEvent('animations:client:EmoteCommandStart', {'tablet2'})
         exports['Polar-UI']:Thermite(function(success) 
             if success then
 
@@ -242,18 +242,22 @@ function minigame(veh)
 
             else
                 fail(veh)
+                TriggerEvent('animations:client:EmoteCommandStart', {'c'})
             end  
         end, 5, 5)
             else 
                 fail(veh)
+                TriggerEvent('animations:client:EmoteCommandStart', {'c'})
             end
         end, thermiteinfo.time, thermiteinfo.squares, thermiteinfo.errors)
             else 
                 fail(veh)
+                TriggerEvent('animations:client:EmoteCommandStart', {'c'})
             end 
         end, thermiteinfo.time, thermiteinfo.squares, thermiteinfo.errors)
             else 
                 fail(veh)
+                TriggerEvent('animations:client:EmoteCommandStart', {'c'})
             end
         end, thermiteinfo.time, thermiteinfo.squares, thermiteinfo.errors)
     end
