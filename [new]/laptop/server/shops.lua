@@ -107,12 +107,12 @@ local function createCrate(items, coords)
             ['isOpened'] = false,
             ['coords'] = coords
         }
-        TriggerClientEvent('jl-laptop:client:updateCrates', -1, crates)
+        TriggerClientEvent('laptop:client:updateCrates', -1, crates)
         boxDeletionTimer(netID)
     end
 end
 
-QBCore.Functions.CreateCallback('jl-laptop:server:checkout', function(source, cb, data)
+QBCore.Functions.CreateCallback('laptop:server:checkout', function(source, cb, data)
     local src = source
     local appLabel = 'Bennys'
     if data.app == 'darkweb' then

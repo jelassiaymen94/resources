@@ -4,7 +4,7 @@ local QBCore = exports['qb-core']:GetCoreObject()
 QBCore.Functions.CreateUseableItem(Config.LaptopDevice, function(source, item)
     local Player = QBCore.Functions.GetPlayer(source)
     if Player.Functions.GetItemByName(Config.LaptopDevice) then
-        TriggerClientEvent('jl-laptop:client:openlaptop', source)
+        TriggerClientEvent('laptop:client:openlaptop', source)
     end
 end)
 
@@ -69,15 +69,15 @@ function HasAppAccess(src, app)
     end
 end
 
-RegisterNetEvent('jl-laptop:server:LostAccess', function(app)
+RegisterNetEvent('laptop:server:LostAccess', function(app)
     local src = source
     if app == "boosting" then
-        TriggerEvent("jl-laptop:server:QuitQueue", src)
+        TriggerEvent("laptop:server:QuitQueue", src)
     end
 end)
 
 
-RegisterNetEvent('jl-laptop:server:settings:set', function(setting)
+RegisterNetEvent('laptop:server:settings:set', function(setting)
     local src = source
     if not setting then return end
     local Player = QBCore.Functions.GetPlayer(src)
@@ -88,7 +88,7 @@ RegisterNetEvent('jl-laptop:server:settings:set', function(setting)
     Player.Functions.SetMetaData("laptop", setting)
 end)
 
-RegisterNetEvent('jl-laptop:server:RemoveItem', function(item)
+RegisterNetEvent('laptop:server:RemoveItem', function(item)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
     if Player and item then
@@ -99,5 +99,5 @@ end)
 
 AddEventHandler('onResourceStart', function(resource)
     if resource ~= cache.resource then return end
-    lib.versionCheck('Ejiy/jl-laptop')
+    lib.versionCheck('Ejiy/laptop')
 end)

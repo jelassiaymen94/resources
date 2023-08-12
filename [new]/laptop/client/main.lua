@@ -65,7 +65,7 @@ local function GetPlayerAppPerms()
                         for k = 1, searches do
                             if app.bannedJobs[k] == playerJob then
                                 if hadApp(app.app) then
-                                    TriggerServerEvent('jl-laptop:server:LostAccess', app.app)
+                                    TriggerServerEvent('laptop:server:LostAccess', app.app)
                                 end
                                 goto skip
                             elseif (app.job[k] and app.job[k] == playerJob) or
@@ -77,7 +77,7 @@ local function GetPlayerAppPerms()
                                 goto skip
                             else
                                 if hadApp(app.app) then
-                                    TriggerServerEvent('jl-laptop:server:LostAccess', app.app)
+                                    TriggerServerEvent('laptop:server:LostAccess', app.app)
                                 end
                                 goto skip
                             end
@@ -88,7 +88,7 @@ local function GetPlayerAppPerms()
                     end
                 else
                     if hadApp(app.app) then
-                        TriggerServerEvent('jl-laptop:server:LostAccess', app.app)
+                        TriggerServerEvent('laptop:server:LostAccess', app.app)
                         goto skip
                     end
                 end
@@ -193,13 +193,13 @@ function isPolice()
     return false
 end
 
-RegisterNetEvent('jl-laptop:client:openlaptop', function()
+RegisterNetEvent('laptop:client:openlaptop', function()
     if haveItem(Config.LaptopDevice) then
         SetDisplay(true)
     end
 end)
 
-RegisterNetEvent('jl-laptop:client:CustomNotification', function(text, icon, color, iconbg, length)
+RegisterNetEvent('laptop:client:CustomNotification', function(text, icon, color, iconbg, length)
     if haveItem(Config.LaptopDevice) then
         SendNUIMessage({
             action = "custom-notif",
@@ -274,7 +274,7 @@ RegisterNUICallback('laptop/checkout', function(data, cb)
         cart = data['cart'],
         app = data['app']
     }
-    QBCore.Functions.TriggerCallback('jl-laptop:server:checkout', function(result)
+    QBCore.Functions.TriggerCallback('laptop:server:checkout', function(result)
         if result == "bank" then
             cb({
                 status = 'error',
@@ -319,7 +319,7 @@ RegisterNUICallback('setting/save', function(data, cb)
         return
     end
     cb("ok")
-    TriggerServerEvent("jl-laptop:server:settings:set", data["setting"])
+    TriggerServerEvent("laptop:server:settings:set", data["setting"])
 end)
 
 RegisterNUICallback("setting/get", function(_, cb)

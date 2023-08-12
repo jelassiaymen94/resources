@@ -4,7 +4,7 @@ local crateBlip = nil
 
 local function openCrate(crate)
     local crateID = NetworkGetNetworkIdFromEntity(crate)
-    QBCore.Functions.TriggerCallback('jl-laptop:server:getCrateStatus', function(data)
+    QBCore.Functions.TriggerCallback('laptop:server:getCrateStatus', function(data)
         if data.isOpened then
             openCrate(data.crate)
         else
@@ -41,7 +41,7 @@ local function breakCrate(entity)
     if haveItem('drill') then
         exports['ps-ui']:Thermite(function(success)
             if success then
-                TriggerServerEvent('jl-laptop:server:crateOpened', NetworkGetNetworkIdFromEntity(entity))
+                TriggerServerEvent('laptop:server:crateOpened', NetworkGetNetworkIdFromEntity(entity))
                 if crateBlip then RemoveBlip(crateBlip) end
             end
         end, 10, 3, 3) -- Time, Gridsize (5, 6, 7, 8, 9, 10), IncorrectBlocks
@@ -52,7 +52,7 @@ end
 
 -- Creates the crates interactable for players who just joined
 RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function()
-    QBCore.Functions.TriggerCallback('jl-laptop:server:getAllCrates', function(crateInfo)
+    QBCore.Functions.TriggerCallback('laptop:server:getAllCrates', function(crateInfo)
         crates = crateInfo
 
         for netID, _ in pairs(crates) do
@@ -146,6 +146,6 @@ RegisterNetEvent('darkweb:client:cratedrop', function(netID)
 end)
 
 -- Just so the client knows the info about the boxes
-RegisterNetEvent('jl-laptop:client:updateCrates', function(crateInfo)
+RegisterNetEvent('laptop:client:updateCrates', function(crateInfo)
     crates = crateInfo
 end)

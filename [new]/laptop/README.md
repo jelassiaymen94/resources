@@ -1,4 +1,4 @@
-# [CLICK THIS TO READ THE DOCS / INSTALLATION](https://justlazzy.github.io/docs/free-scripts/jl-laptop/)
+# [CLICK THIS TO READ THE DOCS / INSTALLATION](https://justlazzy.github.io/docs/free-scripts/laptop/)
 
 <tr/>
 

@@ -97,18 +97,18 @@ local function GetRandomDropOff(type)
     end
 end
 
-RegisterNetEvent('jl-laptop:server:FinalDestination', function()
+RegisterNetEvent('laptop:server:FinalDestination', function()
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
     local CID = Player.PlayerData.citizenid
     if currentRuns[CID] and not currentRuns[CID].dropOff and currentRuns[CID].type == "boosting" then
         local place, id = GetRandomDropOff("boosting")
 
-        TriggerClientEvent('jl-laptop:client:ReturnCar', src, place)
+        TriggerClientEvent('laptop:client:ReturnCar', src, place)
         ResetAnotherShit(id, "boosting")
     elseif currentRuns[CID] and not currentRuns[CID].dropOff and currentRuns[CID].type == "vinscratch" then
         local place, id = GetRandomDropOff("vinscratch")
-        TriggerClientEvent("jl-laptop:client:ToVinScratch", src, place)
+        TriggerClientEvent("laptop:client:ToVinScratch", src, place)
         ResetAnotherShit(id, "vinscratch")
     end
 end)
@@ -173,11 +173,11 @@ local function SpawnCar(src)
         if GetResourceState('ox_fuel') == "started" then
             Entity(car).state.fuel = 100.0
         else
-            TriggerClientEvent('jl-laptop:client:setvehicleFuel', src, car)
+            TriggerClientEvent('laptop:client:setvehicleFuel', src, car)
         end
         SetVehicleNumberPlateText(car, plate)
         currentRuns[CID].NetID = NetworkGetNetworkIdFromEntity(car)
-        TriggerClientEvent('jl-laptop:client:MissionStarted', src, currentRuns[CID].NetID, coords, plate)
+        TriggerClientEvent('laptop:client:MissionStarted', src, currentRuns[CID].NetID, coords, plate)
 
         return true
     else
@@ -204,7 +204,7 @@ local function ResetShit(Tier, location)
     end)
 end
 
-QBCore.Functions.CreateCallback('jl-laptop:server:CanStartBoosting', function(source, cb, cops, id)
+QBCore.Functions.CreateCallback('laptop:server:CanStartBoosting', function(source, cb, cops, id)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
 
@@ -258,7 +258,7 @@ QBCore.Functions.CreateCallback('jl-laptop:server:CanStartBoosting', function(so
             MaxPools[currentContracts[CID][id].contract] += 1
             ResetShit(currentContracts[CID][id].contract, place)
             table.remove(currentContracts[CID], id) -- has to be table.remove for some dumb ass reason
-            TriggerClientEvent('jl-laptop:client:ContractHandler', src, currentContracts[CID])
+            TriggerClientEvent('laptop:client:ContractHandler', src, currentContracts[CID])
 
             cb("success")
         else
@@ -288,7 +288,7 @@ local function DeletePeds(netIds)
     end)
 end
 
-RegisterNetEvent('jl-laptop:server:SpawnPed', function()
+RegisterNetEvent('laptop:server:SpawnPed', function()
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
     local CID = Player.PlayerData.citizenid
@@ -305,7 +305,7 @@ RegisterNetEvent('jl-laptop:server:SpawnPed', function()
 
     Wait(300)
 
-    TriggerClientEvent('jl-laptop:client:SpawnPeds', src, netIds, currentRuns[CID].Location)
+    TriggerClientEvent('laptop:client:SpawnPeds', src, netIds, currentRuns[CID].Location)
     DeletePeds(netIds)
 end)
 
@@ -319,13 +319,13 @@ end)
 
 
 -- EVERYTHING TO DO WITH BLIPS SYNCING AND CAR HACKING --
-RegisterNetEvent('jl-laptop:server:SyncBlips', function(coords, NetID)
+RegisterNetEvent('laptop:server:SyncBlips', function(coords, NetID)
     local car = NetworkGetEntityFromNetworkId(NetID)
     local state = Entity(car).state.Boosting
 
     if not state then return end
 
-    TriggerClientEvent('jl-laptop:client:SyncBlips', -1, coords, NetID)
+    TriggerClientEvent('laptop:client:SyncBlips', -1, coords, NetID)
 end)
 
 -- ** Hacking Cars ** --
@@ -344,7 +344,7 @@ function log(text)
     print(json.encode(text, { pretty = true, indent = true, align_keys = true }))
 end
 
-RegisterNetEvent('jl-laptop:server:SyncPlates', function(success)
+RegisterNetEvent('laptop:server:SyncPlates', function(success)
     local src = source
 
     local Player = QBCore.Functions.GetPlayer(src)
@@ -409,13 +409,13 @@ end)
 QBCore.Functions.CreateUseableItem(Config.Boosting.HackingDevice, function(source, _)
     local Player = QBCore.Functions.GetPlayer(source)
     if Player.Functions.GetItemByName(Config.Boosting.HackingDevice) then
-        TriggerClientEvent('jl-laptop:client:HackCar', source)
+        TriggerClientEvent('laptop:client:HackCar', source)
     end
 end)
 
 ----- ** EVERYTHING TO DO QUEUE ** -----
 
-QBCore.Functions.CreateCallback('jl-laptop:server:joinQueue', function(source, cb, status)
+QBCore.Functions.CreateCallback('laptop:server:joinQueue', function(source, cb, status)
     print(status)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
@@ -454,12 +454,12 @@ QBCore.Functions.CreateCallback('jl-laptop:server:joinQueue', function(source, c
     end
 
     if LookingForContracts[CID].online then
-        TriggerClientEvent('jl-laptop:client:QueueHandler', src, LookingForContracts[CID].active)
+        TriggerClientEvent('laptop:client:QueueHandler', src, LookingForContracts[CID].active)
     end
 end)
 
 
-RegisterNetEvent('jl-laptop:server:QuitQueue', function(source)
+RegisterNetEvent('laptop:server:QuitQueue', function(source)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
     if not Player then return end
@@ -468,14 +468,14 @@ RegisterNetEvent('jl-laptop:server:QuitQueue', function(source)
     LookingForContracts[CID].active = false
 
     if LookingForContracts[CID].online then
-        TriggerClientEvent('jl-laptop:client:QueueHandler', src, LookingForContracts[CID].active)
+        TriggerClientEvent('laptop:client:QueueHandler', src, LookingForContracts[CID].active)
     end
 end)
 
 
 -- ** EVERYTHING TO DO WITH REWARDS ** --
 
-RegisterNetEvent('jl-laptop:server:fuckvin', function(netid, model, mods)
+RegisterNetEvent('laptop:server:fuckvin', function(netid, model, mods)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
     local entity = NetworkGetEntityFromNetworkId(netid)
@@ -496,7 +496,7 @@ RegisterNetEvent('jl-laptop:server:fuckvin', function(netid, model, mods)
     TriggerClientEvent('vehiclekeys:client:SetOwner', src, plate)
 end)
 
-RegisterNetEvent('jl-laptop:server:finishBoost', function(netId, isvin)
+RegisterNetEvent('laptop:server:finishBoost', function(netId, isvin)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
     local CID = Player.PlayerData.citizenid
@@ -524,7 +524,7 @@ RegisterNetEvent('jl-laptop:server:finishBoost', function(netId, isvin)
         end
     end
     currentRuns[CID] = nil
-    TriggerClientEvent('jl-laptop:client:finishContract', src, currentContracts[CID])
+    TriggerClientEvent('laptop:client:finishContract', src, currentContracts[CID])
 end)
 
 
@@ -534,7 +534,7 @@ end)
 
 
 -- ** EVERYTHING TO DO WITH CANCELLING ** --
-RegisterNetEvent('jl-laptop:server:CancelBoost', function(netId, Plate, b)
+RegisterNetEvent('laptop:server:CancelBoost', function(netId, Plate, b)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
     local CID = Player.PlayerData.citizenid
@@ -554,7 +554,7 @@ RegisterNetEvent('jl-laptop:server:CancelBoost', function(netId, Plate, b)
 
     ActivePlates[Plate] = nil
     currentRuns[CID] = nil
-    TriggerClientEvent('jl-laptop:client:finishContract', src, currentContracts[CID])
+    TriggerClientEvent('laptop:client:finishContract', src, currentContracts[CID])
 
     Notify(src, Lang:t('boosting.error.cancelboost'), "error", 7500)
 end)
@@ -562,7 +562,7 @@ end)
 
 
 -- ** CONTRACTS ** --
-RegisterNetEvent('jl-laptop:server:DeclineBoost', function(contract)
+RegisterNetEvent('laptop:server:DeclineBoost', function(contract)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
     if not Player then return end
@@ -575,7 +575,7 @@ RegisterNetEvent('jl-laptop:server:DeclineBoost', function(contract)
     table.remove(currentContracts[CID], contract)
 end)
 
-QBCore.Functions.CreateCallback('jl-laptop:server:DeclineContract', function(source, cb, contract)
+QBCore.Functions.CreateCallback('laptop:server:DeclineContract', function(source, cb, contract)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
     if not Player then return cb("error") end
@@ -588,11 +588,11 @@ QBCore.Functions.CreateCallback('jl-laptop:server:DeclineContract', function(sou
     MaxPools[currentContracts[CID][contract].contract] += 1
     table.remove(currentContracts[CID], contract)
 
-    TriggerClientEvent('jl-laptop:client:ContractHandler', src, currentContracts[CID])
+    TriggerClientEvent('laptop:client:ContractHandler', src, currentContracts[CID])
     cb("success")
 end)
 
-QBCore.Functions.CreateCallback('jl-laptop:server:checkVin', function(_, cb, NetID)
+QBCore.Functions.CreateCallback('laptop:server:checkVin', function(_, cb, NetID)
     local entity = NetworkGetEntityFromNetworkId(NetID)
 
     if not NetID or not entity then return end
@@ -630,7 +630,7 @@ end)
 
 -- ** TRANSFER BOOSTS ** --
 
-QBCore.Functions.CreateCallback('jl-laptop:server:TransferContracts', function(source, cb, playerID, contractID)
+QBCore.Functions.CreateCallback('laptop:server:TransferContracts', function(source, cb, playerID, contractID)
     local src = source
 
     if src == tonumber(playerID) then return cb("self") end
@@ -655,10 +655,10 @@ QBCore.Functions.CreateCallback('jl-laptop:server:TransferContracts', function(s
 
     -- refreshes the contracts for the source --
     table.remove(currentContracts[CID], contractID) -- has to be table.remove for some dumb ass reason
-    TriggerClientEvent('jl-laptop:client:ContractHandler', src, currentContracts[CID])
+    TriggerClientEvent('laptop:client:ContractHandler', src, currentContracts[CID])
     -- refreshes the contracts for the reciever --
     currentContracts[RecieveCID][#currentContracts[RecieveCID] + 1] = Contract
-    TriggerClientEvent('jl-laptop:client:ContractHandler', Reciever.PlayerData.source, currentContracts[RecieveCID])
+    TriggerClientEvent('laptop:client:ContractHandler', Reciever.PlayerData.source, currentContracts[RecieveCID])
     cb("success")
 end)
 
@@ -669,7 +669,7 @@ end)
 
 
 
-QBCore.Functions.CreateCallback('jl-laptop:server:GetContracts', function(source, cb)
+QBCore.Functions.CreateCallback('laptop:server:GetContracts', function(source, cb)
     local Player = QBCore.Functions.GetPlayer(source)
     local CID = Player.PlayerData.citizenid
     if not currentContracts[CID] then currentContracts[CID] = {} end
@@ -783,7 +783,7 @@ function GetCurrentTime()
     end
 end
 
-QBCore.Functions.CreateCallback("jl-laptop:server:getCurrentTime", function(cb)
+QBCore.Functions.CreateCallback("laptop:server:getCurrentTime", function(cb)
     cb({
         GetCurrentTime()
     })
@@ -823,7 +823,7 @@ local function generateContract(src, contract, vehicle, mission)
             cost = calcPrice(contract, mission),
         }
         LookingForContracts[CID].skipped = 0
-        TriggerClientEvent('jl-laptop:client:ContractHandler', src, currentContracts[CID], GetCurrentTime())
+        TriggerClientEvent('laptop:client:ContractHandler', src, currentContracts[CID], GetCurrentTime())
     else
         LookingForContracts[CID].skipped += 1
     end
@@ -850,7 +850,7 @@ CreateThread(function()
                     elseif #currentContracts[k] >= Config.Boosting.MaxBoosts then
                         v.active = false
                         if v.online then
-                            TriggerClientEvent('jl-laptop:client:QueueHandler', v.src, false)
+                            TriggerClientEvent('laptop:client:QueueHandler', v.src, false)
                         end
                     end
                 elseif not currentContracts[k] then
