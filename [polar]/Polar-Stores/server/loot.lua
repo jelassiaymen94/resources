@@ -59,51 +59,28 @@ RegisterNetEvent('Polar-stores:Server:RemoveItems', function(item, amount)
     local Player = QBCore.Functions.GetPlayer(src) 
     Wait(150) 
     if amount == nil then amount = 1 end
-    if Config.Framework == 'qb' then 
-        if oxinv then
-            exports.ox_inventory:AddItem(src, QBCore.Shared.Items[item], 1)
-            TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[item], "add", 1)  
-        else
-            Player.Functions.AddItem(item, amount) 
-            TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[item], "add", amount)  
-        end
-    elseif  Config.Framework == 'esx' then 
-        if oxinv then
-            exports.ox_inventory:AddItem(src, QBCore.Shared.Items[item], amount)
-        else
-            Player.addInventoryItem(item, amount) 
-        end
-    end 
+   
+    Player.Functions.AddItem(item, amount) 
+    TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[item], "add", amount)  
+       
 end)
 
 function give(item, amount)
-    print('hi')
-        local src = source local Player = QBCore.Functions.GetPlayer(src)
-        local info = {
+ 
+    local src = source local Player = QBCore.Functions.GetPlayer(src)
+    local info = {
             worth = math.random(1000,10000)
         }
     if amount == nil then amount = 1 end
-    if Config.Framework == 'qb' then 
-        if oxinv then
-            exports.ox_inventory:AddItem(src, QBCore.Shared.Items[item], amount)
-            TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[item], "add", amount)  
-        else
-            if item == 'markedbills' then
+ 
+    if item == 'markedbills' then
                 Player.Functions.AddItem(item, amount, false, info) 
                 TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[item], "add", amount)  
-            else
-                print('hi2')
+    else
+                
                 Player.Functions.AddItem(item, amount) 
                 TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[item], "add", amount)  
-            end
-        end
-    elseif  Config.Framework == 'esx' then 
-        if oxinv then
-            exports.ox_inventory:AddItem(src, QBCore.Shared.Items[item], amount)
-        else
-            Player.addInventoryItem(item, amount) 
-        end
-    end 
+    end
 end
 
 
