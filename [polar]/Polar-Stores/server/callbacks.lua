@@ -7,6 +7,13 @@ elseif Config.Framework == 'esx' then
  
 end
 
+local store = nil
+RegisterNetEvent('Polar-stores:Server:SetStore', function(stores)
+    store = stores
+end)
+
+
+
 local oxinv = Config.OxIventory
 
 RegisterNetEvent('Polar-stores:Server:Restart', function()  if Config.PolarWade then exports["Polar-Wade"]:Stores(false) end  end)
@@ -30,23 +37,30 @@ end)
 local storespc = true
 local register = true
 local cooldown = true
+local door1 = true
+local door2 = true
 
 RegisterNetEvent('Polar-stores:Server:StopInteract', function(door)
     if door == nil then return end
     if door == Config.ComputerName then storespc = false end
     if door == Config.RegisterName then register = false end
+    if door == Config.Names[store]["Door1Name"] then door1 = false end
+    if door == Config.Names[store]["Door2Name"] then door2 = false end
 end)
 RegisterNetEvent('Polar-stores:Server:StartInteract', function(door)
     if door == nil then return end
     if door == Config.ComputerName then storespc = true end
     if door == Config.RegisterName then register = true end
+    if door == Config.Names[store]["Door1Name"] then door1 = true end
+    if door == Config.Names[store]["Door2Name"] then door2 = true end
 end)
 
 
 Config.CallBack('Polar-stores:Cooldown', function(source, cb) cb(cooldown) end) 
 Config.CallBack('Polar-stores:Door' .. Config.ComputerName, function(source, cb) cb(storespc) end) 
 Config.CallBack('Polar-stores:Door' .. Config.RegisterName, function(source, cb)  cb(register) end) 
-
+Config.CallBack('Polar-stores:Door' .. Config.Names[store]["Door1Name"], function(source, cb) cb(door1) end) 
+Config.CallBack('Polar-stores:Door' .. Config.Names[store]["Door2Name"], function(source, cb)  cb(door2) end) 
 
 local time = (Config.CooldownTime * 60000) 
 RegisterNetEvent('Polar-stores:Server:StartCooldown', function()

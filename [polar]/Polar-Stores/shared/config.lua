@@ -91,8 +91,9 @@ end
 
 
 Config = {
-    ComputerName = 1,
-    RegisterName = 1,
+    ComputerName = 'pp',
+    RegisterName = 'ppp',
+    SafeName = 'pppp',
 
     Names = {
 
@@ -101,9 +102,9 @@ Config = {
 
 
     ["Store1"] = {
-        Door1Name = 'StoreDoor1',
+        Door1Name = '1StoreDoor1',
         Door1Eye = vector3(19.13, -1335.45, 29.28),
-        Door2Name = 'StoreDoor2',
+        Door2Name = '1StoreDoor2',
         Door2Eye = vector3(25.27, -1341.93, 29.5),
         ComputerEye = vector3(29.48, -1340.3, 29.34),
         RegisterEye = vector3(25.42, -1345.59, 29.75),
@@ -150,7 +151,7 @@ Config = {
         },
         PileLocations = {
             vector4(24.85, -1339.68, 29.5, 61.33),
-            
+
         },
     },
 
