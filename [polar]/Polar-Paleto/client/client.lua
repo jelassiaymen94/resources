@@ -407,7 +407,7 @@ function grabloot(door, object)
     loadModel(bagcolor)
     local sceneObject = GetClosestObjectOfType(GetEntityCoords(object), 2.0, GetHashKey(prop), 0, 0, 0)
     print(sceneObject)
-    print(json.encode(sceneObject))
+    print(GetHashKey(prop))
     while not NetworkHasControlOfEntity(sceneObject) do
         Wait(1)
         print('error')
