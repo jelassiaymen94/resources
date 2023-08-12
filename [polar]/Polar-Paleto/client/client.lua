@@ -411,7 +411,7 @@ function grabloot(door, object)
     loadAnimDict(animDict)
     loadModel(bagcolor)
     
-    local sceneObject = GetClosestObjectOfType(GetEntityCoords(object), 2.0, GetHashKey(door), 0, 0, 0)
+    local sceneObject = GetClosestObjectOfType(GetEntityCoords(object), 2.0, GetHashKey(object), 0, 0, 0)
     
     while not NetworkHasControlOfEntity(sceneObject) do
         Wait(1)
