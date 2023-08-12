@@ -44,10 +44,10 @@ AddEventHandler('weaponBack:removeWeapon', function(weaponHash)
 end)
 
 CreateThread(function()
-    for k, v in ipairs(Config.WeaponsOnBack) do
+    for k, v in pairs(Config.WeaponsOnBack) do
         weapons[k] = v
         print(json.encode(weapons[k]))
-        print('s')
+      
     end
 end)
 CreateThread(function()
@@ -55,12 +55,12 @@ CreateThread(function()
         --Wait(Config.LoopSpeed)
         
       
-            print('startiong')
+          
             
 
-            for k, v in ipairs(Config.WeaponsOnBack) do
+            for k, v in pairs(Config.WeaponsOnBack) do
                 if playeritem("weapon_assaultrifle") then
-                    print('hi')
+                 
                     print(json.encode(v.model))
                 else
                     print('no weapon')
