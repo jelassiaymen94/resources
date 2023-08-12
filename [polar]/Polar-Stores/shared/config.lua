@@ -68,7 +68,7 @@ Config = {
 
 
 
-
+   
     ComputerName = 'pp',
     RegisterName = 'ppp',
     SafeName = 'pppp',

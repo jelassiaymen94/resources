@@ -337,7 +337,7 @@ RegisterNetEvent('Polar-stores:Client:StartTargets', function(store)
  
     CreateTarget(Config.RegisterName, Config.Names[store]["RegisterEye"], "Polar-stores:Client:Register", "Steal", "fas fa-bolt", Config.Debug)
  
-    CreateTarget(Config.Names[store]["SafeName"], Config.Names[store]["SafeLocation"], "Polar-stores:Client:Safe", "Steal", "fas fa-bolt", Config.Debug)
+    CreateTarget(Config.SafeName, Config.Names[store]["SafeLocation"], "Polar-stores:Client:Safe", "Steal", "fas fa-bolt", Config.Debug)
  
 end)
 
