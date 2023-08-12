@@ -216,22 +216,26 @@ end)
 
 
 
+function Animation(door, prop)
 
-function Animation(door, props)
-    local propCoords = GetEntityCoords(props)
-    model = bagcolor animDict = 'anim@scripted@heist@ig1_table_grab@cash@male@' 
+    local props = GetClosestObjectOfType(GetEntityCoords(PlayerPedId()), 2.0, GetEntityModel(prop), false, false, false)
+    local propCoords = GetEntityCoords(prop)
     print(propCoords)
-    local playerCoords = GetEntityCoords(PlayerPedId())
-            
-    local direction = vector3(propCoords.x - playerCoords.x, propCoords.y - playerCoords.y, propCoords.z - playerCoords.z)
-    local heading = -math.atan2(direction.x, direction.y) * 180.0 / math.pi
-    local pitch = math.asin(direction.z / #(direction)) * 180.0 / math.pi
+    print(prop)
+    Wait(300)
+        model = bagcolor animDict = 'anim@scripted@heist@ig1_table_grab@cash@male@' 
+        
+            local playerCoords = GetEntityCoords(PlayerPedId())
+            local propCoords = GetEntityCoords(props)
+            local direction = vector3(propCoords.x - playerCoords.x, propCoords.y - playerCoords.y, propCoords.z - playerCoords.z)
+            local heading = -math.atan2(direction.x, direction.y) * 180.0 / math.pi
+            local pitch = math.asin(direction.z / #(direction)) * 180.0 / math.pi
 
-    local dotProduct = Citizen.InvokeNative(0xBFE95ABAF46CD9B8, direction.x, direction.y, direction.z, 0.0, 0.0, 1.0)
-    if dotProduct then else 
-    
-    SetEntityHeading(PlayerPedId(), heading)
-    --SetEntityRotation(PlayerPedId(), pitch, 0.0, heading, 2, true)
+        local dotProduct = Citizen.InvokeNative(0xBFE95ABAF46CD9B8, direction.x, direction.y, direction.z, 0.0, 0.0, 1.0)
+        if dotProduct then else 
+   
+        SetEntityHeading(PlayerPedId(), heading)
+        SetEntityRotation(PlayerPedId(), pitch, 0.0, heading, 2, true)
     
     
     TriggerServerEvent('Polar-stores:Server:TargetRemove', door)
@@ -254,12 +258,11 @@ function Animation(door, props)
     TriggerServerEvent('Polar-stores:Server:RemoveProp', door)
     NetworkStartSynchronisedScene(scene3) Wait(900) ClearPedTasks(PlayerPedId()) DeleteObject(bag) SetPedComponentVariation(PlayerPedId(), 5, Config.BagUseID, 0, 1)
     LocalPlayer.state:set('inv_busy', false, true)  
-    TriggerServerEvent('Polar-stores:Server:Synapse', door)
-            
-
+    TriggerServerEvent('Polar-stores:Server:Synapse', door, sped)  
+    
     RemoveAnimDict(animDict)
-
     end
+   
 end 
 
 
@@ -315,7 +318,7 @@ end)
 RegisterNetEvent('Polar-stores:Client:StartLoot', function(store)
    
 
-    Wait(500)
+   
     TriggerServerEvent('Polar-stores:Server:SetStore', store)
 
     TriggerServerEvent('Polar-stores:Server:SetupGrab1', store)
@@ -543,8 +546,7 @@ RegisterNetEvent('Polar-stores:Client:storesProp', function(door, prop, var)
     loadModel(prop) 
     doors[door] =  CreateObject(prop, var.x, var.y, var.z,  true,  true, true) 
     SetEntityHeading(doors[door], var.w) 
-    print(doors[door])
-   
+
 end)
 
 
@@ -553,9 +555,8 @@ end)
 
 RegisterNetEvent('Polar-stores:Client:RemoveProp', function(door) 
     if hi then print(doors[door]) end
-  
-    if DoesEntityExist(json.encode(doors[door])) then DeleteEntity(json.encode(doors[door])) end
-    if DoesEntityExist(doors[door]) then DeleteEntity(doors[door]) end
+ 
+    DeleteEntity(doors[door])
 end)
 
 
@@ -570,7 +571,12 @@ RegisterNetEvent('Polar-stores:Client:TargetRemove', function(door)
     end
 end)
 
-RegisterNetEvent('Polar-stores:Client:Target', function(data)  local p = data.type  Animation(p, doors[p])  end)
+RegisterNetEvent('Polar-stores:Client:Target', function(data)  
+    local p = data.type 
+    local door = doors[p]
+    Wait(50)
+    Animation(p, door)  
+    end)
 
 RegisterNetEvent('Polar-stores:Client:ResetProps', function()
     for _, v in ipairs(proptable) do
