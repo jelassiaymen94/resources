@@ -755,7 +755,7 @@ function Animation(door, props)
     Wait(100)
     AttachEntityToEntity(props, PlayerPedId(), GetPedBoneIndex(PlayerPedId(), 0xFA60), 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, false, false, false, true, 0, true)
     Wait(300) SetEntityVisible(props, false, false)
-    TriggerServerEvent('Polar-Pacific:Server:RemoveProp2', props)
+    TriggerServerEvent('Polar-Pacific:Server:RemoveProp', props)
     NetworkStartSynchronisedScene(scene3) Wait(900) ClearPedTasks(PlayerPedId()) DeleteObject(bag) SetPedComponentVariation(PlayerPedId(), 5, Config.BagUseID, 0, 1)
     LocalPlayer.state:set('inv_busy', false, true)  
     TriggerServerEvent('Polar-Pacific:Server:Synapse', door, sped)  
@@ -1293,10 +1293,10 @@ end)
 
 
 RegisterNetEvent('Polar-Pacific:Client:RemoveProp', function(door) 
-    if hi then print(door[door]) end
+    if hi then print(doors[door]) end
    
             
-    if DoesEntityExist(door[door]) then DeleteEntity(door[door]) end
+    if DoesEntityExist(doors[door]) then DeleteEntity(doors[door]) end
 end)
 
 
@@ -2015,7 +2015,7 @@ function snatch(name, item, chances)
     
     
 
-    TriggerServerEvent('Polar-Pacific:Server:RemoveProp2', doors)
+    --TriggerServerEvent('Polar-Pacific:Server:RemoveProp2', doors)
     TriggerServerEvent('Polar-Pacific:Server:RemoveProp', doors)
     DeleteEntity(doors[name])
    
