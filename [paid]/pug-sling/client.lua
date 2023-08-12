@@ -49,8 +49,10 @@ CreateThread(function()
         --print(json.encode(weapons[k]))
       
     end
+    start()
 end)
-CreateThread(function()
+--CreateThread(function()
+function start()
     while true do
         --Wait(Config.LoopSpeed)
         
@@ -90,8 +92,9 @@ CreateThread(function()
             end]]
         Wait(1000)
     end
-end)
+end
 
+RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function() Wait(100) start() end)
 
 
 
