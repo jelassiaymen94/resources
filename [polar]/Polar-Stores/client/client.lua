@@ -218,9 +218,9 @@ end)
 
 
 
-function Animation(door)
-    local props = doors[door]
+function Animation(door, props)
     local propCoords = GetEntityCoords(props)
+    local props = doors[door]
     model = bagcolor animDict = 'anim@scripted@heist@ig1_table_grab@cash@male@' 
        
     local playerCoords = GetEntityCoords(PlayerPedId())
@@ -530,7 +530,7 @@ RegisterNetEvent('Polar-stores:Client:TargetRemove', function(door)
     end
 end)
 
-RegisterNetEvent('Polar-stores:Client:Target', function(data)  local p = data.type  Animation(p)  end)
+RegisterNetEvent('Polar-stores:Client:Target', function(data)  local p = data.type  Animation(p, doors[p])  end)
 
 RegisterNetEvent('Polar-stores:Client:ResetProps', function()
     for _, v in ipairs(proptable) do
