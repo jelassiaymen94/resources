@@ -405,7 +405,7 @@ function grabloot(door, object)
     local animDict = 'anim@heists@ornate_bank@grab_cash'
     loadAnimDict(animDict)
     loadModel(bagcolor)
-    sceneObject = GetClosestObjectOfType(GetEntityCoords(object), 2.0, GetHashKey(prop), 0, 0, 0)
+    local sceneObject = GetClosestObjectOfType(GetEntityCoords(object), 2.0, GetHashKey(prop), 0, 0, 0)
  
     while not NetworkHasControlOfEntity(sceneObject) do
         Wait(1)
@@ -509,6 +509,8 @@ function grabloot(door, object)
     LocalPlayer.state:set('inv_busy', false, true) -- Not Busy
     SetEntityAsNoLongerNeeded(object)
     RemoveAnimDict(animDict)
+
+    local sceneObject = nil
 end
 
 
