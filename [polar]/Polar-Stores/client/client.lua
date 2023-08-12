@@ -50,14 +50,6 @@ local doors = {}
 local targets = {}
 
 
-
-
--- vault stuff
-local vaultid = 961976194
-local open = -3.1
-local closed = 158.92
-local vaultloc = vector3(255.23, 223.98, 102.39)
-
 local hi = Config.Debug
 --CreateThread(function() peds() end)
 function peds()
@@ -177,7 +169,7 @@ RegisterNetEvent('Polar-stores:Client:Menu', function()
             txt = "Make that Bank Roll!",
             icon = "fas fa-bolt",
             params = {
-                event = " Polar-Stores:Client:StartStore",
+                event = "Polar-Stores:Client:StartStore",
             }
         },
         {
