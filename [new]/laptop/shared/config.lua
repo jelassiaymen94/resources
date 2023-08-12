@@ -1,11 +1,11 @@
 Config = {}
 
-Config.Inventory = "qb-inventory"
+Config.Inventory = "inventory"
 Config.LaptopDevice = "laptop"
 
-Config.RenewedPhone = false
+Config.RenewedPhone = true
 
-Config.Linux = true
+Config.Linux = false
 
 Config.PoliceJobs = {
     "police",

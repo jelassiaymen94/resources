@@ -19,13 +19,13 @@ Config.Boosting.MaxBoosts = 5 -- The amount of boosts a player can hold in their
 Config.Boosting.MinusOne = true -- true or false, detmains wheather the Z is minus 1 or not.
 
 Config.Boosting.PedSettings = {
-    ["D"] = { weapons = { "weapon_bat", "weapon_pistol" } },
-    ["C"] = { weapons = { "weapon_pistol_mk2", "weapon_pistol" } },
-    ["B"] = { weapons = { "weapon_pistol_mk2", "weapon_pistol" } },
-    ["A"] = { weapons = { "weapon_pistol_mk2", "weapon_gusenberg" } },
-    ["A+"] = { weapons = { "weapon_combatpistol", "weapon_machinepistol" } },
-    ["S"] = { weapons = { "weapon_microsmg", "weapon_minismg" } },
-    ["S+"] = { weapons = { "weapon_assaultrifle", "weapon_combatmg" } },
+    ["D"] = { weapons = { "weapon_pistol", "weapon_m9" } },
+    ["C"] = { weapons = { "weapon_g18c", "weapon_fnx45" } },
+    ["B"] = { weapons = { "weapon_dp9", "weapon_mp5" } },
+    ["A"] = { weapons = { "weapon_gepard", "weapon_dp9" } },
+    ["A+"] = { weapons = { "weapon_dp9", "waepon_microsmg3" } },
+    ["S"] = { weapons = { "weapon_microsmg2", "weapon_groza" } },
+    ["S+"] = { weapons = { "weapon_assaultrifle", "weapon_assaultrifle2" } },
 }
 
 Config.Boosting.Locations = {
@@ -577,15 +577,16 @@ Config.Boosting.Price = {
 }
 
 Config.Boosting.RandomNames = {
-    "XgamerX",
-    "Just Lazzy",
-    "Zooster",
-    "Hype Squad",
-    "Lowkey Paul",
-    "Jimathy yorass",
-    "Paul Zac",
-    "Gov",
-    "Kareem",
+    "Rico Suave",
+    "Juan Garcia",
+    "Nico Micho",
+    "Mancho Chap",
+    "Julio Parez",
+    "Rich Camera",
+    "Gamora Nil",
+    "Nama Stay",
+    "Yolo Bolo",
+    "Mort Manchez",
 }
 
 Config.Boosting.MetaReward = {
