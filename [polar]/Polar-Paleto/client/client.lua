@@ -1873,9 +1873,10 @@ function HeistAnimation(door)
     DeleteEntity(object)
   
     ArtHeist = {}
-    TriggerServerEvent('Polar-Pacific:Server:RemoveProp', door)
+    
     TriggerServerEvent('Polar-Paleto:Server:Synapse', door)  
-   
+    TriggerServerEvent('Polar-Paleto:Server:RemoveProp', door)
+
     scenes = {false, false, false, false}
     
     SetPedComponentVariation(PlayerPedId(), 5, Config.BagUseID, 1, 1)

@@ -2011,7 +2011,7 @@ function snatch(name, item, chances)
     
     
 
-    --TriggerServerEvent('Polar-Pacific:Server:RemoveProp2', doors)
+
     TriggerServerEvent('Polar-Pacific:Server:RemoveProp', name)
     
    
