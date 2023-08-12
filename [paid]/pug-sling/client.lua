@@ -50,8 +50,8 @@ CreateThread(function()
 end)
 CreateThread(function()
     while true do
-        Wait(Config.LoopSpeed)
-
+        --Wait(Config.LoopSpeed)
+        Wait(1000)
       
 
             
@@ -60,12 +60,14 @@ CreateThread(function()
                 if playeritem("weapon_assaultrifle") then
                     print('hi')
                     print(json.encode(v.model))
+                else
+                    print('no weapon')
                 end
             end
           
        
 
-            for i = 1, #currentWeapons do
+          --[[  for i = 1, #currentWeapons do
                 local weaponHash = currentWeapons[i]
                 if not weaponsOnBack[weaponHash] then
                     TriggerEvent('weaponBack:equipWeapon', weaponHash)
@@ -79,7 +81,7 @@ CreateThread(function()
                     weaponPlacements[weaponHash] = nil
                     TriggerEvent('weaponBack:removeWeapon', weaponHash)
                 end
-            end
+            end]]
     end
 end)
 
