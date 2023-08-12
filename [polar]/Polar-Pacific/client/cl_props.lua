@@ -25,7 +25,7 @@ function props()
    kp2 =  CreateObject(GetHashKey("ch_prop_fingerprint_scanner_error_01b"),  Config.doorcard2Eye, false, false, false) SetEntityHeading(kp2, 45.7) -- right double
 
    keypad1 =  CreateObject(GetHashKey("ch_prop_fingerprint_scanner_error_01b"),  Config.Door1Eye, false, false, false) SetEntityHeading(keypad1, 340.7) -- right double
-   keypad2 =  CreateObject(GetHashKey("ch_prop_fingerprint_scanner_error_01b"),  Config.Door2Eye, false, false, false) SetEntityHeading(keypad2, 225.7) -- right double
+   keypad2 =  CreateObject(GetHashKey("ch_prop_fingerprint_scanner_error_01b"),  Config.Door2Eye, false, false, false) SetEntityHeading(keypad2, 340.7) -- right double
    keypad3 =  CreateObject(GetHashKey("ch_prop_fingerprint_scanner_error_01b"),  Config.Door3Eye, false, false, false) SetEntityHeading(keypad3, 340.7) -- right double
    
    
