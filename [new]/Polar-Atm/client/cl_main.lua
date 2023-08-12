@@ -32,6 +32,17 @@ function starttarget()
         }, 
         distance = 2.5
     })
+    exports[Config.Target]:AddGlobalVehicle({
+    options = 	
+    {
+		type = "Client",
+		event = "Polar-Atm:Client:UseRope",
+		icon = "fas fa-chevron-circle-left",
+		label = "Attach Rope",
+		item = 'rope',
+	},
+        distance = 2.5
+    })
 end
 
 RegisterNetEvent('police:SetCopCount', function(amount) CurrentCops = amount end)

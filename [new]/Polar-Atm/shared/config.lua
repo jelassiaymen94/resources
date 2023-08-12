@@ -18,7 +18,7 @@ Config.Text = "Press E to attach atm | Press X to remove rope"
 
 Config.CooldownTime = 1
 Config.MinimumPolice = 0
-Config.RopeItem = 'drill'
+Config.RopeItem = 'rope'
 
 
 

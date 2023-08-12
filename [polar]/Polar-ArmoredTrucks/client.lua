@@ -199,6 +199,7 @@ function fail(veh)
     TriggerServerEvent("Polar-ArmoredTrucks:server:removeCard")
 
 end
+
 function minigame(veh)
     local chance = math.random(1,100)
 
@@ -212,35 +213,53 @@ function minigame(veh)
 
 
   
-
+       
+      
 
 
     if chance < 101 then
-
-        local time = math.random(120000,150000)
-        Wait(5)
-        local settings = {timeLimit = time}
-        Wait(5)
+        local thermiteinfo = { time = 30, squares = 4, errors = 4}
         
-        exports["Polar-Minigames"]:StartMinigame(function(success)
+        exports['Polar-UI']:Thermite(function(success) 
             if success then
-                    start(veh)  
-                else
-                    fail(veh)
-                end
-            end, "path", settings)
-            -- Creates a grid (19x19) squares
-            -- Max gridsize is 31 and should be an odd number
 
-  
-   
- 
+                Wait(1000)
+
+                exports['Polar-UI']:Thermite(function(success) 
+                    if success then
+                        
+                        Wait(1000)
+
+                        exports['Polar-UI']:Thermite(function(success) 
+                            if success then
+
+                                Wait(1000)
+
+                                exports['Polar-UI']:VarHack(function(success)  
+                            if success then  
+
+                            start(veh) 
+
+            else
+                fail(veh)
+            end  
+        end, 5, 5)
+            else 
+                fail(veh)
+            end
+        end, thermiteinfo.time, thermiteinfo.squares, thermiteinfo.errors)
+            else 
+                fail(veh)
+            end 
+        end, thermiteinfo.time, thermiteinfo.squares, thermiteinfo.errors)
+            else 
+                fail(veh)
+            end
+        end, thermiteinfo.time, thermiteinfo.squares, thermiteinfo.errors)
     end
 
+
     end, function()
-
-    -- cancel notification
-
 
     end)  
 end
