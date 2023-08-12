@@ -292,7 +292,7 @@ function FindNearestStore(playerPos, stores)
    local nearestDistance = nil
 
    for _, store in ipairs(stores) do
-       local distance = GetDistanceBetweenCoords(playerPos.x, playerPos.y, playerPos.z, store.x, store.y, store.z)
+       local distance = GetDistanceBetweenCoords2(playerPos.x, playerPos.y, playerPos.z, store.x, store.y, store.z)
        if not nearestDistance or distance < nearestDistance then
            nearestStore = store
            nearestDistance = distance
@@ -313,7 +313,7 @@ function CreateBlipForLocation(coords, sprite, scale, color, text)
    EndTextCommandSetBlipName(blip)
    return blip
 end
-function GetDistanceBetweenCoords(x1, y1, z1, x2, y2, z2)
+function GetDistanceBetweenCoords2(x1, y1, z1, x2, y2, z2)
    return math.sqrt((x2 - x1)^2 + (y2 - y1)^2 + (z2 - z1)^2)
 end
 
