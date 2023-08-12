@@ -88,6 +88,7 @@ function give(item, amount)
             worth = math.random(1000,10000)
         }
     if amount == nil then amount = 1 end
+    Wait(500)
     if Config.Framework == 'qb' then 
         if oxinv then
             exports.ox_inventory:AddItem(src, QBCore.Shared.Items[item], amount)
