@@ -47,6 +47,7 @@ CreateThread(function()
     for k, v in ipairs(Config.WeaponsOnBack) do
         weapons[k] = v
         print(json.encode(weapons[k]))
+        print('s')
     end
 end)
 CreateThread(function()
