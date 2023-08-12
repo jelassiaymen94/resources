@@ -84,7 +84,7 @@ for i = 1, #Config.Ped do
                --     TriggerEvent('Polar-Sub:Client:CryptoPartMenu')
                -- end,
                 --isserver = true,
-                event = 'Polar-Stores:Client:StartStore',
+                event = 'Polar-Stores:Client:Menu',
                 --item = Config.TraderPeds[i].product,
                 --amount = Config.TraderPeds[i].amount,
                -- removeitem = Config.TraderPeds[i].removeitem,
@@ -156,7 +156,7 @@ local blip = nil
 local what = false
 
 RegisterNetEvent('Polar-stores:Client:GrabLoc', function(store)
-   
+    TriggerEvent('qb-phone:client:CustomNotification', 'Dave', 'New Location Marked on your GPS', 'fas fa-file-invoice-dollar', '#b3e0f2', '10000')
     blip(Config.Names[store]["ComputerEye"])
     
 
@@ -164,7 +164,35 @@ RegisterNetEvent('Polar-stores:Client:GrabLoc', function(store)
 
 end)
 
+RegisterNetEvent('Polar-stores:Client:Menu', function()
+    local menu = {
+		{
+			isMenuHeader = true,
+            header = "Daves Imporium",
+            txt = "Lets Make Millions!",
+            icon = "fa-solid fa-gem",
+        },
+        {
+            header = "Find A Store",
+            txt = "Make that Bank Roll!",
+            icon = "fas fa-bolt",
+            params = {
+                event = " Polar-Stores:Client:StartStore",
+            }
+        },
+        {
+            header = "Close Menu",
+            txt = "",
+            icon = "fa-solid fa-circle-xmark",
+            params = {
+                event = "close",
+            }
+        }
+    }
 
+	exports['qb-menu']:openMenu(menu)
+
+end)
 
 
 function blip(loc)
