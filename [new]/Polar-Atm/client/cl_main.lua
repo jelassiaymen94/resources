@@ -32,7 +32,7 @@ function starttarget()
         }, 
         distance = 2.5
     })
-    exports[Config.Target]:AddGlobalVehicle({
+    --[[exports[Config.Target]:AddGlobalVehicle({
     options = 	
     {
 		type = "Client",
@@ -42,7 +42,7 @@ function starttarget()
 		item = 'rope',
 	},
         distance = 2.5
-    })
+    })]]
 end
 
 RegisterNetEvent('police:SetCopCount', function(amount) CurrentCops = amount end)

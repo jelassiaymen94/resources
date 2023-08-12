@@ -116,14 +116,14 @@ Config.GlobalVehicleOptions = {
 			return not IsVehicleOnAllWheels(Entity)
 		end
 	},
-	--[[{
+	{
 		type = "Client",
 		event = "Polar-Atm:Client:UseRope",
 		icon = "fas fa-chevron-circle-left",
 		label = "Attach Rope",
 		item = 'rope',
 	},
-	{
+	--[[{
 		type = "client",
 		event = "police:client:ImpoundVehicle",
 		icon = "fas fa-car",
