@@ -510,7 +510,7 @@ function grabloot(door, object)
     SetEntityAsNoLongerNeeded(object)
     RemoveAnimDict(animDict)
 
-    local sceneObject = nil
+    local object2 = nil
 end
 
 
