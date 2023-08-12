@@ -376,8 +376,8 @@ local lootTruck = function(veh)
     -- clear tasks
     ClearPedTasks(PlayerPedId())
     -- bag on back
-	SetPedComponentVariation((PlayerPedId()), 5, 47, 0, 0)
-
+	
+    SetPedComponentVariation(PlayerPedId(), 5, 82, 1, 1)
   
     
         
