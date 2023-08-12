@@ -103,12 +103,12 @@ end
 
 
 
-if Config.Framework == 'qb' then
+
 QBCore.Commands.Add("stores", "Set Player Metadata (God Only)", {}, false, function(source, args)
     TriggerEvent('Polar-stores:Server:StartTargets')
     TriggerEvent('Polar-stores:Server:StartCooldown')
-    TriggerEvent('Polar-stores:Server:StartInteract', 'storesdoor1')
-    TriggerEvent('Polar-stores:Server:StartInteract', 'storesdoor2')
+   -- TriggerEvent('Polar-stores:Server:StartInteract', 'storesdoor1')
+  --  TriggerEvent('Polar-stores:Server:StartInteract', 'storesdoor2')
     TriggerClientEvent('Polar-stores:Client:StartLoot', source)
 end, "god") 
-end
+
