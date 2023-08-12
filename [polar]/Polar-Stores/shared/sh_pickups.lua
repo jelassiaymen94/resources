@@ -7,7 +7,7 @@ local special = nil
 
 
 
-function storesprop6()
+function storesprop6(store)
     local door = 'storesprop6'
 
     cash = Config.Cash[math.random(1, #Config.Cash)]
@@ -27,7 +27,7 @@ function storesprop6()
 end
 
 
-function storesprop7()
+function storesprop7(store)
     local door = 'storesprop7'
 
     local location = Config.Names[store]["PickupLocations2"][math.random(1, #Config.Names[store]["PickupLocations2"])]
@@ -44,7 +44,7 @@ end
 
 
 
-function storesprop8()
+function storesprop8(store)
     local door = 'storesprop8'
 
     local location = Config.Names[store]["PickupLocations3"][math.random(1, #Config.Names[store]["PickupLocations3"])]
@@ -62,7 +62,7 @@ end
 
 
 
-function storesprop9()
+function storesprop9(store)
     local door = 'storesprop9'
     
     
@@ -84,7 +84,7 @@ end
 
 
 
-function storesprop10()
+function storesprop10(store)
     local door = 'storesprop10'
 
     local cash = Config.Cash[math.random(1, #Config.Cash)]

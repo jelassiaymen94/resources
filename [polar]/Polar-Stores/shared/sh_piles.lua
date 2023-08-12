@@ -11,7 +11,7 @@ local z = 30.63
 
 
 
-function storesprop11()
+function storesprop11(store)
     local door = 'storesprop11'
 
     special = Config.Special[math.random(1, #Config.Special)]

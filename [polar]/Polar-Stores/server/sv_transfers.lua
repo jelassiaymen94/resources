@@ -4,29 +4,29 @@ local QBCore = exports['qb-core']:GetCoreObject()
 
 
 
-RegisterNetEvent('Polar-stores:Server:SetupGrab1', function()
-    storesprop1()
-    storesprop2()
-    storesprop3()
-    storesprop4()
-    storesprop5()
+RegisterNetEvent('Polar-stores:Server:SetupGrab1', function(store)
+    storesprop1(store)
+    storesprop2(store)
+    storesprop3(store)
+    storesprop4(store)
+    storesprop5(store)
 end)
 
 
-RegisterNetEvent('Polar-stores:Server:SetupPickup1', function()
-    storesprop6()
-    storesprop7()
-    storesprop8()
-    storesprop9()
-    storesprop10()
+RegisterNetEvent('Polar-stores:Server:SetupPickup1', function(store)
+    storesprop6(store)
+    storesprop7(store)
+    storesprop8(store)
+    storesprop9(store)
+    storesprop10(store)
 end)
 
 
 
 
 
-RegisterNetEvent('Polar-stores:Server:SetupPile1', function()
-    storesprop11()
+RegisterNetEvent('Polar-stores:Server:SetupPile1', function(store)
+    storesprop11(store)
 end)
 
 

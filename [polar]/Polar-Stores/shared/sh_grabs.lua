@@ -8,7 +8,7 @@ local special = nil
 
 
 
-function storesprop1() -- should be same as door = 
+function storesprop1(store) -- should be same as door = 
     local door = 'storesprop1' -- name 
 
     cash = Config.Cash[math.random(1, #Config.Cash)]
@@ -35,7 +35,7 @@ end
 
 
 
-function storesprop2()
+function storesprop2(store)
     local door = 'storesprop2'
     local location = Config.Names[store]["GrabLocations2"][math.random(1, #Config.Names[store]["GrabLocations2"])]
 
@@ -54,7 +54,7 @@ end
 
 
 
-function storesprop3()
+function storesprop3(store)
     
     local location = Config.Names[store]["GrabLocations3"][math.random(1, #Config.Names[store]["GrabLocations3"])]
    
@@ -73,7 +73,7 @@ end
 
 
 
-function storesprop4()
+function storesprop4(store)
     
     local location = Config.Names[store]["GrabLocations4"][math.random(1, #Config.Names[store]["GrabLocations4"])]
    
@@ -90,7 +90,7 @@ function storesprop4()
 end
 
     
-function storesprop5()
+function storesprop5(store)
     
     local location = Config.Names[store]["GrabLocations5"][math.random(1, #Config.Names[store]["GrabLocations5"])]
    
