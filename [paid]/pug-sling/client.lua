@@ -60,10 +60,10 @@ CreateThread(function()
 
             for k, v in pairs(Config.WeaponsOnBack) do
                 if playeritem("weapon_assaultrifle") then
-                 
-                    print(json.encode(v.model))
+                    
+                   -- print(json.encode(v.model))
                 else
-                    print('no weapon')
+                   
                 end
             end
           
