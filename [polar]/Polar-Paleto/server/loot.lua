@@ -94,8 +94,8 @@ function give(item, amount)
             TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[item], "add", amount)  
         else
             if item == 'markedbills' then
-                Player.Functions.AddItem(item, amount, false, info) 
-                TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[item], "add", amount)  
+                Player.Functions.AddItem(item, 1, false, info) 
+                TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[item], "add", 1)  
             else
                 Player.Functions.AddItem(item, amount) 
                 TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[item], "add", amount)  
