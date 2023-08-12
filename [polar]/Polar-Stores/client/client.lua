@@ -596,13 +596,9 @@ RegisterNetEvent('Polar-stores:Client:ResetDoors', function(store)
 end)
 
 
-RegisterNetEvent('esx:playerLoaded', function(xPlayer)
-	ESX.PlayerData = xPlayer
-end)
-local PlayerData = nil
 function playeritem(items, amount)
         
-        PlayerData = QBCore.Functions.GetPlayerData()
+        local PlayerData = QBCore.Functions.GetPlayerData()
         
         
         local isTable = type(items) == 'table'
