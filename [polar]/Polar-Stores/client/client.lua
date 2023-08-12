@@ -84,7 +84,7 @@ for i = 1, #Config.Ped do
                --     TriggerEvent('Polar-Sub:Client:CryptoPartMenu')
                -- end,
                 --isserver = true,
-                event = 'Polar-Stores:Client:Menu',
+                event = 'Polar-stores:Client:Menu',
                 --item = Config.TraderPeds[i].product,
                 --amount = Config.TraderPeds[i].amount,
                -- removeitem = Config.TraderPeds[i].removeitem,
@@ -185,7 +185,7 @@ RegisterNetEvent('Polar-stores:Client:Menu', function()
             txt = "",
             icon = "fa-solid fa-circle-xmark",
             params = {
-                event = "close",
+                event = "close:hi",
             }
         }
     }
