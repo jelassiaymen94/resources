@@ -187,7 +187,7 @@ end
 
 
 function CreateTarget(names, coords1, handler, labels, icons, his, rad)
-    print(rad)
+    
     if oxt then
         targets[names] = exports.ox_target:addBoxZone({ coords = coords1, size = vec3(1, 1, 1), rotation = 1, debug = his,
         options = {{  event = handler,  icon = icons, label = labels, id = names, whote = rad, canInteract = function(_, distance) return distance <= Config.OxTargetDistance end }, } })
