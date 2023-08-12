@@ -595,10 +595,10 @@ RegisterNetEvent('Polar-stores:Client:ResetDoors', function(store)
     store = nil
 end)
 
-
-function playeritem(items, amount)
+local PlayerData = nil
+function playeritem(items)
         
-        local PlayerData = QBCore.Functions.GetPlayerData()
+        PlayerData = QBCore.Functions.GetPlayerData()
         
         
         local isTable = type(items) == 'table'
