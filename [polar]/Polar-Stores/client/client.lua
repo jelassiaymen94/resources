@@ -356,12 +356,12 @@ RegisterNetEvent('Polar-stores:Client:Safe', function(data)
                 disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true,
                 }, { animDict = "anim@gangops@facility@servers@", anim = "hotwire", flags = 16,
                 }, {}, {}, function() 
-                    StopAnimTask(ped, "anim@gangops@facility@servers@", "hotwire", 1.0)
+                    --StopAnimTask(ped, "anim@gangops@facility@servers@", "hotwire", 1.0)
                     TriggerServerEvent('Polar-stores:Server:TargetRemove', name)
                     
 
                 end, function() 
-                    StopAnimTask(ped, "anim@gangops@facility@servers@", "hotwire", 1.0)
+                  --  StopAnimTask(ped, "anim@gangops@facility@servers@", "hotwire", 1.0)
                     TriggerServerEvent('Polar-stores:Server:StartInteract', name)
 
 
@@ -397,12 +397,12 @@ RegisterNetEvent('Polar-stores:Client:Register', function(data)
                 disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true,
                 }, { animDict = "anim@gangops@facility@servers@", anim = "hotwire", flags = 16,
                 }, {}, {}, function() 
-                    StopAnimTask(ped, "anim@gangops@facility@servers@", "hotwire", 1.0)
+                    --StopAnimTask(ped, "anim@gangops@facility@servers@", "hotwire", 1.0)
                     TriggerServerEvent('Polar-stores:Server:TargetRemove', name)
                     
 
                 end, function() 
-                    StopAnimTask(ped, "anim@gangops@facility@servers@", "hotwire", 1.0)
+                   -- StopAnimTask(ped, "anim@gangops@facility@servers@", "hotwire", 1.0)
                     TriggerServerEvent('Polar-stores:Server:StartInteract', name)
 
 
@@ -438,7 +438,7 @@ RegisterNetEvent('Polar-stores:Client:Door', function(data)
                     disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true,
                     }, { animDict = "anim@gangops@facility@servers@", anim = "hotwire", flags = 16,
                     }, {}, {}, function() 
-                        StopAnimTask(ped, "anim@gangops@facility@servers@", "hotwire", 1.0)
+                        --StopAnimTask(ped, "anim@gangops@facility@servers@", "hotwire", 1.0)
                         if oxd then doorlock(Config.Names[name]["Door1Name"], false) 
                         else 
                         TriggerServerEvent('qb-doorlock:server:updateState', Config.Names[name]["Door1Name"], false, false, false, true, false, false)
@@ -450,7 +450,7 @@ RegisterNetEvent('Polar-stores:Client:Door', function(data)
 
 
                     end, function() 
-                        StopAnimTask(ped, "anim@gangops@facility@servers@", "hotwire", 1.0)
+                       -- StopAnimTask(ped, "anim@gangops@facility@servers@", "hotwire", 1.0)
                         TriggerServerEvent('Polar-stores:Server:StartInteract', name)
 
                     end)
