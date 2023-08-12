@@ -411,7 +411,7 @@ function grabloot(door, object)
     loadAnimDict(animDict)
     loadModel(bagcolor)
     
-    local sceneObject = GetClosestObjectOfType(trolylp[door], 2.0, door, 0, 0, 0)
+    local sceneObject = GetClosestObjectOfType(GetEntityCoords(object), 2.0, door, 0, 0, 0)
     
     while not NetworkHasControlOfEntity(sceneObject) do
         Wait(1)
@@ -1265,14 +1265,14 @@ RegisterNetEvent('Polar-Paleto:Client:PaletoProp', function(door, prop, var, val
     loadModel(prop) 
     if value then
         if number == 1 then
-            itemstand[door] =  CreateObject(prop, var.x, var.y, var.z,  true,  true, true) 
+            itemstand[door] =  CreateObject(prop, var.x, var.y, var.z,  true,  true, false) 
             SetEntityHeading(itemstand[door], var.w) 
         elseif number == 2 then
-            displaycase[door] =  CreateObject(prop, var.x, var.y, var.z,  true,  true, true) 
+            displaycase[door] =  CreateObject(prop, var.x, var.y, var.z,  true,  true, false) 
             SetEntityHeading(displaycase[door], var.w) 
         end
     else
-    doors[door] =  CreateObject(prop, var.x, var.y, var.z,  true,  true, true) 
+    doors[door] =  CreateObject(prop, var.x, var.y, var.z,  true,  false, false) 
     SetEntityHeading(doors[door], var.w) 
     --print(doors[door])
     end
