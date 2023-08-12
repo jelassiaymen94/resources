@@ -325,7 +325,10 @@ end
 local lootTruck = function(veh)
     --print('pp')
     local plate = GetVehicleNumberPlateText(veh)
-    if lootedtrucks[plate] then return end
+    if lootedtrucks[plate] then 
+        QBCore.Functions.Notify('Truck already looted', "error", 2000)
+        return 
+    end
    -- print('pp')
     local netId = NetworkGetNetworkIdFromEntity(veh)
     
@@ -339,31 +342,31 @@ local lootTruck = function(veh)
     Wait(time)
 
     local time = math.random(2500,12500)
-    TriggerServerEvent('Polar-ArmoredTrucks:server:receiveItem', veh)
-    Wait(150)
-    Wait(time)
-
-    local time = math.random(2500,12500)
-    TriggerServerEvent('Polar-ArmoredTrucks:server:receiveItem', veh)
-    Wait(150)
-    Wait(time)
-
-    local time = math.random(2500,12500)
-    TriggerServerEvent('Polar-ArmoredTrucks:server:receiveItem', veh)
-    Wait(150)
-    Wait(time)
-
-    local time = math.random(2500,12500)
-    TriggerServerEvent('Polar-ArmoredTrucks:server:receiveItem', veh)
-    Wait(150)
-    Wait(time)
-
-    local time = math.random(2500,12500)
-    TriggerServerEvent('Polar-ArmoredTrucks:server:receiveItem', veh)
-    Wait(150)
-    Wait(time)
-
     TriggerServerEvent('Polar-ArmoredTrucks:server:receiveItem', netId)
+    Wait(150)
+    Wait(time)
+    
+    local time = math.random(2500,12500)
+    TriggerServerEvent('Polar-BankTruck:server:BankNotes')
+    Wait(150)
+    Wait(time)
+
+    local time = math.random(2500,12500)
+    TriggerServerEvent('Polar-BankTruck:server:BankNotes')
+    Wait(150)
+    Wait(time)
+
+    local time = math.random(2500,12500)
+     TriggerServerEvent('Polar-BankTruck:server:BankNotes')
+    Wait(150)
+    Wait(time)
+
+    local time = math.random(2500,12500)
+     TriggerServerEvent('Polar-BankTruck:server:BankNotes')
+    Wait(150)
+    Wait(time)
+
+    
     Wait(150)
    
      

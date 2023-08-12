@@ -47,7 +47,7 @@ RegisterServerEvent('Polar-ArmoredTrucks:server:receiveItem', function(netId)
     TriggerClientEvent('Polar-ArmoredTrucks:client:UpdateLooted', -1, plate)
 
    
-    reward()
+   
 end)
 
 
@@ -68,16 +68,7 @@ end)
 
 
 
-function reward()
-    local luck = math.random(1,100)
 
-    if luck < 30 then
-        
-    else
-        TriggerEvent('Polar-BankTruck:server:BankNotes')
-    end
-
-end
 
 RegisterNetEvent('Polar-BankTruck:server:BankNotes', function()
 
