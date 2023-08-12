@@ -406,7 +406,8 @@ function grabloot(door, object)
     loadAnimDict(animDict)
     loadModel(bagcolor)
     local sceneObject = GetClosestObjectOfType(GetEntityCoords(object), 2.0, GetHashKey(prop), 0, 0, 0)
- 
+    print(sceneObject)
+    print(json.encode(sceneObject))
     while not NetworkHasControlOfEntity(sceneObject) do
         Wait(1)
         print('error')
