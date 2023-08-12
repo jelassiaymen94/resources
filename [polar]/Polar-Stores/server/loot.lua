@@ -1,11 +1,5 @@
+local QBCore = exports['qb-core']:GetCoreObject()
 
-if Config.Framework == 'qb' then 
-    QBCore = exports[Config.Core]:GetCoreObject()
-    
-elseif Config.Framework == 'esx' then
-    ESX = nil
-   
-end
 
 local item = nil
 local item2 = nil
