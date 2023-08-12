@@ -220,9 +220,8 @@ function Animation(door, prop)
 
     local props = GetClosestObjectOfType(GetEntityCoords(PlayerPedId()), 2.0, GetEntityModel(prop), false, false, false)
     local propCoords = GetEntityCoords(prop)
-    print(propCoords)
-    print(prop)
-    Wait(300)
+    
+  --  Wait(300)
         model = bagcolor animDict = 'anim@scripted@heist@ig1_table_grab@cash@male@' 
         
             local playerCoords = GetEntityCoords(PlayerPedId())
@@ -235,7 +234,7 @@ function Animation(door, prop)
         if dotProduct then else 
    
         SetEntityHeading(PlayerPedId(), heading)
-        SetEntityRotation(PlayerPedId(), pitch, 0.0, heading, 2, true)
+     --   SetEntityRotation(PlayerPedId(), pitch, 0.0, heading, 2, true)
     
     
     TriggerServerEvent('Polar-stores:Server:TargetRemove', door)
