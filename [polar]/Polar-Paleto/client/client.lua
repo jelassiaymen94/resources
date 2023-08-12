@@ -391,8 +391,7 @@ end
 local trolylp = {}
 RegisterNetEvent('Polar-Paleto:Client:TrollyModelSync', function(name, loc)
     trolylp[name] = loc
-    print(trolylp[name])
-
+   
 end)
 function grabloot(door, object)
     local grabModel = nil
@@ -411,7 +410,7 @@ function grabloot(door, object)
     loadAnimDict(animDict)
     loadModel(bagcolor)
     
-    local sceneObject = GetClosestObjectOfType(trolylp[door], 2.0, trollys[door], 0, 0, 0)
+    local sceneObject = GetClosestObjectOfType(trolylp[door], 2.0, GetHasKey(trollys[door]), 0, 0, 0)
     print(sceneObject)
     while not NetworkHasControlOfEntity(sceneObject) do
         Wait(1)
