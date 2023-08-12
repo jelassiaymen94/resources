@@ -15,8 +15,8 @@ local amount = nil
 local computeritem = 'hacking_device' -- item to hack computers
 local pcitem = 'btc' -- comes from pc completion
 
-local dooritem = 'advancedlockpick'
-local registeritem = 'lockpick'
+local dooritem = 'lockpick'
+local registeritem = 'advancedlockpick'
 
 local circleexport = 'Polar-UI' -- https://github.com/Project-Sloth/ps-ui
 local voltgame = 'ultra-voltlab' -- https://forum.cfx.re/t/release-voltlab-hacking-minigame-cayo-perico-mission/3933171
