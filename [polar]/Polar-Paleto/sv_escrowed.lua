@@ -12,6 +12,6 @@ RegisterNetEvent('Polar-Paleto:Server:TargetRemove', function(door) TriggerClien
 RegisterNetEvent('Polar-Paleto:Server:RemoveProp', function(door) TriggerClientEvent('Polar-Paleto:Client:RemoveProp', -1, door)   end)
 RegisterNetEvent('Polar-Paleto:Server:StartTargets', function()   TriggerClientEvent('Polar-Paleto:Client:StartTargets', -1)   TriggerClientEvent('Polar-Paleto:Client:StartLoot', source)      end)
 RegisterNetEvent('Polar-Paleto:Server:DestroyPad', function(name) TriggerClientEvent('Polar-Paleto:Client:DestroyPad', name) end)
-RegisterNetEvent('Polar-Paleto:Server:TrollyModelSync', function(name) TriggerClientEvent('Polar-Paleto:Client:TrollyModelSync', name) end)
+RegisterNetEvent('Polar-Paleto:Server:TrollyModelSync', function(name, loc) TriggerClientEvent('Polar-Paleto:Client:TrollyModelSync', name, loc) end)
 
 
