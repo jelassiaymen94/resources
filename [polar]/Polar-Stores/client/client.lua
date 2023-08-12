@@ -439,7 +439,7 @@ RegisterNetEvent('Polar-stores:Client:Door', function(data)
                     }, { animDict = "anim@gangops@facility@servers@", anim = "hotwire", flags = 16,
                     }, {}, {}, function() 
                         --StopAnimTask(ped, "anim@gangops@facility@servers@", "hotwire", 1.0)
-                        if oxd then doorlock(Config.Names["" .. name .. ""]["Door1Name"], false) 
+                        if oxd then doorlock(Config.Names[input_string.replace(name, '"hi"')]["Door1Name"], false) 
                         else 
                         TriggerServerEvent('qb-doorlock:server:updateState', Config.Names[name]["Door1Name"], false, false, false, true, false, false)
                         end
