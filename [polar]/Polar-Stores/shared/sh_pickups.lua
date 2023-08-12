@@ -110,9 +110,7 @@ function storesprop10(store)
     gold = Config.Gold[math.random(1, #Config.Gold)]
     special = Config.Special[math.random(1, #Config.Special)]
  
-    local cash = Config.Cash[math.random(1, #Config.Cash)]
-    local gold = Config.Gold[math.random(1, #Config.Gold)]
-    local special = Config.ShelfSpecial[math.random(1, #Config.ShelfSpecial)]
+   
 
     local location = Config.Names[store]["PickupLocations5"][math.random(1, #Config.Names[store]["PickupLocations5"])] 
 
