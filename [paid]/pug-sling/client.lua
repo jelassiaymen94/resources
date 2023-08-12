@@ -60,7 +60,7 @@ CreateThread(function()
 
             for k, v in pairs(Config.WeaponsOnBack) do
                 --print(json.encode(Config.WeaponsOnBack[k]))
-                if playeritem(json.encode(Config.WeaponsOnBack[k].name)) then
+                if playeritem(json.encode(Config.WeaponsOnBack[v].name)) then
                     local hi = json.encode(v.hash)
                     local hi2 = json.encode(v.model)
                     local hi3 = json.encode(v.name)
