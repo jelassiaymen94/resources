@@ -77,6 +77,7 @@ RegisterNetEvent('Polar-stores:Server:RemoveItems', function(item, amount)
 end)
 
 function give(item, amount)
+    print('hi')
         local src = source local Player = QBCore.Functions.GetPlayer(src)
         local info = {
             worth = math.random(1000,10000)
@@ -91,6 +92,7 @@ function give(item, amount)
                 Player.Functions.AddItem(item, amount, false, info) 
                 TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[item], "add", amount)  
             else
+                print('hi2')
                 Player.Functions.AddItem(item, amount) 
                 TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[item], "add", amount)  
             end
