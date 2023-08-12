@@ -231,7 +231,7 @@ function Animation(door, props)
 
     local dotProduct = Citizen.InvokeNative(0xBFE95ABAF46CD9B8, direction.x, direction.y, direction.z, 0.0, 0.0, 1.0)
     if dotProduct then else 
-   
+    Wait(500)
     SetEntityHeading(PlayerPedId(), heading)
     SetEntityRotation(PlayerPedId(), pitch, 0.0, heading, 2, true)
     
