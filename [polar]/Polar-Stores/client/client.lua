@@ -191,7 +191,6 @@ RegisterNetEvent('Polar-stores:Client:Menu', function()
     }
 
 	exports['qb-menu']:openMenu(menu)
-
 end)
 
 
