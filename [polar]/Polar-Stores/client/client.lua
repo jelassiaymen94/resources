@@ -28,19 +28,18 @@ local voltgame = 'ultra-voltlab' -- https://forum.cfx.re/t/release-voltlab-hacki
 
 
 
-local disabled = true
 
 
 
 
 
 
-local gabz = Config.Gabz
+
+
 
 local bagcolor = Config.Bag
 
 local oxt = Config.OxTarget -- ox target
-local oxdoorname = nil
 local oxd = Config.OxDoorlock
 
 local ped = PlayerPedId()
@@ -118,7 +117,7 @@ local doortable = {}
 
 
 
-AddEventHandler('onResourceStop', function(resource) if resource ~= GetCurrentResourceName() then return end  TriggerServerEvent('Polar-stores:Server:Restart')  TriggerEvent('Polar-stores:Client:ResetProps') TriggerEvent('Polar-stores:Client:ResetDoors') resetstuff() LocalPlayer.state:set('inv_busy', false, true) end)
+AddEventHandler('onResourceStop', function(resource) if resource ~= GetCurrentResourceName() then return end local star = store TriggerServerEvent('Polar-stores:Server:Restart', star)  TriggerEvent('Polar-stores:Client:ResetProps') TriggerEvent('Polar-stores:Client:ResetDoors') resetstuff() LocalPlayer.state:set('inv_busy', false, true) end)
 AddEventHandler('onResourceStart', function(resource) if resource == GetCurrentResourceName() then Wait(100) if hi then print('Starting Targets')  end peds() end end)
 RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function() Wait(100) if hi then print('Player Loaded Targets Starting') end peds() end)
 RegisterNetEvent('police:SetCopCount', function(amount) CurrentCops = amount end)
@@ -535,7 +534,7 @@ function resetstuff()
     doors = {}
     targets = {}
 
-    disabled = true
+ 
     for i = 1, 40 do
         if hi then print('setting to nil ' .. i .. ' / 40') end
         _G["storesprop" .. i] = nil
