@@ -29,7 +29,10 @@ end
 
 function storesprop7(store)
     local door = 'storesprop7'
-
+    cash = Config.Cash[math.random(1, #Config.Cash)]
+    gold = Config.Gold[math.random(1, #Config.Gold)]
+    special = Config.Special[math.random(1, #Config.Special)]
+ 
     local location = Config.Names[store]["PickupLocations2"][math.random(1, #Config.Names[store]["PickupLocations2"])]
    
     local chance = math.random(1,100) 
@@ -46,7 +49,10 @@ end
 
 function storesprop8(store)
     local door = 'storesprop8'
-
+    cash = Config.Cash[math.random(1, #Config.Cash)]
+    gold = Config.Gold[math.random(1, #Config.Gold)]
+    special = Config.Special[math.random(1, #Config.Special)]
+ 
     local location = Config.Names[store]["PickupLocations3"][math.random(1, #Config.Names[store]["PickupLocations3"])]
 
     local chance = math.random(1,100) 
@@ -65,7 +71,10 @@ end
 function storesprop9(store)
     local door = 'storesprop9'
     
-    
+    cash = Config.Cash[math.random(1, #Config.Cash)]
+    gold = Config.Gold[math.random(1, #Config.Gold)]
+    special = Config.Special[math.random(1, #Config.Special)]
+ 
     local location = Config.Names[store]["PickupLocations4"][math.random(1, #Config.Names[store]["PickupLocations4"])]
 
     local chance = math.random(1,100) 
@@ -86,7 +95,10 @@ end
 
 function storesprop10(store)
     local door = 'storesprop10'
-
+    cash = Config.Cash[math.random(1, #Config.Cash)]
+    gold = Config.Gold[math.random(1, #Config.Gold)]
+    special = Config.Special[math.random(1, #Config.Special)]
+ 
     local cash = Config.Cash[math.random(1, #Config.Cash)]
     local gold = Config.Gold[math.random(1, #Config.Gold)]
     local special = Config.ShelfSpecial[math.random(1, #Config.ShelfSpecial)]

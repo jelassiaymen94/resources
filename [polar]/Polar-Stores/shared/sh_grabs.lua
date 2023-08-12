@@ -37,6 +37,10 @@ end
 
 function storesprop2(store)
     local door = 'storesprop2'
+    cash = Config.Cash[math.random(1, #Config.Cash)]
+    gold = Config.Gold[math.random(1, #Config.Gold)]
+    special = Config.Special[math.random(1, #Config.Special)]
+ 
     local location = Config.Names[store]["GrabLocations2"][math.random(1, #Config.Names[store]["GrabLocations2"])]
 
     local chance = math.random(1,100) 
@@ -55,7 +59,10 @@ end
 
 
 function storesprop3(store)
-    
+    cash = Config.Cash[math.random(1, #Config.Cash)]
+    gold = Config.Gold[math.random(1, #Config.Gold)]
+    special = Config.Special[math.random(1, #Config.Special)]
+ 
     local location = Config.Names[store]["GrabLocations3"][math.random(1, #Config.Names[store]["GrabLocations3"])]
    
     local chance = math.random(1,100) 
@@ -74,7 +81,10 @@ end
 
 
 function storesprop4(store)
-    
+    cash = Config.Cash[math.random(1, #Config.Cash)]
+    gold = Config.Gold[math.random(1, #Config.Gold)]
+    special = Config.Special[math.random(1, #Config.Special)]
+ 
     local location = Config.Names[store]["GrabLocations4"][math.random(1, #Config.Names[store]["GrabLocations4"])]
    
    
@@ -91,7 +101,10 @@ end
 
     
 function storesprop5(store)
-    
+    cash = Config.Cash[math.random(1, #Config.Cash)]
+    gold = Config.Gold[math.random(1, #Config.Gold)]
+    special = Config.Special[math.random(1, #Config.Special)]
+ 
     local location = Config.Names[store]["GrabLocations5"][math.random(1, #Config.Names[store]["GrabLocations5"])]
    
    
