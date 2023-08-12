@@ -350,7 +350,7 @@ Config.FleecaBanks = {
     [1] = { -- Great Ocean Highway
         ["coords"] = vector4(-2956.564, 481.957, 15.297, 347.02),  -- Coordinates of the Banks
         ["tablecoords"] = {[1] = vector3(-2954.2, 484.377, 15.525)},
-        ["object"] = GetHashKey("hei_prop_heist_sec_door"),
+        ["object"] = GetHashKey("v_ilev_gbvauldr"),
         ["camId"] = 25,
         ["isOpened"] = false,
         ["heading"] = {

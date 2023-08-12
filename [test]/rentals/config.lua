@@ -23,7 +23,7 @@ Config.Locations = {
     },
 
     truck = {
-        coords = vector4(1740.24, -1605.24, 112.5, 137.26),
+        coords = vector4(1740.24, -1605.24, 111.5, 137.26),
         pedhash = `s_m_m_trucker_01`,
         spawnpoint = vector4(1738.24, -1633.53, 113.48, 117.83),
     },
