@@ -186,10 +186,10 @@ end
 
 
 
-function CreateTarget(names, coords1, handler, labels, icons, his)
+function CreateTarget(names, coords1, handler, labels, icons, his, namea)
     if oxt then
         targets[names] = exports.ox_target:addBoxZone({ coords = coords1, size = vec3(1, 1, 1), rotation = 1, debug = his,
-        options = {{  event = handler,  icon = icons, label = labels, id = names, canInteract = function(_, distance) return distance <= Config.OxTargetDistance end }, } })
+        options = {{  event = handler,  icon = icons, label = labels, id = names, whote = namea, canInteract = function(_, distance) return distance <= Config.OxTargetDistance end }, } })
     else
         exports['qb-target']:AddBoxZone(names,  coords1, 0.5, 0.5, { name =  names, heading = 28.69, debug = his, minZ = coords1.z-0.5, maxZ =  coords1.z+0.5,}, 
         { options = {{ event = handler, icon = icons, label = labels, id = names }}, distance = 1 }) 
@@ -331,15 +331,15 @@ end)
 
 RegisterNetEvent('Polar-stores:Client:StartTargets', function(store)
     
-    CreateTarget(Config.Names[store]["Door1Name"], Config.Names[store]["Door1Eye"], "Polar-stores:Client:Door", "Thermite", "fas fa-fire", Config.Debug)
+    CreateTarget(Config.Names[store]["Door1Name"], Config.Names[store]["Door1Eye"], "Polar-stores:Client:Door", "Thermite", "fas fa-fire", Config.Debug, store)
 
-    CreateTarget(Config.Names[store]["Door2Name"], Config.Names[store]["Door2Eye"], "Polar-stores:Client:Door2", "Thermite", "fas fa-fire", Config.Debug)
+    CreateTarget(Config.Names[store]["Door2Name"], Config.Names[store]["Door2Eye"], "Polar-stores:Client:Door2", "Thermite", "fas fa-fire", Config.Debug, store)
 
-    CreateTarget(Config.ComputerName, Config.Names[store]["ComputerEye"], "Polar-stores:Client:HackComputer", "Hack", "fas fa-bolt", Config.Debug)
+    CreateTarget(Config.ComputerName, Config.Names[store]["ComputerEye"], "Polar-stores:Client:HackComputer", "Hack", "fas fa-bolt", Config.Debug, store)
  
-    CreateTarget(Config.RegisterName, Config.Names[store]["RegisterEye"], "Polar-stores:Client:Register", "Steal", "fas fa-bolt", Config.Debug)
+    CreateTarget(Config.RegisterName, Config.Names[store]["RegisterEye"], "Polar-stores:Client:Register", "Steal", "fas fa-bolt", Config.Debug, store)
  
-    CreateTarget(Config.SafeName, Config.Names[store]["SafeLocation"], "Polar-stores:Client:Safe", "Steal", "fas fa-bolt", Config.Debug)
+    CreateTarget(Config.SafeName, Config.Names[store]["SafeLocation"], "Polar-stores:Client:Safe", "Steal", "fas fa-bolt", Config.Debug, store)
  
 end)
 
@@ -427,7 +427,8 @@ end)
 
 RegisterNetEvent('Polar-stores:Client:Door', function(data)
     local name = data.id
-    print("" .. name .. "")
+    local store = data.whote
+
     callback('Polar-stores:Door1', function(result) if result then 
         if playeritem(dooritem) then
         TriggerServerEvent('Polar-stores:Server:StopInteract', name)
@@ -439,9 +440,9 @@ RegisterNetEvent('Polar-stores:Client:Door', function(data)
                     }, { animDict = "anim@gangops@facility@servers@", anim = "hotwire", flags = 16,
                     }, {}, {}, function() 
                         --StopAnimTask(ped, "anim@gangops@facility@servers@", "hotwire", 1.0)
-                        if oxd then doorlock(Config.Names[input_string.replace(name, '"hi"')]["Door1Name"], false) 
+                        if oxd then doorlock(Config.Names[store]["Door1Name"], false) 
                         else 
-                        TriggerServerEvent('qb-doorlock:server:updateState', Config.Names[name]["Door1Name"], false, false, false, true, false, false)
+                        TriggerServerEvent('qb-doorlock:server:updateState', Config.Names[store]["Door1Name"], false, false, false, true, false, false)
                         end
                         CallPolice(GetEntityCoords(PlayerPedId()))
                         TriggerServerEvent('Polar-stores:Server:TargetRemove', name)
@@ -476,6 +477,7 @@ end)
 
 RegisterNetEvent('Polar-stores:Client:Door2', function(data)
     local name = data.id
+    local store = data.whote
     callback('Polar-stores:Door2', function(result) if result then 
         TriggerServerEvent('Polar-stores:Server:StopInteract', name)
         if playeritem(dooritem) then
@@ -487,9 +489,9 @@ RegisterNetEvent('Polar-stores:Client:Door2', function(data)
                     }, { animDict = "anim@gangops@facility@servers@", anim = "hotwire", flags = 16,
                     }, {}, {}, function() 
                         StopAnimTask(ped, "anim@gangops@facility@servers@", "hotwire", 1.0)
-                        if oxd then doorlock(Config.Names[name]["Door2Name"], false)
+                        if oxd then doorlock(Config.Names[store]["Door2Name"], false)
                         else 
-                        TriggerServerEvent('qb-doorlock:server:updateState', Config.Names[name]["Door2Name"], false, false, false, true, false, false)
+                        TriggerServerEvent('qb-doorlock:server:updateState', Config.Names[store]["Door2Name"], false, false, false, true, false, false)
                         end
                         TriggerServerEvent('Polar-stores:Server:TargetRemove', name)
 
