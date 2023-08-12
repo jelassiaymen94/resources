@@ -192,7 +192,7 @@ function CreateTarget(names, coords1, handler, labels, icons, his, namea)
         options = {{  event = handler,  icon = icons, label = labels, id = names, whote = namea, canInteract = function(_, distance) return distance <= Config.OxTargetDistance end }, } })
     else
         exports['qb-target']:AddBoxZone(names,  coords1, 0.5, 0.5, { name =  names, heading = 28.69, debug = his, minZ = coords1.z-0.5, maxZ =  coords1.z+0.5,}, 
-        { options = {{ event = handler, icon = icons, label = labels, id = names }}, distance = 1 }) 
+        { options = {{ event = handler, icon = icons, label = labels, id = names, whote = namea }}, distance = 1 }) 
     end
     --print(names .. ' is ' .. json.encode(targets[names]))
     
