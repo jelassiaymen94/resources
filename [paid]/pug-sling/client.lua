@@ -59,11 +59,11 @@ CreateThread(function()
             
 
             for k, v in pairs(Config.WeaponsOnBack) do
-                if playeritem("weapon_assaultrifle") then
+                if playeritem(Config.WeaponsOnBack[k]) then
                     local hi = json.encode(v.hash)
+                    local hi2 = json.encode(v.model)
                     print(hi)
-                else
-                   
+                    print(hi2)
                 end
             end
           
