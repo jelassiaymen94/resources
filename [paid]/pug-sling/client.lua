@@ -51,9 +51,9 @@ end)
 CreateThread(function()
     while true do
         --Wait(Config.LoopSpeed)
-        Wait(1000)
+        
       
-
+            print('startiong')
             
 
             for k, v in ipairs(Config.WeaponsOnBack) do
@@ -82,6 +82,7 @@ CreateThread(function()
                     TriggerEvent('weaponBack:removeWeapon', weaponHash)
                 end
             end]]
+        Wait(1000)
     end
 end)
 
