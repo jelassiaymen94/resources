@@ -397,6 +397,7 @@ end)
 function grabloot(door, object)
     local grabModel = nil
     local object2 = object
+    print(GetEntityCoords(object))
     TriggerServerEvent('Polar-Paleto:Server:TrollyModelSync', door, GetEntityCoords(object))
     TriggerServerEvent('Polar-Paleto:Server:TargetRemove', door)
     local prop = trollys[door]
