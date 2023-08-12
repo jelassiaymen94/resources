@@ -638,12 +638,9 @@ end
   
   
 function notify(what, color)
-    if Config.Framework == 'qb' then
-        QBCore.Functions.Notify(what, color)
-    elseif Config.Framework == 'esx' then
-        if color == 'error' then colo = 'r' elseif color == 'success' then colo = 'g' end
-        ESX.ShowNotification(what, true, true, colo)
-    end
+   
+    QBCore.Functions.Notify(what, color)
+  
 end
  
 
