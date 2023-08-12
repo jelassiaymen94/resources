@@ -5,7 +5,8 @@ local English = {
     ['doorunlock'] = 'Door Unlocked!',
     ['noboxitem'] = 'You dont have a item',
     ['nopcitem'] = 'You dont have a Hacking Device',
-
+    ['nodoor'] = 'no door item',
+    ['noregister'] = 'no register item',
 }
 local French = {
     ['cooldown'] = 'You Cannot Thermite Right Now..',

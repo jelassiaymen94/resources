@@ -1408,9 +1408,7 @@ end)
 
 
 
-RegisterNetEvent('esx:playerLoaded', function(xPlayer)
-	ESX.PlayerData = xPlayer
-end)
+
 local PlayerData = nil
 function playeritem(items, amount)
         if Config.Framework == 'qb' then    

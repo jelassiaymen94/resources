@@ -11,13 +11,12 @@ local amount = nil
 
 
 
-local boxitem = "thermite" -- item for back box
 
 local computeritem = 'hacking_device' -- item to hack computers
 local pcitem = 'btc' -- comes from pc completion
 
-local frontdooritem = 'advancedlockpick'
-
+local dooritem = 'advancedlockpick'
+local registeritem = 'lockpick'
 
 local circleexport = 'Polar-UI' -- https://github.com/Project-Sloth/ps-ui
 local voltgame = 'ultra-voltlab' -- https://forum.cfx.re/t/release-voltlab-hacking-minigame-cayo-perico-mission/3933171
@@ -129,7 +128,7 @@ local callback = Config.TrigCallBack -- QBCore.Functions.TriggerCallback ESX.Tri
 RegisterNetEvent('Polar-Stores:Client:StartStore', function()
     if CurrentCops >= Config.RequiredCops then
 
-        if playeritem(boxitem) then
+        if playeritem(dooritem) then
 
             callback('Polar-stores:Cooldown', function(result) if result then
                 local random = math.random(1,100)
@@ -148,7 +147,7 @@ RegisterNetEvent('Polar-Stores:Client:StartStore', function()
                 notify(text('cooldown'), "error")
             end end)
 
-        else notify(text('noboxitem'), "error") end
+        else notify(text('nodoor'), "error") end
 
     else notify(text('nopolice'), "error") end
 end)
@@ -208,7 +207,7 @@ RegisterNetEvent('Polar-stores:Client:AddTarget', function(door, prop, var, hand
 
     else
         exports['qb-target']:AddBoxZone(door, vec3(var.x, var.y, var.z), 0.5, 0.5, { name = door, heading = 28.69, debug = hi, minZ = var.z - 1.5, maxZ =  var.z + 1.5,}, 
-        { options = {{ event = handle, type = door, piles = pile, icon = "fas fa-bolt", label = "Grab"}}, distance = 1.0  }) 
+        { options = {{ event = handle, type = door, piles = pile, icon = "fas fa-bolt", label = "Grab"}}, distance = 1.5  }) 
     end
 end)
 
@@ -232,7 +231,7 @@ function Animation(door, props)
     if dotProduct then else 
     
     SetEntityHeading(PlayerPedId(), heading)
-    SetEntityRotation(PlayerPedId(), pitch, 0.0, heading, 2, true)
+    --SetEntityRotation(PlayerPedId(), pitch, 0.0, heading, 2, true)
     
     
     TriggerServerEvent('Polar-stores:Server:TargetRemove', door)
@@ -348,6 +347,7 @@ RegisterNetEvent('Polar-stores:Client:Register', function(data)
     local name = data.id
     callback('Polar-stores:Door' .. name, function(result) if result then 
     TriggerServerEvent('Polar-stores:Server:StopInteract', name)
+    if playeritem(registeritem) then
     exports[circleexport]:Circle(function(success)
         if success then
 
@@ -379,6 +379,7 @@ RegisterNetEvent('Polar-stores:Client:Register', function(data)
 
         end
     end, 2, 20)
+    else notify(text('noregister'), "error") end
     else  notify(text('sometingelse'), "error") end end)
 end)
 
@@ -386,6 +387,7 @@ end)
 RegisterNetEvent('Polar-stores:Client:Door', function(data)
     local name = data.id
     callback('Polar-stores:Door1', function(result) if result then 
+        if playeritem(dooritem) then
         TriggerServerEvent('Polar-stores:Server:StopInteract', name)
         exports[circleexport]:Circle(function(success)
             if success then
@@ -424,7 +426,7 @@ RegisterNetEvent('Polar-stores:Client:Door', function(data)
 
             end
         end, 2, 20)
-
+    else notify(text('nodoor'), "error") end
     else  notify(text('sometingelse'), "error") end end)
 end)
 
@@ -434,6 +436,7 @@ RegisterNetEvent('Polar-stores:Client:Door2', function(data)
     local name = data.id
     callback('Polar-stores:Door2', function(result) if result then 
         TriggerServerEvent('Polar-stores:Server:StopInteract', name)
+        if playeritem(dooritem) then
         exports[circleexport]:Circle(function(success)
             if success then
 
@@ -470,7 +473,7 @@ RegisterNetEvent('Polar-stores:Client:Door2', function(data)
 
             end
         end, 2, 20)
-
+    else notify(text('nodoor'), "error") end
     else  notify(text('sometingelse'), "error") end end)
 end)
 
