@@ -76,6 +76,7 @@ RegisterNetEvent("Graverobbery:Client:StartDigging", function(data)
                         coords = v["coords"], message = "Suspicious Activity",
                         dispatchCode = "10-16", description = "Possible Grave Digging", radius = 10,
                         sprite = 58,  color = 46, scale = 1.0,  length = 1,
+                        recipientList = { "police", "ems" }
                     })   
                     QBCore.Functions.Progressbar("digging", "Digging...", math.random(8000, 15000), false, true, {
                         disableMovement = true,
