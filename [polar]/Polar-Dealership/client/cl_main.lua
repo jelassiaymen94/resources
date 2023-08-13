@@ -34,9 +34,9 @@ local spawns = {
 
 
 function SetupGarageTargets()
-    CreateTarget("jdmtable", spawns["jdmtable"].target, "Polar-Dealership:Client:Garage", "Enter JDM Garage", "fas fa-bolt", false)
-    CreateTarget("biketable", spawns["biketable"].target, "Polar-Dealership:Client:Garage", "Enter Bike Garage", "fas fa-bolt", false)
-    CreateTarget("cartable", spawns["cartable"].target, "Polar-Dealership:Client:Garage", "Enter Car Garage", "fas fa-bolt", false)
+    CreateTarget("jdmtable", spawns["jdmtable"].target, "Polar-Dealership:Client:Garage", "Enter JDM Garage", "fas fa-bolt", false, {"cardealer, jdmdealer, bikedealer"})
+    CreateTarget("biketable", spawns["biketable"].target, "Polar-Dealership:Client:Garage", "Enter Bike Garage", "fas fa-bolt", false, {"cardealer, jdmdealer, bikedealer"})
+    CreateTarget("cartable", spawns["cartable"].target, "Polar-Dealership:Client:Garage", "Enter Car Garage", "fas fa-bolt", false, {"cardealer, jdmdealer, bikedealer"})
   
    
 end 
@@ -343,10 +343,10 @@ local despawntable = {}
 
 local sound = Config.Sound
 
-function CreateTarget(names, coords1, handler, labels, icons, his)
+function CreateTarget(names, coords1, handler, labels, icons, his, jobs)
 
     exports['qb-target']:AddBoxZone(names,  coords1, 1.5, 1.5, { name =  names, heading = 28.69, debug = his, minZ = coords1.z-0.5, maxZ =  coords1.z+0.5,}, 
-    { options = {{ event = handler, icon = icons, label = labels, id = names }}, distance = 2 }) 
+    { options = {{ event = handler, icon = icons, label = labels, id = names, job = jobs }}, distance = 2 }) 
 
 end
 
@@ -466,6 +466,8 @@ function outsidespawnp(coord)
 
     Wait(100) if sound then TriggerServerEvent("InteractSound_SV:PlayOnSource", "LockerOpen", 0.1) end 
     DoScreenFadeOut(800) Wait(1850) SetEntityCoords(PlayerPedId(), coord.x, coord.y, coord.z-1.0) SetEntityHeading(PlayerPedId(), coord.w) DoScreenFadeIn(900) ClearPedTasks(PlayerPedId())
+
+    QBCore.Functions.Notify('Take the Vehicle to the Dealership!', 'success', 2500)
 end
 function enterwarehouse(coord)
     Wait(100) if sound then TriggerServerEvent("InteractSound_SV:PlayOnSource", "LockerOpen", 0.1) end 
@@ -475,6 +477,8 @@ RegisterNetEvent('Polar-Dealership:client:CheckPrice', function(data)
     local p = data.cars
     local table = data.tables
     local model = data.model
+    if table == nil then return end
+    if model == nil then return end
     checkprice(table, model)
 end)
 
