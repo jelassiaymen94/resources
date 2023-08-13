@@ -215,6 +215,7 @@ function blip()
     local blip = AddBlipForCoord(vec3(TruckPeds[1].coords.x, TruckPeds[1].coords.y, TruckPeds[1].coords.z)) SetBlipSprite (blip, 477) SetBlipDisplay(blip, 6) SetBlipScale (blip, 0.6) SetBlipAsShortRange(blip, true)
     SetBlipColour(blip, 39) BeginTextCommandSetBlipName("STRING") AddTextComponentSubstringPlayerName('Los Santos Trucking') EndTextCommandSetBlipName(blip)
 end
+local created_ped = {}
 function start()
     if Config.Debug then print('starting') end
     for i = 1, #TruckPeds do
