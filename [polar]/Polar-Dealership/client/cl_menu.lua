@@ -91,6 +91,14 @@ RegisterNetEvent('Polar-Dealership:client:menu:OpenBossMenu', function()
             }
         },
         {
+            header = "Vehicle Management",
+            txt = "",
+            icon = "fas fa-address-book",
+            params = {
+                event = "Polar-Dealership:client:menu:OpenOrder",
+            }
+        },
+        {
             header = "Manage Employees",
             txt = "",
             icon = "fas fa-address-book",
@@ -524,7 +532,7 @@ RegisterNetEvent('Polar-Dealership:client:menu:OpenShowroomMenu', function()
             }
         },
         {
-            header = "Delivery",
+            header = "View Stock",
             txt = "",
             icon = 'fas fa-star',
             params = {
