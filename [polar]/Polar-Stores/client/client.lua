@@ -57,11 +57,8 @@ function peds()
     if Config.Debug then print('starting') end
     for i = 1, #Config.Ped do
 
-    RequestModel(Config.Ped[i].model)
-    while not HasModelLoaded(Config.Ped[i].model) do
-        Wait(1)
-    end
-    
+    loadmodel(Config.Ped[i].model)
+
     created_ped[i] = CreatePed(5, Config.Ped[i].model, Config.Ped[i].coords, false, true)
     FreezeEntityPosition(created_ped, true)
     SetEntityInvincible(created_ped, true)
