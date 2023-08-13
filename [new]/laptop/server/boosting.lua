@@ -416,7 +416,7 @@ end)
 ----- ** EVERYTHING TO DO QUEUE ** -----
 
 QBCore.Functions.CreateCallback('laptop:server:joinQueue', function(source, cb, status)
-    print(status)
+    --print(status)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
     if not Player then return cb("error") end
