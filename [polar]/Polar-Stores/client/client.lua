@@ -59,7 +59,7 @@ function peds()
 
     loadModel(Config.Ped[i].model)
 
-    created_ped[i] = CreatePed(5, Config.Ped[i].model, Config.Ped[i].coords, false, true)
+    created_ped[i] = CreatePed(5, Config.Ped[i].model, vec4(Config.Ped[i].coords.x, Config.Ped[i].coords.y, Config.Ped[i].coords.z-1, Config.Ped[i].coords.w), false, true)
     FreezeEntityPosition(created_ped[i], true)
     SetEntityInvincible(created_ped[i], true)
     SetBlockingOfNonTemporaryEvents(created_ped[i], true)
