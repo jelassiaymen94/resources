@@ -111,10 +111,27 @@ end
 CheckOrders = function()
     MySQL.Async.fetchAll('SELECT * FROM dealerships_orders WHERE deliverydate <= date(NOW())', {}, function(result)
         for i=1, #result do
+            local stock = 0
             -- ADD TO STOCK
-            MySQL.update('UPDATE dealerships_stock SET stock = stock + 1 WHERE vehicle = ? AND dealership = ?', {result[i].vehicle, result[i].dealership})
+           -- MySQL.update('UPDATE dealerships_stock SET stock = stock + 1 WHERE vehicle = ? AND dealership = ?', {result[i].vehicle, result[i].dealership})
             -- DELETE FROM ORDERS
+            local result2 = MySQL.query.await('SELECT * FROM dealerships_stock WHERE vehicle = ?', { result[i].vehicle })
+            if result2[1] ~= nil then
+                stock = result2[1] + 1
+                print(result2[1])
+                print(json.encode(result2[1]))
+            else 
+                stock = 1
+            end
+            print(stock)
+            MySQL.insert('INSERT into dealerships_stock (stock, vehicle, dealership) VALUES (:stock, :vehicle, :dealership)', {
+                ['stock'] = stock,
+                ['vehicle'] = result[i].vehicle,
+                ['dealership'] = result[i].dealership,
+               
+            }, function() end)
             MySQL.query('DELETE FROM dealerships_orders WHERE id = ?', {result[i].id})
+           
         end
         if #result > 0 and Config.Debug then
             print("^3[Polar-Dealership] ^5"..#result.." vehicles added to stock^7")
