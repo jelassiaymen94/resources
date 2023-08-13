@@ -57,11 +57,16 @@ function peds()
     if Config.Debug then print('starting') end
     for i = 1, #Config.Ped do
 
+    RequestModel(Config.Ped[i].model)
+    while not HasModelLoaded(Config.Ped[i].model) do
+        Wait(1)
+    end
+    
     created_ped[i] = CreatePed(5, Config.Ped[i].model, Config.Ped[i].coords, false, true)
-    FreezeEntityPosition(created_ped1, true)
-    SetEntityInvincible(created_ped1, true)
-    SetBlockingOfNonTemporaryEvents(created_ped1, true)
-    TaskStartScenarioInPlace(created_ped1, Config.Ped[i].scenario, 0, true)
+    FreezeEntityPosition(created_ped, true)
+    SetEntityInvincible(created_ped, true)
+    SetBlockingOfNonTemporaryEvents(created_ped, true)
+    TaskStartScenarioInPlace(created_ped, Config.Ped[i].scenario, 0, true)
 
     exports['qb-target']:AddBoxZone(i, vec3(Config.Ped[i].coords.x, Config.Ped[i].coords.y, Config.Ped[i].coords.z), 0.5, 0.5, { name = i, heading = 28.69, debug = hi, minZ = Config.Ped[i].coords.z - 1.0, maxZ =  Config.Ped[i].coords.z + 1.0,}, 
     { options = {{ event = 'Polar-stores:Client:Menu',  icon = Config.Ped[i].icon, label = Config.Ped[i].label}}, distance = 1.5  })
