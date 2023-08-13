@@ -404,6 +404,7 @@ function loop(what)
     while what do
     loadAnimDict("veh@break_in@0h@p_m_one@")
     TaskPlayAnim(PlayerPedId(), "veh@break_in@0h@p_m_one@", "low_force_entry_ds", 3.0, 3.0, -1, 16, 0, 0, 0, 0)
+    Wait(1000)
     end
 end
 RegisterNetEvent('Polar-stores:Client:Register', function(data)
