@@ -449,7 +449,7 @@ RegisterNetEvent('laptop:client:HackCar', function()
             local State = Entity(car).state.Boosting
             if State and State.boostHacks > 0 and not State.boostCooldown then
                 local pushingP = promise.new()
-                exports['ps-ui']:Scrambler(function(cb)
+                exports['Polar-UI']:Scrambler(function(cb)
                     pushingP:resolve(cb)
                 end, psUI[math.random(1, #psUI)], 30, 0)
                 local success = Citizen.Await(pushingP)

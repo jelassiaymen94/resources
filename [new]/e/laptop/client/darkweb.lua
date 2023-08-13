@@ -39,7 +39,7 @@ end)
 -- Prolly a better minigame for this and needs a drilling anim
 local function breakCrate(entity)
     if haveItem('drill') then
-        exports['ps-ui']:Thermite(function(success)
+        exports['Polar-UI']:Thermite(function(success)
             if success then
                 TriggerServerEvent('laptop:server:crateOpened', NetworkGetNetworkIdFromEntity(entity))
                 if crateBlip then RemoveBlip(crateBlip) end
