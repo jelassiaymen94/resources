@@ -343,8 +343,6 @@ RegisterNetEvent('Polar-stores:Client:StartLoot', function(store)
 
     TriggerServerEvent('Polar-stores:Server:SetupPickup1', store)
 
-    TriggerServerEvent('Polar-stores:Server:SetupPile1', store)
-
     doorlock(Config.Names[store]["Door1Name"], true)
 end)
 

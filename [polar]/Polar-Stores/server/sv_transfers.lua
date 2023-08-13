@@ -25,11 +25,6 @@ end)
 
 
 
-RegisterNetEvent('Polar-stores:Server:SetupPile1', function(store)
-    storesprop11(store)
-end)
-
-
 
 
 
