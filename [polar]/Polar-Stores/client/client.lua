@@ -48,16 +48,16 @@ local animDict = nil local model = nil local prop = nil local var = nil local dr
 
 local doors = {}
 local targets = {}
-
+local created_ped = {}
 
 local hi = Config.Debug
---CreateThread(function() peds() end)
+CreateThread(function() peds() end)
 function peds()
    
     if Config.Debug then print('starting') end
     for i = 1, #Config.Ped do
 
-    local created_ped1 = CreatePed(5, Config.Ped[i].model, Config.Ped[i].coords, false, true)
+    created_ped[i] = CreatePed(5, Config.Ped[i].model, Config.Ped[i].coords, false, true)
     FreezeEntityPosition(created_ped1, true)
     SetEntityInvincible(created_ped1, true)
     SetBlockingOfNonTemporaryEvents(created_ped1, true)
