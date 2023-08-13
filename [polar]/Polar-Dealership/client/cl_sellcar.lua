@@ -100,7 +100,7 @@ function spawnpeds()
     exports['qb-target']:AddBoxZone('1',  vector4(-1288.1, -3043.17, -48.56, 86.38), 0.5, 0.5, { name =  '1', heading = 28.69, debug = false, minZ = -48.78-0.5, maxZ =  -48.78+0.5,}, 
     { options = {{ event = "Polar-Dealership:Client:OpenCarMenu", icon = "fa-solid fa-bolt", label = "Open Menu", job = 'cardealer' }}, distance = 4.5 }) 
 
-    exports['qb-target']:SpawnPed({
+    --[[exports['qb-target']:SpawnPed({
         model = 'a_m_m_genfat_01',
         coords = vector4(-1287.84, -3040.71, -48.78, 264.96),
         minusOne = true,
@@ -125,7 +125,7 @@ function spawnpeds()
             distance = 4.5,
         },
     })
-    
+    ]]
 
 end
 
