@@ -51,7 +51,7 @@ local targets = {}
 local created_ped = {}
 
 local hi = Config.Debug
-CreateThread(function() peds() end)
+--CreateThread(function() peds() end)
 function peds()
    
     if Config.Debug then print('starting') end
