@@ -756,7 +756,7 @@ local function missionType(boostData, tier)
 
     if tier == "D" or tier == "C" or tier == "B" or tier == "A" then return "boosting" end -- Only A+, S and S+ Can be vinscratched
 
-    print(tier)
+    print(" tier " .. tier)
 
     if boostData >= Config.Boosting.TiersPerRep[tier] then
         -- if math.random() <= 0.05 then
@@ -838,7 +838,7 @@ CreateThread(function()
                     if #currentContracts[k] < Config.Boosting.MaxBoosts and v.active and v.online then
                         local ContractChance = math.random()
                         if Config.Boosting.Debug then
-                            print(v.skipped)
+                            print('skippied ' .. v.skipped)
                         end
                         -- If skipped is bigger or equal to 25 we give player a contract for waiting
                         -- Otherwise we say if they been in queue longer than 2-7 skips and their chance is higher than 0.75 (meaning 25% chance) we will reward them with a contract
