@@ -57,7 +57,7 @@ function peds()
     if Config.Debug then print('starting') end
     for i = 1, #Config.Ped do
 
-    loadmodel(Config.Ped[i].model)
+    loadModel(Config.Ped[i].model)
 
     created_ped[i] = CreatePed(5, Config.Ped[i].model, Config.Ped[i].coords, false, true)
     FreezeEntityPosition(created_ped, true)
