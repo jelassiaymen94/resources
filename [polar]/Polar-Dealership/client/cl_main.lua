@@ -34,9 +34,9 @@ local spawns = {
 
 
 function SetupGarageTargets()
-    CreateTarget("jdmtable", spawns["jdmtable"].target, "Polar-Dealership:Client:Garage", "Enter JDM Garage", "fas fa-bolt", false, {"cardealer"})
-    CreateTarget("biketable", spawns["biketable"].target, "Polar-Dealership:Client:Garage", "Enter Bike Garage", "fas fa-bolt", false, {"cardealer"})
-    CreateTarget("cartable", spawns["cartable"].target, "Polar-Dealership:Client:Garage", "Enter Car Garage", "fas fa-bolt", false, {"cardealer"})
+    CreateTarget("jdmtable", spawns["jdmtable"].target, "Polar-Dealership:Client:Garage", "Enter JDM Garage", "fas fa-bolt", false, "cardealer")
+    CreateTarget("biketable", spawns["biketable"].target, "Polar-Dealership:Client:Garage", "Enter Bike Garage", "fas fa-bolt", false, "cardealer")
+    CreateTarget("cartable", spawns["cartable"].target, "Polar-Dealership:Client:Garage", "Enter Car Garage", "fas fa-bolt", false, "cardealer")
   
    
 end 
