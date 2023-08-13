@@ -51,7 +51,7 @@ local targets = {}
 local created_ped = {}
 
 local hi = Config.Debug
---CreateThread(function() peds() end)
+CreateThread(function() peds() end)
 function peds()
    
     if Config.Debug then print('starting') end
@@ -63,7 +63,7 @@ function peds()
     FreezeEntityPosition(created_ped[i], true)
     SetEntityInvincible(created_ped[i], true)
     SetBlockingOfNonTemporaryEvents(created_ped[i], true)
-    TaskStartScenarioInPlace(created_ped[i], Config.Ped[i].scenario, 0, true)
+    TaskStartScenarioInPlace(created_ped[i], 'WORLD_HUMAN_CLIPBOARD', 0, true)
 
     exports['qb-target']:AddBoxZone(i, vec3(Config.Ped[i].coords.x, Config.Ped[i].coords.y, Config.Ped[i].coords.z), 0.5, 0.5, { name = i, heading = 28.69, debug = hi, minZ = Config.Ped[i].coords.z - 1.0, maxZ =  Config.Ped[i].coords.z + 1.0,}, 
     { options = {{ event = 'Polar-stores:Client:Menu',  icon = Config.Ped[i].icon, label = Config.Ped[i].label}}, distance = 1.5  })
@@ -86,8 +86,8 @@ local doortable = {}
 
 
 AddEventHandler('onResourceStop', function(resource) if resource ~= GetCurrentResourceName() then return end local star = store TriggerServerEvent('Polar-stores:Server:Restart', star)  TriggerEvent('Polar-stores:Client:ResetProps') TriggerEvent('Polar-stores:Client:ResetDoors') resetstuff() LocalPlayer.state:set('inv_busy', false, true) end)
-AddEventHandler('onResourceStart', function(resource) if resource == GetCurrentResourceName() then Wait(100) if hi then print('Starting Targets')  end peds() end end)
-RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function() Wait(100) if hi then print('Player Loaded Targets Starting') end peds() end)
+AddEventHandler('onResourceStart', function(resource) if resource == GetCurrentResourceName() then Wait(100) if hi then print('Starting Targets')  end end end)
+RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function() Wait(100) if hi then print('Player Loaded Targets Starting') end end)
 RegisterNetEvent('police:SetCopCount', function(amount) CurrentCops = amount end)
 
 

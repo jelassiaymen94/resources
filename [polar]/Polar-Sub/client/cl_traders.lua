@@ -65,49 +65,27 @@ TriggerEvent('animations:Client:EmoteCommandStart', {"c"})
         QBCore.Functions.Notify('You dont have enough ' .. removeitem4 .. " ", 'error')
     end
 end)
-
+local created_ped = {}
 
 function traderpeds()
    
-    if Config.Debug then print('starting') end
+        if Config.Debug then print('starting') end
+        for i = 1, #Config.TraderPeds do
+    
+        loadModel(Config.TraderPeds[i].model)
+    
+        created_ped[i] = CreatePed(5, Config.TraderPeds[i].model, vec4(Config.TraderPeds[i].coords.x, Config.TraderPeds[i].coords.y, Config.TraderPeds[i].coords.z-1, Config.TraderPeds[i].coords.w), false, true)
+        FreezeEntityPosition(created_ped[i], true)
+        SetEntityInvincible(created_ped[i], true)
+        SetBlockingOfNonTemporaryEvents(created_ped[i], true)
+        TaskStartScenarioInPlace(created_ped[i], 'WORLD_HUMAN_CLIPBOARD', 0, true)
+    
+        exports['qb-target']:AddBoxZone(i, vec3(Config.TraderPeds[i].coords.x, Config.TraderPeds[i].coords.y, Config.TraderPeds[i].coords.z), 0.5, 0.5, { name = i, heading = 28.69, debug = hi, minZ = Config.TraderPeds[i].coords.z - 1.0, maxZ =  Config.TraderPeds[i].coords.z + 1.0,}, 
+        { options = {{ event = 'Polar-Sub:Client:Trade',  icon = Config.TraderPeds[i].icon, label = Config.TraderPeds[i].label}}, distance = 1.5  })
+    
+      
+        end
 
-for i = 1, #Config.TraderPeds do
-    exports['qb-target']:SpawnPed({
-        model = Config.TraderPeds[i].model,
-        coords = Config.TraderPeds[i].coords,
-        minusOne = true,
-        freeze = true,
-        invincible = false,
-        blockevents = true,
-        scenario =  Config.TraderPeds[i].scenario,
-        target = {
-            options = {
-            {
-                type = "Client",
-                icon = Config.TraderPeds[i].icon,
-                label = Config.TraderPeds[i].label,
-                --job = {"mechanic", "tuner", "otto"},
-               -- action = function()
-               --     TriggerEvent('Polar-Sub:Client:CryptoPartMenu')
-               -- end,
-                --isserver = true,
-                event = 'Polar-Sub:Client:Trade',
-                --item = Config.TraderPeds[i].product,
-                --amount = Config.TraderPeds[i].amount,
-               -- removeitem = Config.TraderPeds[i].removeitem,
-                product = Config.TraderPeds[i].product,
-                --weapon = {
-                --    name = `weapon_carbinerifle`,
-                --    ammo = 0,
-                --    hidden = false,
-                --},
-            }
-            },
-            distance = 2.5,
-        },
-    })
-
-end
 end
 
 

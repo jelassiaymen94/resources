@@ -216,32 +216,20 @@ function blip()
     SetBlipColour(blip, 39) BeginTextCommandSetBlipName("STRING") AddTextComponentSubstringPlayerName('Los Santos Trucking') EndTextCommandSetBlipName(blip)
 end
 function start()
+    if Config.Debug then print('starting') end
     for i = 1, #TruckPeds do
-        exports['qb-target']:SpawnPed({
-            model = TruckPeds[i].model,
-            coords = TruckPeds[i].coords,
-            minusOne = true,
-            freeze = true,
-            invincible = false,
-            blockevents = true,
-            scenario = 'WORLD_HUMAN_AA_COFFEE',
-            target = {
-                options = {
-                {
-                    type = "Client",
-                    icon = 'fas fa-file-invoice-dollar',
-                    label = 'Talk to Amir',
-                    -- job = {"mechanic", "tuner", "otto"},
-                   -- action = function()
-                   --     TriggerEvent('Polar-Sub:Client:CryptoPartMenu')
-                   -- end,
-                   -- event = 'Polar-Sub:Client:CryptoPartMenu',
-                   event = 'Polar-Mini:Client:TruckMenu2',
-                }
-                },
-                distance = 2.5,
-            },
-        })
+
+    loadModel(TruckPeds[i].model)
+
+    created_ped[i] = CreatePed(5, TruckPeds[i].model, vec4(TruckPeds[i].coords.x, TruckPeds[i].coords.y, TruckPeds[i].coords.z-1, TruckPeds[i].coords.w), false, true)
+    FreezeEntityPosition(created_ped[i], true)
+    SetEntityInvincible(created_ped[i], true)
+    SetBlockingOfNonTemporaryEvents(created_ped[i], true)
+    TaskStartScenarioInPlace(created_ped[i], 'WORLD_HUMAN_CLIPBOARD', 0, true)
+
+    exports['qb-target']:AddBoxZone(i, vec3(TruckPeds[i].coords.x, TruckPeds[i].coords.y, TruckPeds[i].coords.z), 0.5, 0.5, { name = i, heading = 28.69, debug = hi, minZ = TruckPeds[i].coords.z - 1.0, maxZ =  TruckPeds[i].coords.z + 1.0,}, 
+    { options = {{ event = 'Polar-Mini:Client:TruckMenu2',  icon = TruckPeds[i].icon, label = TruckPeds[i].label}}, distance = 1.5  })
+
     end
 end
 function getjob()
