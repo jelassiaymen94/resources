@@ -1,4 +1,4 @@
-print("^2Jim-LumberJack ^7v^41^7.^41^7.^46^3hotfix ^7- ^2LumberJack Script by ^1Jimathy^7")
+
 
 Config = {
 	Debug = false, -- enable debug mode

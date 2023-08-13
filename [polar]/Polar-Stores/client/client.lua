@@ -55,44 +55,18 @@ local hi = Config.Debug
 function peds()
    
     if Config.Debug then print('starting') end
+    for i = 1, #Config.Ped do
 
-for i = 1, #Config.Ped do
-    exports['qb-target']:SpawnPed({
-        model = Config.Ped[i].model,
-        coords = Config.Ped[i].coords,
-        minusOne = true,
-        freeze = true,
-        invincible = true,
-        blockevents = true,
-        scenario =  Config.Ped[i].scenario,
-        target = {
-            options = {
-            {
-                type = "Client",
-                icon = Config.Ped[i].icon,
-                label = Config.Ped[i].label,
-                --job = {"mechanic", "tuner", "otto"},
-               -- action = function()
-               --     TriggerEvent('Polar-Sub:Client:CryptoPartMenu')
-               -- end,
-                --isserver = true,
-                event = 'Polar-stores:Client:Menu',
-                --item = Config.TraderPeds[i].product,
-                --amount = Config.TraderPeds[i].amount,
-               -- removeitem = Config.TraderPeds[i].removeitem,
-              --  product = Config.Ped[i].product,
-                --weapon = {
-                --    name = `weapon_carbinerifle`,
-                --    ammo = 0,
-                --    hidden = false,
-                --},
-            }
-            },
-            distance = 2.5,
-        },
-    })
+    local created_ped1 = CreatePed(5, Config.Ped[i].model, Config.Ped[i].coords, false, true)
+    FreezeEntityPosition(created_ped1, true)
+    SetEntityInvincible(created_ped1, true)
+    SetBlockingOfNonTemporaryEvents(created_ped1, true)
+    TaskStartScenarioInPlace(created_ped1, Config.Ped[i].scenario, 0, true)
 
-end
+    exports['qb-target']:AddBoxZone(i, vec3(Config.Ped[i].coords.x, Config.Ped[i].coords.y, Config.Ped[i].coords.z), 0.5, 0.5, { name = i, heading = 28.69, debug = hi, minZ = var.z - 1.0, maxZ =  var.z + 1.0,}, 
+    { options = {{ event = 'Polar-stores:Client:Menu',  icon = Config.Ped[i].icon, label = Config.Ped[i].label}}, distance = 1.5  })
+
+    end
 end
 
 local proptable = {
