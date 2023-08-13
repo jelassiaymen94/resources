@@ -11,9 +11,9 @@ CreateThread(function()
             if not knockedOut then
             if IsPedInMeleeCombat(ped) then
                 if (HasPedBeenDamagedByWeapon(ped, GetHashKey("WEAPON_UNARMED"), 0)) then
-                    print(count)
-                    count += 1
-                   if count > 2 then
+                    --print(count)
+                   -- count += 1
+                   --if count > 2 then
                     if GetEntityHealth(ped) < 190 then
                         knockedOut = true
                         local time = math.random(15000,20000)
@@ -31,15 +31,15 @@ CreateThread(function()
                             function()
                                 QBCore.Functions.Notify("Finally you're awake!", "success", 5000)
                                 Wait(30000)
-                                count = 0
+                               -- count = 0
                                 knockedOut = false
                             end,
                             function()
                             end)
-                            count = 0
+                           -- count = 0
                             knockedOut = false
                         end
-                    end
+                    --end
                 end
             end
             end
