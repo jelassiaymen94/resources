@@ -43,9 +43,9 @@ Config.Blips = {                        -- Here you can configure Job Blip
 }
 
 Config.Payments = {                    -- Reward for completing one level with a given difficulty level
-    ["easy"] = 500,
-    ["medium"] = 750,
-    ["hard"] = 1000,
+    ["easy"] = 225,
+    ["medium"] = 475,
+    ["hard"] = 725,
 }
 
 Config.RewardItemsToGive = {
@@ -72,7 +72,7 @@ Config.MarkerSettings = {              -- used only when Config.UseTarget = fals
     }
 }
 
-Config.SpawnPoint = vector4(804.57, 206.54, 81.2, 239.12)       -- Job Vehicle spawnpoint
+Config.SpawnPoint = vector4(772.3, 222.14, 85.97, 241.15)       -- Job Vehicle spawnpoint
 Config.VehicleModel = "17mov_ElectricianCar"                    -- Job Vehicle model
 Config.Locations = {                                            -- Here you can configure Markers Locations :D
     DutyToggle = {
@@ -86,7 +86,7 @@ Config.Locations = {                                            -- Here you can 
     },
     StoreVeh = {
         Coords = {
-            vector3(804.57, 206.54, 81.2),
+            vector3(772.3, 222.14, 85.97),
         },
         CurrentAction = 'finish_job',
         CurrentActionMsg = 'Press ~INPUT_CONTEXT~ to ~y~store ~s~car.',
