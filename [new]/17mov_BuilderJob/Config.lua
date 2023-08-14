@@ -126,7 +126,7 @@ Config.Clothes = {
         ["pants"] = {clotheId = 211, variation = 15},
         ["bag"] = {clotheId = 0, variation = 0},
         ["shoes"] = {clotheId = 12, variation = 0},
-        ["t-shirt"] = {clotheId = 168, variation = 1},
+        ["t-shirt"] = {clotheId = 168, variation = 0},
         ["torso"] = {clotheId = 229, variation = 0},
         ["decals"] = {clotheId = 0, variation = 0},
         ["kevlar"] = {clotheId = 0, variation = 0},

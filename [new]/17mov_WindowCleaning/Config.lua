@@ -112,7 +112,7 @@ Config.Clothes = {
         ["bag"] = {clotheId = 0, variation = 0},
         ["shoes"] = {clotheId = 129, variation = 0},
         ["t-shirt"] = {clotheId = 266, variation = 0},
-        ["torso"] = {clotheId = 252, variation = 0},
+        ["torso"] = {clotheId = 185, variation = 2},
         ["decals"] = {clotheId = 0, variation = 0},
         ["kevlar"] = {clotheId = 0, variation = 0},
     },
@@ -120,11 +120,11 @@ Config.Clothes = {
     female = {
         ["mask"] = {clotheId = 0, variation = 0},
         ["arms"] = {clotheId = 91, variation = 0},
-        ["pants"] = {clotheId = 211, variation = 0},
+        ["pants"] = {clotheId = 211, variation = 2},
         ["bag"] = {clotheId = 0, variation = 0},
         ["shoes"] = {clotheId = 86, variation = 0},
         ["t-shirt"] = {clotheId = 303, variation = 0},
-        ["torso"] = {clotheId = 187, variation = 0},
+        ["torso"] = {clotheId = 187, variation = 3},
         ["decals"] = {clotheId = 0, variation = 0},
         ["kevlar"] = {clotheId = 0, variation = 0},
     }
