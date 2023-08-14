@@ -158,24 +158,24 @@ Config.EnableCloakroom = true                                 -- Set to false if
 Config.Clothes = {
     male = {
         ["mask"] = {clotheId = 0, variation = 0},
-        ["arms"] = {clotheId = 64, variation = 0},
-        ["pants"] = {clotheId = 9, variation = 7},
+        ["arms"] = {clotheId = 43, variation = 0},
+        ["pants"] = {clotheId = 0, variation = 3},
         ["bag"] = {clotheId = 0, variation = 0},
-        ["shoes"] = {clotheId = 25, variation = 0},
+        ["shoes"] = {clotheId = 22, variation = 0},
         ["t-shirt"] = {clotheId = 15, variation = 0},
-        ["torso"] = {clotheId = 54, variation = 0},
+        ["torso"] = {clotheId = 113, variation = 0},
         ["decals"] = {clotheId = 0, variation = 0},
         ["kevlar"] = {clotheId = 0, variation = 0},
     },
 
     female = {
         ["mask"] = {clotheId = 0, variation = 0},
-        ["arms"] = {clotheId = 75, variation = 0},
-        ["pants"] = {clotheId = 30, variation = 0},
+        ["arms"] = {clotheId = 72, variation = 0},
+        ["pants"] = {clotheId = 240, variation = 0},
         ["bag"] = {clotheId = 0, variation = 0},
-        ["shoes"] = {clotheId = 25, variation = 0},
+        ["shoes"] = {clotheId = 85, variation = 0},
         ["t-shirt"] = {clotheId = 15, variation = 0},
-        ["torso"] = {clotheId = 47, variation = 0},
+        ["torso"] = {clotheId = 191, variation = 0},
         ["decals"] = {clotheId = 0, variation = 0},
         ["kevlar"] = {clotheId = 0, variation = 0},
     }
