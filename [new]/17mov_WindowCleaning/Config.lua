@@ -120,7 +120,7 @@ Config.Clothes = {
     female = {
         ["mask"] = {clotheId = 0, variation = 0},
         ["arms"] = {clotheId = 91, variation = 0},
-        ["pants"] = {clotheId = 211, variation = 2},
+        ["pants"] = {clotheId = 211, variation = 1},
         ["bag"] = {clotheId = 0, variation = 0},
         ["shoes"] = {clotheId = 86, variation = 0},
         ["t-shirt"] = {clotheId = 303, variation = 0},
