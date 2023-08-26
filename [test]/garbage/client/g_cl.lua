@@ -306,10 +306,10 @@ CreateThread(function()
             icon = 'fa-solid fa-trash',
             action = function(entity) TakeGarbage(entity) end,
             canInteract = function(entity)
-                if not doinJob then print("not doing job") return false end
-                if prop then print("prop attatched") return false end
-                if not curLocation then print("No locations") return false end
-                if Looted and Looted[entity] then print("entity taken") return false end
+                if not doinJob then return false end
+                if prop then  return false end
+                if not curLocation then return false end
+                if Looted and Looted[entity] then return false end
                 return #(GetEntityCoords(entity) - vector3(curLocation.x, curLocation.y, curLocation.z)) < 200.0
             end,
           }
