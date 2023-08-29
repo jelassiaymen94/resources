@@ -77,7 +77,6 @@ function DeathTimer()
                 hold = 5
             end
         elseif deathTime < 250 and deathTime > 248 then
-            print('time')
             TriggerEvent('Polar-Medic:Client:Help')
         end
     end
