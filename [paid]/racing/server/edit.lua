@@ -256,7 +256,7 @@ end)
 QBCore.Functions.CreateUseableItem("vpn", function(source, item)
     local Player = QBCore.Functions.GetPlayer(source)
     TriggerClientEvent("Pug:client:CreateRacerAlias", source)
-    TriggerEvent("qb-log:server:CreateLog", "useable", "USED VPN", "green", "**" .. Player .. "**")
+   -- TriggerEvent("qb-log:server:CreateLog", "useable", "USED VPN", "green", "**" .. Player .. "**")
 end)
 
 QBCore.Commands.Add("racername", "View your racing name!", {}, false, function(source)
