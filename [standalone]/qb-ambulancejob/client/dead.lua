@@ -76,6 +76,9 @@ function DeathTimer()
             if IsControlReleased(0, 38) then
                 hold = 5
             end
+        elseif deathTime < 250 and deathTime > 248 then
+            print('time')
+            TriggerEvent('Polar-Medic:Client:Help')
         end
     end
 end
@@ -130,7 +133,8 @@ AddEventHandler('gameEventTriggered', function(event, data)
             deathTime = Config.DeathTime
                 OnDeath()
                 DeathTimer()
-
+              
+               
         end
     end
 end)
