@@ -5,7 +5,7 @@ Config.LaptopDevice = "laptop"
 
 Config.RenewedPhone = true
 
-Config.Linux = true
+Config.Linux = false
 
 Config.PoliceJobs = {
     "police",
