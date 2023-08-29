@@ -12,15 +12,19 @@ Config.carcass  = {
     [`a_c_mtlion`] =        'carcass_mtlion',
     [`a_c_rabbit_01`] =     'carcass_rabbit',
     [`BrnBear`] = 'carcass_bear',
+    [`a_c_boarwhite`] = 'carcass_boar',
+    [`a_c_deerwhite`] = 'carcass_deer',
 }
 
 
 Config.carcassPos  = {
     [`a_c_boar`]=           {drag = true, xPos = -0.7, yPos = 1.2, zPos = -1.0, xRot = -200.0, yRot = 0.0, zRot = 0.0},
+    [`a_c_boarwhite`]=           {drag = true, xPos = -0.7, yPos = 1.2, zPos = -1.0, xRot = -200.0, yRot = 0.0, zRot = 0.0},
     [`a_c_chickenhawk`] =   {drag = false, xPos = 0.15, yPos = 0.2, zPos = 0.45, xRot = 0.0, yRot = -90.0, zRot = 0.0},
     [`a_c_cormorant`] =     {drag = false, xPos = 0.15, yPos = 0.2, zPos = 0.4, xRot = 0.0, yRot = -90.0, zRot = 0.0},
     [`a_c_coyote`] =        {drag = false, xPos = -0.2, yPos = 0.15, zPos = 0.45, xRot = 0.0, yRot = -90.0, zRot = 0.0},
     [`a_c_deer`] =          {drag = true, xPos = 0.1, yPos = 1.0, zPos = -1.2, xRot = -200.0, yRot = 30.0, zRot = 0.0},
+    [`a_c_deerwhite`] =          {drag = true, xPos = 0.1, yPos = 1.0, zPos = -1.2, xRot = -200.0, yRot = 30.0, zRot = 0.0},
     [`a_c_mtlion`] =        {drag = true, xPos = 0.1, yPos = 0.7, zPos = -1.0, xRot = -210.0, yRot = 0.0, zRot = 0.0},
     [`a_c_rabbit_01`] =     {drag = false, xPos = 0.12, yPos = 0.25, zPos = 0.45, xRot = 0.0, yRot = 90.0, zRot = 0.0},
     [`BrnBear`] =       {drag = true, xPos = 0.1, yPos = 1.0, zPos = -1.2, xRot = -200.0, yRot = 30.0, zRot = 0.0},
@@ -50,6 +54,8 @@ Config.headshotBones = {
     [`a_c_deer`] =          {31086},
     [`a_c_mtlion`] =        {31086},
     [`a_c_rabbit_01`] =     {31086},
+    [`a_c_boarwhite`] =        {31086},
+    [`a_c_deerwhite`] =     {31086},
     [`BrnBear`] = {31086},
 }
 
