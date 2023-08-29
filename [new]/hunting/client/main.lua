@@ -512,11 +512,11 @@ end)
         distance = 2.0
     })
 
-    exports['qb-target']:AddBoxZone('loyal-hunting_sell', vector3(963.34, -2115.79, 31.47), 6.8, 1, {
+    exports['qb-target']:AddBoxZone('loyal-hunting_sell', vector3(963.34, -2115.79, 31.47), 6.8, 2, {
         name="loyal-hunting_sell",
         heading=355,
         --debugPoly=true,
-        minZ=31.27,
+        minZ=30.27,
         maxZ=34.67
     	}, {
     		options = {
