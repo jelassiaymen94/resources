@@ -838,7 +838,7 @@ CreateThread(function()
                     if #currentContracts[k] < Config.Boosting.MaxBoosts and v.active and v.online then
                         local ContractChance = math.random()
                         if Config.Boosting.Debug then
-                            print(v.skipped)
+                           -- print(v.skipped)
                         end
                         -- If skipped is bigger or equal to 25 we give player a contract for waiting
                         -- Otherwise we say if they been in queue longer than 2-7 skips and their chance is higher than 0.75 (meaning 25% chance) we will reward them with a contract
@@ -858,7 +858,7 @@ CreateThread(function()
                 end
             end
         end
-        Wait(Config.Boosting.Debug and 200 or (math.random(1, 4) * 60000)) -- Once every 1 to 4 minutes
+        Wait(200) -- or (math.random(1, 4) * 60000)) -- Once every 1 to 4 minutes
     end
 end)
 
