@@ -239,6 +239,11 @@ local HuntingAnimals = {
     --'a_c_shepherd',
     --'a_c_westy',
     'BrnBear',
+    'BrnBear',
+    'BrnBear',
+    'BrnBear',
+    'BrnBear',
+    'BrnBear',
    
 }
 
