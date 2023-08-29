@@ -213,24 +213,24 @@ local validHuntingZones = { ---------Hunting Zone
 }
 
 local HuntingAnimals = {
-    'a_c_boar',
+   -- 'a_c_boar', -- a_c_boarwhite
     --'a_c_cat_01',
-    'a_c_chickenhawk',
+   -- 'a_c_chickenhawk',
     -- 'a_c_chimp',
     --'a_c_chop',
-    'a_c_cormorant',
+  --  'a_c_cormorant',
     --'a_c_cow',
-    'a_c_coyote',
+  --  'a_c_coyote',-- Wolf
     --'a_c_crow',
-    'a_c_deer',
+   -- 'a_c_deer', -- a_c_deerwhite
     --'a_c_hen',
     --'a_c_husky',
-    'a_c_mtlion',
+  --  'a_c_mtlion', -- Lion
     -- 'a_c_pig',
     --'a_c_pigeon',
     --'a_c_poodle',
     --'a_c_pug',
-    'a_c_rabbit_01',
+   -- 'a_c_rabbit_01', -- Bobcat
     --'a_c_rat',
     --'a_c_retriever',
     --'a_c_rhesus',
@@ -239,12 +239,18 @@ local HuntingAnimals = {
     --'a_c_shepherd',
     --'a_c_westy',
     'BrnBear',
-    'BrnBear',
-    'BrnBear',
-    'BrnBear',
-    'BrnBear',
-    'BrnBear',
-   
+    'Malelion',
+    'Lion',
+    'Wolf',
+    'Bobcat',
+    'Lepoard',
+    'Rangehorse',
+    'Fullhorse',
+    'Younghorse',
+    'Donkey',
+    'Skunk',
+    'a_c_boarwhite',
+    'a_c_deerwhite',
 }
 
 -- local animals = {
@@ -359,13 +365,14 @@ end
 local function baitDown()
     while baitLocation ~= nil do
         if #(baitLocation - GetEntityCoords(PlayerPedId())) > baitDistanceInUnits then
-            print('far enough')
+            QBCore.Functions.Notify('Youre Far enough away!', 'success')
             if math.random(1,100) < 25 then
                     spawnAnimal(baitLocation)
                     baitLocation = nil
             end
         else
-            print('not far enough')
+            Wait(5000)
+            QBCore.Functions.Notify('Go Further Away!', 'error')
         end
         Wait(5000)
     end
