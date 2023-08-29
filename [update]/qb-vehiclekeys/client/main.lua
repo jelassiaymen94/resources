@@ -491,7 +491,7 @@ function LockpickDoor(type)
             end
         end
     else
-        print(GetHashKey(vehicle))
+        print(GetHashKey(GetEntityModel(vehicle)))
         print(GetHashKey('sultan'))
         print('regular')
         if playeritem('lockpick') then
