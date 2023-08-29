@@ -163,10 +163,17 @@ local function SpawnCar(src)
         local plate = GeneratePlate()
         ActivePlates[plate] = true
 
+
+        local boostamount = math.random(3,10)
+        ----- POLAR BOOSTAMOUNT
         Entity(car).state.Boosting = {
-            boostHacks = math.random(3, 10),
+            boostHacks = boostamount,
             boostCooldown = false
         }
+        Entity(car).state.TotalBoosts = {
+            boostHacks = boostamount,
+        }
+
         if currentRuns[CID].type == "vinscratch" then
             Entity(car).state.isvinCar = true
         end
@@ -379,8 +386,13 @@ RegisterNetEvent('laptop:server:SyncPlates', function(success)
 
     if success then
         if state.boostHacks - 1 >= 1 then
-            Notify(src, Lang:t('boosting.success.tracker_off', { tracker_left = newThing, time = randomSeconds }),
-                'success', 7500)
+
+            -- tracker off
+            TriggerClientEvent('Polar-Laptop:Client:UpdatePhone', src, boostHacks, state.TotalBoosts)
+
+            Notify(src, Lang:t('boosting.success.tracker_off', { tracker_left = newThing, time = randomSeconds }),'success', 7500)
+
+
         end
 
         local newAmount = Config.Boosting.Debug and 0 or state.boostHacks - 1
@@ -391,6 +403,11 @@ RegisterNetEvent('laptop:server:SyncPlates', function(success)
             boostCooldown = doCD,
         }
 
+        Notify(src, "Boost Hacks Left : " .. boostHacks, 'success', 7500)
+
+        TriggerClientEvent('Polar-Laptop:Client:UpdatePhone', src, boostHacks, state.TotalBoosts)
+
+
         Entity(car).state:set('Boosting', NewTable, true)
 
         if not Config.Boosting.Debug then removeCooldown(car, randomSeconds) end
@@ -399,9 +416,11 @@ RegisterNetEvent('laptop:server:SyncPlates', function(success)
     else
         log("Failed the hacking")
         Notify(src, Lang:t('boosting.error.disable_fail'), 'success', 7500)
-        if Player and Player.Functions.RemoveItem(Config.Boosting.HackingDevice, 1) then
-            TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items[Config.Boosting.HackingDevice],
-                "remove")
+        if Player then
+            if math.random(1,100) < 26 then
+                if Player.Functions.RemoveItem(Config.Boosting.HackingDevice, 1) then
+                TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items[Config.Boosting.HackingDevice],"remove") end
+            end
         end
     end
 end)

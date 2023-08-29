@@ -12,7 +12,15 @@ local inQueue = false
 
 local currentCops = 0
 
-
+RegisterNetEvent('Polar-Laptop:Client:UpdatePhone', function(amount, totalamount)
+    TriggerEvent('qb-phone:client:CustomNotification',
+    Lang:t('boosting.info.phonenotify'),
+    "Hacking - " .. amount .. "/" .. totalamount,
+    "fas fa-user-secret",
+    "#00008B",
+    2000
+)
+end)
 ---- Notify functions ----
 
 local function Notify(text, type, time)
@@ -239,7 +247,7 @@ end)
 
 -- DELIVERING VEHICLE --
 local function DeliverCar()
-    Notify(Lang:t('boosting.error.get_away'), 'error', 7500)
+    QBCore.Functions.Notify(Lang:t('boosting.error.get_away'), 'error', 2500)
     local car = NetworkGetEntityFromNetworkId(NetID)
     FreezeEntityPosition(car, true)
     SetVehicleDoorsLocked(car, 2)
@@ -445,6 +453,8 @@ RegisterNetEvent('laptop:client:HackCar', function()
     local ped = cache.ped
     if haveItem(Config.Boosting.HackingDevice) then
         if cache.vehicle then
+            local vehicle = GetVehiclePedIsIn(PlayerPedId(), false)
+            if GetPedInVehicleSeat(vehicle, 0) then
             local car = cache.vehicle
             local State = Entity(car).state.Boosting
             if State and State.boostHacks > 0 and not State.boostCooldown then
@@ -457,8 +467,11 @@ RegisterNetEvent('laptop:client:HackCar', function()
                 TriggerServerEvent('laptop:server:SyncPlates', success)
                 currentHacking = false
             else
-                Notify(Lang:t("boosting.error.no_tracker"), 'error', 7500)
+                QBCore.Functions.Notify("Wait to Hack Again", 'error', 2500)
                 currentHacking = false
+            end
+            else
+                QBCore.Functions.Notify("You need to be in the front passenger seat", 'error', 2500)
             end
         else
             currentHacking = false
