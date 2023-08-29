@@ -432,7 +432,7 @@ function IsBlacklistedWeapon()
     return false
 end
 function policecarfunction(car)
-    print(car)
+    
     local cars = { 
 
     "sultan",
@@ -441,7 +441,7 @@ function policecarfunction(car)
 
     }
     for _, model in pairs(cars) do
-        print(GetHashKey(model))
+        print(GetHashKey(car))
         if GetHashKey(car) == GetHashKey(model) then
             return true
        
@@ -449,7 +449,7 @@ function policecarfunction(car)
     end
 end
 function advancedcarfunction(car)
-    print(car)
+   
     local cars = { 
 
         "ingot",
@@ -458,7 +458,7 @@ function advancedcarfunction(car)
     
         }
         for _, model in pairs(cars) do
-            print(GetHashKey(model))
+            print(GetHashKey(car))
             if GetHashKey(car) == GetHashKey(model) then
                 return true
            
@@ -474,22 +474,24 @@ function LockpickDoor(type)
     if HasKeys(QBCore.Functions.GetPlate(vehicle)) then return end
     if #(pos - GetEntityCoords(vehicle)) > 2.5 then return end
     if GetVehicleDoorLockStatus(vehicle) <= 0 then return end
-    
+    if type == 'special' then
     if policecarfunction(vehicle) then
         print('police')
         if playeritem('specialpick') then
             Config.LockPickDoorEvent('police')
         end
-    elseif advancedcarfunction(vehicle) then
+    elseif type == 'advanced' then
+    if advancedcarfunction(vehicle) then
         print('advanced')
         if playeritem('advancedlockpick') then
             Config.LockPickDoorEvent('advanced')
         end
-    else
+    elseif type == 'regular' then
         print('regular')
         if playeritem('lockpick') then
             Config.LockPickDoorEvent('regular')
         end
+    end
     end
 
     
