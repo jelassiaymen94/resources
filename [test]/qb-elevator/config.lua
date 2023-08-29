@@ -1550,8 +1550,8 @@ Config.ElevatorButton = {
     [29] = { name = "Eclipse Tower Apartment 7", location = vector3(-785.4201, 322.7842, 212.2272), width = 0.5, length = 2.8, heading = 260.3, minz = 211.9972 - 1, maxz = 211.9972 + 1.5 },
     [30] = { name = "Eclipse Tower Roof", location = vector3(-802.4498, 334.9964, 230.8369), width = 0.5, length = 2.8, heading = 260.3, minz = 230.6369 - 1, maxz = 230.6369 + 1.5 },
 
-    [31] = { name = "Weed Lab Entrance", location = vector3(753.9180, -3183.1766, 7.5771), width = 0.5, length = 2.8, heading = 221.3, minz = 6.2430 - 1, maxz = 8.2430 + 1.5 },
-    [32] = { name = "Weed Lab Interior", location = vector3(1066.5866, -3183.9275, -39.0638), width = 0.5, length = 2.8, heading = 260.3, minz = -38.0156 - 1, maxz = -40.0156 + 1.5 },
+  --  [31] = { name = "Weed Lab Entrance", location = vector3(753.9180, -3183.1766, 7.5771), width = 0.5, length = 2.8, heading = 221.3, minz = 6.2430 - 1, maxz = 8.2430 + 1.5 },
+  --  [32] = { name = "Weed Lab Interior", location = vector3(1066.5866, -3183.9275, -39.0638), width = 0.5, length = 2.8, heading = 260.3, minz = -38.0156 - 1, maxz = -40.0156 + 1.5 },
 
     [33] = { name = "Corporation 1 Garage", location = vector3(-1027.6680, -409.5724, 33.4125), width = 0.5, length = 2.8, heading = 260.3, minz = 33.4125 - 1, maxz = 33.4125 + 1.5 },
     [34] = { name = "Corporation 1 Entrance", location = vector3(-1032.3049, -421.9883, 39.6161), width = 0.5, length = 2.8, heading = 260.3, minz = 39.6161 - 1, maxz = 39.6161 + 1.5 },
