@@ -477,16 +477,18 @@ function LockpickDoor(type)
     if #(pos - GetEntityCoords(vehicle)) > 2.5 then return end
     if GetVehicleDoorLockStatus(vehicle) <= 0 then return end
     if type == 'special' then
-    if policecarfunction(vehicle) then
-        print('police')
-        if playeritem('specialpick') then
-            Config.LockPickDoorEvent('police')
+        if policecarfunction(vehicle) then
+            print('police')
+            if playeritem('specialpick') then
+                Config.LockPickDoorEvent('police')
+            end
         end
     elseif type == 'advanced' then
-    if advancedcarfunction(vehicle) then
-        print('advanced')
-        if playeritem('advancedlockpick') then
-            Config.LockPickDoorEvent('advanced')
+        if advancedcarfunction(vehicle) then
+            print('advanced')
+            if playeritem('advancedlockpick') then
+                Config.LockPickDoorEvent('advanced')
+            end
         end
     else
         print('regular')
@@ -494,8 +496,6 @@ function LockpickDoor(type)
             Config.LockPickDoorEvent('regular')
         end
     end
-    end
-end
 
 
 end
