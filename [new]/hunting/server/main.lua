@@ -1,4 +1,4 @@
-lib.locale()
+
 
 local QBCore = exports['qb-core']:GetCoreObject()
 
@@ -126,11 +126,5 @@ RegisterServerEvent("loyal-hunting:removeItem")
         Player.Functions.RemoveItem(item, 1) 
 end) 
 
-RegisterServerEvent("loyal-hunting:delete-ped")
-AddEventHandler("loyal-hunting:delete-ped", function(ped)
-    local xPed = NetworkGetEntityFromNetworkId(ped)
-    if DoesEntityExist(xPed) then
-        DeleteEntity(xPed)
-    end
-end)
+
 
