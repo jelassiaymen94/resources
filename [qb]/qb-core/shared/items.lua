@@ -199,7 +199,9 @@ QBShared.Items = {
     ['carcass_rabbit2'] 						 = {['name'] = 'carcass_rabbit2', 			 	  	  	['label'] = 'Carcass Rabbit', 	['weight'] = 50000, 		['type'] = 'item', 		['image'] = 'carcass_rabbit2.png', 				['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,   ['combinable'] = nil,   ['description'] = ''},
     ['carcass_rabbit3'] 						 = {['name'] = 'carcass_rabbit3', 			 	  	  	['label'] = 'Carcass Rabbit', 	['weight'] = 50000, 		['type'] = 'item', 		['image'] = 'carcass_rabbit3.png', 				['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,   ['combinable'] = nil,   ['description'] = ''},
 
-	['carcass_bear'] 						 = {['name'] = 'carcass_bear', 			 	  	  	['label'] = 'Carcass Bear', 	['weight'] = 50000, 		['type'] = 'item', 		['image'] = 'carcass_rabbit3.png', 				['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,   ['combinable'] = nil,   ['description'] = ''},
+	['carcass_bear1'] 						 = {['name'] = 'carcass_bear1', 			 	  	  	['label'] = 'Carcass Bear', 	['weight'] = 50000, 		['type'] = 'item', 		['image'] = 'carcass_rabbit3.png', 				['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,   ['combinable'] = nil,   ['description'] = ''},
+	['carcass_bear2'] 						 = {['name'] = 'carcass_bear2', 			 	  	  	['label'] = 'Carcass Bear', 	['weight'] = 50000, 		['type'] = 'item', 		['image'] = 'carcass_rabbit3.png', 				['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,   ['combinable'] = nil,   ['description'] = ''},
+	['carcass_bear3'] 						 = {['name'] = 'carcass_bear3', 			 	  	  	['label'] = 'Carcass Bear', 	['weight'] = 50000, 		['type'] = 'item', 		['image'] = 'carcass_rabbit3.png', 				['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,   ['combinable'] = nil,   ['description'] = ''},
 
 	
 
