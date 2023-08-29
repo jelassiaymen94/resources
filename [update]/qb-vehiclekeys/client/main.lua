@@ -492,8 +492,8 @@ function LockpickDoor(type)
         end
     else
         print(GetHashKey(GetEntityModel(vehicle)))
-        print(GetHashKey(GetEntityModel('sultan')))
-        print('regular')
+        print(GetHashKey('sultan'))
+        print(GetEntityModel(vehicle))
         if playeritem('lockpick') then
           --  if advancedcarfunction(vehicle) then return end
           --  if policecarfunction(vehicle) then return end
