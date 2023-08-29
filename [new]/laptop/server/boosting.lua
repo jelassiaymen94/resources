@@ -512,9 +512,10 @@ RegisterNetEvent('laptop:server:finishBoost', function(netId, isvin)
         if currentRuns[CID].cost == 0 then
             currentRuns[CID].cost = math.random(1, 2) -- makes it so they can actually get GNE when the boost is Free
         end
-        local reward = math.ceil(currentRuns[CID].cost * math.random(2, 3))
+        local reward = math.ceil(currentRuns[CID].cost * math.random(1, 3))
         if Config.RenewedPhone then
             exports['qb-phone']:AddCrypto(src, "gne", reward)
+            exports['qb-phone']:AddCrypto(src, "shung", reward * 2)
         else
             Player.Functions.AddMoney("crypto", reward, Lang:t('boosting.info.rewardboost'))
         end
