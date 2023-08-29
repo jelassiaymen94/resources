@@ -493,7 +493,7 @@ function LockpickDoor(type)
         end
     end
     end
-
+end
     
 
 end
