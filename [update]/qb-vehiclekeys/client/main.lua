@@ -488,7 +488,7 @@ function LockpickDoor(type)
         if playeritem('advancedlockpick') then
             Config.LockPickDoorEvent('advanced')
         end
-    elseif type == 'regular' then
+    else
         print('regular')
         if playeritem('lockpick') then
             Config.LockPickDoorEvent('regular')
