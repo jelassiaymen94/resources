@@ -434,7 +434,7 @@ end
 function policecarfunction(car)
     local cars = { 
 
-    "npolchar",
+    "bison",
     "npolchal",
     "polram",
 
@@ -449,7 +449,7 @@ end
 function advancedcarfunction(car)
     local cars = { 
 
-        "gtr",
+        "speedo",
         "r35",
         "zentorno",
     
