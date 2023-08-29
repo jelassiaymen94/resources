@@ -768,19 +768,11 @@ local function missionType(boostData, tier)
 end
 
 function GetHoursFromNow(hours)
-    if Config.Linux then
-        return os.date("!%Y-%m-%dT%TZ", os.time() + hours * 60 * 60)
-    else
-        return os.date("!%Y-%m-%dT%SZ", os.time() + hours * 60 * 60)
-    end
+    return os.date("%Y-%m-%d %H:%M", os.time() + (hours * 3600))
 end
 
 function GetCurrentTime()
-    if Config.Linux then
-        return os.date("!%Y-%m-%dT%TZ", os.time())
-    else
-        return os.date("!%Y-%m-%dT%SZ", os.time())
-    end
+    return os.date("%Y-%m-%d %H:%M", os.time())
 end
 
 QBCore.Functions.CreateCallback("laptop:server:getCurrentTime", function(cb)
