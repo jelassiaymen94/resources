@@ -457,8 +457,7 @@ RegisterNetEvent('laptop:client:HackCar', function()
         if cache.vehicle then
             local vehicle = GetVehiclePedIsIn(PlayerPedId(), false)
             if GetPedInVehicleSeat(vehicle, 0) then
-                local speed = GetEntitySpeed(vehicle) * 2.23694
-                if speed > 20 then
+               
                 local car = cache.vehicle
                 local State = Entity(car).state.Boosting
             if State and State.boostHacks > 0 and not State.boostCooldown then
@@ -474,9 +473,7 @@ RegisterNetEvent('laptop:client:HackCar', function()
                 QBCore.Functions.Notify("Wait to Hack Again", 'error', 2500)
                 currentHacking = false
             end
-            else
-                QBCore.Functions.Notify("Car needs to be moving", 'error', 2500)
-            end
+           
             else
                 QBCore.Functions.Notify("You need to be in the front passenger seat", 'error', 2500)
             end
