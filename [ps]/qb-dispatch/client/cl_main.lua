@@ -97,7 +97,7 @@ function zoneChance(type, zoneMod, street)
 	local zone, sendit = GetLabelText(GetNameOfZone(playerCoords.x, playerCoords.y, playerCoords.z)), false
 	if not nearbyPeds then
 		nearbyPeds = GetAllPeds()
-	elseif nearbyPeds < 1 then if Config.Debug then print(('^1[%s] Nobody is nearby to send a report^7'):format(type)) end
+	elseif nearbyPeds < 1 then if Config.Debug then end --print(('^1[%s] Nobody is nearby to send a report^7'):format(type)) end
 		return false
 	end
 	if zoneMod == nil then zoneMod = 1 end
@@ -113,13 +113,13 @@ function zoneChance(type, zoneMod, street)
 	local chance = string.format('%.2f',(1 / zoneMod) * 100)..'%'
 
 	if sum > 1 then
-		if Config.Debug then print(('^1[%s] %s (%s) - %s nearby peds^7'):format(type, zone, chance, nearbyPeds)) end
+		--if Config.Debug then print(('^1[%s] %s (%s) - %s nearby peds^7'):format(type, zone, chance, nearbyPeds)) end
 		sendit = false
 	else
-		if Config.Debug then print(('^2[%s] %s (%s) - %s nearby peds^7'):format(type, zone, chance, nearbyPeds)) end
+		--if Config.Debug then print(('^2[%s] %s (%s) - %s nearby peds^7'):format(type, zone, chance, nearbyPeds)) end
 		sendit = true
 	end
-    print(('^1[%s] %s (%s) - %s nearby peds^7'):format(type, zone, chance, nearbyPeds))
+   -- print(('^1[%s] %s (%s) - %s nearby peds^7'):format(type, zone, chance, nearbyPeds))
 	return sendit
 end
 
@@ -248,7 +248,7 @@ RegisterNetEvent("qb-dispatch:client:AddCallBlip", function(coords, data, blipId
 			if data.blipColour then colour = data.blipColour end
 			if data.blipScale then scale = data.blipScale end
 			if data.radius then radius = data.radius end
-			print(data.blipSprite, data.blipColour, data.blipScale, data.radius)
+			--print(data.blipSprite, data.blipColour, data.blipScale, data.radius)
 			if data.offset == "true" then
 				if randomoffset <= 25 then
 					radius = AddBlipForRadius(coords.x + math.random(Config.MinOffset, Config.MaxOffset), coords.y + math.random(Config.MinOffset, Config.MaxOffset), coords.z, data.radius)
