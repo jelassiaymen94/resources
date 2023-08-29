@@ -432,6 +432,7 @@ function IsBlacklistedWeapon()
     return false
 end
 function policecarfunction(car)
+    print(car)
     local cars = { 
 
     "sultan",
@@ -440,6 +441,7 @@ function policecarfunction(car)
 
     }
     for _, model in pairs(cars) do
+        print(GetHashKey(model))
         if car == GetHashKey(model) then
             return true
        
@@ -447,6 +449,7 @@ function policecarfunction(car)
     end
 end
 function advancedcarfunction(car)
+    print(car)
     local cars = { 
 
         "ingot",
@@ -455,6 +458,7 @@ function advancedcarfunction(car)
     
         }
         for _, model in pairs(cars) do
+            print(GetHashKey(model))
             if car == GetHashKey(model) then
                 return true
            
@@ -471,12 +475,12 @@ function LockpickDoor(type)
     if #(pos - GetEntityCoords(vehicle)) > 2.5 then return end
     if GetVehicleDoorLockStatus(vehicle) <= 0 then return end
     
-    if policecarfunction(GetHashKey(vehicle)) then
+    if policecarfunction(GetHashKey(GetEntityModel(vehicle))) then
         print('police')
         if playeritem('specialpick') then
             Config.LockPickDoorEvent('police')
         end
-    elseif advancedcarfunction(GetHashKey(vehicle)) then
+    elseif advancedcarfunction(GetHashKey(GetEntityModel(vehicle))) then
         print('advanced')
         if playeritem('advancedlockpick') then
             Config.LockPickDoorEvent('advanced')
