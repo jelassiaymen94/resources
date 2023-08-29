@@ -17,8 +17,8 @@ RegisterNetEvent('Polar-Laptop:Client:UpdatePhone', function(amount, totalamount
     Lang:t('boosting.info.phonenotify'),
     "Hacking - " .. amount .. "/" .. totalamount,
     "fas fa-user-secret",
-    "#00008B",
-    2000
+    "#4cf5e4",
+    2000000
 )
 end)
 ---- Notify functions ----
@@ -29,7 +29,7 @@ local function Notify(text, type, time)
             Lang:t('boosting.info.phonenotify'),
             text,
             "fas fa-user-secret",
-            "#00008B",
+            "#4cf5e4",
             time
         )
     elseif Config.Boosting.Notifications == "npwd" then
