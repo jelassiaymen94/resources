@@ -585,16 +585,4 @@ end)
     		distance = 2.0
     })
 
-    Citizen.CreateThread(function()
-        exports['qb-target']:AddTargetModel("ig_hunter", {
-            options = {
-                {
-                    type = "client",
-                    event = "loyal-hunting:shop",
-                    icon = "fas fa-leaf",
-                    label = "Shop",
-                },
-            },
-            distance = 4.0
-        })
-    end)
+    
