@@ -167,6 +167,36 @@ QBShared.Items = {
 
 
 
+	['huntingbait'] 						 = {['name'] = 'huntingbait', 			 	  	  	['label'] = 'Animal Bait', 	['weight'] = 200, 		['type'] = 'item', 		['image'] = 'np_huntingbait.png', 				['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,   ['combinable'] = nil,   ['description'] = ''},
+    ['huntingknife'] 						 = {['name'] = 'huntingknife', 			 	  	  	['label'] = 'Hunting Knife', 	['weight'] = 200, 		['type'] = 'item', 		['image'] = 'huntingknife.png', 				['unique'] = true, 	['useable'] = true, 	['shouldClose'] = true,   ['combinable'] = nil,   ['description'] = ''},
+
+	['carcass_boar1'] 						 = {['name'] = 'carcass_boar1', 			 	  	  	['label'] = 'Carcass Boar', 	['weight'] = 50000, 		['type'] = 'item', 		['image'] = 'carcass_boar1.png', 				['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,   ['combinable'] = nil,   ['description'] = ''},
+	['carcass_boar2'] 						 = {['name'] = 'carcass_boar2', 			 	  	  	['label'] = 'Carcass Boar', 	['weight'] = 50000, 		['type'] = 'item', 		['image'] = 'carcass_boar2.png', 				['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,   ['combinable'] = nil,   ['description'] = ''},
+	['carcass_boar3'] 						 = {['name'] = 'carcass_boar3', 			 	  	  	['label'] = 'Carcass Boar', 	['weight'] = 50000, 		['type'] = 'item', 		['image'] = 'carcass_boar3.png', 				['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,   ['combinable'] = nil,   ['description'] = ''},
+	
+    ['carcass_hawk1'] 						 = {['name'] = 'carcass_hawk1', 			 	  	  	['label'] = 'Carcass Hawk', 	['weight'] = 50000, 		['type'] = 'item', 		['image'] = 'carcass_hawk1.png', 				['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,   ['combinable'] = nil,   ['description'] = ''},
+    ['carcass_hawk2'] 						 = {['name'] = 'carcass_hawk2', 			 	  	  	['label'] = 'Carcass Hawk', 	['weight'] = 50000, 		['type'] = 'item', 		['image'] = 'carcass_hawk2.png', 				['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,   ['combinable'] = nil,   ['description'] = ''},
+    ['carcass_hawk3'] 						 = {['name'] = 'carcass_hawk3', 			 	  	  	['label'] = 'Carcass Hawk', 	['weight'] = 50000, 		['type'] = 'item', 		['image'] = 'carcass_hawk3.png', 				['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,   ['combinable'] = nil,   ['description'] = ''},
+	
+    ['carcass_cormorant1'] 						 = {['name'] = 'carcass_cormorant1', 			 	  	  	['label'] = 'Carcass Cormorant', 	['weight'] = 50000, 		['type'] = 'item', 		['image'] = 'carcass_cormorant1.png', 				['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,   ['combinable'] = nil,   ['description'] = ''},
+    ['carcass_cormorant2'] 						 = {['name'] = 'carcass_cormorant2', 			 	  	  	['label'] = 'Carcass Cormorant', 	['weight'] = 50000, 		['type'] = 'item', 		['image'] = 'carcass_cormorant2.png', 				['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,   ['combinable'] = nil,   ['description'] = ''},
+    ['carcass_cormorant3'] 						 = {['name'] = 'carcass_cormorant3', 			 	  	  	['label'] = 'Carcass Cormorant', 	['weight'] = 50000, 		['type'] = 'item', 		['image'] = 'carcass_cormorant3.png', 				['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,   ['combinable'] = nil,   ['description'] = ''},
+	
+    ['carcass_coyote1'] 						 = {['name'] = 'carcass_coyote1', 			 	  	  	['label'] = 'Carcass Coyote', 	['weight'] = 50000, 		['type'] = 'item', 		['image'] = 'carcass_coyote1.png', 				['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,   ['combinable'] = nil,   ['description'] = ''},
+    ['carcass_coyote2'] 						 = {['name'] = 'carcass_coyote2', 			 	  	  	['label'] = 'Carcass Coyote', 	['weight'] = 50000, 		['type'] = 'item', 		['image'] = 'carcass_coyote2.png', 				['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,   ['combinable'] = nil,   ['description'] = ''},
+    ['carcass_coyote3'] 						 = {['name'] = 'carcass_coyote3', 			 	  	  	['label'] = 'Carcass Coyote', 	['weight'] = 50000, 		['type'] = 'item', 		['image'] = 'carcass_coyote3.png', 				['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,   ['combinable'] = nil,   ['description'] = ''},
+	
+    ['carcass_deer1'] 						 = {['name'] = 'carcass_deer1', 			 	  	  	['label'] = 'Carcass Deer', 	['weight'] = 50000, 		['type'] = 'item', 		['image'] = 'carcass_deer1.png', 				['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,   ['combinable'] = nil,   ['description'] = ''},
+    ['carcass_deer2'] 						 = {['name'] = 'carcass_deer2', 			 	  	  	['label'] = 'Carcass Deer', 	['weight'] = 50000, 		['type'] = 'item', 		['image'] = 'carcass_deer2.png', 				['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,   ['combinable'] = nil,   ['description'] = ''},
+    ['carcass_deer3'] 						 = {['name'] = 'carcass_deer3', 			 	  	  	['label'] = 'Carcass Deer', 	['weight'] = 50000, 		['type'] = 'item', 		['image'] = 'carcass_deer3.png', 				['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,   ['combinable'] = nil,   ['description'] = ''},
+	
+    ['carcass_mtlion1'] 						 = {['name'] = 'carcass_mtlion1', 			 	  	  	['label'] = 'Carcass Mtlion', 	['weight'] = 50000, 		['type'] = 'item', 		['image'] = 'carcass_mtlion1.png', 				['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,   ['combinable'] = nil,   ['description'] = ''},
+    ['carcass_mtlion2'] 						 = {['name'] = 'carcass_mtlion2', 			 	  	  	['label'] = 'Carcass Mtlion', 	['weight'] = 50000, 		['type'] = 'item', 		['image'] = 'carcass_mtlion2.png', 				['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,   ['combinable'] = nil,   ['description'] = ''},
+    ['carcass_mtlion3'] 						 = {['name'] = 'carcass_mtlion3', 			 	  	  	['label'] = 'Carcass Mtlion', 	['weight'] = 50000, 		['type'] = 'item', 		['image'] = 'carcass_mtlion3.png', 				['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,   ['combinable'] = nil,   ['description'] = ''},
+	
+    ['carcass_rabbit1'] 						 = {['name'] = 'carcass_rabbit1', 			 	  	  	['label'] = 'Carcass Rabbit', 	['weight'] = 50000, 		['type'] = 'item', 		['image'] = 'carcass_rabbit1.png', 				['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,   ['combinable'] = nil,   ['description'] = ''},
+    ['carcass_rabbit2'] 						 = {['name'] = 'carcass_rabbit2', 			 	  	  	['label'] = 'Carcass Rabbit', 	['weight'] = 50000, 		['type'] = 'item', 		['image'] = 'carcass_rabbit2.png', 				['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,   ['combinable'] = nil,   ['description'] = ''},
+    ['carcass_rabbit3'] 						 = {['name'] = 'carcass_rabbit3', 			 	  	  	['label'] = 'Carcass Rabbit', 	['weight'] = 50000, 		['type'] = 'item', 		['image'] = 'carcass_rabbit3.png', 				['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,   ['combinable'] = nil,   ['description'] = ''},
 
 	
 
