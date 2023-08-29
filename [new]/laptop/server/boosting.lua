@@ -407,6 +407,10 @@ RegisterNetEvent('laptop:server:SyncPlates', function(success)
 
         TriggerClientEvent('Polar-Laptop:Client:UpdatePhone', src, boostHacks, state.TotalBoosts)
 
+        local driver = GetPedInVehicleSeat(car, -1)
+        local driverwho = GetPlayerFromServerId(NetworkGetPlayerIndexFromPed(driver))
+        TriggerClientEvent('QBCore:Notify', driver, "you Driver?", 'error')
+        TriggerClientEvent('QBCore:Notify', driverwho, "you Driver? 2", 'error')
 
         Entity(car).state:set('Boosting', NewTable, true)
 
