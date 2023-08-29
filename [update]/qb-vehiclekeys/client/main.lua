@@ -442,6 +442,7 @@ function policecarfunction(car)
     }
     for _, model in pairs(cars) do
         print(GetHashKey(car))
+        print(GetHashKey(model))
         if GetHashKey(car) == GetHashKey(model) then
             return true
        
@@ -459,6 +460,7 @@ function advancedcarfunction(car)
         }
         for _, model in pairs(cars) do
             print(GetHashKey(car))
+            print(GetHashKey(model))
             if GetHashKey(car) == GetHashKey(model) then
                 return true
            
@@ -494,7 +496,7 @@ function LockpickDoor(type)
     end
     end
 end
-    
+
 
 end
 
