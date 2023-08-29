@@ -40,9 +40,9 @@ Config = {
 			{ name = "Lumber Mill", coords = vector4(-468.93, 5352.4, 80.72, 62.41), sprite = 162, col = 3, blipTrue = true, prop = `gr_prop_gr_speeddrill_01b` },
 			{ name = "Lumber Mill", coords = vector4(-483.9, 5321.86, 80.61, 338.15), sprite = 514, col = 0, blipTrue = false, prop = `gr_prop_gr_speeddrill_01b` },
 		},
-		['Illegal'] = {
+	--[[	['Illegal'] = {
 			{ name = "Weed Shit", coords = vector4(1039.0353, -3198.9695, -38.1690, 279.6853), sprite = 514, col = 0, blipTrue = false,prop = `bkr_prop_weed_table_01a` },
-		},
+		},]]
 		["Debark"] = {
 			{ name = "De-Barker", coords = vector4(-477.1, 5303.64, 86.05, 70.0), sprite = 162, col = 6, blipTrue = true },
 			{ name = "De-Barker", coords = vector4(-475.82, 5305.81, 86.15, 70.0), sprite = 162, col = 36, blipTrue = false },
