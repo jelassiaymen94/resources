@@ -23,6 +23,11 @@ for key, value in pairs(Config.carcass) do
     CarcassByItem[value] = key
 end
 
+function loadModel(model) if type(model) == 'number' then model = model else model = GetHashKey(model) end while not HasModelLoaded(model) do RequestModel(model) Wait(0) end end
+function loadAnimDict(dict) while not HasAnimDictLoaded(dict) do RequestAnimDict(dict) Wait(50) end end
+
+
+
 Citizen.CreateThread(function ()
     Wait(60000)
         while true do
@@ -37,7 +42,7 @@ Citizen.CreateThread(function ()
             end
             if heaviestCarcass ~= 0 then
                 if carryCarcass==0 then
-                lib.requestModel(heaviestCarcass)
+                loadModel(heaviestCarcass)
                 DeleteEntity(carryCarcass)
                 carryCarcass = CreatePed(1, heaviestCarcass, GetEntityCoords(PlayerPedId()), GetEntityHeading(PlayerPedId()), true, true)
                 SetEntityInvincible(carryCarcass, true)
@@ -50,7 +55,7 @@ Citizen.CreateThread(function ()
                     carryCarcass = 0
                     ClearPedSecondaryTask(PlayerPedId())
                     Wait(100)
-                    lib.requestModel(heaviestCarcass)
+                    loadModel(heaviestCarcass)
                     DeleteEntity(carryCarcass)
                     carryCarcass = CreatePed(1, heaviestCarcass, GetEntityCoords(PlayerPedId()), GetEntityHeading(PlayerPedId()), true, true)
                     SetEntityInvincible(carryCarcass, true)
@@ -72,7 +77,7 @@ IsPlayCarryAnim =false
 function PlayCarryAnim()
     if carryCarcass ~= 0 and not IsPlayCarryAnim then
         if Config.carcassPos[heaviestCarcass].drag then
-            lib.requestAnimDict('combat@drag_ped@')
+            loadAnimDict('combat@drag_ped@')
             TaskPlayAnim(PlayerPedId(), 'combat@drag_ped@', 'injured_drag_plyr', 2.0, 2.0, 100000, 1, 0, false, false, false)
             CustomControl()
 
@@ -88,7 +93,7 @@ function PlayCarryAnim()
             IsPlayCarryAnim=false
             end)
         else
-            lib.requestAnimDict('missfinale_c2mcs_1')
+            loadAnimDict('missfinale_c2mcs_1')
             TaskPlayAnim(PlayerPedId(), 'missfinale_c2mcs_1', 'fin_c2_mcs_1_camman', 8.0, -8.0, 100000, 49, 0, false, false, false)
             Citizen.CreateThread(function ()
             IsPlayCarryAnim=true
@@ -151,7 +156,7 @@ Citizen.CreateThread(function ()
 	SetBlipColour(blip, 43)
 	SetBlipAsShortRange(blip, true)
 	BeginTextCommandSetBlipName('STRING')
-	AddTextComponentString(locale'blip_name')
+	AddTextComponentString('Hunter')
 	EndTextCommandSetBlipName(blip)
 end)
 
@@ -359,16 +364,11 @@ AddEventHandler('loyal-hunting:use-item', function(item)
                 baitLocation = nil
                 TaskStartScenarioInPlace(PlayerPedId(), "WORLD_HUMAN_GARDENER_PLANT", 0, true)
 				TriggerServerEvent("loyal-hunting:removeItem", item)
-                if lib.progressBar({
-                    duration = 15000,
-                    label = text('bait'),
-                    useWhileDead = false,
-                    canCancel = true,
-                    disable = {
-                        move = true,
-                        car = true,
-                    },
-                }) then 
+
+                LocalPlayer.state:set('inv_busy', true, true) 
+                QBCore.Functions.Progressbar("1", text('bait'), 15000, false, true, {
+                disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true,
+                }, {}, {}, {}, function() 
                     ClearPedTasksImmediately(PlayerPedId())
                     baitLastPlaced = GetGameTimer()
                     baitLocation = GetEntityCoords(PlayerPedId())
@@ -376,9 +376,14 @@ AddEventHandler('loyal-hunting:use-item', function(item)
                     
                     baitDown()
                     bussy = true
-                else
+                    LocalPlayer.state:set('inv_busy', false, true) 
+                   
+                end, function() 
                     bussy = true
-                end
+                    LocalPlayer.state:set('inv_busy', false, true) 
+                end)
+
+                
             end
         end
     else
@@ -483,22 +488,21 @@ end)
                     notify(text('near_human'), "error")
                     return
                 end
-                if lib.progressBar({
-                    duration = 3000,
-                    label = text('pickup_carcass'),
-                    useWhileDead = false,
-                    canCancel = true,
-                    disable = {
-                        move = true,
-                        car = true,
-                    },
-                    anim = {
-                        dict = 'amb@medic@standing@kneel@idle_a',
-                        clip = 'idle_a'
-                    },
-                }) then 
+
+                LocalPlayer.state:set('inv_busy', true, true) 
+                QBCore.Functions.Progressbar("1", text('pickup_carcass'), 3000, false, true, {
+                disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true,
+                }, { animDict = 'amb@medic@standing@kneel@idle_a', anim = "idle_a", flags = 16,
+                }, {}, {}, function() 
+
+                    LocalPlayer.state:set('inv_busy', false, true) 
                     TriggerServerEvent('loyal-hunting:harvestCarcass',NetworkGetNetworkIdFromEntity(entity),bone)
-                end
+                end, function() 
+
+                    LocalPlayer.state:set('inv_busy', false, true) 
+                end)
+
+               
             end,
             canInteract = function (entity)
                 return IsEntityDead(entity) 
@@ -519,18 +523,21 @@ end)
     			{   icon = "fa-solid fa-sack-dollar",
                     label = text('sell_carcass'),
     				action = function ()
-                        if lib.progressBar({
-                            duration = 3000,
-                            label = text('sell_in_progress'),
-                            useWhileDead = false,
-                            canCancel = true,
-                            disable = {
-                                move = true,
-                                car = true,
-                            },
-                        }) then 
+
+                        LocalPlayer.state:set('inv_busy', true, true) 
+                        QBCore.Functions.Progressbar("1", text('sell_in_progress'), 3000, false, true, {
+                        disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true,
+                        }, { animDict = 'anim@amb@machinery@speed_drill@', anim = "look_around_left_02_amy_skater_01", flags = 16,
+                        }, {}, {}, function() 
+        
+                            LocalPlayer.state:set('inv_busy', false, true) 
                             TriggerServerEvent('loyal-hunting:SellCarcass', Config.carcass[heaviestCarcass])
-                        end
+                        end, function() 
+        
+                            LocalPlayer.state:set('inv_busy', false, true) 
+                        end)
+
+                      
                     end,
                     canInteract= function ()
                         return heaviestCarcass ~= 0
