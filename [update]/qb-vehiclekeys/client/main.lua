@@ -442,8 +442,7 @@ function policecarfunction(car)
     for _, model in pairs(cars) do
         if car == model then
             return true
-        else
-            return false
+       
         end
     end
 end
@@ -458,8 +457,7 @@ function advancedcarfunction(car)
         for _, model in pairs(cars) do
             if car == model then
                 return true
-            else
-                return false
+           
             end
         end
 end
