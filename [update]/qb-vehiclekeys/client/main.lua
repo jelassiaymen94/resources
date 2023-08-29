@@ -442,7 +442,7 @@ function policecarfunction(car)
     }
     for _, model in pairs(cars) do
         print(GetHashKey(model))
-        if car == GetHashKey(model) then
+        if GetHashKey(car) == GetHashKey(model) then
             return true
        
         end
@@ -459,7 +459,7 @@ function advancedcarfunction(car)
         }
         for _, model in pairs(cars) do
             print(GetHashKey(model))
-            if car == GetHashKey(model) then
+            if GetHashKey(car) == GetHashKey(model) then
                 return true
            
             end
@@ -475,12 +475,12 @@ function LockpickDoor(type)
     if #(pos - GetEntityCoords(vehicle)) > 2.5 then return end
     if GetVehicleDoorLockStatus(vehicle) <= 0 then return end
     
-    if policecarfunction(GetHashKey(GetEntityModel(vehicle))) then
+    if policecarfunction(vehicle) then
         print('police')
         if playeritem('specialpick') then
             Config.LockPickDoorEvent('police')
         end
-    elseif advancedcarfunction(GetHashKey(GetEntityModel(vehicle))) then
+    elseif advancedcarfunction(vehicle) then
         print('advanced')
         if playeritem('advancedlockpick') then
             Config.LockPickDoorEvent('advanced')
