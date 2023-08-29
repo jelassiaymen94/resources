@@ -34,10 +34,10 @@ AddEventHandler('loyal-hunting:harvestCarcass',function (entityId, bone)
                    
 
         else
-            notify(source, locale('stop_farm'), "error")
+            notify(source, text('stop_farm'), "error")
         end
     else
-        notify(source, locale('too_far'), "error")
+        notify(source, text('too_far'), "error")
     end
 end)
 
