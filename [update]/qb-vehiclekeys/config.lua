@@ -3,13 +3,57 @@ Config = {}
 -- NPC Vehicle Lock States
 Config.LockNPCDrivingCars = true -- Lock state for NPC cars being driven by NPCs [true = locked, false = unlocked]
 Config.LockNPCParkedCars = true -- Lock state for NPC parked cars [true = locked, false = unlocked]
-
+local QBCore = exports['qb-core']:GetCoreObject()
 -- Lockpick Settings
+local polar = {
+    "numeric",
+    "alphabet",
+    "alphanumeric",
+    "greek",
+    "braille",
+    "runes"
+}
 Config.RemoveLockpickNormal = 0.1 -- Chance to remove lockpick on fail
 Config.RemoveLockpickAdvanced = 0.02 -- Chance to remove advanced lockpick on fail
-Config.LockPickDoorEvent = function() -- This function is called when a player attempts to lock pick a vehicle
-    loadAnimDict("veh@break_in@0h@p_m_one@")
-    TaskPlayAnim(PlayerPedId(), "veh@break_in@0h@p_m_one@", "low_force_entry_ds", 3.0, 3.0, -1, 16, 0, 0, 0, 0)
+Config.LockPickDoorEvent = function(type) -- This function is called when a player attempts to lock pick a vehicle
+
+
+    if type == 'special' then
+        loadAnimDict("veh@break_in@0h@p_m_one@")
+        TaskPlayAnim(PlayerPedId(), "veh@break_in@0h@p_m_one@", "low_force_entry_ds", 3.0, 3.0, -1, 16, 0, 0, 0, 0)
+
+        exports['Polar-UI']:Scrambler(function(success)
+            if success then
+                LockpickFinishCallback(success)
+            else
+                TriggerServerEvent('hud:server:GainStress', math.random(1, 4))
+                TriggerEvent("QBCore:Notify", "You failed to lockpick.", "error")
+            end
+        end, polar[math.random(1,#polar)], 30, 0)
+
+
+    elseif type == 'advanced' then
+
+        loadAnimDict("veh@break_in@0h@p_m_one@")
+        TaskPlayAnim(PlayerPedId(), "veh@break_in@0h@p_m_one@", "low_force_entry_ds", 3.0, 3.0, -1, 16, 0, 0, 0, 0)
+
+    exports['Polar-UI']:Circle(function(success)
+        if success then
+            LockpickFinishCallback(success)
+        else
+
+           
+            TriggerServerEvent('hud:server:GainStress', math.random(1, 4))
+            TriggerEvent("QBCore:Notify", "You failed to lockpick.", "error")
+        end
+    end, 2, 40) -- NumberOfCircles, MS
+
+    
+    else
+
+        loadAnimDict("veh@break_in@0h@p_m_one@")
+        TaskPlayAnim(PlayerPedId(), "veh@break_in@0h@p_m_one@", "low_force_entry_ds", 3.0, 3.0, -1, 16, 0, 0, 0, 0)
+
     exports['Polar-UI']:Circle(function(success)
         if success then
             LockpickFinishCallback(success)
@@ -20,6 +64,8 @@ Config.LockPickDoorEvent = function() -- This function is called when a player a
             TriggerEvent("QBCore:Notify", "You failed to lockpick.", "error")
         end
     end, 5, 40) -- NumberOfCircles, MS
+
+    end
 end
 
 -- Carjack Settings

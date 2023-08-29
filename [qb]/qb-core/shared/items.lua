@@ -12,7 +12,8 @@ QBShared.Items = {
 
 
 
-
+	['specialpick'] 			 = {['name'] = 'specialpick', 			 	['label'] = 'Special Lockpick', 		['weight'] = 10000, 		['type'] = 'item', 		['image'] = 'locksystem.png', 	['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,	   ['combinable'] = nil,   ['description'] = 'Very Illegal Lockpicking Device', ["decay"] = 30.0, ["delete"] = false },
+	
 
 
 

@@ -224,8 +224,8 @@ RegisterNetEvent('qb-vehiclekeys:client:GiveKeys', function(id)
     end
 end)
 
-RegisterNetEvent('lockpicks:UseLockpick', function(isAdvanced)
-    LockpickDoor(isAdvanced)
+RegisterNetEvent('lockpicks:UseLockpick', function(type)
+    LockpickDoor(type)
 end)
 
 
@@ -394,8 +394,39 @@ function IsBlacklistedWeapon()
     end
     return false
 end
+function policecarfunction(car)
+    local cars = { 
 
-function LockpickDoor(isAdvanced)
+    "npolchar",
+    "npolchal",
+    "polram",
+
+    }
+    for _, model in pairs(cars) do
+        if car == model then
+            return true
+        else
+            return false
+        end
+    end
+end
+function advancedcarfunction(car)
+    local cars = { 
+
+        "gtr",
+        "r35",
+        "zentorno",
+    
+        }
+        for _, model in pairs(cars) do
+            if car == model then
+                return true
+            else
+                return false
+            end
+        end
+end
+function LockpickDoor(type)
     local ped = PlayerPedId()
     local pos = GetEntityCoords(ped)
     local vehicle = QBCore.Functions.GetClosestVehicle()
@@ -404,12 +435,27 @@ function LockpickDoor(isAdvanced)
     if HasKeys(QBCore.Functions.GetPlate(vehicle)) then return end
     if #(pos - GetEntityCoords(vehicle)) > 2.5 then return end
     if GetVehicleDoorLockStatus(vehicle) <= 0 then return end
-
-    usingAdvanced = isAdvanced
-    Config.LockPickDoorEvent()
-
+    
+    if policecarfunction(vehicle) then
+        print('police')
+        if playeritem('specialpick') then
+            Config.LockPickDoorEvent(type)
+        end
+    elseif advancedcarfunction(vehicle) then
+        print('advanced')
+        if playeritem('advancedlockpick') then
+            Config.LockPickDoorEvent(type)
+        end
+    else
+        print('regular')
+        if playeritem('lockpick') then
+            Config.LockPickDoorEvent(type)
+        end
+    end
+   
 
     
+
 end
 
 function LockpickFinishCallback(success)
@@ -419,14 +465,14 @@ function LockpickFinishCallback(success)
     if success then
         TriggerServerEvent('hud:server:GainStress', math.random(1, 4))
         lastPickedVehicle = vehicle
-
+       
         if GetPedInVehicleSeat(vehicle, -1) == PlayerPedId() then
             TriggerServerEvent('qb-vehiclekeys:server:AcquireVehicleKeys', QBCore.Functions.GetPlate(vehicle))
         else
             QBCore.Functions.Notify(Lang:t("notify.vlockpick"), 'success')
             TriggerServerEvent('qb-vehiclekeys:server:setVehLockState', NetworkGetNetworkIdFromEntity(vehicle), 1)
         end
-
+        
     else
         TriggerServerEvent('hud:server:GainStress', math.random(1, 4))
         --AttemptPoliceAlert("steal")
