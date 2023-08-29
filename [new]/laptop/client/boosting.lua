@@ -547,10 +547,10 @@ local blips = {} -- Stores all the blips in a table so that PD can see multiple 
 -- The event that does everything for the blips, checks if the client is police then checks if the blip is active and if it is then remove it and spawn a new
 RegisterNetEvent('laptop:client:SyncBlips', function(coords, newNet)
     if not Config.Boosting.Debug and not isPolice() then
-        print("Not police")
+      --  print("Not police")
         return
     end
-    print(coords, newNet)
+   -- print(coords, newNet)
     if blips[newNet] then RemoveBlip(blips[newNet]) end
 
     if coords then

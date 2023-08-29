@@ -9,7 +9,7 @@ function switch()
     if weapon == 970310034 then
     mode += 1
     if mode > 3 then mode = 1 end
-    else  print('you need a weapon that has a firing switch') end
+    else  end--print('you need a weapon that has a firing switch') end
 end
 AddEventHandler('CEventGunShot', function() 
     counter = counter + 1
