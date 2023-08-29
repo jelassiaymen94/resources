@@ -11,7 +11,7 @@ Config.carcass  = {
     [`a_c_deer`] =          'carcass_deer',
     [`a_c_mtlion`] =        'carcass_mtlion',
     [`a_c_rabbit_01`] =     'carcass_rabbit',
-    [`BrnBear`] = 'carcuss_bear',
+    [`BrnBear`] = 'carcass_bear',
 }
 
 

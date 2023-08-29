@@ -113,9 +113,6 @@ QBCore.Functions.CreateUseableItem('huntingbait', function(source)
     	TriggerClientEvent('loyal-hunting:use-item', source, "huntingbait")
 end)
 
-QBCore.Functions.CreateUseableItem('huntingknife',function(source)
-        TriggerClientEvent('loyal-hunting:use-item', source, "huntingknife")
-end)
 
 
 
