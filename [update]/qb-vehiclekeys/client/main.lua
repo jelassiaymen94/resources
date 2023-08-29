@@ -491,7 +491,6 @@ function LockpickDoor(type)
             Config.LockPickDoorEvent('regular')
         end
     end
-   
 
     
 

@@ -119,7 +119,7 @@ function PlayCarryAnim()
             TaskPlayAnim(PlayerPedId(), 'combat@drag_ped@', 'injured_drag_plyr', 2.0, 2.0, 100000, 1, 0, false, false, false)
             CustomControl()
 
-            Citizen.CreateThread(function ()
+            CreateThread(function ()
             IsPlayCarryAnim=true
             while carryCarcass ~= 0 do
                 while not IsEntityPlayingAnim(PlayerPedId(), 'combat@drag_ped@', 'injured_drag_plyr', 1) do
@@ -133,7 +133,7 @@ function PlayCarryAnim()
         else
             loadAnimDict('missfinale_c2mcs_1')
             TaskPlayAnim(PlayerPedId(), 'missfinale_c2mcs_1', 'fin_c2_mcs_1_camman', 8.0, -8.0, 100000, 49, 0, false, false, false)
-            Citizen.CreateThread(function ()
+            CreateThread(function ()
             IsPlayCarryAnim=true
             while carryCarcass ~= 0 do
                 while not IsEntityPlayingAnim(PlayerPedId(), 'missfinale_c2mcs_1', 'fin_c2_mcs_1_camman', 49) do
@@ -153,7 +153,7 @@ end
 isCustomControl= false
 function CustomControl()
     if isCustomControl then return end
-    Citizen.CreateThread(function ()
+    CreateThread(function ()
         local playerPed = PlayerPedId()
         local enable = true
         isCustomControl = true
@@ -187,7 +187,7 @@ end
 
 --------------------- SELL -----------------------------------
 
-Citizen.CreateThread(function ()
+CreateThread(function ()
     blip = AddBlipForCoord(963.34, -2115.39)
 	SetBlipSprite(blip, 141)
 	SetBlipScale(blip, 0.8)
@@ -238,7 +238,8 @@ local HuntingAnimals = {
     --'a_c_seagull',
     --'a_c_shepherd',
     --'a_c_westy',
-    -- 'a_c_panther' 
+    'BrnBear',
+   
 }
 
 -- local animals = {
@@ -358,6 +359,8 @@ local function baitDown()
                     spawnAnimal(baitLocation)
                     baitLocation = nil
             end
+        else
+            print('not far enough')
         end
         Wait(5000)
     end
@@ -464,7 +467,7 @@ local blockShotActive = false
 local function blockShooting()
     if blockShotActive then return end
     blockShotActive = true
-    Citizen.CreateThread(function()
+    CreateThread(function()
         while hasHuntingRifle do
             local ply = PlayerId()
             local ped = PlayerPedId()
@@ -483,14 +486,14 @@ local function blockShooting()
                 DisableControlAction(0, 58, true)
                 DisablePlayerFiring(ped, true)
             end
-            Citizen.Wait(0)
+            Wait(0)
         end
         blockShotActive = false
         processScope(false)
     end)
 end
 
-Citizen.CreateThread(function()
+CreateThread(function()
     local huntingRifleHash = `weapon_sniperrifle` -- -646649097
 
     while true do
@@ -500,7 +503,7 @@ Citizen.CreateThread(function()
         else
             hasHuntingRifle = false
         end
-        Citizen.Wait(1000)
+        Wait(1000)
     end
 end)
 
