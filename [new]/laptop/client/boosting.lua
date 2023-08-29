@@ -199,7 +199,7 @@ RegisterNetEvent('laptop:client:MissionStarted',
 
 RegisterNUICallback('boosting/start', function(data, cb)
     QBCore.Functions.TriggerCallback('laptop:server:CanStartBoosting', function(result)
-        print(result)
+     --   print(result)
         if result == "success" then
             --TriggerServerEvent('laptop:server:StartBoosting', data.id, currentCops)
             cb({
@@ -745,7 +745,7 @@ end)
 
 
 RegisterNUICallback("boosting/expire", function(data, cb)
-    print(data["id"])
+  --  print(data["id"])
     cb("ok")
 end)
 
