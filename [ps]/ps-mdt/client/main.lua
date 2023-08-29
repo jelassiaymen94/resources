@@ -13,7 +13,7 @@ local tabletRot = vector3(10.0, 160.0, 0.0)
 
 CreateThread(function()
     if GetResourceState('qb-dispatch') == 'started' then
-        TriggerServerEvent("Polar-mdt:dispatchStatus", true)
+        TriggerServerEvent("mdt:dispatchStatus", true)
     end
 end)
 
@@ -25,7 +25,7 @@ RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function()
 end)
 
 RegisterNetEvent('QBCore:Client:OnPlayerUnload', function()
-    TriggerServerEvent("Polar-mdt:server:OnPlayerUnload")
+    TriggerServerEvent("mdt:server:OnPlayerUnload")
     PlayerData = {}
 end)
 
@@ -39,7 +39,7 @@ end)
 
 RegisterNetEvent("QBCore:Client:SetDuty", function(job, state)
     if AllowedJob(job) then
-        TriggerServerEvent("Polar-mdt:server:ToggleDuty")
+        TriggerServerEvent("mdt:server:ToggleDuty")
         TriggerServerEvent('QBCore:ToggleDuty')
         if PlayerData.job.name == "police" or PlayerData.job.type == "leo" then
             TriggerServerEvent("police:server:UpdateCurrentCops")

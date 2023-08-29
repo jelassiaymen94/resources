@@ -34,7 +34,7 @@ local function IsPoliceOrEms(job)
     return false
 end
 
-RegisterServerEvent("Polar-mdt:dispatchStatus", function(bool)
+RegisterServerEvent("mdt:dispatchStatus", function(bool)
 	isDispatchRunning = bool
 end)
 
@@ -70,7 +70,7 @@ if Config.UseWolfknightRadar == true then
 	end)
 end
 
-RegisterNetEvent("Polar-mdt:server:OnPlayerUnload", function()
+RegisterNetEvent("mdt:server:OnPlayerUnload", function()
 	--// Delete player from the MDT on logout
 	local src = source
 	local player = QBCore.Functions.GetPlayer(src)
@@ -99,7 +99,7 @@ AddEventHandler("playerDropped", function(reason)
 	end
 end)
 
-RegisterNetEvent("Polar-mdt:server:ToggleDuty", function()
+RegisterNetEvent("mdt:server:ToggleDuty", function()
     local src = source
     local player = QBCore.Functions.GetPlayer(src)
     if not player.PlayerData.job.onduty then
@@ -910,7 +910,7 @@ RegisterNetEvent('mdt:server:saveVehicleInfo', function(dbid, plate, imageurl, n
 
 								result.currentSelection = impoundInfo.CurrentSelection
 								result.plate = plate
-								TriggerClientEvent('Polar-mdt:client:TakeOutImpound', src, result)
+								TriggerClientEvent('mdt:client:TakeOutImpound', src, result)
 							end
 
 						end
@@ -995,7 +995,7 @@ function CreateWeaponInfo(serial, imageurl, notes, owner, weapClass, weapModel)
 end
 
 exports('CreateWeaponInfo', CreateWeaponInfo)
---exports['Polar-mdt']:CreateWeaponInfo(serial, imageurl, notes, owner, weapClass, weapModel)
+--exports['mdt']:CreateWeaponInfo(serial, imageurl, notes, owner, weapClass, weapModel)
 
 RegisterNetEvent('mdt:server:getWeaponData', function(serial)
 	if serial then
