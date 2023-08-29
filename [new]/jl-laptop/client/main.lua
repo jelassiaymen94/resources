@@ -225,7 +225,7 @@ end)
 
 RegisterNUICallback("loaded", function(_, cb)
     fullyLoaded = true
-    print("LOADED")
+    --print("LOADED")
     cb(true)
 end)
 
