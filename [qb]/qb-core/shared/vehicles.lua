@@ -11,6 +11,7 @@ QBShared.Vehicles = {
 		["category"] = "compacts",
 		["hash"] = "asbo",
 		["shop"] = "pdm",
+		["tier"] = "D", -- Can either be D, C, B, A, A+, S, S+
 	},
 	["blista"] = {
 		["name"] = "Blista",
@@ -20,6 +21,7 @@ QBShared.Vehicles = {
 		["category"] = "compacts",
 		["hash"] = "blista",
 		["shop"] = "pdm",
+		["tier"] = "D", -- Can either be D, C, B, A, A+, S, S+
 	},
 	["brioso"] = {
 		["name"] = "Brioso R/A",
@@ -29,6 +31,7 @@ QBShared.Vehicles = {
 		["category"] = "compacts",
 		["hash"] = "brioso",
 		["shop"] = "pdm",
+		["tier"] = "C", -- Can either be D, C, B, A, A+, S, S+
 	},
 	["club"] = {
 		["name"] = "Club",
@@ -38,6 +41,7 @@ QBShared.Vehicles = {
 		["category"] = "compacts",
 		["hash"] = "club",
 		["shop"] = "pdm",
+		["tier"] = "C", -- Can either be D, C, B, A, A+, S, S+
 	},
 	["dilettante"] = {
 		["name"] = "Dilettante",
@@ -47,6 +51,7 @@ QBShared.Vehicles = {
 		["category"] = "compacts",
 		["hash"] = "dilettante",
 		["shop"] = "pdm",
+		["tier"] = "B", -- Can either be D, C, B, A, A+, S, S+
 	},
 	["dilettante2"] = {
 		["name"] = "Dilettante Patrol",
@@ -56,6 +61,7 @@ QBShared.Vehicles = {
 		["category"] = "compacts",
 		["hash"] = "dilettante2",
 		["shop"] = "pdm",
+		["tier"] = "B", -- Can either be D, C, B, A, A+, S, S+
 	},
 	["kanjo"] = {
 		["name"] = "Blista Kanjo",
@@ -65,6 +71,7 @@ QBShared.Vehicles = {
 		["category"] = "compacts",
 		["hash"] = "kanjo",
 		["shop"] = "pdm",
+		["tier"] = "A", -- Can either be D, C, B, A, A+, S, S+
 	},
 	["issi2"] = {
 		["name"] = "Issi",
@@ -74,6 +81,7 @@ QBShared.Vehicles = {
 		["category"] = "compacts",
 		["hash"] = "issi2",
 		["shop"] = "pdm",
+		["tier"] = "A", -- Can either be D, C, B, A, A+, S, S+
 	},
 	["issi3"] = {
 		["name"] = "Issi Classic",
@@ -83,34 +91,8 @@ QBShared.Vehicles = {
 		["category"] = "compacts",
 		["hash"] = "issi3",
 		["shop"] = "pdm",
+		["tier"] = "A+", -- Can either be D, C, B, A, A+, S, S+
 	},
-	--[[["issi4"] = {							--DLC
-		["name"] = "Issi Arena",
-		["brand"] = "Weeny",
-		["model"] = "issi4",
-		["price"] = 80000,
-		["category"] = "compacts",
-		["hash"] = "issi4",
-		["shop"] = "luxury",
-	},
-	["issi5"] = {							--DLC
-		["name"] = "Issi Arena",
-		["brand"] = "Weeny",
-		["model"] = "issi5",
-		["price"] = 80000,
-		["category"] = "compacts",
-		["hash"] = "issi5",
-		["shop"] = "luxury",
-	},
-	["issi6"] = {							--DLC
-		["name"] = "Issi Arena",
-		["brand"] = "Weeny",
-		["model"] = "issi6",
-		["price"] = 80000,
-		["category"] = "compacts",
-		["hash"] = "issi6",
-		["shop"] = "luxury",
-	},]]
 	["panto"] = {
 		["name"] = "Panto",
 		["brand"] = "Benefactor",
@@ -119,6 +101,7 @@ QBShared.Vehicles = {
 		["category"] = "compacts",
 		["hash"] = "panto",
 		["shop"] = "pdm",
+		["tier"] = "A+", -- Can either be D, C, B, A, A+, S, S+
 	},
 	["prairie"] = {
 		["name"] = "Prairie",
@@ -128,6 +111,7 @@ QBShared.Vehicles = {
 		["category"] = "compacts",
 		["hash"] = "prairie",
 		["shop"] = "pdm",
+		["tier"] = "S", -- Can either be D, C, B, A, A+, S, S+
 	},
 	["rhapsody"] = {
 		["name"] = "Rhapsody",
@@ -137,6 +121,7 @@ QBShared.Vehicles = {
 		["category"] = "compacts",
 		["hash"] = "rhapsody",
 		["shop"] = "pdm",
+		["tier"] = "S", -- Can either be D, C, B, A, A+, S, S+
 	},
 	["brioso2"] = {
 		["name"] = "Brioso 300",
@@ -146,6 +131,7 @@ QBShared.Vehicles = {
 		["category"] = "compacts",
 		["hash"] = "brioso2",
 		["shop"] = "pdm",
+		["tier"] = "S+", -- Can either be D, C, B, A, A+, S, S+
 	},
 	["weevil"] = {
 		["name"] = "Weevil",
@@ -155,6 +141,7 @@ QBShared.Vehicles = {
 		["category"] = "compacts",
 		["hash"] = "weevil",
 		["shop"] = "pdm",
+		["tier"] = "S+", -- Can either be D, C, B, A, A+, S, S+
 	},
 	--- Coupes
 	["cogcabrio"] = {
