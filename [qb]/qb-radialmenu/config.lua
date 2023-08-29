@@ -33,7 +33,14 @@ Config.MenuItems = {
                 event = 'Polar-Clothing:client:Refreshskin',
                 shouldClose = true
             }, 
-                   
+            {
+                id = 'walks',
+                title = 'Walk Styles',
+                icon = 'user',
+                type = 'client',
+                event = 'Polar-Misc:client:Menu',
+                shouldClose = true
+            },    
             },
     },
         
