@@ -318,22 +318,22 @@ local function spawnAnimal(loc)
     local hash = GetHashKey(animal)
     RequestModel(hash)
     while not HasModelLoaded(hash) do 
-        Citizen.Wait(0)
+        Wait(0)
     end
     local spawnLoc = getSpawnLoc()
     local spawnedAnimal = CreatePed(28, animal, spawnLoc, true, true, true)
     DecorSetBool(spawnedAnimal, "HuntingMySpawn", true)
     SetModelAsNoLongerNeeded(modelName)
     TaskGoStraightToCoord(spawnedAnimal, loc, 1.0, -1, 0.0, 0.0)
-    Citizen.CreateThread(function()
+    CreateThread(function()
         local finished = false
         while not IsPedDeadOrDying(spawnedAnimal) and not finished do
             local spawnedAnimalCoords = GetEntityCoords(spawnedAnimal)
             if #(loc - spawnedAnimalCoords) < 0.5 then
                 ClearPedTasks(spawnedAnimal)
-                Citizen.Wait(1500)
+                Wait(1500)
                 TaskStartScenarioInPlace(spawnedAnimal, "WORLD_DEER_GRAZING", 0, true)
-                Citizen.SetTimeout(7500, function()
+                SetTimeout(7500, function()
                     finished = true
                 end)
             end
@@ -342,7 +342,7 @@ local function spawnAnimal(loc)
                 TaskSmartFleePed(spawnedAnimal, PlayerPedId(), 600.0, -1)
                 finished = true
             end
-            Citizen.Wait(1000)
+            Wait(1000)
         end
         if not IsPedDeadOrDying(spawnedAnimal) then
             TaskSmartFleePed(spawnedAnimal, PlayerPedId(), 600.0, -1)
@@ -351,17 +351,16 @@ local function spawnAnimal(loc)
 end
 
 local function baitDown()
-    Citizen.CreateThread(function()
-        while baitLocation ~= nil do
-            if #(baitLocation - GetEntityCoords(PlayerPedId())) > baitDistanceInUnits then
-                if math.random() < 0.15 then
+    while baitLocation ~= nil do
+        if #(baitLocation - GetEntityCoords(PlayerPedId())) > baitDistanceInUnits then
+            print('far enough')
+            if math.random(1,100) < 25 then
                     spawnAnimal(baitLocation)
                     baitLocation = nil
-                end
             end
-            Citizen.Wait(5000)
         end
-    end)
+        Wait(5000)
+    end
 end
 local bussy = true
 local lastTime = GetGameTimer() + 3000
