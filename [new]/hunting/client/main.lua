@@ -27,6 +27,44 @@ function loadModel(model) if type(model) == 'number' then model = model else mod
 function loadAnimDict(dict) while not HasAnimDictLoaded(dict) do RequestAnimDict(dict) Wait(50) end end
 
 
+local PlayerData = nil
+function playeritem(items, amount)
+      
+        PlayerData = QBCore.Functions.GetPlayerData()
+       
+        local isTable = type(items) == 'table'
+        local isArray = isTable and table.type(items) == 'array' or false
+        local totalItems = #items
+        local count = 0
+        local kvIndex = 2
+        if isTable and not isArray then
+            totalItems = 0
+            for _ in pairs(items) do 
+                local totalItems2 = totalItems + 1 
+                totalItems = totalItems2
+            end
+            kvIndex = 1
+        end
+        for _, itemData in pairs(PlayerData.items) do
+            if isTable then
+                for k, v in pairs(items) do
+                    local itemKV = {k, v}
+                    if itemData and itemData.name == itemKV[kvIndex] and ((amount and itemData.amount >= amount) or (not isArray and itemData.amount >= v) or (not amount and isArray)) then
+                        local count2 = count + 1 
+                        count = count2
+                    end
+                end
+                if count == totalItems then
+                    return true
+                end
+            else -- Single item as string
+                if itemData and itemData.name == items and (not amount or (itemData and amount and itemData.amount >= amount)) then
+                    return true
+                end
+            end
+        end
+        return false
+end
 
 Citizen.CreateThread(function ()
     Wait(60000)
@@ -35,7 +73,7 @@ Citizen.CreateThread(function ()
             FreezeEntityPosition(playerPed, false)
             heaviestCarcass = 0
             for key, value in pairs(listItemCarcass) do
-                if exports['inventory']:HasItem(value..'1',1) or exports['inventory']:HasItem(value..'2',1) or exports['inventory']:HasItem(value..'3',1) then
+                if playeritem(value..'1') or playeritem(value..'2') or playeritem(value..'3') then
                     heaviestCarcass = CarcassByItem[value]
                     break
                 end
