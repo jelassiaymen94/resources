@@ -5,21 +5,63 @@ local test = nil
 local test1 = nil
 local spam = true
 
- 
+local PlayerData = nil
+function playeritem(items, amount)
+      
+        PlayerData = QBCore.Functions.GetPlayerData()
+      
+        local isTable = type(items) == 'table'
+        local isArray = isTable and table.type(items) == 'array' or false
+        local totalItems = #items
+        local count = 0
+        local kvIndex = 2
+        if isTable and not isArray then
+            totalItems = 0
+            for _ in pairs(items) do 
+                local totalItems2 = totalItems + 1 
+                totalItems = totalItems2
+            end
+            kvIndex = 1
+        end
+        for _, itemData in pairs(PlayerData.items) do
+            if isTable then
+                for k, v in pairs(items) do
+                    local itemKV = {k, v}
+                    if itemData and itemData.name == itemKV[kvIndex] and ((amount and itemData.amount >= amount) or (not isArray and itemData.amount >= v) or (not amount and isArray)) then
+                        local count2 = count + 1 
+                        count = count2
+                    end
+                end
+                if count == totalItems then
+                    return true
+                end
+            else -- Single item as string
+                if itemData and itemData.name == items and (not amount or (itemData and amount and itemData.amount >= amount)) then
+                    return true
+                end
+            end
+        end
+        return false
+end
 
 RegisterNetEvent('Polar-Medic:Client:Help', function()
 	if (QBCore.Functions.GetPlayerData().metadata["isdead"]) or (QBCore.Functions.GetPlayerData().metadata["inlaststand"]) and spam then
 		QBCore.Functions.TriggerCallback('hhfw:docOnline', function(EMSOnline, hasEnoughMoney)
 			if EMSOnline < Config.Doctor and hasEnoughMoney and spam then
+				if playeritem('phone') then
 				SpawnVehicle(GetEntityCoords(PlayerPedId()))
 				TriggerServerEvent('hhfw:charge')
-				Notify("Medic is arriving")
+					Notify("Local Medic is en route to your location")
+				else
+					Notify("You cannot call the local medic as you do not have a phone")
+				end
 			else
 				if EMSOnline > Config.Doctor then
-					Notify("There is too many medics online", "error")
+					--Notify("There is too many medics online", "error")
 					TriggerEvent('Polar-Medic:Client:SendEms')
 				elseif not hasEnoughMoney then
-					Notify("Not Enough Money", "error")
+					
+					Notify("Local Medic Requires $500", "error")
 					TriggerEvent('Polar-Medic:Client:SendEms')
 				else
 					Notify("Wait Paramadic is on its Way", "primary")

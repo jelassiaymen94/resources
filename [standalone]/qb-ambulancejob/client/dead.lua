@@ -76,7 +76,7 @@ function DeathTimer()
             if IsControlReleased(0, 38) then
                 hold = 5
             end
-        elseif deathTime < 250 and deathTime > 248 then
+        elseif deathTime < 275 and deathTime > 273 then
             TriggerEvent('Polar-Medic:Client:Help')
         end
     end
