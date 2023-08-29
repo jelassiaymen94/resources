@@ -512,7 +512,7 @@ end)
         options = {
         {   icon = "fa-solid fa-paw",
             label = text('pickup_carcass'),
-            item = 'huntingknife',
+            item = 'weapon_knife',
             action = function (entity)
                 local retval, bone = GetPedLastDamageBone(entity)
                 TaskTurnPedToFaceEntity(PlayerPedId(), entity, -1)

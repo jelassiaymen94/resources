@@ -10,7 +10,8 @@ Config.carcass  = {
     [`a_c_coyote`] =        'carcass_coyote',
     [`a_c_deer`] =          'carcass_deer',
     [`a_c_mtlion`] =        'carcass_mtlion',
-    [`a_c_rabbit_01`] =     'carcass_rabbit'
+    [`a_c_rabbit_01`] =     'carcass_rabbit',
+    [`BrnBear`] = 'carcuss_bear',
 }
 
 
@@ -22,6 +23,7 @@ Config.carcassPos  = {
     [`a_c_deer`] =          {drag = true, xPos = 0.1, yPos = 1.0, zPos = -1.2, xRot = -200.0, yRot = 30.0, zRot = 0.0},
     [`a_c_mtlion`] =        {drag = true, xPos = 0.1, yPos = 0.7, zPos = -1.0, xRot = -210.0, yRot = 0.0, zRot = 0.0},
     [`a_c_rabbit_01`] =     {drag = false, xPos = 0.12, yPos = 0.25, zPos = 0.45, xRot = 0.0, yRot = 90.0, zRot = 0.0},
+    [`BrnBear`] =        {drag = true, xPos = 0.1, yPos = 0.7, zPos = -1.0, xRot = -210.0, yRot = 0.0, zRot = 0.0},
 }
 
 Config.goodWeapon = {
@@ -35,7 +37,8 @@ Config.sellPrice = {
     ['carcass_coyote'] =    {min = 30,max = 30},
     ['carcass_deer'] =      {min = 50,max = 50},
     ['carcass_mtlion'] =    {min = 80,max = 80},
-    ['carcass_rabbit'] =    {min = 40,max = 40}
+    ['carcass_rabbit'] =    {min = 40,max = 40},
+    ['carcass_bear'] =    {min = 40,max = 120}
 }
 
 
@@ -46,7 +49,8 @@ Config.headshotBones = {
     [`a_c_coyote`] =        {31086},
     [`a_c_deer`] =          {31086},
     [`a_c_mtlion`] =        {31086},
-    [`a_c_rabbit_01`] =     {31086}
+    [`a_c_rabbit_01`] =     {31086},
+    [`BrnBear`] = {31086},
 }
 
 Config.antiFarm = {

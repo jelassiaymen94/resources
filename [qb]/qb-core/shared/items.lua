@@ -14,7 +14,7 @@ QBShared.Items = {
 
 	['specialpick'] 			 = {['name'] = 'specialpick', 			 	['label'] = 'Special Lockpick', 		['weight'] = 10000, 		['type'] = 'item', 		['image'] = 'locksystem.png', 	['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,	   ['combinable'] = nil,   ['description'] = 'Very Illegal Lockpicking Device', ["decay"] = 30.0, ["delete"] = false },
 	
-
+	
 
 
 	["cigarbox"] 					 	 	 = {["name"] = "cigarbox",  	    						["label"] = "Box Of Cigars",	 				["weight"] = 2250, 		["type"] = "item", 		["image"] = "np_69-cigar-box.png", 						["unique"] = false, 	["useable"] = true, 	["shouldClose"] = false,   	["combinable"] = nil,   	 ["description"] = "a box of cigars used for smoking", ["decay"] = 30.0, ["delete"] = false },
@@ -198,6 +198,8 @@ QBShared.Items = {
     ['carcass_rabbit1'] 						 = {['name'] = 'carcass_rabbit1', 			 	  	  	['label'] = 'Carcass Rabbit', 	['weight'] = 50000, 		['type'] = 'item', 		['image'] = 'carcass_rabbit1.png', 				['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,   ['combinable'] = nil,   ['description'] = ''},
     ['carcass_rabbit2'] 						 = {['name'] = 'carcass_rabbit2', 			 	  	  	['label'] = 'Carcass Rabbit', 	['weight'] = 50000, 		['type'] = 'item', 		['image'] = 'carcass_rabbit2.png', 				['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,   ['combinable'] = nil,   ['description'] = ''},
     ['carcass_rabbit3'] 						 = {['name'] = 'carcass_rabbit3', 			 	  	  	['label'] = 'Carcass Rabbit', 	['weight'] = 50000, 		['type'] = 'item', 		['image'] = 'carcass_rabbit3.png', 				['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,   ['combinable'] = nil,   ['description'] = ''},
+
+	['carcass_bear'] 						 = {['name'] = 'carcass_bear', 			 	  	  	['label'] = 'Carcass Bear', 	['weight'] = 50000, 		['type'] = 'item', 		['image'] = 'carcass_rabbit3.png', 				['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,   ['combinable'] = nil,   ['description'] = ''},
 
 	
 

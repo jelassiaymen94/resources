@@ -474,17 +474,17 @@ function LockpickDoor(type)
     if policecarfunction(vehicle) then
         print('police')
         if playeritem('specialpick') then
-            Config.LockPickDoorEvent(type)
+            Config.LockPickDoorEvent('police')
         end
     elseif advancedcarfunction(vehicle) then
         print('advanced')
         if playeritem('advancedlockpick') then
-            Config.LockPickDoorEvent(type)
+            Config.LockPickDoorEvent('advanced')
         end
     else
         print('regular')
         if playeritem('lockpick') then
-            Config.LockPickDoorEvent(type)
+            Config.LockPickDoorEvent('regular')
         end
     end
    
