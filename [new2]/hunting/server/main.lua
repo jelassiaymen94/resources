@@ -25,7 +25,7 @@ AddEventHandler('loyal-hunting:harvestCarcass',function (entityId, bone)
                     grade = 3
                 end
             end
-          
+                print('d')
                 local src = source
                 local Player = QBCore.Functions.GetPlayer(src)
                 Player.Functions.AddItem(item..grade, 1)

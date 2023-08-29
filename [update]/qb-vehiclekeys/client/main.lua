@@ -435,9 +435,21 @@ function policecarfunction(car)
     
     local cars = { 
 
-    "sultan",
+    "npolchar",
+    "npolvic",
+    "npolstang",
+    "npolexp",
+    "emsnspeedo",
+    "npolvette",
     "npolchal",
     "polram",
+    "npolblazer",
+    "uccomet",
+    "uccoquette",
+    "bcat",
+    "ucballer",
+    "polas350",
+    "npolcoach",
 
     }
     for _, model in pairs(cars) do
@@ -452,9 +464,9 @@ function advancedcarfunction(car)
    
     local cars = { 
 
-        "ingot",
+        "r32",
         "r35",
-        "zentorno",
+        "gtr",
     
         }
         for _, model in pairs(cars) do

@@ -23,7 +23,7 @@ Config.carcassPos  = {
     [`a_c_deer`] =          {drag = true, xPos = 0.1, yPos = 1.0, zPos = -1.2, xRot = -200.0, yRot = 30.0, zRot = 0.0},
     [`a_c_mtlion`] =        {drag = true, xPos = 0.1, yPos = 0.7, zPos = -1.0, xRot = -210.0, yRot = 0.0, zRot = 0.0},
     [`a_c_rabbit_01`] =     {drag = false, xPos = 0.12, yPos = 0.25, zPos = 0.45, xRot = 0.0, yRot = 90.0, zRot = 0.0},
-    [`BrnBear`] =        {drag = true, xPos = 0.1, yPos = 0.7, zPos = -1.0, xRot = -210.0, yRot = 0.0, zRot = 0.0},
+    [`BrnBear`] =       {drag = true, xPos = 0.1, yPos = 1.0, zPos = -1.2, xRot = -200.0, yRot = 30.0, zRot = 0.0},
 }
 
 Config.goodWeapon = {
@@ -38,7 +38,7 @@ Config.sellPrice = {
     ['carcass_deer'] =      {min = 50,max = 50},
     ['carcass_mtlion'] =    {min = 80,max = 80},
     ['carcass_rabbit'] =    {min = 40,max = 40},
-    ['carcass_bear'] =    {min = 40,max = 120}
+    ['carcass_bear'] =    {min = 120,max = 120}
 }
 
 
