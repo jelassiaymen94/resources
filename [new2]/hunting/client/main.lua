@@ -528,6 +528,7 @@ end)
             label = text('pickup_carcass'),
             item = 'weapon_knife',
             action = function (entity)
+                if GetSelectedPedWeapon(GetEntityHash('weapon_knife')) then
                 local retval, bone = GetPedLastDamageBone(entity)
                 TaskTurnPedToFaceEntity(PlayerPedId(), entity, -1)
                 Wait(500)
@@ -553,8 +554,9 @@ end)
 
                     LocalPlayer.state:set('inv_busy', false, true) 
                 end)
-
-               
+                else
+                    notify('You need to be holding a knife', 'error')
+                end
             end,
             canInteract = function (entity)
                 return IsEntityDead(entity) 
