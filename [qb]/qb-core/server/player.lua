@@ -154,6 +154,10 @@ function QBCore.Player.CheckPlayerData(source, PlayerData)
             apartmentId = nil,
         }
     }
+    PlayerData.metadata['laptop'] = PlayerData.metadata['laptop'] or {
+        background = 'default',
+        darkfont = false,
+    }
     PlayerData.metadata['crypto'] = PlayerData.metadata['crypto'] or {
         ["shung"] = 0,
         ["gne"] = 0,
