@@ -30,6 +30,8 @@ RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function()
     Wait(100) if Config.Debug then print('Player Loaded Targets Starting') end
     targets()
 end)
+function loadAnimDict(dict) while not HasAnimDictLoaded(dict) do RequestAnimDict(dict) Wait(50) end end
+function loadModel(model) if type(model) == 'number' then model = model else model = GetHashKey(model) end while not HasModelLoaded(model) do RequestModel(model) Wait(0) end end
 
 local playerPed = PlayerPedId()
 local src = source
