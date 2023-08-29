@@ -495,8 +495,8 @@ function LockpickDoor(type)
         print(GetHashKey('sultan'))
         print('regular')
         if playeritem('lockpick') then
-            if advancedcarfunction(vehicle) then return end
-            if policecarfunction(vehicle) then return end
+          --  if advancedcarfunction(vehicle) then return end
+          --  if policecarfunction(vehicle) then return end
 
             Config.LockPickDoorEvent('regular')
         end
