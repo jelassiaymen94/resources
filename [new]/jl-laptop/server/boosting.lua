@@ -860,7 +860,7 @@ CreateThread(function()
                 end
             end
         end
-        Wait(math.random(30000, 60000)) -- Once every 1 to 4 minutes
+        Wait(math.random(3000, 6000)) -- Once every 1 to 4 minutes
     end
 end)
 
