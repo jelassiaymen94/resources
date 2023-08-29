@@ -403,7 +403,7 @@ AddEventHandler('loyal-hunting:use-item', function(item)
 				TriggerServerEvent("loyal-hunting:removeItem", item)
 
                 LocalPlayer.state:set('inv_busy', true, true) 
-                QBCore.Functions.Progressbar("1", text('bait'), 15000, false, true, {
+                QBCore.Functions.Progressbar("1", text('bait'), 10000, false, true, {
                 disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true,
                 }, {}, {}, {}, function() 
                     ClearPedTasksImmediately(PlayerPedId())
