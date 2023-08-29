@@ -7,19 +7,20 @@ local spam = true
 
  
 
-
-RegisterCommand("help", function(source, args, raw)
+RegisterNetEvent('Polar-Medic:Client:Help', function()
 	if (QBCore.Functions.GetPlayerData().metadata["isdead"]) or (QBCore.Functions.GetPlayerData().metadata["inlaststand"]) and spam then
 		QBCore.Functions.TriggerCallback('hhfw:docOnline', function(EMSOnline, hasEnoughMoney)
-			if EMSOnline <= Config.Doctor and hasEnoughMoney and spam then
+			if EMSOnline < Config.Doctor and hasEnoughMoney and spam then
 				SpawnVehicle(GetEntityCoords(PlayerPedId()))
 				TriggerServerEvent('hhfw:charge')
 				Notify("Medic is arriving")
 			else
 				if EMSOnline > Config.Doctor then
 					Notify("There is too many medics online", "error")
+					TriggerEvent('Polar-Medic:Client:SendEms')
 				elseif not hasEnoughMoney then
 					Notify("Not Enough Money", "error")
+					TriggerEvent('Polar-Medic:Client:SendEms')
 				else
 					Notify("Wait Paramadic is on its Way", "primary")
 				end	
@@ -32,9 +33,10 @@ end)
 
 
 
+
 function SpawnVehicle(x, y, z)  
 	spam = false
-	local vehhash = GetHashKey("ambulance")                                                     
+	local vehhash = GetHashKey("emsnspeedo")                                                     
 	local loc = GetEntityCoords(PlayerPedId())
 	RequestModel(vehhash)
 	while not HasModelLoaded(vehhash) do
@@ -44,14 +46,14 @@ function SpawnVehicle(x, y, z)
 	while not HasModelLoaded('s_m_m_doctor_01') do
 		Wait(1)
 	end
-	local spawnRadius = 40                                                    
+	local spawnRadius = 400                                                    
     local found, spawnPos, spawnHeading = GetClosestVehicleNodeWithHeading(loc.x + math.random(-spawnRadius, spawnRadius), loc.y + math.random(-spawnRadius, spawnRadius), loc.z, 0, 3, 0)
 
 	if not DoesEntityExist(vehhash) then
         mechVeh = CreateVehicle(vehhash, spawnPos, spawnHeading, true, false)                        
         ClearAreaOfVehicles(GetEntityCoords(mechVeh), 5000, false, false, false, false, false);  
         SetVehicleOnGroundProperly(mechVeh)
-		SetVehicleNumberPlateText(mechVeh, "HHFW")
+		SetVehicleNumberPlateText(mechVeh, "MEDIC")
 		SetEntityAsMissionEntity(mechVeh, true, true)
 		SetVehicleEngineOn(mechVeh, true, true, false)
         

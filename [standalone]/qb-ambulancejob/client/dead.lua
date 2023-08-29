@@ -138,7 +138,9 @@ end)
 -- Threads
 
 emsNotified = false
-
+RegisterNetEvent('Polar-Medic:Client:SendEms', function()
+    TriggerServerEvent('hospital:server:ambulanceAlert', Lang:t('info.civ_down'))
+end)
 CreateThread(function()
 	while true do
         local sleep = 1000
@@ -201,8 +203,8 @@ CreateThread(function()
                     end
 
                     if IsControlJustPressed(0, 47) and not emsNotified then
-                        TriggerServerEvent('hospital:server:ambulanceAlert', Lang:t('info.civ_down'))
                         emsNotified = true
+                        TriggerEvent('Polar-Medic:Client:Help')
                     end
                 end
 
