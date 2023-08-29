@@ -21,7 +21,7 @@ You need change only the name in this line.
 
 */
 
-var name_loading = "Above"
+var name_loading = "Avalanche"
 
 /*
 --------------------------------------------------------------------------------------------------------------------------------------------------
@@ -37,7 +37,7 @@ You need change only the id of the video
 */
 
 
-var video_ID = "lwfwENfwG8Y"
+var video_ID = "kPh6oGjz4AU&t=1s"
 
 /*
 
@@ -83,10 +83,10 @@ var key_overlay = "F3"
 */
 
 let Socials = [
-  {discord: "https://discord.gg/rEhY49SY"},
+  {discord: "https://discord.gg/ktDBb5qr5Z"},
   {website: "#"},
-  {tiktok: "#"},
-  {instagram: "#"},
+  {tiktok: "https://www.tiktok.com/@avalanchevrp"},
+  {instagram: "https://www.youtube.com/channel/UCiRpX53OrrG21bkaOuWwrVw "},
 ];
 
 /* 
