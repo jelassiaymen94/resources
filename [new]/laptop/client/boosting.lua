@@ -69,7 +69,7 @@ RegisterNetEvent('Polar-Laptop:UpdateBlips', function()
                 end
 
 
-                Wait((Config.Boosting.Frequency * 100) / State.boostHacks) -- Max 10 seconds, the more times hacked the less time it updates
+                Wait((Config.Boosting.Frequency * 1000) / State.boostHacks) -- Max 10 seconds, the more times hacked the less time it updates
                 State = Entity(car).state
                     .Boosting                                               -- Makes it so that it dosnt get the state from the car twice on first run
             end
