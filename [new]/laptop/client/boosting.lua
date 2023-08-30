@@ -61,13 +61,15 @@ function UpdateBlips()
 
 
                 Wait((math.floor(Config.Boosting.Frequency * 1000) / (State.boostHacks + 1))) -- Max 10 seconds, the more times hacked the less time it updates
-                State = Entity(car).state
-                    .Boosting                                               -- Makes it so that it dosnt get the state from the car twice on first run
+                State = Entity(car).state.Boosting                                            
             end
 
             if DoesEntityExist(car) then
                 TriggerServerEvent('laptop:server:SyncBlips', nil, NetID)
                 --Notify(Lang:t("boosting.success.disable_tracker"), 'success', 7500)
+                local State = Entity(car).state.Boosting  
+                print(State.boostHacks)
+                print(State.TotalBoosts)  
                 DelayDelivery()
             end
         end)
