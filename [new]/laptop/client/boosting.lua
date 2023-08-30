@@ -484,9 +484,11 @@ RegisterNetEvent('laptop:client:HackCar', function()
 
                 exports['Polar-UI']:Scrambler(function(success)
                     if success then
+                        TriggerServerEvent('InteractSound_SV:PlayAtCoord', GetEntityCoords(PlayerPedId()), 30, 'correct', 0.20)
                         TriggerServerEvent('laptop:server:SyncPlates', true)
                         currentHacking = false
                     else
+                        TriggerServerEvent('InteractSound_SV:PlayAtCoord', GetEntityCoords(PlayerPedId()), 30, 'failure', 0.20)
                         TriggerServerEvent('laptop:server:SyncPlates', false)
                         currentHacking = false
                     end
