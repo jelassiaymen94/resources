@@ -171,6 +171,7 @@ local function SpawnCar(src)
             boostCooldown = false,
             TotalBoosts = boostamount,
             BeforeFail = 0,
+            Class = currentRuns[CID].contract,
         }
         
 
@@ -398,13 +399,18 @@ RegisterNetEvent('laptop:server:SyncPlates', function(success)
         local newAmount = Config.Boosting.Debug and 0 or state.boostHacks - 1
         local doCD = Config.Boosting.Debug and false or true
         local failed = state.BeforeFail or 0
-
+        local totalb = state.TotalBoosts
+        local classes = state.Class
         local NewTable = {
             boostHacks = newAmount,
             boostCooldown = doCD,
-            BeforeFail = failed
+            TotalBoosts = totalb,
+            BeforeFail = failed,
+            Class = classes,
         }
-        print(failed)
+        print("failed amount " .. failed)
+        print("vehicle class " .. classes)
+        print("total hacks = " .. totalb)
         Notify(src, "Boost Hacks Left : " .. boostHacks, 'success', 7500)
 
         TriggerClientEvent('Polar-Laptop:Client:UpdatePhone', src, boostHacks, state.TotalBoosts)
@@ -422,13 +428,19 @@ RegisterNetEvent('laptop:server:SyncPlates', function(success)
     else
         local doCD = Config.Boosting.Debug and false or true
         local failed = state.BeforeFail + 1
+        local totalb = state.TotalBoosts
+        local classes = state.Class
         local NewTable = {
             boostHacks = state.boostHacks,
             boostCooldown = doCD,
-            BeforeFail = failed
+            TotalBoosts = totalb,
+            BeforeFail = failed,
+            Class = classes,
         }
         Entity(car).state:set('Boosting', NewTable, true)
-        print(failed)
+        print("failed amount " .. failed)
+        print("vehicle class " .. classes)
+        print("total hacks = " .. totalb)
         log("Failed the hacking")
         Notify(src, Lang:t('boosting.error.disable_fail'), 'success', 7500)
         if Player then
