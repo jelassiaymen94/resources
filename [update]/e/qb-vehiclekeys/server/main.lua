@@ -11,7 +11,17 @@ local VehicleList = {}
 -----------------------
 ---- Server Events ----
 -----------------------
+QBCore.Functions.CreateUseableItem("lockpick", function(source)
+    TriggerClientEvent("lockpicks:UseLockpick", source, 'regular')
+end)
 
+QBCore.Functions.CreateUseableItem("advancedlockpick", function(source)
+    TriggerClientEvent("lockpicks:UseLockpick", source, 'advanced')
+end)
+
+QBCore.Functions.CreateUseableItem("specialpick", function(source)
+    TriggerClientEvent("lockpicks:UseLockpick", source, 'special')
+end)
 -- Event to give keys. receiver can either be a single id, or a table of ids.
 -- Must already have keys to the vehicle, trigger the event from the server, or pass forcegive paramter as true.
 RegisterNetEvent('qb-vehiclekeys:server:GiveVehicleKeys', function(receiver, plate)
@@ -41,7 +51,7 @@ RegisterNetEvent('qb-vehiclekeys:server:breakLockpick', function(itemName)
     if not Player then return end
     if not (itemName == "lockpick" or itemName == "advancedlockpick") then return end
     if Player.Functions.RemoveItem(itemName, 1) then
-            TriggerClientEvent("inventory:client:ItemBox", source, QBCore.Shared.Items[itemName], "remove")
+    TriggerClientEvent("inventory:client:ItemBox", source, QBCore.Shared.Items[itemName], "remove")
     end
 end)
 
