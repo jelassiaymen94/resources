@@ -53,29 +53,29 @@ local SS = {
 }
 
 CreateThread(function()
-    while not QBCore do Wait(250) end
-
-    for k, v in pairs(D) do
-        cars["D"][#cars[v["D"]] + 1] = k
-    end
-    for k, v in pairs(C) do
-        cars["C"][#cars[v["C"]] + 1] = k
-    end
-    for k, v in pairs(B) do
-        cars["B"][#cars[v["B"]] + 1] = k
-    end
-    for k, v in pairs(A) do
-        cars["A"][#cars[v["A"]] + 1] = k
-    end
-    for k, v in pairs(AA) do
-        cars["AA"][#cars[v["AA"]] + 1] = k
-    end
-    for k, v in pairs(S) do
-        cars["S"][#cars[v["S"]] + 1] = k
-    end
-    for k, v in pairs(SS) do
-        cars["SS"][#cars[v["SS"]] + 1] = k
-    end
+    
+        for _, v in pairs(D) do
+            cars["D"][#cars["D"] + 1] = v
+        end
+        for _, v in pairs(C) do
+            cars["C"][#cars["C"] + 1] = v
+        end
+        for _, v in pairs(B) do
+            cars["B"][#cars["B"] + 1] = v
+        end
+        for _, v in pairs(A) do
+            cars["A"][#cars["A"] + 1] = v
+        end
+        for _, v in pairs(AA) do
+            cars["AA"][#cars["AA"] + 1] = v
+        end
+        for _, v in pairs(S) do
+            cars["S"][#cars["S"] + 1] = v
+        end
+        for _, v in pairs(SS) do
+            cars["SS"][#cars["SS"] + 1] = v
+        end
+    
 end)
 
 local currentRuns = {}
