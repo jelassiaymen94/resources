@@ -129,8 +129,7 @@ end
 local AntiSpam = false -- Just a true / false boolean to not spam the shit out of the server.
 local carCoords = nil
 -- sends information from server to client that we found the car and we started lockpicking
-RegisterNetEvent('lockpicks:UseLockpick', function(type)
-   -- if type == 'special' then
+RegisterNetEvent('lockpicks:UseLockpick', function()
     if AntiSpam then return end
     if not NetID then return end
     local car = NetworkGetEntityFromNetworkId(NetID)
@@ -154,7 +153,6 @@ RegisterNetEvent('lockpicks:UseLockpick', function(type)
             end
         end
     end
-   -- end 
 end)
 
 -- MISSION STARTER --

@@ -3,22 +3,69 @@ Config = {}
 -- NPC Vehicle Lock States
 Config.LockNPCDrivingCars = true -- Lock state for NPC cars being driven by NPCs [true = locked, false = unlocked]
 Config.LockNPCParkedCars = true -- Lock state for NPC parked cars [true = locked, false = unlocked]
-
+local QBCore = exports['qb-core']:GetCoreObject()
 -- Lockpick Settings
+local polar = {
+    "numeric",
+    "alphabet",
+    "alphanumeric",
+    "greek",
+    "braille",
+    "runes"
+}
 Config.RemoveLockpickNormal = 0.1 -- Chance to remove lockpick on fail
 Config.RemoveLockpickAdvanced = 0.02 -- Chance to remove advanced lockpick on fail
-Config.LockPickDoorEvent = function() -- This function is called when a player attempts to lock pick a vehicle
-    loadAnimDict("veh@break_in@0h@p_m_one@")
-    TaskPlayAnim(PlayerPedId(), "veh@break_in@0h@p_m_one@", "low_force_entry_ds", 3.0, 3.0, -1, 16, 0, 0, 0, 0)
+Config.LockPickDoorEvent = function(type) -- This function is called when a player attempts to lock pick a vehicle
+
+
+    if type == 'police' then
+        loadAnimDict("veh@break_in@0h@p_m_one@")
+        TaskPlayAnim(PlayerPedId(), "veh@break_in@0h@p_m_one@", "low_force_entry_ds", 3.0, 3.0, -1, 16, 0, 0, 0, 0)
+
+        exports['Polar-UI']:Scrambler(function(success)
+            if success then
+                LockpickFinishCallback(success, type)
+            else
+                TriggerServerEvent('hud:server:GainStress', math.random(1, 4))
+                TriggerEvent("QBCore:Notify", "You failed to lockpick.", "error")
+            end
+        end, polar[math.random(1,#polar)], 30, 0)
+
+
+    elseif type == 'advanced' then
+
+        loadAnimDict("veh@break_in@0h@p_m_one@")
+        TaskPlayAnim(PlayerPedId(), "veh@break_in@0h@p_m_one@", "low_force_entry_ds", 3.0, 3.0, -1, 16, 0, 0, 0, 0)
+
     exports['Polar-UI']:Circle(function(success)
         if success then
-            LockpickFinishCallback(success)
+            LockpickFinishCallback(success, type)
         else
-            AttemptPoliceAlert("carjack")
+
+           
             TriggerServerEvent('hud:server:GainStress', math.random(1, 4))
             TriggerEvent("QBCore:Notify", "You failed to lockpick.", "error")
         end
     end, 5, 40) -- NumberOfCircles, MS
+
+    
+    else
+
+        loadAnimDict("veh@break_in@0h@p_m_one@")
+        TaskPlayAnim(PlayerPedId(), "veh@break_in@0h@p_m_one@", "low_force_entry_ds", 3.0, 3.0, -1, 16, 0, 0, 0, 0)
+
+    exports['Polar-UI']:Circle(function(success)
+        if success then
+            LockpickFinishCallback(success, type)
+        else
+
+           
+            TriggerServerEvent('hud:server:GainStress', math.random(1, 4))
+            TriggerEvent("QBCore:Notify", "You failed to lockpick.", "error")
+        end
+    end, 5, 40) -- NumberOfCircles, MS
+
+    end
 end
 
 -- Carjack Settings
@@ -27,13 +74,13 @@ Config.CarjackingTime = 7500 -- How long it takes to carjack
 Config.DelayBetweenCarjackings = 7000 -- Time before you can carjack again
 Config.CarjackChance = {
     ['2685387236'] = 0.0, -- melee
-    ['416676503'] = 0.7, -- handguns
-    ['-957766203'] = 0.75, -- SMG
-    ['860033945'] = 0.90, -- shotgun
-    ['970310034'] = 0.90, -- assault
-    ['1159398588'] = 0.99, -- LMG
-    ['3082541095'] = 0.99, -- sniper
-    ['2725924767'] = 0.99, -- heavy
+    ['416676503'] = 0.5, -- handguns
+    ['-957766203'] = 0.5, -- SMG
+    ['860033945'] = 0.5, -- shotgun
+    ['970310034'] = 0.5, -- assault
+    ['1159398588'] = 0.5, -- LMG
+    ['3082541095'] = 0.5, -- sniper
+    ['2725924767'] = 0.5, -- heavy
     ['1548507267'] = 0.0, -- throwable
     ['4257178988'] = 0.0, -- misc
 }
@@ -52,10 +99,15 @@ Config.PoliceNightAlertChance = 0.50 -- Chance of alerting police at night (time
 -- Job Settings
 Config.SharedKeys = { -- Share keys amongst employees. Employees can lock/unlock any job-listed vehicle
     ['police'] = { -- Job name
-        requireOnduty = false,
+        requireOnduty = true,
         vehicles = {
-	    'police', -- Vehicle model
-	    'police2', -- Vehicle model
+	    'npolchar', -- Vehicle model
+	    'npolexp', -- Vehicle model
+        'npolmm', -- Vehicle model
+        'npolvic', -- Vehicle model
+        'npolvette', -- Vehicle model
+        'npolstang', -- Vehicle model
+        'polas350', -- Vehicle model
 	}
     },
 
@@ -105,4 +157,6 @@ Config.NoCarjackWeapons = {
     "WEAPON_Ball",
     "WEAPON_Snowball",
     "WEAPON_SmokeGrenade",
+    "weapon_m67",
+    "weapon_sword",
 }
