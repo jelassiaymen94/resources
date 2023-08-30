@@ -357,7 +357,7 @@ end
 
 RegisterNetEvent('laptop:server:SyncPlates', function(success)
     local src = source
-    print('syncing')
+   
     local Player = QBCore.Functions.GetPlayer(src)
 
     local randomSeconds = math.random(Config.Boosting.HackDelayMin, Config.Boosting.HackDelayMax)
@@ -381,10 +381,6 @@ RegisterNetEvent('laptop:server:SyncPlates', function(success)
     end
     if state.boostCooldown then
         log("state is on Cooldown")
-        return
-    end
-    if state.boostHacks <= 0 then
-        log("Boosthacks is 0 or less")
         return
     end
 
