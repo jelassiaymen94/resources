@@ -56,7 +56,7 @@ function UpdateBlips()
     local State = Entity(car).state.Boosting
     if State and State.boostHacks then
         CreateThread(function()
-            while State and State.boostHacks <  State.TotalBoosts  do
+            while State do -- and State.boostHacks <  State.TotalBoosts  do
                 local checks = 0
                 if DoesEntityExist(car) then
                     print('Blips Updated')
@@ -142,7 +142,7 @@ RegisterNetEvent('lockpicks:UseLockpick', function()
                 AntiSpam = true
                 TriggerServerEvent('laptop:server:SpawnPed')
                 RemoveBlip(missionBlip)
-                --UpdateBlips()
+                UpdateBlips()
                 SendNUIMessage({
                     action = "boosting/setcancel",
                     data = {
