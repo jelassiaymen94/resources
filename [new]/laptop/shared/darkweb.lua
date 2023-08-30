@@ -21,13 +21,15 @@ Config.DarkWeb.CrateSpawn = {
 
 -- NAME = Spawn code how you spawn in the item
 -- PRICE = How much it costs to buy the item
+-- TYPE = "bank" or "shung" or "gne"
 -- stock = How many items there's available a restart
 -- Category = legal, illegal, or other (CASE SENSITIVE)
 Config.DarkWeb.Items = {
     ["laptop"] = {
         name = "laptop",
-        price = 100,
-        stock = 100,
+        price = 1,
+        stock = 3,
+        type = 'shung',
         category = "legal",
     }
 }

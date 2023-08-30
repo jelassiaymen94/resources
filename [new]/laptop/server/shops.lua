@@ -6,22 +6,7 @@ crates = {} -- Table which stores crate netIDs with its contents ( shop items )
 ---@param Items table
 local function AddItems(stash, Items)
     local items = {}
-    if GetResourceState("ox_inventory"):match("start") then
-        local itemNames = exports.ox_inventory:Items()
-        local owner = stash:match("BennyShop_") and stash:gsub("BennyShop_", "") or false
-        local inventory = exports.ox_inventory:GetInventory(stash, owner)
-        local label = stash:match("BennyShop_") and "Benny Shop" or "Crate"
-        if not inventory then
-            exports.ox_inventory:RegisterStash(stash, label, 50, 100000, owner)
-        end
-        for k, v in pairs(Items) do
-            local item = itemNames[k:lower()]
-            exports.ox_inventory:AddItem({
-                id = stash,
-                owner = owner,
-            }, item.name, tonumber(v))
-        end
-    else
+  
         for k, v in pairs(Items) do
             local itemInfo = QBCore.Shared.Items[k:lower()]
             items[#items + 1] = {
@@ -44,7 +29,7 @@ local function AddItems(stash, Items)
                 ['stash'] = stash,
                 ['items'] = json.encode(items)
             })
-    end
+    
 end
 
 local function HasStashItems(stashId)
@@ -125,17 +110,17 @@ QBCore.Functions.CreateCallback('laptop:server:checkout', function(source, cb, d
     local Shop = {
         totalBank = 0,
         totalGNE = 0,
-        totalCrypto = 0,
+        totalShung = 0,
         items = {}
     }
     if Saved then
         for _, v in pairs(Saved) do
-            Shop.items[Config[appLabel].Items[v.name].name] = v.quantity
+                Shop.items[Config[appLabel].Items[v.name].name] = v.quantity
             if Config[appLabel].Items[v.name].type == "bank" then
                 Shop.totalBank = Shop.totalBank + (Config[appLabel].Items[v.name].price * v.quantity)
-            elseif Config[appLabel].Items[v.name].type == "crypto" then
-                Shop.totalCrypto = Shop.totalCrypto + (Config[appLabel].Items[v.name].price * v.quantity)
-            else
+            elseif Config[appLabel].Items[v.name].type == "shung" then
+                Shop.totalShung = Shop.totalShung + (Config[appLabel].Items[v.name].price * v.quantity)
+            elseif Config[appLabel].Items[v.name].type == "gne" then
                 Shop.totalGNE = Shop.totalGNE + (Config[appLabel].Items[v.name].price * v.quantity)
             end
         end
@@ -143,7 +128,8 @@ QBCore.Functions.CreateCallback('laptop:server:checkout', function(source, cb, d
         if hasItem and amount > 0 then return cb("full") end
         local checks = 0
         local bank = false
-        local crypto = false
+        local shung = false
+        local gne = false
         if Shop.totalBank > 0 then
             checks = checks + 1
             if Player.PlayerData.money.bank >= Shop.totalBank then
@@ -154,16 +140,26 @@ QBCore.Functions.CreateCallback('laptop:server:checkout', function(source, cb, d
             end
         end
 
-        if Shop.totalCrypto > 0 then
+        if Shop.totalShung > 0 then
             checks = checks + 1
-            if Player.PlayerData.money.crypto >= Shop.totalCrypto then
+            local amount = exports['qb-phone']:getAmount(src, "shung")
+            if amount >= Shop.totalShung then
                 checks = checks - 1
-                crypto = true
-            else
-                return cb("crypto")
+                shung = true
+            else 
+                return cb("shung")
             end
         end
-
+        if Shop.totalGNE > 0 then
+            checks = checks + 1
+            local amount = exports['qb-phone']:getAmount(src, "gne")
+            if amount >= Shop.totalGNE then
+                checks = checks - 1
+                gne = true
+            else 
+                return cb("gne")
+            end
+        end
         if data['app'] == "darkweb" then
             if not darkwebCrateSpawn then
                 return cb("spaces")
@@ -175,8 +171,8 @@ QBCore.Functions.CreateCallback('laptop:server:checkout', function(source, cb, d
 
         if checks == 0 then
             if bank then Player.Functions.RemoveMoney("bank", Shop.totalBank) end
-
-            if crypto then Player.Functions.RemoveMoney("crypto", Shop.totalCrypto) end
+            if shung then exports['qb-phone']:RemoveCrypto(src, "shung", Shop.totalShung) end
+            if gne then exports['qb-phone']:RemoveCrypto(src, "gne", Shop.totalGNE) end
 
             if data['app'] == 'darkweb' then
                 cb("done")
@@ -207,18 +203,5 @@ end)
 
 AddEventHandler("onResourceStart", function(resource)
     if resource ~= GetCurrentResourceName() then return end
-    if GetResourceState("ox_inventory"):match("start") then
-        -- make sure they can only take the item, not storing it
-        hookid = exports.ox_inventory:registerHook('swapItems', function(payload)
-            if payload?.fromType == "player" then
-                return false
-            end
-        end, {
-            print = true,
-            inventoryFilter = {
-                '^BennyShop_[%w]+',
-                '^DarkWebCrate_[%w]+'
-            }
-        })
-    end
+   
 end)

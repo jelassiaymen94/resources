@@ -1,11 +1,9 @@
 Config = {}
 
-Config.Inventory = "qb-inventory"
+Config.Inventory = "inventory"
 Config.LaptopDevice = "laptop"
 
 Config.RenewedPhone = true
-
-Config.Linux = false
 
 Config.PoliceJobs = {
     "police",
@@ -54,7 +52,7 @@ Config.Apps = {
     },
     ['darkweb'] = {
         app = 'darkweb',
-        name = "Unknown",
+        name = "Black Market",
         icon = "fa-solid fa-skull",
         useimage = false,
         color = '#fff',

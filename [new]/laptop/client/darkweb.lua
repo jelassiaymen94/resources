@@ -8,15 +8,13 @@ local function openCrate(crate)
         if data.isOpened then
             openCrate(data.crate)
         else
-            if GetResourceState("ox_inventory"):match("start") then
-                exports.ox_inventory:openInventory('stash', 'DarkWebCrate_' .. data.crateID)
-            else
+          
                 TriggerServerEvent("inventory:server:OpenInventory", "stash", "DarkWebCrate_" .. data.crateID, {
                     maxweight = 100000,
                     slots = 25,
                 })
                 TriggerEvent("inventory:client:SetCurrentStash", "DarkWebCrate_" .. data.crateID)
-            end
+            
         end
     end, crateID, crate)
 end

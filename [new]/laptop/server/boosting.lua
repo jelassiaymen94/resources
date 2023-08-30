@@ -245,8 +245,6 @@ QBCore.Functions.CreateCallback('laptop:server:CanStartBoosting', function(sourc
     if not currentContracts[CID][id] then return cb("notfound") end
     if Config.RenewedPhone and not exports['qb-phone']:hasEnough(src, "gne", currentContracts[CID][id].cost) then
         return cb("notenough")
-    elseif not Config.RenewedPhone and Player.PlayerData.money.crypto < currentContracts[CID][id].cost then
-        return cb("notenough")
     end
     local amount = 0
     if cops == Config.Boosting.MinCops then
@@ -645,13 +643,11 @@ RegisterNetEvent('laptop:server:finishBoost', function(netId, isvin)
             currentRuns[CID].cost = math.random(1, 2) -- makes it so they can actually get GNE when the boost is Free
         end
         local reward = math.ceil(currentRuns[CID].cost * math.random(1, 3))
-        if Config.RenewedPhone then
-            exports['qb-phone']:AddCrypto(src, "gne", reward)
-            exports['qb-phone']:AddCrypto(src, "shung", reward * 2)
-        else
-            Player.Functions.AddMoney("crypto", reward, Lang:t('boosting.info.rewardboost'))
-        end
-        Notify(src, Lang:t('boosting.success.received_reward', { reward = reward }), "success", 7500)
+       
+        exports['qb-phone']:AddCrypto(src, "gne", reward)
+        exports['qb-phone']:AddCrypto(src, "shung", reward * 2)
+       
+       -- Notify(src, Lang:t('boosting.success.received_reward', { reward = reward }), "success", 7500)
         if DoesEntityExist(NetworkGetEntityFromNetworkId(currentRuns[CID].NetID)) then
             DeleteEntity(NetworkGetEntityFromNetworkId(currentRuns[CID].NetID))
         end

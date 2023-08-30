@@ -285,10 +285,15 @@ RegisterNUICallback('laptop/checkout', function(data, cb)
                 status = 'error',
                 message = Lang:t('main.checkout.full')
             })
-        elseif result == "crypto" then
+        elseif result == "gne" then
             cb({
                 status = 'error',
-                message = Lang:t('main.checkout.crypto')
+                message = Lang:t('main.checkout.gne')
+            })
+        elseif result == "shung" then
+            cb({
+                status = 'error',
+                message = Lang:t('main.checkout.shung')
             })
         elseif result == "spaces" then
             cb({
