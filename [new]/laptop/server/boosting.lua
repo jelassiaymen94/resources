@@ -901,7 +901,7 @@ local function missionType(boostData, tier)
 end
 
 function GetHoursFromNow(hours)
-    return os.date("%Y-%m-%d %H:%M", os.time() - 3600)
+    return os.date("%Y-%m-%d %H:%M", os.time() + 1800)
 end
 
 function GetCurrentTime()
