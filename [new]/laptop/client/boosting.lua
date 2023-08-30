@@ -47,7 +47,9 @@ function UpdateBlips()
     local State = Entity(car).state.Boosting
     if State and State.boostHacks then
         CreateThread(function()
-            while State and State.boostHacks <  State.TotalBoosts  do
+        while true do
+            if State.boostHacks <  State.TotalBoosts  then
+
                 local checks = 0
                 if DoesEntityExist(car) then
                     local pos = GetEntityCoords(car)
@@ -56,22 +58,29 @@ function UpdateBlips()
                     checks = checks + 1
                     if checks >= 3 and not DoesEntityExist(car) then
                         TriggerServerEvent('laptop:server:CancelBoost', NetID, Plate)
-                    end -- additional safety check JUST incase, make a cancel events cancelling everything
+                    end 
                 end
 
 
-                Wait((math.floor(Config.Boosting.Frequency * 1000) / (State.boostHacks + 1))) -- Max 10 seconds, the more times hacked the less time it updates
-                State = Entity(car).state.Boosting                                            
-            end
-
-            if DoesEntityExist(car) then
-                TriggerServerEvent('laptop:server:SyncBlips', nil, NetID)
-                --Notify(Lang:t("boosting.success.disable_tracker"), 'success', 7500)
-                
+                Wait((math.floor(Config.Boosting.Frequency * 1000) / (State.boostHacks + 1)))
+                State = Entity(car).state.Boosting  
+                print('1')    
                 print(State.boostHacks)
                 print(State.TotalBoosts)  
-                DelayDelivery()
+            else
+
+                if DoesEntityExist(car) then
+                    TriggerServerEvent('laptop:server:SyncBlips', nil, NetID)
+                --Notify(Lang:t("boosting.success.disable_tracker"), 'success', 7500)
+                
+                    print(State.boostHacks)
+                    print(State.TotalBoosts)  
+                    DelayDelivery()
+
+                end
+
             end
+        end
         end)
     end
 end
@@ -461,7 +470,9 @@ RegisterNetEvent('laptop:client:HackCar', function()
                
                 local car = cache.vehicle
                 local State = Entity(car).state.Boosting
+
             if State and State.boostHacks < State.TotalBoosts and not State.boostCooldown then
+
                 exports['Polar-UI']:Scrambler(function(success)
                     if success then
                         TriggerServerEvent('laptop:server:SyncPlates', true)
