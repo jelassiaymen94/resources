@@ -155,15 +155,26 @@ local function SpawnCar(src)
         ActivePlates[plate] = true
 
 
-        local boostamount = math.random(3,10)
+   
+        --  D, C, B, A, A+, S, S+
+        local classess = currentRuns[CID].contract
+        if classess == "D" then boostamount = math.random(3,5)
+        elseif classess == "C" then boostamount = math.random(4,6)
+        elseif classess == "B" then boostamount = math.random(6,8)
+        elseif classess == "A" then boostamount = math.random(7,10)
+        elseif classess == "A+" then boostamount = math.random(9,12)
+        elseif classess == "S" then boostamount = math.random(10,13)
+        elseif classess == "S+" then boostamount = math.random(13,15)
+        end
+        Wait(50)
         local ba = boostamount + 1
-        ----- POLAR BOOSTAMOUNT
+     
         Entity(car).state.Boosting = {
             boostHacks = 1,
             boostCooldown = false,
             TotalBoosts = ba,
             BeforeFail = 0,
-            Class = currentRuns[CID].contract,
+            Class = classess,
         }
        
 
