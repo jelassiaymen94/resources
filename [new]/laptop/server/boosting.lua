@@ -386,6 +386,8 @@ AddEventHandler('playerEnteredVehicle', function(vehicle)
     local src = source
     local car = NetworkGetEntityFromNetworkId(NetID)
     local State = Entity(car).state.Boosting
+    print(vehicle)
+    print(car)
     if car == vehicle then
         TriggerClientEvent('Polar-Laptop:Client:UpdatePhone', src, state.TotalBoosts, state.TotalBoosts)
 
@@ -493,10 +495,10 @@ RegisterNetEvent('laptop:server:SyncPlates', function(success)
 
        
         local failed = state.BeforeFail + 1
-        local totalb = state.TotalBoosts - 1
+        local totalb = state.TotalBoosts 
         if totalb < 0 then totalc = 0 else totalc = totalb end
         local classes = state.Class
-        local hacks = state.boostHacks
+        local hacks = state.boostHacks - 1
      --   print("failed amount " .. failed)
      --   print("vehicle class " .. classes)
      --   print("total hacks = " .. totalb)
@@ -899,7 +901,7 @@ local function missionType(boostData, tier)
 end
 
 function GetHoursFromNow(hours)
-    return os.date("%Y-%m-%d %H:%M", os.time() + (hours * 600))
+    return os.date("%Y-%m-%d %H:%M", os.time() + (hours * 100))
 end
 
 function GetCurrentTime()
