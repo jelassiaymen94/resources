@@ -24,7 +24,7 @@ Config.LockPickDoorEvent = function(type) -- This function is called when a play
 
         exports['Polar-UI']:Scrambler(function(success)
             if success then
-                LockpickFinishCallback(success)
+                LockpickFinishCallback(success, type)
             else
                 TriggerServerEvent('hud:server:GainStress', math.random(1, 4))
                 TriggerEvent("QBCore:Notify", "You failed to lockpick.", "error")
@@ -39,7 +39,7 @@ Config.LockPickDoorEvent = function(type) -- This function is called when a play
 
     exports['Polar-UI']:Circle(function(success)
         if success then
-            LockpickFinishCallback(success)
+            LockpickFinishCallback(success, type)
         else
 
            
@@ -56,7 +56,7 @@ Config.LockPickDoorEvent = function(type) -- This function is called when a play
 
     exports['Polar-UI']:Circle(function(success)
         if success then
-            LockpickFinishCallback(success)
+            LockpickFinishCallback(success, type)
         else
 
            

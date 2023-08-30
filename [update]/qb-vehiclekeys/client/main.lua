@@ -514,7 +514,7 @@ function LockpickDoor(type)
 
 end
 
-function LockpickFinishCallback(success)
+function LockpickFinishCallback(success, type)
     local vehicle = QBCore.Functions.GetClosestVehicle()
 
     local chance = math.random()
@@ -534,7 +534,11 @@ function LockpickFinishCallback(success)
         --AttemptPoliceAlert("steal")
     end
 
-    if usingAdvanced then
+    if type == 'police' then
+        if chance <= Config.RemoveLockpickAdvanced then
+            TriggerServerEvent("qb-vehiclekeys:server:breakLockpick", "specialpick")
+        end
+    elseif type == 'advanced' then
         if chance <= Config.RemoveLockpickAdvanced then
             TriggerServerEvent("qb-vehiclekeys:server:breakLockpick", "advancedlockpick")
         end
