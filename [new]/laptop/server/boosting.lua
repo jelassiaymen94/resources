@@ -153,7 +153,7 @@ local function SpawnCar(src)
     
     if currentRuns[CID].contract == "D" then
     local performanceModIndices = { 11, 12, 13, 15, 16 }
-    SetVehicleModKit(car, 0)
+    
     for _, modType in ipairs(performanceModIndices) do
         max = GetNumVehicleMods(car, tonumber(modType)) - 1
         SetVehicleMod(car, modType, max)
@@ -899,7 +899,7 @@ local function missionType(boostData, tier)
 end
 
 function GetHoursFromNow(hours)
-    return os.date("%Y-%m-%d %H:%M", os.time() + (hours * 3600))
+    return os.date("%Y-%m-%d %H:%M", os.time() + (hours * 600))
 end
 
 function GetCurrentTime()
