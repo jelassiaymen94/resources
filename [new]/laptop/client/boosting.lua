@@ -55,14 +55,6 @@ local function UpdateBlips()
     local car = NetworkGetEntityFromNetworkId(NetID)
     local State = Entity(car).state.Boosting
     if State and State.boostHacks then
-        local hacks = State.boostHacks
-        local failed = State.BeforeFail
-        local totalb = State.TotalBoosts
-        local classes = State.Class
-        print("failed amount " .. failed)
-        print("vehicle class " .. classes)
-        print("total hacks = " .. totalb)
-        print("hacks = " .. hacks)
         CreateThread(function()
             while State and State.boostHacks <  State.TotalBoosts  do
                 local checks = 0
@@ -77,7 +69,7 @@ local function UpdateBlips()
                 end
 
 
-                Wait((Config.Boosting.Frequency * 1000) / State.boostHacks) -- Max 10 seconds, the more times hacked the less time it updates
+                Wait((Config.Boosting.Frequency * 100) / State.boostHacks) -- Max 10 seconds, the more times hacked the less time it updates
                 State = Entity(car).state
                     .Boosting                                               -- Makes it so that it dosnt get the state from the car twice on first run
             end
