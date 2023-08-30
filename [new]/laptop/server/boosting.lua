@@ -67,13 +67,13 @@ CreateThread(function()
             cars["A"][#cars["A"] + 1] = v
         end
         for _, v in pairs(AA) do
-            cars["AA"][#cars["AA"] + 1] = v
+            cars["A+"][#cars["A+"] + 1] = v
         end
         for _, v in pairs(S) do
             cars["S"][#cars["S"] + 1] = v
         end
         for _, v in pairs(SS) do
-            cars["SS"][#cars["SS"] + 1] = v
+            cars["S+"][#cars["S+"] + 1] = v
         end
     
 end)
