@@ -891,7 +891,7 @@ local function generateContract(src, contract, vehicle, mission)
             contract = contract,
             car = vehicle,
             carName = QBCore.Shared.Vehicles[vehicle]["name"],
-            expire = GetHoursFromNow(6),
+            expire = GetHoursFromNow(1),
             owner = generateName(),
             type = mission,
             cost = calcPrice(contract, mission),
