@@ -430,7 +430,7 @@ RegisterNetEvent('laptop:server:SyncPlates', function(success)
         if state.boostHacks >= state.TotalBoosts then
 
             -- tracker off
-            TriggerClientEvent('Polar-Laptop:Client:UpdatePhone', src, state.TotalBoosts, state.TotalBoosts)
+           -- TriggerClientEvent('Polar-Laptop:Client:UpdatePhone', src, state.TotalBoosts, state.TotalBoosts)
 
             local occupants = {}
             for i = 0, GetVehicleMaxNumberOfPassengers(car) do
@@ -440,9 +440,9 @@ RegisterNetEvent('laptop:server:SyncPlates', function(success)
                 end
             end
             for _, occupant in pairs(occupants) do
-                if occupant ~= src then
+               -- if occupant ~= src then
                     TriggerClientEvent('Polar-Laptop:Client:UpdatePhone', occupant, state.TotalBoosts, state.TotalBoosts)
-                end
+               -- end
             end
           --  Notify(src, Lang:t('boosting.success.tracker_off', { tracker_left = newThing, time = randomSeconds }),'success', 7500)
 
@@ -459,9 +459,9 @@ RegisterNetEvent('laptop:server:SyncPlates', function(success)
                 end
             end
         for _, occupant in pairs(occupants) do
-            if occupant ~= src then
+          --  if occupant ~= src then
                 TriggerClientEvent('Polar-Laptop:Client:UpdatePhone', occupant, newAmount, totalb)
-            end
+          --  end
         end
 
 
@@ -483,7 +483,7 @@ RegisterNetEvent('laptop:server:SyncPlates', function(success)
      
        -- Notify(src, "Boost Hacks Left : " .. boostHacks, 'success', 7500)
 
-        TriggerClientEvent('Polar-Laptop:Client:UpdatePhone', src, newAmount, totalb)
+      --  TriggerClientEvent('Polar-Laptop:Client:UpdatePhone', src, newAmount, totalb)
 
       
         Entity(car).state:set('Boosting', NewTable, true)
