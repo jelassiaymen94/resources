@@ -51,7 +51,7 @@ local function DelayDelivery()
     end)
 end
 
-local function UpdateBlips()
+RegisterNetEvent('Polar-Laptop:UpdateBlips', function()
     local car = NetworkGetEntityFromNetworkId(NetID)
     local State = Entity(car).state.Boosting
     if State and State.boostHacks then
@@ -81,7 +81,7 @@ local function UpdateBlips()
             end
         end)
     end
-end
+end)
 
 local function CheckVin(NetworkID)
     if IsCheckingVin then return end
@@ -141,7 +141,7 @@ RegisterNetEvent('lockpicks:UseLockpick', function()
                 AntiSpam = true
                 TriggerServerEvent('laptop:server:SpawnPed')
                 RemoveBlip(missionBlip)
-               -- UpdateBlips()
+                TriggerEvent('Polar-Laptop:UpdateBlips')
                 SendNUIMessage({
                     action = "boosting/setcancel",
                     data = {
