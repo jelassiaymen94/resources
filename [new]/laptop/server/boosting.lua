@@ -415,10 +415,10 @@ RegisterNetEvent('laptop:server:SyncPlates', function(success)
             BeforeFail = failed,
             Class = classes,
         }
-        print("failed amount " .. failed)
-        print("vehicle class " .. classes)
-        print("total hacks = " .. totalb)
-        print("hacks = " .. newAmount)
+     --   print("failed amount " .. failed)
+     --   print("vehicle class " .. classes)
+     --   print("total hacks = " .. totalb)
+     --   print("hacks = " .. newAmount)
      
        -- Notify(src, "Boost Hacks Left : " .. boostHacks, 'success', 7500)
 
@@ -437,10 +437,10 @@ RegisterNetEvent('laptop:server:SyncPlates', function(success)
         local totalb = state.TotalBoosts
         local classes = state.Class
         local hacks = state.boostHacks
-        print("failed amount " .. failed)
-        print("vehicle class " .. classes)
-        print("total hacks = " .. totalb)
-        print("hacks = " .. hacks)
+     --   print("failed amount " .. failed)
+     --   print("vehicle class " .. classes)
+     --   print("total hacks = " .. totalb)
+     --   print("hacks = " .. hacks)
       
         local NewTable = {
             boostHacks = hacks,
