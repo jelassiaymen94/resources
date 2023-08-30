@@ -41,24 +41,15 @@ local LookingForContracts = {}
 
 
 local function Notify(src, text, type, time)
-    if Config.Boosting.Notifications == "phone" then
-        TriggerClientEvent('qb-phone:client:CustomNotification', src,
-            Lang:t('boosting.info.phonenotify'),
-            text,
-            "fas fa-user-secret",
-            "#00008B",
-            time
-        )
-    elseif Config.Boosting.Notifications == "npwd" then
-        TriggerEvent('qb-phone:server:sendNewMail', {
-            sender = Lang:t('boosting.info.phonenotify'),
-            subject = 'Boosting',
-            message = text,
-            button = {}
-        })
-    else
-        QBCore.Functions.Notify(src, text, type, time)
-    end
+    
+    TriggerClientEvent('qb-phone:client:CustomNotification', src,
+    "CURRENT",
+    text,
+    "fas fa-user-secret",
+    "#FFFFFF4",
+    time
+)
+    
 end
 
 -- ** EVERYTHING TO DO WITH DROP OFFS AND VINSCRATCH ** --
@@ -449,6 +440,8 @@ RegisterNetEvent('laptop:server:SyncPlates', function(success)
         }
         Entity(car).state:set('Boosting', NewTable, true)
        
+        TriggerClientEvent('Polar-Laptop:Client:UpdatePhone', src, state.boostHacks, state.TotalBoosts)
+        
         removeCooldown(car, randomSeconds)
 
         if failed > 2 then 

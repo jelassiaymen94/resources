@@ -15,7 +15,7 @@ local currentCops = 0
 RegisterNetEvent('Polar-Laptop:Client:UpdatePhone', function(amount, totalamount)
     local amount2 = amount - 1
     TriggerEvent('qb-phone:client:CustomNotification',
-    "(" .. amount2 .. " / " .. totalamount .. " CURRENT",
+    "(" .. amount2 .. " / " .. totalamount .. ")  CURRENT",
     "Look for tracking devices and disable them.",
     "fas fa-user-secret",
     "#FFFFFF",
@@ -55,7 +55,7 @@ function UpdateBlips()
                 local checks = 0
                 if DoesEntityExist(car) then
                     local pos = GetEntityCoords(car)
-                    TriggerServerEvent('InteractSound_SV:PlayAtCoord', pos, 50, 'shiftyclick', 0.35) 
+                    TriggerServerEvent('InteractSound_SV:PlayAtCoord', pos, 30, 'shiftyclick', 0.20) 
                     TriggerServerEvent('laptop:server:SyncBlips', pos, NetID)
                 else
                     checks = checks + 1
