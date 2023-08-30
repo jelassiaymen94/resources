@@ -19,7 +19,7 @@ Config.Boosting.MaxBoosts = 4 -- The amount of boosts a player can hold in their
 Config.Boosting.MinusOne = true -- true or false, detmains wheather the Z is minus 1 or not.
 
 Config.Boosting.PedSettings = {
-    ["D"] = { weapons = { "weapon_bat", "weapon_pistol" } },
+    ["D"] = { weapons = { "weapon_pistol", "weapon_pistol" } },
     ["C"] = { weapons = { "weapon_pistol_mk2", "weapon_pistol" } },
     ["B"] = { weapons = { "weapon_pistol_mk2", "weapon_pistol" } },
     ["A"] = { weapons = { "weapon_pistol_mk2", "weapon_gusenberg" } },
@@ -568,7 +568,7 @@ Config.Boosting.TiersPerRep = {
 
 Config.Boosting.Price = {
     ["D"] = { min = 0, max = 3 },
-    ["C"] = { min = 5, max = 10 },
+    ["C"] = { min = 0, max = 10 },
     ["B"] = { min = 10, max = 20 },
     ["A"] = { min = 15, max = 30 },
     ["A+"] = { min = 20, max = 45 },
@@ -577,15 +577,21 @@ Config.Boosting.Price = {
 }
 
 Config.Boosting.RandomNames = {
-    "XgamerX",
-    "Just Lazzy",
-    "Zooster",
-    "Hype Squad",
-    "Lowkey Paul",
-    "Jimathy yorass",
-    "Paul Zac",
-    "Gov",
-    "Kareem",
+    'Liam Johnson', 'Olivia Smith', 'Noah Williams', 'Emma Brown', 'Sophia Jones',
+    'Jackson Davis', 'Ava Wilson', 'Aiden Martinez', 'Isabella Taylor', 'Lucas Anderson',
+    'Mia White', 'Zoe Davis', 'Mateo Garcia', 'Luna Martinez', 'Ethan Thomas',
+    'Layla Clark', 'Sebastian Hernandez', 'Harper Lee', 'Alexander King', 'Gianna Martinez',
+    'Benjamin Wilson', 'Ella Johnson', 'James Thompson', 'Avery Anderson', 'Henry White',
+    'Sofia Rodriguez', 'Joseph Davis', 'Camila Johnson', 'David Garcia', 'Scarlett Brown',
+    'Samuel Hernandez', 'Victoria Taylor', 'Carter Smith', 'Madison Martinez', 'Wyatt Johnson',
+    'Grace Davis', 'John Anderson', 'Chloe Smith', 'Owen Wilson', 'Penelope Clark',
+    'Dylan', 'Riley', 'Luke', 'Liliana', 'Gabriel', 'Lillian', 'Anthony', 'Nora', 'Isaac',
+    'Hannah', 'Grayson', 'Elizabeth', 'Jack', 'Aubrey', 'Julian', 'Addison', 'Levi', 'Eliana',
+    'Christopher', 'Mila', 'Joshua', 'Aria', 'Andrew', 'Eleanor', 'Lincoln', 'Natalie', 'Mateo',
+    'Aurora', 'Ryan', 'Victoria', 'Leo', 'Lucy', 'Nathan', 'Nova', 'Oliver', 'Hazel', 'Daniel',
+    'Emilia', 'Caleb', 'Zara', 'Isaiah', 'Everly', 'Henry', 'Isla', 'Cameron', 'Kinsley',
+    'Anthony', 'Amelia', 'Hunter', 'Quinn', 'Aaron', 'Nevaeh', 'Jeremiah', 'Paisley',
+    'Annabelle', 'Landon'
 }
 
 Config.Boosting.MetaReward = {

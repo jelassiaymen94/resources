@@ -178,11 +178,7 @@ local function SpawnCar(src)
         if currentRuns[CID].type == "vinscratch" then
             Entity(car).state.isvinCar = true
         end
-        if GetResourceState('ox_fuel') == "started" then
-            Entity(car).state.fuel = 100.0
-        else
-            TriggerClientEvent('laptop:client:setvehicleFuel', src, car)
-        end
+      
         SetVehicleNumberPlateText(car, plate)
         currentRuns[CID].NetID = NetworkGetNetworkIdFromEntity(car)
         TriggerClientEvent('laptop:client:MissionStarted', src, currentRuns[CID].NetID, coords, plate)

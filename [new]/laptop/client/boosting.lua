@@ -51,7 +51,7 @@ local function DelayDelivery()
     end)
 end
 
-RegisterNetEvent('Polar-Laptop:UpdateBlips', function()
+function UpdateBlips()
     local car = NetworkGetEntityFromNetworkId(NetID)
     local State = Entity(car).state.Boosting
     if State and State.boostHacks then
@@ -59,6 +59,7 @@ RegisterNetEvent('Polar-Laptop:UpdateBlips', function()
             while State and State.boostHacks <  State.TotalBoosts  do
                 local checks = 0
                 if DoesEntityExist(car) then
+                    print('Blips Updated')
                     local pos = GetEntityCoords(car)
                     TriggerServerEvent('laptop:server:SyncBlips', pos, NetID)
                 else
@@ -81,7 +82,7 @@ RegisterNetEvent('Polar-Laptop:UpdateBlips', function()
             end
         end)
     end
-end)
+end
 
 local function CheckVin(NetworkID)
     if IsCheckingVin then return end
@@ -141,7 +142,7 @@ RegisterNetEvent('lockpicks:UseLockpick', function()
                 AntiSpam = true
                 TriggerServerEvent('laptop:server:SpawnPed')
                 RemoveBlip(missionBlip)
-                TriggerEvent('Polar-Laptop:UpdateBlips')
+                UpdateBlips()
                 SendNUIMessage({
                     action = "boosting/setcancel",
                     data = {
@@ -732,9 +733,7 @@ RegisterNetEvent('laptop:client:QueueHandler', function(value)
 end)
 
 
-RegisterNetEvent('laptop:client:setvehicleFuel', function(veh)
-    exports['LegacyFuel']:SetFuel(car, 100.0)
-end)
+
 
 RegisterNUICallback("boosting/getqueue", function(_, cb)
     cb(inQueue)
