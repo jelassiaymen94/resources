@@ -340,11 +340,12 @@ end)
 local function removeCooldown(car, time)
     SetTimeout(time * 1000, function()
         local state = Entity(car).state.Boosting
+        local hacks = state.boostHacks
         local failed = state.BeforeFail
         local totalb = state.TotalBoosts
         local classes = state.Class
         local NewTable = {
-            boostHacks = state.boostHacks,
+            boostHacks = hacks,
             boostCooldown = false,
             TotalBoosts = totalb,
             BeforeFail = failed,
@@ -402,7 +403,7 @@ RegisterNetEvent('laptop:server:SyncPlates', function(success)
 
         end
 
-        local newAmount = Config.Boosting.Debug and 0 or state.boostHacks - 1
+        local newAmount = state.boostHacks - 1
         local doCD = Config.Boosting.Debug and false or true
         local failed = state.BeforeFail
         local totalb = state.TotalBoosts
@@ -437,9 +438,10 @@ RegisterNetEvent('laptop:server:SyncPlates', function(success)
         local failed = state.BeforeFail + 1
         local totalb = state.TotalBoosts
         local classes = state.Class
+        local hacks = state.boostHacks
         print(failed)
         local NewTable = {
-            boostHacks = state.boostHacks,
+            boostHacks = hacks,
             boostCooldown = doCD,
             TotalBoosts = totalb,
             BeforeFail = failed,
