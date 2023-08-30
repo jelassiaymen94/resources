@@ -59,7 +59,6 @@ function UpdateBlips()
             while State and State.boostHacks <  State.TotalBoosts  do
                 local checks = 0
                 if DoesEntityExist(car) then
-                    print('Blips Updated')
                     local pos = GetEntityCoords(car)
                     TriggerServerEvent('laptop:server:SyncBlips', pos, NetID)
                 else

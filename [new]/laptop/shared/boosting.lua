@@ -567,13 +567,13 @@ Config.Boosting.TiersPerRep = {
 }
 
 Config.Boosting.Price = {
-    ["D"] = { min = 0, max = 3 },
-    ["C"] = { min = 0, max = 10 },
-    ["B"] = { min = 10, max = 20 },
-    ["A"] = { min = 15, max = 30 },
-    ["A+"] = { min = 20, max = 45 },
-    ["S"] = { min = 30, max = 50 },
-    ["S+"] = { min = 40, max = 80 },
+    ["D"] = { min = 0, max = 1 },
+    ["C"] = { min = 0, max = 2 },
+    ["B"] = { min = 1, max = 4 },
+    ["A"] = { min = 3, max = 7 },
+    ["A+"] = { min = 8, max = 15 },
+    ["S"] = { min = 25, max = 50 },
+    ["S+"] = { min = 50, max = 100 },
 }
 
 Config.Boosting.RandomNames = {
