@@ -18,7 +18,7 @@ RegisterNetEvent('Polar-Laptop:Client:UpdatePhone', function(amount, totalamount
     "(" .. amount2 .. " / " .. totalamount .. " CURRENT",
     "Look for tracking devices and disable them.",
     "fas fa-user-secret",
-    "#4cf5e4",
+    "#FFFFFF",
     2000000
 )   
 end)
@@ -30,7 +30,7 @@ local function Notify(text, type, time)
             "CURRENT",
             text,
             "fas fa-user-secret",
-            "#4cf5e4",
+            "#FFFFFF4",
             time
         )
   
