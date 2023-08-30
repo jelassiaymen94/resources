@@ -42,7 +42,15 @@ local function DelayDelivery()
         TriggerServerEvent('laptop:server:FinalDestination')
     end)
 end
+RegisterServerEvent('playerEnteredVehicle')
+AddEventHandler('playerEnteredVehicle', function(vehicle)
+    local car = NetworkGetEntityFromNetworkId(NetID)
+    local State = Entity(car).state.Boosting
+    if car == vehicle then
+        TriggerEvent('Polar-Laptop:Client:UpdatePhone', State.boostHacks, State.TotalBoosts)
 
+    end
+end)
 function UpdateBlips()
     local car = NetworkGetEntityFromNetworkId(NetID)
     local State = Entity(car).state.Boosting

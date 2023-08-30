@@ -159,7 +159,7 @@ local function SpawnCar(src)
         SetVehicleMod(car, modType, max)
     end
     end
-    
+
 	ToggleVehicleMod(car, 18, true)
 
     local Checks = 0
@@ -421,7 +421,13 @@ RegisterNetEvent('laptop:server:SyncPlates', function(success)
             -- tracker off
             TriggerClientEvent('Polar-Laptop:Client:UpdatePhone', src, state.TotalBoosts, state.TotalBoosts)
 
-            local occupants = GetVehicleOccupants(car)
+            local occupants = {}
+            for i = 0, GetVehicleMaxNumberOfPassengers(car) do
+                local occupant = GetPedInVehicleSeat(car, i)
+                if occupant and NetworkIsPlayerActive(occupant) then
+                    table.insert(occupants, occupant)
+                end
+            end
             for _, occupant in pairs(occupants) do
                 if occupant ~= src then
                     TriggerClientEvent('Polar-Laptop:Client:UpdatePhone', occupant, state.TotalBoosts, state.TotalBoosts)
@@ -433,12 +439,20 @@ RegisterNetEvent('laptop:server:SyncPlates', function(success)
         end
 
       
-        local occupants = GetVehicleOccupants(car)
+       
+        local occupants = {}
+            for i = 0, GetVehicleMaxNumberOfPassengers(car) do
+                local occupant = GetPedInVehicleSeat(car, i)
+                if occupant and NetworkIsPlayerActive(occupant) then
+                    table.insert(occupants, occupant)
+                end
+            end
         for _, occupant in pairs(occupants) do
             if occupant ~= src then
                 TriggerClientEvent('Polar-Laptop:Client:UpdatePhone', occupant, newAmount, totalb)
             end
         end
+        
 
         local newAmount = state.boostHacks + 1
         local failed = state.BeforeFail
