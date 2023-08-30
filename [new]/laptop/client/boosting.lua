@@ -436,7 +436,7 @@ end)
 
 
 -- ** HACKING THE VEHICLE ** --
-local psUI = {
+local ui = {
     "numeric",
     "alphabet",
     "alphanumeric",
@@ -460,14 +460,15 @@ RegisterNetEvent('laptop:client:HackCar', function()
                 local car = cache.vehicle
                 local State = Entity(car).state.Boosting
             if State and State.boostHacks < State.TotalBoosts and not State.boostCooldown then
-                local pushingP = promise.new()
-                exports['Polar-UI']:Scrambler(function(cb)
-                    pushingP:resolve(cb)
-                end, psUI[math.random(1, #psUI)], 30, 0)
-                local success = Citizen.Await(pushingP)
-
-                TriggerServerEvent('laptop:server:SyncPlates', success)
-                currentHacking = false
+                exports['Polar-UI']:Scrambler(function(success)
+                    if success then
+                        TriggerServerEvent('laptop:server:SyncPlates', true)
+                        currentHacking = false
+                    else
+                        TriggerServerEvent('laptop:server:SyncPlates', false)
+                        currentHacking = false
+                    end
+                end, ui[math.random(1, #ui)], 30, 0)
             else
                 --QBCore.Functions.Notify("You Cannot Hack Right now", 'error', 2500)
                 currentHacking = false

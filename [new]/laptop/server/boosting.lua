@@ -357,7 +357,7 @@ end
 
 RegisterNetEvent('laptop:server:SyncPlates', function(success)
     local src = source
-
+    print('syncing')
     local Player = QBCore.Functions.GetPlayer(src)
 
     local randomSeconds = math.random(Config.Boosting.HackDelayMin, Config.Boosting.HackDelayMax)
