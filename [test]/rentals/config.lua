@@ -109,15 +109,15 @@ Config.Vehicles = {
     sea = {
         [1] = {
             model = 'seashark3',
-            money = 100,
+            money = 900,
         },
         [2] = {
             model = 'dinghy3',
-            money = 500,
+            money = 1500,
         },
         [3] = {
             model = 'tug',
-            money = 750,
+            money = 250,
         },
         [4] = {
             model = 'longfin',

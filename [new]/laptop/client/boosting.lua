@@ -13,20 +13,21 @@ local inQueue = false
 local currentCops = 0
 
 RegisterNetEvent('Polar-Laptop:Client:UpdatePhone', function(amount, totalamount)
+    local amount2 = amount - 1
     TriggerEvent('qb-phone:client:CustomNotification',
-    Lang:t('boosting.info.phonenotify'),
-    "Hacking - " .. amount .. "/" .. totalamount,
+    "(" .. amount2 .. " / " .. totalamount .. " CURRENT",
+    "Look for tracking devices and disable them.",
     "fas fa-user-secret",
     "#4cf5e4",
     2000000
-)
+)   
 end)
 ---- Notify functions ----
 
 local function Notify(text, type, time)
   
         TriggerEvent('qb-phone:client:CustomNotification',
-            Lang:t('boosting.info.phonenotify'),
+            "CURRENT",
             text,
             "fas fa-user-secret",
             "#4cf5e4",
@@ -54,6 +55,7 @@ function UpdateBlips()
                 local checks = 0
                 if DoesEntityExist(car) then
                     local pos = GetEntityCoords(car)
+                    TriggerServerEvent('InteractSound_SV:PlayAtCoord', pos, 50, 'shiftyclick', 0.35) 
                     TriggerServerEvent('laptop:server:SyncBlips', pos, NetID)
                 else
                     checks = checks + 1
@@ -207,8 +209,10 @@ RegisterNetEvent('laptop:client:MissionStarted',
                 , 250.0)
             SetBlipAlpha(missionBlip, 150)
             SetBlipHighDetail(missionBlip, true)
-            SetBlipColour(missionBlip, 1)
+            SetBlipColour(missionBlip, 32)
             SetBlipAsShortRange(missionBlip, true)
+
+            Notify('Find and steal the tracked vehicle', 'success', 600000)
         end
     end)
 
