@@ -10,73 +10,40 @@ local MaxPools = { -- Contains all the the amount of contracts avaible every res
 }
 
 local cars = {
-    ["D"] = {},
-    ["C"] = {},
-    ["B"] = {},
-    ["A"] = {},
-    ["A+"] = {},
-    ["S"] = {},
-    ["S+"] = {},
+    ["D"] = {
+        'dominator',
+        'dominator',
+    },
+    ["C"] = {
+        'gauntlet',
+        'gauntlet',
+    },
+    ["B"] = {
+        'dominator',
+        'dominator',
+    },
+    ["A"] = {
+        'dominator',
+        'dominator',
+    },
+    ["A+"] = {
+        'dominator',
+        'dominator',
+    },
+    ["S"] = {
+        'dominator',
+        'dominator',
+    },
+    ["S+"] = {
+        'dominator',
+        'dominator',
+    },
 }
 
 local CheckedVin = {
 
 }
 
-local D = {
-    'dominator',
-    'dominator',
-}
-local C = {
-    'gauntlet',
-    'gauntlet',
-}
-local B = {
-    'dominator',
-    'dominator',
-}
-local A = {
-    'dominator',
-    'dominator',
-}
-local AA = {
-    'dominator',
-    'dominator',
-}
-local S = {
-    'dominator',
-    'dominator',
-}
-local SS = {
-    'dominator',
-    'dominator',
-}
-
-CreateThread(function()
-    
-        for _, v in pairs(D) do
-            cars["D"][#cars["D"] + 1] = v
-        end
-        for _, v in pairs(C) do
-            cars["C"][#cars["C"] + 1] = v
-        end
-        for _, v in pairs(B) do
-            cars["B"][#cars["B"] + 1] = v
-        end
-        for _, v in pairs(A) do
-            cars["A"][#cars["A"] + 1] = v
-        end
-        for _, v in pairs(AA) do
-            cars["A+"][#cars["A+"] + 1] = v
-        end
-        for _, v in pairs(S) do
-            cars["S"][#cars["S"] + 1] = v
-        end
-        for _, v in pairs(SS) do
-            cars["S+"][#cars["S+"] + 1] = v
-        end
-    
-end)
 
 local currentRuns = {}
 local ActivePlates = {} -- Handle all the active plates and syncs all the data shit
