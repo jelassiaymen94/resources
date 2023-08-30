@@ -349,7 +349,7 @@ local function removeCooldown(car, time)
             BeforeFail = failed,
             Class = classes,
         }
-        Entity(car).state:set('Boosting', newState, true)
+        Entity(car).state:set('Boosting', NewTable, true)
         print('cooldown end')
     end)
 end
