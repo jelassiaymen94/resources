@@ -445,7 +445,8 @@ RegisterNetEvent('laptop:server:SyncPlates', function(success)
 
        
         local failed = state.BeforeFail + 1
-        local totalb = state.TotalBoosts
+        local totalb = state.TotalBoosts - 1
+        if totalb < 0 then totalc = 0 else totalc = totalb end
         local classes = state.Class
         local hacks = state.boostHacks
      --   print("failed amount " .. failed)
@@ -456,7 +457,7 @@ RegisterNetEvent('laptop:server:SyncPlates', function(success)
         local NewTable = {
             boostHacks = hacks,
             boostCooldown = true,
-            TotalBoosts = totalb,
+            TotalBoosts = totalc,
             BeforeFail = failed,
             Class = classes,
         }
