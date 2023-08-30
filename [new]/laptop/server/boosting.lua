@@ -400,13 +400,13 @@ RegisterNetEvent('laptop:server:SyncPlates', function(success)
         end
 
         local newAmount = state.boostHacks + 1
-        local doCD = Config.Boosting.Debug and false or true
+      
         local failed = state.BeforeFail
         local totalb = state.TotalBoosts
         local classes = state.Class
         local NewTable = {
             boostHacks = newAmount,
-            boostCooldown = doCD,
+            boostCooldown = true,
             TotalBoosts = totalb,
             BeforeFail = failed,
             Class = classes,
@@ -415,24 +415,20 @@ RegisterNetEvent('laptop:server:SyncPlates', function(success)
         print("vehicle class " .. classes)
         print("total hacks = " .. totalb)
         print("hacks = " .. hacks)
-        print("cooldown = " .. doCD)
+     
        -- Notify(src, "Boost Hacks Left : " .. boostHacks, 'success', 7500)
 
         TriggerClientEvent('Polar-Laptop:Client:UpdatePhone', src, boostHacks, state.TotalBoosts)
 
-        --local driver = GetPedInVehicleSeat(car, -1)
-      --  local driverwho = GetPlayerFromServerId(NetworkGetPlayerIndexFromPed(driver))
-       -- TriggerClientEvent('QBCore:Notify', driver, "you Driver?", 'error')
-      --  TriggerClientEvent('QBCore:Notify', driverwho, "you Driver? 2", 'error')
-
+      
         Entity(car).state:set('Boosting', NewTable, true)
 
         removeCooldown(car, randomSeconds) 
 
-        --log(("Hacking was successfull %s hacks left"):format(Entity(car).state.Boosting.boostHacks))
+        log(("Hacking was successfull %s hacks left"):format(Entity(car).state.Boosting.boostHacks))
     else
 
-        local doCD = Config.Boosting.Debug and false or true
+       
         local failed = state.BeforeFail + 1
         local totalb = state.TotalBoosts
         local classes = state.Class
@@ -441,10 +437,10 @@ RegisterNetEvent('laptop:server:SyncPlates', function(success)
         print("vehicle class " .. classes)
         print("total hacks = " .. totalb)
         print("hacks = " .. hacks)
-        print("cooldown = " .. doCD)
+      
         local NewTable = {
             boostHacks = hacks,
-            boostCooldown = doCD,
+            boostCooldown = true,
             TotalBoosts = totalb,
             BeforeFail = failed,
             Class = classes,
@@ -463,7 +459,7 @@ RegisterNetEvent('laptop:server:SyncPlates', function(success)
             end
         end
 
-        --log("Failed the hacking")
+        log("Failed the hacking")
        -- Notify(src, Lang:t('boosting.error.disable_fail'), 'success', 7500)
 
         if Player then

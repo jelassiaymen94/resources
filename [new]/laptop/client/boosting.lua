@@ -24,7 +24,7 @@ end)
 ---- Notify functions ----
 
 local function Notify(text, type, time)
-    if Config.Boosting.Notifications == "phone" then
+  
         TriggerEvent('qb-phone:client:CustomNotification',
             Lang:t('boosting.info.phonenotify'),
             text,
@@ -32,16 +32,7 @@ local function Notify(text, type, time)
             "#4cf5e4",
             time
         )
-    elseif Config.Boosting.Notifications == "npwd" then
-        TriggerServerEvent('qb-phone:server:sendNewMail', {
-            sender = Lang:t('boosting.info.phonenotify'),
-            subject = 'Boosting',
-            message = text,
-            button = {}
-        })
-    else
-        QBCore.Functions.Notify(text, type, time)
-    end
+  
 end
 
 -- ALL THE BLIP FUNCTIONS --
