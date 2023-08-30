@@ -67,7 +67,7 @@ function UpdateBlips()
             if DoesEntityExist(car) then
                 TriggerServerEvent('laptop:server:SyncBlips', nil, NetID)
                 --Notify(Lang:t("boosting.success.disable_tracker"), 'success', 7500)
-                local State = Entity(car).state.Boosting  
+                
                 print(State.boostHacks)
                 print(State.TotalBoosts)  
                 DelayDelivery()
