@@ -49,6 +49,9 @@ function UpdateBlips()
         CreateThread(function()
         while true do
             if State.boostHacks <  State.TotalBoosts  then
+                
+                print(State.boostHacks)
+                print(State.TotalBoosts)  
 
                 local checks = 0
                 if DoesEntityExist(car) then
