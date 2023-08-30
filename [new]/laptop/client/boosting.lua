@@ -82,7 +82,7 @@ function UpdateBlips()
                    
                     print('finished')
                     DelayDelivery()
-
+                    break
                 end
 
             end
