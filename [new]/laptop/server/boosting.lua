@@ -168,11 +168,10 @@ local function SpawnCar(src)
         ----- POLAR BOOSTAMOUNT
         Entity(car).state.Boosting = {
             boostHacks = boostamount,
-            boostCooldown = false
+            boostCooldown = false,
+            TotalBoosts = boostamount,
         }
-        Entity(car).state.TotalBoosts = {
-            boostHacks = boostamount,
-        }
+        
 
         if currentRuns[CID].type == "vinscratch" then
             Entity(car).state.isvinCar = true
@@ -390,7 +389,7 @@ RegisterNetEvent('laptop:server:SyncPlates', function(success)
             -- tracker off
             TriggerClientEvent('Polar-Laptop:Client:UpdatePhone', src, boostHacks, state.TotalBoosts)
 
-            Notify(src, Lang:t('boosting.success.tracker_off', { tracker_left = newThing, time = randomSeconds }),'success', 7500)
+          --  Notify(src, Lang:t('boosting.success.tracker_off', { tracker_left = newThing, time = randomSeconds }),'success', 7500)
 
 
         end

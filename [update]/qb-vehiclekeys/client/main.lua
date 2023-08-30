@@ -244,7 +244,7 @@ function GiveKeys(id, plate)
     if distance < 1.5 and distance > 0.0 then
         TriggerServerEvent('qb-vehiclekeys:server:GiveVehicleKeys', id, plate)
         SetVehicleAlarm(plate, false)
-        print('set alarm')
+        --print('set alarm')
     else
         QBCore.Functions.Notify(Lang:t("notify.nonear"),'error')
     end
@@ -488,7 +488,7 @@ function LockpickDoor(type)
     if GetVehicleDoorLockStatus(vehicle) <= 0 then return end
     if type == 'special' then
         if policecarfunction(vehicle) then
-            print('police')
+            --print('police')
             if playeritem('specialpick') then
                 exports['qb-dispatch']:VehicleTheft(vehicle)
                 Config.LockPickDoorEvent('police')
@@ -496,14 +496,14 @@ function LockpickDoor(type)
         end
     elseif type == 'advanced' then
         if advancedcarfunction(vehicle) then
-            print('advanced')
+            --print('advanced')
             if playeritem('advancedlockpick') then
                 Config.LockPickDoorEvent('advanced')
             end
         end
     else
         if playeritem('lockpick') then
-            print('regular')
+           -- print('regular')
             if advancedcarfunction(vehicle) then return end
             if policecarfunction(vehicle) then return end
 

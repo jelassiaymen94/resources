@@ -46,7 +46,7 @@ Config.LockPickDoorEvent = function(type) -- This function is called when a play
             TriggerServerEvent('hud:server:GainStress', math.random(1, 4))
             TriggerEvent("QBCore:Notify", "You failed to lockpick.", "error")
         end
-    end, 2, 40) -- NumberOfCircles, MS
+    end, 5, 40) -- NumberOfCircles, MS
 
     
     else
