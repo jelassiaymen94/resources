@@ -334,6 +334,7 @@ end)
 
 -- ** Hacking Cars ** --
 local function removeCooldown(car, time)
+    print('cooldown start')
     SetTimeout(time * 1000, function()
         local state = Entity(car).state.Boosting
         local hacks = state.boostHacks
@@ -348,6 +349,7 @@ local function removeCooldown(car, time)
             Class = classes,
         }
         Entity(car).state:set('Boosting', newState, true)
+        print('cooldown end')
     end)
 end
 
