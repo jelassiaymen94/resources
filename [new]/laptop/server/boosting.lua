@@ -418,7 +418,9 @@ RegisterNetEvent('laptop:server:SyncPlates', function(success)
         print("failed amount " .. failed)
         print("vehicle class " .. classes)
         print("total hacks = " .. totalb)
-        Notify(src, "Boost Hacks Left : " .. boostHacks, 'success', 7500)
+        print("hacks = " .. hacks)
+        print("cooldown = " .. doCD)
+       -- Notify(src, "Boost Hacks Left : " .. boostHacks, 'success', 7500)
 
         TriggerClientEvent('Polar-Laptop:Client:UpdatePhone', src, boostHacks, state.TotalBoosts)
 
@@ -439,7 +441,11 @@ RegisterNetEvent('laptop:server:SyncPlates', function(success)
         local totalb = state.TotalBoosts
         local classes = state.Class
         local hacks = state.boostHacks
-        print(failed)
+        print("failed amount " .. failed)
+        print("vehicle class " .. classes)
+        print("total hacks = " .. totalb)
+        print("hacks = " .. hacks)
+        print("cooldown = " .. doCD)
         local NewTable = {
             boostHacks = hacks,
             boostCooldown = doCD,
