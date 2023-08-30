@@ -393,7 +393,7 @@ RegisterNetEvent('laptop:server:SyncPlates', function(success)
     end
 
     if success then
-        if state.boostHacks - 1 >= 1 then
+        if state.boostHacks <= state.TotalBoosts then
 
             -- tracker off
             TriggerClientEvent('Polar-Laptop:Client:UpdatePhone', src, boostHacks, state.TotalBoosts)
@@ -403,7 +403,7 @@ RegisterNetEvent('laptop:server:SyncPlates', function(success)
 
         end
 
-        local newAmount = state.boostHacks - 1
+        local newAmount = state.boostHacks + 1
         local doCD = Config.Boosting.Debug and false or true
         local failed = state.BeforeFail
         local totalb = state.TotalBoosts
