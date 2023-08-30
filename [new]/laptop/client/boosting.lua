@@ -68,15 +68,19 @@ function UpdateBlips()
                 .Boosting  
                
                 print(State.boostHacks)
-                print(State.TotalBoosts)  
+                print('cycled')
             else
 
                 if DoesEntityExist(car) then
+
+                    print(State.boostHacks)
+                    
+
                     TriggerServerEvent('laptop:server:SyncBlips', nil, NetID)
                 --Notify(Lang:t("boosting.success.disable_tracker"), 'success', 7500)
                 
-                    print(State.boostHacks)
-                    print(State.TotalBoosts)  
+                   
+                    print('finished')
                     DelayDelivery()
 
                 end
