@@ -48,7 +48,7 @@ function UpdateBlips()
     if State and State.boostHacks then
         CreateThread(function()
         while true do
-            if State.boostHacks <  State.TotalBoosts + 1  then
+            if State.boostHacks <  State.TotalBoosts  then
               
 
                 local checks = 0
@@ -477,7 +477,7 @@ RegisterNetEvent('laptop:client:HackCar', function()
                 local car = cache.vehicle
                 local State = Entity(car).state.Boosting
 
-            if State and State.boostHacks < State.TotalBoosts + 1 and not State.boostCooldown then
+            if State and State.boostHacks < State.TotalBoosts and not State.boostCooldown then
 
                 exports['Polar-UI']:Scrambler(function(success)
                     if success then

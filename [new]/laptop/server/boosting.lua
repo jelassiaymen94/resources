@@ -165,11 +165,12 @@ local function SpawnCar(src)
 
 
         local boostamount = math.random(3,10)
+        local ba = boostamount + 1
         ----- POLAR BOOSTAMOUNT
         Entity(car).state.Boosting = {
             boostHacks = 1,
             boostCooldown = false,
-            TotalBoosts = boostamount,
+            TotalBoosts = ba,
             BeforeFail = 0,
             Class = currentRuns[CID].contract,
         }
