@@ -27,7 +27,7 @@ function loadModel(model) if type(model) == 'number' then model = model else mod
 function loadAnimDict(dict) while not HasAnimDictLoaded(dict) do RequestAnimDict(dict) Wait(50) end end
 
 
-local PlayerData = nil
+
 function playeritem(items, amount)
       
         PlayerData = QBCore.Functions.GetPlayerData()
