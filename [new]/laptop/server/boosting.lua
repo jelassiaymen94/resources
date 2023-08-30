@@ -23,14 +23,58 @@ local CheckedVin = {
 
 }
 
+local D = {
+    'dominator',
+    'dominator',
+}
+local C = {
+    'gauntlet',
+    'gauntlet',
+}
+local B = {
+    'dominator',
+    'dominator',
+}
+local A = {
+    'dominator',
+    'dominator',
+}
+local AA = {
+    'dominator',
+    'dominator',
+}
+local S = {
+    'dominator',
+    'dominator',
+}
+local SS = {
+    'dominator',
+    'dominator',
+}
 
 CreateThread(function()
     while not QBCore do Wait(250) end
 
-    for k, v in pairs(QBCore.Shared.Vehicles) do
-        if v['tier'] and cars[v['tier']] then
-            cars[v['tier']][#cars[v['tier']] + 1] = k
-        end
+    for k, v in pairs(D) do
+        cars["D"][#cars[v["D"]] + 1] = k
+    end
+    for k, v in pairs(C) do
+        cars["C"][#cars[v["C"]] + 1] = k
+    end
+    for k, v in pairs(B) do
+        cars["B"][#cars[v["B"]] + 1] = k
+    end
+    for k, v in pairs(A) do
+        cars["A"][#cars[v["A"]] + 1] = k
+    end
+    for k, v in pairs(AA) do
+        cars["AA"][#cars[v["AA"]] + 1] = k
+    end
+    for k, v in pairs(S) do
+        cars["S"][#cars[v["S"]] + 1] = k
+    end
+    for k, v in pairs(SS) do
+        cars["SS"][#cars[v["SS"]] + 1] = k
     end
 end)
 
@@ -923,8 +967,8 @@ CreateThread(function()
                 end
             end
         end
-      --  Wait(math.random(30000, 60000)) -- Once every 1 to 4 minutes
-        Wait(math.random(300, 600)) 
+        Wait(math.random(30000, 60000)) -- Once every 1 to 4 minutes
+       -- Wait(math.random(300, 600)) 
     end
 end)
 

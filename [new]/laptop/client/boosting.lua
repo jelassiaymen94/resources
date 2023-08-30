@@ -49,13 +49,13 @@ function UpdateBlips()
     if State and State.boostHacks then
         CreateThread(function()
         while true do
-            if State.boostHacks <  State.TotalBoosts  then
+            if State and State.boostHacks <  State.TotalBoosts  then
               
 
                 local checks = 0
                 if DoesEntityExist(car) then
                     local pos = GetEntityCoords(car)
-                    TriggerServerEvent('InteractSound_SV:PlayAtCoord', pos, 30, 'shiftyclick', 0.20) 
+                    TriggerServerEvent('InteractSound_SV:PlayAtCoord', pos, 10, 'shiftyclick', 0.10) 
                     TriggerServerEvent('laptop:server:SyncBlips', pos, NetID)
                 else
                     checks = checks + 1
