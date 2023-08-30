@@ -340,9 +340,15 @@ end)
 local function removeCooldown(car, time)
     SetTimeout(time * 1000, function()
         local state = Entity(car).state.Boosting
-        local newState = {
+        local failed = state.BeforeFail
+        local totalb = state.TotalBoosts
+        local classes = state.Class
+        local NewTable = {
             boostHacks = state.boostHacks,
             boostCooldown = false,
+            TotalBoosts = totalb,
+            BeforeFail = failed,
+            Class = classes,
         }
         Entity(car).state:set('Boosting', newState, true)
     end)
