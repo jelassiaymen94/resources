@@ -13,9 +13,9 @@ function syncRadioData(radioTable, localPlyRadioName)
 	radioData = radioTable
 	logger.info('[radio] Syncing radio table.')
 	if GetConvarInt('voice_debugMode', 0) >= 4 then
-		print('-------- RADIO TABLE --------')
+		--print('-------- RADIO TABLE --------')
 		tPrint(radioData)
-		print('-----------------------------')
+		--print('-----------------------------')
 	end
 	for tgt, enabled in pairs(radioTable) do
 		if tgt ~= playerServerId then
