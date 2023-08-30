@@ -398,7 +398,7 @@ RegisterNetEvent('laptop:server:SyncPlates', function(success)
 
         local newAmount = Config.Boosting.Debug and 0 or state.boostHacks - 1
         local doCD = Config.Boosting.Debug and false or true
-        local failed = state.BeforeFail or 0
+        local failed = state.BeforeFail
         local totalb = state.TotalBoosts
         local classes = state.Class
         local NewTable = {
@@ -431,6 +431,7 @@ RegisterNetEvent('laptop:server:SyncPlates', function(success)
         local failed = state.BeforeFail + 1
         local totalb = state.TotalBoosts
         local classes = state.Class
+        print(failed)
         local NewTable = {
             boostHacks = state.boostHacks,
             boostCooldown = doCD,
