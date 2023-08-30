@@ -167,7 +167,7 @@ local function SpawnCar(src)
         local boostamount = math.random(3,10)
         ----- POLAR BOOSTAMOUNT
         Entity(car).state.Boosting = {
-            boostHacks = 0,
+            boostHacks = 1,
             boostCooldown = false,
             TotalBoosts = boostamount,
             BeforeFail = 0,
@@ -401,7 +401,7 @@ RegisterNetEvent('laptop:server:SyncPlates', function(success)
 
         end
 
-        local newAmount = state.boostHacks += 1
+        local newAmount = state.boostHacks + 1
         local failed = state.BeforeFail
         local totalb = state.TotalBoosts
         local classes = state.Class
@@ -433,7 +433,7 @@ RegisterNetEvent('laptop:server:SyncPlates', function(success)
         local failed = state.BeforeFail + 1
         local totalb = state.TotalBoosts
         local classes = state.Class
-        local hacks = state.boostHacks += 0
+        local hacks = state.boostHacks
         print("failed amount " .. failed)
         print("vehicle class " .. classes)
         print("total hacks = " .. totalb)

@@ -12,8 +12,6 @@ Config.Boosting.HackDelayMin = 30 -- Seconds
 Config.Boosting.HackDelayMax = 60 -- Seconds
 
 
-Config.Boosting.Frequency = 60 -- Whats the max time for a boost ping for cops? - Standard 30 seconds
-
 Config.Boosting.MaxBoosts = 4 -- The amount of boosts a player can hold in their laptop at any given time.
 
 Config.Boosting.MinusOne = true -- true or false, detmains wheather the Z is minus 1 or not.

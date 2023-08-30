@@ -48,10 +48,8 @@ function UpdateBlips()
     if State and State.boostHacks then
         CreateThread(function()
         while true do
-            if State.boostHacks <  State.TotalBoosts  then
-                
-                print(State.boostHacks)
-                print(State.TotalBoosts)  
+            if State.boostHacks <  State.TotalBoosts + 1  then
+              
 
                 local checks = 0
                 if DoesEntityExist(car) then
@@ -65,10 +63,10 @@ function UpdateBlips()
                 end
 
 
-                Wait((math.floor(Config.Boosting.Frequency * 1000) / (State.boostHacks + 1)))
+                Wait(math.floor(10 * 1000 * State.boostHacks))
                 State = Entity(car).state
                 .Boosting  
-                print('1')    
+               
                 print(State.boostHacks)
                 print(State.TotalBoosts)  
             else
@@ -475,7 +473,7 @@ RegisterNetEvent('laptop:client:HackCar', function()
                 local car = cache.vehicle
                 local State = Entity(car).state.Boosting
 
-            if State and State.boostHacks < State.TotalBoosts and not State.boostCooldown then
+            if State and State.boostHacks < State.TotalBoosts + 1 and not State.boostCooldown then
 
                 exports['Polar-UI']:Scrambler(function(success)
                     if success then
