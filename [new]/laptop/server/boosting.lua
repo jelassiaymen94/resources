@@ -389,18 +389,17 @@ RegisterNetEvent('laptop:server:SyncPlates', function(success)
     end
 
     if success then
-        if state.boostHacks <= state.TotalBoosts then
+        if state.boostHacks >= state.TotalBoosts then
 
             -- tracker off
-            TriggerClientEvent('Polar-Laptop:Client:UpdatePhone', src, boostHacks, state.TotalBoosts)
+            TriggerClientEvent('Polar-Laptop:Client:UpdatePhone', src, state.boostHacks, state.TotalBoosts)
 
           --  Notify(src, Lang:t('boosting.success.tracker_off', { tracker_left = newThing, time = randomSeconds }),'success', 7500)
 
 
         end
 
-        local newAmount = state.boostHacks + 1
-      
+        local newAmount = state.boostHacks += 1
         local failed = state.BeforeFail
         local totalb = state.TotalBoosts
         local classes = state.Class
@@ -418,7 +417,7 @@ RegisterNetEvent('laptop:server:SyncPlates', function(success)
      
        -- Notify(src, "Boost Hacks Left : " .. boostHacks, 'success', 7500)
 
-        TriggerClientEvent('Polar-Laptop:Client:UpdatePhone', src, boostHacks, state.TotalBoosts)
+        TriggerClientEvent('Polar-Laptop:Client:UpdatePhone', src, newAmount, state.TotalBoosts)
 
       
         Entity(car).state:set('Boosting', NewTable, true)
