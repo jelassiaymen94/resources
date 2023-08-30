@@ -160,7 +160,15 @@ end)
 -- MISSION STARTER --
 
 -- Sends information from server to client that it will start now
-
+RegisterNetEvent('Polar-Laptop:Client:DestroyCar', function()
+    local vehicle = GetVehiclePedIsIn(PlayerPedId(), false)
+    local currentHealth = GetEntityHealth(vehicle)
+    print(vehicle)
+    print(currentHealth)
+    if currentHealth > 20 then
+        SetEntityHealth(vehicle, currentHealth - 20)
+    end
+end)
 RegisterNetEvent('laptop:client:MissionStarted',
     function(netID, coords, plate) -- Pretty much just resets every boolean to make sure no issues will occour.
         NetID = netID
