@@ -383,6 +383,10 @@ RegisterNetEvent('laptop:server:SyncPlates', function(success)
         log("state is on Cooldown")
         return
     end
+    if state.boostHacks > state.TotalBoosts then
+        log("Boosthacks is 0 or less")
+        return
+    end
 
     if success then
         if state.boostHacks <= state.TotalBoosts then
