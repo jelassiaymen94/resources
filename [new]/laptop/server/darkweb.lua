@@ -2,7 +2,7 @@ local QBCore = exports['qb-core']:GetCoreObject()
 
 RegisterNetEvent('laptop:server:crateOpened', function(crateID)
     local _s = source
-    QBCore.Functions.GetPlayer(_s).Functions.RemoveItem('drill', 1)
+    QBCore.Functions.GetPlayer(_s).Functions.RemoveItem('thermite', 1)
     crates[crateID].isOpened = true
     TriggerClientEvent('laptop:client:updateCrates', -1, crates)
 end)
