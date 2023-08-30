@@ -478,7 +478,7 @@ RegisterNetEvent('laptop:client:HackCar', function()
                 TriggerServerEvent('laptop:server:SyncPlates', success)
                 currentHacking = false
             else
-                QBCore.Functions.Notify("Wait to Hack Again", 'error', 2500)
+                --QBCore.Functions.Notify("You Cannot Hack Right now", 'error', 2500)
                 currentHacking = false
             end
            
