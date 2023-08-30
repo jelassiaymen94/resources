@@ -381,7 +381,16 @@ end
 function log(text)
    -- print(json.encode(text, { pretty = true, indent = true, align_keys = true }))
 end
+RegisterServerEvent('playerEnteredVehicle')
+AddEventHandler('playerEnteredVehicle', function(vehicle)
+    local src = source
+    local car = NetworkGetEntityFromNetworkId(NetID)
+    local State = Entity(car).state.Boosting
+    if car == vehicle then
+        TriggerClientEvent('Polar-Laptop:Client:UpdatePhone', src, state.TotalBoosts, state.TotalBoosts)
 
+    end
+end)
 RegisterNetEvent('laptop:server:SyncPlates', function(success)
     local src = source
    
@@ -452,7 +461,7 @@ RegisterNetEvent('laptop:server:SyncPlates', function(success)
                 TriggerClientEvent('Polar-Laptop:Client:UpdatePhone', occupant, newAmount, totalb)
             end
         end
-        
+
 
         local newAmount = state.boostHacks + 1
         local failed = state.BeforeFail
