@@ -63,7 +63,8 @@ function UpdateBlips()
 
 
                 Wait((math.floor(Config.Boosting.Frequency * 1000) / (State.boostHacks + 1)))
-                State = Entity(car).state.Boosting  
+                State = Entity(car).state
+                .Boosting  
                 print('1')    
                 print(State.boostHacks)
                 print(State.TotalBoosts)  
