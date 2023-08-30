@@ -153,14 +153,14 @@ local function SpawnCar(src)
     
     if currentRuns[CID].contract == "D" then
     local performanceModIndices = { 11, 12, 13, 15, 16 }
-    
+
     for _, modType in ipairs(performanceModIndices) do
         max = GetNumVehicleMods(car, tonumber(modType)) - 1
         SetVehicleMod(car, modType, max)
     end
     end
 
-	ToggleVehicleMod(car, 18, true)
+	--ToggleVehicleMod(car, 18, true)
 
     local Checks = 0
 
