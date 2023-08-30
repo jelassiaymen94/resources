@@ -356,7 +356,7 @@ local function removeCooldown(car, time)
 end
 
 function log(text)
-    print(json.encode(text, { pretty = true, indent = true, align_keys = true }))
+   -- print(json.encode(text, { pretty = true, indent = true, align_keys = true }))
 end
 
 RegisterNetEvent('laptop:server:SyncPlates', function(success)
@@ -484,7 +484,7 @@ end)
 ----- ** EVERYTHING TO DO QUEUE ** -----
 
 QBCore.Functions.CreateCallback('laptop:server:joinQueue', function(source, cb, status)
-    print(status)
+   -- print(status)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
     if not Player then return cb("error") end
