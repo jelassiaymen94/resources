@@ -56,7 +56,7 @@ function UpdateBlips()
     local State = Entity(car).state.Boosting
     if State and State.boostHacks then
         CreateThread(function()
-            while State do -- and State.boostHacks <  State.TotalBoosts  do
+            while State and State.boostHacks <  State.TotalBoosts  do
                 local checks = 0
                 if DoesEntityExist(car) then
                     print('Blips Updated')
@@ -70,7 +70,7 @@ function UpdateBlips()
                 end
 
 
-                Wait((Config.Boosting.Frequency * 1000) / State.boostHacks) -- Max 10 seconds, the more times hacked the less time it updates
+                Wait((math.floor(Config.Boosting.Frequency * 1000) / (State.boostHacks + 1))) -- Max 10 seconds, the more times hacked the less time it updates
                 State = Entity(car).state
                     .Boosting                                               -- Makes it so that it dosnt get the state from the car twice on first run
             end
