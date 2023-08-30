@@ -413,7 +413,7 @@ RegisterNetEvent('laptop:server:SyncPlates', function(success)
             local occupants = GetVehicleOccupants(car)
             for _, occupant in pairs(occupants) do
                 if occupant ~= src then
-                    TriggerClientEvent('Polar-Laptop:Client:UpdatePhone', src, state.TotalBoosts, state.TotalBoosts)
+                    TriggerClientEvent('Polar-Laptop:Client:UpdatePhone', occupant, state.TotalBoosts, state.TotalBoosts)
                 end
             end
           --  Notify(src, Lang:t('boosting.success.tracker_off', { tracker_left = newThing, time = randomSeconds }),'success', 7500)
@@ -425,7 +425,7 @@ RegisterNetEvent('laptop:server:SyncPlates', function(success)
         local occupants = GetVehicleOccupants(car)
         for _, occupant in pairs(occupants) do
             if occupant ~= src then
-                TriggerClientEvent('Polar-Laptop:Client:UpdatePhone', src, newAmount, totalb)
+                TriggerClientEvent('Polar-Laptop:Client:UpdatePhone', occupant, newAmount, totalb)
             end
         end
 
