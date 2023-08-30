@@ -55,6 +55,14 @@ local function UpdateBlips()
     local car = NetworkGetEntityFromNetworkId(NetID)
     local State = Entity(car).state.Boosting
     if State and State.boostHacks then
+        local hacks = State.boostHacks
+        local failed = State.BeforeFail
+        local totalb = State.TotalBoosts
+        local classes = State.Class
+        print("failed amount " .. failed)
+        print("vehicle class " .. classes)
+        print("total hacks = " .. totalb)
+        print("hacks = " .. hacks)
         CreateThread(function()
             while State and State.boostHacks <  State.TotalBoosts  do
                 local checks = 0

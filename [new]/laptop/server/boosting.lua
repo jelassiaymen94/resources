@@ -173,7 +173,7 @@ local function SpawnCar(src)
             BeforeFail = 0,
             Class = currentRuns[CID].contract,
         }
-        
+       
 
         if currentRuns[CID].type == "vinscratch" then
             Entity(car).state.isvinCar = true
