@@ -142,7 +142,7 @@ RegisterNetEvent('lockpicks:UseLockpick', function()
                 AntiSpam = true
                 TriggerServerEvent('laptop:server:SpawnPed')
                 RemoveBlip(missionBlip)
-                UpdateBlips()
+                --UpdateBlips()
                 SendNUIMessage({
                     action = "boosting/setcancel",
                     data = {
