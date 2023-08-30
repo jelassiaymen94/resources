@@ -214,7 +214,7 @@ RegisterNetEvent('Renewed-Garbage:client:NewPlace', function(location, NetID, pl
     blip = AddBlipForRadius(curLocation.x, curLocation.y, curLocation.z, 200.0)
     SetBlipAlpha(blip, 150)
     SetBlipHighDetail(blip, true)
-    SetBlipColour(blip, 1)
+    SetBlipColour(blip, 11)
     SetBlipAsShortRange(blip, true)
 
 
