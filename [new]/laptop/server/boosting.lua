@@ -431,7 +431,7 @@ RegisterNetEvent('laptop:server:SyncPlates', function(success)
         local failed = state.BeforeFail + 1
         local totalb = state.TotalBoosts
         local classes = state.Class
-        local hacks = state.boostHacks
+        local hacks = state.boostHacks += 0
         print("failed amount " .. failed)
         print("vehicle class " .. classes)
         print("total hacks = " .. totalb)
