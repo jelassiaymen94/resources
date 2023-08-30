@@ -416,11 +416,11 @@ RegisterNetEvent('laptop:server:SyncPlates', function(success)
         print("failed amount " .. failed)
         print("vehicle class " .. classes)
         print("total hacks = " .. totalb)
-        print("hacks = " .. hacks)
+        print("hacks = " .. newAmount)
      
        -- Notify(src, "Boost Hacks Left : " .. boostHacks, 'success', 7500)
 
-        TriggerClientEvent('Polar-Laptop:Client:UpdatePhone', src, newAmount, state.TotalBoosts)
+        TriggerClientEvent('Polar-Laptop:Client:UpdatePhone', src, newAmount, totalb)
 
       
         Entity(car).state:set('Boosting', NewTable, true)
@@ -453,9 +453,7 @@ RegisterNetEvent('laptop:server:SyncPlates', function(success)
 
         if failed > 2 then 
             if classes == "D" then
-                TriggerClientEvent('Polar-Laptop:Client:DestroyCar', src)
             elseif classes == "C" then
-                TriggerClientEvent('Polar-Laptop:Client:DestroyCar', src)
             else
                 TriggerClientEvent('Polar-Laptop:Client:DestroyCar', src)
             end

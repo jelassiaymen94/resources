@@ -67,20 +67,20 @@ function UpdateBlips()
                 State = Entity(car).state
                 .Boosting  
                
-                print(State.boostHacks)
-                print('cycled')
+               -- print(State.boostHacks)
+               -- print('cycled')
             else
 
                 if DoesEntityExist(car) then
 
-                    print(State.boostHacks)
+                 --   print(State.boostHacks)
                     
 
                     TriggerServerEvent('laptop:server:SyncBlips', nil, NetID)
                 --Notify(Lang:t("boosting.success.disable_tracker"), 'success', 7500)
                 
                    
-                    print('finished')
+                  --  print('finished')
                     DelayDelivery()
                     break
                 end
@@ -171,10 +171,9 @@ end)
 RegisterNetEvent('Polar-Laptop:Client:DestroyCar', function()
     local vehicle = GetVehiclePedIsIn(PlayerPedId(), false)
     local currentHealth = GetEntityHealth(vehicle)
-    print(vehicle)
-    print(currentHealth)
+    local newhealth = currentHealth - 100
     if currentHealth > 20 then
-        SetEntityHealth(vehicle, currentHealth - 20)
+        SetEntityHealth(vehicle, newhealth)
     end
 end)
 RegisterNetEvent('laptop:client:MissionStarted',

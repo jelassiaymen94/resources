@@ -69,7 +69,7 @@ Config.Vehicles = {
             money = 100,
         },
         [2] = {
-            model = 'futo', --DONT CHANGE PLEASE
+            model = 'asbo', --DONT CHANGE PLEASE
             money = 500,
         },
         [3] = {
