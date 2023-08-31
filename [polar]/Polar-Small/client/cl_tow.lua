@@ -25,7 +25,7 @@ RegisterNetEvent('Polar-Tow:Client:UnTow', function()
         disableCarMovement = true,
         disableMouse = false,
         disableCombat = true,
-    }, {
+    }, { 
         animDict = "mini@repair",
         anim = "fixing_a_ped",
         flags = 16,
@@ -110,7 +110,7 @@ CreateThread(function()
     exports['qb-target']:AddGlobalVehicle({
         options = {
             {
-                icon = "fa-solid fa-caret-up",
+                icon = "fa-solid fa-car",
                 label = "Attach Vehicle",
                 canInteract = function(entity)
                     local oldtruck = GetVehiclePedIsIn(PlayerPedId(),true)
@@ -133,7 +133,7 @@ CreateThread(function()
     exports['qb-target']:AddGlobalVehicle({
         options = {
             {
-                icon = "fa-solid fa-caret-down",
+                icon = "fa-solid fa-car",
                 label = "Detach Vehicle",
                 canInteract = function(entity)
                     local oldtruck = GetVehiclePedIsIn(PlayerPedId(),true)
