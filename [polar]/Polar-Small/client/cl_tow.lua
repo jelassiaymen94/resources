@@ -2,7 +2,7 @@ local QBCore = exports['qb-core']:GetCoreObject()
 
 
 local selectedVeh = nil
-
+local CurrentTow = nil
 
 
 
