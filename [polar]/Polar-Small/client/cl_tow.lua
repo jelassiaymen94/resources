@@ -49,7 +49,7 @@ RegisterNetEvent('Polar-Tow:Client:Tow', function()
                         local flatbed = GetHashKey('flatbed')
                         local slamtruck = GetHashKey('slamtruck')                   
                         if #(towPos - targetPos) < 11.0 then
-                            QBCore.Functions.Progressbar("towing_vehicle", Lang:t('info.hoisting_vehicle'), 5000, false, true, {
+                            QBCore.Functions.Progressbar("towing_vehicle", "Attaching Vehicle", 5000, false, true, {
                                 disableMovement = true,
                                 disableCarMovement = true,
                                 disableMouse = false,
@@ -74,16 +74,16 @@ RegisterNetEvent('Polar-Tow:Client:Tow', function()
                                 CurrentTow = targetVehicle
 
                                
-                                QBCore.Functions.Notify(Lang:t('success.vehicle_towed'), "success", 5000)
+                                
                             end, function() -- Cancel
                                 StopAnimTask(PlayerPedId(), "mini@repair", "fixing_a_ped", 1.0)
-                                QBCore.Functions.Notify(Lang:t('error.failed'), "error")
+                               
                             end)
                         end
                     end
                 end
             else
-                QBCore.Functions.Progressbar("untowing_vehicle", Lang:t('info.removing_vehicle'), 5000, false, true, {
+                QBCore.Functions.Progressbar("untowing_vehicle", "Detaching Vehicle", 5000, false, true, {
                     disableMovement = true,
                     disableCarMovement = true,
                     disableMouse = false,
@@ -110,16 +110,16 @@ RegisterNetEvent('Polar-Tow:Client:Tow', function()
                     end
                   
                         CurrentTow = nil
-                        QBCore.Functions.Notify(Lang:t('success.vehicle_taken_off'), "success", 5000)
+                      
                   
 
                 end, function() -- Cancel
                     StopAnimTask(PlayerPedId(), "mini@repair", "fixing_a_ped", 1.0)
-                    QBCore.Functions.Notify(Lang:t('error.failed'), "error", 5000)
+                    
                 end)
             end
     else
-        QBCore.Functions.Notify(Lang:t('error.must_be_towing_vehicle'), "error", 5000)
+        QBCore.Functions.Notify("You need to be in a Flatbed", "error", 5000)
     end
 end)
 
@@ -131,7 +131,7 @@ CreateThread(function()
         options = {
             {
                 icon = "fa-solid fa-magnifying-glass",
-                label = Lang:t('info.tow'),
+                label = "Tow",
                 canInteract = function(entity)
                     local oldtruck = GetVehiclePedIsIn(PlayerPedId(),true)
                     local flatbed = GetHashKey('flatbed')
