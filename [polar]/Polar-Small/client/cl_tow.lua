@@ -12,19 +12,7 @@ local function getVehicleInDirection(coordFrom, coordTo)
     local a, b, c, d, vehicle = GetRaycastResult(rayHandle)
     return vehicle
 end
-local cars = {
-    ["flatbed"] = "Flatbed",
-    ["Slamtruck"] = "Slamtruck",
-}
-local function isTowVehicle(vehicle)
-    local retval = false
-    for k, v in pairs(cars) do
-        if GetEntityModel(vehicle) == GetHashKey(k) then
-            retval = true
-        end
-    end
-    return retval
-end
+
 
 
 
@@ -70,13 +58,12 @@ end)
 
 RegisterNetEvent('Polar-Tow:Client:Tow', function()
     local vehicle = GetVehiclePedIsIn(PlayerPedId(), true)
-    if isTowVehicle(vehicle) then
+    if GetEntityModel(vehicle) == GetHashKey('flatbed') then
             local playerped = PlayerPedId()
             local coordA = GetEntityCoords(playerped, 1)
             local coordB = GetOffsetFromEntityInWorldCoords(playerped, 0.0, 5.0, 0.0)
             local targetVehicle = getVehicleInDirection(coordA, coordB)
             local flatbed = GetHashKey('flatbed')
-            local slamtruck = GetHashKey('slamtruck')
             local modelName = GetDisplayNameFromVehicleModel(selectedVeh)
                 if not IsPedInAnyVehicle(PlayerPedId()) then
                     if vehicle ~= targetVehicle then
@@ -84,7 +71,7 @@ RegisterNetEvent('Polar-Tow:Client:Tow', function()
                         local towPos = GetEntityCoords(vehicle)
                         local targetPos = GetEntityCoords(targetVehicle)
                         local flatbed = GetHashKey('flatbed')
-                        local slamtruck = GetHashKey('slamtruck')                   
+                                         
                         if #(towPos - targetPos) < 11.0 then
                             QBCore.Functions.Progressbar("towing_vehicle", "Attaching Vehicle", 5000, false, true, {
                                 disableMovement = true,
@@ -99,15 +86,11 @@ RegisterNetEvent('Polar-Tow:Client:Tow', function()
                                 StopAnimTask(PlayerPedId(), "mini@repair", "fixing_a_ped", 1.0)
     
                                 local bone = GetEntityBoneIndexByName(vehicle, 'bodyshell')
-                            if  modelName == 'SLAMTRUCK' then
-                                AttachEntityToEntity(targetVehicle, vehicle, GetEntityBoneIndexByName(vehicle, 'bodyshell'), 0.0, -0.90 + -0.85, -0.4 + 1.15, 0, 0, 0, 1, 1, 0, 1, 0, 1)
-                                NetworkRequestControlOfEntity(targetVehicle)
-                                FreezeEntityPosition(targetVehicle, true)
-                            else
+                           
                                 AttachEntityToEntity(targetVehicle, vehicle, GetEntityBoneIndexByName(vehicle, 'bodyshell'), 0.0, -1.5 + -0.85, -0.35 + 1.60, 0, 0, 0, 1, 1, 0, 1, 0, 1)
                                 NetworkRequestControlOfEntity(targetVehicle)
                                 FreezeEntityPosition(targetVehicle, true)
-                            end
+                            
                                 CurrentTow = targetVehicle
 
                                
@@ -137,8 +120,8 @@ CreateThread(function()
                 canInteract = function(entity)
                     local oldtruck = GetVehiclePedIsIn(PlayerPedId(),true)
                     local flatbed = GetHashKey('flatbed')
-                    local slamtruck = GetHashKey('slamtruck')
-                    if GetEntityModel(oldtruck) == flatbed or GetEntityModel(oldtruck) == slamtruck and CurrentTow == nil then return true end
+                   
+                    if GetEntityModel(oldtruck) == flatbed and CurrentTow == nil then return true end
                         return false
                 end,
                 event = "Polar-Tow:Client:Tow",
@@ -160,8 +143,8 @@ CreateThread(function()
                 canInteract = function(entity)
                     local oldtruck = GetVehiclePedIsIn(PlayerPedId(),true)
                     local flatbed = GetHashKey('flatbed')
-                    local slamtruck = GetHashKey('slamtruck')
-                    if GetEntityModel(oldtruck) == flatbed or GetEntityModel(oldtruck) == slamtruck and CurrentTow ~= nil then return true end
+                   
+                    if GetEntityModel(oldtruck) == flatbed and CurrentTow ~= nil then return true end
                         return false
                 end,
                 event = "Polar-Tow:Client:UnTow",
