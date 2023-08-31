@@ -64,9 +64,11 @@ function UpdateBlips()
                     end 
                 end
 
-
-                Wait(math.floor(10 * 1000 * State.boostHacks))
-                Wait(1000)
+                if State.boostHacks < 1 then
+                    Wait(10000)
+                else
+                    Wait(math.floor(10 * 1000 * State.boostHacks))
+                end
                 State = Entity(car).state
                 .Boosting  
                
