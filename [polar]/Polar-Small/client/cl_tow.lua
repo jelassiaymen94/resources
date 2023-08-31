@@ -30,7 +30,7 @@ end
 
 
 
-RegisterNetEvent('Polar-Tow:Client:Untow', function()
+RegisterNetEvent('Polar-Tow:Client:UnTow', function()
     QBCore.Functions.Progressbar("untowing_vehicle", "Detaching Vehicle", 5000, false, true, {
         disableMovement = true,
         disableCarMovement = true,
