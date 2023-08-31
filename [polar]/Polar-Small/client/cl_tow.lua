@@ -30,13 +30,47 @@ end
 
 
 
+RegisterNetEvent('Polar-Tow:Client:Untow', function()
+    QBCore.Functions.Progressbar("untowing_vehicle", "Detaching Vehicle", 5000, false, true, {
+        disableMovement = true,
+        disableCarMovement = true,
+        disableMouse = false,
+        disableCombat = true,
+    }, {
+        animDict = "mini@repair",
+        anim = "fixing_a_ped",
+        flags = 16,
+    }, {}, {}, function() -- Done
+        StopAnimTask(PlayerPedId(), "mini@repair", "fixing_a_ped", 1.0)
+        local modelName = GetDisplayNameFromVehicleModel(selectedVeh)
+        if  modelName == 'SLAMTRUCK' then
+            NetworkRequestControlOfEntity(CurrentTow)
+            FreezeEntityPosition(CurrentTow, false)
+            Wait(250)
+            AttachEntityToEntity(CurrentTow, vehicle, 20, -0.0, -7.0, 1.0, 0.0, 0.0, 0.0, false, false, false, false, 20, true)
+            DetachEntity(CurrentTow, true, true)
+        else
+            NetworkRequestControlOfEntity(CurrentTow)
+            FreezeEntityPosition(CurrentTow, false)
+            Wait(250)
+            AttachEntityToEntity(CurrentTow, vehicle, 20, -0.0, -12.0, 1.0, 0.0, 0.0, 0.0, false, false, false, false, 20, true)
+            DetachEntity(CurrentTow, true, true)
+        end
+      
+            CurrentTow = nil
+          
+      
 
+    end, function() -- Cancel
+        StopAnimTask(PlayerPedId(), "mini@repair", "fixing_a_ped", 1.0)
+        
+    end)
+end)
 
 
 RegisterNetEvent('Polar-Tow:Client:Tow', function()
     local vehicle = GetVehiclePedIsIn(PlayerPedId(), true)
     if isTowVehicle(vehicle) then
-        if CurrentTow == nil then
             local playerped = PlayerPedId()
             local coordA = GetEntityCoords(playerped, 1)
             local coordB = GetOffsetFromEntityInWorldCoords(playerped, 0.0, 5.0, 0.0)
@@ -85,42 +119,7 @@ RegisterNetEvent('Polar-Tow:Client:Tow', function()
                         end
                     end
                 end
-            else
-                QBCore.Functions.Progressbar("untowing_vehicle", "Detaching Vehicle", 5000, false, true, {
-                    disableMovement = true,
-                    disableCarMovement = true,
-                    disableMouse = false,
-                    disableCombat = true,
-                }, {
-                    animDict = "mini@repair",
-                    anim = "fixing_a_ped",
-                    flags = 16,
-                }, {}, {}, function() -- Done
-                    StopAnimTask(PlayerPedId(), "mini@repair", "fixing_a_ped", 1.0)
-                    local modelName = GetDisplayNameFromVehicleModel(selectedVeh)
-                    if  modelName == 'SLAMTRUCK' then
-                        NetworkRequestControlOfEntity(CurrentTow)
-                        FreezeEntityPosition(CurrentTow, false)
-                        Wait(250)
-                        AttachEntityToEntity(CurrentTow, vehicle, 20, -0.0, -7.0, 1.0, 0.0, 0.0, 0.0, false, false, false, false, 20, true)
-                        DetachEntity(CurrentTow, true, true)
-                    else
-                        NetworkRequestControlOfEntity(CurrentTow)
-                        FreezeEntityPosition(CurrentTow, false)
-                        Wait(250)
-                        AttachEntityToEntity(CurrentTow, vehicle, 20, -0.0, -12.0, 1.0, 0.0, 0.0, 0.0, false, false, false, false, 20, true)
-                        DetachEntity(CurrentTow, true, true)
-                    end
-                  
-                        CurrentTow = nil
-                      
-                  
-
-                end, function() -- Cancel
-                    StopAnimTask(PlayerPedId(), "mini@repair", "fixing_a_ped", 1.0)
-                    
-                end)
-            end
+            
     else
         QBCore.Functions.Notify("You need to be in a Flatbed", "error", 5000)
     end
@@ -139,10 +138,33 @@ CreateThread(function()
                     local oldtruck = GetVehiclePedIsIn(PlayerPedId(),true)
                     local flatbed = GetHashKey('flatbed')
                     local slamtruck = GetHashKey('slamtruck')
-                    if GetEntityModel(oldtruck) == flatbed or GetEntityModel(oldtruck) == slamtruck then return true end
+                    if GetEntityModel(oldtruck) == flatbed or GetEntityModel(oldtruck) == slamtruck and CurrentTow == nil then return true end
                         return false
                 end,
                 event = "Polar-Tow:Client:Tow",
+                job = {
+                    ["bennys"] = 0,
+                    ["mechanic"] = 0,
+                    ["hayes"] = 0,
+                    ["harmony"] = 0,
+                },
+            },
+        },
+        distance = 3
+    })
+    exports['qb-target']:AddGlobalVehicle({
+        options = {
+            {
+                icon = "fa-solid fa-magnifying-glass",
+                label = "Un Tow",
+                canInteract = function(entity)
+                    local oldtruck = GetVehiclePedIsIn(PlayerPedId(),true)
+                    local flatbed = GetHashKey('flatbed')
+                    local slamtruck = GetHashKey('slamtruck')
+                    if GetEntityModel(oldtruck) == flatbed or GetEntityModel(oldtruck) == slamtruck and CurrentTow ~= nil then return true end
+                        return false
+                end,
+                event = "Polar-Tow:Client:UnTow",
                 job = {
                     ["bennys"] = 0,
                     ["mechanic"] = 0,
