@@ -438,7 +438,7 @@ RegisterNetEvent('laptop:server:SyncPlates', function(success)
       
        
       
-                TriggerClientEvent('Polar-Laptop:Client:UpdatePhone', src, newAmount, totalb)
+               
         
 
 
@@ -465,9 +465,13 @@ RegisterNetEvent('laptop:server:SyncPlates', function(success)
       
         Entity(car).state:set('Boosting', NewTable, true)
 
+        TriggerClientEvent('Polar-Laptop:Client:UpdatePhone', src, newAmount, totalb)
+
         removeCooldown(car, randomSeconds) 
 
         log(("Hacking was successfull %s hacks left"):format(Entity(car).state.Boosting.boostHacks))
+
+        
     else
 
        
