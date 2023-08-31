@@ -469,12 +469,13 @@ RegisterNetEvent('laptop:server:SyncPlates', function(success)
         
     else
 
-       
+        local hacks2 = nil
+        local hacks = state.boostHacks - 1
         local failed = state.BeforeFail + 1
         local totalb = state.TotalBoosts 
         if hacks < 0 then hacks2 = 0 else hacks2 = hacks end
         local classes = state.Class
-        local hacks = state.boostHacks - 1
+        
      --   print("failed amount " .. failed)
      --   print("vehicle class " .. classes)
      --   print("total hacks = " .. totalb)
