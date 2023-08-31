@@ -30,7 +30,7 @@ function loadAnimDict(dict) while not HasAnimDictLoaded(dict) do RequestAnimDict
 
 function playeritem(items, amount)
       
-        PlayerData = QBCore.Functions.GetPlayerData()
+        local PlayerData = QBCore.Functions.GetPlayerData()
        
         local isTable = type(items) == 'table'
         local isArray = isTable and table.type(items) == 'array' or false
