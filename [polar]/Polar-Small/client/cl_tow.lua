@@ -161,7 +161,7 @@ CreateThread(function()
                     local oldtruck = GetVehiclePedIsIn(PlayerPedId(),true)
                     local flatbed = GetHashKey('flatbed')
                     local slamtruck = GetHashKey('slamtruck')
-                    if GetEntityModel(oldtruck) == flatbed or GetEntityModel(oldtruck) == slamtruck and CurrentTow ~= nil then return true end
+                    if GetEntityModel(oldtruck) == flatbed or GetEntityModel(oldtruck) == slamtruck and not CurrentTow == nil then return true end
                         return false
                 end,
                 event = "Polar-Tow:Client:UnTow",
