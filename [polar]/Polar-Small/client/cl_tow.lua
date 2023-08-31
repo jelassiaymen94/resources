@@ -12,10 +12,13 @@ local function getVehicleInDirection(coordFrom, coordTo)
     local a, b, c, d, vehicle = GetRaycastResult(rayHandle)
     return vehicle
 end
-
+local cars = {
+    ["flatbed"] = "Flatbed",
+    ["Slamtruck"] = "Slamtruck",
+}
 local function isTowVehicle(vehicle)
     local retval = false
-    for k, v in pairs(Config.Vehicles) do
+    for k, v in pairs(cars) do
         if GetEntityModel(vehicle) == GetHashKey(k) then
             retval = true
         end
