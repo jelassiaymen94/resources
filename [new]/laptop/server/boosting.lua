@@ -489,7 +489,7 @@ RegisterNetEvent('laptop:server:SyncPlates', function(success)
         }
         Entity(car).state:set('Boosting', NewTable, true)
        
-        TriggerClientEvent('Polar-Laptop:Client:UpdatePhone', src, failed, state.TotalBoosts)
+        TriggerClientEvent('Polar-Laptop:Client:UpdatePhone', src, hacks2, state.TotalBoosts)
         
         removeCooldown(car, randomSeconds)
 
