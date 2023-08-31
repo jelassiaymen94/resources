@@ -55,6 +55,7 @@ function UpdateBlips()
                 local checks = 0
                 if DoesEntityExist(car) then
                     local pos = GetEntityCoords(car)
+                    print('ping')
                     TriggerServerEvent('InteractSound_SV:PlayAtCoord', pos, 10, 'shiftyclick', 0.10) 
                     TriggerServerEvent('laptop:server:SyncBlips', pos, NetID)
                 else
