@@ -420,7 +420,7 @@ RegisterNetEvent('laptop:server:SyncPlates', function(success)
     end
 
     if success then
-        if state.boostHacks >= state.TotalBoosts then
+        if state.boostHacks >= state.TotalBoosts + 1 then
 
             -- tracker off
            -- TriggerClientEvent('Polar-Laptop:Client:UpdatePhone', src, state.TotalBoosts, state.TotalBoosts)

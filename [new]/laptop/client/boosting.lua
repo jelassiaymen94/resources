@@ -484,7 +484,7 @@ RegisterNetEvent('laptop:client:HackCar', function()
                 local car = cache.vehicle
                 local State = Entity(car).state.Boosting
 
-            if State and State.boostHacks < State.TotalBoosts and not State.boostCooldown then
+            if State and State.boostHacks < State.TotalBoosts + 1 and not State.boostCooldown then
 
                 exports['Polar-UI']:Scrambler(function(success)
                     if success then
