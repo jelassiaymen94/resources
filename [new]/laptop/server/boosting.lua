@@ -475,7 +475,7 @@ RegisterNetEvent('laptop:server:SyncPlates', function(success)
     else
 
        
-        local failed = state.BeforeFail + 1
+        local failed = state.BeforeFail - 1
         local totalb = state.TotalBoosts 
         if totalb < 0 then totalc = 0 else totalc = totalb end
         local classes = state.Class
@@ -494,7 +494,7 @@ RegisterNetEvent('laptop:server:SyncPlates', function(success)
         }
         Entity(car).state:set('Boosting', NewTable, true)
        
-        TriggerClientEvent('Polar-Laptop:Client:UpdatePhone', src, state.boostHacks, state.TotalBoosts)
+        TriggerClientEvent('Polar-Laptop:Client:UpdatePhone', src, failed, state.TotalBoosts)
         
         removeCooldown(car, randomSeconds)
 
