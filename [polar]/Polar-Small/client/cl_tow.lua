@@ -110,8 +110,8 @@ CreateThread(function()
     exports['qb-target']:AddGlobalVehicle({
         options = {
             {
-                icon = "fa-solid fa-magnifying-glass",
-                label = "Tow",
+                icon = "fa-solid fa-caret-up",
+                label = "Attach Vehicle",
                 canInteract = function(entity)
                     local oldtruck = GetVehiclePedIsIn(PlayerPedId(),true)
                     local flatbed = GetHashKey('flatbed')
@@ -133,8 +133,8 @@ CreateThread(function()
     exports['qb-target']:AddGlobalVehicle({
         options = {
             {
-                icon = "fa-solid fa-magnifying-glass",
-                label = "Un Tow",
+                icon = "fa-solid fa-caret-down",
+                label = "Detach Vehicle",
                 canInteract = function(entity)
                     local oldtruck = GetVehiclePedIsIn(PlayerPedId(),true)
                     local flatbed = GetHashKey('flatbed')
