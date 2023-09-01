@@ -501,7 +501,7 @@ CreateThread(function()
     while true do
         if GetSelectedPedWeapon(PlayerPedId()) == huntingRifleHash then
             hasHuntingRifle = true
-           -- blockShooting()
+            blockShooting()
         else
             hasHuntingRifle = false
         end
