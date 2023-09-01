@@ -11,7 +11,7 @@ local function TextInput()
                 text = "Name of Polaroid", -- text you want to be displayed as a place holder
                 name = "citizenid", -- name of the input should be unique otherwise it might override
                 type = "text", -- type of the input
-                isRequired = true, 
+                isRequired = false, 
             },
         },
     })
