@@ -127,12 +127,13 @@ function tools()
             toolsmenu[#toolsmenu+1] = { hidden = hide, disabled = disable, icon = "", header = "You Don't Have enough Exp", txt = "Required: " .. Config.ToolsBenchmin .. " exp"}
             Wait(0)
             exports['qb-menu']:openMenu(toolsmenu)
-        else
-    for item, quantity in pairs(items) do
-        texes = string.format("<p> <img src=nui://%s%s width=25px onerror='this.onerror=null; this.remove();'> %d %s", Config.img, QBCore.Shared.Items[item].image, quantity, QBCore.Shared.Items[item].label)
-    end
-for i = 1, #Config.ToolsBench do
-		local setheader = "<img src=nui://"..Config.img..QBCore.Shared.Items[Config.ToolsBench[i].item].image.." width=45px onerror='this.onerror=null; this.remove();'>"..QBCore.Shared.Items[Config.ToolsBench[i].item].label
+    else
+    for item, quantity in pairs(items) do 
+        texes = texes .. "<p> <img src=nui://" .. Config.img .. QBCore.Shared.Items[item].image .. " width=25px onerror='this.onerror=null; this.remove();'> " .. Config.ToolsBench[item].amount .. " " .. QBCore.Shared.Items[item].label
+    end 
+    for i = 1, #Config.ToolsBench do
+        local item = Config.ToolsBench[i].item
+		local setheader = "<img src=nui://"..Config.img..QBCore.Shared.Items[item].image.." width=45px onerror='this.onerror=null; this.remove();'>"..QBCore.Shared.Items[item].label
 		local disable = false
         local hide = true
       
