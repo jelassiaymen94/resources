@@ -90,14 +90,13 @@ function starttarget()
    
     else
 
-        exports['qb-target']:AddBoxZone(labname .. "mix", Config.MixLocation, 1, 1, { name = "mix", heading = 0.0, debug = Config.Debug, minZ = Config.MixLocation.z-1, maxZ =  Config.MixLocation.z+1,}, 
+        exports['qb-target']:AddBoxZone(labname .. "_mix", Config.MixLocation, 1, 1, { name = "mix", heading = 0.0, debug = Config.Debug, minZ = Config.MixLocation.z-1, maxZ =  Config.MixLocation.z+1,}, 
         { options = {{ event = "Polar-Meth:Client:MethMix", icon = "fa-solid fa-bolt", label = "Mix Materials"}}, distance = 1.5 }) 
 
 
-
         for i=1, #Config.Labs do
-           
-        exports['qb-target']:AddBoxZone(labs[labname] .. "enterlab", Config.Labs[i].EnterLabThirdEye, 1, 1, { name = "enterlab", heading = 0.0, debug = Config.Debug, minZ = Config.Labs[i].EnterLabThirdEye.z-1, maxZ =  Config.Labs[i].EnterLabThirdEye.z+1,}, 
+
+        exports['qb-target']:AddBoxZone(i .. "_enterlab", Config.Labs[i].EnterLabThirdEye, 1, 1, { name = "enterlab", heading = 0.0, debug = Config.Debug, minZ = Config.Labs[i].EnterLabThirdEye.z-1, maxZ =  Config.Labs[i].EnterLabThirdEye.z+1,}, 
         { options = {{ event = "Polar-Meth:Client:EnterLab", icon = "fa-solid fa-bolt", label = "Enter Lab", type = i}}, distance = 1.5 }) 
 
         end
@@ -117,24 +116,24 @@ function traynext(amount)
 end
 
 RegisterNetEvent('Polar-Meth:Client:RemoveTarget', function(name, labnam2)
-    if Config.Debug then print('removed target ' .. name .. '') end
-    exports['qb-target']:RemoveZone(labs[labnam2] .. name) 
+    if Config.Debug then print('removed target ' .. labnam2 .. "_" .. name) end
+    exports['qb-target']:RemoveZone(labnam2 .. "_" .. name) 
 
 end)
 
 RegisterNetEvent('Polar-Meth:Client:MixTarget', function(labnam2)
-    exports['qb-target']:AddBoxZone(labs[labnam2] .. "mix", Config.MixLocation, 1, 1, { name = "mix", heading = 0.0, debug = Config.Debug, minZ = Config.MixLocation.z-1, maxZ =  Config.MixLocation.z+1,}, 
+    exports['qb-target']:AddBoxZone(labnam2 .. "_mix", Config.MixLocation, 1, 1, { name = "mix", heading = 0.0, debug = Config.Debug, minZ = Config.MixLocation.z-1, maxZ =  Config.MixLocation.z+1,}, 
     { options = {{ event = "Polar-Meth:Client:MethMix", icon = "fa-solid fa-bolt", label = "Mix Materials"}}, distance = 1.5 }) 
 end)
 
 RegisterNetEvent('Polar-Meth:Client:StartTargets', function(labnam2)
-    exports['qb-target']:AddBoxZone(labs[labnam2] .. "temp", Config.TempLocation, 1, 1, { name = "temp", heading = 0.0, debug = Config.Debug, minZ = Config.TempLocation.z-1, maxZ =  Config.TempLocation.z+1,}, 
+    exports['qb-target']:AddBoxZone(labnam2 .. "_temp", Config.TempLocation, 1, 1, { name = "temp", heading = 0.0, debug = Config.Debug, minZ = Config.TempLocation.z-1, maxZ =  Config.TempLocation.z+1,}, 
     { options = {{ event = "Polar-Meth:Client:MethTemperature", icon = "fa-solid fa-bolt", label = "Set Temperature"}}, distance = 1.5 }) 
 
-    exports['qb-target']:AddBoxZone(labs[labnam2] .. "tray", Config.TrayLocation, 1, 1, { name = "tray", heading = 0.0, debug = Config.Debug, minZ = Config.TrayLocation.z-1, maxZ = Config.TrayLocation.z+1,}, 
+    exports['qb-target']:AddBoxZone(labnam2 .. "_tray", Config.TrayLocation, 1, 1, { name = "tray", heading = 0.0, debug = Config.Debug, minZ = Config.TrayLocation.z-1, maxZ = Config.TrayLocation.z+1,}, 
     { options = {{ event = "Polar-Meth:Client:MethTray", icon = "fa-solid fa-bolt", label = "Smash Tray"}}, distance = 1.5 }) 
 
-    exports['qb-target']:AddBoxZone(labs[labnam2] .. "bag", Config.BagLocation, 1, 1, { name = "bag", heading = 0.0, debug = Config.Debug, minZ = Config.BagLocation.z-1, maxZ =  Config.BagLocation.z+1,}, 
+    exports['qb-target']:AddBoxZone(labnam2 .. "_bag", Config.BagLocation, 1, 1, { name = "bag", heading = 0.0, debug = Config.Debug, minZ = Config.BagLocation.z-1, maxZ =  Config.BagLocation.z+1,}, 
     { options = {{ event = "Polar-Meth:Client:MethBag", icon = "fa-solid fa-bolt", label = "Bag Crystals"}}, distance = 1.5 }) 
 
 end)
