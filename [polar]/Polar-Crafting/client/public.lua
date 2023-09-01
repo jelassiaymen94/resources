@@ -128,10 +128,11 @@ function tools()
             Wait(0)
             exports['qb-menu']:openMenu(toolsmenu)
     else
-    for item, quantity in pairs(items) do 
-        texes = texes .. "<p> <img src=nui://" .. Config.img .. QBCore.Shared.Items[item].image .. " width=25px onerror='this.onerror=null; this.remove();'> " .. Config.ToolsBench[item].amount .. " " .. QBCore.Shared.Items[item].label
-    end 
+   
     for i = 1, #Config.ToolsBench do
+        for item, quantity in pairs(Config.ToolsBench[i].required) do 
+            texes = texes .. "<p> <img src=nui://" .. Config.img .. QBCore.Shared.Items[item].image .. " width=25px onerror='this.onerror=null; this.remove();'> " .. Config.ToolsBench[item].amount .. " " .. QBCore.Shared.Items[item].label
+        end 
         local item = Config.ToolsBench[i].item
 		local setheader = "<img src=nui://"..Config.img..QBCore.Shared.Items[item].image.." width=45px onerror='this.onerror=null; this.remove();'>"..QBCore.Shared.Items[item].label
 		local disable = false
