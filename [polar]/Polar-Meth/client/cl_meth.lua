@@ -17,7 +17,7 @@ CreateThread(function()
   
         Wait(100) 
         labname = 'first'
-        Wait(500)
+        
         starttarget() 
  
 end)
@@ -83,7 +83,7 @@ function starttarget()
    
    
     else
-
+        while labname == nil do Wait(100) end
         exports['qb-target']:AddBoxZone(labs[labname] .. "mix", Config.MixLocation, 1, 1, { name = "mix", heading = 0.0, debug = Config.Debug, minZ = Config.MixLocation.z-1, maxZ =  Config.MixLocation.z+1,}, 
         { options = {{ event = "Polar-Meth:Client:MethMix", icon = "fa-solid fa-bolt", label = "Mix Materials"}}, distance = 1.5 }) 
 
