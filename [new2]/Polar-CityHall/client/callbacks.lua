@@ -4,11 +4,11 @@ RegisterNuiCallback('close', function(data, cb)
 end)
 
 RegisterNuiCallback('ApplyJob', function(data, cb)
-    TriggerServerEvent('mtc-cityhall:server:ApplyJob', data.id)
+    TriggerServerEvent('Polar-CityHall:server:ApplyJob', data.id)
     cb('ok')
 end)
 
 RegisterNuiCallback('BuyIdentity', function(data, cb)
-    TriggerServerEvent('mtc-cityhall:server:BuyIdentity', data.id)
+    TriggerServerEvent('Polar-CityHall:server:BuyIdentity', data.id)
     cb('ok')
 end)

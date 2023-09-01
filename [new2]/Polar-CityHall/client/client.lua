@@ -2,6 +2,6 @@ exports("Open", function()
     NUI:Open()
 end)
 
-RegisterNetEvent('mtc-cityhall:client:open', function ()
+RegisterNetEvent('Polar-CityHall:client:open', function ()
     NUI:Open()
 end)

@@ -1,4 +1,8 @@
-RegisterNetEvent('mtc-cityhall:server:ApplyJob', function(id)
+
+local QBCore = exports['qb-core']:GetCoreObject()
+
+
+RegisterNetEvent('Polar-CityHall:server:ApplyJob', function(id)
     local Player = QBCore.Functions.GetPlayer(source)
     if not Player then return end
 
@@ -29,7 +33,7 @@ local itemas = {
         price = 1250
     },  
 }
-RegisterNetEvent('mtc-cityhall:server:BuyIdentity', function(id)
+RegisterNetEvent('Polar-CityHall:server:BuyIdentity', function(id)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
     if not Player then return end

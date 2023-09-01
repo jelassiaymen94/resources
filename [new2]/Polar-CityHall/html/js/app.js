@@ -186,10 +186,10 @@ class Jobs extends UIElement {
         div.classList.add('col-6');
 
         let mtcContent = document.createElement('div');
-        mtcContent.classList.add('mtc-content');
+        mtcContent.classList.add('polarcontent');
 
         let mtcContentInline = document.createElement('div');
-        mtcContentInline.classList.add('mtc-content-inline');
+        mtcContentInline.classList.add('polarcontent-inline');
 
         let ul = document.createElement('ul');
 
@@ -262,10 +262,10 @@ class Identity extends UIElement {
         div.classList.add('col-6');
 
         let mtcContent = document.createElement('div');
-        mtcContent.classList.add('mtc-content');
+        mtcContent.classList.add('polarcontent');
 
         let mtcContentInline = document.createElement('div');
-        mtcContentInline.classList.add('mtc-content-inline');
+        mtcContentInline.classList.add('polarcontent-inline');
 
         let ul = document.createElement('ul');
 

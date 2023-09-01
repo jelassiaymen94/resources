@@ -1,4 +1,5 @@
 NUI = {}
+local QBCore = exports['qb-core']:GetCoreObject()
 
 --- Open the NUI with playerdata setup
 function NUI:Open()

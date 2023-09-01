@@ -1,3 +1,6 @@
+
+local QBCore = exports['qb-core']:GetCoreObject()
+
 local pedname = {
     enabled = true,
     model = "a_m_m_indian_01",
@@ -28,7 +31,7 @@ CreateThread(function()
     exports['qb-target']:AddTargetEntity(ped, {
         options = {
             {
-                event = "mtc-cityhall:client:open",
+                event = "Polar-CityHall:client:open",
                 icon = "fas fa-id-card",
                 label = pedname.label,
             }

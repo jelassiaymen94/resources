@@ -1,4 +1,5 @@
 local blip = nil
+local QBCore = exports['qb-core']:GetCoreObject()
 
 function GenerateBlip(data)
     blip = AddBlipForCoord(data.Coords.x, data.Coords.y, data.Coords.z)
