@@ -1,15 +1,25 @@
 
 
 local radioStations = {}
+local QBCore = exports['qb-core']:GetCoreObject()
 
 
+RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function()
+    removeradios()
+end)
 
 
 
 CreateThread(function()
 	
 	
-	SetRadioStationIsVisible("RADIO_04_PUNK", false)
+	removeradios()
+
+end)
+
+
+function removeradios()
+    SetRadioStationIsVisible("RADIO_04_PUNK", false)
 	SetRadioStationIsVisible("RADIO_03_HIPHOP_NEW", false)
 	SetRadioStationIsVisible("RADIO_02_POP", false)
     SetRadioStationIsVisible("RADIO_01_CLASS_ROCK", false)
@@ -36,4 +46,4 @@ CreateThread(function()
     SetRadioStationIsVisible("RADIO_34_DLC_HEI4_KULT", false)
     SetRadioStationIsVisible("RADIO_36_AUDIOPLAYER", false)
 
-end)
+end
