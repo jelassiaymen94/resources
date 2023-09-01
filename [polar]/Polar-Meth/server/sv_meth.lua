@@ -5,7 +5,7 @@ elseif Config.Framework == 'esx' then
 end
 
 local bagamount = 0
-local mix = true local temp = true local tray = true local bag = true local cooldown = true
+
 
 local labs = {}
 
@@ -16,7 +16,7 @@ RegisterNetEvent('Polar-Meth:Server:SetupLab', function(labname)
         temp = true,
         tray = true,
         bag = true,
-        cooldown = true,
+        cooldown = 0,
     }
 end)
 
@@ -51,7 +51,7 @@ Config.CreateCallBack('Polar-Meth:BagCheck', function(source, cb, labname)      
 RegisterNetEvent('Polar-Meth:Server:StartTargets', function(labname) TriggerClientEvent('Polar-Meth:Client:StartTargets', -1, labname) end)
 
 Config.CreateCallBack('Polar-Meth:Cooldown', function(source, cb, labname) cb(labs[labname].cooldown) end) 
-local time = math.floor(Config.CooldownTime * 60000) RegisterNetEvent('Polar-Meth:Server:StartCooldown', function(door, labname) print(labs[labname].cooldown) cooldown = false SetTimeout(time, function() reset(labname) end) end)
+local time = math.floor(Config.CooldownTime * 60000) RegisterNetEvent('Polar-Meth:Server:StartCooldown', function(door, labname) labs[labname].cooldown = 5 end)
 function reset(labname) 
     labs[labname].cooldown = true labs[labname].mix = true labs[labname].temp = true labs[labname].tray = true labs[labname].bag = true labs[labname].bagamount = 0 
     TriggerClientEvent('Polar-Meth:Client:RemoveTarget', -1, 'tray', labname) 
@@ -62,6 +62,23 @@ function reset(labname)
 
 end
 
+CreateThread(function()
+    while true do
+        for labName, v in pairs(Config.Labs) do
+            if labs[labName].cooldown > 0 then
+                print(labs[labName].cooldown)
+                local amount = labs[labName].cooldown - 1
+                Wait(1)
+                labs[labName].cooldown = amount
+                amount = nil
+            else
+                reset(labName)
+                labs[labName].cooldown = 0
+            end
+        end
+    Wait(1000)
+    end
+end)
 
 
 RegisterNetEvent('Polar-Meth:Server:RemoveItem', function(item, amount) 

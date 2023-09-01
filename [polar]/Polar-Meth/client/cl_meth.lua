@@ -173,7 +173,6 @@ end)
 RegisterNetEvent('Polar-Meth:Client:MethMix', function()
     if playeritem(Config.Ing1) and playeritem(Config.Ing2) and playeritem(Config.Ing3) and playeritem(Config.Ing4) then
         Config.TriggerCallBack('Polar-Meth:MixCheck', function(result) if result then
-            TriggerServerEvent('Polar-Meth:Server:StartCooldown', labname)
             TriggerServerEvent('Polar-Meth:Server:StopInteract', 'mix')
             LocalPlayer.state:set('inv_busy', true, true)
             TriggerServerEvent('Polar-Meth:Server:RemoveItem', Config.Ing1)
@@ -356,6 +355,7 @@ RegisterNetEvent('Polar-Meth:Client:MethBag', function()
 	DeleteEntity(scoop)
     Wait(150)
     TriggerServerEvent('Polar-Meth:Server:MethAdd', labname)
+    TriggerServerEvent('Polar-Meth:Server:StartCooldown', labname)
     else notify(text('busy'), "error") end end, labname)
     else notify(text('cooldown'), "error") end end, labname)
     else notify(text('ingredients'), 'error') end
