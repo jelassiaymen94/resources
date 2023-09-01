@@ -61,52 +61,74 @@ Config.ToolsBench = {
         },
         exp = 0, -- required xp amount
     },
-}
-Config.tab = {
     [2] = {
         item = 'screwdriverset',
-        icon = "",
-        txt = "Required: ".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['iron'].image.." width=25px onerror='this.onerror=null; this.remove();'> 4 Iron".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['metalscrap'].image.." width=25px onerror='this.onerror=null; this.remove();'> 2 Metal Scrap ".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['steel'].image.." width=25px onerror='this.onerror=null; this.remove();'> 2 Steel",
+        required = {
+            {'iron', 4},
+            {'metalscrap', 4},
+            {'steel', 2},
+        },
         exp = 20,
     },
     [3] = {
         item = 'armor',
-        icon = "",
-        txt = "Required: ".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['steel'].image.." width=25px onerror='this.onerror=null; this.remove();'> 15 Steel".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['carbon'].image.." width=25px onerror='this.onerror=null; this.remove();'> 2 Carbon ",
-        exp = 60,
+        required = {
+            {'carbon', 2},
+            {'steel', 15},
+
+        },exp = 60,
     },
     [4] = {
         item = 'metalscratchy',
-        icon = "",
-        txt = "Required: ".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['iron'].image.." width=25px onerror='this.onerror=null; this.remove();'> 10 Iron".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['metalscrap'].image.." width=25px onerror='this.onerror=null; this.remove();'> 10 Metal Scrap ",
+        required = {
+            {'metalscrap', 10},
+            {'iron', 10},
+        },
         exp = 519,
     },
+    
     [5] = {
         item = 'electronickit',
-        icon = "",
-        txt = "Required: ".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['goldingot'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Gold Ingot".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['refined_iron'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Refined Iron ".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['plastic'].image.." width=25px onerror='this.onerror=null; this.remove();'> 5 Plastic Bottles",
-        exp = 849,
+        required = {
+            {'refined_iron', 1},
+            {'goldingot', 1},
+            {'plastic', 5},
+        },
+       exp = 849,
     },
     [6] = {
         item = 'aluminumoxide',
-        icon = "",
-        txt = "Required: ".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['glass'].image.." width=25px onerror='this.onerror=null; this.remove();'> 20 Glass".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['gunpowder'].image.." width=25px onerror='this.onerror=null; this.remove();'> 5 Gunpowder ".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['plastic'].image.." width=25px onerror='this.onerror=null; this.remove();'> 5 Plastic".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['refined_aluminum'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Refined Aluminum",
+        required = {
+            {'glass', 20},
+            {'plastic', 6},
+            {'gunpowder', 5},
+            {'refined_aluminum', 1},
+         
+        },
         exp = 4254,
     },
     [7] = {
         item = 'thermitepowder',
-        icon = "",
-        txt = "Required: ".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['aluminumoxide'].image.." width=25px onerror='this.onerror=null; this.remove();'> 2  Aluminum Oxide".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['plastic'].image.." width=25px onerror='this.onerror=null; this.remove();'> 5 Plastic".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['glass'].image.." width=25px onerror='this.onerror=null; this.remove();'> 5 Glass",
+        required = {
+            {'glass', 5},
+            {'plastic', 5},
+            {'aluminumoxide', 1},
+          
+        },
         exp = 5000,
     },
     [8] = {
         item = 'handcuffs',
-        icon = "",
-        txt = "Required: ".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['refined_steel'].image.." width=25px onerror='this.onerror=null; this.remove();'> 5  Refined Steel".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['metalscrap'].image.." width=25px onerror='this.onerror=null; this.remove();'> 5 Metal Scrap ".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['refined_iron'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Refined Iron",
-        exp = 9354,
+        required = {
+            {'metalscrap', 5},
+            {'refined_steel', 5}, 
+            {'refined_iron', 1},
+        },
+       exp = 9354,
     },
   
 }
+
 
 
 Config.WeaponsBench = {
