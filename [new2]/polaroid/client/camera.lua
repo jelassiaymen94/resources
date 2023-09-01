@@ -16,8 +16,7 @@ local function TextInput()
         },
     })
     if text ~= nil then
-        for k,v in pairs(text) do
-            print(k .. " : " .. v)
+        for _, v in pairs(text) do
             return v
         end
     else
