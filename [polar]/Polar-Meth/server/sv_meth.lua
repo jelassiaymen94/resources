@@ -65,6 +65,7 @@ end
 CreateThread(function()
     while true do
         for labName, v in pairs(Config.Labs) do
+            if labs[labName].cooldown == nil then return end
             if labs[labName].cooldown > 0 then
                 print(labs[labName].cooldown)
                 local amount = labs[labName].cooldown - 1
