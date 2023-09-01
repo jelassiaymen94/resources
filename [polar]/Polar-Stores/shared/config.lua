@@ -7,7 +7,7 @@ local QBCore = exports['qb-core']:GetCoreObject()
 
 --============== POLICE ================
 
-function CallPolice(loc) exports["qb-dispatch"]:CustomAlert({
+function CallPolice(loc) exports["ps-dispatch"]:CustomAlert({
         coords = loc, message = "Store Robbery",
         dispatchCode = "10-90", description = "", radius = 10,
         sprite = 304,  color = 46, scale = 1.0,  length = 1,

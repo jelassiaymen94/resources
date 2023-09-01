@@ -72,7 +72,7 @@ Config.Bag = 'ch_p_m_bag_var03_arm_s' -- hei_p_m_bag_var22_arm_s
 
 --============== POLICE ================
 
-function CallPolice() exports["qb-dispatch"]:CustomAlert({
+function CallPolice() exports["ps-dispatch"]:CustomAlert({
         coords = vector3(-111.1, 6482.23, 31.47), message = "Bank Robbery",
         dispatchCode = "10-90", description = "", radius = 10,
         sprite = 304,  color = 46, scale = 1.0,  length = 1,

@@ -159,7 +159,7 @@ local PlantThermite = function()
     CreateThread(function()
         Wait(15000)
         DeleteEntity(thermite)
-        exports['qb-dispatch']:VangelicoRobbery(camId)
+        exports['ps-dispatch']:VangelicoRobbery(camId)
     end)
 end
 

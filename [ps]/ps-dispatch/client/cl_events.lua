@@ -1,70 +1,48 @@
 local WeaponTable = {
-    [GetHashKey("weapon_groza")] = "CLASS 2",
-    [GetHashKey("weapon_gepard")] = "CLASS 2",
-    [GetHashKey("weapon_dp9")] = "CLASS 1",
-    [GetHashKey("weapon_g18c")] = "CLASS 1",
-    [GetHashKey("weapon_mp5")] = "CLASS 2",
-    [GetHashKey("weapon_m67")] = "CLASS 3",
-    [GetHashKey("weapon_assaultrifle2")] = "CLASS 2",
-    [GetHashKey("weapon_grenade")] = "CLASS 3",
-    [GetHashKey("weapon_m9")] = "CLASS 1",
-    [GetHashKey("weapon_molotov")] = "CLASS 3",
-    [GetHashKey("weapon_stickybomb")] = "CLASS 3",
-    [GetHashKey("weapon_bzgas")] = "CLASS 3",
-    [GetHashKey("weapon_proxmine")] = "CLASS 3",
-    [GetHashKey("weapon_pipebomb")] = "CLASS 3",
-    [GetHashKey("weapon_smokegrenade")] = "CLASS 3",
-    [GetHashKey("weapon_m4")] = "CLASS 2",
-    [GetHashKey("weapon_fnx45")] = "CLASS 1",
-    [GetHashKey("weapon_glock")] = "CLASS 1",
-    [GetHashKey("weapon_glock")] = "CLASS 1",
-    [GetHashKey("weapon_glock")] = "CLASS 1",
-    [GetHashKey("weapon_glock")] = "CLASS 1",
-  
-    [584646201]   = "CLASS 4", --AP-Pistol",
-    [453432689]   = "CLASS 1", --Pistol",
-    [3219281620]  = "CLASS 4", --Pistol MK2",
-    [1593441988]  = "CLASS 4", --Combat Pistol",
-    [-1716589765] = "CLASS 4", --Heavy Pistol",
-    [-1076751822] = "CLASS 4", --SNS-Pistol",
-    [-771403250]  = "CLASS 1", --Desert Eagle",
-    [137902532]   = "CLASS 4", --Vintage Pistol",
-    [-598887786]  = "CLASS 4", --Marksman Pistol",
-    [-1045183535] = "CLASS 4", --Revolver",
-    [911657153]   = "Taser", 
-    [324215364]   = "CLASS 4", --Micro-SMG",
-    [-619010992]  = "CLASS 2", --Machine-Pistol",
-    [736523883]   = "CLASS 4", --SMG",
-    [2024373456]  = "CLASS 4", --SMG MK2",
-    [-270015777]  = "CLASS 4", --Assault SMG",
-    [171789620]   = "CLASS 4", --Combat PDW",
-    [-1660422300] = "CLASS 4", --Combat MG",
-    [3686625920]  = "CLASS 4", --Combat MG MK2",
-    [1627465347]  = "CLASS 2", --Gusenberg",
-    [-1121678507] = "CLASS 2", --Mini SMG",
-    [-1074790547] = "CLASS 2", --Assaultrifle",
-    [961495388]   = "CLASS 4", --Assaultrifle MK2",
-    [-2084633992] = "CLASS 4", --Carbinerifle",
-    [4208062921]  = "CLASS 4", --Carbinerifle MK2",
-    [-1357824103] = "CLASS 4", --Advancedrifle",
-    [-1063057011] = "CLASS 4", --Specialcarbine",
-    [2132975508]  = "CLASS 4", --Bulluprifle",
-    [1649403952]  = "CLASS 4", --Compactrifle",
-    [100416529]   = "CLASS 4", --Sniperrifle",
-    [205991906]   = "CLASS 4", --Heavy Sniper",
-    [177293209]   = "CLASS 4", --Heavy Sniper MK2",
-    [-952879014]  = "CLASS 4", --Marksmanrifle",
-    [487013001]   = "CLASS 4", --Pumpshotgun",
-    [2017895192]  = "CLASS 4", --Sawnoff Shotgun",
-    [-1654528753] = "CLASS 4", --Bullupshotgun",
-    [-494615257]  = "CLASS 4", --Assaultshotgun",
-    [-1466123874] = "CLASS 4", --Musket",
-    [984333226]   = "CLASS 4", --Heavyshotgun",
-    [-275439685]  = "CLASS 4", --Doublebarrel Shotgun",
-    [317205821]   = "CLASS 4", --Autoshotgun",
-    [-1568386805] = "CLASS 4", --GRENADE LAUNCHER",
-    [-1312131151] = "CLASS 3", --RPG",
-    [125959754]   = "CLASS 4", --Compactlauncher"
+    [584646201]   = "CLASS 2: AP-Pistol",
+    [453432689]   = "CLASS 1: Pistol",
+    [3219281620]  = "CLASS 1: Pistol MK2",
+    [1593441988]  = "CLASS 1: Combat Pistol",
+    [-1716589765] = "CLASS 1: Heavy Pistol",
+    [-1076751822] = "CLASS 1: SNS-Pistol",
+    [-771403250]  = "CLASS 2: Desert Eagle",
+    [137902532]   = "CLASS 2: Vintage Pistol",
+    [-598887786]  = "CLASS 2: Marksman Pistol",
+    [-1045183535] = "CLASS 2: Revolver",
+    [911657153]   = "Taser",
+    [324215364]   = "CLASS 2: Micro-SMG",
+    [-619010992]  = "CLASS 2: Machine-Pistol",
+    [736523883]   = "CLASS 2: SMG",
+    [2024373456]  = "CLASS 2: SMG MK2",
+    [-270015777]  = "CLASS 2: Assault SMG",
+    [171789620]   = "CLASS 2: Combat PDW",
+    [-1660422300] = "CLASS 4: Combat MG",
+    [3686625920]  = "CLASS 4: Combat MG MK2",
+    [1627465347]  = "CLASS 4: Gusenberg",
+    [-1121678507] = "CLASS 2: Mini SMG",
+    [-1074790547] = "CLASS 3: Assaultrifle",
+    [961495388]   = "CLASS 3: Assaultrifle MK2",
+    [-2084633992] = "CLASS 3: Carbinerifle",
+    [4208062921]  = "CLASS 3: Carbinerifle MK2",
+    [-1357824103] = "CLASS 3: Advancedrifle",
+    [-1063057011] = "CLASS 3: Specialcarbine",
+    [2132975508]  = "CLASS 3: Bulluprifle",
+    [1649403952]  = "CLASS 3: Compactrifle",
+    [100416529]   = "CLASS 4: Sniperrifle",
+    [205991906]   = "CLASS 4: Heavy Sniper",
+    [177293209]   = "CLASS 4: Heavy Sniper MK2",
+    [-952879014]  = "CLASS 4: Marksmanrifle",
+    [487013001]   = "CLASS 2: Pumpshotgun",
+    [2017895192]  = "CLASS 2: Sawnoff Shotgun",
+    [-1654528753] = "CLASS 3: Bullupshotgun",
+    [-494615257]  = "CLASS 3: Assaultshotgun",
+    [-1466123874] = "CLASS 3: Musket",
+    [984333226]   = "CLASS 3: Heavyshotgun",
+    [-275439685]  = "CLASS 2: Doublebarrel Shotgun",
+    [317205821]   = "CLASS 2: Autoshotgun",
+    [-1568386805] = "CLASS 5: GRENADE LAUNCHER",
+    [-1312131151] = "CLASS 5: RPG",
+    [125959754]   = "CLASS 5: Compactlauncher"
 }
 local function VehicleTheft(vehicle)
     local vehdata = vehicleData(vehicle)
@@ -87,7 +65,7 @@ local function VehicleTheft(vehicle)
             z = currentPos.z
         },
         dispatchMessage = _U('vehicletheft'),
-        job = { "police" }
+        job = {"LEO", "police"}
     })
 end
 
@@ -129,7 +107,7 @@ local function VehicleShooting(vehdata)
             z = currentPos.z
         },
         dispatchMessage = _U('vehicleshots'),
-        job = { "police" }
+        job = {"LEO", "police"}
     })
 end
 
@@ -162,7 +140,7 @@ local function Shooting()
             z = currentPos.z
         },
         dispatchMessage = _U('shooting'),
-        job = { "police" }
+        job = {"LEO", "police"}
     })
 
 end
@@ -175,10 +153,10 @@ local function SpeedingVehicle(vehdata)
     local heading = getCardinalDirectionFromHeading()
     TriggerServerEvent("dispatch:server:notify", {
         dispatchcodename = "speeding", -- has to match the codes in sv_dispatchcodes.lua so that it generates the right blip
-        dispatchCode = "10-12",
+        dispatchCode = "10-11",
         firstStreet = locationInfo,
         model = vehdata.name,
-        --plate = vehdata.plate,
+        plate = vehdata.plate,
         priority = 2,
         firstColor = vehdata.colour,
         heading = heading,
@@ -188,8 +166,8 @@ local function SpeedingVehicle(vehdata)
             y = currentPos.y,
             z = currentPos.z
         },
-        dispatchMessage = "Speeding in progress",
-        job = { "police" }
+        dispatchMessage = _U('speeding'),
+        job = {"LEO", "police"}
     })
 end
 
@@ -215,7 +193,7 @@ local function Fight()
             z = currentPos.z
         },
         dispatchMessage = _U('melee'),
-        job = { "police" }
+        job = {"LEO", "police"}
     })
 end
 
@@ -241,7 +219,7 @@ local function InjuriedPerson()
             z = currentPos.z
         },
         dispatchMessage = _U('persondown'), -- message
-        job = { "ambulance" } -- jobs that will get the alerts
+        job = {"EMS", "ambulance"} -- type or jobs that will get the alerts
     })
 end
 
@@ -267,7 +245,7 @@ local function DeceasedPerson()
             z = currentPos.z
         },
         dispatchMessage = "Civilian Bled Out", -- message
-        job = { "ambulance" } -- jobs that will get the alerts
+        job = {"EMS", "ambulance"} -- type or jobs that will get the alerts
     })
 end
 
@@ -294,7 +272,7 @@ local function StoreRobbery(camId)
             z = currentPos.z
         },
         dispatchMessage = _U('storerobbery'), -- message
-        job = { "police" } -- jobs that will get the alerts
+        job = {"LEO", "police"} -- type or jobs that will get the alerts
     })
 end
 
@@ -321,64 +299,11 @@ local function FleecaBankRobbery(camId)
             z = currentPos.z
         },
         dispatchMessage = _U('fleecabank'), -- message
-        job = { "police" } -- jobs that will get the alerts
+        job = {"LEO", "police"} -- type or jobs that will get the alerts
     })
 end
 
 exports('FleecaBankRobbery', FleecaBankRobbery)
-
-local function BankTruckRobbery(camId)
-    local currentPos = GetEntityCoords(PlayerPedId())
-    local locationInfo = getStreetandZone(currentPos)
-    local gender = GetPedGender()
-    TriggerServerEvent("dispatch:server:notify", {
-        dispatchcodename = "banktruckrobbery", -- has to match the codes in sv_dispatchcodes.lua so that it generates the right blip
-        dispatchCode = "10-90",
-        firstStreet = locationInfo,
-        gender = gender,
-        camId = camId,
-        model = nil,
-        plate = nil,
-        priority = 2, -- priority
-        firstColor = nil,
-        automaticGunfire = false,
-        origin = {
-            x = currentPos.x,
-            y = currentPos.y,
-            z = currentPos.z
-        },
-        dispatchMessage = _U('banktruckrobbery'), -- message
-        job = { "police" } -- jobs that will get the alerts
-    })
-end
-
-exports('BankTruckRobbery',BankTruckRobbery)
-
-local function ScrapRobbery(camId)
-    local currentPos = GetEntityCoords(PlayerPedId())
-    local locationInfo = getStreetandZone(currentPos)
-    local gender = GetPedGender()
-    TriggerServerEvent("dispatch:server:notify", {
-        dispatchcodename = "scraprobbery", -- has to match the codes in sv_dispatchcodes.lua so that it generates the right blip
-        dispatchCode = "10-90",
-        firstStreet = locationInfo,
-        gender = gender,
-        model = nil,
-        plate = nil,
-        priority = 2, -- priority
-        firstColor = nil,
-        automaticGunfire = false,
-        origin = {
-            x = currentPos.x,
-            y = currentPos.y,
-            z = currentPos.z
-        },
-        dispatchMessage = _U('scraprobbery'), -- message
-        job = { "police" } -- jobs that will get the alerts
-    })
-end
-
-exports('ScrapRobbery',ScrapRobbery)
 
 local function PaletoBankRobbery(camId)
     local currentPos = GetEntityCoords(PlayerPedId())
@@ -401,7 +326,7 @@ local function PaletoBankRobbery(camId)
             z = currentPos.z
         },
         dispatchMessage = _U('paletobank'), -- message
-        job = { "police" } -- jobs that will get the alerts
+        job = {"LEO", "police"} -- type or jobs that will get the alerts
     })
 end
 
@@ -428,7 +353,7 @@ local function PacificBankRobbery(camId)
             z = currentPos.z
         },
         dispatchMessage = _U('pacificbank'), -- message
-        job = { "police" } -- jobs that will get the alerts
+        job = {"LEO", "police"} -- type or jobs that will get the alerts
     })
 end
 
@@ -454,7 +379,7 @@ local function PrisonBreak()
             z = currentPos.z
         },
         dispatchMessage = _U('prisonbreak'), -- message
-        job = { "police" } -- jobs that will get the alerts
+        job = {"LEO", "police"} -- type or jobs that will get the alerts
     })
 end
 
@@ -482,7 +407,7 @@ local function VangelicoRobbery(camId)
             z = currentPos.z
         },
         dispatchMessage = _U('vangelico'), -- message
-        job = { "police" } -- jobs that will get the alerts
+        job = {"LEO", "police"} -- type or jobs that will get the alerts
     })
 end
 
@@ -508,7 +433,7 @@ local function HouseRobbery()
             z = currentPos.z
         },
         dispatchMessage = _U('houserobbery'), -- message
-        job = { "police" } -- jobs that will get the alerts
+        job = {"LEO", "police"} -- type or jobs that will get the alerts
     })
 end
 
@@ -534,7 +459,7 @@ local function YachtHeist()
             z = currentPos.z
         },
         dispatchMessage = _U('yachtheist'), -- message
-        job = { "police" } -- jobs that will get the alerts
+        job = {"LEO", "police"} -- type or jobs that will get the alerts
     })
 end
 
@@ -560,7 +485,7 @@ local function DrugSale()
             z = currentPos.z
         },
         dispatchMessage = _U('drugsell'), -- message
-        job = { "police" } -- jobs that will get the alerts
+        job = {"LEO", "police"} -- type or jobs that will get the alerts
     })
 end
 
@@ -568,7 +493,7 @@ exports('DrugSale', DrugSale)
 
 
 -- for rcore_gangs, haven't tested server side exports so made this instead. Remove if you do not need :)
-RegisterNetEvent('qb-dispatch:client:drugsale', function()
+RegisterNetEvent('ps-dispatch:client:drugsale', function()
     DrugSale()
 end)
 
@@ -593,7 +518,7 @@ local function CarJacking(vehicle)
             z = currentPos.z
         },
         dispatchMessage = _U('carjacking'),
-        job = { "police" }
+        job = {"LEO", "police"} -- type or jobs that will get the alerts
     })
 end
 
@@ -621,13 +546,13 @@ local function OfficerDown()
             z = currentPos.z
         },
         dispatchMessage = _U('officerdown'), -- message
-        job = { "ambulance", "police" } -- jobs that will get the alerts
+        job = {"FirstResponder", "ambulance"} -- type or jobs that will get the alerts
     })
 end
 
 exports('OfficerDown', OfficerDown)
 
-RegisterNetEvent("qb-dispatch:client:officerdown", function ()
+RegisterNetEvent("ps-dispatch:client:officerdown", function ()
     OfficerDown()
 end)
 
@@ -653,13 +578,13 @@ local function EmsDown()
             z = currentPos.z
         },
         dispatchMessage = _U('emsdown'), -- message
-        job = { "ambulance", "police" } -- jobs that will get the alerts
+        job = {"FirstResponder", "ambulance"} -- type or jobs that will get the alerts
     })
 end
 
 exports('EmsDown', EmsDown)
 
-RegisterNetEvent("qb-dispatch:client:emsdown", function ()
+RegisterNetEvent("ps-dispatch:client:emsdown", function ()
     EmsDown()
 end)
 
@@ -683,7 +608,7 @@ local function Explosion()
             z = currentPos.z
         },
         dispatchMessage = "Explosion Reported", -- message
-        job = { "police" } -- jobs that will get the alerts
+        job = {"LEO", "police"} -- type or jobs that will get the alerts
     })
 end
 
@@ -709,18 +634,51 @@ local function SuspiciousActivity()
             z = currentPos.z
         },
         dispatchMessage = _U('susactivity'), -- message
-        job = { "police" } -- jobs that will get the alerts
+        job = {"LEO", "police"} -- type or jobs that will get the alerts
     })
 end
 
 exports('SuspiciousActivity', SuspiciousActivity)
+
+local function Hunting()
+    local currentPos = GetEntityCoords(PlayerPedId())
+    local locationInfo = getStreetandZone(currentPos)
+    local gender = GetPedGender()
+    local PlayerPed = PlayerPedId()
+    local CurrentWeapon = GetSelectedPedWeapon(PlayerPed)
+    local speed = math.floor(GetEntitySpeed(vehicle) * 2.236936) .. " MPH" -- * 3.6 = KMH    /    * 2.236936 = MPH
+    local weapon = WeaponTable[CurrentWeapon] or "UNKNOWN"
+
+    TriggerServerEvent("dispatch:server:notify", {
+        dispatchcodename = "hunting", -- has to match the codes in sv_dispatchcodes.lua so that it generates the right blip
+        dispatchCode = "10-13",
+        firstStreet = locationInfo,
+        gender = gender,
+        weapon = weapon,
+        model = nil,
+        plate = nil,
+        priority = 2,
+        firstColor = nil,
+        automaticGunfire = false,
+        origin = {
+            x = currentPos.x,
+            y = currentPos.y,
+            z = currentPos.z
+        },
+        dispatchMessage = _U('hunting'),
+        job = {"LEO", "police"} -- type or jobs that will get the alerts
+    })
+
+end
+
+exports('Hunting', Hunting)
 
 local function CustomAlert(data)
 
     local coords = data.coords or vec3(0.0, 0.0, 0.0)
     local gender = GetPedGender()
     if not data.gender then gender = nil end 
-    local job = { "police" }
+    local job = {"LEO", "police"}
     if data.job then job = data.job end
 
 

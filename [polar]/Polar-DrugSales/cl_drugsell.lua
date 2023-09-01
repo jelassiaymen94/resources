@@ -13,7 +13,7 @@ for k, v in pairs(Config.Zones) do
     })
 end
 local function PoliceAlert()
-	exports['qb-dispatch']:DrugSale()
+	exports['ps-dispatch']:DrugSale()
 end
 local function PlayGiveAnim(tped)
 	local pid = PlayerPedId()	

@@ -5,24 +5,6 @@ function _U(entry)
 	return Locales[Config.Locale][entry] 
 end
 
-local function IsPoliceJob(job)
-    for k, v in pairs(Config.PoliceJob) do
-        if job == v then
-            return true
-        end
-    end
-    return false
-end
-
-local function IsDispatchJob(job)
-    for k, v in pairs(Config.PoliceAndAmbulance) do
-        if job == v then
-            return true
-        end
-    end
-    return false
-end
-
 RegisterServerEvent("dispatch:server:notify", function(data)
 	local newId = #calls + 1
 	calls[newId] = data
@@ -34,9 +16,9 @@ RegisterServerEvent("dispatch:server:notify", function(data)
 
 	TriggerClientEvent('dispatch:clNotify', -1, data, newId, source)
     if not data.alert then 
-        TriggerClientEvent("qb-dispatch:client:AddCallBlip", -1, data.origin, dispatchCodes[data.dispatchcodename], newId)
+        TriggerClientEvent("ps-dispatch:client:AddCallBlip", -1, data.origin, dispatchCodes[data.dispatchcodename], newId)
     else
-        TriggerClientEvent("qb-dispatch:client:AddCallBlip", -1, data.origin, data.alert, newId)
+        TriggerClientEvent("ps-dispatch:client:AddCallBlip", -1, data.origin, data.alert, newId)
     end
 end)
 
@@ -55,10 +37,14 @@ AddEventHandler("dispatch:addUnit", function(callid, player, cb)
             end
         end
 
-        if IsPoliceJob(player.job.name) then
-            calls[callid]['units'][#calls[callid]['units']+1] = { cid = player.cid, fullname = player.fullname, job = 'Police', callsign = player.callsign }
-        elseif player.job.name == 'ambulance' then
-            calls[callid]['units'][#calls[callid]['units']+1] = { cid = player.cid, fullname = player.fullname, job = 'EMS', callsign = player.callsign }
+        local Player = QBCore.Functions.GetPlayerByCitizenId(player.cid) 
+        if not Player then
+            cb(#calls[callid]['units'])
+            return
+        end
+
+        if Config.AuthorizedJobs.FirstResponder.Check(Player.PlayerData) then
+            calls[callid]['units'][#calls[callid]['units']+1] = { cid = player.cid, fullname = player.fullname, job = player.job.name, callsign = player.callsign, channel = player.radio}
         end
         cb(#calls[callid]['units'])
     end
@@ -100,9 +86,7 @@ end)
 
 RegisterCommand('togglealerts', function(source, args, user)
 	local source = source
-    local Player = QBCore.Functions.GetPlayer(source)
-	local job = Player.PlayerData.job
-	if IsPoliceJob(job.name) or job.name == 'ambulance' then
+	if IsDispatchJob then
 		TriggerClientEvent('dispatch:manageNotifs', source, args[1])
 	end
 end)
@@ -114,7 +98,7 @@ AddEventHandler('explosionEvent', function(source, info)
 
     for i = 1, (#Config.ExplosionTypes) do
         if info.explosionType == Config.ExplosionTypes[i] then
-            TriggerClientEvent("qb-dispatch:client:Explosion", source)
+            TriggerClientEvent("ps-dispatch:client:Explosion", source)
             ExplosionCooldown = true
             SetTimeout(1500, function()
                 ExplosionCooldown = false
@@ -126,8 +110,7 @@ end)
 QBCore.Commands.Add("cleardispatchblips", "Clear all dispatch blips", {}, false, function(source, args)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
-	local job = Player.PlayerData.job.name
-    if IsDispatchJob(job) then
-        TriggerClientEvent('qb-dispatch:client:clearAllBlips', src)
+    if Config.AuthorizedJobs.FirstResponder.Check(Player.PlayerData) then
+        TriggerClientEvent('ps-dispatch:client:clearAllBlips', src)
     end
 end)

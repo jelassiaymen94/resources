@@ -490,7 +490,7 @@ function LockpickDoor(type)
         if policecarfunction(vehicle) then
             --print('police')
             if playeritem('specialpick') then
-                exports['qb-dispatch']:VehicleTheft(vehicle)
+                exports['ps-dispatch']:VehicleTheft(vehicle)
                 Config.LockPickDoorEvent('police')
             end
         end

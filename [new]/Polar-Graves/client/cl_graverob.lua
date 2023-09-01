@@ -72,7 +72,7 @@ RegisterNetEvent("Graverobbery:Client:StartDigging", function(data)
             if dist <= 1.5 then
                 TriggerServerEvent('Polar-Graves:Server:TargetRemove', target)
                     local CurGrave = k
-                    exports["qb-dispatch"]:CustomAlert({
+                    exports["ps-dispatch"]:CustomAlert({
                         coords = v["coords"], message = "Suspicious Activity",
                         dispatchCode = "10-16", description = "Possible Grave Digging", radius = 10,
                         sprite = 58,  color = 46, scale = 1.0,  length = 1,

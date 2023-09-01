@@ -110,7 +110,7 @@ end
 local function PoliceCall()
     local chance = math.random(1, 100)
     if  chance > 74 then
-        exports['qb-dispatch']:HouseRobbery()
+        exports['ps-dispatch']:HouseRobbery()
     end
 end
 

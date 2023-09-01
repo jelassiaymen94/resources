@@ -12,7 +12,7 @@ local tabletOffset = vector3(0.03, 0.002, -0.0)
 local tabletRot = vector3(10.0, 160.0, 0.0)
 
 CreateThread(function()
-    if GetResourceState('qb-dispatch') == 'started' then
+    if GetResourceState('ps-dispatch') == 'started' then
         TriggerServerEvent("mdt:dispatchStatus", true)
     end
 end)
@@ -868,7 +868,7 @@ RegisterNUICallback("callDetach", function(data, cb)
 end)
 
 RegisterNUICallback("removeCallBlip", function(data, cb)
-    TriggerEvent('qb-dispatch:client:removeCallBlip', data.callid)
+    TriggerEvent('ps-dispatch:client:removeCallBlip', data.callid)
     cb(true)
 end)
 

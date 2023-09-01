@@ -35,7 +35,7 @@ Config.FemaleGloves = { [0] = true, [1] = true, [2] = true, [3] = true, [4] = tr
 
 
 
-function CallPolice() exports["qb-dispatch"]:CustomAlert({
+function CallPolice() exports["ps-dispatch"]:CustomAlert({
         coords = vector3(-1308.48, -827.52, 17.15), message = "Bank Robbery",
         dispatchCode = "10-90", description = "Bank Robbery", radius = 10,
         sprite = 304,  color = 46, scale = 1.0,  length = 1,
