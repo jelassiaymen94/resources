@@ -61,6 +61,8 @@ Config.ToolsBench = {
         },
         exp = 0, -- required xp amount
     },
+}
+Config.tab = {
     [2] = {
         item = 'screwdriverset',
         icon = "",
