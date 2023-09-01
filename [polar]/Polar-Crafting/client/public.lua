@@ -125,7 +125,7 @@ function tools()
     else
     for i = 1, #Config.ToolsBench do
         for item, quantity in pairs(Config.ToolsBench[i].required) do 
-            texes = texes .. "<p> <img src=nui://" .. Config.img .. QBCore.Shared.Items[item].image .. " width=25px onerror='this.onerror=null; this.remove();'> " .. Config.ToolsBench[item].amount .. " " .. QBCore.Shared.Items[item].label
+            texes = texes .. "<p> <img src=nui://" .. Config.img .. QBCore.Shared.Items[item].image .. " width=25px onerror='this.onerror=null; this.remove();'> " .. quantity .. " " .. QBCore.Shared.Items[item].label
         end 
         local item = Config.ToolsBench[i].item
 		local setheader = "<img src=nui://"..Config.img..QBCore.Shared.Items[item].image.." width=45px onerror='this.onerror=null; this.remove();'>"..QBCore.Shared.Items[item].label
