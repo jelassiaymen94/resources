@@ -56,11 +56,10 @@ Config.ToolsBench = {
         item = 'lockpick',
         icon = "",
         required = {
-            "steel" == 5,
-            "metalscrap" == 10,
-            "rubber" == 3,
+            steel = 5,
+            metalscrap = 10,
+            rubber = 3,
         },
-        txt = "Required: ".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['steel'].image.." width=25px onerror='this.onerror=null; this.remove();'> 5 Steel".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['metalscrap'].image.." width=25px onerror='this.onerror=null; this.remove();'> 10 Metal Scrap ".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['rubber'].image.." width=30px onerror='this.onerror=null; this.remove();'> 3 Rubber",
         exp = 0, -- required xp amount
     },
     [2] = {

@@ -106,11 +106,6 @@ for i = 1, #Config.ExplosivesBench do
     end
 end
 
-local items = {
-    steel = 5,
-    metalscrap = 10,
-    rubber = 3,
-}
 
 
 
@@ -128,7 +123,6 @@ function tools()
             Wait(0)
             exports['qb-menu']:openMenu(toolsmenu)
     else
-   
     for i = 1, #Config.ToolsBench do
         for item, quantity in pairs(Config.ToolsBench[i].required) do 
             texes = texes .. "<p> <img src=nui://" .. Config.img .. QBCore.Shared.Items[item].image .. " width=25px onerror='this.onerror=null; this.remove();'> " .. Config.ToolsBench[item].amount .. " " .. QBCore.Shared.Items[item].label
