@@ -89,7 +89,8 @@ function starttarget()
    
    
     else
-        print(labname)
+        print(labs)
+        print(json.encode(labs))
         exports['qb-target']:AddBoxZone(labs[labname]["mix"], Config.MixLocation, 1, 1, { name = "mix", heading = 0.0, debug = Config.Debug, minZ = Config.MixLocation.z-1, maxZ =  Config.MixLocation.z+1,}, 
         { options = {{ event = "Polar-Meth:Client:MethMix", icon = "fa-solid fa-bolt", label = "Mix Materials"}}, distance = 1.5 }) 
 
