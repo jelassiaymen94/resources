@@ -5,17 +5,26 @@ elseif Config.Framework == 'esx' then
 end
 
 local circleexport = 'Polar-UI'
-
+local labname = nil
 local target = Config.Target
+local labs = {}
+
 RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function() 
     Wait(100) 
+
+   
+
     starttarget() 
 end)
 CreateThread(function()
-    --if Config.Debug then
+  
         Wait(100) 
+        
+        
+       
+
         starttarget() 
-   -- end
+ 
 end)
 function animation() TaskStartScenarioInPlace(PlayerPedId(), "PROP_HUMAN_PARKING_METER", 0, true) end
 function endanimation() ClearPedTasks(PlayerPedId()) end
@@ -67,8 +76,8 @@ function notify(what, color)
         ESX.ShowNotification(what, true, true, colo)
     end
 end
-function removetarget(name)
-    TriggerServerEvent('Polar-Meth:Server:RemoveTarget', name)
+function removetarget(name, labname)
+    TriggerServerEvent('Polar-Meth:Server:RemoveTarget', name, labname)
     
 end
 function starttarget()
@@ -80,45 +89,58 @@ function starttarget()
    
     else
 
-        exports['qb-target']:AddBoxZone("mix", Config.MixLocation, 1, 1, { name = "mix", heading = 0.0, debug = Config.Debug, minZ = Config.MixLocation.z-1, maxZ =  Config.MixLocation.z+1,}, 
-        { options = {{ event = "Polar-Meth:Client:MethMix", icon = "fa-solid fa-bolt", label = "Mix Materials"}}, distance = 1.5 }) 
 
-         exports['qb-target']:AddBoxZone("enterlab", Config.EnterLabThirdEye, 1, 1, { name = "enterlab", heading = 0.0, debug = Config.Debug, minZ = Config.EnterLabThirdEye.z-1, maxZ =  Config.EnterLabThirdEye.z+1,}, 
-        { options = {{ event = "Polar-Meth:Client:EnterLab", icon = "fa-solid fa-bolt", label = "Enter Lab"}}, distance = 1.5 }) 
+        for labName, labData in pairs(Config.Labs) do
+            local cord = labData.InsideLabCord
+            local head = labData.InsideLabHead
+            labs[labName] = {}
 
-        exports['qb-target']:AddBoxZone("exitlab", Config.ExitLabThirdEye, 1, 1, { name = "exitlab", heading = 0.0, debug = Config.Debug, minZ = Config.ExitLabThirdEye.z-1, maxZ =  Config.ExitLabThirdEye.z+1,}, 
-        { options = {{ event = "Polar-Meth:Client:ExitLab", icon = "fa-solid fa-bolt", label = "Exit Lab"}}, distance = 1.5 }) 
+         
+            
+            exports['qb-target']:AddBoxZone(labName .. "_mix", Config.MixLocation, 1, 1, { name = "mix", heading = 0.0, debug = Config.Debug, minZ = Config.MixLocation.z-1, maxZ =  Config.MixLocation.z+1,}, 
+            { options = {{ event = "Polar-Meth:Client:MethMix", icon = "fa-solid fa-bolt", label = "Mix Materials", type = labName}}, distance = 1.5 }) 
+
+            exports['qb-target']:AddBoxZone(labName .. "_enterlab", cord, 1, 1, { name = "enterlab", heading = 0.0, debug = Config.Debug, minZ = cord.z-1, maxZ =  cord.z+1,}, 
+            { options = {{ event = "Polar-Meth:Client:EnterLab", icon = "fa-solid fa-bolt", label = "Enter Lab", type = labName}}, distance = 1.5 }) 
+    
+            exports['qb-target']:AddBoxZone(labName .. "_exitlab", Config.ExitLabThirdEye, 1, 1, { name = "exitlab", heading = 0.0, debug = Config.Debug, minZ = Config.ExitLabThirdEye.z-1, maxZ =  Config.ExitLabThirdEye.z+1,}, 
+            { options = {{ event = "Polar-Meth:Client:ExitLab", icon = "fa-solid fa-bolt", label = "Exit Lab", type = labName}}, distance = 1.5 }) 
+
+        end
+      
+
+
 
     end
 end
 
 function traynext(amount)
-    removetarget('temp')
-    TriggerServerEvent('Polar-Meth:Server:TrayAdd')
+    removetarget('temp', labname)
+    TriggerServerEvent('Polar-Meth:Server:TrayAdd', labname)
     endanimation()
-    TriggerServerEvent('Polar-Meth:Server:SetBagAmount', amount)
+    TriggerServerEvent('Polar-Meth:Server:SetBagAmount', amount, labname)
 end
 
-RegisterNetEvent('Polar-Meth:Client:RemoveTarget', function(name)
-    if Config.Debug then print('removed target ' .. name .. '') end
-    exports['qb-target']:RemoveZone(name) 
+RegisterNetEvent('Polar-Meth:Client:RemoveTarget', function(name, labnam2)
+    if Config.Debug then print('removed target ' .. labnam2 .. "_" .. name) end
+    exports['qb-target']:RemoveZone(labnam2 .. "_" .. name) 
 
 end)
 
-RegisterNetEvent('Polar-Meth:Client:MixTarget', function()
-    exports['qb-target']:AddBoxZone("mix", Config.MixLocation, 1, 1, { name = "mix", heading = 0.0, debug = Config.Debug, minZ = Config.MixLocation.z-1, maxZ =  Config.MixLocation.z+1,}, 
-    { options = {{ event = "Polar-Meth:Client:MethMix", icon = "fa-solid fa-bolt", label = "Mix Materials"}}, distance = 1.5 }) 
+RegisterNetEvent('Polar-Meth:Client:MixTarget', function(labnam2)
+    exports['qb-target']:AddBoxZone(labnam2 .. "_mix", Config.MixLocation, 1, 1, { name = "mix", heading = 0.0, debug = Config.Debug, minZ = Config.MixLocation.z-1, maxZ =  Config.MixLocation.z+1,}, 
+    { options = {{ event = "Polar-Meth:Client:MethMix", icon = "fa-solid fa-bolt", label = "Mix Materials", type = labnam2}}, distance = 1.5 }) 
 end)
 
-RegisterNetEvent('Polar-Meth:Client:StartTargets', function()
-    exports['qb-target']:AddBoxZone("temp", Config.TempLocation, 1, 1, { name = "temp", heading = 0.0, debug = Config.Debug, minZ = Config.TempLocation.z-1, maxZ =  Config.TempLocation.z+1,}, 
-    { options = {{ event = "Polar-Meth:Client:MethTemperature", icon = "fa-solid fa-bolt", label = "Set Temperature"}}, distance = 1.5 }) 
+RegisterNetEvent('Polar-Meth:Client:StartTargets', function(labnam2)
+    exports['qb-target']:AddBoxZone(labnam2 .. "_temp", Config.TempLocation, 1, 1, { name = "temp", heading = 0.0, debug = Config.Debug, minZ = Config.TempLocation.z-1, maxZ =  Config.TempLocation.z+1,}, 
+    { options = {{ event = "Polar-Meth:Client:MethTemperature", icon = "fa-solid fa-bolt", label = "Set Temperature", type = labnam2}}, distance = 1.5 }) 
 
-    exports['qb-target']:AddBoxZone("tray", Config.TrayLocation, 1, 1, { name = "tray", heading = 0.0, debug = Config.Debug, minZ = Config.TrayLocation.z-1, maxZ =  Config.TrayLocation.z+1,}, 
-    { options = {{ event = "Polar-Meth:Client:MethTray", icon = "fa-solid fa-bolt", label = "Smash Tray"}}, distance = 1.5 }) 
+    exports['qb-target']:AddBoxZone(labnam2 .. "_tray", Config.TrayLocation, 1, 1, { name = "tray", heading = 0.0, debug = Config.Debug, minZ = Config.TrayLocation.z-1, maxZ = Config.TrayLocation.z+1,}, 
+    { options = {{ event = "Polar-Meth:Client:MethTray", icon = "fa-solid fa-bolt", label = "Smash Tray", type = labnam2}}, distance = 1.5 }) 
 
-    exports['qb-target']:AddBoxZone("bag", Config.BagLocation, 1, 1, { name = "bag", heading = 0.0, debug = Config.Debug, minZ = Config.BagLocation.z-1, maxZ =  Config.BagLocation.z+1,}, 
-    { options = {{ event = "Polar-Meth:Client:MethBag", icon = "fa-solid fa-bolt", label = "Bag Crystals"}}, distance = 1.5 }) 
+    exports['qb-target']:AddBoxZone(labnam2 .. "_bag", Config.BagLocation, 1, 1, { name = "bag", heading = 0.0, debug = Config.Debug, minZ = Config.BagLocation.z-1, maxZ =  Config.BagLocation.z+1,}, 
+    { options = {{ event = "Polar-Meth:Client:MethBag", icon = "fa-solid fa-bolt", label = "Bag Crystals", type = labnam2}}, distance = 1.5 }) 
 
 end)
 ----------------------
@@ -140,20 +162,21 @@ end)
 
 
 AddEventHandler('onResourceStop', function(resource) if resource ~= GetCurrentResourceName() then return end LocalPlayer.state:set('inv_busy', false, true)
-    TriggerServerEvent('Polar-Meth:Server:RemoveTarget', 'tray')
-    TriggerServerEvent('Polar-Meth:Server:RemoveTarget', 'temp')
-    TriggerServerEvent('Polar-Meth:Server:RemoveTarget', 'mix')
-    TriggerServerEvent('Polar-Meth:Server:RemoveTarget', 'bag')
-    TriggerServerEvent('Polar-Meth:Server:RemoveTarget', 'enterlab')
-    TriggerServerEvent('Polar-Meth:Server:RemoveTarget', 'exitlab')
-
-
+    for labName, v in pairs(Config.Labs) do
+        TriggerServerEvent('Polar-Meth:Server:RemoveTarget', 'tray', labName)
+        TriggerServerEvent('Polar-Meth:Server:RemoveTarget', 'temp', labName)
+        TriggerServerEvent('Polar-Meth:Server:RemoveTarget', 'mix', labName)
+        TriggerServerEvent('Polar-Meth:Server:RemoveTarget', 'bag', labName)
+        TriggerServerEvent('Polar-Meth:Server:RemoveTarget', 'enterlab', labName)
+        TriggerServerEvent('Polar-Meth:Server:RemoveTarget', 'exitlab', labName)
+    end
 end)
 
-RegisterNetEvent('Polar-Meth:Client:MethMix', function()
+RegisterNetEvent('Polar-Meth:Client:MethMix', function(data)
+    local labname = data.type
     if playeritem(Config.Ing1) and playeritem(Config.Ing2) and playeritem(Config.Ing3) and playeritem(Config.Ing4) then
         Config.TriggerCallBack('Polar-Meth:MixCheck', function(result) if result then
-            TriggerServerEvent('Polar-Meth:Server:StopInteract', 'mix')
+            TriggerServerEvent('Polar-Meth:Server:StopInteract', 'mix', labname)
             LocalPlayer.state:set('inv_busy', true, true)
             TriggerServerEvent('Polar-Meth:Server:RemoveItem', Config.Ing1)
             TriggerServerEvent('Polar-Meth:Server:RemoveItem', Config.Ing2)
@@ -188,17 +211,18 @@ RegisterNetEvent('Polar-Meth:Client:MethMix', function()
             DeleteEntity(ammonia)
             DeleteEntity(sacid)
             LocalPlayer.state:set('inv_busy', false, true)
-            removetarget('mix')
+            removetarget('mix', labname)
             notify(text('mixerstart'), 'success')
             Wait(5000)
             percentage()
-        else notify(text('busy'), "error") end end)
+        else notify(text('busy'), "error") end end, labname)
     else notify(text('ingredients'), "error") end
 end)
 
-RegisterNetEvent('Polar-Meth:Client:MethTemperature', function()
+RegisterNetEvent('Polar-Meth:Client:MethTemperature', function(data)
+    local labname = data.type
     Config.TriggerCallBack('Polar-Meth:TempCheck', function(result) if result then
-        TriggerServerEvent('Polar-Meth:Server:StopInteract', 'temp')
+        TriggerServerEvent('Polar-Meth:Server:StopInteract', 'temp', labname)
         animation()
         local random2 = math.random(2,10)
         local random = math.random(10,20)
@@ -222,14 +246,15 @@ RegisterNetEvent('Polar-Meth:Client:MethTemperature', function()
             notify(text('tray'), 'success')
             traynext(1)
         end end, random2, random)
-    else notify(text('busy'), "error") end end)
+    else notify(text('busy'), "error") end end, labname)
     ClearPedTasks(PlayerPedId())
 end)
 
-RegisterNetEvent('Polar-Meth:Client:MethTray', function()
+RegisterNetEvent('Polar-Meth:Client:MethTray', function(data)
+    local labname = data.type
     if playeritem(Config.TrayItem) and playeritem(Config.BreakItem) then
         Config.TriggerCallBack('Polar-Meth:TrayCheck', function(result) if result then
-        TriggerServerEvent('Polar-Meth:Server:StopInteract', 'tray')
+        TriggerServerEvent('Polar-Meth:Server:StopInteract', 'tray', labname)
         animation()
         TriggerServerEvent('Polar-Meth:Server:RemoveItem', Config.TrayItem)
         local chance = math.random(1,100) if chance < 35 then TriggerServerEvent('Polar-Meth:Server:RemoveItem', Config.BreakItem) end
@@ -242,25 +267,26 @@ RegisterNetEvent('Polar-Meth:Client:MethTray', function()
             {}, {}, function() -- Done
             notify(text('bag'), 'success')
             endanimation()
-            removetarget('tray')
-            TriggerServerEvent('Polar-Meth:Server:MethShardAdd')
+            removetarget('tray', labname)
+            TriggerServerEvent('Polar-Meth:Server:MethShardAdd', labname)
         end, function()
             endanimation()
             notify('Canceled', 'error')
-            TriggerServerEvent('Polar-Meth:Server:StartInteract', 'tray')
+            TriggerServerEvent('Polar-Meth:Server:StartInteract', 'tray', labname)
         end)    
-    else notify(text('busy'), "error") end end)
+    else notify(text('busy'), "error") end end, labname)
     else notify(text('ingredients'), 'error') end
 end)
                                      
-RegisterNetEvent('Polar-Meth:Client:MethBag', function()
+RegisterNetEvent('Polar-Meth:Client:MethBag', function(data)
+    local labname = data.type
     if playeritem(Config.BagItem) and playeritem(Config.MethShardItem) then
     Config.TriggerCallBack('Polar-Meth:Cooldown', function(result) if result then
     Config.TriggerCallBack('Polar-Meth:BagCheck', function(result) if result then
-    TriggerServerEvent('Polar-Meth:Server:StopInteract', 'bag')
+    TriggerServerEvent('Polar-Meth:Server:StopInteract', 'bag', labname)
     TriggerServerEvent('Polar-Meth:Server:RemoveItem', Config.MethShardItem)
     TriggerServerEvent('Polar-Meth:Server:RemoveItem', Config.BagItem)
-    removetarget('bag')
+    removetarget('bag', labname)
 	RequestAnimDict('anim@amb@business@meth@meth_smash_weight_check@')
 	while not HasAnimDictLoaded('anim@amb@business@meth@meth_smash_weight_check@') do Wait(10) end
 	RequestModel('bkr_prop_meth_bigbag_04a')
@@ -334,10 +360,10 @@ RegisterNetEvent('Polar-Meth:Client:MethBag', function()
 	DeleteEntity(scale)
 	DeleteEntity(scoop)
     Wait(150)
-    TriggerServerEvent('Polar-Meth:Server:MethAdd')
-    TriggerServerEvent('Polar-Meth:Server:StartCooldown')
-    else notify(text('busy'), "error") end end)
-    else notify(text('cooldown'), "error") end end)
+    TriggerServerEvent('Polar-Meth:Server:MethAdd', labname)
+    TriggerServerEvent('Polar-Meth:Server:StartCooldown', labname)
+    else notify(text('busy'), "error") end end, labname)
+    else notify(text('cooldown'), "error") end end, labname)
     else notify(text('ingredients'), 'error') end
 end)
 
@@ -348,17 +374,18 @@ end)
 local unlocked = false
 
 --------------- TELEPORT ----------------------
-RegisterNetEvent('Polar-Meth:Client:EnterLab', function()
-   
-            Wait(100)
-            teleport(Config.ILabCord, Config.ILabHead)
+RegisterNetEvent('Polar-Meth:Client:EnterLab', function(data)
+    labname = data.type
+    
+    Wait(100)
+    teleport(Config.ILabCord, Config.ILabHead)
            
        
 end)
-RegisterNetEvent('Polar-Meth:Client:ExitLab', function()
-   
-        Wait(100)
-        teleport(Config.InsideLabCord, Config.InsideLabHead)
+RegisterNetEvent('Polar-Meth:Client:ExitLab', function(data)
+    local where = data.type
+    Wait(100)
+    teleport(Config.Labs[where].InsideLabCord, Config.Labs[where].InsideLabHead)
       
 
        
@@ -383,7 +410,7 @@ local number = 0
 function percentage()
     while number < 100 do
     number = math.floor((number + 2) * 1.1)
-    if number > 100 then TriggerServerEvent('Polar-Meth:Server:StartTargets') notify("Batch Mixed!", "success") break end
+    if number > 100 then TriggerServerEvent('Polar-Meth:Server:StartTargets', labname) notify("Batch Mixed!", "success") break end
     notify('Batch is ' .. number .. '% Mixed', 'success')
     Wait(5000)
     end

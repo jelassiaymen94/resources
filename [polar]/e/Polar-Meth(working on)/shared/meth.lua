@@ -41,8 +41,7 @@ Config.ILabHead = 273.27
 
 -- Location of Third eye and exit location of teleporting
 Config.EnterLabThirdEye = vector3(1384.2406, 4305.5506, 36.6780)
-Config.InsideLabCord = vector3(1383.3054, 4305.7793, 36.6741)
-Config.InsideLabHead = 27.85
+
 ----------------------------------------------------------------
 
 
@@ -66,7 +65,13 @@ Config.BagLocation = vector3(988.92, -140.77, -49.2)
 Config.PackageZone = vector3(988.98, -141.34, -48.95) -- dont touch if you don't know
 
 
+Config.Labs = {
+    ["first"] = {
+        InsideLabCord = vector3(1383.3054, 4305.7793, 36.6741),
+        InsideLabHead = 27.85,
+    },
 
+}
 
 ------ CALLBACKS -----------
 if Config.Framework == 'qb' then 
