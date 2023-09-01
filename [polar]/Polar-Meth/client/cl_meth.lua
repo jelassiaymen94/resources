@@ -8,7 +8,6 @@ local circleexport = 'Polar-UI'
 local labname = nil
 local target = Config.Target
 local labs = {}
-labs[labname] = {}
 
 RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function() 
     Wait(100) 
