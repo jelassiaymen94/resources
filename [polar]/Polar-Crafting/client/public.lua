@@ -51,6 +51,9 @@ for i = 1, #Config.WeaponsBench do
 	exports['qb-menu']:openMenu(weaponmenu)
     end
 end
+
+
+
 function ammo()
     local PlayerData = QBCore.Functions.GetPlayerData()
 	local ammomenu = {
@@ -75,6 +78,9 @@ for i = 1, #Config.AmmoBench do
 	exports['qb-menu']:openMenu(ammomenu)
     end
 end
+
+
+
 function explosives()
     local PlayerData = QBCore.Functions.GetPlayerData()
 	local explosivesmenu = {
@@ -99,7 +105,18 @@ for i = 1, #Config.ExplosivesBench do
 	exports['qb-menu']:openMenu(explosivesmenu)
     end
 end
+
+local items = {
+    steel = 5,
+    metalscrap = 10,
+    rubber = 3,
+}
+
+
+
+
 function tools()
+    local texes = nil
     local PlayerData = QBCore.Functions.GetPlayerData()
 	local toolsmenu = {
 		{ header = "Tools Bench", txt = "", icon = "", isMenuHeader = true },
@@ -111,6 +128,9 @@ function tools()
             Wait(0)
             exports['qb-menu']:openMenu(toolsmenu)
         else
+    for item, quantity in pairs(items) do
+        texes = string.format("<p> <img src=nui://%s%s width=25px onerror='this.onerror=null; this.remove();'> %d %s", Config.img, QBCore.Shared.Items[item].image, quantity, QBCore.Shared.Items[item].label)
+    end
 for i = 1, #Config.ToolsBench do
 		local setheader = "<img src=nui://"..Config.img..QBCore.Shared.Items[Config.ToolsBench[i].item].image.." width=45px onerror='this.onerror=null; this.remove();'>"..QBCore.Shared.Items[Config.ToolsBench[i].item].label
 		local disable = false
@@ -118,12 +138,15 @@ for i = 1, #Config.ToolsBench do
       
         if PlayerData.metadata["craftingrep"] >= Config.ToolsBench[i].exp then hide = false end
        -- print(exp)
-       toolsmenu[#toolsmenu+1] = { hidden = hide, disabled = disable, icon = Config.ToolsBench[i].icon, header = setheader, txt = Config.ToolsBench[i].txt, params = { event = "Polar-Crafting:Client:Transfer", args = { item = Config.ToolsBench[i].item} } }
+       toolsmenu[#toolsmenu+1] = { hidden = hide, disabled = disable, icon = Config.ToolsBench[i].icon, header = setheader, txt = "Required: " .. texes, params = { event = "Polar-Crafting:Client:Transfer", args = { item = Config.ToolsBench[i].item} } }
 		Wait(0)
         end
 	exports['qb-menu']:openMenu(toolsmenu)
     end
 end 
+
+
+
 function store()
     local PlayerData = QBCore.Functions.GetPlayerData()
 	local storemenu = {
