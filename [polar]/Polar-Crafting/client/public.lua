@@ -111,7 +111,6 @@ end
 
 
 function tools()
-    local texes = nil
     local PlayerData = QBCore.Functions.GetPlayerData()
 	local toolsmenu = {
 		{ header = "Tools Bench", txt = "", icon = "", isMenuHeader = true },
@@ -124,6 +123,7 @@ function tools()
             exports['qb-menu']:openMenu(toolsmenu)
     else
     for i = 1, #Config.ToolsBench do
+        local texes = ""
         for item, quantity in pairs(Config.ToolsBench[i].required) do 
             texes = texes .. "<p> <img src=nui://" .. Config.img .. QBCore.Shared.Items[item].image .. " width=25px onerror='this.onerror=null; this.remove();'> " .. quantity .. " " .. QBCore.Shared.Items[item].label
         end 
