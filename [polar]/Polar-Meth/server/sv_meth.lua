@@ -25,7 +25,7 @@ RegisterNetEvent('Polar-Meth:Server:RemoveTarget', function(name, labname)
     TriggerClientEvent('Polar-Meth:Client:RemoveTarget', -1, name, labname)
 
 end)
-RegisterNetEvent('Polar-Meth:Server:StopInteract', function(name)
+RegisterNetEvent('Polar-Meth:Server:StopInteract', function(name, labname)
     if name == 'mix' then mix = false
     elseif name == 'temp' then temp = false
     elseif name == 'tray' then tray = false
@@ -33,7 +33,7 @@ RegisterNetEvent('Polar-Meth:Server:StopInteract', function(name)
 
     end
 end)
-RegisterNetEvent('Polar-Meth:Server:StartInteract', function(name)
+RegisterNetEvent('Polar-Meth:Server:StartInteract', function(name, labname)
     if name == 'mix' then mix = true
     elseif name == 'temp' then temp = true
     elseif name == 'tray' then tray = true
