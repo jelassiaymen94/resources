@@ -11,14 +11,17 @@ local labs = {}
 
 RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function() 
     Wait(100) 
-    starttarget() 
+
+    labname = 'first'
+
+    starttarget(labname) 
 end)
 CreateThread(function()
   
         Wait(100) 
         labname = 'first'
         
-        starttarget() 
+        starttarget(labname) 
  
 end)
 function animation() TaskStartScenarioInPlace(PlayerPedId(), "PROP_HUMAN_PARKING_METER", 0, true) end
@@ -75,7 +78,7 @@ function removetarget(name, labname)
     TriggerServerEvent('Polar-Meth:Server:RemoveTarget', name, labname)
     
 end
-function starttarget()
+function starttarget(labname2)
     if target == 'ox' then
 
         exports.ox_target:addBoxZone({ coords = Config.MixLocation, size = vec3(1, 1, 1), rotation = 1, debug = Config.Debug,
@@ -83,22 +86,22 @@ function starttarget()
    
    
     else
-        while labname == nil do Wait(100) end
-        exports['qb-target']:AddBoxZone(labs[labname] .. "mix", Config.MixLocation, 1, 1, { name = "mix", heading = 0.0, debug = Config.Debug, minZ = Config.MixLocation.z-1, maxZ =  Config.MixLocation.z+1,}, 
+        
+        exports['qb-target']:AddBoxZone(labs[labname2] .. "mix", Config.MixLocation, 1, 1, { name = "mix", heading = 0.0, debug = Config.Debug, minZ = Config.MixLocation.z-1, maxZ =  Config.MixLocation.z+1,}, 
         { options = {{ event = "Polar-Meth:Client:MethMix", icon = "fa-solid fa-bolt", label = "Mix Materials"}}, distance = 1.5 }) 
 
 
 
         for i=1, #Config.Labs do
            
-        exports['qb-target']:AddBoxZone(labs[labname] .. "enterlab", Config.Labs[i].EnterLabThirdEye, 1, 1, { name = "enterlab", heading = 0.0, debug = Config.Debug, minZ = Config.Labs[i].EnterLabThirdEye.z-1, maxZ =  Config.Labs[i].EnterLabThirdEye.z+1,}, 
+        exports['qb-target']:AddBoxZone(labs[labname2] .. "enterlab", Config.Labs[i].EnterLabThirdEye, 1, 1, { name = "enterlab", heading = 0.0, debug = Config.Debug, minZ = Config.Labs[i].EnterLabThirdEye.z-1, maxZ =  Config.Labs[i].EnterLabThirdEye.z+1,}, 
         { options = {{ event = "Polar-Meth:Client:EnterLab", icon = "fa-solid fa-bolt", label = "Enter Lab", type = i}}, distance = 1.5 }) 
 
         end
 
 
         exports['qb-target']:AddBoxZone("exitlab", Config.ExitLabThirdEye, 1, 1, { name = "exitlab", heading = 0.0, debug = Config.Debug, minZ = Config.ExitLabThirdEye.z-1, maxZ =  Config.ExitLabThirdEye.z+1,}, 
-        { options = {{ event = "Polar-Meth:Client:ExitLab", icon = "fa-solid fa-bolt", label = "Exit Lab", type = labname}}, distance = 1.5 }) 
+        { options = {{ event = "Polar-Meth:Client:ExitLab", icon = "fa-solid fa-bolt", label = "Exit Lab", type = labname2}}, distance = 1.5 }) 
 
     end
 end
