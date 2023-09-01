@@ -98,7 +98,7 @@ local function CameraLoop()
                 Wait(1)
                 TakePicture()
                 Wait(1)
-                SetFollowPedCamViewMode(cammode)
+               -- SetFollowPedCamViewMode(cammode)
                 return
             end
         end
