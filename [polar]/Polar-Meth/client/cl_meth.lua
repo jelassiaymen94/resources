@@ -21,7 +21,7 @@ CreateThread(function()
         Wait(100) 
         labname = 'first'
         
-        starttarget('first') 
+        starttarget("first") 
  
 end)
 function animation() TaskStartScenarioInPlace(PlayerPedId(), "PROP_HUMAN_PARKING_METER", 0, true) end
