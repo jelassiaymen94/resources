@@ -2,8 +2,8 @@ fx_version 'cerulean'
 game 'gta5'
 
 
-supersede_radio "RADIO_02_POP" { url = "", volume = 0.2, name = "" }
-supersede_radio "RADIO_03_HIPHOP_NEW" { url = "", volume = 0.2, name = "" }
+--supersede_radio "RADIO_02_POP" { url = "", volume = 0.2, name = "" }
+--supersede_radio "RADIO_03_HIPHOP_NEW" { url = "", volume = 0.2, name = "" }
 --supersede_radio "RADIO_04_PUNK" { url = "", volume = 0.2, name = "" }
 --supersede_radio "RADIO_01_CLASS_ROCK" { url = "", volume = 0.2, name = "" }
 --supersede_radio "RADIO_05_TALK_01" { url = "", volume = 0.2, name = "" }
