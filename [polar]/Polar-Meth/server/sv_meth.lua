@@ -9,16 +9,6 @@ local bagamount = 0
 
 local labs = {}
 
-RegisterNetEvent('Polar-Meth:Server:SetupLab', function(labname)
-    labs[labname] = {
-        bagamount = 0,
-        mix = true,
-        temp = true,
-        tray = true,
-        bag = true,
-        cooldown = 0,
-    }
-end)
 
 RegisterNetEvent('Polar-Meth:Server:RemoveTarget', function(name, labname)
     
@@ -63,6 +53,16 @@ function reset(labname)
 end
 
 CreateThread(function()
+    for labName, v in pairs(Config.Labs) do
+        labs[labName] = {
+            bagamount = 0,
+            mix = true,
+            temp = true,
+            tray = true,
+            bag = true,
+            cooldown = 0,
+        }
+    end
     while true do
         for labName, v in pairs(Config.Labs) do
             if labs[labName].cooldown == nil then return end

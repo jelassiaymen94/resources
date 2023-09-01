@@ -95,7 +95,7 @@ function starttarget()
             local head = labData.InsideLabHead
             labs[labName] = {}
 
-            TriggerServerEvent('Polar-Meth:Server:SetupLab', labName)
+         
             
             exports['qb-target']:AddBoxZone(labName .. "_mix", Config.MixLocation, 1, 1, { name = "mix", heading = 0.0, debug = Config.Debug, minZ = Config.MixLocation.z-1, maxZ =  Config.MixLocation.z+1,}, 
             { options = {{ event = "Polar-Meth:Client:MethMix", icon = "fa-solid fa-bolt", label = "Mix Materials", type = labName}}, distance = 1.5 }) 
