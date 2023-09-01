@@ -7,7 +7,7 @@ local function versionCheck(repository)
 		currentVersion = currentVersion:match('%d+%.%d+%.%d+')
 	end
 
-	if not currentVersion then return print(("^1Unable to determine current resource version for '%s' ^0"):format(resource)) end
+	if not currentVersion then return -- print(("^1Unable to determine current resource version for '%s' ^0"):format(resource)) end
 
 	SetTimeout(1000, function()
 		PerformHttpRequest(('https://api.github.com/repos/%s/releases/latest'):format(repository), function(status, response)
@@ -28,12 +28,7 @@ local function versionCheck(repository)
                 if current ~= minimum then
                     if current < minimum then
 
-                        print("^0.-----------------------------------------------.")
-                        print("^0|                 Project Sloth                 |")
-                        print("^0'-----------------------------------------------'")
-                        print(('^6Your %s is outdated (your version: %s)\r\nMake sure to update: %s^0'):format(resource, currentVersion, response.html_url))
-                        print('^2'..response.body:gsub("\r\n\r\n\r", "^0"))
-
+                       
                        
                 else break end
                 end
