@@ -67,7 +67,7 @@ function hitup(bool)
 
     elseif item == 'pistol_ammo' then
 
-        removeitem(2, 20, 1, item, 'copperore', 2, 'gunpowder', 1) -- done***
+        removeitem(2, 20, 3, item, 'copperore', 2, 'gunpowder', 1) -- done***
 
     elseif item == 'weapon_fnx45' then
 

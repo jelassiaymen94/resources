@@ -203,30 +203,38 @@ Config.AmmoBench = {
 
     [1] = {
         item = 'gunpowder',
-        icon = "",
-        txt = "Required: ".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['charcoal'].image.." width=25px onerror='this.onerror=null; this.remove();'> 25 Charcoal".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['aluminumoxide'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Aluminum Oxide Powder",
-        exp = 1839,
+        required = {
+            {'aluminumoxide', 1},
+            {'charcoal', 25}, 
+            {'refined_iron', 1},
+        },  exp = 1839,
        
     },
     [2] = {
         item = 'pistol_ammo',
-        icon = "",
-        txt = "Required: ".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['copperore'].image.." width=25px onerror='this.onerror=null; this.remove();'> 2 Copper ore".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['gunpowder'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Gun Powder",
-        exp = 2529,
+        required = {
+            {'copperore', 2},
+            {'gunpowder', 1}, 
+           
+        },  exp = 2529,
       
     },
     [3] = {
         item = 'smg_ammo',
-        icon = "",
-        txt = "Required: ".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['copperore'].image.." width=25px onerror='this.onerror=null; this.remove();'> 4 Copper ore".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['gunpowder'].image.." width=25px onerror='this.onerror=null; this.remove();'> 2 Gun Powder",
-        exp = 14750,
+        required = {
+            {'gunpowder', 2},
+            {'copperore', 4}, 
+           
+        },  exp = 14750,
        
     },
     [4] = {
         item = 'rifle_ammo',
-        icon = "",
-        txt = "Required: ".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['copperore'].image.." width=25px onerror='this.onerror=null; this.remove();'> 6 Copper ore".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['gunpowder'].image.." width=25px onerror='this.onerror=null; this.remove();'> 3 Gun Powder",
-        exp = 27000,
+        required = {
+            {'copperore', 3},
+            {'gunpowder', 6}, 
+           
+        }, exp = 27000,
       
     },
   
