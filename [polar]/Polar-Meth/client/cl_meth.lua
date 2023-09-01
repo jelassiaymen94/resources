@@ -95,7 +95,7 @@ function starttarget()
 
 
         for i=1, #Config.Labs do
-
+            
         exports['qb-target']:AddBoxZone(i .. "_enterlab", Config.Labs[i].EnterLabThirdEye, 1, 1, { name = "enterlab", heading = 0.0, debug = Config.Debug, minZ = Config.Labs[i].EnterLabThirdEye.z-1, maxZ =  Config.Labs[i].EnterLabThirdEye.z+1,}, 
         { options = {{ event = "Polar-Meth:Client:EnterLab", icon = "fa-solid fa-bolt", label = "Enter Lab", type = i}}, distance = 1.5 }) 
 
@@ -366,7 +366,7 @@ local unlocked = false
 --------------- TELEPORT ----------------------
 RegisterNetEvent('Polar-Meth:Client:EnterLab', function(data)
     labname = data.type
-
+    TriggerServerEvent('Polar-Meth:Server:SetupLab', labname)
     Wait(100)
     teleport(Config.ILabCord, Config.ILabHead)
            
