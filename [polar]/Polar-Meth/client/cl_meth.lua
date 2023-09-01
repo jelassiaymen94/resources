@@ -12,7 +12,7 @@ local labs = {}
 RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function() 
     Wait(100) 
 
-    labs[labname] = {}
+   
 
     starttarget() 
 end)
@@ -21,7 +21,7 @@ CreateThread(function()
         Wait(100) 
         
         
-        labs[labname] = {}
+       
 
         starttarget() 
  
@@ -93,7 +93,8 @@ function starttarget()
         for labName, labData in pairs(Config.Labs) do
             local cord = labData.InsideLabCord
             local head = labData.InsideLabHead
-        
+            labs[labName] = {}
+
             TriggerServerEvent('Polar-Meth:Server:SetupLab', labName)
             
             exports['qb-target']:AddBoxZone(labName .. "_mix", Config.MixLocation, 1, 1, { name = "mix", heading = 0.0, debug = Config.Debug, minZ = Config.MixLocation.z-1, maxZ =  Config.MixLocation.z+1,}, 
