@@ -69,7 +69,7 @@ Config.Labs = {
     ["first"] = {
         InsideLabCord = vector3(1383.3054, 4305.7793, 36.6741),
         InsideLabHead = 27.85,
-    }
+    },
 
 }
 

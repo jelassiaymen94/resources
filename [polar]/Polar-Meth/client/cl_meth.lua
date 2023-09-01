@@ -93,15 +93,17 @@ function starttarget()
         exports['qb-target']:AddBoxZone(labname .. "_mix", Config.MixLocation, 1, 1, { name = "mix", heading = 0.0, debug = Config.Debug, minZ = Config.MixLocation.z-1, maxZ =  Config.MixLocation.z+1,}, 
         { options = {{ event = "Polar-Meth:Client:MethMix", icon = "fa-solid fa-bolt", label = "Mix Materials"}}, distance = 1.5 }) 
 
-
-        for i=1, #Config.Labs do
-
-        TriggerServerEvent('Polar-Meth:Server:SetupLab', i)
-        print('h')
-        exports['qb-target']:AddBoxZone(i .. "_enterlab", Config.Labs[i].EnterLabThirdEye, 1, 1, { name = "enterlab", heading = 0.0, debug = Config.Debug, minZ = Config.Labs[i].EnterLabThirdEye.z-1, maxZ =  Config.Labs[i].EnterLabThirdEye.z+1,}, 
-        { options = {{ event = "Polar-Meth:Client:EnterLab", icon = "fa-solid fa-bolt", label = "Enter Lab", type = i}}, distance = 1.5 }) 
-
+        for labName, labData in pairs(Config.Labs) do
+            local cord = labData.InsideLabCord
+            local head = labData.InsideLabHead
+        
+            TriggerServerEvent('Polar-Meth:Server:SetupLab', labName)
+        
+            exports['qb-target']:AddBoxZone(labName .. "_enterlab", cord, 1, 1, { name = "enterlab", heading = 0.0, debug = Config.Debug, minZ = cord.z-1, maxZ =  cord.z+1,}, 
+            { options = {{ event = "Polar-Meth:Client:EnterLab", icon = "fa-solid fa-bolt", label = "Enter Lab", type = labName}}, distance = 1.5 }) 
+    
         end
+      
 
 
         exports['qb-target']:AddBoxZone("exitlab", Config.ExitLabThirdEye, 1, 1, { name = "exitlab", heading = 0.0, debug = Config.Debug, minZ = Config.ExitLabThirdEye.z-1, maxZ =  Config.ExitLabThirdEye.z+1,}, 
