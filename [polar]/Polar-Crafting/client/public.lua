@@ -121,7 +121,7 @@ function tools()
 	local toolsmenu = {
 		{ header = "Tools Bench", txt = "", icon = "", isMenuHeader = true },
 		{ icon = "fas fa-circle-xmark", header = "", txt = "Close", params = { event = "Menu:Close" } } }
-        if PlayerData.metadata["craftingrep"] < Config.ToolsBenchmin then 
+    if PlayerData.metadata["craftingrep"] < Config.ToolsBenchmin then 
             local disable = false
             local hide = false
             toolsmenu[#toolsmenu+1] = { hidden = hide, disabled = disable, icon = "", header = "You Don't Have enough Exp", txt = "Required: " .. Config.ToolsBenchmin .. " exp"}
