@@ -123,9 +123,9 @@ function tools()
             exports['qb-menu']:openMenu(toolsmenu)
     else
     for i = 1, #Config.ToolsBench do
-        local requiredItems = "" -- Initialize requiredItems for each tool
-        for item, quantity in pairs(Config.ToolsBench[i].required) do 
-            requiredItems = requiredItems .. "<p> <img src=nui://" .. Config.img .. QBCore.Shared.Items[item].image .. " width=25px onerror='this.onerror=null; this.remove();'> " .. quantity .. " " .. QBCore.Shared.Items[item].label
+        local requiredItems = "" 
+        for _, data in ipairs(Config.ToolsBench[i].required) do 
+            requiredItems = requiredItems .. "<p> <img src=nui://" .. Config.img .. QBCore.Shared.Items[data[1]].image .. " width=25px onerror='this.onerror=null; this.remove();'> " .. data[2] .. " " .. QBCore.Shared.Items[data[1]].label
         end 
         local item = Config.ToolsBench[i].item
 		local setheader = "<img src=nui://"..Config.img..QBCore.Shared.Items[item].image.." width=45px onerror='this.onerror=null; this.remove();'>"..QBCore.Shared.Items[item].label

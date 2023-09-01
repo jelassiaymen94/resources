@@ -54,11 +54,10 @@ Config.ToolsBench = {
 
     [1] = {
         item = 'lockpick',
-        icon = "",
         required = {
-            steel = 5,
-            metalscrap = 10,
-            rubber = 3,
+            {'steel', 5},
+            {'metalscrap', 10},
+            {'rubber', 3},
         },
         exp = 0, -- required xp amount
     },
