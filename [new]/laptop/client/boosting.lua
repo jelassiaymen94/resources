@@ -162,7 +162,7 @@ RegisterNetEvent('lockpicks:UseLockpick', function()
                         status = false
                     }
                 })
-                exports['qb-dispatch']:CarBoosting(vehicle)
+                exports['ps-dispatch']:CarBoosting(vehicle)
             else
                 TriggerServerEvent('laptop:server:CancelBoost', NetID, Plate)
             end
