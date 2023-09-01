@@ -80,7 +80,7 @@ function NUI:SetupItems()
     local items = {}
     items[1] = {
         name = "ID Card",
-        price = 100,
+        price = 10,
         id = 1
     }
 

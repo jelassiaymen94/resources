@@ -1,12 +1,17 @@
 
 local QBCore = exports['qb-core']:GetCoreObject()
 
-
+local jobas = {
+    {
+        job = "taxi",
+        label = "Taxi Driver",
+    },
+}
 RegisterNetEvent('Polar-CityHall:server:ApplyJob', function(id)
     local Player = QBCore.Functions.GetPlayer(source)
     if not Player then return end
 
-    local job = Config.jobs[id]
+    local job = jobas[id]
     if not job then return end
 
     Player.Functions.SetJob(job.job, 0)
