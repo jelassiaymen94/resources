@@ -2,7 +2,7 @@
 
 local radioStations = {}
 
-local waitTime = 100
+
 
 
 
@@ -30,28 +30,10 @@ CreateThread(function()
     SetRadioStationIsVisible("RADIO_11_TALK_02", false)
     SetRadioStationIsVisible("RADIO_21_DLC_XM17", false)
     SetRadioStationIsVisible("RADIO_22_DLC_BATTLE_MIX1_RADIO", false)
-    SetRadioStationIsVisible("RADIO_NONSTOPPOPFM", false)
-    SetRadioStationIsVisible("RADIO_LSROCKRADIO", false)
-    SetRadioStationIsVisible("RADIO_RADIOLOSSANTOS", false)
-    SetRadioStationIsVisible("RADIO_CHANNELX", false)
-    SetRadioStationIsVisible("RADIO_WCTR", false)
-    SetRadioStationIsVisible("RADIO_REBELRADIO", false)
-    SetRadioStationIsVisible("RADIO_SOULWAX", false)
-    SetRadioStationIsVisible("RADIO_EASTLOSFM", false)
-    SetRadioStationIsVisible("RADIO_WESTCOASTCLASSICS", false)
-    SetRadioStationIsVisible("RADIO_BLUEARK", false)
-    SetRadioStationIsVisible("RADIO_WORLDWIDEFM", false)
-    SetRadioStationIsVisible("RADIO_FLYLO", false)
-    SetRadioStationIsVisible("RADIO_THELOWDOWN", false)
-    SetRadioStationIsVisible("RADIO_THELAB", false)
-    SetRadioStationIsVisible("RADIO_RADIOMIRRORPARK", false)
-    SetRadioStationIsVisible("RADIO_SPACE1032", false)
-    SetRadioStationIsVisible("RADIO_VINEWOODBOULEVARD", false)
-    SetRadioStationIsVisible("RADIO_SELFRADIO", false)
-    SetRadioStationIsVisible("RADIO_BLANECOUNTYTALK", false)
-    SetRadioStationIsVisible("RADIO_HIDDENRADIOAMBIENTTV", false)
-    SetRadioStationIsVisible("RADIO_OFF", false)
-
-
+    SetRadioStationIsVisible("RADIO_35_DLC_HEI4_MLR", false)
+    SetRadioStationIsVisible("hidden_radio_ifruit", false)
+    SetRadioStationIsVisible("RADIO_37_MOTOMAMI", false)
+    SetRadioStationIsVisible("RADIO_34_DLC_HEI4_KULT", false)
+    SetRadioStationIsVisible("RADIO_36_AUDIOPLAYER", false)
 
 end)
