@@ -23,13 +23,13 @@ AddEventHandler('onResourceStop', function(resource)
 end)
 local blipname = {
     enabled = true,
-    Name = "Cityhall",
+    Name = "City Hall",
     SpriteId = 487,
-    Color = 2,
-    Scale = 1.3,
+    Color = 0,
+    Scale = 0.6,
     ShortRange = true,
     Alpha = 255,
-    Coords = vector3(-266.88833618164, -961.62231445313, 31.227128982544)
+    Coords = vector3(-551.9, -200.5, 37.23)
 }
 CreateThread(function()
     GenerateBlip(blipname)

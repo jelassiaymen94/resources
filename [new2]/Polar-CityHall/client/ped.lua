@@ -3,9 +3,10 @@ local QBCore = exports['qb-core']:GetCoreObject()
 
 local pedname = {
     enabled = true,
-    model = "a_m_m_indian_01",
-    coords = vector4(-266.88833618164, -961.62231445313, 30.227128982544, 210.22946166992),
-    label = "Open cityhall"
+    model = "a_m_m_hasjew_01",
+    coords = vector4(-552.9, -201.5, 38.23-1, 322.46),
+    label = "Open Cityhall",
+    scenario = "WORLD_HUMAN_STAND_MOBILE",
 }
 
 
@@ -26,6 +27,7 @@ CreateThread(function()
     SetEntityInvincible(ped, true)
     FreezeEntityPosition(ped, true)
     SetEntityHeading(ped, pedname.coords.w)
+    TaskStartScenarioInPlace(ped, pedname.scenario, true, true)
 
     -- Change to your target, ox_target should work because of the compatibility layer
     exports['qb-target']:AddTargetEntity(ped, {
