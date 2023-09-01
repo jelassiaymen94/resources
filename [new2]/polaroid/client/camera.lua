@@ -2,8 +2,23 @@ local QBCore = exports['qb-core']:GetCoreObject()
 
 local prop = nil
 local cammode = 0
-
 local function TextInput()
+    local text = exports['qb-input']:ShowInput({
+        header = "Polaroid Pictures",
+        submitText = "Submit",
+        inputs = {
+            {
+                text = "Name of Polaroid", -- text you want to be displayed as a place holder
+                name = "citizenid", -- name of the input should be unique otherwise it might override
+                type = "text", -- type of the input
+                isRequired = true, 
+            },
+        },
+    })
+    return text
+
+end
+local function TextInput2()
     AddTextEntry("FMMC_KEY_TIP8", "Enter the title of the image")
     DisplayOnscreenKeyboard(1, "FMMC_KEY_TIP8", "", "", "", "", "", 100)
 
@@ -29,42 +44,6 @@ local function GetWebhook()
     return Citizen.Await(promise)
 end
 
-local function StartAnim()
-    local ped = PlayerPedId()
-    local animDict = "amb@world_human_paparazzi@male@base"
-    local animName = "base"
-    local animFlag = 49
-
-    RequestAnimDict(animDict)
-    while not HasAnimDictLoaded(animDict) do
-        Citizen.Wait(100)
-    end
-
-    TaskPlayAnim(ped, animDict, animName, 8.0, 8.0, -1, animFlag, 0, false, false, false)
-end
-
-local function AddProp()
-    local ped = PlayerPedId()
-    local propName = "prop_pap_camera_01"
-    local propFlag = 49
-
-    RequestModel(propName)
-    while not HasModelLoaded(propName) do
-        Citizen.Wait(100)
-    end
-
-    prop = CreateObject(GetHashKey(propName), 0, 0, 0, true, true, true)
-    AttachEntityToEntity(prop, ped, GetPedBoneIndex(ped, 28422), 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, true, true, false, true, 1, true)
-end
-
-local function StopAnim()
-    local ped = PlayerPedId()
-    ClearPedTasks(ped)
-
-    if prop ~= nil then
-        DeleteEntity(prop)
-    end
-end
 
 local function TakePicture()
     local webhook = GetWebhook()
@@ -87,7 +66,7 @@ local function CameraLoop()
         AddProp()
         StartAnim()
 
-        cammode = GetFollowPedCamViewMode()
+     --   cammode = GetFollowPedCamViewMode()
 
         while true do
             DisablePlayerFiring(PlayerId(), true) -- Disable weapon firing    
