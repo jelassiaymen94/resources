@@ -9,13 +9,13 @@ local waitTime = 100
 CreateThread(function()
 	
 	
-	--SetRadioStationIsVisible("RADIO_04_PUNK", false)
-	--SetRadioStationIsVisible("RADIO_03_HIPHOP_NEW", false)
-	--SetRadioStationIsVisible("RADIO_02_POP", false)
-    --SetRadioStationIsVisible("RADIO_01_CLASS_ROCK", false)
-    --SetRadioStationIsVisible("RADIO_05_TALK_01", false)
+	SetRadioStationIsVisible("RADIO_04_PUNK", false)
+	SetRadioStationIsVisible("RADIO_03_HIPHOP_NEW", false)
+	SetRadioStationIsVisible("RADIO_02_POP", false)
+    SetRadioStationIsVisible("RADIO_01_CLASS_ROCK", false)
+    SetRadioStationIsVisible("RADIO_05_TALK_01", false)
     SetRadioStationIsVisible("RADIO_06_COUNTRY", false)
-    --SetRadioStationIsVisible("RADIO_07_DANCE_01", false)
+    SetRadioStationIsVisible("RADIO_07_DANCE_01", false)
     SetRadioStationIsVisible("RADIO_08_MEXICAN", false)
     SetRadioStationIsVisible("RADIO_09_HIPHOP_OLD", false)
     SetRadioStationIsVisible("RADIO_12_REGGAE", false)
@@ -50,7 +50,7 @@ CreateThread(function()
     SetRadioStationIsVisible("RADIO_SELFRADIO", false)
     SetRadioStationIsVisible("RADIO_BLANECOUNTYTALK", false)
     SetRadioStationIsVisible("RADIO_HIDDENRADIOAMBIENTTV", false)
-   -- SetRadioStationIsVisible("RADIO_OFF", false)
+    SetRadioStationIsVisible("RADIO_OFF", false)
 
 
 
