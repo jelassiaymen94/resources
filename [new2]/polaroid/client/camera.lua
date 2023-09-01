@@ -63,8 +63,7 @@ end
 
 local function CameraLoop()
     CreateThread(function()
-        AddProp()
-        StartAnim()
+     
 
      --   cammode = GetFollowPedCamViewMode()
 
@@ -73,7 +72,6 @@ local function CameraLoop()
             Wait(0)
             SetFollowPedCamViewMode(4)        
             if IsControlJustPressed(0, 18) then
-                StopAnim()
                 Wait(1)
                 TakePicture()
                 Wait(1)
