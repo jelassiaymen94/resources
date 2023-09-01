@@ -17,6 +17,7 @@ CreateThread(function()
   
         Wait(100) 
         labname = 'first'
+        Wait(500)
         starttarget() 
  
 end)
