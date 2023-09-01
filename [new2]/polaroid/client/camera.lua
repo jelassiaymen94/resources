@@ -5,11 +5,11 @@ local cammode = 0
 local function TextInput()
     local text = exports['qb-input']:ShowInput({
         header = "Polaroid Pictures",
-        submitText = "Submit",
+        submitText = "Enter",
         inputs = {
             {
-                text = "Name of Polaroid", -- text you want to be displayed as a place holder
-                name = "citizenid", -- name of the input should be unique otherwise it might override
+                text = "Name Your Picture!", -- text you want to be displayed as a place holder
+                name = "thenameofthepolaroid", -- name of the input should be unique otherwise it might override
                 type = "text", -- type of the input
                 isRequired = false, 
             },
