@@ -29,9 +29,9 @@ end)
 QBCore.Functions.CreateUseableItem('polaroid', function(source, item)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
-    local metadata = Config.Inventory == "ox" and "metadata" or "info"
+
 
     if Player.Functions.GetItemByName(item.name) then
-        TriggerClientEvent("polaroid:client:showImage", src, item[metadata].url, item[metadata].name, item[metadata].date)
+        TriggerClientEvent("polaroid:client:showImage", src, item["info"].url, item["info"].name, item["info"].date)
     end
 end)

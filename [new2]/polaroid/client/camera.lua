@@ -15,8 +15,14 @@ local function TextInput()
             },
         },
     })
-    return text
-
+    if text ~= nil then
+        for k,v in pairs(text) do
+            print(k .. " : " .. v)
+            return v
+        end
+    else
+        return ""
+    end
 end
 local function TextInput2()
     AddTextEntry("FMMC_KEY_TIP8", "Enter the title of the image")
