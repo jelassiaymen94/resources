@@ -51,7 +51,7 @@ Config.CreateCallBack('Polar-Meth:BagCheck', function(source, cb, labname)      
 RegisterNetEvent('Polar-Meth:Server:StartTargets', function(labname) TriggerClientEvent('Polar-Meth:Client:StartTargets', -1, labname) end)
 
 Config.CreateCallBack('Polar-Meth:Cooldown', function(source, cb, labname) cb(labs[labname].cooldown) end) 
-local time = math.floor(Config.CooldownTime * 60000) RegisterNetEvent('Polar-Meth:Server:StartCooldown', function(door, labname) cooldown = false SetTimeout(time, function() reset(labname) end) end)
+local time = math.floor(Config.CooldownTime * 60000) RegisterNetEvent('Polar-Meth:Server:StartCooldown', function(door, labname) print(labs[labname].cooldown) cooldown = false SetTimeout(time, function() reset(labname) end) end)
 function reset(labname) 
     labs[labname].cooldown = true labs[labname].mix = true labs[labname].temp = true labs[labname].tray = true labs[labname].bag = true labs[labname].bagamount = 0 
     TriggerClientEvent('Polar-Meth:Client:RemoveTarget', -1, 'tray', labname) 
