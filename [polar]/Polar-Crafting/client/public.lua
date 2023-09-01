@@ -191,7 +191,7 @@ end
 RegisterNetEvent('Polar-Crafting:Client:Anim', function(item)
     
     local itemname = QBCore.Shared.Items[item].label
-    QBCore.Functions.Progressbar("crafting", "Crafting " .. itemname .. " ", 13500, false, true, 
+    QBCore.Functions.Progressbar("crafting", "Crafting " .. itemname .. " ", 7500, false, true, 
     {disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = false, },
     {animDict = "mini@repair", anim = "fixing_a_ped", flags = 0,}, {}, {}, 
     function() -- Done

@@ -83,10 +83,10 @@ function next(itemname, xp, give)
             
             local Player = QBCore.Functions.GetPlayer(src)
             local data = Player.PlayerData.metadata["craftingrep"] or 0
-            TriggerClientEvent('QBCore:Notify', src, " " .. data .. " is your Total Exp", green, alerttime)
-            pp = (data + xp)
+          --  TriggerClientEvent('QBCore:Notify', src, " " .. data .. " is your Total Exp", green, alerttime)
+            local pp = (data + xp)
             Player.Functions.SetMetaData('craftingrep', pp)
-            TriggerClientEvent('QBCore:Notify', src, " " .. pp .. " is your Total Exp", green, alerttime)
+          --  TriggerClientEvent('QBCore:Notify', src, " " .. pp .. " is your Total Exp", green, alerttime)
             
     end)
   
