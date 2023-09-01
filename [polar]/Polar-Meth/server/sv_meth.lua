@@ -20,9 +20,9 @@ RegisterNetEvent('Polar-Meth:Server:SetupLab', function(labname)
     }
 end)
 
-RegisterNetEvent('Polar-Meth:Server:RemoveTarget', function(name)
+RegisterNetEvent('Polar-Meth:Server:RemoveTarget', function(name, labname)
     
-    TriggerClientEvent('Polar-Meth:Client:RemoveTarget', -1, name)
+    TriggerClientEvent('Polar-Meth:Client:RemoveTarget', -1, name, labname)
 
 end)
 RegisterNetEvent('Polar-Meth:Server:StopInteract', function(name)

@@ -98,7 +98,7 @@ function starttarget()
             local head = labData.InsideLabHead
         
             TriggerServerEvent('Polar-Meth:Server:SetupLab', labName)
-            print('set')
+            
             exports['qb-target']:AddBoxZone(labName .. "_enterlab", cord, 1, 1, { name = "enterlab", heading = 0.0, debug = Config.Debug, minZ = cord.z-1, maxZ =  cord.z+1,}, 
             { options = {{ event = "Polar-Meth:Client:EnterLab", icon = "fa-solid fa-bolt", label = "Enter Lab", type = labName}}, distance = 1.5 }) 
     
