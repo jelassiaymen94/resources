@@ -14,14 +14,14 @@ RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function()
 
     labname = 'first'
 
-    starttarget(labname) 
+    starttarget('first') 
 end)
 CreateThread(function()
   
         Wait(100) 
         labname = 'first'
         
-        starttarget(labname) 
+        starttarget('first') 
  
 end)
 function animation() TaskStartScenarioInPlace(PlayerPedId(), "PROP_HUMAN_PARKING_METER", 0, true) end
