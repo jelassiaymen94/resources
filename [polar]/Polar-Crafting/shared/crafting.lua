@@ -20,38 +20,34 @@ Config.Locations = {
     [1] = {
     TitleName = "Crafting Bencheroni",
     Table =  vector4(-921.4268, 400.7218, 79.1264, 20.7826),
-    Bench = "weapon",
+    Bench = Config.WeaponsBench,
     Min = 200,
-    CID = '',
-    JOB = '',
-    GANG = '',
+    USESPECIAL = nil, -- either 'gang', 'job', 'cid', -- if none then keep nil
+    SPECIAL = '', 
     },
     [2] = {
     TitleName = "Crafting Bencheroni",
     Table =  vector4(1223.0338, 1897.9207, 78.0086, 309.5884),
     Bench = Config.ToolsBench,
     Min = 0,
-    CID = '',
-    JOB = '',
-    GANG = '',
+    USESPECIAL = nil, -- either 'gang', 'job', 'cid', -- if none then keep nil
+    SPECIAL = '', 
     },
     [3] = {
     TitleName = "Crafting Bencheroni",
     Table =  vector4(63.8442, 6663.9414, 31.7869, 235.0951),
-    Bench = "ammo",
+    Bench = Config.AmmoBench,
     Min = 2500,
-    CID = '',
-    JOB = '',
-    GANG = '',
+    USESPECIAL = nil, -- either 'gang', 'job', 'cid', -- if none then keep nil
+    SPECIAL = '', 
     },
     [4] = {
     TitleName = "Crafting Bencheroni",
     Table =  vector4(1516.1110, -2100.6833, 76.7760, 182.7406),
-    Bench = "explosive",
+    Bench = Config.Explosive,
     Min = 520,
-    CID = '',
-    JOB = '',
-    GANG = '',
+    USESPECIAL = nil, -- either 'gang', 'job', 'cid', -- if none then keep nil
+    SPECIAL = '', 
     },
    
 

@@ -97,13 +97,7 @@ end
 
 
 
-function bencher(big, minimum, textname)
-    local bench = nil
-    if big == 'tools' then bench = Config.ToolsBench 
-    elseif big == 'weapons' then bench = Config.WeaponsBench 
-    elseif big == 'explosive' then bench = Config.ExplosivesBench 
-    elseif big == 'ammo' then bench = Config.AmmoBench 
-    else print('error')   end
+function bencher(bench, minimum, textname)
 
     
     local PlayerData = QBCore.Functions.GetPlayerData()

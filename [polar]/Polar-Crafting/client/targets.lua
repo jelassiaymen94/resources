@@ -32,26 +32,67 @@ function targets()
        
     local table = Config.Locations[i].Table
     local values = Config.Locations[i].Bench
-       
+    local specia = Config.Locations[i].SPECIAL
+    local uspecia = Config.Locations[i].USESPECIAL
+
     Wait(50)
 	
     makeProp({prop = `prop_tool_bench02`, coords = vector4(table.x, table.y, table.z, table.w-180.0)}, 1, false)
         
     local n = math.random(1,9999) local z = math.random(1,9999)
-   -- print("name:" .. values .. n .. z)
-    exports['qb-target']:AddBoxZone("name:" .. n .. z, vector3(table.x, table.y, table.z), 0.8, 0.5, 
-    { name="name:" .. n .. z, heading = table.w+180.0, debugPoly=false, minZ=table.z-1.05, maxZ=table.z+0.80 },
-	{ options = { { event = "Polar-Crafting:Client:OpenMenuPublic", icon = "fa-solid fa-bolt", label = "Open", 
- --   job = Config.Locations[i].JOB, -- job = {["police"] = 0, ["ambulance"] = 2},
- --   gang = Config.Locations[i].GANG, --  gang = {["ballas"] = 0, ["thelostmc"] = 2},
- --   citizenid = Config.Locations[i].CID,-- citizenid = {["JFD98238"] = true, ["HJS29340"] = true},
-    benches = values, 
-    minimum = Config.Locations[i].Min,
-    bigname = Config.Locations[i].TitleName,
+  
+    if uspecia == nil then
+  
+        exports['qb-target']:AddBoxZone("name:" .. n .. z, vector3(table.x, table.y, table.z), 0.8, 0.5, 
+        { name="name:" .. n .. z, heading = table.w+180.0, debugPoly=false, minZ=table.z-1.05, maxZ=table.z+0.80 },
+	    { options = { { event = "Polar-Crafting:Client:OpenMenuPublic", icon = "fa-solid fa-bolt", label = "Open", 
+    --  job = Config.Locations[i].JOB, -- job = {["police"] = 0, ["ambulance"] = 2},
+    --  gang = Config.Locations[i].GANG, --  gang = {["ballas"] = 0, ["thelostmc"] = 2},
+    --  citizenid = Config.Locations[i].CID,-- citizenid = {["JFD98238"] = true, ["HJS29340"] = true},
+        benches = values, 
+        minimum = Config.Locations[i].Min,
+        bigname = Config.Locations[i].TitleName,
     }, },
 	distance = 2.0 })
 
         
+    elseif uspecia == 'cid' then
+
+        exports['qb-target']:AddBoxZone("name:" .. n .. z, vector3(table.x, table.y, table.z), 0.8, 0.5, 
+        { name="name:" .. n .. z, heading = table.w+180.0, debugPoly=false, minZ=table.z-1.05, maxZ=table.z+0.80 },
+        { options = { { event = "Polar-Crafting:Client:OpenMenuPublic", icon = "fa-solid fa-bolt", label = "Open", 
+        citizenid = specia,
+        benches = values, 
+        minimum = Config.Locations[i].Min,
+        bigname = Config.Locations[i].TitleName,
+        }, },
+        distance = 2.0 })
+    
+
+    elseif uspecia == 'job' then
+        exports['qb-target']:AddBoxZone("name:" .. n .. z, vector3(table.x, table.y, table.z), 0.8, 0.5, 
+        { name="name:" .. n .. z, heading = table.w+180.0, debugPoly=false, minZ=table.z-1.05, maxZ=table.z+0.80 },
+        { options = { { event = "Polar-Crafting:Client:OpenMenuPublic", icon = "fa-solid fa-bolt", label = "Open", 
+        job = specia,
+        benches = values, 
+        minimum = Config.Locations[i].Min,
+        bigname = Config.Locations[i].TitleName,
+        }, },
+        distance = 2.0 })
+    
+    elseif uspecia == 'gang' then
+
+        exports['qb-target']:AddBoxZone("name:" .. n .. z, vector3(table.x, table.y, table.z), 0.8, 0.5, 
+        { name="name:" .. n .. z, heading = table.w+180.0, debugPoly=false, minZ=table.z-1.05, maxZ=table.z+0.80 },
+        { options = { { event = "Polar-Crafting:Client:OpenMenuPublic", icon = "fa-solid fa-bolt", label = "Open", 
+        gang = specia, 
+        benches = values, 
+        minimum = Config.Locations[i].Min,
+        bigname = Config.Locations[i].TitleName,
+        }, },
+        distance = 2.0 })
+    
+    end
     end
 end
 
