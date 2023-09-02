@@ -51,7 +51,7 @@ RegisterNetEvent('Polar-Lockers:StashAvailability', function(data)
 	local menutable = {
 	{ header =  "Storage Locker", txt = "Contact a Real Estate agent to see availability", icon = "", isMenuHeader = true,  },
 	{ icon = "fas fa-circle-xmark", header = "", txt = "Close", params = { event = "Menu:Close" } },
-	{ icon = "fas fa-circle-xmark", header = "Open Locker", txt = "", params = { event = "Polar-Lockers:Client:OpenLocker", args = { code = codes, slots = slotas, weight = waght} } }
+	{ icon = "fas fa-briefcase", header = "Open Locker", txt = "The Worlds Biggest Secret Lies Behind This Door", params = { event = "Polar-Lockers:Client:OpenLocker", args = { code = codes, slots = slotas, weight = waght} } }
 	}
 
 	exports['qb-menu']:openMenu(menutable)
