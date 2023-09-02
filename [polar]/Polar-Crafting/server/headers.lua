@@ -1,4 +1,4 @@
-local QBCore = exports[Config.Core]:GetCoreObject()
+local QBCore = exports['qb-core']:GetCoreObject()
 
 
 -- Headers
