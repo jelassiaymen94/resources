@@ -103,7 +103,7 @@ function bencher(big, minimum)
     elseif big == 'weapons' then bench = Config.WeaponsBench 
     elseif big == 'explosive' then bench = Config.ExplosivesBench 
     elseif big == 'ammo' then bench = Config.AmmoBench 
-    else print('error') return end
+    else print('error') bench = Config.AmmoBench   end
 
     print(minimum)
     local PlayerData = QBCore.Functions.GetPlayerData()
