@@ -64,6 +64,7 @@ Config.ToolsBench = {
             {'steel', 2},
         },
         exp = 20,
+        giveexp = 0,
     },
     [3] = {
         item = 'armor',
@@ -73,6 +74,7 @@ Config.ToolsBench = {
             {'steel', 15},
 
         },exp = 60,
+        giveexp = 0,
     },
     [4] = {
         item = 'metalscratchy',
@@ -82,6 +84,7 @@ Config.ToolsBench = {
             {'iron', 10},
         },
         exp = 519,
+        giveexp = 0,
     },
     
     [5] = {
@@ -93,6 +96,7 @@ Config.ToolsBench = {
             {'plastic', 5},
         },
        exp = 849,
+       giveexp = 0,
     },
     [6] = {
         item = 'aluminumoxide',
@@ -105,6 +109,7 @@ Config.ToolsBench = {
          
         },
         exp = 4254,
+        giveexp = 0,
     },
     [7] = {
         item = 'thermitepowder',
@@ -116,6 +121,7 @@ Config.ToolsBench = {
           
         },
         exp = 5000,
+        giveexp = 0,
     },
     [8] = {
         item = 'handcuffs',
@@ -126,6 +132,7 @@ Config.ToolsBench = {
             {'refined_iron', 1},
         },
        exp = 9354,
+       giveexp = 0,
     },
   
 }
@@ -143,6 +150,7 @@ Config.WeaponsBench = {
             {'rubber', 3},
         },
         exp = 120,
+        giveexp = 0,
        
     },
     [2] = {
@@ -154,6 +162,7 @@ Config.WeaponsBench = {
             {'rubber', 5},
         },
         exp = 204,
+        giveexp = 0,
       
     },
     [3] = {
@@ -165,6 +174,7 @@ Config.WeaponsBench = {
            
         },
         exp = 1289,
+        giveexp = 0,
       
     },
     [4] = {
@@ -179,6 +189,7 @@ Config.WeaponsBench = {
             {'carbon', 5},  
         },
         exp = 3334,
+        giveexp = 0,
       
     },
     [5] = {
@@ -193,6 +204,7 @@ Config.WeaponsBench = {
             {'carbon', 5},  
         },
         exp = 15000,
+        giveexp = 0,
       
     },
     [6] = {
@@ -207,6 +219,7 @@ Config.WeaponsBench = {
             {'carbon', 7},  
         },
         exp = 17000,
+        giveexp = 0,
       
     },
     [7] = {
@@ -221,6 +234,7 @@ Config.WeaponsBench = {
             {'carbon', 5},  
         },
         exp = 23379,
+        giveexp = 0,
        
     },
     [8] = {
@@ -236,6 +250,7 @@ Config.WeaponsBench = {
             {'refined_copper', 2},  
         },
         exp = 29000,
+        giveexp = 0,
         
     },
     [9] = {
@@ -251,6 +266,7 @@ Config.WeaponsBench = {
             {'refined_copper', 3},  
         },
         exp = 31000,
+        giveexp = 0,
       
     },
   
@@ -266,6 +282,7 @@ Config.AmmoBench = {
             {'charcoal', 25}, 
             {'refined_iron', 1},
         },  exp = 1839,
+        giveexp = 0,
        
     },
     [2] = {
@@ -276,6 +293,7 @@ Config.AmmoBench = {
             {'gunpowder', 1}, 
            
         },  exp = 2529,
+        giveexp = 0,
       
     },
     [3] = {
@@ -286,6 +304,7 @@ Config.AmmoBench = {
             {'copperore', 4}, 
            
         },  exp = 14750,
+        giveexp = 0,
        
     },
     [4] = {
@@ -296,6 +315,7 @@ Config.AmmoBench = {
             {'gunpowder', 6}, 
            
         }, exp = 27000,
+        giveexp = 0,
       
     },
   
@@ -311,6 +331,7 @@ Config.ExplosivesBench = {
             {'plastic', 20}, 
         },
         exp = 309,
+        giveexp = 0,
        
     },
     [2] = {
@@ -321,6 +342,7 @@ Config.ExplosivesBench = {
             {'thermitepowder', 1}, 
         },
         exp = 5500,
+        giveexp = 0,
       
     },
     [3] = {
@@ -331,6 +353,7 @@ Config.ExplosivesBench = {
             {'charcoal', 5}, 
         },
         exp = 5534,
+        giveexp = 0,
       
     },
     [4] = {
@@ -342,6 +365,7 @@ Config.ExplosivesBench = {
             {'cloth', 1}, 
         },
          exp = 10500,
+         giveexp = 0,
       
     },
     [5] = {
@@ -353,8 +377,8 @@ Config.ExplosivesBench = {
             {'refined_aluminum', 2}, 
             {'thermitepowder', 1}, 
         },
-        txt = "Required: ".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['gunpowder'].image.." width=25px onerror='this.onerror=null; this.remove();'> 10 Gun Powder".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['rubber'].image.." width=25px onerror='this.onerror=null; this.remove();'> 3 Rubber".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['refined_aluminum'].image.." width=25px onerror='this.onerror=null; this.remove();'> 2 Refined Aluminum".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['thermitepowder'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Highly Explosive Powder",
         exp = 12729,
+        giveexp = 0,
       
     },
     [6] = {
@@ -366,8 +390,8 @@ Config.ExplosivesBench = {
             {'thermitepowder', 2}, 
             {'refined_iron', 1}, 
         },
-        txt = "Required: ".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['metalscrap'].image.." width=25px onerror='this.onerror=null; this.remove();'> 6 Metal Scrap".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['refined_aluminum'].image.." width=25px onerror='this.onerror=null; this.remove();'> 2 Refined Aluminum".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['thermitepowder'].image.." width=25px onerror='this.onerror=null; this.remove();'> 2 Highly Explosive Powder".."<p> <img src=nui://"..Config.img..QBCore.Shared.Items['refined_iron'].image.." width=25px onerror='this.onerror=null; this.remove();'> 1 Refined Iron",
         exp = 19500,
+        giveexp = 0,
       
     },
   
