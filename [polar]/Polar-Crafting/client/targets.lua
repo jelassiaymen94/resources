@@ -2,9 +2,6 @@ local QBCore = exports['qb-core']:GetCoreObject()
 
 
 
-CreateThread(function()
-    --targets()
-end)
 AddEventHandler('onResourceStart', function(resource)
     if resource == GetCurrentResourceName() then
         Wait(100)

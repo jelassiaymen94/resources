@@ -1,12 +1,6 @@
 local QBCore = exports['qb-core']:GetCoreObject()
 
 
-local playerPed = PlayerPedId()
-
-
-local src = source
-
-
 
 
 function bencher(bench, minimum, textname)
@@ -76,11 +70,5 @@ end)
 
 
 
-
-RegisterNetEvent('Polar-Crafting:Client:OpenMenuPublic', function(data)  
-    local bench = data.benches
-    local minimum = data.minimum 
-    local name = data.bigname
-    bencher(bench, minimum, name) 
-end)
+RegisterNetEvent('Polar-Crafting:Client:OpenMenuPublic', function(data)    bencher(data.benches, data.minimum , data.bigname)  end)
 

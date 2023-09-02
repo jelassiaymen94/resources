@@ -12,7 +12,7 @@ RegisterNetEvent('Polar-Crafting:Server:Hitup', function(data)
     local itemamount = data.give
     local expneed = data.exp
     local givexp = data.giveexp
-  
+    
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
     local hasRequiredItems = true
