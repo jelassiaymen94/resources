@@ -9,7 +9,7 @@ QBCore.Functions.CreateCallback("Polar-Crafting:Server:Header", function(source,
     local math = math.random(1,17)
 
     if math == 1 then
-        Header = "Always check the trash cans"
+        Header = "Snakes are closer than you think"
     elseif math == 2 then
         Header = "Stop grinding you weirdo"
     elseif math == 3 then
@@ -19,9 +19,9 @@ QBCore.Functions.CreateCallback("Polar-Crafting:Server:Header", function(source,
     elseif math == 5 then
         Header = "Stop trying so much"
     elseif math == 6 then
-        Header = "Hail to the Super Chief"
+        Header = "Hail to the Chief"
     elseif math == 7 then
-        Header = "Listen to Monkey Mans new album"
+        Header = "Nah Man"
     elseif math == 8 then
         Header = "When you're here, you're family!"
     elseif math == 9 then
@@ -33,15 +33,15 @@ QBCore.Functions.CreateCallback("Polar-Crafting:Server:Header", function(source,
     elseif math == 12 then
         Header = "Stay strapped or get clapped"
     elseif math == 13 then
-        Header = "Did someone reboot the bench?"
+        Header = "Did someone fuck my assole bench?"
     elseif math == 14 then
         Header = "Don't sneeze I need my materials"
     elseif math == 15 then
-        Header = "Polar on top"
+        Header = "Me on top"
     elseif math == 16 then
         Header = "Birds arn't real"
     elseif math == 17 then
-        Header = "Mrs Monkey Deliveries has what you need!"
+        Header = "I gotchu Mayne"
     end
 
     Wait(5)

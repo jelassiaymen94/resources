@@ -16,8 +16,8 @@ function bencher(bench, minimum, textname)
         if headers then
     local PlayerData = QBCore.Functions.GetPlayerData()
 	local menutable = {
-		{ header = textname, txt = "", icon = "", isMenuHeader = true },
-		{ icon = "fas fa-circle-xmark", header = headers, txt = "Close", params = { event = "Menu:Close" } } }
+		{ header = textname, txt = headers, icon = "", isMenuHeader = true },
+		{ icon = "fas fa-circle-xmark", header = "", txt = "Close", params = { event = "Menu:Close" } } }
         local disable = false
         local hide = false
     if PlayerData.metadata["craftingrep"] < minimum then 

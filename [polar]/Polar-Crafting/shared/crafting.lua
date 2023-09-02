@@ -13,7 +13,7 @@ Config.Prop = 'prop_tool_bench02'
 Config.Locations = {
 
     [1] = {
-    TitleName = "Crafting Bencheroni",
+    TitleName = "Crafting Bencheronis",
     Table =  vector4(-921.4268, 400.7218, 79.1264, 20.7826),
     Bench = "WeaponsBench",
     Min = 200,
@@ -39,7 +39,7 @@ Config.Locations = {
     [4] = {
     TitleName = "Crafting Bencheroni",
     Table =  vector4(1516.1110, -2100.6833, 76.7760, 182.7406),
-    Bench = "Explosive",
+    Bench = "ExplosivesBench",
     Min = 520,
     USESPECIAL = nil, -- either 'gang', 'job', 'cid', -- if none then keep nil
     SPECIAL = '', 
@@ -142,194 +142,185 @@ Config.Table = {
        giveexp = 0,
     },  
     },
-  
-}
-
-
-
-Config.WeaponsBench = {
-
-    [1] = {
-        item = 'weapon_switchblade',
-        give = 1,
-        required = {
-            {'metalscrap', 10},
-            {'steel', 5}, 
-            {'rubber', 3},
-        },
-        exp = 120,
-        giveexp = 0,
-       
-    },
-    [2] = {
-        item = 'weapon_sledgehammer',
-        give = 1,
-        required = {
-            {'iron', 15},
-            {'steel', 5}, 
-            {'rubber', 5},
-        },
-        exp = 204,
-        giveexp = 0,
-      
-    },
-    [3] = {
-        item = 'weapon_knuckle',
-        give = 1,
-        required = {
-            {'refined_steel', 2},
-            {'goldingot', 2}, 
+    ["WeaponsBench"] = {
+        [1] = {
+            item = 'weapon_switchblade',
+            give = 1,
+            required = {
+                {'metalscrap', 10},
+                {'steel', 5}, 
+                {'rubber', 3},
+            },
+            exp = 120,
+            giveexp = 0,
            
         },
-        exp = 1289,
-        giveexp = 0,
-      
-    },
-    [4] = {
-        item = 'weapon_fnx45',
-        give = 1,
-        required = {
-            {'refined_iron', 1},
-            {'refined_aluminum', 1}, 
-            {'pistolbarrel', 1},
-            {'pistolbody', 1},
-            {'pistolgrip', 1},
-            {'carbon', 5},  
+        [2] = {
+            item = 'weapon_sledgehammer',
+            give = 1,
+            required = {
+                {'iron', 15},
+                {'steel', 5}, 
+                {'rubber', 5},
+            },
+            exp = 204,
+            giveexp = 0,
+          
         },
-        exp = 3334,
-        giveexp = 0,
-      
-    },
-    [5] = {
-        item = 'weapon_microsmg2',
-        give = 1,
-        required = {
-            {'refined_steel', 1},
-            {'refined_copper', 1}, 
-            {'smgbarrel', 1},
-            {'smgbody', 1},
-            {'smggrip', 1},
-            {'carbon', 5},  
+        [3] = {
+            item = 'weapon_knuckle',
+            give = 1,
+            required = {
+                {'refined_steel', 2},
+                {'goldingot', 2}, 
+               
+            },
+            exp = 1289,
+            giveexp = 0,
+          
         },
-        exp = 15000,
-        giveexp = 0,
-      
-    },
-    [6] = {
-        item = 'weapon_microsmg3',
-        give = 1,
-        required = {
-            {'refined_steel', 1},
-            {'refined_copper', 1}, 
-            {'smgbarrel', 1},
-            {'smgbody', 1},
-            {'smggrip', 1},
-            {'carbon', 7},  
+        [4] = {
+            item = 'weapon_fnx45',
+            give = 1,
+            required = {
+                {'refined_iron', 1},
+                {'refined_aluminum', 1}, 
+                {'pistolbarrel', 1},
+                {'pistolbody', 1},
+                {'pistolgrip', 1},
+                {'carbon', 5},  
+            },
+            exp = 3334,
+            giveexp = 0,
+          
         },
-        exp = 17000,
-        giveexp = 0,
-      
-    },
-    [7] = {
-        item = 'weapon_pistol50',
-        give = 1,
-        required = {
-            {'refined_steel', 2},
-            {'refined_aluminum', 1}, 
-            {'pistolbarrel', 1},
-            {'pistolbody', 1},
-            {'pistolgrip', 1},
-            {'carbon', 5},  
+        [5] = {
+            item = 'weapon_microsmg2',
+            give = 1,
+            required = {
+                {'refined_steel', 1},
+                {'refined_copper', 1}, 
+                {'smgbarrel', 1},
+                {'smgbody', 1},
+                {'smggrip', 1},
+                {'carbon', 5},  
+            },
+            exp = 15000,
+            giveexp = 0,
+          
         },
-        exp = 23379,
-        giveexp = 0,
-       
-    },
-    [8] = {
-        item = 'weapon_assaultrifle2',
-        give = 1,
-        required = {
-            {'riflereciever', 1},
-            {'rifletrigger', 1}, 
-            {'riflebody', 1},
-            {'refined_aluminum', 1},
-            {'refined_steel', 3},
-            {'carbon', 10},  
-            {'refined_copper', 2},  
+        [6] = {
+            item = 'weapon_microsmg3',
+            give = 1,
+            required = {
+                {'refined_steel', 1},
+                {'refined_copper', 1}, 
+                {'smgbarrel', 1},
+                {'smgbody', 1},
+                {'smggrip', 1},
+                {'carbon', 7},  
+            },
+            exp = 17000,
+            giveexp = 0,
+          
         },
-        exp = 29000,
-        giveexp = 0,
-        
-    },
-    [9] = {
-        item = 'weapon_assaultrifle',
-        give = 1,
-        required = {
-            {'riflereciever', 1},
-            {'rifletrigger', 1}, 
-            {'riflebody', 1},
-            {'refined_aluminum', 2},
-            {'refined_steel', 5},
-            {'carbon', 12},  
-            {'refined_copper', 3},  
-        },
-        exp = 31000,
-        giveexp = 0,
-      
-    },
-  
-}
-
-Config.AmmoBench = {
-
-    [1] = {
-        item = 'gunpowder',
-        give = 10,
-        required = {
-            {'aluminumoxide', 1},
-            {'charcoal', 25}, 
-            {'refined_iron', 1},
-        },  exp = 1839,
-        giveexp = 0,
-       
-    },
-    [2] = {
-        item = 'pistol_ammo',
-        give = 3,
-        required = {
-            {'copperore', 2},
-            {'gunpowder', 1}, 
+        [7] = {
+            item = 'weapon_pistol50',
+            give = 1,
+            required = {
+                {'refined_steel', 2},
+                {'refined_aluminum', 1}, 
+                {'pistolbarrel', 1},
+                {'pistolbody', 1},
+                {'pistolgrip', 1},
+                {'carbon', 5},  
+            },
+            exp = 23379,
+            giveexp = 0,
            
-        },  exp = 2529,
-        giveexp = 0,
+        },
+        [8] = {
+            item = 'weapon_assaultrifle2',
+            give = 1,
+            required = {
+                {'riflereciever', 1},
+                {'rifletrigger', 1}, 
+                {'riflebody', 1},
+                {'refined_aluminum', 1},
+                {'refined_steel', 3},
+                {'carbon', 10},  
+                {'refined_copper', 2},  
+            },
+            exp = 29000,
+            giveexp = 0,
+            
+        },
+        [9] = {
+            item = 'weapon_assaultrifle',
+            give = 1,
+            required = {
+                {'riflereciever', 1},
+                {'rifletrigger', 1}, 
+                {'riflebody', 1},
+                {'refined_aluminum', 2},
+                {'refined_steel', 5},
+                {'carbon', 12},  
+                {'refined_copper', 3},  
+            },
+            exp = 31000,
+            giveexp = 0,
+          
+        },
       
     },
-    [3] = {
-        item = 'smg_ammo',
-        give = 1,
-        required = {
-            {'gunpowder', 2},
-            {'copperore', 4}, 
+    ["AmmoBench"] = {
+        [1] = {
+            item = 'gunpowder',
+            give = 10,
+            required = {
+                {'aluminumoxide', 1},
+                {'charcoal', 25}, 
+                {'refined_iron', 1},
+            },  exp = 1839,
+            giveexp = 0,
            
-        },  exp = 14750,
-        giveexp = 0,
-       
-    },
-    [4] = {
-        item = 'rifle_ammo',
-        give = 1,
-        required = {
-            {'copperore', 3},
-            {'gunpowder', 6}, 
+        },
+        [2] = {
+            item = 'pistol_ammo',
+            give = 3,
+            required = {
+                {'copperore', 2},
+                {'gunpowder', 1}, 
+               
+            },  exp = 2529,
+            giveexp = 0,
+          
+        },
+        [3] = {
+            item = 'smg_ammo',
+            give = 1,
+            required = {
+                {'gunpowder', 2},
+                {'copperore', 4}, 
+               
+            },  exp = 14750,
+            giveexp = 0,
            
-        }, exp = 27000,
-        giveexp = 0,
+        },
+        [4] = {
+            item = 'rifle_ammo',
+            give = 1,
+            required = {
+                {'copperore', 3},
+                {'gunpowder', 6}, 
+               
+            }, exp = 27000,
+            giveexp = 0,
+          
+        },
       
     },
-  
-}
-
-Config.ExplosivesBench = {
+    ["ExplosivesBench"] = {
 
     [1] = {
         item = 'weapon_flare',
@@ -403,6 +394,7 @@ Config.ExplosivesBench = {
       
     },
   
+    },
 }
 
 
