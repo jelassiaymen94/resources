@@ -33,9 +33,7 @@ function targets()
     local table = Config.Locations[i].Table
     local minim = Config.Locations[i].Min
     local value = Config.Locations[i].Bench
-        print(table)
-        print(minim)
-        print(value)
+       
     Wait(50)
 	
     makeProp({prop = `prop_tool_bench02`, coords = vector4(table.x, table.y, table.z, table.w-180.0)}, 1, false)

@@ -97,8 +97,14 @@ end
 
 
 
-function bencher(bench, minimum)
-   
+function bencher(big, minimum)
+    local bench = nil
+    if big == 'tools' then bench = Config.ToolsBench 
+    elseif big == 'weapons' then bench = Config.WeaponsBench 
+    elseif big == 'explosive' then bench = Config.ExplosivesBench 
+    elseif big == 'ammo' then bench = Config.AmmoBench 
+    else print('error') return end
+
     print(minimum)
     local PlayerData = QBCore.Functions.GetPlayerData()
 	local menutable = {
@@ -195,7 +201,7 @@ end)
 
 
 RegisterNetEvent('Polar-Crafting:Client:OpenMenuPublic', function(data)  
-    local bench = Config.AmmoBench
+    local bench = data.bench
     local minimum = data.minimum 
     bencher(bench, minimum) 
 end)
