@@ -113,7 +113,7 @@ RegisterNetEvent('Polar-Crafting:Server:Hitup', function(data)
 
     for _, itemData in ipairs(required) do
         local itemName, amount = itemData[1], itemData[2]
-        local item = Player.Inventory.GetItemByName(itemName)
+        local item = Player.Functions.GetItemByName(itemName)
     
         if item == nil or item.amount < amount then
             hasRequiredItems = false
