@@ -98,7 +98,7 @@ end
 
 
 function bencher(bench, minimum, textname)
-
+    if bench == nil then print('bench = nil') return end
     
     local PlayerData = QBCore.Functions.GetPlayerData()
 	local menutable = {
