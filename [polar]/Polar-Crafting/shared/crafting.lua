@@ -22,24 +22,32 @@ Config.Locations = {
     Bench = "weapon",
     Min = 200,
     CID = '',
+    JOB = '',
+    GANG = '',
     },
     [2] = {
     Table =  vector4(1223.0338, 1897.9207, 78.0086, 309.5884),
     Bench = "tools",
     Min = 0,
     CID = 12,
+    JOB = '',
+    GANG = '',
     },
     [3] = {
     Table =  vector4(63.8442, 6663.9414, 31.7869, 235.0951),
     Bench = "ammo",
     Min = 2500,
     CID = '',
+    JOB = '',
+    GANG = '',
     },
     [4] = {
     Table =  vector4(1516.1110, -2100.6833, 76.7760, 182.7406),
     Bench = "explosive",
     Min = 520,
     CID = '',
+    JOB = '',
+    GANG = '',
     },
    
 
