@@ -78,8 +78,10 @@ RegisterNetEvent('Polar-Lockers:Client:OpenLocker', function(data)
     if text ~= nil then
         for _, v in pairs(text) do
 			if v == code then
-			EnterStash(code, weight, slots)
-            end
+				EnterStash(code, weight, slots)
+            else
+				TriggerEvent('Polar-Lockers:Client:OpenLocker', data)
+			end
         end
     else
 		TriggerEvent('Polar-Lockers:Client:OpenLocker', data)
