@@ -1,12 +1,12 @@
 CreateThread(function()
-	for i = 1, #Config.Locations do
+	for i = 1, #Config.Lockers do
        
-		local loc = Config.Locations[i].Location
-		local codes = Config.Locations[i].Code
-		local specia = Config.Locations[i].SPECIAL
-		local uspecia = Config.Locations[i].USESPECIAL
-		local weight = Config.Locations[i].Weight
-		local slots = Config.Locations[i].Slots
+		local loc = Config.Lockers[i].Location
+		local codes = Config.Lockers[i].Code
+		local specia = Config.Lockers[i].SPECIAL
+		local uspecia = Config.Lockers[i].USESPECIAL
+		local weight = Config.Lockers[i].Weight
+		local slots = Config.Lockers[i].Slots
 		Wait(50)
 		
 		if Config.UseProp then makeProp({prop = Config.Prop, coords = vector4(loc.x, loc.y, loc.z, loc.w-180.0)}, 1, false) end
@@ -18,9 +18,9 @@ CreateThread(function()
 			exports[Config.Target]:AddBoxZone("name:" .. n .. z, vector3(loc.x, loc.y, loc.z), 0.8, 0.5, 
 			{ name="name:" .. n .. z, heading = loc.w+180.0, debugPoly=false, minZ=loc.z-1.05, maxZ=loc.z+0.80 },
 			{ options = { { event = "Polar-Lockers:StashAvailability", icon = "fas fa-briefcase", label = "Open", 
-		--  job = Config.Locations[i].JOB, -- job = {["police"] = 0, ["ambulance"] = 2},
-		--  gang = Config.Locations[i].GANG, --  gang = {["ballas"] = 0, ["thelostmc"] = 2},
-		--  citizenid = Config.Locations[i].CID,-- citizenid = {["JFD98238"] = true, ["HJS29340"] = true},
+		--  job = Config.Lockers[i].JOB, -- job = {["police"] = 0, ["ambulance"] = 2},
+		--  gang = Config.Lockers[i].GANG, --  gang = {["ballas"] = 0, ["thelostmc"] = 2},
+		--  citizenid = Config.Lockers[i].CID,-- citizenid = {["JFD98238"] = true, ["HJS29340"] = true},
 			slot = slots, 
 			code = codes,
 			weights = weight,
