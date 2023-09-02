@@ -9,14 +9,13 @@ CreateThread(function()
 		local slots = Config.Lockers[i].Slots
 		Wait(50)
 		
-		if Config.UseProp then makeProp({prop = Config.Prop, coords = vector4(loc.x, loc.y, loc.z, loc.w-180.0)}, 1, false) end
 			
 		local n = math.random(1,9999) local z = math.random(1,9999)
 	  
 		if uspecia == nil then
 	  
 			exports['qb-target']:AddBoxZone("name:" .. n .. z, vector3(loc.x, loc.y, loc.z), 0.8, 0.5, 
-			{ name="name:" .. n .. z, heading = loc.w+180.0, debugPoly=false, minZ=loc.z-1.05, maxZ=loc.z+0.80 },
+			{ name="name:" .. n .. z, heading = 0, debugPoly=false, minZ=loc.z-1.05, maxZ=loc.z+0.80 },
 			{ options = { { event = "Polar-Lockers:StashAvailability", icon = "fas fa-briefcase", label = "Open", 
 		--  job = Config.Lockers[i].JOB, -- job = {["police"] = 0, ["ambulance"] = 2},
 		--  gang = Config.Lockers[i].GANG, --  gang = {["ballas"] = 0, ["thelostmc"] = 2},
