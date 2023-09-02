@@ -30,12 +30,12 @@ Config.Locations = {
     [3] = {
     Table =  vector4(63.8442, 6663.9414, 31.7869, 235.0951),
     Bench = Config.AmmoBench,
-    Min = 2500
+    Min = 2500,
     },
     [4] = {
     Table =  vector4(1516.1110, -2100.6833, 76.7760, 182.7406),
     Bench = Config.ExplosivesBench,
-    Min = 520
+    Min = 520,
     },
    
 

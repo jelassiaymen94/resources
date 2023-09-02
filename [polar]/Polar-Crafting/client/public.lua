@@ -99,7 +99,7 @@ end
 
 function bencher(data)
     local bench = data.bench
-    local minimum = data.min
+    local minimum = data.minimum
 
     local PlayerData = QBCore.Functions.GetPlayerData()
 	local menutable = {
