@@ -13,29 +13,29 @@ Config.Skillbar = 'qb-skillbar'
 Config.Debug = false -- debug for checks
 Config.img = "inventory/html/images/"
 
-Config.StoreBenchmin = 0
-Config.ToolsBenchmin = 0
-Config.WeaponsBenchmin = 200
-Config.ExplosivesBenchmin = 520
-Config.AmmoBenchmin = 2500
+
 
 Config.Locations = {
 
     [1] = {
     Table =  vector4(-921.4268, 400.7218, 79.1264, 20.7826),
-    type = 'weapons',
+    Bench = Config.WeaponsBench,
+    Min = 200
     },
     [2] = {
     Table =  vector4(1223.0338, 1897.9207, 78.0086, 309.5884),
-    type = 'tools',
+    Bench = Config.ToolsBench,
+    Min = 0,
     },
     [3] = {
     Table =  vector4(63.8442, 6663.9414, 31.7869, 235.0951),
-    type = 'ammo',
+    Bench = Config.AmmoBench,
+    Min = 2500
     },
     [4] = {
     Table =  vector4(1516.1110, -2100.6833, 76.7760, 182.7406),
-    type = 'explosives',
+    Bench = Config.ExplosivesBench,
+    Min = 520
     },
    
 

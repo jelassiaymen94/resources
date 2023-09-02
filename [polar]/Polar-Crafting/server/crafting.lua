@@ -134,7 +134,7 @@ RegisterNetEvent('Polar-Crafting:Server:Hitup', function(data)
     
         Wait(100)
         TriggerClientEvent('Polar-Crafting:Client:StartAnim', src)
-        local packageTime = 8000
+        local packageTime = 15000
        
         TriggerClientEvent('Polar-Crafting:Client:Anim', src, itemname)
         SetTimeout(packageTime, function()
