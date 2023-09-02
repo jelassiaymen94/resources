@@ -63,19 +63,26 @@ RegisterNetEvent('Polar-Lockers:Client:OpenLocker', function(data)
 	local weight = data.weight
 	local slots = data.slots
 	local code = data.code
-	local keyboard = exports["qb-keyboard"]:KeyboardInput({
-		header = "Enter Password",
-		rows = {
-			{
-				id = 0,
-				txt = ""
-			}
-		}
-	})
-    if keyboard ~= nil then
-        if keyboard[1].input == code then
-            EnterStash(code, weight, slots)
+	local text = exports['qb-input']:ShowInput({
+        header = "Enter Password",
+        submitText = "Enter",
+        inputs = {
+            {
+                text = "Enter the Code", -- text you want to be displayed as a place holder
+                name = "lockercodename", -- name of the input should be unique otherwise it might override
+                type = "text", -- type of the input
+                isRequired = true, 
+            },
+        },
+    })
+    if text ~= nil then
+        for _, v in pairs(text) do
+			if v == code then
+			EnterStash(code, weight, slots)
+            end
         end
+    else
+		TriggerEvent('Polar-Lockers:Client:OpenLocker', data)
     end
 end)
 
