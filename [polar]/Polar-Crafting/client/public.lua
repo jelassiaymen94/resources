@@ -10,8 +10,8 @@ local src = source
 
 
 function bencher(bench, minimum, textname)
-    if bench == "Config.WeaponsBench" then bench = Config.WeaponsBench end
     if bench == nil then print('bench = nil') return end
+
     QBCore.Functions.TriggerCallback('Polar-Crafting:Server:Header', function(headers)
         if headers then
     local PlayerData = QBCore.Functions.GetPlayerData()
@@ -25,19 +25,19 @@ function bencher(bench, minimum, textname)
             Wait(0)
             exports['qb-menu']:openMenu(menutable)
     else
-        for i = 1, #bench do
+        for i = 1, #Config.Table[bench] do
                 local requiredItems = "" 
-                for _, data in ipairs(bench[i].required) do 
+                for _, data in ipairs(Config.Table[bench][i].required) do 
                     requiredItems = requiredItems .. "<p> <img src=nui://" .. Config.img .. QBCore.Shared.Items[data[1]].image .. " width=25px onerror='this.onerror=null; this.remove();'> " .. data[2] .. " " .. QBCore.Shared.Items[data[1]].label
                 end 
-                local item = bench[i].item
+                local item = Config.Table[bench][i].item
                 local setheader = "<img src=nui://"..Config.img..QBCore.Shared.Items[item].image.." width=45px onerror='this.onerror=null; this.remove();'>"..QBCore.Shared.Items[item].label
                 local disable = false
                 local hide = true
               
-                if PlayerData.metadata["craftingrep"] >= bench[i].exp then hide = false end
+                if PlayerData.metadata["craftingrep"] >= Config.Table[bench][i].exp then hide = false end
               
-                menutable[#menutable+1] = { hidden = hide, disabled = disable, icon = bench[i].icon, header = setheader, txt = "Required: " .. requiredItems, params = { event = "Polar-Crafting:Client:Transfer",args = { item = bench[i].item, requires = bench[i].required, give = bench[i].give, exp = bench[i].exp, giveexp = bench[i].giveexp} } }
+                menutable[#menutable+1] = { hidden = hide, disabled = disable, icon = Config.Table[bench][i].icon, header = setheader, txt = "Required: " .. requiredItems, params = { event = "Polar-Crafting:Client:Transfer",args = { item = Config.Table[bench][i].item, requires = Config.Table[bench][i].required, give = Config.Table[bench][i].give, exp = Config.Table[bench][i].exp, giveexp = Config.Table[bench][i].giveexp} } }
                 Wait(0)
                 end
         exports['qb-menu']:openMenu(menutable)
