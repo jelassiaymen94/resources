@@ -29,8 +29,13 @@ end
 function targets()
   
     for i = 1, #Config.Locations do
-
+       
     local table = Config.Locations[i].Table
+    local minim = Config.Locations[i].Min
+    local value = Config.Locations[i].Bench
+        print(table)
+        print(minim)
+        print(value)
     Wait(50)
 	
     makeProp({prop = `prop_tool_bench02`, coords = vector4(table.x, table.y, table.z, table.w-180.0)}, 1, false)
@@ -39,7 +44,7 @@ function targets()
     print("name:".. n .. z)
     exports['qb-target']:AddBoxZone("name:".. n .. z, vector3(table.x, table.y, table.z), 0.8, 0.5, 
     { name="name:".. n .. z, heading = table.w+180.0, debugPoly=false, minZ=table.z-1.05, maxZ=table.z+0.80 },
-	{ options = { { event = "Polar-Crafting:Client:OpenMenuPublic", icon = "fa-solid fa-bolt", label = "Open", bench = Config.Locations[i].Bench, minimum = Config.Locations[i].Min }, },
+	{ options = { { event = "Polar-Crafting:Client:OpenMenuPublic", icon = "fa-solid fa-bolt", label = "Open", bench = value, minimum = minim }, },
 	distance = 2.0 })
 
         
