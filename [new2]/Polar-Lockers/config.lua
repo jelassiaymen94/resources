@@ -1,7 +1,7 @@
 Config = {}
 
 
-Config.Lockers = {
+Config.Locations = {
     [1] = {
         Location = '',
         Code = "",
