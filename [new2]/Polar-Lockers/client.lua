@@ -15,7 +15,7 @@ CreateThread(function()
 	  
 		if uspecia == nil then
 	  
-			exports[Config.Target]:AddBoxZone("name:" .. n .. z, vector3(loc.x, loc.y, loc.z), 0.8, 0.5, 
+			exports['qb-target']:AddBoxZone("name:" .. n .. z, vector3(loc.x, loc.y, loc.z), 0.8, 0.5, 
 			{ name="name:" .. n .. z, heading = loc.w+180.0, debugPoly=false, minZ=loc.z-1.05, maxZ=loc.z+0.80 },
 			{ options = { { event = "Polar-Lockers:StashAvailability", icon = "fas fa-briefcase", label = "Open", 
 		--  job = Config.Lockers[i].JOB, -- job = {["police"] = 0, ["ambulance"] = 2},
