@@ -105,19 +105,19 @@ function bencher(big, minimum)
     elseif big == 'ammo' then bench = Config.AmmoBench 
     else print('error') bench = Config.AmmoBench   end
 
-    print(minimum)
+    
     local PlayerData = QBCore.Functions.GetPlayerData()
 	local menutable = {
 		{ header = "Crafting Bench", txt = "", icon = "", isMenuHeader = true },
 		{ icon = "fas fa-circle-xmark", header = "", txt = "Close", params = { event = "Menu:Close" } } }
         local disable = false
         local hide = false
-        if PlayerData.metadata["craftingrep"] < minimum then 
+    if PlayerData.metadata["craftingrep"] < minimum then 
             menutable[#menutable+1] = { hidden = hide, disabled = disable, icon = "", header = "You Don't Have enough Exp", txt = "Required: " .. minimum .. " exp"}
             Wait(0)
             exports['qb-menu']:openMenu(menutable)
-        else
-            for i = 1, #bench do
+    else
+        for i = 1, #bench do
                 local requiredItems = "" 
                 for _, data in ipairs(bench[i].required) do 
                     requiredItems = requiredItems .. "<p> <img src=nui://" .. Config.img .. QBCore.Shared.Items[data[1]].image .. " width=25px onerror='this.onerror=null; this.remove();'> " .. data[2] .. " " .. QBCore.Shared.Items[data[1]].label
@@ -128,12 +128,12 @@ function bencher(big, minimum)
                 local hide = true
               
                 if PlayerData.metadata["craftingrep"] >= bench[i].exp then hide = false end
-               -- print(exp)
-               menutable[#menutable+1] = { hidden = hide, disabled = disable, icon = bench[i].icon, header = setheader, txt = "Required: " .. requiredItems, params = { event = "Polar-Crafting:Client:Transfer",args = { item = bench[i].item, requires = bench[i].required, give = bench[i].give, exp = bench[i].exp, giveexp = bench[i].giveexp} } }
+              
+                menutable[#menutable+1] = { hidden = hide, disabled = disable, icon = bench[i].icon, header = setheader, txt = "Required: " .. requiredItems, params = { event = "Polar-Crafting:Client:Transfer",args = { item = bench[i].item, requires = bench[i].required, give = bench[i].give, exp = bench[i].exp, giveexp = bench[i].giveexp} } }
                 Wait(0)
                 end
-            exports['qb-menu']:openMenu(menutable)
-            end
+        exports['qb-menu']:openMenu(menutable)
+    end
 end
 
 
