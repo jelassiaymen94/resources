@@ -58,25 +58,25 @@ PerformHttpRequest( "https://wolfknight98.github.io/wk_wars2x_web/version.txt", 
 	-- Get the current resource version
 	local curVer = GetCurrentVersion()
 
-	print( "  ||    Current version: " .. curVer )
+	--print( "  ||    Current version: " .. curVer )
 
 	if ( text ~= nil ) then
 		-- Print latest version
-		print( "  ||    Latest recommended version: " .. text .."\n  ||" )
+		--print( "  ||    Latest recommended version: " .. text .."\n  ||" )
 
 		-- If the versions are different, print it out
 		if ( text ~= curVer ) then
-			print( "  ||    ^1Your Wraith ARS 2X version is outdated, visit the FiveM forum post to get the latest version.\n^0  \\\\\n" )
+		--	print( "  ||    ^1Your Wraith ARS 2X version is outdated, visit the FiveM forum post to get the latest version.\n^0  \\\\\n" )
 		else
-			print( "  ||    ^2Wraith ARS 2X is up to date!\n^0  ||\n  \\\\\n" )
+		--	print( "  ||    ^2Wraith ARS 2X is up to date!\n^0  ||\n  \\\\\n" )
 		end
 	else
 		-- In case the version can not be requested, print out an error message
-		print( "  ||    ^1There was an error getting the latest version information.\n^0  ||\n  \\\\\n" )
+		--print( "  ||    ^1There was an error getting the latest version information.\n^0  ||\n  \\\\\n" )
 	end
 
 	-- Warn the console if the resource has been renamed, as this will cause issues with the resource's functionality.
 	if ( GetCurrentResourceName() ~= "wk_wars2x" ) then
-		print( "^1ERROR: Resource name is not wk_wars2x, expect there to be issues with the resource. To ensure there are no issues, please leave the resource name as wk_wars2x^0\n\n" )
+		--print( "^1ERROR: Resource name is not wk_wars2x, expect there to be issues with the resource. To ensure there are no issues, please leave the resource name as wk_wars2x^0\n\n" )
 	end
 end )
