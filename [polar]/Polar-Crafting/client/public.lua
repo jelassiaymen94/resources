@@ -39,7 +39,7 @@ function bencher(bench, minimum, textname)
               
                 menutable[#menutable+1] = { hidden = hide, disabled = disable, icon = Config.Table[bench][i].icon, header = setheader, txt = "Required: " .. requiredItems, params = { event = "Polar-Crafting:Client:Transfer",args = { item = Config.Table[bench][i].item, requires = Config.Table[bench][i].required, give = Config.Table[bench][i].give, exp = Config.Table[bench][i].exp, giveexp = Config.Table[bench][i].giveexp} } }
                 Wait(0)
-                end
+        end
         exports['qb-menu']:openMenu(menutable)
     end
     end
