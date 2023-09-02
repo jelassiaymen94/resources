@@ -39,8 +39,8 @@ function targets()
         
     local n = math.random(1,9999) local z = math.random(1,9999)
    -- print("name:" .. values .. n .. z)
-    exports['qb-target']:AddBoxZone("name:" .. values .. n .. z, vector3(table.x, table.y, table.z), 0.8, 0.5, 
-    { name="name:" .. values .. n .. z, heading = table.w+180.0, debugPoly=false, minZ=table.z-1.05, maxZ=table.z+0.80 },
+    exports['qb-target']:AddBoxZone("name:" .. n .. z, vector3(table.x, table.y, table.z), 0.8, 0.5, 
+    { name="name:" .. n .. z, heading = table.w+180.0, debugPoly=false, minZ=table.z-1.05, maxZ=table.z+0.80 },
 	{ options = { { event = "Polar-Crafting:Client:OpenMenuPublic", icon = "fa-solid fa-bolt", label = "Open", 
  --   job = Config.Locations[i].JOB, -- job = {["police"] = 0, ["ambulance"] = 2},
  --   gang = Config.Locations[i].GANG, --  gang = {["ballas"] = 0, ["thelostmc"] = 2},
