@@ -100,7 +100,7 @@ end
 function bencher(data)
     local bench = data.bench
     local minimum = data.minimum
-
+    print(minimum)
     local PlayerData = QBCore.Functions.GetPlayerData()
 	local menutable = {
 		{ header = "Crafting Bench", txt = "", icon = "", isMenuHeader = true },
