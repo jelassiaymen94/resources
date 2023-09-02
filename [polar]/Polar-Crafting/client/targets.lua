@@ -37,13 +37,13 @@ function targets()
 
     Wait(50)
 	
-    makeProp({prop = `prop_tool_bench02`, coords = vector4(table.x, table.y, table.z, table.w-180.0)}, 1, false)
+    if Config.UseProp then makeProp({prop = Config.Prop, coords = vector4(table.x, table.y, table.z, table.w-180.0)}, 1, false) end
         
     local n = math.random(1,9999) local z = math.random(1,9999)
   
     if uspecia == nil then
   
-        exports['qb-target']:AddBoxZone("name:" .. n .. z, vector3(table.x, table.y, table.z), 0.8, 0.5, 
+        exports[Config.Target]:AddBoxZone("name:" .. n .. z, vector3(table.x, table.y, table.z), 0.8, 0.5, 
         { name="name:" .. n .. z, heading = table.w+180.0, debugPoly=false, minZ=table.z-1.05, maxZ=table.z+0.80 },
 	    { options = { { event = "Polar-Crafting:Client:OpenMenuPublic", icon = "fa-solid fa-bolt", label = "Open", 
     --  job = Config.Locations[i].JOB, -- job = {["police"] = 0, ["ambulance"] = 2},
@@ -58,7 +58,7 @@ function targets()
         
     elseif uspecia == 'cid' then
 
-        exports['qb-target']:AddBoxZone("name:" .. n .. z, vector3(table.x, table.y, table.z), 0.8, 0.5, 
+        exports[Config.Target]:AddBoxZone("name:" .. n .. z, vector3(table.x, table.y, table.z), 0.8, 0.5, 
         { name="name:" .. n .. z, heading = table.w+180.0, debugPoly=false, minZ=table.z-1.05, maxZ=table.z+0.80 },
         { options = { { event = "Polar-Crafting:Client:OpenMenuPublic", icon = "fa-solid fa-bolt", label = "Open", 
         citizenid = specia,
@@ -70,7 +70,7 @@ function targets()
     
 
     elseif uspecia == 'job' then
-        exports['qb-target']:AddBoxZone("name:" .. n .. z, vector3(table.x, table.y, table.z), 0.8, 0.5, 
+        exports[Config.Target]:AddBoxZone("name:" .. n .. z, vector3(table.x, table.y, table.z), 0.8, 0.5, 
         { name="name:" .. n .. z, heading = table.w+180.0, debugPoly=false, minZ=table.z-1.05, maxZ=table.z+0.80 },
         { options = { { event = "Polar-Crafting:Client:OpenMenuPublic", icon = "fa-solid fa-bolt", label = "Open", 
         job = specia,
@@ -82,7 +82,7 @@ function targets()
     
     elseif uspecia == 'gang' then
 
-        exports['qb-target']:AddBoxZone("name:" .. n .. z, vector3(table.x, table.y, table.z), 0.8, 0.5, 
+        exports[Config.Target]:AddBoxZone("name:" .. n .. z, vector3(table.x, table.y, table.z), 0.8, 0.5, 
         { name="name:" .. n .. z, heading = table.w+180.0, debugPoly=false, minZ=table.z-1.05, maxZ=table.z+0.80 },
         { options = { { event = "Polar-Crafting:Client:OpenMenuPublic", icon = "fa-solid fa-bolt", label = "Open", 
         gang = specia, 

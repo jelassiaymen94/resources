@@ -1,26 +1,21 @@
 Config = {} or Config
-local QBCore = exports['qb-core']:GetCoreObject()
--- Core Values----------------------------------------------------------------
-Config.Core = 'qb-core'
+
+
 Config.Target = 'qb-target'
-Config.Menu = 'qb-menu'
-Config.Input = 'qb-input'
-Config.Inventory = 'inventory'
-Config.Skillbar = 'qb-skillbar'
-----------------------------------------------------------------
 
--- Debug
+
 Config.Debug = false -- debug for checks
-Config.img = "inventory/html/images/"
+Config.img = "inventory/html/images/" -- used for images, change to qb-inventory if qb or whatever you use
 
-
+Config.UseProp = true -- use the prop below spawn
+Config.Prop = 'prop_tool_bench02'
 
 Config.Locations = {
 
     [1] = {
     TitleName = "Crafting Bencheroni",
     Table =  vector4(-921.4268, 400.7218, 79.1264, 20.7826),
-    Bench = Config.WeaponsBench,
+    Bench = "Config.WeaponsBench",
     Min = 200,
     USESPECIAL = nil, -- either 'gang', 'job', 'cid', -- if none then keep nil
     SPECIAL = '', 
@@ -28,7 +23,7 @@ Config.Locations = {
     [2] = {
     TitleName = "Crafting Bencheroni",
     Table =  vector4(1223.0338, 1897.9207, 78.0086, 309.5884),
-    Bench = Config.ToolsBench,
+    Bench = "Config.ToolsBench",
     Min = 0,
     USESPECIAL = nil, -- either 'gang', 'job', 'cid', -- if none then keep nil
     SPECIAL = '', 
@@ -36,7 +31,7 @@ Config.Locations = {
     [3] = {
     TitleName = "Crafting Bencheroni",
     Table =  vector4(63.8442, 6663.9414, 31.7869, 235.0951),
-    Bench = Config.AmmoBench,
+    Bench = "Config.AmmoBench",
     Min = 2500,
     USESPECIAL = nil, -- either 'gang', 'job', 'cid', -- if none then keep nil
     SPECIAL = '', 
@@ -44,7 +39,7 @@ Config.Locations = {
     [4] = {
     TitleName = "Crafting Bencheroni",
     Table =  vector4(1516.1110, -2100.6833, 76.7760, 182.7406),
-    Bench = Config.Explosive,
+    Bench = "Config.Explosive",
     Min = 520,
     USESPECIAL = nil, -- either 'gang', 'job', 'cid', -- if none then keep nil
     SPECIAL = '', 

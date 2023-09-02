@@ -3,39 +3,8 @@ local QBCore = exports['qb-core']:GetCoreObject()
 local src = source
 
 
-local green = 'success'
-local red = 'error'
-local alerttime = math.random(1500,2500)
 
 
-local item = nil
-local giveamount = 0
-local xpamount = 0
-
-
--- XP CHECK
-RegisterNetEvent('Polar-Crafting:Server:FindXp', function()
-
-    TriggerClientEvent('Polar-Crafting:Client:Rep')
-    local Player = QBCore.Functions.GetPlayer(source)
-    
-
-end)
-QBCore.Functions.CreateCallback("Polar-Crafting:Server:XpCheck", function(source, cb)
-
-   
-    
-    local Player = QBCore.Functions.GetPlayer(source)
-
-   -- if not Player then return end
-
-    --xp = 250
-   
-
-    settimeout(1000)
-
-    cb(xp)
-end)
 
 
 RegisterNetEvent('Polar-Crafting:Server:IncreaseXp', function(amount)
@@ -64,7 +33,6 @@ function next(itemname, xp, give)
     Wait(100)
     TriggerClientEvent('Polar-Crafting:Client:StartAnim', src)
     local packageTime = 15000
-   -- TriggerClientEvent('QBCore:Notify', src, "Crafting " .. give .. "", 'primary', packageTime)
     TriggerClientEvent('Polar-Crafting:Client:Anim', src, itemname)
     SetTimeout(packageTime, function()
             TriggerClientEvent('Polar-Crafting:Client:EndAnim', src)
@@ -83,22 +51,13 @@ function next(itemname, xp, give)
             
             local Player = QBCore.Functions.GetPlayer(src)
             local data = Player.PlayerData.metadata["craftingrep"] or 0
-          --  TriggerClientEvent('QBCore:Notify', src, " " .. data .. " is your Total Exp", green, alerttime)
             local pp = (data + xp)
             Player.Functions.SetMetaData('craftingrep', pp)
-          --  TriggerClientEvent('QBCore:Notify', src, " " .. pp .. " is your Total Exp", green, alerttime)
             
     end)
   
 end   
-local data = 0
 
-RegisterNetEvent('Polar-Crafting:Server:GiveEXP', function()
-    local src = source
-    local ped = GetPlayerPed(src)
-    local Player = QBCore.Functions.GetPlayer(src)
-    local data = Player.PlayerData.metadata["craftingrep"] or 0
-end)
 
 RegisterNetEvent('Polar-Crafting:Server:Hitup', function(data)
     local itemname = data.item
