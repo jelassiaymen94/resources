@@ -97,7 +97,7 @@ end
 
 
 
-function bencher(big, minimum)
+function bencher(big, minimum, textname)
     local bench = nil
     if big == 'tools' then bench = Config.ToolsBench 
     elseif big == 'weapons' then bench = Config.WeaponsBench 
@@ -108,7 +108,7 @@ function bencher(big, minimum)
     
     local PlayerData = QBCore.Functions.GetPlayerData()
 	local menutable = {
-		{ header = "Crafting Bench", txt = "", icon = "", isMenuHeader = true },
+		{ header = textname, txt = "", icon = "", isMenuHeader = true },
 		{ icon = "fas fa-circle-xmark", header = "", txt = "Close", params = { event = "Menu:Close" } } }
         local disable = false
         local hide = false
@@ -203,7 +203,7 @@ end)
 RegisterNetEvent('Polar-Crafting:Client:OpenMenuPublic', function(data)  
     local bench = data.benches
     local minimum = data.minimum 
-    print(bench)
-    bencher(bench, minimum) 
+    local name = data.bigname
+    bencher(bench, minimum, name) 
 end)
 

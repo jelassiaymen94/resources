@@ -31,7 +31,6 @@ function targets()
     for i = 1, #Config.Locations do
        
     local table = Config.Locations[i].Table
-    local minim = Config.Locations[i].Min
     local values = Config.Locations[i].Bench
        
     Wait(50)
@@ -46,7 +45,10 @@ function targets()
     job = Config.Locations[i].JOB, -- job = {["police"] = 0, ["ambulance"] = 2},
     gang = Config.Locations[i].GANG, --  gang = {["ballas"] = 0, ["thelostmc"] = 2},
     citizenid = Config.Locations[i].CID,-- citizenid = {["JFD98238"] = true, ["HJS29340"] = true},
-    benches = values, minimum = minim }, },
+    benches = values, 
+    minimum = Config.Locations[i].Min,
+    bigname = Config.Locations[i].TitleName,
+    }, },
 	distance = 2.0 })
 
         
