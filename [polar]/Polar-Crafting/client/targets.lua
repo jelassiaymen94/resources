@@ -35,10 +35,10 @@ function targets()
 	
     makeProp({prop = `prop_tool_bench02`, coords = vector4(table.x, table.y, table.z, table.w-180.0)}, 1, false)
         
-    local n = math.random(1,9999) local d = math.random(1,9999) local f = math.random(1,9999) local g = math.random(1,9999) local z = math.random(1,9999)
-    print("name:".. n .. d .. f .. g .. z)
-    exports['qb-target']:AddBoxZone("name:".. n .. d .. f .. g .. z, vector3(table.x, table.y, table.z), 0.8, 0.5, 
-    { name="h:name:" .. n .. d .. f .. g .. z, heading = table.w+180.0, debugPoly=false, minZ=table.z-1.05, maxZ=table.z+0.80 },
+    local n = math.random(1,9999) local z = math.random(1,9999)
+    print("name:".. n .. z)
+    exports['qb-target']:AddBoxZone("name:".. n .. z, vector3(table.x, table.y, table.z), 0.8, 0.5, 
+    { name="name:".. n .. z, heading = table.w+180.0, debugPoly=false, minZ=table.z-1.05, maxZ=table.z+0.80 },
 	{ options = { { event = "Polar-Crafting:Client:OpenMenuPublic", icon = "fa-solid fa-bolt", label = "Open", bench = Config.Locations[i].Bench, minimum = Config.Locations[i].Min }, },
 	distance = 2.0 })
 
