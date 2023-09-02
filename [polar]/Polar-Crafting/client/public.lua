@@ -98,7 +98,7 @@ end
 
 
 function bencher(data)
-    local bench = data.bench
+    local bench = Config.AmmoBench
     local minimum = data.minimum
     print(minimum)
     local PlayerData = QBCore.Functions.GetPlayerData()
