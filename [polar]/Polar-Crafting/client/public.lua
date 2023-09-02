@@ -121,7 +121,7 @@ function explosives()
               
                 if PlayerData.metadata["craftingrep"] >= Config.ExplosivesBench[i].exp then hide = false end
                -- print(exp)
-               explosivesmenu[#explosivesmenu+1] = { hidden = hide, disabled = disable, icon = Config.ExplosivesBench[i].icon, header = setheader, txt = "Required: " .. requiredItems, params = { event = "Polar-Crafting:Client:Transfer", args = { item = Config.ExplosivesBench[i].item} } }
+               explosivesmenu[#explosivesmenu+1] = { hidden = hide, disabled = disable, icon = Config.ExplosivesBench[i].icon, header = setheader, txt = "Required: " .. requiredItems, params = { event = "Polar-Crafting:Client:Transfer",args = { item = Config.ExplosivesBench[i].item, requires = Config.ExplosivesBench[i].required, give = Config.ExplosivesBench[i].give, exp = Config.ExplosivesBench[i].exp, giveexp = Config.ExplosivesBench[i].giveexp} } }
                 Wait(0)
                 end
             exports['qb-menu']:openMenu(explosivesmenu)
