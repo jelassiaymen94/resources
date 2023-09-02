@@ -31,7 +31,7 @@ Config.Locations = {
     Table =  vector4(1223.0338, 1897.9207, 78.0086, 309.5884),
     Bench = "tools",
     Min = 0,
-    CID = 12,
+    CID = '',
     JOB = '',
     GANG = '',
     },
