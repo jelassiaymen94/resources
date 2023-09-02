@@ -81,13 +81,13 @@ end)
 
 RegisterNetEvent('animations:client:Walk', function(args)
     if not PlayerData.metadata['inlaststand'] and not PlayerData.metadata['isdead'] then
-        WalkCommandStart(source, args)
+       -- WalkCommandStart(source, args)
     end
 end)
 
 RegisterNetEvent('animations:client:ListWalks', function()
     if not PlayerData.metadata['inlaststand'] and not PlayerData.metadata['isdead'] then
-        WalksOnCommand()
+       -- WalksOnCommand()
     end
 end)
 
