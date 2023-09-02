@@ -9,7 +9,7 @@ QBShared.Items = {
 	
 	['rope'] 			 = {['name'] = 'rope', 							['label'] = 'Rope', 		['weight'] = 1000, 		['type'] = 'item', 		['image'] = 'rope.png', 			['unique'] = true, 		['useable'] = false, 	['shouldClose'] = false,   ['combinable'] = nil,   ['description'] = 'rope that shit up mf', ["decay"] = 30.0, ["delete"] = false },
 
-
+-- badge-sheriff
 
 
 	['specialpick'] 			 = {['name'] = 'specialpick', 			 	['label'] = 'Special Lockpick', 		['weight'] = 10000, 		['type'] = 'item', 		['image'] = 'locksystem.png', 	['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,	   ['combinable'] = nil,   ['description'] = 'Very Illegal Lockpicking Device', ["decay"] = 30.0, ["delete"] = false },
@@ -200,9 +200,9 @@ QBShared.Items = {
     ['carcass_rabbit2'] 						 = {['name'] = 'carcass_rabbit2', 			 	  	  	['label'] = 'Carcass Rabbit', 	['weight'] = 50000, 		['type'] = 'item', 		['image'] = 'carcass_rabbit2.png', 				['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,   ['combinable'] = nil,   ['description'] = ''},
     ['carcass_rabbit3'] 						 = {['name'] = 'carcass_rabbit3', 			 	  	  	['label'] = 'Carcass Rabbit', 	['weight'] = 50000, 		['type'] = 'item', 		['image'] = 'carcass_rabbit3.png', 				['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,   ['combinable'] = nil,   ['description'] = ''},
 
-	['carcass_bear1'] 						 = {['name'] = 'carcass_bear1', 			 	  	  	['label'] = 'Carcass Bear', 	['weight'] = 50000, 		['type'] = 'item', 		['image'] = 'carcass_rabbit3.png', 				['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,   ['combinable'] = nil,   ['description'] = ''},
-	['carcass_bear2'] 						 = {['name'] = 'carcass_bear2', 			 	  	  	['label'] = 'Carcass Bear', 	['weight'] = 50000, 		['type'] = 'item', 		['image'] = 'carcass_rabbit3.png', 				['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,   ['combinable'] = nil,   ['description'] = ''},
-	['carcass_bear3'] 						 = {['name'] = 'carcass_bear3', 			 	  	  	['label'] = 'Carcass Bear', 	['weight'] = 50000, 		['type'] = 'item', 		['image'] = 'carcass_rabbit3.png', 				['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,   ['combinable'] = nil,   ['description'] = ''},
+	['carcass_bear1'] 						 = {['name'] = 'carcass_bear1', 			 	  	  	['label'] = 'Carcass Bear', 	['weight'] = 50000, 		['type'] = 'item', 		['image'] = 'level1skin.png', 				['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,   ['combinable'] = nil,   ['description'] = ''},
+	['carcass_bear2'] 						 = {['name'] = 'carcass_bear2', 			 	  	  	['label'] = 'Carcass Bear', 	['weight'] = 50000, 		['type'] = 'item', 		['image'] = 'level2skin.png', 				['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,   ['combinable'] = nil,   ['description'] = ''},
+	['carcass_bear3'] 						 = {['name'] = 'carcass_bear3', 			 	  	  	['label'] = 'Carcass Bear', 	['weight'] = 50000, 		['type'] = 'item', 		['image'] = 'level3skin.png', 				['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,   ['combinable'] = nil,   ['description'] = ''},
 
 	
 

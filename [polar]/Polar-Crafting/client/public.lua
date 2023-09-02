@@ -26,6 +26,10 @@ function GetHeader()
 end
 
 
+
+
+
+
 function weapons()
     local PlayerData = QBCore.Functions.GetPlayerData()
 	local weaponmenu = {
@@ -39,23 +43,23 @@ function weapons()
             Wait(0)
             exports['qb-menu']:openMenu(weaponmenu)
         else
-            for i = 1, #Config.WeaponsBench do
-                local requiredItems = "" 
-                for _, data in ipairs(Config.WeaponsBench[i].required) do 
-                    requiredItems = requiredItems .. "<p> <img src=nui://" .. Config.img .. QBCore.Shared.Items[data[1]].image .. " width=25px onerror='this.onerror=null; this.remove();'> " .. data[2] .. " " .. QBCore.Shared.Items[data[1]].label
-                end 
-                local item = Config.WeaponsBench[i].item
-                local setheader = "<img src=nui://"..Config.img..QBCore.Shared.Items[item].image.." width=45px onerror='this.onerror=null; this.remove();'>"..QBCore.Shared.Items[item].label
-                local disable = false
-                local hide = true
+    for i = 1, #Config.WeaponsBench do
+        local requiredItems = "" 
+        for _, data in ipairs(Config.WeaponsBench[i].required) do 
+            requiredItems = requiredItems .. "<p> <img src=nui://" .. Config.img .. QBCore.Shared.Items[data[1]].image .. " width=25px onerror='this.onerror=null; this.remove();'> " .. data[2] .. " " .. QBCore.Shared.Items[data[1]].label
+        end 
+            local item = Config.WeaponsBench[i].item
+            local setheader = "<img src=nui://"..Config.img..QBCore.Shared.Items[item].image.." width=45px onerror='this.onerror=null; this.remove();'>"..QBCore.Shared.Items[item].label
+            local disable = false
+            local hide = true
               
-                if PlayerData.metadata["craftingrep"] >= Config.WeaponsBench[i].exp then hide = false end
-               -- print(exp)
-               weaponmenu[#weaponmenu+1] = { hidden = hide, disabled = disable, icon = Config.WeaponsBench[i].icon, header = setheader, txt = "Required: " .. requiredItems, params = { event = "Polar-Crafting:Client:Transfer", args = { item = Config.WeaponsBench[i].item} } }
-                Wait(0)
-                end
-            exports['qb-menu']:openMenu(weaponmenu)
+            if PlayerData.metadata["craftingrep"] >= Config.WeaponsBench[i].exp then hide = false end
+               
+            weaponmenu[#weaponmenu+1] = { hidden = hide, disabled = disable, icon = Config.WeaponsBench[i].icon, header = setheader, txt = "Required: " .. requiredItems, params = { event = "Polar-Crafting:Client:Transfer", args = { item = Config.WeaponsBench[i].item} } }
+            Wait(0)
             end
+        exports['qb-menu']:openMenu(weaponmenu)
+    end
 end
 
 
