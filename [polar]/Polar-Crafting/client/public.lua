@@ -195,5 +195,5 @@ end)
 
 
 
-RegisterNetEvent('Polar-Crafting:Client:OpenMenuPublic', function(data) bencher(data) end)
+RegisterNetEvent('Polar-Crafting:Client:OpenMenuPublic', function(data) bencher(data) print(json.encode(data)) end)
 
