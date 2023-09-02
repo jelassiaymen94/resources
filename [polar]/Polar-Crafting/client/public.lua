@@ -97,9 +97,8 @@ end
 
 
 
-function bencher(data)
-    local bench = Config.AmmoBench
-    local minimum = data.minimum
+function bencher(bench, minimum)
+   
     print(minimum)
     local PlayerData = QBCore.Functions.GetPlayerData()
 	local menutable = {
@@ -195,5 +194,9 @@ end)
 
 
 
-RegisterNetEvent('Polar-Crafting:Client:OpenMenuPublic', function(data) bencher(data) end)
+RegisterNetEvent('Polar-Crafting:Client:OpenMenuPublic', function(data)  
+    local bench = Config.AmmoBench
+    local minimum = data.minimum 
+    bencher(bench, minimum) 
+end)
 
