@@ -201,8 +201,9 @@ end)
 
 
 RegisterNetEvent('Polar-Crafting:Client:OpenMenuPublic', function(data)  
-    local bench = data.bench
+    local bench = data.benches
     local minimum = data.minimum 
+    print(bench)
     bencher(bench, minimum) 
 end)
 
