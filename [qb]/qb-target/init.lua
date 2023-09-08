@@ -86,7 +86,7 @@ Config.TargetModels = {
 
 	["beansvending"] = {
 		models = {
-			"p_ld_coffee_vend_01",
+			--"p_ld_coffee_vend_01",
 			"prop_vend_coffe_01"
 		},
 		options = {

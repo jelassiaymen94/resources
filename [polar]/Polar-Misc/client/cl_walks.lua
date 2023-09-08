@@ -69,12 +69,11 @@ RegisterNetEvent('Polar-Misc:client:SetWalkStyle', function(walk)
 	WalkStyle(walk)
 end)
 
--- Menu Command --
---[[RegisterCommand('walks', function()
+RegisterCommand('walks', function()
     TriggerEvent('Polar-Misc:client:Menu')
-end, false)]]
+end, false)
 
--- Constantly Reset Walk Style --
+
 CreateThread(function()
     while true do
         Wait(1000)
