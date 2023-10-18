@@ -303,6 +303,7 @@ local function RemoveAllNearbyDrops()
     end
 end
 
+
 local function CreateItemDrop(index)
     local dropItem = CreateObject(Config.ItemDropObject, DropsNear[index].coords.x, DropsNear[index].coords.y, DropsNear[index].coords.z, false, false, false)
     DropsNear[index].object = dropItem
@@ -446,8 +447,7 @@ RegisterNetEvent('inventory:client:OpenInventory', function(PlayerAmmo, inventor
 
         end)
         else
-            --Wait(500)
-           
+            Wait(500)
             ToggleHotbar(false)
             if showBlur == true then
                 TriggerScreenblurFadeIn(1000)
@@ -480,7 +480,7 @@ RegisterNetEvent('inventory:client:UpdateOtherInventory', function(items, isErro
         action = "update",
         inventory = items,
         maxweight = Config.MaxInventoryWeight,
-        slots = 20,
+        slots = Config.MaxInventorySlots,
         error = isError,
     })
 end)
@@ -570,9 +570,9 @@ end)
 
 RegisterNetEvent('inventory:client:UseSnowball', function(amount)
     local ped = PlayerPedId()
-    GiveWeaponToPed(ped, 'weapon_snowball', amount, false, false)
-    SetPedAmmo(ped, 'weapon_snowball', amount)
-    SetCurrentPedWeapon(ped, 'weapon_snowball', true)
+    GiveWeaponToPed(ped, `weapon_snowball`, amount, false, false)
+    SetPedAmmo(ped, `weapon_snowball`, amount)
+    SetCurrentPedWeapon(ped, `weapon_snowball`, true)
 end)
 
 RegisterNetEvent('inventory:client:UseWeapon', function(weaponData, shootbool)
@@ -582,11 +582,11 @@ RegisterNetEvent('inventory:client:UseWeapon', function(weaponData, shootbool)
     local weaponinhand = GetCurrentPedWeapon(PlayerPedId())
     if currentWeapon == weaponName and weaponinhand then
         TriggerEvent('weapons:client:DrawWeapon', nil)
-        SetCurrentPedWeapon(ped, 'WEAPON_UNARMED', true)
+        SetCurrentPedWeapon(ped, `WEAPON_UNARMED`, true)
         RemoveAllPedWeapons(ped, true)
         TriggerEvent('weapons:client:SetCurrentWeapon', nil, shootbool)
         currentWeapon = nil
-    elseif weaponName == "weapon_stickybomb" or weaponName == "weapon_pipebomb" or weaponName == "weapon_m67" or weaponName == "weapon_smokegrenade" or weaponName == "weapon_cash" or weaponName == "weapon_shoe" or weaponName == "weapon_book" or weaponName == "weapon_flare" or weaponName == "weapon_proxmine" or weaponName == "weapon_ball"  or weaponName == "weapon_molotov" or weaponName == "weapon_grenade" or weaponName == "weapon_bzgas" then
+    elseif weaponName == "weapon_stickybomb" or weaponName == "weapon_pipebomb" or weaponName == "weapon_smokegrenade" or weaponName == "weapon_flare" or weaponName == "weapon_proxmine" or weaponName == "weapon_ball"  or weaponName == "weapon_molotov" or weaponName == "weapon_grenade" or weaponName == "weapon_bzgas" then
         TriggerEvent('weapons:client:DrawWeapon', weaponName)
         GiveWeaponToPed(ped, weaponHash, 1, false, false)
         SetPedAmmo(ped, weaponHash, 1)
@@ -628,7 +628,7 @@ RegisterNetEvent('inventory:client:CheckWeapon', function(weaponName)
     if currentWeapon ~= weaponName:lower() then return end
     local ped = PlayerPedId()
     TriggerEvent('weapons:ResetHolster')
-    SetCurrentPedWeapon(ped, 'WEAPON_UNARMED', true)
+    SetCurrentPedWeapon(ped, `WEAPON_UNARMED`, true)
     RemoveAllPedWeapons(ped, true)
     currentWeapon = nil
 end)
@@ -687,7 +687,7 @@ RegisterCommand('closeinv', function()
     closeInventory()
 end, false)
 
-RegisterNetEvent("inventory:client:closeinv", function()
+RegisterNetEvent("qb-inventory:client:closeinv", function()
     closeInventory()
 end)
 
@@ -733,80 +733,56 @@ RegisterCommand('inventory', function()
 
             if CurrentVehicle then -- Trunk
                 local vehicleClass = GetVehicleClass(curVeh)
-                local maxweight = 1
-                local slots = 1
-                if vehicleClass == 0 then --compact
-                    maxweight = 40000
-                    slots = 5
-                elseif vehicleClass == 1 then --sedans
+                local maxweight
+                local slots
+                if vehicleClass == 0 then
+                    maxweight = 38000
+                    slots = 30
+                elseif vehicleClass == 1 then
+                    maxweight = 50000
+                    slots = 40
+                elseif vehicleClass == 2 then
+                    maxweight = 75000
+                    slots = 50
+                elseif vehicleClass == 3 then
+                    maxweight = 42000
+                    slots = 35
+                elseif vehicleClass == 4 then
+                    maxweight = 38000
+                    slots = 30
+                elseif vehicleClass == 5 then
+                    maxweight = 30000
+                    slots = 25
+                elseif vehicleClass == 6 then
+                    maxweight = 30000
+                    slots = 25
+                elseif vehicleClass == 7 then
+                    maxweight = 30000
+                    slots = 25
+                elseif vehicleClass == 8 then
+                    maxweight = 15000
+                    slots = 15
+                elseif vehicleClass == 9 then
                     maxweight = 60000
-                    slots = 10
-                elseif vehicleClass == 2 then -- suv
+                    slots = 35
+                elseif vehicleClass == 12 then
                     maxweight = 120000
-                    slots = 15
-                elseif vehicleClass == 3 then -- coupes
-                    maxweight = 60000
-                    slots = 10
-                elseif vehicleClass == 4 then -- muscle
-                    maxweight = 50000
-                    slots = 10
-                elseif vehicleClass == 5 then -- Sports Classic
-                    maxweight = 50000
-                    slots = 10
-                elseif vehicleClass == 6 then --Sports
-                    maxweight = 40000
-                    slots = 10
-                elseif vehicleClass == 7 then -- Super
-                    maxweight = 40000
-                    slots = 10
-                elseif vehicleClass == 8 then -- Motercycle   note: atv needs moved to motercycle
-                    maxweight = 20000
-                    slots = 2
-                elseif vehicleClass == 9 then --Offroad
-                    maxweight = 100000
-                    slots = 10
-                elseif vehicleClass == 10 then -- industrial
-                    maxweight = 160000
-                    slots = 25
-                elseif vehicleClass == 11 then -- ultility
-                    maxweight = 140000
-                    slots = 20
-                elseif vehicleClass == 12 then -- Vans
-                    maxweight = 165000
-                    slots = 25
-                elseif vehicleClass == 13 then -- cycles
-                    maxweight = 10000
-                    slots = 2
-                elseif vehicleClass == 14 then -- boat
-                    maxweight = 90000
-                    slots = 5
-                elseif vehicleClass == 15 then -- helicopter
-                    maxweight = 90000
-                    slots = 15
-                elseif vehicleClass == 16 then -- plane
-                    maxweight = 90000
-                    slots = 25
-                elseif vehicleClass == 17 then -- Service  
-                    maxweight = 90000
-                    slots = 25
-                elseif vehicleClass == 18 then -- Emergency  
-                    maxweight = 90000
-                    slots = 15
-                elseif vehicleClass == 19 then -- Military  
-                    maxweight = 100000
-                    slots = 25
-                elseif vehicleClass == 20 then -- Commercial  
-                    maxweight = 140000
-                    slots = 30
-                elseif vehicleClass == 21 then -- Trains  
-                    maxweight = 100000
-                    slots = 30
-                elseif vehicleClass == 22 then
-                    maxweight = 20000
-                    slots = 2
+                    slots = 35
+                elseif vehicleClass == 13 then
+                    maxweight = 0
+                    slots = 0
+                elseif vehicleClass == 14 then
+                    maxweight = 120000
+                    slots = 50
+                elseif vehicleClass == 15 then
+                    maxweight = 120000
+                    slots = 50
+                elseif vehicleClass == 16 then
+                    maxweight = 120000
+                    slots = 50
                 else
-                    maxweight = 50000 -- Industrial/Utility
-                    slots = 5
+                    maxweight = 60000
+                    slots = 35
                 end
                 local other = {
                     maxweight = maxweight,
@@ -855,7 +831,7 @@ for i = 1, 6 do
     RegisterKeyMapping('slot' .. i, 'Uses the item in slot ' .. i, 'keyboard', i)
 end
 
-RegisterNetEvent('inventory:client:giveAnim', function()
+RegisterNetEvent('qb-inventory:client:giveAnim', function()
     LoadAnimDict('mp_common')
 	TaskPlayAnim(PlayerPedId(), 'mp_common', 'givetake1_b', 8.0, 1.0, -1, 16, 0, 0, 0, 0)
 end)
@@ -1097,7 +1073,14 @@ end)
     end)
     
     local toolBoxModels = {
-     
+        `prop_toolchest_05`,
+        `prop_tool_bench02_ld`,
+        `prop_tool_bench02`,
+        `prop_toolchest_02`,
+        `prop_toolchest_03`,
+        `prop_toolchest_03_l2`,
+        `prop_toolchest_05`,
+        `prop_toolchest_04`,
     }
     exports['qb-target']:AddTargetModel(toolBoxModels, {
             options = {
