@@ -3,6 +3,5 @@ CreateThread(function()
   SwitchTrainTrack(3, true)
   SetTrainTrackSpawnFrequency(0, 2 * 60 * 1000) -- 2 minutes in milliseconds
   SetRandomTrains(1)
-    -- turn off/On doors opening
-    SetTrainsForceDoorsOpen(false)
+  SetTrainsForceDoorsOpen(false)
 end)
