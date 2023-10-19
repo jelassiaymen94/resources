@@ -24,6 +24,6 @@ RegisterNetEvent('superfood:server:removeitem', function(item)
 	local Player = QBCore.Functions.GetPlayer(src)
 	
 	Player.Functions.RemoveItem(item, 1)
-	TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[item], "remove", 1)
+	--TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[item], "remove", 1)
 	
 end)
