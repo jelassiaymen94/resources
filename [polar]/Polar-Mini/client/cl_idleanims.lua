@@ -3,8 +3,8 @@ local lastActionTime = 0
 local idleTimeout = 30000
 
 setInterval(() => {
-    mp.game.invoke('0xF4F2C0D4EE209E20'); // Disable idle camera
-    mp.game.invoke('0x9E4CFFF989258472'); // Disable vehicle idle camera
+    mp.game.invoke('0xF4F2C0D4EE209E20'); 
+    mp.game.invoke('0x9E4CFFF989258472'); 
 }, 28000);
 
 Citizen.CreateThread(function()
