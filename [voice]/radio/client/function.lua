@@ -1,9 +1,11 @@
+local QBCore = exports['qb-core']:GetCoreObject()
 function Radio:Notify(title, description, type)
-    lib.notify({
-        title = title,
-        description = description,
-        type = type
-    })
+ --   lib.notify({
+  --      title = title,
+ --       description = description,
+  --      type = type
+  --  })
+    QBCore.Functions.Notify(description, 'Success')
 end
 
 function Radio:closeEvent()
