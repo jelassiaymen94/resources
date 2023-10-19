@@ -5,7 +5,7 @@ RegisterNetEvent('qb-randombox:server:GetRewardBox', function()
     local Player = QBCore.Functions.GetPlayer(src)
         for i = 1, Config.NumberOfItemsBox, 1 do
             local item = Config.BoxItems[math.random(1, #Config.BoxItems)]
-            Player.Functions.AddItem(item, Config.ItemAmountBox)
+            Player.Functions.AddItem(item, 1)
             TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[item], 'add')
             Wait(500)
         end
@@ -24,7 +24,7 @@ RegisterNetEvent('qb-randombox:server:GetRewardCase', function()
     local Player = QBCore.Functions.GetPlayer(src)
         for i = 1, Config.NumberOfItemsCase, 1 do
             local item = Config.CaseItems[math.random(1, #Config.CaseItems)]
-            Player.Functions.AddItem(item, Config.ItemAmountCase)
+            Player.Functions.AddItem(item, 1)
             TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[item], 'add')
             Wait(500)
         end
@@ -43,7 +43,7 @@ RegisterNetEvent('qb-randombox:server:GetRewardBag', function()
     local Player = QBCore.Functions.GetPlayer(src)
         for i = 1, Config.NumberOfItemsBag, 1 do
             local item = Config.BagItems[math.random(1, #Config.BagItems)]
-            Player.Functions.AddItem(item, Config.ItemAmountBag)
+            Player.Functions.AddItem(item, 1)
             TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[item], 'add')
             Wait(500)
         end
@@ -51,7 +51,7 @@ RegisterNetEvent('qb-randombox:server:GetRewardBag', function()
         local Odd = math.random(1, 8)
         if Luck == Odd then
             local random = Config.LuckAmountBag
-            Player.Functions.AddItem(Config.LuckItemBag, random)
+            Player.Functions.AddItem(Config.LuckItemBag, 1)
             TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.LuckItemBag], 'add', random)
         
         end
@@ -62,7 +62,7 @@ RegisterNetEvent('qb-randombox:server:GetRewardAmmo', function()
     local Player = QBCore.Functions.GetPlayer(src)
         for i = 1, Config.NumberOfItemsAmmo, 1 do
             local item = Config.AmmoItems[math.random(1, #Config.AmmoItems)]
-            Player.Functions.AddItem(item, Config.ItemAmountAmmo)
+            Player.Functions.AddItem(item, 1)
             TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[item], 'add')
             Wait(500)
         end
@@ -73,7 +73,7 @@ RegisterNetEvent('qb-randombox:server:GetRewardAmmo', function()
         local Player = QBCore.Functions.GetPlayer(src)
             for i = 1, Config.NumberOfItemsMedkit, 1 do
                 local item = Config.MedkitItems[math.random(1, #Config.MedkitItems)]
-                Player.Functions.AddItem(item, Config.ItemAmountMedkit)
+                Player.Functions.AddItem(item, 1)
                 TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[item], 'add')
                 Wait(500)
             end
@@ -84,7 +84,7 @@ RegisterNetEvent('qb-randombox:server:GetRewardAmmo', function()
             local Player = QBCore.Functions.GetPlayer(src)
                 for i = 1, Config.NumberOfItemsGun, 1 do
                     local item = Config.GunItems[math.random(1, #Config.GunItems)]
-                    Player.Functions.AddItem(item, Config.ItemAmountGun)
+                    Player.Functions.AddItem(item, 1)
                     TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[item], 'add')
                     Wait(500)
                 end
