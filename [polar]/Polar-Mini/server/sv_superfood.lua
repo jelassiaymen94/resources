@@ -19,14 +19,11 @@ AddEventHandler('onResourceStart', function(r) if GetCurrentResourceName() ~= r 
 	
 end)
 
-RegisterNetEvent('superfood:server:removeitem', function(item, amount)
+RegisterNetEvent('superfood:server:removeitem', function(item)
 	local src = source
-	local amount = amount or 1
 	local Player = QBCore.Functions.GetPlayer(src)
 	
-	Player.Functions.RemoveItem(item, amount)
-	if Config.Debug then print("^5Debug^7: ^1Removing ^2from Player^7(^2"..src.."^7) '^6"..QBCore.Shared.Items[item].label.."^7(^2x^6"..(amount or "1").."^7)'") end
-	TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[item], "remove", amount)
-	TriggerEvent("qb-log:server:CreateLog", "catcafeitems", "REmoved", "black", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' ' .. amount .. ' ' .. item .. ' ')
-
+	Player.Functions.RemoveItem(item, 1)
+	TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[item], "remove", 1)
+	
 end)

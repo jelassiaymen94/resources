@@ -81,7 +81,7 @@ RegisterNetEvent('superfood:client:smoke', function(itemName)
 			TriggerServerEvent("QBCore:Server:SetMetaData", "hunger", QBCore.Functions.GetPlayerData().metadata["hunger"] + math.random(30,55))
 		end
        -- TriggerServerEvent('hud:server:RelieveStress', math.random(2, 4))
-       TriggerServerEvent('superfood:server:removeitem', itemName)
+        TriggerServerEvent('superfood:server:removeitem', itemName)
 		if itemName == "bmochi" or itemName == "gmochi" or itemName == "omochi" or itemName == "pmochi" then exports['qb-buffs']:AddBuff("hacking", 15000)
 		elseif itemName == "miso" then exports['qb-buffs']:AddBuff("luck", 15000) 
 		elseif itemName == "nekodonut" then exports['qb-buffs']:AddBuff("stamina", 15000) exports['qb-buffs']:StaminaBuffEffect(15000, 1.4)
