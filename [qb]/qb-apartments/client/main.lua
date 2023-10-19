@@ -218,7 +218,7 @@ function EnterApartment(house, apartmentId, new)
                 end
                 local spawnPointX = 0.089353
                 local spawnPointY = -2.67699
-                local spawnPointZ = 0.760894
+                local spawnPointZ = 0.960894
                 local spawnPointH = 270.76
                 local house = CreateObject('lev_apartment_shell', coords.x, coords.y, coords.z, false, false, false)
                 FreezeEntityPosition(house, true)
@@ -270,7 +270,7 @@ function EnterApartment(house, apartmentId, new)
             end
             local spawnPointX = 0.089353
             local spawnPointY = -2.67699
-            local spawnPointZ = 0.760894
+            local spawnPointZ = 0.960894
             local spawnPointH = 270.76
             local house = CreateObject('lev_apartment_shell', coords.x, coords.y, coords.z, false, false, false)
             FreezeEntityPosition(house, true)
