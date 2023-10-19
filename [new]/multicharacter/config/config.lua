@@ -10,7 +10,7 @@ Config.SkinManager = "qb-clothing" -- "qb-clothing" / "fivem-appearance" / "ille
 Config.SelectFirstChar = false -- it will select first possible player character by first connection on the server
 
 Config.UseCustomSkinCreator = true -- if you use qb-clothing for character creator set it to false, if you use custom character creator set it to true and change in @multicharacter/config/config_client.lua function openCharacterCreator(skin)
-Config.RelogCommand = true -- @multicharacter/config/config_client.lua:60
+Config.RelogCommand = false -- @multicharacter/config/config_client.lua:60
 
 Config.UseCustomSpawnSelector = false -- @multicharacter/config/config_server.lua function openSpawnSelector()
 Config.SkipSpawnSelector = false -- Skip the spawn selection and spawns the player at the last location.

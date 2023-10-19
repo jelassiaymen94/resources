@@ -88,7 +88,7 @@ function SpawnVehicle(x, y, z)
 	while not HasModelLoaded('s_m_m_doctor_01') do
 		Wait(1)
 	end
-	local spawnRadius = 400                                                    
+	local spawnRadius = 100                                                    
     local found, spawnPos, spawnHeading = GetClosestVehicleNodeWithHeading(loc.x + math.random(-spawnRadius, spawnRadius), loc.y + math.random(-spawnRadius, spawnRadius), loc.z, 0, 3, 0)
 
 	if not DoesEntityExist(vehhash) then
@@ -124,7 +124,7 @@ Citizen.CreateThread(function()
 			local ld = GetEntityCoords(test1)
             local dist = Vdist(loc.x, loc.y, loc.z, lc.x, lc.y, lc.z)
 			local dist1 = Vdist(loc.x, loc.y, loc.z, ld.x, ld.y, ld.z)
-            if dist <= 10 then
+            if dist <= 20 then
 				if Active then
 					TaskGoToCoordAnyMeans(test1, loc.x, loc.y, loc.z, 1.0, 0, 0, 786603, 0xbf800000)
 				end

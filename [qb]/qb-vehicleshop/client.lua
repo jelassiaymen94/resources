@@ -778,7 +778,7 @@ end)
 CreateThread(function()
     for k, v in pairs(Config.Shops) do
         if v.showBlip then
-            local Dealer = AddBlipForCoord(Config.Shops[k]["Location"])
+            local Dealer = AddBlipForCoord(Config.Shops[k]["BlipLoc"])
             SetBlipSprite(Dealer, Config.Shops[k]["blipSprite"])
             SetBlipDisplay(Dealer, 4)
             SetBlipScale(Dealer, 0.6)

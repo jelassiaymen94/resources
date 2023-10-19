@@ -179,7 +179,7 @@ Config.Shops = {
             ['super'] = 'Super',
             ['sports'] = 'Sports',
              ['sportsclassics'] = 'Sports Classics',
-             ['sedans'] = 'Sedans',
+             ['sedanss'] = 'Sedans',
              ['coupes'] = 'Coupes',
              ['suvs'] = 'SUVs',
              ['offroad'] = 'Offroad',
@@ -192,6 +192,7 @@ Config.Shops = {
         },
         ['TestDriveTimeLimit'] = 1.0,
         ['Location'] = vector3(107.43, -125.12, 54.1),
+        ['BlipLoc'] = vector3(110.88, -152.12, 54.87),
         ['ReturnLocation'] = vector3(107.43, -125.12, 54.1),
         ['VehicleSpawn'] = vector4(104.08, -134.17, 54.1, 156.72),
         ['TestDriveSpawn'] = vector4(104.08, -134.17, 54.1, 156.72), -- Spawn location for test drive
