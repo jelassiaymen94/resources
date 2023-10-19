@@ -21,7 +21,7 @@ You need change only the name in this line.
 
 */
 
-var name_loading = "Avalanche"
+var name_loading = "Fastro RP"
 
 /*
 --------------------------------------------------------------------------------------------------------------------------------------------------
@@ -83,7 +83,7 @@ var key_overlay = "F3"
 */
 
 let Socials = [
-  {discord: "https://discord.gg/ktDBb5qr5Z"},
+  {discord: "https://discord.gg/EZrRne8Bt3"},
   {website: "#"},
   {tiktok: "https://www.tiktok.com/@avalanchevrp"},
   {instagram: "https://www.youtube.com/channel/UCiRpX53OrrG21bkaOuWwrVw "},
@@ -127,38 +127,7 @@ let allMusic = [
       src : 'roses',
       type_music : 'mp3'
   },
-  {
-      img : 'super',
-      type_image : 'jpg',
-      name : 'Super',
-      artist : 'Cordae',
-      src : 'super',
-      type_music : 'mp3'
-  },
-  {
-      img : '2055',
-      type_image : 'jpg',
-      name : '2055',
-      artist : 'Sleepy Hallow',
-      src : 'twnty',
-      type_music : 'mp3'
-  },
-  {
-      img : 'different',
-      type_image : 'jpg',
-      name : 'Different',
-      artist : 'Sleepy Hallow',
-      src : 'different',
-      type_music : 'mp3'
-  },
-  {
-      img : 'middlechild',
-      type_image : 'jpg',
-      name : 'Middle Child',
-      artist : 'J Cole',
-      src : 'middlechild',
-      type_music : 'mp3'
-  },
+ 
   ];
 
   

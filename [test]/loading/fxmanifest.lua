@@ -1,9 +1,6 @@
 fx_version 'adamant'
 game 'gta5'
 
-author "F1"
-description "https://discord.gg/Nb23tC3wmA"
-version "4.0"
 
 client_script 'main.lua'
 
