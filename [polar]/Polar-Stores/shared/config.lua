@@ -24,7 +24,7 @@ Config = {
 
     Debug = false ,
 
-    RequiredCops = 0,
+    RequiredCops = 1,
     CooldownTime = 30,
 
     OxTarget = false,
@@ -51,27 +51,24 @@ Config = {
 
 
     Ped = {
-        [1] = { -- recyclablematerial
-        coords = vector4(705.93, -964.25, 30.41, 230.22),
+        [1] = { 
+        coords = vector4(14.29, -1333.73, 29.28, 336.35),
         model = "s_m_o_busker_01",
         scene = "WORLD_HUMAN_AA_COFFEE",
         icon = 'fa-solid fa-bolt',
         label = 'Talk to Namir',
+        name = 'theWildWest',
         product = {
+            },
         },
     },
-    },
-
-
-
-
 
 
 
    
-    ComputerName = 'pp',
-    RegisterName = 'ppp',
-    SafeName = 'pppp',
+    ComputerName = 'Stores-Conputa',
+    RegisterName = 'Stores-Regista',
+    SafeName = 'Stores-Safas',
 
     Names = {
 
@@ -81,12 +78,12 @@ Config = {
 
     ["Store1"] = {
         Door1Name = '1StoreDoor1',
-        Door1Eye = vector3(19.13, -1335.45, 29.28),
+        Door1Eye = vector3(19.5, -1335.45, 29.28),
         Door2Name = '1StoreDoor2',
         Door2Eye = vector3(25.27, -1341.93, 29.5),
-        ComputerEye = vector3(29.48, -1340.3, 29.34),
+        --ComputerEye = vector3(29.48, -1340.3, 29.34),
         RegisterEye = vector3(25.42, -1345.59, 29.75),
-        SafeLocation = vector3(31.19, -1339.26, 29.5),
+        SafeLocation = vector3(31.59, -1339.26, 29.5),
         GrabLocations1 = { vector4(31.35, -1348.59, 30.29, 251.97), },
         GrabLocations2 = { vector4(32.1, -1348.53, 30.29, 169.17), },
         GrabLocations3 = { vector4(25.58, -1347.51, 30.57, 317.24), },
@@ -97,28 +94,9 @@ Config = {
         PickupLocations3 = { vector4(24.42, -1346.51, 29.5, 173.27), },
         PickupLocations4 = { vector4(26.97, -1342.35, 29.5, 33.11), },
         PickupLocations5 = { vector4(33.57, -1343.2, 29.5, 300.61), },
-        PileLocations = { vector4(24.85, -1339.68, 29.5, 61.33), },
+       -- PileLocations = { vector4(24.85, -1339.68, 29.5, 61.33), },
     },
-    ["Store2"] = {
-        Door1Name = '2StoreDoor1',
-        Door1Eye = vector3(19.13, -1335.45, 29.28),
-        Door2Name = '2StoreDoor2',
-        Door2Eye = vector3(25.27, -1341.93, 29.5),
-        ComputerEye = vector3(29.48, -1340.3, 29.34),
-        RegisterEye = vector3(25.42, -1345.59, 29.75),
-        SafeLocation = vector3(31.19, -1339.26, 29.5),
-        GrabLocations1 = { vector4(31.35, -1348.59, 30.29, 251.97), },
-        GrabLocations2 = { vector4(32.1, -1348.53, 30.29, 169.17), },
-        GrabLocations3 = { vector4(25.58, -1347.51, 30.57, 317.24), },
-        GrabLocations4 = { vector4(28.19, -1340.23, 30.3, 198.17), },
-        GrabLocations5 = { vector4(26.91, -1340.86, 30.39, 200.93),  },
-        PickupLocations1 = { vector4(27.73, -1339.06, 29.5, 308.27), },
-        PickupLocations2 = { vector4(30.73, -1340.53, 29.5, 190.81), },
-        PickupLocations3 = { vector4(24.42, -1346.51, 29.5, 173.27), },
-        PickupLocations4 = { vector4(26.97, -1342.35, 29.5, 33.11), },
-        PickupLocations5 = { vector4(33.57, -1343.2, 29.5, 300.61), },
-        PileLocations = { vector4(24.85, -1339.68, 29.5, 61.33), },
-    },
+  
 
 
     },

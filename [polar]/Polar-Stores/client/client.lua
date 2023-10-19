@@ -14,7 +14,7 @@ local amount = nil
 
 local computeritem = 'hacking_device' -- item to hack computers
 local pcitem = 'btc' -- comes from pc completion
-
+local safeitem = 'safecracker'
 local dooritem = 'lockpick'
 local registeritem = 'advancedlockpick'
 
@@ -51,7 +51,7 @@ local targets = {}
 local created_ped = {}
 
 local hi = Config.Debug
-CreateThread(function() peds() end)
+
 function peds()
    
     if Config.Debug then print('starting') end
@@ -65,7 +65,7 @@ function peds()
     SetBlockingOfNonTemporaryEvents(created_ped[i], true)
     TaskStartScenarioInPlace(created_ped[i], 'WORLD_HUMAN_CLIPBOARD', 0, true)
 
-    exports['qb-target']:AddBoxZone(i, vec3(Config.Ped[i].coords.x, Config.Ped[i].coords.y, Config.Ped[i].coords.z), 0.5, 0.5, { name = i, heading = 28.69, debug = hi, minZ = Config.Ped[i].coords.z - 1.0, maxZ =  Config.Ped[i].coords.z + 1.0,}, 
+    exports['qb-target']:AddBoxZone(Config.Ped[i].name, vec3(Config.Ped[i].coords.x, Config.Ped[i].coords.y, Config.Ped[i].coords.z), 0.5, 0.5, { name = Config.Ped[i].name, heading = 28.69, debug = hi, minZ = Config.Ped[i].coords.z - 1.0, maxZ =  Config.Ped[i].coords.z + 1.0,}, 
     { options = {{ event = 'Polar-stores:Client:Menu',  icon = Config.Ped[i].icon, label = Config.Ped[i].label}}, distance = 1.5  })
 
     end
@@ -87,7 +87,7 @@ local doortable = {}
 
 AddEventHandler('onResourceStop', function(resource) if resource ~= GetCurrentResourceName() then return end local star = store TriggerServerEvent('Polar-stores:Server:Restart', star)  TriggerEvent('Polar-stores:Client:ResetProps') TriggerEvent('Polar-stores:Client:ResetDoors') resetstuff() LocalPlayer.state:set('inv_busy', false, true) end)
 AddEventHandler('onResourceStart', function(resource) if resource == GetCurrentResourceName() then Wait(100) if hi then print('Starting Targets')  end end end)
-RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function() Wait(100) if hi then print('Player Loaded Targets Starting') end end)
+RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function() Wait(100) peds() if hi then print('Player Loaded Targets Starting') end end)
 RegisterNetEvent('police:SetCopCount', function(amount) CurrentCops = amount end)
 
 
@@ -104,8 +104,9 @@ RegisterNetEvent('Polar-Stores:Client:StartStore', function()
                 doortable = {
                     Config.Names[store]["Door1Name"],
                     Config.Names[store]["Door2Name"],
-                    Config.ComputerName
-                
+                    Config.ComputerName,
+                    Config.SafeName,
+                    Config.RegisterName
                 }
 
                 TriggerServerEvent('Polar-stores:Server:StartCooldown', store)
@@ -122,7 +123,7 @@ end)
 
 local blip = nil
 local what = false
-
+local loops = false
 RegisterNetEvent('Polar-stores:Client:GrabLoc', function(store)
     TriggerEvent('qb-phone:client:CustomNotification', 'Dave', 'New Location Marked on your GPS', 'fas fa-file-invoice-dollar', '#b3e0f2', '10000')
     blip(Config.Names[store]["ComputerEye"])
@@ -182,7 +183,6 @@ end
 
 
 function CreateTarget(names, coords1, handler, labels, icons, his, rad)
-    
     if oxt then
         targets[names] = exports.ox_target:addBoxZone({ coords = coords1, size = vec3(1, 1, 1), rotation = 1, debug = his,
         options = {{  event = handler,  icon = icons, label = labels, id = names, whote = rad, canInteract = function(_, distance) return distance <= Config.OxTargetDistance end }, } })
@@ -190,16 +190,12 @@ function CreateTarget(names, coords1, handler, labels, icons, his, rad)
         exports['qb-target']:AddBoxZone(names,  coords1, 0.5, 0.5, { name =  names, heading = 28.69, debug = his, minZ = coords1.z-0.5, maxZ =  coords1.z+0.5,}, 
         { options = {{ event = handler, icon = icons, label = labels, id = names, whote = rad }}, distance = 1 }) 
     end
-    --print(names .. ' is ' .. json.encode(targets[names]))
-    
 end
 
 RegisterNetEvent('Polar-stores:Client:AddTarget', function(door, prop, var, handle, pile) 
     if oxt then 
         targets[door] = exports.ox_target:addBoxZone({ coords = vec3(var.x, var.y, var.z), size = vec3(1, 1, 1), rotation = 1, debug = hi,
         options = {{  event = handle, type = door, piles = pile,  icon = "fas fa-bolt", label = "Grab", canInteract = function(_, distance) return distance <= Config.OxTargetDistance end }, } })
-       
-
     else
         exports['qb-target']:AddBoxZone(door, vec3(var.x, var.y, var.z), 0.5, 0.5, { name = door, heading = 28.69, debug = hi, minZ = var.z - 1.5, maxZ =  var.z + 1.5,}, 
         { options = {{ event = handle, type = door, piles = pile, icon = "fas fa-bolt", label = "Grab"}}, distance = 1.5  }) 
@@ -212,7 +208,7 @@ end)
 
 
 function Animation(door, prop)
-
+    gloves()
     local props = GetClosestObjectOfType(GetEntityCoords(PlayerPedId()), 2.0, GetEntityModel(prop), false, false, false)
     local propCoords = GetEntityCoords(prop)
     
@@ -261,6 +257,7 @@ end
 
 
 RegisterNetEvent('Polar-stores:Client:HackComputer', function(data)
+    gloves()
     if playeritem(computeritem) then
         local door = data.id
         callback('Polar-stores:Door' .. door, function(result) if result then 
@@ -311,7 +308,7 @@ end)
 
 RegisterNetEvent('Polar-stores:Client:StartLoot', function(store)
    
-
+   -- print(Config.Names[store]["Door1Name"])
    
     TriggerServerEvent('Polar-stores:Server:SetStore', store)
 
@@ -320,23 +317,25 @@ RegisterNetEvent('Polar-stores:Client:StartLoot', function(store)
     TriggerServerEvent('Polar-stores:Server:SetupPickup1', store)
 
     doorlock(Config.Names[store]["Door1Name"], true)
+    doorlock(Config.Names[store]["Door2Name"], true)
 end)
 
 RegisterNetEvent('Polar-stores:Client:StartTargets', function(store)
     
-    CreateTarget(Config.Names[store]["Door1Name"], Config.Names[store]["Door1Eye"], "Polar-stores:Client:Door", "Thermite", "fas fa-fire", Config.Debug, store)
+    CreateTarget(Config.Names[store]["Door1Name"], Config.Names[store]["Door1Eye"], "Polar-stores:Client:Door", "Disable", "fa-solid fa-lock", Config.Debug, store)
 
-    CreateTarget(Config.Names[store]["Door2Name"], Config.Names[store]["Door2Eye"], "Polar-stores:Client:Door2", "Thermite", "fas fa-fire", Config.Debug, store)
+    CreateTarget(Config.Names[store]["Door2Name"], Config.Names[store]["Door2Eye"], "Polar-stores:Client:Door2", "Unlock Door", "fa-solid fa-lock", Config.Debug, store)
 
-    CreateTarget(Config.ComputerName, Config.Names[store]["ComputerEye"], "Polar-stores:Client:HackComputer", "Hack", "fas fa-bolt", Config.Debug, store)
+  --  CreateTarget(Config.ComputerName, Config.Names[store]["ComputerEye"], "Polar-stores:Client:HackComputer", "Hack", "fas fa-bolt", Config.Debug, store)
  
-    CreateTarget(Config.RegisterName, Config.Names[store]["RegisterEye"], "Polar-stores:Client:Register", "Steal", "fas fa-bolt", Config.Debug, store)
+    CreateTarget(Config.RegisterName, Config.Names[store]["RegisterEye"], "Polar-stores:Client:Register", "Unlock", "fa-solid fa-lock", Config.Debug, store)
  
     CreateTarget(Config.SafeName, Config.Names[store]["SafeLocation"], "Polar-stores:Client:Safe", "Steal", "fas fa-bolt", Config.Debug, store)
  
 end)
 
 RegisterNetEvent('Polar-stores:Client:Safe', function(data)
+    gloves()
     local name = data.id
     callback('Polar-stores:Safe', function(result) if result then 
     TriggerServerEvent('Polar-stores:Server:StopInteract', name)
@@ -344,16 +343,16 @@ RegisterNetEvent('Polar-stores:Client:Safe', function(data)
     exports[circleexport]:Circle(function(success)
         if success then
 
-            QBCore.Functions.Progressbar("door", "Stealing Money ..", math.random(5000, 7500), false, true, {
+            QBCore.Functions.Progressbar("door", "Stealing Money ..", math.random(22000, 27500), false, true, {
                 disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true,
                 }, { animDict = "anim@gangops@facility@servers@", anim = "hotwire", flags = 16,
                 }, {}, {}, function() 
-                    --StopAnimTask(ped, "anim@gangops@facility@servers@", "hotwire", 1.0)
+                    StopAnimTask(ped, "anim@gangops@facility@servers@", "hotwire", 1.0)
                     TriggerServerEvent('Polar-stores:Server:TargetRemove', name)
-                    
+                    TriggerServerEvent('Polar-stores:Server:Finish', 12, 'dildo')
 
                 end, function() 
-                  --  StopAnimTask(ped, "anim@gangops@facility@servers@", "hotwire", 1.0)
+                    StopAnimTask(ped, "anim@gangops@facility@servers@", "hotwire", 1.0)
                     TriggerServerEvent('Polar-stores:Server:StartInteract', name)
 
 
@@ -371,38 +370,43 @@ RegisterNetEvent('Polar-stores:Client:Safe', function(data)
 
 
         end
-    end, 2, 20)
+    end, 6, 20)
     else notify(text('nosafe'), "error") end
     else  notify(text('sometingelse'), "error") end end)
 end)
 
-function loop(what)
-    while what do
-    loadAnimDict("veh@break_in@0h@p_m_one@")
-    TaskPlayAnim(PlayerPedId(), "veh@break_in@0h@p_m_one@", "low_force_entry_ds", 3.0, 3.0, -1, 16, 0, 0, 0, 0)
-    Wait(1000)
+function loop(what) TriggerEvent('Polar-stores:Client:Loop', what) end
+RegisterNetEvent('Polar-stores:Client:Loop', function(whats)
+    loops = whats
+    while true do
+        if loops then break return
+        else 
+        loadAnimDict("veh@break_in@0h@p_m_one@")
+        TaskPlayAnim(PlayerPedId(), "veh@break_in@0h@p_m_one@", "low_force_entry_ds", 3.0, 3.0, -1, 16, 0, 0, 0, 0)
+        Wait(1000)
+        end
     end
-end
+end)
 RegisterNetEvent('Polar-stores:Client:Register', function(data)
+    gloves()
     local name = data.id
     callback('Polar-stores:Door' .. name, function(result) if result then 
     if playeritem(registeritem) then
         TriggerServerEvent('Polar-stores:Server:StopInteract', name)
-        loop(true)
+        loop(false)
     exports[circleexport]:Circle(function(success)
         if success then
-            ClearPedTasks(PlayerPedId())
-            QBCore.Functions.Progressbar("door", "Stealing Money ..", math.random(5000, 7500), false, true, {
+            QBCore.Functions.Progressbar("door", "Stealing Money ..", math.random(17000, 27500), false, true, {
                 disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true,
                 }, {}, {}, {}, function() 
-                    loop(false)
+                    loop(true)
                     ClearPedTasks(PlayerPedId())
                     TriggerServerEvent('Polar-stores:Server:TargetRemove', name)
-                    
+                    TriggerServerEvent('Polar-stores:Server:Finish', 56, 'safes')
 
                 end, function() 
                     TriggerServerEvent('Polar-stores:Server:StartInteract', name)
-                    loop(false)
+                    loop(true)
                     ClearPedTasks(PlayerPedId())
 
                 end)
@@ -410,7 +414,7 @@ RegisterNetEvent('Polar-stores:Client:Register', function(data)
 
            
         else
-            loop(false)
+            loop(true)
             ClearPedTasks(PlayerPedId())
             TriggerServerEvent('Polar-stores:Server:StartInteract', name)
 
@@ -419,39 +423,41 @@ RegisterNetEvent('Polar-stores:Client:Register', function(data)
 
 
         end
-    end, 2, 20)
+    end, 4, 20)
     else notify(text('noregister'), "error") end
     else  notify(text('sometingelse'), "error") end end)
 end)
 
 
 RegisterNetEvent('Polar-stores:Client:Door', function(data)
+    gloves()
     local name = data.id
     local store = data.whote
-    loop(true)
+    loop(false)
     callback('Polar-stores:Door1', function(result) if result then 
         if playeritem(dooritem) then
+
         TriggerServerEvent('Polar-stores:Server:StopInteract', name)
         exports[circleexport]:Circle(function(success)
             if success then
-
-                QBCore.Functions.Progressbar("door", "Disabling System ..", math.random(5000, 7500), false, true, {
+                CallPolice(GetEntityCoords(PlayerPedId()))
+                QBCore.Functions.Progressbar("door", "Disabling System ..", math.random(15000, 17500), false, true, {
                     disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true,
                     }, {}, {}, {}, function() 
-                       
+                        loop(true)
                         if oxd then doorlock(Config.Names[store]["Door1Name"], false) 
                         else 
                         TriggerServerEvent('qb-doorlock:server:updateState', Config.Names[store]["Door1Name"], false, false, false, true, false, false)
                         end
                         RemoveBlip(blip)
-                        CallPolice(GetEntityCoords(PlayerPedId()))
+                        
                         TriggerServerEvent('Polar-stores:Server:TargetRemove', name)
 
 
 
 
                     end, function() 
-                        loop(false)
+                        loop(true)
                         ClearPedTasks(PlayerPedId())
                         TriggerServerEvent('Polar-stores:Server:StartInteract', name)
 
@@ -461,7 +467,7 @@ RegisterNetEvent('Polar-stores:Client:Door', function(data)
                
             else
 
-                loop(false)
+                loop(true)
                 ClearPedTasks(PlayerPedId())
                 TriggerServerEvent('Polar-stores:Server:StartInteract', name)
 
@@ -470,7 +476,7 @@ RegisterNetEvent('Polar-stores:Client:Door', function(data)
 
 
             end
-        end, 2, 20)
+        end, 4, 20)
     else notify(text('nodoor'), "error") end
     else  notify(text('sometingelse'), "error") end end)
 end)
@@ -478,8 +484,10 @@ end)
 
 
 RegisterNetEvent('Polar-stores:Client:Door2', function(data)
+    gloves()
     local name = data.id
     local store = data.whote
+    loop(false)
     callback('Polar-stores:Door2', function(result) if result then 
         TriggerServerEvent('Polar-stores:Server:StopInteract', name)
         if playeritem(dooritem) then
@@ -488,9 +496,8 @@ RegisterNetEvent('Polar-stores:Client:Door2', function(data)
 
                 QBCore.Functions.Progressbar("door", "Unlocking Door ..", math.random(5000, 7500), false, true, {
                     disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true,
-                    }, { animDict = "anim@gangops@facility@servers@", anim = "hotwire", flags = 16,
-                    }, {}, {}, function() 
-                        StopAnimTask(ped, "anim@gangops@facility@servers@", "hotwire", 1.0)
+                    }, {}, {}, {}, function() 
+                        loop(true)
                         if oxd then doorlock(Config.Names[store]["Door2Name"], false)
                         else 
                         TriggerServerEvent('qb-doorlock:server:updateState', Config.Names[store]["Door2Name"], false, false, false, true, false, false)
@@ -501,7 +508,7 @@ RegisterNetEvent('Polar-stores:Client:Door2', function(data)
 
                       
                     end, function() 
-                        StopAnimTask(ped, "anim@gangops@facility@servers@", "hotwire", 1.0)
+                        loop(true)
                         TriggerServerEvent('Polar-stores:Server:StartInteract', name)
 
                     end)
@@ -509,6 +516,7 @@ RegisterNetEvent('Polar-stores:Client:Door2', function(data)
 
                
             else
+                loop(true)
                 TriggerServerEvent('Polar-stores:Server:StartInteract', name)
 
 
@@ -536,6 +544,7 @@ end)
 
 
 function resetstuff()
+ 
     doors = {}
     targets = {}
 
@@ -567,6 +576,7 @@ end)
 
 
 RegisterNetEvent('Polar-stores:Client:TargetRemove', function(door) 
+  --  print(door)
     if hi then print(doors[door]) end
     --if targets[door] == nil then return end
     if oxt then 
@@ -595,6 +605,7 @@ end)
 
 
 RegisterNetEvent('Polar-stores:Client:PickupTarget', function(data) 
+    gloves()
     LocalPlayer.state:set('inv_busy', true, true) -- Busy
     animDict = 'random@domestic'
     local pile = data.piles
@@ -632,6 +643,7 @@ end)
 
 RegisterNetEvent('Polar-stores:Client:ResetDoors', function(store)
     if store == nil then return end 
+    
     if oxd then
        
         doorlock(Config.Names[store]["Door1Name"], false)

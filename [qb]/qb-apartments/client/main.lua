@@ -8,9 +8,9 @@ local CurrentDoorBell = 0
 local CurrentOffset = 0
 local HouseObj = {}
 local POIOffsets = {
-    exit = vec4( -5.26,  -4.61,  -0.66,  179.79),
-    clothes = vec3( -3.14, 4.224, -0.66),
-    stash = vec3( -6.11, -0.06,  -1.16),
+    exit = vec4( 0.80353,  2.94699,   -0.560894,  270.76),
+    clothes = vec3( -7.04442, -3.57699, -0.560894),
+    stash = vec3( -3.04442, 2.17699, -1.060894),
     logout = vec3(5000000000000000000000000.19,  -1.59,  -0.66),
 }
 local RangDoorbell = nil
@@ -98,8 +98,8 @@ function CreateTarget(names, coords1, handler, labels, icons, his)
         targets[names] = exports.ox_target:addBoxZone({ coords = coords1, size = vec3(1, 1, 1), rotation = 1, debug = his,
         options = {{  event = handler,  icon = icons, label = labels, id = names, canInteract = function(_, distance) return distance <= Config.OxTargetDistance end }, } })
     else
-        exports['qb-target']:AddBoxZone(names,  coords1, 0.5, 0.5, { name =  names, heading = 28.69, debug = his, minZ = coords1.z-0.5, maxZ =  coords1.z+0.5,}, 
-        { options = {{ event = handler, icon = icons, label = labels, id = names }}, distance = 1 }) 
+        exports['qb-target']:AddBoxZone(names,  coords1, 1.5, 1.5, { name =  names, heading = 28.69, debug = his, minZ = coords1.z-0.5, maxZ =  coords1.z+0.5,}, 
+        { options = {{ event = handler, icon = icons, label = labels, id = names }}, distance = 1.5 }) 
     end 
 end
 CreateThread(function()
@@ -168,7 +168,7 @@ end
 function TeleportToInterior(x, y, z, h)
     CreateThread(function()
         SetEntityCoords(PlayerPedId(), x, y, z, 0, 0, 0, false)
-        --SetEntityHeading(PlayerPedId(), 175)
+        SetEntityHeading(PlayerPedId(), h)
 
         Wait(100)
 
@@ -212,14 +212,18 @@ function EnterApartment(house, apartmentId, new)
                 while not IsScreenFadedOut() do
                     Wait(10)
                 end
-                RequestModel('modernhotel_shell')
-                while not HasModelLoaded('modernhotel_shell') do
+                RequestModel('lev_apartment_shell')
+                while not HasModelLoaded('lev_apartment_shell') do
                     Wait(3)
                 end
-                local house = CreateObject('modernhotel_shell', coords.x, coords.y, coords.z, false, false, false)
+                local spawnPointX = 0.089353
+                local spawnPointY = -2.67699
+                local spawnPointZ = 0.760894
+                local spawnPointH = 270.76
+                local house = CreateObject('lev_apartment_shell', coords.x, coords.y, coords.z, false, false, false)
                 FreezeEntityPosition(house, true)
                 objects[#objects+1] = house
-                    TeleportToInterior(coords.x - -5.06, coords.y - -4.01, coords.z + 1.16, POIOffsets.exit.h)
+                TeleportToInterior(coords.x + spawnPointX, coords.y + spawnPointY, coords.z + spawnPointZ, spawnPointH)
                     
                 if new then
                     SetTimeout(750, function()
@@ -252,22 +256,28 @@ function EnterApartment(house, apartmentId, new)
             TriggerServerEvent("InteractSound_SV:PlayOnSource", "houses_door_open", 0.1)
             TriggerServerEvent("apartments:server:AddObject", apartmentId, house, CurrentOffset)
             local coords = { x = Apartments.Locations[ClosestHouse].coords.enter.x, y = Apartments.Locations[ClosestHouse].coords.enter.y, z = Apartments.Locations[ClosestHouse].coords.enter.z - CurrentOffset}
-            POIOffsets.exit = json.decode('{"x": -5.26, "y": -4.21, "z": -0.66, "h": 0.79}')
-            POIOffsets.clothes = json.decode('{"x": -3.14, "y": 2.824, "z": -0.66}')
-            POIOffsets.stash = json.decode('{"x": -6.11, "y": -0.06, "z": -1.16}')
-            POIOffsets.logout = json.decode('{"x": 5000000000000000000000000.19, "y": -1.59, "z": -0.66}')
+            POIOffsets.exit = json.decode('{"x": 0.80353, "y": 1.94699, "z": 0.960894, "h": 270.76}')
+            POIOffsets.clothes = json.decode('{"x": -7.04442, "y": -2.97699, "z": 0.960894, "h": 181.75}')
+            POIOffsets.stash = json.decode('{"x": -3.04442, "y": 2.17699, "z": 0.960894, "h": 181.75}')
+            POIOffsets.logout = json.decode('{"x": 1.010176, "y": 2.29546, "z": 0.960894, "h": 91.18}')
             DoScreenFadeOut(500)
             while not IsScreenFadedOut() do
                 Wait(10)
             end
-            RequestModel('modernhotel_shell')
-            while not HasModelLoaded('modernhotel_shell') do
+            RequestModel('lev_apartment_shell')
+            while not HasModelLoaded('lev_apartment_shell') do
                 Wait(3)
             end
-            local house = CreateObject('modernhotel_shell', coords.x, coords.y, coords.z, false, false, false)
+            local spawnPointX = 0.089353
+            local spawnPointY = -2.67699
+            local spawnPointZ = 0.760894
+            local spawnPointH = 270.76
+            local house = CreateObject('lev_apartment_shell', coords.x, coords.y, coords.z, false, false, false)
             FreezeEntityPosition(house, true)
             objects[#objects+1] = house
-                TeleportToInterior(coords.x - -5.06, coords.y - -4.01, coords.z + 1.16, POIOffsets.exit.h)
+
+            TeleportToInterior(coords.x + spawnPointX, coords.y + spawnPointY, coords.z + spawnPointZ, spawnPointH)
+              
             if new then
                 SetTimeout(750, function()
                     TriggerEvent('Polar-Clothes:client:CreateFirstCharacter')
