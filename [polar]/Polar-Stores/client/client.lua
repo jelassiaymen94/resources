@@ -85,7 +85,7 @@ local doortable = {}
 
 
 
-AddEventHandler('onResourceStop', function(resource) if resource ~= GetCurrentResourceName() then return end local star = store TriggerServerEvent('Polar-stores:Server:Restart', star)  TriggerEvent('Polar-stores:Client:ResetProps') TriggerEvent('Polar-stores:Client:ResetDoors') resetstuff() LocalPlayer.state:set('inv_busy', false, true) end)
+AddEventHandler('onResourceStop', function(resource) if resource ~= GetCurrentResourceName() then return end TriggerServerEvent('Polar-stores:Server:Restart')  TriggerEvent('Polar-stores:Client:ResetProps') TriggerEvent('Polar-stores:Client:ResetDoors') resetstuff() LocalPlayer.state:set('inv_busy', false, true) end)
 AddEventHandler('onResourceStart', function(resource) if resource == GetCurrentResourceName() then Wait(100) if hi then print('Starting Targets')  end end end)
 RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function() Wait(100) peds() if hi then print('Player Loaded Targets Starting') end end)
 RegisterNetEvent('police:SetCopCount', function(amount) CurrentCops = amount end)

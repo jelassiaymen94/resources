@@ -79,9 +79,9 @@ function reset()
     register = true
     safe = true
     
-    TriggerClientEvent('Polar-stores:Client:ResetProps', -1)
+    TriggerClientEvent('Polar-stores:Client:ResetProps', -1, store)
 
-    TriggerClientEvent('Polar-stores:Client:ResetDoors', -1)
+    TriggerClientEvent('Polar-stores:Client:ResetDoors', -1, store)
 
     
 end
