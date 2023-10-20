@@ -147,23 +147,28 @@ Config = {
 						livery = 1,
 						rank = {0,1,2,3,4,5},
 						extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
+
+						colors = {0,0},
 						--performance = "max",
                         frontbump = 3,
-
 						spoiler = 0,
 					--	backbump = 1,
 					--	skirt = 1,
 					--	exaust = 1,
 						rollcage = 3,
 					--	grill = 1,
-					--	trunko = 2,
-					--	wl = 1,
-					--	wr = 1,
+				
+					--	leftfender = 1,
+					--	rightfender = 1,
+					-- hood = 1,
 						--roof = 1,
 						dashboard = 1,
 						dial = 1,
 						seats = 1,
 						trunk = 3,
+						ornaments = 1,
+
+
 						trunkItems = {
 						
 						},
@@ -173,45 +178,90 @@ Config = {
 						livery = 1,
 						rank = {2,3,4,5},
 						extras = { 1, 4,5,6,7,8,9,10,11,12,13,14,15 },
+
 						colors = {0,0},
 						--performance = "max",
-                        frontbump = 1,
-						
-						spoiler = 1,
-						backbump = 1,
-						skirt = 1,
-						exaust = 1,
-						chassis = 1,
-						grill = 1,
-						trunk = 1,
-						wl = 1,
-						wr = 1,
-						roof = 1,
-						
+						frontbump = 2,
+						spoiler = 3,
+					--	backbump = 1,
+					--	skirt = 1,
+						exaust = 0,
+						rollcage = 3,
+					--	grill = 1,
+				
+					--	leftfender = 1,
+					--	rightfender = 1,
+					-- hood = 1,
+						roof = 0,
+						dashboard = 1,
+						dial = 1,
+						--seats = 1,
+						--trunk = 3,
+						ornaments = 1,
+
+
 						trunkItems = {
 						
 						},
 					},
-					
+					["npolchar"] = { -- npolchar
+						CustomName = "LSPD Dodge Charger Special",
+						livery = 1,
+						rank = {2,3,4,5},
+						extras = { 1, 4,5,6,7,8,9,10,11,12,13,14,15 },
+
+						colors = {0,0},
+						--performance = "max",
+						frontbump = 2,
+						spoiler = 3,
+					--	backbump = 1,
+					--	skirt = 1,
+						exaust = 1,
+						rollcage = 3,
+					--	grill = 1,
+				
+					--	leftfender = 1,
+					--	rightfender = 1,
+					-- hood = 1,
+						roof = 0,
+						dashboard = 1,
+						dial = 1,
+						--seats = 1,
+						--trunk = 3,
+						ornaments = 1,
+
+
+						trunkItems = {
+						
+						},
+					},
 					["npolexp"] = { -- npolexp
 						CustomName = "Ford Explorer",
 						livery = 1,
 						rank = {1,2,3,4,5},
 						extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
+
+						colors = {0,0},
 						--performance = "max",
-                        frontbump = 4,
-						  
-						spoiler = 1,
-						backbump = 1,
-						skirt = 1,
+						frontbump = 1,
+						spoiler = 0,
+					--	backbump = 1,
+					--	skirt = 1,
 						exaust = 1,
-						chassis = 1,
-						grill = 1,
-						trunk = 1,
-						wl = 1,
-						wr = 1,
-						roof = 1,
-						
+						rollcage = 2,
+					--	grill = 1,
+				
+					--	leftfender = 1,
+					--	rightfender = 1,
+					-- hood = 1,
+						roof = 0,
+						dashboard = 1,
+						dial = 1,
+						seats = 1,
+						--trunk = 3,
+						ornaments = 1,
+
+
 						trunkItems = {
 						
 						},
@@ -223,21 +273,11 @@ Config = {
 						rank = {2,3,4,5},
 						extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
 						--performance = "max",
-                        frontbump = 1,
+						colors = {0,0},
+					
 
-						spoiler = 1,
-						backbump = 1,
-						skirt = 1,
-						exaust = 1,
-						chassis = 1,
-						grill = 1,
-						trunk = 1,
-						wl = 1,
-						wr = 1,
-						roof = 1,
-						
 						trunkItems = {
-							
+						
 						},
 					},
 					["npolvette"] = {
@@ -245,20 +285,28 @@ Config = {
 						livery = 1,
 						rank = {3,4,5},
 						extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
-						--performance = "max",
-                        frontbump = 2,
-						  
-						spoiler = 1,
-						backbump = 1,
-						skirt = 1,
-						exaust = 1,
-						chassis = 1,
-						grill = 1,
-						trunk = 1,
-						wl = 1,
-						wr = 1,
-						roof = 1,
 						
+						colors = {0,0},
+						--performance = "max",
+						frontbump = 2,
+						spoiler = 3,
+						backbump = 1,
+						skirt = 2,
+						exaust = 1,
+						rollcage = 2,
+					--	grill = 1,
+				
+					--	leftfender = 1,
+					--	rightfender = 1,
+						hood = 1,
+						roof = 0,
+						dashboard = 1,
+						dial = 1,
+						seats = 1,
+						--trunk = 3,
+						ornaments = 1,
+
+
 						trunkItems = {
 						
 						},
@@ -268,20 +316,28 @@ Config = {
 						livery = 1,
 						rank = {3,4,5},
 						extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
-						--performance = "max",
-                        frontbump = 2,
-						  
-						spoiler = 1,
-						backbump = 1,
-						skirt = 1,
-						exaust = 1,
-						chassis = 1,
-						grill = 1,
-						trunk = 1,
-						wl = 1,
-						wr = 1,
-						roof = 1,
 						
+						colors = {0,0},
+						--performance = "max",
+						frontbump = 5,
+						spoiler = 2,
+						backbump = 3,
+						skirt = 2,
+						exaust = 1,
+						rollcage = 2,
+						grill = 1,
+				
+					--	leftfender = 1,
+						rightfender = 0,
+						hood = 4,
+						roof = 0,
+						dashboard = 1,
+						dial = 1,
+						seats = 1,
+						trunk = 3,
+						ornaments = 1,
+
+
 						trunkItems = {
 						
 						},
@@ -291,20 +347,28 @@ Config = {
 						livery = 1,
 						rank = {3,4,5},
 						extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
-						--performance = "max",
-                        frontbump = 3,
 						
+						colors = {0,0},
+						--performance = "max",
+						frontbump = 2,
 						spoiler = 1,
 						backbump = 1,
-						skirt = 1,
+						skirt = 2,
 						exaust = 1,
-						chassis = 1,
+						rollcage = 2,
 						grill = 1,
+				
+					--	leftfender = 1,
+					--	rightfender = 1,
+						hood = 1,
+						roof = 0,
+						dashboard = 1,
+						dial = 1,
+						--seats = 1,
 						trunk = 1,
-						wl = 1,
-						wr = 1,
-						roof = 1,
-						
+						ornaments = 1,
+
+
 						trunkItems = {
 						
 						},
@@ -316,18 +380,7 @@ Config = {
 						rank = {2, 3, 4, 5},
 						extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
 						--performance = "max",
-                        frontbump = 1,
-						  
-						spoiler = 1,
-						backbump = 1,
-						skirt = 1,
-						exaust = 1,
-						chassis = 1,
-						grill = 1,
-						trunk = 1,
-						wl = 1,
-						wr = 1,
-						roof = 1,
+                      
 						
 						trunkItems = {
 							
@@ -460,7 +513,25 @@ Config = {
 					extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
 					colors = {0,0},
 					--performance = "max",
-                          frontbump = 1,
+					frontbump = 3,
+					spoiler = 0,
+				--	backbump = 1,
+				--	skirt = 1,
+				--	exaust = 1,
+					rollcage = 3,
+				--	grill = 1,
+			
+				--	leftfender = 1,
+				--	rightfender = 1,
+				-- hood = 1,
+					--roof = 1,
+					dashboard = 1,
+					dial = 1,
+					seats = 1,
+					trunk = 3,
+					ornaments = 1,
+
+
 					trunkItems = {
 					
 					},
@@ -469,12 +540,62 @@ Config = {
 					CustomName = "Sheriff Dodge Charger",
 					livery = 2,
 					rank = {2,3,4,5},
+					colors = {0,0},
 					extras = { 1, 4,5,6,7,8,9,10,11,12,13,14,15 },
 					--performance = "max",
-                          frontbump = 1,
-					colors = {0,0},
-					trunkItems = {
+					frontbump = 2,
+					spoiler = 3,
+				--	backbump = 1,
+				--	skirt = 1,
+					exaust = 0,
+					rollcage = 3,
+				--	grill = 1,
+			
+				--	leftfender = 1,
+				--	rightfender = 1,
+				-- hood = 1,
+					roof = 0,
+					dashboard = 1,
+					dial = 1,
+					--seats = 1,
+					--trunk = 3,
+					ornaments = 1,
 
+
+					trunkItems = {
+					
+					},
+				},
+				["npolchar"] = { -- npolchar
+					CustomName = "LSPD Dodge Charger Special",
+					livery = 2,
+					colors = {0,0},
+					rank = {2,3,4,5},
+					extras = { 1, 4,5,6,7,8,9,10,11,12,13,14,15 },
+
+					colors = {0,0},
+					--performance = "max",
+					frontbump = 2,
+					spoiler = 3,
+				--	backbump = 1,
+				--	skirt = 1,
+					exaust = 1,
+					rollcage = 3,
+				--	grill = 1,
+			
+				--	leftfender = 1,
+				--	rightfender = 1,
+				-- hood = 1,
+					roof = 0,
+					dashboard = 1,
+					dial = 1,
+					--seats = 1,
+					--trunk = 3,
+					ornaments = 1,
+
+
+					trunkItems = {
+					
 					},
 				},
 				
@@ -483,12 +604,30 @@ Config = {
 					livery = 3,
 					rank = {1,2,3,4,5},
 					extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
-					--performance = "max",
-                          frontbump = 1,
 					colors = {0,0},
-					trunkItems = {
-					
-					},
+						--performance = "max",
+						frontbump = 1,
+						spoiler = 0,
+					--	backbump = 1,
+					--	skirt = 1,
+						exaust = 1,
+						rollcage = 2,
+					--	grill = 1,
+				
+					--	leftfender = 1,
+					--	rightfender = 1,
+					-- hood = 1,
+						roof = 0,
+						dashboard = 1,
+						dial = 1,
+						seats = 1,
+						--trunk = 3,
+						ornaments = 1,
+
+
+						trunkItems = {
+						
+						},
 				},
 				
 				["npolmm"] = {
@@ -497,7 +636,7 @@ Config = {
 					rank = {2,3,4,5},
 					extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
 					--performance = "max",
-                          frontbump = 1,
+                          
 					colors = {0,0},
 					trunkItems = {
 						
@@ -508,21 +647,59 @@ Config = {
 					livery = 2,
 					rank = {3,4,5},
 					extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
-					--performance = "max",
-                          frontbump = 1,
-					colors = {0,0},
-					trunkItems = {
 					
-					},
+					colors = {0,0},
+						--performance = "max",
+						frontbump = 2,
+						spoiler = 3,
+						backbump = 1,
+						skirt = 2,
+						exaust = 1,
+						rollcage = 2,
+					--	grill = 1,
+				
+					--	leftfender = 1,
+					--	rightfender = 1,
+						hood = 1,
+						roof = 0,
+						dashboard = 1,
+						dial = 1,
+						seats = 1,
+						--trunk = 3,
+						ornaments = 1,
+
+
+						trunkItems = {
+						
+						},
 				},
 				["npolstang"] = {
 					CustomName = "Sheriff Ford Mustang",
 					livery = 2,
 					rank = {3,4,5},
 					extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
-					--performance = "max",
-                          frontbump = 1,
+					
 					colors = {0,0},
+					--performance = "max",
+					frontbump = 5,
+					spoiler = 2,
+					backbump = 3,
+					skirt = 2,
+					exaust = 1,
+					rollcage = 2,
+					grill = 1,
+			
+				--	leftfender = 1,
+					rightfender = 0,
+					hood = 4,
+					roof = 0,
+					dashboard = 1,
+					dial = 1,
+					seats = 1,
+					trunk = 3,
+					ornaments = 1,
+
+
 					trunkItems = {
 					
 					},
@@ -544,9 +721,10 @@ Config = {
 					rank = {2, 3, 4, 5},
 					extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
 					--performance = "max",
-                          frontbump = 1,
-					trunkItems = {
+                      
 						
+					trunkItems = {
+							
 					},
 				},
 				},
@@ -582,22 +760,89 @@ Config = {
 					rank = {0,1,2,3,4,5},
 					extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
 					colors = {112,50},
-					--performance = "max",
-                          frontbump = 1,
-					trunkItems = {
-					
-					},
+				--performance = "max",
+				frontbump = 3,
+				spoiler = 0,
+			--	backbump = 1,
+			--	skirt = 1,
+			--	exaust = 1,
+				rollcage = 3,
+			--	grill = 1,
+		
+			--	leftfender = 1,
+			--	rightfender = 1,
+			-- hood = 1,
+				--roof = 1,
+				dashboard = 1,
+				dial = 1,
+				seats = 1,
+				trunk = 3,
+				ornaments = 1,
+
+
+				trunkItems = {
+				
+				},
 				},
 				["npolchar"] = {
 					CustomName = "Ranger Dodge Charger",
 					livery = 5,
 					rank = {2,3,4,5},
 					extras = { 1, 4,5,6,7,8,9,10,11,12,13,14,15 },
-					--performance = "max",
-                          frontbump = 1,
 					colors = {112,50},
-					trunkItems = {
+					--performance = "max",
+					frontbump = 2,
+					spoiler = 3,
+				--	backbump = 1,
+				--	skirt = 1,
+					exaust = 0,
+					rollcage = 3,
+				--	grill = 1,
+			
+				--	leftfender = 1,
+				--	rightfender = 1,
+				-- hood = 1,
+					roof = 0,
+					dashboard = 1,
+					dial = 1,
+					--seats = 1,
+					--trunk = 3,
+					ornaments = 1,
 
+
+					trunkItems = {
+					
+					},
+				},
+				["npolchar"] = { -- npolchar
+					CustomName = "LSPD Dodge Charger Special",
+					livery = 5,
+					rank = {2,3,4,5},
+					extras = { 1, 4,5,6,7,8,9,10,11,12,13,14,15 },
+					colors = {112,50},
+					
+					--performance = "max",
+					frontbump = 2,
+					spoiler = 3,
+				--	backbump = 1,
+				--	skirt = 1,
+					exaust = 1,
+					rollcage = 3,
+				--	grill = 1,
+			
+				--	leftfender = 1,
+				--	rightfender = 1,
+				-- hood = 1,
+					roof = 0,
+					dashboard = 1,
+					dial = 1,
+					--seats = 1,
+					--trunk = 3,
+					ornaments = 1,
+
+
+					trunkItems = {
+					
 					},
 				},
 				
@@ -606,12 +851,30 @@ Config = {
 					livery = 8,
 					rank = {1,2,3,4,5},
 					extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
-					--performance = "max",
-                          frontbump = 1,
 					colors = {112,50},
-					trunkItems = {
-					
-					},
+						--performance = "max",
+						frontbump = 1,
+						spoiler = 0,
+					--	backbump = 1,
+					--	skirt = 1,
+						exaust = 1,
+						rollcage = 2,
+					--	grill = 1,
+				
+					--	leftfender = 1,
+					--	rightfender = 1,
+					-- hood = 1,
+						roof = 0,
+						dashboard = 1,
+						dial = 1,
+						seats = 1,
+						--trunk = 3,
+						ornaments = 1,
+
+
+						trunkItems = {
+						
+						},
 				},
 			
 				["npolvette"] = {
@@ -619,9 +882,28 @@ Config = {
 					livery = 5,
 					rank = {3,4,5},
 					extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
-					--performance = "max",
-                          frontbump = 1,
+					
 					colors = {112,112},
+					--performance = "max",
+					frontbump = 2,
+					spoiler = 3,
+					backbump = 1,
+					skirt = 2,
+					exaust = 1,
+					rollcage = 2,
+				--	grill = 1,
+			
+				--	leftfender = 1,
+				--	rightfender = 1,
+					hood = 1,
+					roof = 0,
+					dashboard = 1,
+					dial = 1,
+					seats = 1,
+					--trunk = 3,
+					ornaments = 1,
+
+
 					trunkItems = {
 					
 					},
@@ -631,9 +913,28 @@ Config = {
 					livery = 5,
 					rank = {3,4,5},
 					extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
-					--performance = "max",
-                          frontbump = 1,
+					
 					colors = {112,112},
+					--performance = "max",
+					frontbump = 5,
+					spoiler = 2,
+					backbump = 3,
+					skirt = 2,
+					exaust = 1,
+					rollcage = 2,
+					grill = 1,
+			
+				--	leftfender = 1,
+					rightfender = 0,
+					hood = 4,
+					roof = 0,
+					dashboard = 1,
+					dial = 1,
+					seats = 1,
+					trunk = 3,
+					ornaments = 1,
+
+
 					trunkItems = {
 					
 					},
@@ -644,11 +945,13 @@ Config = {
 					livery = 2,
 					rank = {2, 3, 4, 5},
 					extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
-					--performance = "max",
-                          frontbump = 1,
+					
 					colors = {50,50},
-					trunkItems = {
+					--performance = "max",
+                      
 						
+					trunkItems = {
+							
 					},
 				},
 				},

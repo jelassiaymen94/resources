@@ -158,16 +158,16 @@ RegisterNetEvent("jim-jobgarage:client:SpawnList", function(data)
 				local number = data.list.grill - 1
 				SetVehicleMod(veh, 6, number)
 			end
-			if data.list.trunko then
-				local number = data.list.trunko - 1
+			if data.list.hood then
+				local number = data.list.hood - 1
 				SetVehicleMod(veh, 7, number)
 			end
-			if data.list.wl then
-				local number = data.list.wl - 1
+			if data.list.leftfender then
+				local number = data.list.leftfender - 1
 				SetVehicleMod(veh, 8, number)
 			end
-			if data.list.wr then
-				local number = data.list.wr - 1
+			if data.list.rightfender then
+				local number = data.list.rightfender - 1
 				SetVehicleMod(veh, 9, number)
 			end
 			if data.list.roof then
@@ -193,9 +193,9 @@ RegisterNetEvent("jim-jobgarage:client:SpawnList", function(data)
 				local number = data.list.dashboard - 1
 				SetVehicleMod(veh, 29, number)
 			end
-			if data.list.chasi5 then
-				local number = data.list.chasi5 - 1
-				SetVehicleMod(veh, 45, number)
+			if data.list.ornaments then
+				local number = data.list.ornaments - 1
+				SetVehicleMod(veh, 28, number)
 			end
 
 			
