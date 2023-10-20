@@ -107,9 +107,9 @@ RegisterNetEvent('CL-Reports:RefreshReports', function(reports)
     })
 end)
 
-RegisterKeyMapping("reportissue", 'Reports System', 'keyboard', '9')
+--RegisterKeyMapping("report", 'Reports System', 'keyboard', '9')
 
-RegisterKeyMapping("adminconsole", 'Reports Admin Console', 'keyboard', 'h')
+--RegisterKeyMapping("adminconsole", 'Reports Admin Console', 'keyboard', 'h')
 
 RegisterCommand("adminconsole", function()
     enableAdminUI = not enableAdminUI
@@ -131,7 +131,7 @@ RegisterCommand("adminconsole", function()
     end
 end)
 
-RegisterCommand("reportissue", function()
+RegisterCommand("report", function()
     enableReportUI = not enableReportUI
     if enableReportUI then
         QBCore.Functions.TriggerCallback('CL-Reports:GetInfo', function(result)
