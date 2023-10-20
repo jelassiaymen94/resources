@@ -204,5 +204,5 @@ RegisterNetEvent('adminmenu:server:ClothingMenu', function(data, selectedData)
         TriggerClientEvent("adminmenu:client:CloseUI", src)
     end
 
-    TriggerClientEvent('qb-clothing:client:openMenu', target)
+    TriggerClientEvent('clothing:client:openMenu', target)
 end)
