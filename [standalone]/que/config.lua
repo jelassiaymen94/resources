@@ -8,7 +8,7 @@ Config = {
 		Discord = true,
 		Steam = true
 	},
-	WhitelistRequired = false, -- If this option is set to true, a player must have a role in Config.Rankings to be allowed into the server
+	WhitelistRequired = true, -- If this option is set to true, a player must have a role in Config.Rankings to be allowed into the server
 	Debug = false,
 	Webhook = '',
 	Displays = {
