@@ -130,11 +130,39 @@ RegisterNetEvent("jim-jobgarage:client:SpawnList", function(data)
 					SetVehicleLivery(veh, -1)
 				end
 			end
+			if data.list.spoiler then
+				if GetNumVehicleMods(veh, 1) == 0 then SetVehicleMod(veh, 1, data.list.spoiler, false)
+				else SetVehicleMod(veh, 0, data.list.spoiler, false)
+				end
+			end
 			if data.list.frontbump then
 				if GetNumVehicleMods(veh, 1) == 0 then SetVehicleMod(veh, 1, data.list.frontbump, false)
 				else SetVehicleMod(veh, 1, data.list.frontbump, false)
 				end
 			end
+			if data.list.backbump then
+				if GetNumVehicleMods(veh, 1) == 0 then SetVehicleMod(veh, 1, data.list.backbump, false)
+				else SetVehicleMod(veh, 2, data.list.backbump, false)
+				end
+			end
+			if data.list.skirt then
+				if GetNumVehicleMods(veh, 1) == 0 then SetVehicleMod(veh, 1, data.list.skirt, false)
+				else SetVehicleMod(veh, 3, data.list.skirt, false)
+				end
+			end
+			if data.list.exaust then
+				if GetNumVehicleMods(veh, 1) == 0 then SetVehicleMod(veh, 1, data.list.exaust, false)
+				else SetVehicleMod(veh, 4, data.list.exaust, false)
+				end
+			end
+			if data.list.trunk then
+				if GetNumVehicleMods(veh, 1) == 0 then SetVehicleMod(veh, 1, data.list.trunk, false)
+				else SetVehicleMod(veh, 5, data.list.trunk, false)
+				end
+			end
+
+
+			
 			if data.list.performance then
 				if type(data.list.performance) ~= "table" then
 					SetVehicleMod(veh, 11, GetNumVehicleMods(veh, 11)-1) -- Engine
