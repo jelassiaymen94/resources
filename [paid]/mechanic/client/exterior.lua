@@ -113,7 +113,7 @@ else
 		end
 	if DoesEntityExist(vehicle) then
 		local icon = "" local disabled = false
-		if GetVehicleMod(vehicle, tonumber(data.mod)) == -1 then print(data.mod) stockinstall = Loc[Config.Lan]["common"].current icon = "fas fa-check" disabled = true else stockinstall = "" end
+		if GetVehicleMod(vehicle, tonumber(data.mod)) == -1 then  stockinstall = Loc[Config.Lan]["common"].current icon = "fas fa-check" disabled = true else stockinstall = "" end
 		--for i = 0, 5 do SetVehicleDoorOpen(vehicle, i, false, false) end
 		local ModMenu = {
 				{ isMenuHeader = true, icon = "externals", header = searchCar(vehicle)..Loc[Config.Lan]["exterior"].menuheader, txt = Loc[Config.Lan]["common"].amountoption..#validMods+1,	},
@@ -155,7 +155,7 @@ RegisterNetEvent('jim-mechanic:client:Exterior:Extra:Apply', function(data)
 	if IsVehicleExtraTurnedOn(vehicle, data.id) then SetVehicleExtra(vehicle, data.id, 1)
 		
 	else SetVehicleExtra(vehicle, data.id, 0) -- SetVehicleFixed(vehicle) end
-	print('bitch')
+
 	doCarDamage(vehicle, veh)
 	Wait(100)
 	SetVehicleEngineHealth(vehicle, veh.engine)
