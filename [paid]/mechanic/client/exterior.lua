@@ -151,4 +151,5 @@ RegisterNetEvent('jim-mechanic:client:Exterior:Extra:Apply', function(data)
 	updateCar(vehicle)
 	TriggerEvent('jim-mechanic:client:Exterior:Extra')
 	end
+	TriggerEvent('jim-mechanic:client:Exterior:Check')
 end)
