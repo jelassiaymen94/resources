@@ -145,7 +145,7 @@ RegisterNetEvent('jim-mechanic:client:Exterior:Extra:Apply', function(data)
 	local veh = { engine = GetVehicleEngineHealth(vehicle), body = GetVehicleBodyHealth(vehicle) }
 	if IsVehicleExtraTurnedOn(vehicle, data.id) then SetVehicleExtra(vehicle, data.id, 1)
 		if policejob() then
-		TriggerEvent('jim-mechanic:client:Exterior:Check') 
+			TriggerEvent('jim-mechanic:client:Exterior:Check') 
 		end
 	else SetVehicleExtra(vehicle, data.id, 0) -- SetVehicleFixed(vehicle) end
 	doCarDamage(vehicle, veh)
@@ -154,8 +154,8 @@ RegisterNetEvent('jim-mechanic:client:Exterior:Extra:Apply', function(data)
 	SetVehicleBodyHealth(vehicle, veh.body)
 	updateCar(vehicle)
 	TriggerEvent('jim-mechanic:client:Exterior:Extra')
-	if policejob() then
-		TriggerEvent('jim-mechanic:client:Exterior:Check') 
+		if policejob() then
+			TriggerEvent('jim-mechanic:client:Exterior:Check') 
 		end
 	end
 end)
