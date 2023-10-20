@@ -1,11 +1,25 @@
+Citizen.CreateThread(function()
+	local uptimeMinute, uptimeHour, uptime = 0, 0, ''
 
---[[CreateThread(function()
-    while true do 
-    Wait(300000) -- 5 mins
-    local whip = GetAllVehicles()
-    for _, car in ipairs(whip) do
-        local driver = GetPedInVehicleSeat(car, -1)
-        if not IsPedAPlayer(driver) then DeleteEntity(car) end
-    end
-    end
-end)]]
+	
+
+	while true do
+		Citizen.Wait(1000 * 60) -- every minute
+		uptimeMinute = uptimeMinute + 1
+
+		if uptimeMinute == 60 then
+			uptimeMinute = 0
+			uptimeHour = uptimeHour + 1
+		end
+
+		uptime = string.format("%02dh %02dm", uptimeHour, uptimeMinute)
+		SetConvarServerInfo('Age', "18+")
+		SetConvarServerInfo('Discord', "https://discord.gg/EZrRne8Bt3")
+		SetConvarServerInfo('Microphone', "Required")
+		SetConvarServerInfo('Roleplay', "Serious RP")
+		SetConvarServerInfo('Uptime', uptime)
+
+
+	
+	end
+end)
