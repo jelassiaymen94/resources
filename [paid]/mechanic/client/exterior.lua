@@ -100,6 +100,7 @@ if not policejob() then
 		end
 	end
 else
+	print('not po')
 	vehicle = getClosest(GetEntityCoords(PlayerPedId())) -- pushVehicle(vehicle)
 		for i = 1, GetNumVehicleMods(vehicle, tonumber(data.mod)) do
 			if GetVehicleMod(vehicle, tonumber(data.mod)) == (i-1) then txt = Loc[Config.Lan]["common"].current else txt = "" end
@@ -108,7 +109,7 @@ else
 	if DoesEntityExist(vehicle) then
 		local icon = "" local disabled = false
 		if GetVehicleMod(vehicle, tonumber(data.mod)) == -1 then print(data.mod) stockinstall = Loc[Config.Lan]["common"].current icon = "fas fa-check" disabled = true else stockinstall = "" end
-		for i = 0, 5 do SetVehicleDoorOpen(vehicle, i, false, false) end
+		--for i = 0, 5 do SetVehicleDoorOpen(vehicle, i, false, false) end
 		local ModMenu = {
 				{ isMenuHeader = true, icon = "externals", header = searchCar(vehicle)..Loc[Config.Lan]["exterior"].menuheader, txt = Loc[Config.Lan]["common"].amountoption..#validMods+1,	},
 				{ icon = "fas fa-circle-arrow-left", header = "", txt = string.gsub(Loc[Config.Lan]["common"].ret, "⬅️ ", ""), params = { event = "jim-mechanic:client:Exterior:Check" } },
