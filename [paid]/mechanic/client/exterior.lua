@@ -40,7 +40,7 @@ RegisterNetEvent('jim-mechanic:client:Exterior:Check', function()
 	else
 
 
-	local vehicle = nil
+	--local vehicle = nil
 	
 
 	if DoesEntityExist(vehicle) then
