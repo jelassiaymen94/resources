@@ -27,8 +27,13 @@ RegisterNetEvent('jim-mechanic:client:Exterior:Apply', function(data)
 			emptyHands(PlayerPedId())
 		end, "externals")
 		else
+		
+		
+			
 			SetVehicleMod(vehicle, tonumber(data.mod), tonumber(data.id))
 			updateCar(vehicle)
+			TriggerEvent('jim-mechanic:client:Exterior:Check') 
+			
 		end
 	end
 end)
@@ -144,15 +149,11 @@ RegisterNetEvent('jim-mechanic:client:Exterior:Extra', function()
 end)
 
 RegisterNetEvent('jim-mechanic:client:Exterior:Extra:Apply', function(data)
-	print('apply')
+	
 	local vehicle = getClosest(GetEntityCoords(PlayerPedId()))
 	local veh = { engine = GetVehicleEngineHealth(vehicle), body = GetVehicleBodyHealth(vehicle) }
 	if IsVehicleExtraTurnedOn(vehicle, data.id) then SetVehicleExtra(vehicle, data.id, 1)
-		if policejob() then
-			print('police')
-			TriggerEvent('jim-mechanic:client:Exterior:Check') 
-		end
-		print('wadd')
+		
 	else SetVehicleExtra(vehicle, data.id, 0) -- SetVehicleFixed(vehicle) end
 	print('bitch')
 	doCarDamage(vehicle, veh)
@@ -161,9 +162,6 @@ RegisterNetEvent('jim-mechanic:client:Exterior:Extra:Apply', function(data)
 	SetVehicleBodyHealth(vehicle, veh.body)
 	updateCar(vehicle)
 	TriggerEvent('jim-mechanic:client:Exterior:Extra')
-		if policejob() then
-			print('police2')
-			TriggerEvent('jim-mechanic:client:Exterior:Check') 
-		end
+		
 	end
 end)
