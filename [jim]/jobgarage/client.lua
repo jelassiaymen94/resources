@@ -130,9 +130,9 @@ RegisterNetEvent("jim-jobgarage:client:SpawnList", function(data)
 					SetVehicleLivery(veh, -1)
 				end
 			end
-			if data.list.rambar then
-				if GetNumVehicleMods(veh, 1) == 0 then SetVehicleMod(veh, 1, data.list.rambar, false)
-				else SetVehicleMod(veh, 1, data.list.rambar, false)
+			if data.list.frontbump then
+				if GetNumVehicleMods(veh, 1) == 0 then SetVehicleMod(veh, 1, data.list.frontbump, false)
+				else SetVehicleMod(veh, 1, data.list.frontbump, false)
 				end
 			end
 			if data.list.performance then

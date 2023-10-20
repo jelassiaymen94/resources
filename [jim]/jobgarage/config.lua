@@ -106,7 +106,7 @@ Config = {
 						rank = {0,1,2,3,4,5},
 						extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
 						--performance = "max",
-                          rambar = 1,
+                          frontbump = 1,
 						trunkItems = {
 						
 						},
@@ -118,7 +118,7 @@ Config = {
 						extras = { 1, 4,5,6,7,8,9,10,11,12,13,14,15 },
 						colors = {0,0},
 						--performance = "max",
-                          rambar = 1,
+                          frontbump = 1,
 						
 						trunkItems = {
 						
@@ -131,7 +131,7 @@ Config = {
 						rank = {1,2,3,4,5},
 						extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
 						--performance = "max",
-                          rambar = 4,
+                          frontbump = 4,
 						trunkItems = {
 						
 						},
@@ -143,7 +143,7 @@ Config = {
 						rank = {2,3,4,5},
 						extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
 						--performance = "max",
-                          rambar = 1,
+                          frontbump = 1,
 						trunkItems = {
 							
 						},
@@ -154,7 +154,7 @@ Config = {
 						rank = {3,4,5},
 						extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
 						--performance = "max",
-                          rambar = 2,
+                          frontbump = 2,
 						trunkItems = {
 						
 						},
@@ -165,7 +165,7 @@ Config = {
 						rank = {3,4,5},
 						extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
 						--performance = "max",
-                          rambar = 2,
+                          frontbump = 2,
 						trunkItems = {
 						
 						},
@@ -176,7 +176,7 @@ Config = {
 						rank = {3,4,5},
 						extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
 						--performance = "max",
-                          rambar = 3,
+                          frontbump = 3,
 						trunkItems = {
 						
 						},
@@ -188,7 +188,7 @@ Config = {
 						rank = {2, 3, 4, 5},
 						extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
 						--performance = "max",
-                          rambar = 1,
+                          frontbump = 1,
 						trunkItems = {
 							
 						},
@@ -199,7 +199,7 @@ Config = {
 						rank = {2, 3, 4, 5 },
 						extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
 						--performance = "max",
-                          rambar = 1,
+                          frontbump = 1,
 						trunkItems = {
 							
 						},
@@ -210,7 +210,7 @@ Config = {
 						rank = { 2,3, 4, 5 },
 						extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
 						--performance = "max",
-                          rambar = 1,
+                          frontbump = 1,
 						trunkItems = {
 							
 						},
@@ -221,7 +221,7 @@ Config = {
 						rank = { 2,3, 4, 5 },
 						extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
 						--performance = "max",
-                          rambar = 1,
+                          frontbump = 1,
 						trunkItems = {
 							
 						},
@@ -232,7 +232,7 @@ Config = {
 						rank = {2, 3, 4, 5 },
 						extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
 						--performance = "max",
-                          rambar = 1,
+                          frontbump = 1,
 						trunkItems = {
 							
 						},2,
@@ -243,7 +243,7 @@ Config = {
 						rank = { 2,3, 4, 5 },
 						extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
 						--performance = "max",
-                          rambar = 1,
+                          frontbump = 1,
 						trunkItems = {
 							
 						},
@@ -264,7 +264,7 @@ Config = {
 						rank = {1, 2,3 ,4 ,5},
 						extras = {2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
 						--performance = "max",
-                          rambar = 1,
+                          frontbump = 1,
 						trunkItems = {
 						
 						},
@@ -286,7 +286,7 @@ Config = {
 					rank = {0,1,2,3,4,5},
 					extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
 					--performance = "max",
-					  rambar = 1,
+					  frontbump = 1,
 					trunkItems = {
 					
 					},
@@ -297,7 +297,7 @@ Config = {
 					rank = {2,3,4,5},
 					extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
 					--performance = "max",
-					  rambar = 1,
+					  frontbump = 1,
 					trunkItems = {
 					
 					},
@@ -308,7 +308,7 @@ Config = {
 					rank = {1,2,3,4,5},
 					extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
 					--performance = "max",
-					  rambar = 1,
+					  frontbump = 1,
 					trunkItems = {
 					
 					},
@@ -320,7 +320,7 @@ Config = {
 					rank = {2,3,4,5},
 					extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
 					--performance = "max",
-					  rambar = 1,
+					  frontbump = 1,
 					trunkItems = {
 						
 					},
@@ -331,7 +331,7 @@ Config = {
 					rank = {3,4,5},
 					extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
 					--performance = "max",
-					  rambar = 1,
+					  frontbump = 1,
 					trunkItems = {
 					
 					},
@@ -342,7 +342,7 @@ Config = {
 					rank = {3,4,5},
 					extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
 					--performance = "max",
-					  rambar = 1,
+					  frontbump = 1,
 					trunkItems = {
 					
 					},
@@ -353,7 +353,7 @@ Config = {
 					rank = {3,4,5},
 					extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
 					--performance = "max",
-					  rambar = 1,
+					  frontbump = 1,
 					trunkItems = {
 					
 					},
@@ -365,7 +365,7 @@ Config = {
 					rank = {2, 3, 4, 5 },
 					extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
 					--performance = "max",
-					  rambar = 1,
+					  frontbump = 1,
 					trunkItems = {
 						
 					},
@@ -376,7 +376,7 @@ Config = {
 					rank = { 2,3, 4, 5 },
 					extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
 					--performance = "max",
-					  rambar = 1,
+					  frontbump = 1,
 					trunkItems = {
 						
 					},
@@ -387,7 +387,7 @@ Config = {
 					rank = { 2,3, 4, 5 },
 					extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
 					--performance = "max",
-					  rambar = 1,
+					  frontbump = 1,
 					trunkItems = {
 						
 					},
@@ -398,7 +398,7 @@ Config = {
 					rank = {2, 3, 4, 5 },
 					extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
 					--performance = "max",
-					  rambar = 1,
+					  frontbump = 1,
 					trunkItems = {
 						
 					},2,
@@ -409,7 +409,7 @@ Config = {
 					rank = { 2,3, 4, 5 },
 					extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
 					--performance = "max",
-					  rambar = 1,
+					  frontbump = 1,
 					trunkItems = {
 						
 					},
@@ -451,7 +451,7 @@ Config = {
 						rank = {0,1,2,3,4,5},
 						extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
 						--performance = "max",
-                          rambar = 1,
+                          frontbump = 1,
 						trunkItems = {
 						
 						},
@@ -462,7 +462,7 @@ Config = {
 						rank = {2,3,4,5},
 						extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
 						--performance = "max",
-                          rambar = 1,
+                          frontbump = 1,
 						trunkItems = {
 						
 						},
@@ -473,7 +473,7 @@ Config = {
 						rank = {1,2,3,4,5},
 						extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
 						--performance = "max",
-                          rambar = 1,
+                          frontbump = 1,
 						trunkItems = {
 						
 						},
@@ -485,7 +485,7 @@ Config = {
 						rank = {2,3,4,5},
 						extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
 						--performance = "max",
-                          rambar = 1,
+                          frontbump = 1,
 						trunkItems = {
 							
 						},
@@ -496,7 +496,7 @@ Config = {
 						rank = {3,4,5},
 						extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
 						--performance = "max",
-                          rambar = 1,
+                          frontbump = 1,
 						trunkItems = {
 						
 						},
@@ -507,7 +507,7 @@ Config = {
 						rank = {3,4,5},
 						extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
 						--performance = "max",
-                          rambar = 1,
+                          frontbump = 1,
 						trunkItems = {
 						
 						},
@@ -518,7 +518,7 @@ Config = {
 						rank = {3,4,5},
 						extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
 						--performance = "max",
-                          rambar = 1,
+                          frontbump = 1,
 						trunkItems = {
 						
 						},
@@ -530,7 +530,7 @@ Config = {
 						rank = {2, 3, 4, 5 },
 						extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
 						--performance = "max",
-                          rambar = 1,
+                          frontbump = 1,
 						trunkItems = {
 							
 						},
@@ -541,7 +541,7 @@ Config = {
 						rank = { 2,3, 4, 5 },
 						extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
 						--performance = "max",
-                          rambar = 1,
+                          frontbump = 1,
 						trunkItems = {
 							
 						},
@@ -552,7 +552,7 @@ Config = {
 						rank = { 2,3, 4, 5 },
 						extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
 						--performance = "max",
-                          rambar = 1,
+                          frontbump = 1,
 						trunkItems = {
 							
 						},
@@ -563,7 +563,7 @@ Config = {
 						rank = {2, 3, 4, 5 },
 						extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
 						--performance = "max",
-                          rambar = 1,
+                          frontbump = 1,
 						trunkItems = {
 							
 						},2,
@@ -574,7 +574,7 @@ Config = {
 						rank = { 2,3, 4, 5 },
 						extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
 						--performance = "max",
-                          rambar = 1,
+                          frontbump = 1,
 						trunkItems = {
 							
 						},
@@ -617,7 +617,7 @@ Config = {
 						rank = {0,1,2,3,4,5},
 						extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
 						--performance = "max",
-                          rambar = 1,
+                          frontbump = 1,
 						trunkItems = {
 						
 						},
@@ -639,7 +639,7 @@ Config = {
 						rank = {2,3,4,5},
 						extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
 						--performance = "max",
-                          rambar = 1,
+                          frontbump = 1,
 						trunkItems = {
 						
 						},
@@ -661,7 +661,7 @@ Config = {
 						rank = {0,1,2,3,4,5},
 						extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
 						performance = "max",
-                          rambar = 1,
+                          frontbump = 1,
 						trunkItems = {
 						
 						},
@@ -785,7 +785,7 @@ Config = {
 					extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
 					colors = {0,0},
 					--performance = "max",
-                          rambar = 1,
+                          frontbump = 1,
 					trunkItems = {
 					
 					},
@@ -796,7 +796,7 @@ Config = {
 					rank = {2,3,4,5},
 					extras = { 1, 4,5,6,7,8,9,10,11,12,13,14,15 },
 					--performance = "max",
-                          rambar = 1,
+                          frontbump = 1,
 					colors = {0,0},
 					trunkItems = {
 
@@ -809,7 +809,7 @@ Config = {
 					rank = {1,2,3,4,5},
 					extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
 					--performance = "max",
-                          rambar = 1,
+                          frontbump = 1,
 					colors = {0,0},
 					trunkItems = {
 					
@@ -822,7 +822,7 @@ Config = {
 					rank = {2,3,4,5},
 					extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
 					--performance = "max",
-                          rambar = 1,
+                          frontbump = 1,
 					colors = {0,0},
 					trunkItems = {
 						
@@ -834,7 +834,7 @@ Config = {
 					rank = {3,4,5},
 					extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
 					--performance = "max",
-                          rambar = 1,
+                          frontbump = 1,
 					colors = {0,0},
 					trunkItems = {
 					
@@ -846,7 +846,7 @@ Config = {
 					rank = {3,4,5},
 					extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
 					--performance = "max",
-                          rambar = 1,
+                          frontbump = 1,
 					colors = {0,0},
 					trunkItems = {
 					
@@ -869,7 +869,7 @@ Config = {
 					rank = {2, 3, 4, 5},
 					extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
 					--performance = "max",
-                          rambar = 1,
+                          frontbump = 1,
 					trunkItems = {
 						
 					},
@@ -890,7 +890,7 @@ Config = {
 					extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
 					colors = {112,50},
 					--performance = "max",
-                          rambar = 1,
+                          frontbump = 1,
 					trunkItems = {
 					
 					},
@@ -901,7 +901,7 @@ Config = {
 					rank = {2,3,4,5},
 					extras = { 1, 4,5,6,7,8,9,10,11,12,13,14,15 },
 					--performance = "max",
-                          rambar = 1,
+                          frontbump = 1,
 					colors = {112,50},
 					trunkItems = {
 
@@ -914,7 +914,7 @@ Config = {
 					rank = {1,2,3,4,5},
 					extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
 					--performance = "max",
-                          rambar = 1,
+                          frontbump = 1,
 					colors = {112,50},
 					trunkItems = {
 					
@@ -927,7 +927,7 @@ Config = {
 					rank = {3,4,5},
 					extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
 					--performance = "max",
-                          rambar = 1,
+                          frontbump = 1,
 					colors = {112,112},
 					trunkItems = {
 					
@@ -939,7 +939,7 @@ Config = {
 					rank = {3,4,5},
 					extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
 					--performance = "max",
-                          rambar = 1,
+                          frontbump = 1,
 					colors = {112,112},
 					trunkItems = {
 					
@@ -952,7 +952,7 @@ Config = {
 					rank = {2, 3, 4, 5},
 					extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
 					--performance = "max",
-                          rambar = 1,
+                          frontbump = 1,
 					colors = {50,50},
 					trunkItems = {
 						
