@@ -35,6 +35,9 @@ RegisterNetEvent('jim-mechanic:client:Police:Menu', function()
 			PoliceMenu[#PoliceMenu+1] = { icon = "fas fa-circle-xmark", header = "", txt = string.gsub(Loc[Config.Lan]["common"].close, "❌ ", ""), params = { event = "jim-mechanic:client:Menu:Close" } }
 			PoliceMenu[#PoliceMenu+1] = { icon = "fas fa-wrench", header = Loc[Config.Lan]["police"].repair, txt = "", params = { event = "jim-mechanic:client:Police:Repair" }, }
 			PoliceMenu[#PoliceMenu+1] = { icon = "fas fa-toolbox", header = Loc[Config.Lan]["police"].extras, txt = "", params = { event = "jim-mechanic:client:Police:Extra" }, }
+
+			PoliceMenu[#PoliceMenu+1] = { icon = "fas fa-toolbox", header = "Exterior", txt = "", params = { event = "jim-mechanic:client:Exterior:Check" }, }
+			
 			PoliceMenu[#PoliceMenu+1] = { icon = "fas fa-address-card", header = Loc[Config.Lan]["police"].plates, txt = "", params = { event = "jim-mechanic:client:Police:Plates" }, }
 			if GetNumVehicleMods(vehicle, 48) > 0 or GetVehicleLiveryCount(vehicle) > -1 then
 				PoliceMenu[#PoliceMenu+1] = { icon = "fas fa-paint-roller", header = Loc[Config.Lan]["police"].livery, txt = "", params = { event = "jim-mechanic:client:Police:Livery" }, } end
