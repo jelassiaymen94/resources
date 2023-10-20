@@ -32,13 +32,17 @@ RegisterNetEvent('jim-mechanic:client:Exterior:Check', function()
 	if not policejob() then
 	if Config.CosmeticsJob then if not jobChecks() then return end end
 	if not locationChecks() then return end
-	else
 	if not inCar() then return end
-	if not nearPoint(GetEntityCoords(PlayerPedId())) then return end
-	local vehicle = nil
 	if not IsPedInAnyVehicle(PlayerPedId(), false) then	vehicle = getClosest(GetEntityCoords(PlayerPedId())) pushVehicle(vehicle) lookVeh(vehicle) end
 	if lockedCar(vehicle) then return end
+	if not nearPoint(GetEntityCoords(PlayerPedId())) then return end
 	if Config.isVehicleOwned and not IsVehicleOwned(trim(GetVehicleNumberPlateText(vehicle))) then triggerNotify(nil, Loc[Config.Lan]["common"].owned, "error") return end
+	else
+
+
+	local vehicle = nil
+	
+
 	if DoesEntityExist(vehicle) then
 		local exterior = { 27, 44, 37, 39, 40, 41, 38, 42, 45, 43 }
 		local external = nil
