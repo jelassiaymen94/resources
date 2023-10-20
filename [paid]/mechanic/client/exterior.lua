@@ -41,7 +41,8 @@ RegisterNetEvent('jim-mechanic:client:Exterior:Check', function()
 
 
 	--local vehicle = nil
-	
+	print(vehicle)
+	print(json.encode(vehicle))
 
 	if DoesEntityExist(vehicle) then
 		local exterior = { 27, 44, 37, 39, 40, 41, 38, 42, 45, 43 }
