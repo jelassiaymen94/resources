@@ -127,7 +127,11 @@ end)
 RegisterNetEvent('jim-mechanic:client:Exterior:Extra', function()
 	local vehicle = nil
 	local hasMod = false
-	if not IsPedInAnyVehicle(PlayerPedId(), false) then vehicle = getClosest(GetEntityCoords(PlayerPedId())) else TriggerEvent('jim-mechanic:client:Exterior:Check') return end
+	if not IsPedInAnyVehicle(PlayerPedId(), false) then vehicle = getClosest(GetEntityCoords(PlayerPedId())) else 
+		if policejob() then
+		TriggerEvent('jim-mechanic:client:Exterior:Check') 
+		end
+	return end
 	local ExtraMenu = {}
 	ExtraMenu[#ExtraMenu+1] = { icon = "fas fa-toolbox", isMenuHeader = true, header = Loc[Config.Lan]["police"].extras, txt = "Toggle Vehicle Extras" }
 	ExtraMenu[#ExtraMenu+1] = { icon = "fas fa-circle-arrow-left", header = "", txt = string.gsub(Loc[Config.Lan]["common"].ret, "⬅️ ", ""), params = { event = "jim-mechanic:client:Exterior:Check" }, }
