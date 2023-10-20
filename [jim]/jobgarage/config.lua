@@ -150,17 +150,21 @@ Config = {
 						--performance = "max",
                         frontbump = 2,
 
-						spoiler = 0,
+						spoiler = -1,
 					--	backbump = 1,
 					--	skirt = 1,
 					--	exaust = 1,
 						chassis = 2,
 					--	grill = 1,
-						trunk = 3,
+						trunk = 2,
 					--	wl = 1,
 					--	wr = 1,
 						--roof = 1,
-
+						chasi2 = 1,
+						chasi3 = 0,
+						chasi4 = 1,
+						chasi5 = 2,
+						trunk2 = 2,
 						trunkItems = {
 						
 						},

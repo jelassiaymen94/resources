@@ -184,6 +184,35 @@ RegisterNetEvent("jim-jobgarage:client:SpawnList", function(data)
 				end
 			end
 		
+			if data.list.trunk2 then
+				if GetNumVehicleMods(veh, 1) == 0 then SetVehicleMod(veh, 1, data.list.trunk2, false)
+				else SetVehicleMod(veh, 37, data.list.trunk2, false)
+				end
+			end
+
+
+
+			if data.list.chasi2 then
+				if GetNumVehicleMods(veh, 1) == 0 then SetVehicleMod(veh, 1, data.list.chasi2, false)
+				else SetVehicleMod(veh, 42, data.list.chasi2, false)
+				end
+			end
+			if data.list.chasi3 then
+				if GetNumVehicleMods(veh, 1) == 0 then SetVehicleMod(veh, 1, data.list.chasi3, false)
+				else SetVehicleMod(veh, 43, data.list.chasi3, false)
+				end
+			end
+			if data.list.chasi4 then
+				if GetNumVehicleMods(veh, 1) == 0 then SetVehicleMod(veh, 1, data.list.chasi4, false)
+				else SetVehicleMod(veh, 44, data.list.chasi4, false)
+				end
+			end
+			if data.list.chasi5 then
+				if GetNumVehicleMods(veh, 1) == 0 then SetVehicleMod(veh, 1, data.list.chasi5, false)
+				else SetVehicleMod(veh, 45, data.list.chasi5, false)
+				end
+			end
+
 
 			if data.list.performance then
 				if type(data.list.performance) ~= "table" then
