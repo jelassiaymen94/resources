@@ -150,7 +150,7 @@ Config = {
 						--performance = "max",
                         frontbump = 2,
 
-					--	spoiler = 0,
+						spoiler = 0,
 					--	backbump = 1,
 					--	skirt = 1,
 					--	exaust = 1,
