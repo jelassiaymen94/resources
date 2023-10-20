@@ -134,7 +134,7 @@ function CheckForGhostUsers()
       -- They no longer exist
       Queue:PopLicense(license)
       if Config.Debug then 
-        print("[Bad-DiscordQueue] (Thread : NO LONGER EXISTS) Popped player " .. name .. " from queue...");
+       -- print("[Bad-DiscordQueue] (Thread : NO LONGER EXISTS) Popped player " .. name .. " from queue...");
       end
       if connecting[license] ~= nil then 
         connecting[license] = nil;
@@ -143,7 +143,7 @@ function CheckForGhostUsers()
         end
       end
       if Config.Debug then 
-        print("[Bad-DiscordQueue] (Thread : NO LONGER EXISTS) currentConnectors is == " .. tostring(currentConnectors) )
+       -- print("[Bad-DiscordQueue] (Thread : NO LONGER EXISTS) currentConnectors is == " .. tostring(currentConnectors) )
       end
       playerConnecting[license] = nil;
     end
@@ -208,7 +208,7 @@ AddEventHandler('playerConnecting', function(name, setKickReason, deferrals)
           local message = GetMessage(user);
           local msg = message:gsub("{QUEUE_NUM}", Queue:GetQueueNum(user)):gsub("{QUEUE_MAX}", Queue:GetMax());
           if GetPlayerName(user) ~= nil then
-            print(prefix .. " " .. "Player " .. GetPlayerName(user) .. " has been set to the QUEUE [" .. msg .. "]");
+           -- print(prefix .. " " .. "Player " .. GetPlayerName(user) .. " has been set to the QUEUE [" .. msg .. "]");
           end
         end
         while ( ( (not Queue:CheckQueue(user, currentConnectors, slots)) or (currentConnectors == maxConnectors) ) or (GetPlayerCount() == slots) or 
@@ -229,7 +229,7 @@ AddEventHandler('playerConnecting', function(name, setKickReason, deferrals)
           currentConnectors = currentConnectors + 1;
           connecting[license] = true;
           if GetPlayerName(user) ~= nil then
-            print(prefix .. " " .. "Player " .. GetPlayerName(user) .. " is allowed to join now!");
+            --print(prefix .. " " .. "Player " .. GetPlayerName(user) .. " is allowed to join now!");
           end
           Wait(1000);
           if GetPlayerName(user) ~= nil then
@@ -240,7 +240,7 @@ AddEventHandler('playerConnecting', function(name, setKickReason, deferrals)
             playerConnecting[license].Connection = true;
           end
           if Config.Debug then 
-            print("[Bad-DiscordQueue] currentConnectors is == " .. tostring(currentConnectors) )
+           -- print("[Bad-DiscordQueue] currentConnectors is == " .. tostring(currentConnectors) )
           end
         end -- connecting[license] == nil 
         deferrals.done();
@@ -257,7 +257,7 @@ AddEventHandler('playerConnecting', function(name, setKickReason, deferrals)
         local message = GetMessage(user);
         local msg = message:gsub("{QUEUE_NUM}", Queue:GetQueueNum(user)):gsub("{QUEUE_MAX}", Queue:GetMax());
         if GetPlayerName(user) ~= nil then
-          print(prefix .. " " .. "Player " .. GetPlayerName(user) .. " has been set to the QUEUE [" .. msg .. "]");
+          --print(prefix .. " " .. "Player " .. GetPlayerName(user) .. " has been set to the QUEUE [" .. msg .. "]");
         end
       end
       while ( ( (not Queue:CheckQueue(user, currentConnectors, slots)) or (currentConnectors == maxConnectors) ) or (GetPlayerCount() == slots) or 
@@ -279,7 +279,7 @@ AddEventHandler('playerConnecting', function(name, setKickReason, deferrals)
         currentConnectors = currentConnectors + 1;
         connecting[license] = true;
         if GetPlayerName(user) ~= nil then
-          print(prefix .. " " .. "Player " .. GetPlayerName(user) .. " is allowed to join now!");
+         -- print(prefix .. " " .. "Player " .. GetPlayerName(user) .. " is allowed to join now!");
         end
         Wait(1000);
         if GetPlayerName(user) ~= nil then
@@ -290,7 +290,7 @@ AddEventHandler('playerConnecting', function(name, setKickReason, deferrals)
           playerConnecting[license].Connection = true;
         end
         if Config.Debug then 
-          print("[Bad-DiscordQueue] currentConnectors is == " .. tostring(currentConnectors) )
+          --print("[Bad-DiscordQueue] currentConnectors is == " .. tostring(currentConnectors) )
         end
       end -- connecting[license] == nil
       deferrals.done();

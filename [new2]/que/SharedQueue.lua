@@ -131,7 +131,7 @@ function Queue:SetupPriority(user)
 		end 
 		if debugg then 
 			for identifier, data in pairs(Queue.PlayerInfo) do 
-				print("[DEBUG] " .. tostring(data[1]) .. " has priority of: " .. tostring(data[2]) );
+				--print("[DEBUG] " .. tostring(data[1]) .. " has priority of: " .. tostring(data[2]) );
 			end
 		end 
 	end -- License == nil, don't run
@@ -254,7 +254,7 @@ function Queue:PopLicense(license)
 	--Queue.Players = tempQueue;
 	Queue.PlayerInfo[lic] = nil;
 	if debugg then 
-		print("[DEBUG] " .. tostring(lic) .. " has been POPPED from QUEUE")
+		--print("[DEBUG] " .. tostring(lic) .. " has been POPPED from QUEUE")
     end
 	local SortedKeys = getKeysSortedByValue(Queue.Players, function(a, b) return a < b end)
     Queue.SortedKeys = SortedKeys;
@@ -300,11 +300,11 @@ function Queue:Pop(user)
 	local SortedKeys = getKeysSortedByValue(Queue.Players, function(a, b) return a < b end)
     Queue.SortedKeys = SortedKeys;
     if debugg then 
-    	print("[DEBUG] " .. GetPlayerName(user) .. " has been POPPED from QUEUE")
+    	--print("[DEBUG] " .. GetPlayerName(user) .. " has been POPPED from QUEUE")
     end
     if debugg then 
 	    for identifier, data in pairs(Queue.PlayerInfo) do 
-	    	print("[DEBUG] " .. tostring(data[1]) .. " has priority of: " .. tostring(data[2]) );
+	    	--print("[DEBUG] " .. tostring(data[1]) .. " has priority of: " .. tostring(data[2]) );
 	    end
 	end 
 end
