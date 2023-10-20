@@ -4,25 +4,22 @@ Citizen.CreateThread(function()
    ReplaceHudColourWithRgba(240, 200, 80, 255)
 end)
 
-Citizen.CreateThread(function()
-   Citizen.InvokeNative(GetHashKey("ADD_TEXT_ENTRY"),'FE_THDR_GTAO', 'Fastro RP')
-end)
 function AddTextEntry(k, v)
    Citizen.InvokeNative(GetHashKey("ADD_TEXT_ENTRY"), k, v)
 end
 
-local fivem_title = "FiveM - github.com/Nevylish"
-local map_category = "Los Santos Map"
+local fivem_title = "~y~Fastro RP"
+local map_category = "~g~Los Santos Map"
 
-local game_category = "Take the plane"
-local disconnect_submenu = "Go back to the list of servers"
-local closegame_submenu = "Exit FiveM and return to desktop"
+local game_category = "~r~Take the Plane"
+local disconnect_submenu = "~b~Go back to the list of Servers"
+local closegame_submenu = "~t~Exit FiveM and return to Desktop"
 
-local info_category = "Logs"
-local statistics_category = "Statistics"
-local settings_category = "Settings"
-local gallery_category = "Gallery"
-local rockstar_editor_category = "∑ Editor"
+local info_category = "~b~Logs"
+local statistics_category = "~t~Statistics"
+local settings_category = "~g~Settings"
+local gallery_category = "~b~Gallery"
+local rockstar_editor_category = "~t~Editor"
 
 local fivem_key_config_submenu = "FiveM Keys"
 
