@@ -148,9 +148,9 @@ Config = {
 						rank = {0,1,2,3,4,5},
 						extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
 						--performance = "max",
-                        frontbump = 3,
+                        frontbump = 1,
 
-						spoiler = 1,
+					--	spoiler = 0,
 					--	backbump = 1,
 					--	skirt = 1,
 					--	exaust = 1,
