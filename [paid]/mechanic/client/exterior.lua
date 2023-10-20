@@ -43,7 +43,7 @@ RegisterNetEvent('jim-mechanic:client:Exterior:Check', function()
 	if not nearPoint(GetEntityCoords(PlayerPedId())) then return end
 	if Config.isVehicleOwned and not IsVehicleOwned(trim(GetVehicleNumberPlateText(vehicle))) then triggerNotify(nil, Loc[Config.Lan]["common"].owned, "error") return end
 	else
-		vehicle = getClosest(GetEntityCoords(PlayerPedId())) --pushVehicle(vehicle) --lookVeh(vehicle)
+		vehicle = getClosest(GetEntityCoords(PlayerPedId())) pushVehicle(vehicle) --lookVeh(vehicle)
 
 	
 
@@ -101,7 +101,7 @@ if not policejob() then
 	end
 else
 
-	vehicle = getClosest(GetEntityCoords(PlayerPedId())) -- pushVehicle(vehicle)
+	vehicle = getClosest(GetEntityCoords(PlayerPedId()))  pushVehicle(vehicle)
 		for i = 1, GetNumVehicleMods(vehicle, tonumber(data.mod)) do
 			if GetVehicleMod(vehicle, tonumber(data.mod)) == (i-1) then txt = Loc[Config.Lan]["common"].current else txt = "" end
 			validMods[i] = { id = (i - 1), name = GetLabelText(GetModTextLabel(vehicle, tonumber(data.mod), (i - 1))), install = txt }
