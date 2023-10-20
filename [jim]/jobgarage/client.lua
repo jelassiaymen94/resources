@@ -134,86 +134,69 @@ RegisterNetEvent("jim-jobgarage:client:SpawnList", function(data)
 				SetVehicleMod(veh, 0, data.list.spoiler)
 			end
 			if data.list.frontbump then
-				if GetNumVehicleMods(veh, 1) == 0 then SetVehicleMod(veh, 1, data.list.frontbump, false)
-				else SetVehicleMod(veh, 1, data.list.frontbump, false)
-				end
+				SetVehicleMod(veh, 1, data.list.frontbump)
 			end
 			if data.list.backbump then
-				if GetNumVehicleMods(veh, 1) == 0 then SetVehicleMod(veh, 1, data.list.backbump, false)
-				else SetVehicleMod(veh, 2, data.list.backbump, false)
-				end
+			SetVehicleMod(veh, 2, data.list.backbump)
+				
 			end
 			if data.list.skirt then
-				if GetNumVehicleMods(veh, 1) == 0 then SetVehicleMod(veh, 1, data.list.skirt, false)
-				else SetVehicleMod(veh, 3, data.list.skirt, false)
-				end
+				local number = data.list.skirt - 1
+				SetVehicleMod(veh, 3, number)
 			end
 			if data.list.exaust then
-				if GetNumVehicleMods(veh, 1) == 0 then SetVehicleMod(veh, 1, data.list.exaust, false)
-				else SetVehicleMod(veh, 4, data.list.exaust, false)
-				end
+				local number = data.list.exaust - 1
+				SetVehicleMod(veh, 4, number)
 			end
-			if data.list.chassis then
-				if GetNumVehicleMods(veh, 1) == 0 then SetVehicleMod(veh, 1, data.list.chassis, false)
-				else SetVehicleMod(veh, 5, data.list.chassis, false)
-				end
+			if data.list.rollcage then
+				local number = data.list.rollcage - 1
+				SetVehicleMod(veh, 5, number)
 			end
 			if data.list.grill then
-				if GetNumVehicleMods(veh, 1) == 0 then SetVehicleMod(veh, 1, data.list.grill, false)
-				else SetVehicleMod(veh, 6, data.list.grill, false)
-				end
+				local number = data.list.grill - 1
+				SetVehicleMod(veh, 6, number)
 			end
-			if data.list.trunk then
-				if GetNumVehicleMods(veh, 1) == 0 then SetVehicleMod(veh, 1, data.list.trunk, false)
-				else SetVehicleMod(veh, 7, data.list.trunk, false)
-				end
+			if data.list.trunko then
+				local number = data.list.trunko - 1
+				SetVehicleMod(veh, 7, number)
 			end
 			if data.list.wl then
-				if GetNumVehicleMods(veh, 1) == 0 then SetVehicleMod(veh, 1, data.list.wl, false)
-				else SetVehicleMod(veh, 8, data.list.wl, false)
-				end
+				local number = data.list.wl - 1
+				SetVehicleMod(veh, 8, number)
 			end
 			if data.list.wr then
-				if GetNumVehicleMods(veh, 1) == 0 then SetVehicleMod(veh, 1, data.list.wr, false)
-				else SetVehicleMod(veh, 9, data.list.wr, false)
-				end
+				local number = data.list.wr - 1
+				SetVehicleMod(veh, 9, number)
 			end
 			if data.list.roof then
-				if GetNumVehicleMods(veh, 1) == 0 then SetVehicleMod(veh, 1, data.list.roof, false)
-				else SetVehicleMod(veh, 10, data.list.roof, false)
-				end
+				local number = data.list.roof - 1
+				SetVehicleMod(veh, 10, number)
 			end
 		
-			if data.list.trunk2 then
-				if GetNumVehicleMods(veh, 1) == 0 then SetVehicleMod(veh, 1, data.list.trunk2, false)
-				else SetVehicleMod(veh, 37, data.list.trunk2, false)
-				end
+			if data.list.trunk then
+				local number = data.list.trunk - 1
+				SetVehicleMod(veh, 37, number)
 			end
 
-
-
-			if data.list.chasi2 then
-				if GetNumVehicleMods(veh, 1) == 0 then SetVehicleMod(veh, 1, data.list.chasi2, false)
-				else SetVehicleMod(veh, 42, data.list.chasi2, false)
-				end
+			if data.list.seats then
+				local number = data.list.seats - 1
+				SetVehicleMod(veh, 32, number)
 			end
-			if data.list.chasi3 then
-				if GetNumVehicleMods(veh, 1) == 0 then SetVehicleMod(veh, 1, data.list.chasi3, false)
-				else SetVehicleMod(veh, 43, data.list.chasi3, false)
-				end
+			if data.list.dial then
+				local number = data.list.dial - 1
+				SetVehicleMod(veh, 30, number)
 			end
-			if data.list.chasi4 then
-				if GetNumVehicleMods(veh, 1) == 0 then SetVehicleMod(veh, 1, data.list.chasi4, false)
-				else SetVehicleMod(veh, 44, data.list.chasi4, false)
-				end
+			
+			if data.list.dashboard then
+				local number = data.list.dashboard - 1
+				SetVehicleMod(veh, 29, number)
 			end
 			if data.list.chasi5 then
-				if GetNumVehicleMods(veh, 1) == 0 then SetVehicleMod(veh, 1, data.list.chasi5, false)
-				else SetVehicleMod(veh, 45, data.list.chasi5, false)
-				end
+				local number = data.list.chasi5 - 1
+				SetVehicleMod(veh, 45, number)
 			end
 
-
+			
 			if data.list.performance then
 				if type(data.list.performance) ~= "table" then
 					SetVehicleMod(veh, 11, GetNumVehicleMods(veh, 11)-1) -- Engine
