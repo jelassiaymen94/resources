@@ -100,7 +100,7 @@ if not policejob() then
 		end
 	end
 else
-	vehicle = getClosest(GetEntityCoords(PlayerPedId())) pushVehicle(vehicle)
+	vehicle = getClosest(GetEntityCoords(PlayerPedId())) -- pushVehicle(vehicle)
 		for i = 1, GetNumVehicleMods(vehicle, tonumber(data.mod)) do
 			if GetVehicleMod(vehicle, tonumber(data.mod)) == (i-1) then txt = Loc[Config.Lan]["common"].current else txt = "" end
 			validMods[i] = { id = (i - 1), name = GetLabelText(GetModTextLabel(vehicle, tonumber(data.mod), (i - 1))), install = txt }
