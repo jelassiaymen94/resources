@@ -29,7 +29,9 @@ RegisterNetEvent('jim-mechanic:client:Exterior:Apply', function(data)
 end)
 
 RegisterNetEvent('jim-mechanic:client:Exterior:Check', function()
+	if not policejob() then
 	if Config.CosmeticsJob then if not jobChecks() then return end end
+	else
 	if not locationChecks() then return end
 	if not inCar() then return end
 	if not nearPoint(GetEntityCoords(PlayerPedId())) then return end
@@ -73,6 +75,7 @@ RegisterNetEvent('jim-mechanic:client:Exterior:Check', function()
 			ExteriorMenu[#ExteriorMenu + 1] = { header = Loc[Config.Lan]["police"].extras, txt = "[ "..extraCount..Loc[Config.Lan]["check"].label12, params = { event = "jim-mechanic:client:Exterior:Extra" } }
 		end
 		exports['qb-menu']:openMenu(ExteriorMenu)
+	end
 	end
 end)
 

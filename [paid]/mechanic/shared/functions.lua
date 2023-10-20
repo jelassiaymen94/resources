@@ -255,7 +255,12 @@ function jobChecks()
 	end
 	return check
 end
-
+function policejob()
+	if PlayerJob.name == 'police' then
+	return true
+	else return false
+	end
+end
 function qblog(text)
 	local Player = QBCore.Functions.GetPlayerData()
 	TriggerServerEvent('qb-log:server:CreateLog', 'vehicleupgrades', GetCurrentResourceName() .. " - "..Player.charinfo.firstname.." "..Player.charinfo.lastname.."("..Player.source..") ["..Player.citizenid.."]", 'blue',	text)
