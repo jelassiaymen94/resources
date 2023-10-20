@@ -148,18 +148,18 @@ Config = {
 						rank = {0,1,2,3,4,5},
 						extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
 						--performance = "max",
-                        frontbump = 1,
+                        frontbump = 3,
 
 						spoiler = 1,
-						backbump = 1,
-						skirt = 1,
-						exaust = 1,
-						chassis = 1,
-						grill = 1,
-						trunk = 1,
-						wl = 1,
-						wr = 1,
-						roof = 1,
+					--	backbump = 1,
+					--	skirt = 1,
+					--	exaust = 1,
+						chassis = 2,
+					--	grill = 1,
+						trunk = 3,
+					--	wl = 1,
+					--	wr = 1,
+						--roof = 1,
 
 						trunkItems = {
 						
