@@ -73,6 +73,11 @@ Config = {
 	}, 
 
 
+
+
+
+
+
 		-- 463.4001, -982.2531, 43.6916, 85.8971
 		{ 	zoneEnable = true,
 			job = "ambulance",
@@ -93,6 +98,43 @@ Config = {
 				},
 			},
 		},
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		--------==========================================================================================
+		--------==========================================================================================
+		--------==========================================================================================
+		--------==========================================================================================
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
 		 -- 337.8777, -586.0800, 74.1615, 256.7559]]
 		{ 	zoneEnable = true,
 			job = "police",
@@ -106,7 +148,19 @@ Config = {
 						rank = {0,1,2,3,4,5},
 						extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
 						--performance = "max",
-                          frontbump = 1,
+                        frontbump = 1,
+
+						spoiler = 1,
+						backbump = 1,
+						skirt = 1,
+						exaust = 1,
+						chassis = 1,
+						grill = 1,
+						trunk = 1,
+						wl = 1,
+						wr = 1,
+						roof = 1,
+
 						trunkItems = {
 						
 						},
@@ -118,7 +172,18 @@ Config = {
 						extras = { 1, 4,5,6,7,8,9,10,11,12,13,14,15 },
 						colors = {0,0},
 						--performance = "max",
-                          frontbump = 1,
+                        frontbump = 1,
+						
+						spoiler = 1,
+						backbump = 1,
+						skirt = 1,
+						exaust = 1,
+						chassis = 1,
+						grill = 1,
+						trunk = 1,
+						wl = 1,
+						wr = 1,
+						roof = 1,
 						
 						trunkItems = {
 						
@@ -131,7 +196,19 @@ Config = {
 						rank = {1,2,3,4,5},
 						extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
 						--performance = "max",
-                          frontbump = 4,
+                        frontbump = 4,
+						  
+						spoiler = 1,
+						backbump = 1,
+						skirt = 1,
+						exaust = 1,
+						chassis = 1,
+						grill = 1,
+						trunk = 1,
+						wl = 1,
+						wr = 1,
+						roof = 1,
+						
 						trunkItems = {
 						
 						},
@@ -143,7 +220,19 @@ Config = {
 						rank = {2,3,4,5},
 						extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
 						--performance = "max",
-                          frontbump = 1,
+                        frontbump = 1,
+
+						spoiler = 1,
+						backbump = 1,
+						skirt = 1,
+						exaust = 1,
+						chassis = 1,
+						grill = 1,
+						trunk = 1,
+						wl = 1,
+						wr = 1,
+						roof = 1,
+						
 						trunkItems = {
 							
 						},
@@ -154,7 +243,19 @@ Config = {
 						rank = {3,4,5},
 						extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
 						--performance = "max",
-                          frontbump = 2,
+                        frontbump = 2,
+						  
+						spoiler = 1,
+						backbump = 1,
+						skirt = 1,
+						exaust = 1,
+						chassis = 1,
+						grill = 1,
+						trunk = 1,
+						wl = 1,
+						wr = 1,
+						roof = 1,
+						
 						trunkItems = {
 						
 						},
@@ -165,7 +266,19 @@ Config = {
 						rank = {3,4,5},
 						extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
 						--performance = "max",
-                          frontbump = 2,
+                        frontbump = 2,
+						  
+						spoiler = 1,
+						backbump = 1,
+						skirt = 1,
+						exaust = 1,
+						chassis = 1,
+						grill = 1,
+						trunk = 1,
+						wl = 1,
+						wr = 1,
+						roof = 1,
+						
 						trunkItems = {
 						
 						},
@@ -176,7 +289,19 @@ Config = {
 						rank = {3,4,5},
 						extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
 						--performance = "max",
-                          frontbump = 3,
+                        frontbump = 3,
+						
+						spoiler = 1,
+						backbump = 1,
+						skirt = 1,
+						exaust = 1,
+						chassis = 1,
+						grill = 1,
+						trunk = 1,
+						wl = 1,
+						wr = 1,
+						roof = 1,
+						
 						trunkItems = {
 						
 						},
@@ -188,7 +313,19 @@ Config = {
 						rank = {2, 3, 4, 5},
 						extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
 						--performance = "max",
-                          frontbump = 1,
+                        frontbump = 1,
+						  
+						spoiler = 1,
+						backbump = 1,
+						skirt = 1,
+						exaust = 1,
+						chassis = 1,
+						grill = 1,
+						trunk = 1,
+						wl = 1,
+						wr = 1,
+						roof = 1,
+						
 						trunkItems = {
 							
 						},
@@ -274,504 +411,39 @@ Config = {
 			},
 		},
 		
-		{ 	zoneEnable = true,
-		job = "police",
-		garage = {
-			spawn =  vector4(452.8022, -1019.9819, 28.3834, 88.6225), -- mrpd
-			out = vector4(458.8082, -1011.9845, 28.2199, 94.3970), --  vector4(381.46, -1625.76, 29.29, 319.89)
-			list = {
-				["npolvic"] = {
-					CustomName = "Crown Vic",
-					livery = 1,
-					rank = {0,1,2,3,4,5},
-					extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
-					--performance = "max",
-					  frontbump = 1,
-					trunkItems = {
-					
-					},
-				},
-				["npolchar"] = {
-					CustomName = "Dodge Charger",
-					livery = 1,
-					rank = {2,3,4,5},
-					extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
-					--performance = "max",
-					  frontbump = 1,
-					trunkItems = {
-					
-					},
-				},
-				["npolexp"] = {
-					CustomName = "Ford Explorer",
-					livery = 1,
-					rank = {1,2,3,4,5},
-					extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
-					--performance = "max",
-					  frontbump = 1,
-					trunkItems = {
-					
-					},
-				},
-				
-				["npolmm"] = {
-					CustomName = "Police Motorcycle",
-					livery = 1,
-					rank = {2,3,4,5},
-					extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
-					--performance = "max",
-					  frontbump = 1,
-					trunkItems = {
-						
-					},
-				},
-				["npolvette"] = {
-					CustomName = "Chevy Corvette",
-					livery = 1,
-					rank = {3,4,5},
-					extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
-					--performance = "max",
-					  frontbump = 1,
-					trunkItems = {
-					
-					},
-				},
-				["npolstang"] = {
-					CustomName = "Ford Mustang",
-					livery = 1,
-					rank = {3,4,5},
-					extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
-					--performance = "max",
-					  frontbump = 1,
-					trunkItems = {
-					
-					},
-				},
-				["npolchal"] = {
-					CustomName = "Dodge Challenger",
-					livery = 1,
-					rank = {3,4,5},
-					extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
-					--performance = "max",
-					  frontbump = 1,
-					trunkItems = {
-					
-					},
-				},
-				
-				["npolcoach"] = {
-					CustomName = "Police Bus",
-					livery = 1,
-					rank = {2, 3, 4, 5 },
-					extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
-					--performance = "max",
-					  frontbump = 1,
-					trunkItems = {
-						
-					},
-				},
-				["uccomet"] = {
-					CustomName = "Undercover Comet",
-					livery = 1,
-					rank = { 2,3, 4, 5 },
-					extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
-					--performance = "max",
-					  frontbump = 1,
-					trunkItems = {
-						
-					},
-				},
-				["uccoquette"] = {
-					CustomName = "Undercover Coquette",
-					livery = 1,
-					rank = { 2,3, 4, 5 },
-					extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
-					--performance = "max",
-					  frontbump = 1,
-					trunkItems = {
-						
-					},
-				},
-				["bcat"] = {
-					CustomName = "Bear Cat",
-					livery = 1,
-					rank = {2, 3, 4, 5 },
-					extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
-					--performance = "max",
-					  frontbump = 1,
-					trunkItems = {
-						
-					},2,
-				},
-				["ucballer"] = {
-					CustomName = "Undercover Baller",
-					livery = 1,
-					rank = { 2,3, 4, 5 },
-					extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
-					--performance = "max",
-					  frontbump = 1,
-					trunkItems = {
-						
-					},
-				},
-				["polas350"] = {
-					CustomName = "Police Helicopter",
-					livery = 3,
-					rank = {2, 3,4,5},
-					extras = {2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
-					performance = "max",
-					trunkItems = {
-					
-					},
-				},
-				["f150"] = {
-					CustomName = "Ford Raptor",
-					livery = 1,
-					rank = {5},
-					extras = {2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
-					performance = "max",
-					trunkItems = {
-					
-					},
-				},
-			
-			},
-		},
-	},
-
-		{ 	zoneEnable = true,
-			job = "police",
-			garage = {
-				spawn =  vector4(1853.2279, 3706.2881, 33.9746, 207.6323), -- sapd
-				out = vector4(1821.0867, 3680.3750, 33.9746, 31.8022), --  vector4(381.46, -1625.76, 29.29, 319.89)
-				list = {
-					["npolvic"] = {
-						CustomName = "Crown Vic",
-						livery = 1,
-						rank = {0,1,2,3,4,5},
-						extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
-						--performance = "max",
-                          frontbump = 1,
-						trunkItems = {
-						
-						},
-					},
-					["npolchar"] = {
-						CustomName = "Dodge Charger",
-						livery = 1,
-						rank = {2,3,4,5},
-						extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
-						--performance = "max",
-                          frontbump = 1,
-						trunkItems = {
-						
-						},
-					},
-					["npolexp"] = {
-						CustomName = "Ford Explorer",
-						livery = 1,
-						rank = {1,2,3,4,5},
-						extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
-						--performance = "max",
-                          frontbump = 1,
-						trunkItems = {
-						
-						},
-					},
-					
-					["npolmm"] = {
-						CustomName = "Police Motorcycle",
-						livery = 1,
-						rank = {2,3,4,5},
-						extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
-						--performance = "max",
-                          frontbump = 1,
-						trunkItems = {
-							
-						},
-					},
-					["npolvette"] = {
-						CustomName = "Chevy Corvette",
-						livery = 1,
-						rank = {3,4,5},
-						extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
-						--performance = "max",
-                          frontbump = 1,
-						trunkItems = {
-						
-						},
-					},
-					["npolstang"] = {
-						CustomName = "Ford Mustang",
-						livery = 1,
-						rank = {3,4,5},
-						extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
-						--performance = "max",
-                          frontbump = 1,
-						trunkItems = {
-						
-						},
-					},
-					["npolchal"] = {
-						CustomName = "Dodge Challenger",
-						livery = 1,
-						rank = {3,4,5},
-						extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
-						--performance = "max",
-                          frontbump = 1,
-						trunkItems = {
-						
-						},
-					},
-					
-					["npolcoach"] = {
-						CustomName = "Police Bus",
-						livery = 1,
-						rank = {2, 3, 4, 5 },
-						extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
-						--performance = "max",
-                          frontbump = 1,
-						trunkItems = {
-							
-						},
-					},
-					["uccomet"] = {
-						CustomName = "Undercover Comet",
-						livery = 1,
-						rank = { 2,3, 4, 5 },
-						extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
-						--performance = "max",
-                          frontbump = 1,
-						trunkItems = {
-							
-						},
-					},
-					["uccoquette"] = {
-						CustomName = "Undercover Coquette",
-						livery = 1,
-						rank = { 2,3, 4, 5 },
-						extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
-						--performance = "max",
-                          frontbump = 1,
-						trunkItems = {
-							
-						},
-					},
-					["bcat"] = {
-						CustomName = "Bear Cat",
-						livery = 1,
-						rank = {2, 3, 4, 5 },
-						extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
-						--performance = "max",
-                          frontbump = 1,
-						trunkItems = {
-							
-						},2,
-					},
-					["ucballer"] = {
-						CustomName = "Undercover Baller",
-						livery = 1,
-						rank = { 2,3, 4, 5 },
-						extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
-						--performance = "max",
-                          frontbump = 1,
-						trunkItems = {
-							
-						},
-					},
-					["polas350"] = {
-						CustomName = "Police Helicopter",
-						livery = 3,
-						rank = {2, 3,4,5},
-						extras = {2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
-						performance = "max",
-						trunkItems = {
-						
-						},
-					},
-					["f150"] = {
-						CustomName = "Ford Raptor",
-						livery = 1,
-						rank = {5},
-						extras = {2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
-						performance = "max",
-						trunkItems = {
-						
-						},
-					},
-				
-				},
-			},
-		},
-
-
-		{ 	zoneEnable = true,
-			job = "weazelnews",
-			garage = {
-				spawn = vector4(-543.7775, -881.0712, 25.2373, 175.0697),
-				out = vector4(-546.1678, -887.6708, 25.1779, 179.3694),
-				list = {
-					["rumpo"] = {
-						CustomName = "News Van",
-						livery = 2,
-						rank = {0,1,2,3,4,5},
-						extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
-						--performance = "max",
-                          frontbump = 1,
-						trunkItems = {
-						
-						},
-					},
-				
-				},
-			},
-		},
-
-		{ 	zoneEnable = true,
-			job = "weazelnews",
-			garage = {
-				spawn = vector4(-583.6081, -930.6199, 36.8346, 88.7990),
-				out = vector4(-568.2466, -924.6141, 36.8346, 96.4655),
-				list = {
-					["newsheli2"] = {
-						CustomName = "News Helicopter",
-						livery = 1,
-						rank = {2,3,4,5},
-						extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
-						--performance = "max",
-                          frontbump = 1,
-						trunkItems = {
-						
-						},
-				
-					},
-				},
-			},
-		},
 		
-		{ 	zoneEnable = true,
-			job = "taco",
-			garage = {
-				spawn = vector4(15.5954, -1614.2899, 29.2943, 137.8965),
-				out = vector4(16.5254, -1609.3326, 29.3783, 231.6623),
-				list = {
-					["taco"] = {
-						CustomName = "Taco Truck",
-						livery = 1,
-						rank = {0,1,2,3,4,5},
-						extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
-						performance = "max",
-                          frontbump = 1,
-						trunkItems = {
-						
-						},
-				
-					},
-				},
-			},
-		},
+		
 
 
-		{ 	zoneEnable = true,
-			job = "police",
-			garage = {
-				spawn = vector4(650.49, -1840.44, 8.16, 172.23),
-				out = vector4(643.15, -1827.67, 9.08, 267.16),
-				list = {
-					["predator"] = {
-						CustomName = "Police Boat",
-						livery = 1,
-						rank = {2,3,4,5},
-						extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
-						performance = "max",
-						trunkItems = {
-						
-						},
-				
-					},
-				},
-			},
-		},
-		{ 	zoneEnable = true,
-			job = "police",
-			garage = {
-				spawn = vector4(-785.62, -1513.18, -0.48, 102.96),
-				out = vector4(-781.91, -1506.84, 1.6, 196.97),
-				list = {
-					["predator"] = {
-						CustomName = "Police Boat",
-						livery = 1,
-						rank = {2,3,4,5},
-						extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
-						performance = "max",
-						trunkItems = {
-						
-						},
-				
-					},
-				},
-			},
-		},
-		{ 	zoneEnable = true,
-			job = "police",
-			garage = {
-				spawn = vector4(-785.62, -1513.18, -0.48, 102.96),
-				out = vector4(-781.91, -1506.84, 1.6, 196.97),
-				list = {
-					["predator"] = {
-						CustomName = "Police Boat",
-						livery = 1,
-						rank = {2,3,4,5},
-						extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
-						performance = "max",
-						trunkItems = {
-						
-						},
-				
-					},
-				},
-			},
-		},
-		{ 	zoneEnable = true,
-			job = "police",
-			garage = {
-				spawn = vector4(933.64, 3702.67, 29.56, 359.72),
-				out = vector4(916.36, 3655.32, 32.49, 355.46),
-				list = {
-					["predator"] = {
-						CustomName = "Police Boat",
-						livery = 1,
-						rank = {2,3,4,5},
-						extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
-						performance = "max",
-						trunkItems = {
-						
-						},
-				
-					},
-				},
-			},
-		},
-		{ 	zoneEnable = true,
-			job = "police",
-			garage = {
-				spawn = vector4(-913.19, 5796.73, 0.35, 34.47),
-				out = vector4(-906.43, 5780.04, 1.94, 23.81),
-				list = {
-					["predator"] = {
-						CustomName = "Police Boat",
-						livery = 1,
-						rank = {2,3,4,5},
-						extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
-						performance = "max",
-						trunkItems = {
-						
-						},
-				
-					},
-				},
-			},
-		},
+		
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		--------==========================================================================================
+		--------==========================================================================================
+		--------==========================================================================================
+		--------==========================================================================================
+		
+		
+		
+		
+		
+		
+		
 		{ 	zoneEnable = true, -- sheriff
 			job = "police",
 			garage = {
@@ -877,6 +549,24 @@ Config = {
 				},
 			},
 		},
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		--------==========================================================================================
+		--------==========================================================================================
+		--------==========================================================================================
+		--------==========================================================================================
+		
+		
 		{ 	zoneEnable = true, -- ranger
 			job = "police",
 			garage = {
@@ -961,5 +651,170 @@ Config = {
 				},
 			},
 		},
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		
+
+
+		{ 	zoneEnable = true,
+			job = "police",
+			garage = {
+				spawn = vector4(650.49, -1840.44, 8.16, 172.23),
+				out = vector4(643.15, -1827.67, 9.08, 267.16),
+				list = {
+					["predator"] = {
+						CustomName = "Police Boat",
+						livery = 1,
+						rank = {2,3,4,5},
+						extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
+						performance = "max",
+						trunkItems = {
+						
+						},
+				
+					},
+				},
+			},
+		},
+		{ 	zoneEnable = true,
+			job = "police",
+			garage = {
+				spawn = vector4(-785.62, -1513.18, -0.48, 102.96),
+				out = vector4(-781.91, -1506.84, 1.6, 196.97),
+				list = {
+					["predator"] = {
+						CustomName = "Police Boat",
+						livery = 1,
+						rank = {2,3,4,5},
+						extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
+						performance = "max",
+						trunkItems = {
+						
+						},
+				
+					},
+				},
+			},
+		},
+		{ 	zoneEnable = true,
+			job = "police",
+			garage = {
+				spawn = vector4(-785.62, -1513.18, -0.48, 102.96),
+				out = vector4(-781.91, -1506.84, 1.6, 196.97),
+				list = {
+					["predator"] = {
+						CustomName = "Police Boat",
+						livery = 1,
+						rank = {2,3,4,5},
+						extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
+						performance = "max",
+						trunkItems = {
+						
+						},
+				
+					},
+				},
+			},
+		},
+		{ 	zoneEnable = true,
+			job = "police",
+			garage = {
+				spawn = vector4(933.64, 3702.67, 29.56, 359.72),
+				out = vector4(916.36, 3655.32, 32.49, 355.46),
+				list = {
+					["predator"] = {
+						CustomName = "Police Boat",
+						livery = 1,
+						rank = {2,3,4,5},
+						extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
+						performance = "max",
+						trunkItems = {
+						
+						},
+				
+					},
+				},
+			},
+		},
+		{ 	zoneEnable = true,
+			job = "police",
+			garage = {
+				spawn = vector4(-913.19, 5796.73, 0.35, 34.47),
+				out = vector4(-906.43, 5780.04, 1.94, 23.81),
+				list = {
+					["predator"] = {
+						CustomName = "Police Boat",
+						livery = 1,
+						rank = {2,3,4,5},
+						extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
+						performance = "max",
+						trunkItems = {
+						
+						},
+				
+					},
+				},
+			},
+		},
+		
+		
+		
+		
+		
+		
+		
+		
 	},
 }

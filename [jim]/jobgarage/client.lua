@@ -155,14 +155,38 @@ RegisterNetEvent("jim-jobgarage:client:SpawnList", function(data)
 				else SetVehicleMod(veh, 4, data.list.exaust, false)
 				end
 			end
-			if data.list.trunk then
-				if GetNumVehicleMods(veh, 1) == 0 then SetVehicleMod(veh, 1, data.list.trunk, false)
-				else SetVehicleMod(veh, 5, data.list.trunk, false)
+			if data.list.chassis then
+				if GetNumVehicleMods(veh, 1) == 0 then SetVehicleMod(veh, 1, data.list.chassis, false)
+				else SetVehicleMod(veh, 5, data.list.chassis, false)
 				end
 			end
+			if data.list.grill then
+				if GetNumVehicleMods(veh, 1) == 0 then SetVehicleMod(veh, 1, data.list.grill, false)
+				else SetVehicleMod(veh, 6, data.list.grill, false)
+				end
+			end
+			if data.list.trunk then
+				if GetNumVehicleMods(veh, 1) == 0 then SetVehicleMod(veh, 1, data.list.trunk, false)
+				else SetVehicleMod(veh, 7, data.list.trunk, false)
+				end
+			end
+			if data.list.wl then
+				if GetNumVehicleMods(veh, 1) == 0 then SetVehicleMod(veh, 1, data.list.wl, false)
+				else SetVehicleMod(veh, 8, data.list.wl, false)
+				end
+			end
+			if data.list.wr then
+				if GetNumVehicleMods(veh, 1) == 0 then SetVehicleMod(veh, 1, data.list.wr, false)
+				else SetVehicleMod(veh, 9, data.list.wr, false)
+				end
+			end
+			if data.list.roof then
+				if GetNumVehicleMods(veh, 1) == 0 then SetVehicleMod(veh, 1, data.list.roof, false)
+				else SetVehicleMod(veh, 10, data.list.roof, false)
+				end
+			end
+		
 
-
-			
 			if data.list.performance then
 				if type(data.list.performance) ~= "table" then
 					SetVehicleMod(veh, 11, GetNumVehicleMods(veh, 11)-1) -- Engine
