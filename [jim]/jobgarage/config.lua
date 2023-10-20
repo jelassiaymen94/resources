@@ -570,7 +570,38 @@ Config = {
 						
 						},
 				},
+				["npolchal"] = {
+						CustomName = "Dodge Challenger",
+						livery = 2,
+						rank = {3,4,5},
+						extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
+						
+						colors = {0,0},
+						--performance = "max",
+						frontbump = 2,
+						spoiler = 1,
+						backbump = 1,
+						skirt = 2,
+						exaust = 1,
+						rollcage = 2,
+						grill = 1,
 				
+					--	leftfender = 1,
+					--	rightfender = 1,
+						hood = 1,
+						roof = 0,
+						dashboard = 1,
+						dial = 1,
+						--seats = 1,
+						trunk = 1,
+						ornaments = 1,
+
+
+						trunkItems = {
+						
+						},
+					},
+					
 				["npolmm"] = {
 					CustomName = "Sheriff Police Motorcycle",
 					livery = 2,
@@ -813,6 +844,37 @@ Config = {
 					dial = 1,
 					seats = 1,
 					--trunk = 3,
+					ornaments = 1,
+
+
+					trunkItems = {
+					
+					},
+				},
+				["npolchal"] = {
+					CustomName = "Dodge Challenger",
+					livery = 5,
+					rank = {3,4,5},
+					extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
+					
+					colors = {0,0},
+					--performance = "max",
+					frontbump = 2,
+					spoiler = 1,
+					backbump = 1,
+					skirt = 2,
+					exaust = 1,
+					rollcage = 2,
+					grill = 1,
+			
+				--	leftfender = 1,
+				--	rightfender = 1,
+					hood = 1,
+					roof = 0,
+					dashboard = 1,
+					dial = 1,
+					--seats = 1,
+					trunk = 1,
 					ornaments = 1,
 
 
