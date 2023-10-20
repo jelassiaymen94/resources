@@ -6,7 +6,7 @@ Config = {
 	onlyActiveWhenFull = false,
 	Requirements = { -- A player must have the identifier to be allowed into the server
 		Discord = true,
-		Steam = true
+		Steam = false
 	},
 	WhitelistRequired = true, -- If this option is set to true, a player must have a role in Config.Rankings to be allowed into the server
 	Debug = false,
@@ -40,7 +40,7 @@ Config = {
 Config.Rankings = {
 	-- LOWER NUMBER === HIGHER PRIORITY 
 	-- ['roleID'] = {rolePriority, connectQueueMessage},
-	['1011780619258314842'] = {500, "You are being connected (you are not as special as Badger) [{QUEUE_NUM}/{QUEUE_MAX}]:"}, -- Discord User 
+	['1011780619258314841'] = {500, "You are being connected (you are not as special as Badger) [{QUEUE_NUM}/{QUEUE_MAX}]:"}, -- Discord User 
 	['Staff'] = {100, "You are being connected (Staff Queue) [{QUEUE_NUM}/{QUEUE_MAX}]:"}, -- Staff 
 	['Admin'] = {50, "You are being connected (Admin Queue) [{QUEUE_NUM}/{QUEUE_MAX}]:"}, -- Admin
 	['Founder'] = {1, "You are being connected (Founder Queue) [{QUEUE_NUM}/{QUEUE_MAX}]:"}, -- Founder
