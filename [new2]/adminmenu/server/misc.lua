@@ -204,5 +204,5 @@ RegisterNetEvent('adminmenu:server:ClothingMenu', function(data, selectedData)
         TriggerClientEvent("adminmenu:client:CloseUI", src)
     end
 
-    TriggerClientEvent('clothing:client:openMenu', target)
+    TriggerClientEvent('Polar-Clothing:client:openMenu', target)
 end)
