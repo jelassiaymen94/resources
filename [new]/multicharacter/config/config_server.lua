@@ -1,4 +1,4 @@
-Config.Slots = 1
+Config.Slots = 2
 
 Config.EnableStarterItems = false
 Config.StarterItems = {
