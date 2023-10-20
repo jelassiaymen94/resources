@@ -13,6 +13,5 @@ Config.StarterMoney = {
 }
 
 openSpawnSelector = function(src, cData)
-        
-        TriggerClientEvent('apartments:client:setupSpawnUI', src, cData)
+    TriggerClientEvent('apartments:client:setupSpawnUI', src, cData)
 end

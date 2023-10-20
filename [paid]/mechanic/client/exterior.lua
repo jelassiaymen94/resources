@@ -32,6 +32,7 @@ RegisterNetEvent('jim-mechanic:client:Exterior:Apply', function(data)
 			
 			SetVehicleMod(vehicle, tonumber(data.mod), tonumber(data.id))
 			updateCar(vehicle)
+			Wait(500)
 			TriggerEvent('jim-mechanic:client:Exterior:Check') 
 			
 		end

@@ -5,8 +5,6 @@ Config.CanDelete = false
 Config.WeatherSync = "qb-weathersync" -- "cd_easytime", "qb-weathersync"
 Config.Weather = "CLEAR" -- weather type
 
-Config.SkinManager = "qb-clothing" -- "qb-clothing" / "fivem-appearance" / "illenium-appearance"
-
 Config.SelectFirstChar = false -- it will select first possible player character by first connection on the server
 
 Config.UseCustomSkinCreator = true -- if you use qb-clothing for character creator set it to false, if you use custom character creator set it to true and change in @multicharacter/config/config_client.lua function openCharacterCreator(skin)
