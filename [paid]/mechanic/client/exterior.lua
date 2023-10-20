@@ -12,6 +12,7 @@ RegisterNetEvent('jim-mechanic:client:Exterior:Apply', function(data)
 		TriggerEvent('jim-mechanic:client:Exterior:Choose', data)
 	elseif GetVehicleMod(vehicle, tonumber(data.mod)) ~= tonumber(data.id) then
 		time = math.random(3000,5000)
+		if not policejob() then
 		QBCore.Functions.Progressbar("drink_something", Loc[Config.Lan]["common"].installing..modName.."..", time, false, true, { disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = false, },
 		{ animDict = "anim@amb@clubhouse@tutorial@bkr_tut_ig3@", anim = "machinic_loop_mechandplayer", flags = 8, }, {}, {}, function() SetVehicleModKit(vehicle, 0)
 			qblog("`externals - "..QBCore.Shared.Items["externals"].label.." - "..modName.."` changed [**"..trim(GetVehicleNumberPlateText(vehicle)).."**]")
@@ -25,6 +26,10 @@ RegisterNetEvent('jim-mechanic:client:Exterior:Apply', function(data)
 			triggerNotify(nil, Loc[Config.Lan]["exterior"].failed, "error")
 			emptyHands(PlayerPedId())
 		end, "externals")
+		else
+			SetVehicleMod(vehicle, tonumber(data.mod), tonumber(data.id))
+			updateCar(vehicle)
+		end
 	end
 end)
 
@@ -40,9 +45,7 @@ RegisterNetEvent('jim-mechanic:client:Exterior:Check', function()
 	else
 		vehicle = getClosest(GetEntityCoords(PlayerPedId())) pushVehicle(vehicle) lookVeh(vehicle)
 
-	--local vehicle = nil
-	print(vehicle)
-	print(json.encode(vehicle))
+	
 
 	if DoesEntityExist(vehicle) then
 		local exterior = { 27, 44, 37, 39, 40, 41, 38, 42, 45, 43 }
