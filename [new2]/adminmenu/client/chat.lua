@@ -10,7 +10,7 @@ end)
 
 RegisterNUICallback("SendMessage", function(data, cb)
 	local message = data.message
-	print(message, PlayerData.citizenid, PlayerData.charinfo.firstname .. " " .. PlayerData.charinfo.lastname )
+	--print(message, PlayerData.citizenid, PlayerData.charinfo.firstname .. " " .. PlayerData.charinfo.lastname )
 
 	TriggerServerEvent("adminmenu:server:sendMessageServer", message, PlayerData.citizenid, PlayerData.charinfo.firstname .. " " .. PlayerData.charinfo.lastname)
 

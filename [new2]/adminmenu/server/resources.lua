@@ -24,20 +24,20 @@ end)
 
 
 lib.callback.register('adminmenu:callback:ChangeResourceState', function(source, data, perms)
-    print(json.encode(data))
+    --print(json.encode(data))
     if not CheckPerms(Config.ResourcePerms) then return end
 
     if data.state == "start" then
         StartResource(data.name)
-        print("Started " .. data.name)
+        --print("Started " .. data.name)
     elseif data.state == "stop" then
         StopResource(data.name)
-        print("Stopped " .. data.name)
+        --print("Stopped " .. data.name)
     elseif data.state == "restart" then
         StopResource(data.name)
         Wait(200)
         StartResource(data.name)
-        print("Restarted " .. data.name)
+        --print("Restarted " .. data.name)
     end
 
     return resources

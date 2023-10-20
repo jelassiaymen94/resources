@@ -37,7 +37,7 @@ end)
 RegisterNUICallback("clickButton", function(data)
 	local selectedData = data.selectedData
 	local data = data.data
-	print(json.encode(selectedData))
+	--print(json.encode(selectedData))
 	if not CheckPerms(data.perms) then return end
 
 	if data.type == "client" then
@@ -70,6 +70,6 @@ end)
 -- Get players
 RegisterNUICallback("getPlayers", function(data, cb)
 	local players = lib.callback.await('adminmenu:callback:GetPlayers', false)
-	print(json.encode(players))
+	--print(json.encode(players))
     cb(players)
 end)
