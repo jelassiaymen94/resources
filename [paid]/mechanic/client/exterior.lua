@@ -128,7 +128,9 @@ RegisterNetEvent('jim-mechanic:client:Exterior:Extra', function()
 	local vehicle = nil
 	local hasMod = false
 	if not IsPedInAnyVehicle(PlayerPedId(), false) then vehicle = getClosest(GetEntityCoords(PlayerPedId())) else 
+		print('12222')
 		if policejob() then
+			print('hi')
 		TriggerEvent('jim-mechanic:client:Exterior:Check') 
 		end
 	return end
