@@ -13,7 +13,7 @@ Config = {
 
 Config.Splash = {
 	Header_IMG = 'https://forum.cfx.re/uploads/default/original/3X/a/6/a6ad03c9fb60fa7888424e7c9389402846107c7e.png',
-	Enabled = true,
+	Enabled = false,
 	Wait = 12, -- How many seconds should splash page be shown for? (Max is 12)
 	Heading1 = "Welcome to Fastro RP",
 	Heading2 = "Have a Great Stay",

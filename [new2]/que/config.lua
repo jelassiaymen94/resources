@@ -40,8 +40,16 @@ Config = {
 Config.Rankings = {
 	-- LOWER NUMBER === HIGHER PRIORITY 
 	-- ['roleID'] = {rolePriority, connectQueueMessage},
-	['1011780619258314842'] = {500, "You are being connected (you are not as special as Badger) [{QUEUE_NUM}/{QUEUE_MAX}]:"}, -- Discord User 
-	['Staff'] = {100, "You are being connected (Staff Queue) [{QUEUE_NUM}/{QUEUE_MAX}]:"}, -- Staff 
-	['Admin'] = {50, "You are being connected (Admin Queue) [{QUEUE_NUM}/{QUEUE_MAX}]:"}, -- Admin
-	['Founder'] = {1, "You are being connected (Founder Queue) [{QUEUE_NUM}/{QUEUE_MAX}]:"}, -- Founder
+	['1011780619258314842'] = {10000, "You are being connected (Normal Que) [{QUEUE_NUM}/{QUEUE_MAX}]:"}, -- normal
+
+	['1107451190435905598'] = {5000, "You are being connected (Bronze Queue) [{QUEUE_NUM}/{QUEUE_MAX}]:"}, -- bronze
+	['1107451144822853753'] = {4000, "You are being connected (Silver Queue) [{QUEUE_NUM}/{QUEUE_MAX}]:"}, -- silver
+	['1107451031136251954'] = {3000, "You are being connected (Gold Queue) [{QUEUE_NUM}/{QUEUE_MAX}]:"}, -- gold
+	['1107451053189906562'] = {2000, "You are being connected (Diamond Queue) [{QUEUE_NUM}/{QUEUE_MAX}]:"}, -- diamond
+	['1164749145240768642'] = {1000, "You are being connected (GOAT Queue) [{QUEUE_NUM}/{QUEUE_MAX}]:"}, -- GOAT
+
+	['1109825980295548930'] = {4000, "You are being connected (Streamer Queue) [{QUEUE_NUM}/{QUEUE_MAX}]:"}, -- streamer
+	['1011783216778194994'] = {4000, "You are being connected (Admin Queue) [{QUEUE_NUM}/{QUEUE_MAX}]:"}, -- administration
+
+	['1011781307975602216'] = {10, "You are being connected (Founder Queue) [{QUEUE_NUM}/{QUEUE_MAX}]:"}, -- management
 }

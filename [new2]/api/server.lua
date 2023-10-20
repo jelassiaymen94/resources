@@ -14,14 +14,14 @@ local error_codes_defined = {
 Citizen.CreateThread(function()
 	if (GetCurrentResourceName() ~= "api") then 
 		--StopResource(GetCurrentResourceName());
-		print("[" .. GetCurrentResourceName() .. "] " .. "IMPORTANT: This resource must be named api for it to work properly with other scripts...");
+		--print("[" .. GetCurrentResourceName() .. "] " .. "IMPORTANT: This resource must be named api for it to work properly with other scripts...");
 	end
-	print("[api] For support, make sure to join Badger's official Discord server: discord.gg/WjB5VFz");
-	print('^7[^2Zap-Hosting^7] ^3Use code ^5TheWolfBadger-4765 ^3at checkout for ^220% ^3off of selected services. Visit ^5https://zap-hosting.com/badger ^3to get started!');
+	--print("[api] For support, make sure to join Badger's official Discord server: discord.gg/WjB5VFz");
+	--print('^7[^2Zap-Hosting^7] ^3Use code ^5TheWolfBadger-4765 ^3at checkout for ^220% ^3off of selected services. Visit ^5https://zap-hosting.com/badger ^3to get started!');
 end)
 
 function sendDebugMessage(msg)
-	print("^1[^5api^1] ^3" .. msg);
+	--print("^1[^5api^1] ^3" .. msg);
 end
 
 tracked = {}
