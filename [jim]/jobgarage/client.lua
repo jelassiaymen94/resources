@@ -131,9 +131,7 @@ RegisterNetEvent("jim-jobgarage:client:SpawnList", function(data)
 				end
 			end
 			if data.list.spoiler then
-				if GetNumVehicleMods(veh, 1) == 0 then SetVehicleMod(veh, 1, data.list.spoiler, false)
-				else SetVehicleMod(veh, 0, data.list.spoiler, false)
-				end
+				SetVehicleMod(veh, 0, data.list.spoiler)
 			end
 			if data.list.frontbump then
 				if GetNumVehicleMods(veh, 1) == 0 then SetVehicleMod(veh, 1, data.list.frontbump, false)
