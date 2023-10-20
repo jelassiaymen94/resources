@@ -63,9 +63,9 @@ end
 local function GetLocations()
     local locations = {}
 
-    for name, v in pairs(QBCore.Shared.Locations) do
-        locations[#locations + 1] = { label = name, value = v }
-    end
+    --for name, v in pairs(QBCore.Shared.Locations) do
+    --    locations[#locations + 1] = { label = name, value = v }
+   -- end
 
     return locations
 end
