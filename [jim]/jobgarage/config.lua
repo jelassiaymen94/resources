@@ -173,39 +173,9 @@ Config = {
 						
 						},
 					},
+				
 					["npolchar"] = { -- npolchar
 						CustomName = "LSPD Dodge Charger",
-						livery = 1,
-						rank = {2,3,4,5},
-						extras = { 1, 4,5,6,7,8,9,10,11,12,13,14,15 },
-
-						colors = {0,0},
-						--performance = "max",
-						frontbump = 2,
-						spoiler = 3,
-					--	backbump = 1,
-					--	skirt = 1,
-						exaust = 0,
-						rollcage = 3,
-					--	grill = 1,
-				
-					--	leftfender = 1,
-					--	rightfender = 1,
-					-- hood = 1,
-						roof = 0,
-						dashboard = 1,
-						dial = 1,
-						--seats = 1,
-						--trunk = 3,
-						ornaments = 1,
-
-
-						trunkItems = {
-						
-						},
-					},
-					["npolchar"] = { -- npolchar
-						CustomName = "LSPD Dodge Charger Special",
 						livery = 1,
 						rank = {2,3,4,5},
 						extras = { 1, 4,5,6,7,8,9,10,11,12,13,14,15 },
@@ -536,38 +506,9 @@ Config = {
 					
 					},
 				},
-				["npolchar"] = {
-					CustomName = "Sheriff Dodge Charger",
-					livery = 2,
-					rank = {2,3,4,5},
-					colors = {0,0},
-					extras = { 1, 4,5,6,7,8,9,10,11,12,13,14,15 },
-					--performance = "max",
-					frontbump = 2,
-					spoiler = 3,
-				--	backbump = 1,
-				--	skirt = 1,
-					exaust = 0,
-					rollcage = 3,
-				--	grill = 1,
-			
-				--	leftfender = 1,
-				--	rightfender = 1,
-				-- hood = 1,
-					roof = 0,
-					dashboard = 1,
-					dial = 1,
-					--seats = 1,
-					--trunk = 3,
-					ornaments = 1,
-
-
-					trunkItems = {
-					
-					},
-				},
+				
 				["npolchar"] = { -- npolchar
-					CustomName = "LSPD Dodge Charger Special",
+					CustomName = "LSPD Dodge Charger",
 					livery = 2,
 					colors = {0,0},
 					rank = {2,3,4,5},
@@ -784,38 +725,9 @@ Config = {
 				
 				},
 				},
-				["npolchar"] = {
-					CustomName = "Ranger Dodge Charger",
-					livery = 5,
-					rank = {2,3,4,5},
-					extras = { 1, 4,5,6,7,8,9,10,11,12,13,14,15 },
-					colors = {112,50},
-					--performance = "max",
-					frontbump = 2,
-					spoiler = 3,
-				--	backbump = 1,
-				--	skirt = 1,
-					exaust = 0,
-					rollcage = 3,
-				--	grill = 1,
-			
-				--	leftfender = 1,
-				--	rightfender = 1,
-				-- hood = 1,
-					roof = 0,
-					dashboard = 1,
-					dial = 1,
-					--seats = 1,
-					--trunk = 3,
-					ornaments = 1,
-
-
-					trunkItems = {
-					
-					},
-				},
+				
 				["npolchar"] = { -- npolchar
-					CustomName = "LSPD Dodge Charger Special",
+					CustomName = "LSPD Dodge Charger",
 					livery = 5,
 					rank = {2,3,4,5},
 					extras = { 1, 4,5,6,7,8,9,10,11,12,13,14,15 },
