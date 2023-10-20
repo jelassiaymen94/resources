@@ -131,14 +131,16 @@ RegisterNetEvent("jim-jobgarage:client:SpawnList", function(data)
 				end
 			end
 			if data.list.spoiler then
-				SetVehicleMod(veh, 0, data.list.spoiler)
+				local number = data.list.spoiler - 1
+				SetVehicleMod(veh, 0, number)
 			end
 			if data.list.frontbump then
-				SetVehicleMod(veh, 1, data.list.frontbump)
+				local number = data.list.frontbump - 1
+				SetVehicleMod(veh, 1, number)
 			end
 			if data.list.backbump then
-			SetVehicleMod(veh, 2, data.list.backbump)
-				
+				local number = data.list.backbump - 1
+				SetVehicleMod(veh, 2, number)
 			end
 			if data.list.skirt then
 				local number = data.list.skirt - 1
