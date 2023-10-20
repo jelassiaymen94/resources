@@ -176,7 +176,7 @@ Config = {
 						rank = {3,4,5},
 						extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
 						--performance = "max",
-                          rambar = 1,
+                          rambar = 3,
 						trunkItems = {
 						
 						},
