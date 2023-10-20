@@ -128,11 +128,6 @@ RegisterNetEvent('jim-mechanic:client:Exterior:Extra', function()
 	local vehicle = nil
 	local hasMod = false
 	if not IsPedInAnyVehicle(PlayerPedId(), false) then vehicle = getClosest(GetEntityCoords(PlayerPedId())) else 
-		print('12222')
-		if policejob() then
-			print('hi')
-		TriggerEvent('jim-mechanic:client:Exterior:Check') 
-		end
 	return end
 	local ExtraMenu = {}
 	ExtraMenu[#ExtraMenu+1] = { icon = "fas fa-toolbox", isMenuHeader = true, header = Loc[Config.Lan]["police"].extras, txt = "Toggle Vehicle Extras" }
@@ -149,6 +144,9 @@ RegisterNetEvent('jim-mechanic:client:Exterior:Extra:Apply', function(data)
 	local vehicle = getClosest(GetEntityCoords(PlayerPedId()))
 	local veh = { engine = GetVehicleEngineHealth(vehicle), body = GetVehicleBodyHealth(vehicle) }
 	if IsVehicleExtraTurnedOn(vehicle, data.id) then SetVehicleExtra(vehicle, data.id, 1)
+		if policejob() then
+		TriggerEvent('jim-mechanic:client:Exterior:Check') 
+		end
 	else SetVehicleExtra(vehicle, data.id, 0) -- SetVehicleFixed(vehicle) end
 	doCarDamage(vehicle, veh)
 	Wait(100)
@@ -156,6 +154,8 @@ RegisterNetEvent('jim-mechanic:client:Exterior:Extra:Apply', function(data)
 	SetVehicleBodyHealth(vehicle, veh.body)
 	updateCar(vehicle)
 	TriggerEvent('jim-mechanic:client:Exterior:Extra')
+	if policejob() then
+		TriggerEvent('jim-mechanic:client:Exterior:Check') 
+		end
 	end
-	
 end)
