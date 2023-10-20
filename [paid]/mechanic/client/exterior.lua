@@ -38,7 +38,7 @@ RegisterNetEvent('jim-mechanic:client:Exterior:Check', function()
 	if not nearPoint(GetEntityCoords(PlayerPedId())) then return end
 	if Config.isVehicleOwned and not IsVehicleOwned(trim(GetVehicleNumberPlateText(vehicle))) then triggerNotify(nil, Loc[Config.Lan]["common"].owned, "error") return end
 	else
-
+		vehicle = getClosest(GetEntityCoords(PlayerPedId())) pushVehicle(vehicle) lookVeh(vehicle)
 
 	--local vehicle = nil
 	print(vehicle)
@@ -86,6 +86,7 @@ end)
 
 RegisterNetEvent('jim-mechanic:client:Exterior:Choose', function(data)
 	local validMods = {}
+if not policejob() then
 	if not inCar() then return end
 	if not nearPoint(GetEntityCoords(PlayerPedId())) then return end
 	local vehicle = nil
@@ -95,6 +96,12 @@ RegisterNetEvent('jim-mechanic:client:Exterior:Choose', function(data)
 			validMods[i] = { id = (i - 1), name = GetLabelText(GetModTextLabel(vehicle, tonumber(data.mod), (i - 1))), install = txt }
 		end
 	end
+else
+	vehicle = getClosest(GetEntityCoords(PlayerPedId())) pushVehicle(vehicle)
+		for i = 1, GetNumVehicleMods(vehicle, tonumber(data.mod)) do
+			if GetVehicleMod(vehicle, tonumber(data.mod)) == (i-1) then txt = Loc[Config.Lan]["common"].current else txt = "" end
+			validMods[i] = { id = (i - 1), name = GetLabelText(GetModTextLabel(vehicle, tonumber(data.mod), (i - 1))), install = txt }
+		end
 	if DoesEntityExist(vehicle) then
 		local icon = "" local disabled = false
 		if GetVehicleMod(vehicle, tonumber(data.mod)) == -1 then print(data.mod) stockinstall = Loc[Config.Lan]["common"].current icon = "fas fa-check" disabled = true else stockinstall = "" end
@@ -110,6 +117,7 @@ RegisterNetEvent('jim-mechanic:client:Exterior:Choose', function(data)
 			end
 		exports['qb-menu']:openMenu(ModMenu)
 	end
+end
 end)
 
 RegisterNetEvent('jim-mechanic:client:Exterior:Extra', function()
