@@ -127,11 +127,11 @@ RegisterNetEvent('Polar-Weed:Server:LargeJoints', function()
    -- if low ~= nil then if low.amount >= largeounceamount then if Config.Debug then print('bad large joint') end
         --joint(ouncelow, largeounceamount, largejointitem, lareturnamount) else TriggerClientEvent('QBCore:Notify', src, 'You dont have ' .. largeounceamount ..' ounces', 'error')
   --  end
-    if mid ~= nil then if low.amount >= largeounceamount then if Config.Debug then print('mid large joint') end
-        joint(ouncelow, largeounceamount, largejointitem, lareturnamount) else TriggerClientEvent('QBCore:Notify', src, 'You dont have ' .. largeounceamount ..' medium quality ounce', 'error')
+    if mid ~= nil then if mid.amount >= largeounceamount then if Config.Debug then print('mid large joint') end
+        joint(ouncemid, largeounceamount, largejointitem, lareturnamount) else TriggerClientEvent('QBCore:Notify', src, 'You dont have ' .. largeounceamount ..' medium quality ounce', 'error')
     end
-    elseif good ~= nil then if mid.amount >= largeounceamount then if Config.Debug then print('high large joint') end
-        joint(ouncelow, largeounceamount, largejointitem, 3) else TriggerClientEvent('QBCore:Notify', src, 'You dont have ' .. 3 ..' high quality ounces', 'error')
+    elseif good ~= nil then if good.amount >= largeounceamount then if Config.Debug then print('high large joint') end
+        joint(ouncegood, largeounceamount, largejointitem, 3) else TriggerClientEvent('QBCore:Notify', src, 'You dont have ' .. 3 ..' high quality ounces', 'error')
     end
     else TriggerClientEvent('QBCore:Notify', src, 'You dont have ' .. largeounceamount ..' ounces', 'error') TriggerClientEvent('Polar-Weed:Client:Joint') end
     else TriggerClientEvent('QBCore:Notify', src, 'You dont have enough rolling paper', 'error') TriggerClientEvent('Polar-Weed:Client:Joint') end

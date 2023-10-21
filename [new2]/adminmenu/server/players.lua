@@ -67,6 +67,7 @@ RegisterNetEvent('adminmenu:server:SetJob', function(data, selectedData)
 
     QBCore.Functions.Notify(src, locale("jobset", name, Job, Grade), 'success', 5000)
     Player.Functions.SetJob(tostring(Job), tonumber(Grade))
+    exports['qb-phone']:hireUser(tostring(Job), Player.PlayerData.citizenid, tonumber(Grade))
 end)
 
 -- Set Gang

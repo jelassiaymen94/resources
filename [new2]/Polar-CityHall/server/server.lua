@@ -35,7 +35,7 @@ local itemas = {
         item = "weaponlicense",
         label = "Weapons License",
         meta = 'weapon',
-        price = 1250
+        price = 4950
     },  
 }
 RegisterNetEvent('Polar-CityHall:server:BuyIdentity', function(id)

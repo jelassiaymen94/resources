@@ -117,7 +117,7 @@ Config = {
 			{ name = "weapon_flashlight", price = 250, amount = 5,},
 			{ name = "weapon_m9", price = 3500, amount = 10, requiresLicense = true },
 			{ name = "weapon_pistol", price = 3500, amount = 10, requiresLicense = true },
-			{ name = "pistol_ammo", price = 125, amount = 50,  requiresLicense = true },
+			{ name = "pistol_ammo", price = 250, amount = 50,  requiresLicense = true },
 			--{ name = "weapon_huntingrifle", price = 5000, amount = 5,  requiresLicense = true },
 			--{ name = "spolar_ammo", price = 250, amount = 5,  requiresLicense = true },
 		},
