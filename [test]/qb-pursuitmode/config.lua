@@ -87,21 +87,21 @@ Config.VehiclesConfig = {
         ["A+"] = {
             ["fDriveInertia"] = 0.2,
             ["fBrakeForce"] = 1.5,
-            ["fInitialDriveMaxFlatVel"] = 85.0,
+            ["fInitialDriveMaxFlatVel"] = 160.0,
             ["fSteeringLock"] = 30.3,
             ["fInitialDriveForce"] = 0.3
         },
         ["S"] = {
             ["fDriveInertia"] = 0.25,
             ["fBrakeForce"] = 1.5,
-            ["fInitialDriveMaxFlatVel"] = 90.0,
+            ["fInitialDriveMaxFlatVel"] = 160.0,
             ["fSteeringLock"] = 30.3,
             ["fInitialDriveForce"] = 0.35
         },
         ["S+"] = {
             ["fDriveInertia"] = 0.3,
             ["fBrakeForce"] = 1.5,
-            ["fInitialDriveMaxFlatVel"] = 95.0,
+            ["fInitialDriveMaxFlatVel"] = 160.0,
             ["fSteeringLock"] = 30.3,
             ["fInitialDriveForce"] = 0.4
         },
@@ -118,28 +118,28 @@ Config.VehiclesConfig = {
         ["A"] = {
             ["fDriveInertia"] = 0.6,
             ["fBrakeForce"] = 1.2,
-            ["fInitialDriveMaxFlatVel"] = 60.0,
+            ["fInitialDriveMaxFlatVel"] = 160.0,
             ["fSteeringLock"] = 40.0,
             ["fInitialDriveForce"] = 0.3
         },
         ["A+"] = {
             ["fDriveInertia"] = 0.6,
             ["fBrakeForce"] = 1.2,
-            ["fInitialDriveMaxFlatVel"] = 85.0,
+            ["fInitialDriveMaxFlatVel"] = 160.0,
             ["fSteeringLock"] = 40.0,
             ["fInitialDriveForce"] = 0.3
         },
         ["S"] = {
             ["fDriveInertia"] = 0.7,
             ["fBrakeForce"] = 1.2,
-            ["fInitialDriveMaxFlatVel"] = 95.0,
+            ["fInitialDriveMaxFlatVel"] = 160.0,
             ["fSteeringLock"] = 40.0,
             ["fInitialDriveForce"] = 0.35
         },
         ["S+"] = {
             ["fDriveInertia"] = 0.8,
             ["fBrakeForce"] = 1.2,
-            ["fInitialDriveMaxFlatVel"] = 105.0,
+            ["fInitialDriveMaxFlatVel"] = 160.0,
             ["fSteeringLock"] = 40.0,
             ["fInitialDriveForce"] = 0.4
         },
