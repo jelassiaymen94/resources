@@ -155,11 +155,6 @@ local items = {
         MinSellPrice = 1500,
         MaxSellPrice = 3000,
     },
-    ['ruby'] = {
-        itemName = 'ruby',
-        MinSellPrice = 1500,
-        MaxSellPrice = 3000,
-    },
     ['captainskull'] = {
         itemName = 'captainskull',
         MinSellPrice = 1500,
@@ -180,6 +175,166 @@ local items = {
         itemName = 'yellow-diamond',
         MinSellPrice = 1500,
         MaxSellPrice = 3000,
+    },
+
+
+
+    ['gold_ring'] = {
+        itemName = 'gold_ring',
+        MinSellPrice = 150,
+        MaxSellPrice = 300,
+    },
+    ['diamond_ring'] = {
+        itemName = 'diamond_ring',
+        MinSellPrice = 150,
+        MaxSellPrice = 300,
+    },
+    ['ruby_ring'] = {
+        itemName = 'ruby_ring',
+        MinSellPrice = 150,
+        MaxSellPrice = 300,
+    },
+    ['sapphire_ring'] = {
+        itemName = 'sapphire_ring',
+        MinSellPrice = 150,
+        MaxSellPrice = 300,
+    },
+    ['emerald_ring'] = {
+        itemName = 'emerald_ring',
+        MinSellPrice = 150,
+        MaxSellPrice = 300,
+    },
+
+
+
+    
+    ['silver_ring'] = {
+        itemName = 'silver_ring',
+        MinSellPrice = 150,
+        MaxSellPrice = 300,
+    },
+    ['diamond_ring_silver'] = {
+        itemName = 'diamond_ring_silver',
+        MinSellPrice = 150,
+        MaxSellPrice = 300,
+    },
+    ['ruby_ring_silver'] = {
+        itemName = 'ruby_ring_silver',
+        MinSellPrice = 150,
+        MaxSellPrice = 300,
+    },
+    ['sapphire_ring_silver'] = {
+        itemName = 'sapphire_ring_silver',
+        MinSellPrice = 150,
+        MaxSellPrice = 300,
+    },
+    ['emerald_ring_silver'] = {
+        itemName = 'emerald_ring_silver',
+        MinSellPrice = 150,
+        MaxSellPrice = 300,
+    },
+
+
+
+
+    ['diamond_necklace'] = {
+        itemName = 'diamond_necklace',
+        MinSellPrice = 150,
+        MaxSellPrice = 300,
+    },
+    ['ruby_necklace'] = {
+        itemName = 'ruby_necklace',
+        MinSellPrice = 150,
+        MaxSellPrice = 300,
+    },
+    ['sapphire_necklace'] = {
+        itemName = 'sapphire_necklace',
+        MinSellPrice = 150,
+        MaxSellPrice = 300,
+    },
+    ['emerald_necklace'] = {
+        itemName = 'emerald_necklace',
+        MinSellPrice = 150,
+        MaxSellPrice = 300,
+    },
+    ['silverchain'] = {
+        itemName = 'silverchain',
+        MinSellPrice = 150,
+        MaxSellPrice = 300,
+    },
+    ['diamond_necklace_silver'] = {
+        itemName = 'diamond_necklace_silver',
+        MinSellPrice = 150,
+        MaxSellPrice = 300,
+    },
+    ['ruby_necklace_silver'] = {
+        itemName = 'ruby_necklace_silver',
+        MinSellPrice = 150,
+        MaxSellPrice = 300,
+    },
+    ['sapphire_necklace_silver'] = {
+        itemName = 'sapphire_necklace_silver',
+        MinSellPrice = 150,
+        MaxSellPrice = 300,
+    },
+    ['emerald_necklace_silver'] = {
+        itemName = 'emerald_necklace_silver',
+        MinSellPrice = 150,
+        MaxSellPrice = 300,
+    },
+
+
+    ['goldearring'] = {
+        itemName = 'goldearring',
+        MinSellPrice = 150,
+        MaxSellPrice = 300,
+    },
+    ['diamond_earring'] = {
+        itemName = 'diamond_earring',
+        MinSellPrice = 150,
+        MaxSellPrice = 300,
+    },
+    ['ruby_earring'] = {
+        itemName = 'ruby_earring',
+        MinSellPrice = 150,
+        MaxSellPrice = 300,
+    },
+    ['sapphire_earring'] = {
+        itemName = 'sapphire_earring',
+        MinSellPrice = 150,
+        MaxSellPrice = 300,
+    },
+    ['emerald_earring'] = {
+        itemName = 'emerald_earring',
+        MinSellPrice = 150,
+        MaxSellPrice = 300,
+    },
+
+
+    ['silverearring'] = {
+        itemName = 'silverearring',
+        MinSellPrice = 150,
+        MaxSellPrice = 300,
+    },
+    ['diamond_earring_silver'] = {
+        itemName = 'diamond_earring_silver',
+        MinSellPrice = 150,
+        MaxSellPrice = 300,
+    },
+    ['ruby_earring_silver'] = {
+        itemName = 'ruby_earring_silver',
+        MinSellPrice = 150,
+        MaxSellPrice = 300,
+    },
+    ['sapphire_earring_silver'] = {
+        itemName = 'sapphire_earring_silver',
+        MinSellPrice = 150,
+        MaxSellPrice = 300,
+    },
+    ['emerald_earring_silver'] = {
+        itemName = 'emerald_earring_silver',
+        MinSellPrice = 150,
+        MaxSellPrice = 300,
     },
 }
 
