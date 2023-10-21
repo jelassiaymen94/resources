@@ -78,11 +78,11 @@ Config.VehicleModifications = {
 Config.VehiclesConfig = {
     ["npolvic"] = {
         ["A"] = {
-            ["fDriveInertia"] = 0.5,
+            ["fDriveInertia"] = 0.2,
             ["fBrakeForce"] = 1.5,
-            ["fInitialDriveMaxFlatVel"] = 100.0,
+            ["fInitialDriveMaxFlatVel"] = 85.0,
             ["fSteeringLock"] = 30.3,
-            ["fInitialDriveForce"] = 0.35
+            ["fInitialDriveForce"] = 0.3
         },
         ["A+"] = {
             ["fDriveInertia"] = 0.6,
@@ -116,11 +116,11 @@ Config.VehiclesConfig = {
    
     ["npolchar"] = {
         ["A"] = {
-            ["fDriveInertia"] = 0.80,
+            ["fDriveInertia"] = 0.6,
             ["fBrakeForce"] = 1.2,
-            ["fInitialDriveMaxFlatVel"] = 100.0,
+            ["fInitialDriveMaxFlatVel"] = 85.0,
             ["fSteeringLock"] = 40.0,
-            ["fInitialDriveForce"] = 0.35
+            ["fInitialDriveForce"] = 0.3
         },
         ["A+"] = {
             ["fDriveInertia"] = 0.9,
