@@ -1044,7 +1044,7 @@ end
 
 
 RegisterNetEvent('Polar-Paleto:client:DrillStart', function(drillpos, drillrot, door)
-    if door == 'paletodrill2' then
+    if door == 'paletodrill23' then
         if playeritem(yellowdrillitem) then
             SetPedComponentVariation(ped, 5, Config.HideBagID, 1, 1)
             TriggerServerEvent('Polar-Paleto:Server:StopInteract', door)
