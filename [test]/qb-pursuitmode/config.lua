@@ -92,7 +92,7 @@ Config.VehiclesConfig = {
             ["fInitialDriveForce"] = 0.35
         },
         ["S"] = {
-            ["fDriveInertia"] = 1.150000,
+            ["fDriveInertia"] = 1.100000,
             ["fBrakeForce"] = 2.0,
             ["fInitialDriveMaxFlatVel"] = 125.000000,
             ["fSteeringLock"] = 30.200000,
@@ -166,7 +166,7 @@ Config.VehiclesConfig = {
             ["fInitialDriveForce"] = 0.365
         },
         ["S"] = {
-            ["fDriveInertia"] = 0.85000,
+            ["fDriveInertia"] = 0.9000,
             ["fBrakeForce"] = 1.8,
             ["fInitialDriveMaxFlatVel"] = 110.000000,
             ["fSteeringLock"] = 40.0,
