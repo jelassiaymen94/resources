@@ -477,6 +477,15 @@ AddEventHandler("fox-wheelfitment_cl:applySavedWheelFitment", function(wheelFitm
     DecorSetFloat(plyVeh, "fox-wheelfitment_w_kf", wheelFitments.kf)
     DecorSetFloat(plyVeh, "fox-wheelfitment_w_kr", wheelFitments.kr)
 
+
+    print(wheelFitments.width)
+    print(wheelFitments.fl)
+    print(wheelFitments.fr)
+    print(wheelFitments.rl)
+    print(wheelFitments.rr)
+    print(wheelFitments.kf)
+    print(wheelFitments.kr)
+
     performVehicleCheck = true
     checkVehicleFitment()
 end)
