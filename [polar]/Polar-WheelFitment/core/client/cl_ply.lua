@@ -69,12 +69,6 @@ function SyncWheelFitment()
             DecorSetFloat(plyVeh, "fox-wheelfitment_w_kf", roundNum(GetVehicleWheelYRotation(plyVeh,0), 2))
             DecorSetFloat(plyVeh, "fox-wheelfitment_w_kr", roundNum(GetVehicleWheelYRotation(plyVeh,2), 2))
            
-            print('width' .. roundNum(GetVehicleWheelWidth(plyVeh), 2))
-            print('x offset 0' .. roundNum(GetVehicleWheelXOffset(plyVeh, 0), 2))
-            print('x offset 1' .. roundNum(GetVehicleWheelXOffset(plyVeh, 1), 2))
-            print('x offset 2' .. roundNum(GetVehicleWheelXOffset(plyVeh, 2), 2))
-            print('x offset 3' .. roundNum(GetVehicleWheelXOffset(plyVeh, 3), 2))
-         
           
 
           
