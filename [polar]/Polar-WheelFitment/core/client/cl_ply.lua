@@ -1,9 +1,6 @@
-if cfg_framework == 'qb' then 
-    QBCore = exports['qb-core']:GetCoreObject()
-elseif cfg_framework == 'esx' then
-    ESX = nil
-end
-local PlayerData              = {}
+local QBCore = exports['qb-core']:GetCoreObject()
+
+local PlayerData = {}
 
 DecorRegister("fox-wheelfitment_applied", 2)
 DecorRegister("fox-wheelfitment_w_width", 1)
@@ -15,23 +12,12 @@ DecorRegister("fox-wheelfitment_w_rr", 1)
 DecorRegister("fox-wheelfitment_w_kf", 1)
 DecorRegister("fox-wheelfitment_w_kr", 1)
 
-if cfg_framework == 'esx' then
-RegisterNetEvent('esx:setJob')
-AddEventHandler('esx:setJob', function(job)
-  PlayerData.job = job
-end)
-else return end
 
 function getjob()
-    if cfg_framework == 'qb' then
-    PlayerJob = QBCore.Functions.GetPlayerData().job
-    if PlayerJob.name == cfg_job then
+    local PlayerJob = QBCore.Functions.GetPlayerData().job.name
+    print(PlayerJob)
+    if PlayerJob.name == 'bennys' then
         return true
-    end
-    elseif cfg_framework == 'esx' then
-        if PlayerData.job.name == cfg_job then
-           return true
-        end
     end
 end
 local boxZone = nil
