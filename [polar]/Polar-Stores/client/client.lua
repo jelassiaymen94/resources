@@ -33,7 +33,7 @@ local targetpeds = {
         scene = "WORLD_HUMAN_AA_COFFEE",
         icon = 'fa-solid fa-bolt',
         label = 'Talk to Namir',
-        name = 'theWildWest',
+        name = 'theWildWest2',
         product = {
             },
     },
