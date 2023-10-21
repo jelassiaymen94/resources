@@ -2,75 +2,181 @@ local QBCore = exports['qb-core']:GetCoreObject()
 
 local items = {
 
-    ['rolex'] = {
-        itemName = 'rolex',
-        MinSellPrice = 20,
-        MaxSellPrice = 50,
+ 
+
+    ['dirtyband'] = {
+        itemName = 'dirtyband',
+        MinSellPrice = 250,
+        MaxSellPrice = 1000,
+    },
+    ['goldbar'] = {
+        itemName = 'goldbar',
+        MinSellPrice = 750,
+        MaxSellPrice = 2500,
     },
 
-    ['diamond_ring'] = {
-        itemName = 'diamond_ring',
-        MinSellPrice = 60,
-        MaxSellPrice = 80,
+
+
+
+
+    ['paintinga'] = {
+        itemName = 'paintinga',
+        MinSellPrice = 7500,
+        MaxSellPrice = 12500,
     },
+    ['paintingb'] = {
+        itemName = 'paintingb',
+        MinSellPrice = 7500,
+        MaxSellPrice = 12500,
+    },
+    ['paintingd'] = {
+        itemName = 'paintingd',
+        MinSellPrice = 7500,
+        MaxSellPrice = 12500,
+    },
+    ['paintingc'] = {
+        itemName = 'paintingc',
+        MinSellPrice = 7500,
+        MaxSellPrice = 12500,
+    },
+
+
+    ['valuablegoods'] = {
+        itemName = 'valuablegoods',
+        MinSellPrice = 4500,
+        MaxSellPrice = 7500,
+    },
+
+
+
+
+
+    ['tequillabottle2'] = {
+        itemName = 'tequillabottle2',
+        MinSellPrice = 7500,
+        MaxSellPrice = 12500,
+    },
+    ['tequillabottle3'] = {
+        itemName = 'tequillabottle3',
+        MinSellPrice = 7500,
+        MaxSellPrice = 12500,
+    },
+    ['tequillabottle1'] = {
+        itemName = 'tequillabottle1',
+        MinSellPrice = 7500,
+        MaxSellPrice = 12500,
+    },
+    ['rubynecklace1'] = {
+        itemName = 'rubynecklace1',
+        MinSellPrice = 7500,
+        MaxSellPrice = 12500,
+    },
+    ['pinkdiamond'] = {
+        itemName = 'pinkdiamond',
+        MinSellPrice = 7500,
+        MaxSellPrice = 12500,
+    },
+    ['bluepanther'] = {
+        itemName = 'bluepanther',
+        MinSellPrice = 7500,
+        MaxSellPrice = 12500,
+    },
+
+
+
+
+
+    ['alienegg'] = {
+        itemName = 'alienegg',
+        MinSellPrice = 1500,
+        MaxSellPrice = 3000,
+    },
+    ['goldtower'] = {
+        itemName = 'goldtower',
+        MinSellPrice = 1500,
+        MaxSellPrice = 3000,
+    },
+    ['exoticbird'] = {
+        itemName = 'exoticbird',
+        MinSellPrice = 1500,
+        MaxSellPrice = 3000,
+    },
+    ['goldgrenade'] = {
+        itemName = 'goldgrenade',
+        MinSellPrice = 1500,
+        MaxSellPrice = 3000,
+    },
+    ['goldbasketball'] = {
+        itemName = 'goldbasketball',
+        MinSellPrice = 1500,
+        MaxSellPrice = 3000,
+    },
+    ['exoticdog'] = {
+        itemName = 'exoticdog',
+        MinSellPrice = 1500,
+        MaxSellPrice = 3000,
+    },
+
+
+
+
+
+    ['exoticyacht'] = {
+        itemName = 'exoticyacht',
+        MinSellPrice = 1500,
+        MaxSellPrice = 3000,
+    },
+    ['exotichorse'] = {
+        itemName = 'exotichorse',
+        MinSellPrice = 1500,
+        MaxSellPrice = 3000,
+    },
+    ['exoticcat'] = {
+        itemName = 'exoticcat',
+        MinSellPrice = 1500,
+        MaxSellPrice = 3000,
+    },
+    ['exoticskull'] = {
+        itemName = 'exoticskull',
+        MinSellPrice = 1500,
+        MaxSellPrice = 3000,
+    },
+
+    ['exoticchips'] = {
+        itemName = 'exoticchips',
+        MinSellPrice = 1500,
+        MaxSellPrice = 3000,
+    },
+   
+
 
     ['diamond'] = {
         itemName = 'diamond',
-        MinSellPrice = 90,
-        MaxSellPrice = 120,
+        MinSellPrice = 1500,
+        MaxSellPrice = 3000,
+    },
+    ['captainskull'] = {
+        itemName = 'captainskull',
+        MinSellPrice = 1500,
+        MaxSellPrice = 3000,
+    },
+    ['saphire'] = {
+        itemName = 'saphire',
+        MinSellPrice = 1500,
+        MaxSellPrice = 3000,
+    },
+    ['bluediamond'] = {
+        itemName = 'bluediamond',
+        MinSellPrice = 1500,
+        MaxSellPrice = 3000,
     },
 
-    ['goldchain'] = {
-        itemName = 'goldchain',
-        MinSellPrice = 30,
-        MaxSellPrice = 40,
+    ['yellow-diamond'] = {
+        itemName = 'yellow-diamond',
+        MinSellPrice = 1500,
+        MaxSellPrice = 3000,
     },
-
-    ['10kgoldchain'] = {
-        itemName = '10kgoldchain',
-        MinSellPrice = 80,
-        MaxSellPrice = 110,
-    },
-
-    ['goldbar'] = {
-        itemName = 'goldbar',
-        MinSellPrice = 220,
-        MaxSellPrice = 260,
-    },
-
-    ['iphone'] = {
-        itemName = 'iphone',
-        MinSellPrice = 20,
-        MaxSellPrice = 50,
-    },
-
-    ['samsungphone'] = {
-        itemName = 'samsungphone',
-        MinSellPrice = 15,
-        MaxSellPrice = 35,
-    },
-
-    ['laptop'] = {
-        itemName = 'laptop',
-        MinSellPrice = 50,
-        MaxSellPrice = 85,
-    },
-
-    ['cryptostick'] = {
-        itemName = 'cryptostick',
-        MinSellPrice = 50,
-        MaxSellPrice = 60,
-    },
-
-    ['moneybag'] = {
-        itemName = 'moneybag',
-        MinSellPrice = 1250,
-        MaxSellPrice = 1700,
-    }
 }
-
-
-
 
 
 
