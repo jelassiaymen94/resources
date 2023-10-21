@@ -6,7 +6,7 @@ CreateThread(function()
       while not HasModelLoaded('u_m_y_proldriver_01') do
       Wait(1)
     end 
-      local tc = CreatePed(2, 'u_m_y_proldriver_01', vec4(1645.78, 4841.47, 42.03, 96.49), false, false) 
+      local tc = CreatePed(2, 'u_m_y_proldriver_01', vec4(1645.78, 4841.47, 41.03, 96.49), false, false) 
       SetPedFleeAttributes(tc, 0, 0)
       SetPedDiesWhenInjured(tc, false)
       TaskStartScenarioInPlace(tc, "WORLD_HUMAN_STAND_IMPATIENT", 0, true)
@@ -96,8 +96,8 @@ end)
 
 CreateThread(function()
 	Wait(1000)
-	local table = CreateObject(304964818, vec3(1644.39, 4841.32, 42.03), true, true, true)
-	SetEntityHeading(table, 274)
+	local table = CreateObject(304964818, vec3(1644.39, 4841.32, 41.03), true, true, true)
+	SetEntityHeading(table, 180)
 	FreezeEntityPosition(table, true)
 end)
 
