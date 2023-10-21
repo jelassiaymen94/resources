@@ -97,7 +97,7 @@ end)
 CreateThread(function()
 	Wait(1000)
 	local table = CreateObject(304964818, vec3(1644.39, 4841.32, 41.03), true, true, true)
-	SetEntityHeading(table, 180)
+	SetEntityHeading(table, 90)
 	FreezeEntityPosition(table, true)
 end)
 

@@ -366,7 +366,7 @@ function finditems()
             local pay = money * amt
             Player.Functions.AddMoney('cash', pay)
             Player.Functions.RemoveItem(name, amt)
-
+            Wait(250)
             finditems()
         end
 
