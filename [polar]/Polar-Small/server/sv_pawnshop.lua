@@ -344,7 +344,7 @@ RegisterNetEvent('Pawnshop:Server:SellItems', function()
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
     
-    
+    local hasitem = false
     for k, v in pairs(items) do
         local name = v.itemName
         local money = math.random(v.MinSellPrice,v.MaxSellPrice)
@@ -352,17 +352,20 @@ RegisterNetEvent('Pawnshop:Server:SellItems', function()
 
     
         if Player.Functions.GetItemByName(name) ~= nil then
-            
+            hasitem = true
             local amt = Player.Functions.GetItemByName(name).amount
             local pay = money * amt
             Player.Functions.AddMoney('cash', pay)
             Player.Functions.RemoveItem(name, amt)
-            Wait(250)
-            TriggerEvent('Pawnshop:Client:Lapa', src)
+           
         end
 
     end
-
+    if hasitem then 
+        hasitem = false
+        Wait(250)
+        TriggerEvent('Pawnshop:Client:Lapa', src)
+    end
     
     TriggerClientEvent('QBCore:Notify', src, 'The Dealer Bought what he wanted', 'error')
 end)
