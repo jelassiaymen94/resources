@@ -31,15 +31,15 @@ RegisterNetEvent('Polar-Drugsales:initiatedrug', function(ZoneDrug)
 						worth = price
 					}
 					Player.Functions.AddItem('markedbills', 1, false, info)
-					TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['markedbills'], "add")
+					TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['markedbills'], "add", 1)
 				elseif chance < 95 then
-					Player.Functions.AddItem('band', 1, false, info)
-					TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['band'], "add")
+					Player.Functions.AddItem('band', 1, false)
+					TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['band'], "add", 1)
 					TriggerClientEvent('Polar-Drugsales:notify', src, 'You got robbed of $' .. price .. '')
 
 				else
-					Player.Functions.AddItem('cokebill', 1, false, info)
-					TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['cokebill'], "add")
+					Player.Functions.AddItem('cokebill', 1, false)
+					TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['cokebill'], "add", 1)
 					TriggerClientEvent('Polar-Drugsales:notify', src, 'He traded you for a Rolled Bill')
 
 				end

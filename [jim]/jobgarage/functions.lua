@@ -19,12 +19,11 @@ function unloadPtfxDict(dict) if Config.Debug then print("^5Debug^7: ^2Removing 
 
 RegisterNetEvent('Polar-JobGarage:Server:Log', function()
 	local src = source
-	TriggerEvent("qb-log:server:CreateLog", "jobgarage", "Car Spawned", "black", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' spawned car')
+	
 end)
 RegisterNetEvent('Polar-JobGarage:Server:DeleteLog', function()
 	local src = source
 
-	TriggerEvent("qb-log:server:CreateLog", "jobgarage", "Car Delete", "black", "**".. Player.PlayerData.name .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*)"..' Deleted car')
 
 end)
 function destroyProp(entity)
