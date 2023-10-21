@@ -77,6 +77,7 @@ RegisterNetEvent("pma-voice:radioActive", function(talkingState)
 end)
 
 RegisterNetEvent("pma-voice:setTalkingOnRadio", function(source, talkingState)
+    TriggerEvent("InteractSound_CL:PlayOnOne","click",0.6)
     SendNUIMessage({
         action = "updateRadioTalking",
         data = {
