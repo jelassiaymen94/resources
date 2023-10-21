@@ -480,16 +480,11 @@ AddEventHandler("fox-wheelfitment_cl:WidebodyCharger", function()
     QBCore.Functions.TriggerCallback('fox-wheelfitment_sv:saveWheelfitment', function(result)
     end, plate, currentFitmentsToSet)
 
-    SetVehicleWheelWidth(plyVeh, currentFitmentsToSet.width)
-    SetVehicleWheelXOffset(plyVeh, 0, currentFitmentsToSet.fl)
-    SetVehicleWheelXOffset(plyVeh, 1, currentFitmentsToSet.fr)
-    SetVehicleWheelXOffset(plyVeh, 2, currentFitmentsToSet.rl)
-    SetVehicleWheelXOffset(plyVeh, 3, currentFitmentsToSet.rr)
+  
 
     didPlyAdjustFitments = false
 
-
-    currentFitmentsToSet = {width = 0, fl = 0, fr = 0, rl = 0, rr = 0 , kf = 0 ,kr = 0}
+   
 
     performVehicleCheck = true
 
@@ -502,6 +497,13 @@ AddEventHandler("fox-wheelfitment_cl:WidebodyCharger", function()
        
     end, false)
 
+    SetVehicleWheelWidth(plyVeh, currentFitmentsToSet.width)
+    SetVehicleWheelXOffset(plyVeh, 0, currentFitmentsToSet.fl)
+    SetVehicleWheelXOffset(plyVeh, 1, currentFitmentsToSet.fr)
+    SetVehicleWheelXOffset(plyVeh, 2, currentFitmentsToSet.rl)
+    SetVehicleWheelXOffset(plyVeh, 3, currentFitmentsToSet.rr)
+    
+    currentFitmentsToSet = {width = 0, fl = 0, fr = 0, rl = 0, rr = 0 , kf = 0 ,kr = 0}
 end)
 RegisterCommand("leavefitment", function()
     TriggerEvent("fox-wheelfitment_cl:forceMenuClose")
