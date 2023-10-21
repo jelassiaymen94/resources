@@ -80,7 +80,7 @@ Config.VehiclesConfig = {
         ["A"] = {
             ["fDriveInertia"] = 0.2,
             ["fBrakeForce"] = 1.5,
-            ["fInitialDriveMaxFlatVel"] = 60.0,
+            ["fInitialDriveMaxFlatVel"] = 160.0,
             ["fSteeringLock"] = 30.3,
             ["fInitialDriveForce"] = 0.25
         },
