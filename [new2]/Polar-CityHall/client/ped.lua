@@ -19,7 +19,7 @@ CreateThread(function()
         Wait(100)
     end
 
-    local ped = CreatePed(4, joaat(pedname.model), pedname.coords, 0.0, false, false)
+    local ped = CreatePed(4, joaat(pedname.model), pedname.coords, 0.0, true, true)
     SetBlockingOfNonTemporaryEvents(ped, true)
     SetPedDiesWhenInjured(ped, false)
     SetPedCanPlayAmbientAnims(ped, true)

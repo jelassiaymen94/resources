@@ -222,14 +222,15 @@ function start()
 
     loadModel(TruckPeds[i].model)
 
-    created_ped[i] = CreatePed(5, TruckPeds[i].model, vec4(TruckPeds[i].coords.x, TruckPeds[i].coords.y, TruckPeds[i].coords.z-1, TruckPeds[i].coords.w), false, true)
+    created_ped[i] = CreatePed(5, TruckPeds[i].model, vec4(TruckPeds[i].coords.x, TruckPeds[i].coords.y, TruckPeds[i].coords.z-1, TruckPeds[i].coords.w), true, true)
     FreezeEntityPosition(created_ped[i], true)
     SetEntityInvincible(created_ped[i], true)
     SetBlockingOfNonTemporaryEvents(created_ped[i], true)
     TaskStartScenarioInPlace(created_ped[i], 'WORLD_HUMAN_CLIPBOARD', 0, true)
-
-    exports['qb-target']:AddBoxZone(i, vec3(TruckPeds[i].coords.x, TruckPeds[i].coords.y, TruckPeds[i].coords.z), 0.5, 0.5, { name = i, heading = 28.69, debug = hi, minZ = TruckPeds[i].coords.z - 1.0, maxZ =  TruckPeds[i].coords.z + 1.0,}, 
+    exports['qb-target']:AddTargetEntity(created_ped[i], 
     { options = {{ event = 'Polar-Mini:Client:TruckMenu2',  icon = TruckPeds[i].icon, label = TruckPeds[i].label}}, distance = 1.5  })
+   -- exports['qb-target']:AddBoxZone(i, vec3(TruckPeds[i].coords.x, TruckPeds[i].coords.y, TruckPeds[i].coords.z), 0.5, 0.5, { name = i, heading = 28.69, debug = hi, minZ = TruckPeds[i].coords.z - 1.0, maxZ =  TruckPeds[i].coords.z + 1.0,}, 
+   -- { options = {{ event = 'Polar-Mini:Client:TruckMenu2',  icon = TruckPeds[i].icon, label = TruckPeds[i].label}}, distance = 1.5  })
 
     end
 end

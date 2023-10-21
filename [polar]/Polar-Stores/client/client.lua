@@ -59,14 +59,15 @@ function peds()
 
     loadModel(Config.Ped[i].model)
 
-    created_ped[i] = CreatePed(5, Config.Ped[i].model, vec4(Config.Ped[i].coords.x, Config.Ped[i].coords.y, Config.Ped[i].coords.z-1, Config.Ped[i].coords.w), false, true)
+    created_ped[i] = CreatePed(5, Config.Ped[i].model, vec4(Config.Ped[i].coords.x, Config.Ped[i].coords.y, Config.Ped[i].coords.z-1, Config.Ped[i].coords.w), true, true)
     FreezeEntityPosition(created_ped[i], true)
     SetEntityInvincible(created_ped[i], true)
     SetBlockingOfNonTemporaryEvents(created_ped[i], true)
     TaskStartScenarioInPlace(created_ped[i], 'WORLD_HUMAN_CLIPBOARD', 0, true)
-
-    exports['qb-target']:AddBoxZone(Config.Ped[i].name, vec3(Config.Ped[i].coords.x, Config.Ped[i].coords.y, Config.Ped[i].coords.z), 0.5, 0.5, { name = Config.Ped[i].name, heading = 28.69, debug = hi, minZ = Config.Ped[i].coords.z - 1.0, maxZ =  Config.Ped[i].coords.z + 1.0,}, 
-    { options = {{ event = 'Polar-stores:Client:Menu',  icon = Config.Ped[i].icon, label = Config.Ped[i].label}}, distance = 1.5  })
+    exports['qb-target']:AddTargetEntity(created_ped[i], {
+    options = {{ event = 'Polar-stores:Client:Menu',  icon = Config.Ped[i].icon, label = Config.Ped[i].label}}, distance = 1.5  })
+  --  exports['qb-target']:AddBoxZone(Config.Ped[i].name, vec3(Config.Ped[i].coords.x, Config.Ped[i].coords.y, Config.Ped[i].coords.z), 0.5, 0.5, { name = Config.Ped[i].name, heading = 28.69, debug = hi, minZ = Config.Ped[i].coords.z - 1.0, maxZ =  Config.Ped[i].coords.z + 1.0,}, 
+  --  { options = {{ event = 'Polar-stores:Client:Menu',  icon = Config.Ped[i].icon, label = Config.Ped[i].label}}, distance = 1.5  })
 
     end
 end
