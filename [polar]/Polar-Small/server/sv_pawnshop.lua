@@ -358,7 +358,7 @@ RegisterNetEvent('Pawnshop:Server:SellItems', function()
             Player.Functions.AddMoney('cash', pay)
             Player.Functions.RemoveItem(name, amt)
             Wait(250)
-            TriggerEvent('Pawnshop:Server:SellItems', src)
+            TriggerEvent('Pawnshop:Server:SellItems')
         end
 
     end
