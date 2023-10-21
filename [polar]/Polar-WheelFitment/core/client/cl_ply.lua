@@ -504,9 +504,11 @@ AddEventHandler("fox-wheelfitment_cl:forceMenuClose", function()
     SyncWheelFitment()
     DisplayMenu(false)
 end)
-RegisterNetEvent('Polar-Fitment:Client:WidebodyCharger')
-AddEventHandler("Polar-Fitment:Client:WidebodyCharger", function()
+RegisterNetEvent('fox-wheelfitment_cl:WidebodyCharger')
+AddEventHandler("fox-wheelfitment_cl:WidebodyCharger", function()
     print('charger')
+
+
 
 end)
 RegisterCommand("leavefitment", function()
