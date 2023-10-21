@@ -164,6 +164,7 @@ RegisterCommand('+radiotalk', function()
 			logger.info('[radio] Start broadcasting, update targets and notify server.')
 			playerTargets(radioData, MumbleIsPlayerTalking(PlayerId()) and callData or {})
 			TriggerServerEvent('pma-voice:setTalkingOnRadio', true)
+			TriggerEvent("InteractSound_CL:PlayOnOne","click",0.6)
 			radioPressed = true
 
 			if GetConvarInt('voice_enableRadioAnim', 0) == 1 and not (GetConvarInt('voice_disableVehicleRadioAnim', 0) == 1 and IsPedInAnyVehicle(PlayerPedId(), false)) and not disableRadioAnim then
@@ -201,6 +202,7 @@ RegisterCommand('-radiotalk', function()
 			
 		end
 		TriggerServerEvent('pma-voice:setTalkingOnRadio', false)
+		TriggerEvent("InteractSound_CL:PlayOnOne","click",0.6)
 	end
 end, false)
 if gameVersion == 'fivem' then
