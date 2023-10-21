@@ -131,8 +131,8 @@ function DisplayMenu(state, slider1, slider2, slider3, slider4, slider5, slider6
             {
                 {
                     menu = "mainMenu",
-                    heading = cfg_header,
-                    subheading = cfg_name,
+                    heading = "Wide Body Tuner Shop",
+                    subheading = "Adjust Camber & Fitment",
                     items = 
                     {
                         {name = "w_width", type_1 = "normal", label_1 = "Wheels Width", sliderItems_1 = {}, type_2 = "slider", label_2 = "", sliderItems_2 = slider1, sliderStartPos = startPos[1]},

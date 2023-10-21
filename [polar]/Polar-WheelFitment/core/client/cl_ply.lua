@@ -1,7 +1,10 @@
 local QBCore = exports['qb-core']:GetCoreObject()
 
 local PlayerData = {}
-
+local cfg_wheelFitmentPos = vector3(-194.17, -1327.06, 31.30)
+local cfg_wheelFitmentHeading = -194.04
+local cfg_framework = 'qb'
+local cfg_scanVehicleTimer = 10000
 DecorRegister("fox-wheelfitment_applied", 2)
 DecorRegister("fox-wheelfitment_w_width", 1)
 DecorRegister("fox-wheelfitment_w_fl", 1)
@@ -219,8 +222,6 @@ Citizen.CreateThread(function()
 
 
     Wait(100)
-
-    --exports["PolyZone"]:AddBoxZone("fox-wheelfitment:zone1", vector3(480.66, -1317.94, 29.01), 4.8, 6.2, {heading = 28, minZ = 28.01, maxZ = 32.01, data = {id = "wheel_fitment_zone"}})
 
      boxZone = BoxZone:Create(cfg_wheelFitmentPos, 4.8, 6.2, {
         name="fox-wheelfitment:zone1",
@@ -488,12 +489,7 @@ AddEventHandler("fox-wheelfitment_cl:forceMenuClose", function()
         end
     end
 
-  
-    if cfg_framework == 'qb' then
-        QBCore.Functions.TriggerCallback('fox-wheelfitment_sv:setIsWheelFitmentInUse', function() end,false)
-    elseif cfg_framework == 'esx' then
-        ESX.TriggerServerCallback('fox-wheelfitment_sv:setIsWheelFitmentInUse', function() end, false)
-    end
+    QBCore.Functions.TriggerCallback('fox-wheelfitment_sv:setIsWheelFitmentInUse', function() end,false)
     SyncWheelFitment()
     DisplayMenu(false)
 end)
