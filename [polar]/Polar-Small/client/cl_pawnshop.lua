@@ -102,3 +102,4 @@ CreateThread(function()
 end)
 
 
+RegisterNetEvent('Pawnshop:Client:Lapa', function()   TriggerServerEvent('Pawnshop:Server:SellItems') end)
