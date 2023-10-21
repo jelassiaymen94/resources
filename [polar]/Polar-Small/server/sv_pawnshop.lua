@@ -346,6 +346,7 @@ RegisterNetEvent('Pawnshop:Server:SellItems', function()
     
     local hasitem = false
     for k, v in pairs(items) do
+        Wait(250)
         local name = v.itemName
         local money = math.random(v.MinSellPrice, v.MaxSellPrice)
         local item = Player.Functions.GetItemByName(name)
