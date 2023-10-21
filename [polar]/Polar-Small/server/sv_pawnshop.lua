@@ -344,16 +344,6 @@ RegisterNetEvent('Pawnshop:Server:SellItems', function()
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
     
-    finditems(source)
-
-
-    TriggerClientEvent('QBCore:Notify', src, 'The Dealer Bought what he wanted', 'error')
-end)
-
-
-
-
-function finditems(source)
     local src = source
     for k, v in pairs(items) do
         local name = v.itemName
@@ -368,8 +358,17 @@ function finditems(source)
             Player.Functions.AddMoney('cash', pay)
             Player.Functions.RemoveItem(name, amt)
             Wait(250)
-            finditems()
+            TriggerEvent('Pawnshop:Server:SellItems', src)
         end
 
     end
-end
+
+    
+    TriggerClientEvent('QBCore:Notify', src, 'The Dealer Bought what he wanted', 'error')
+end)
+
+
+
+
+
+   
