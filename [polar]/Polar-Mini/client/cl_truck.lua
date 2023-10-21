@@ -222,7 +222,7 @@ function start()
 
     loadModel(TruckPeds[i].model)
 
-    created_ped[i] = CreatePed(5, TruckPeds[i].model, vec4(TruckPeds[i].coords.x, TruckPeds[i].coords.y, TruckPeds[i].coords.z-1, TruckPeds[i].coords.w), true, true)
+    created_ped[i] = CreatePed(5, TruckPeds[i].model, vec4(TruckPeds[i].coords.x, TruckPeds[i].coords.y, TruckPeds[i].coords.z-1, TruckPeds[i].coords.w), false, true)
     FreezeEntityPosition(created_ped[i], true)
     SetEntityInvincible(created_ped[i], true)
     SetBlockingOfNonTemporaryEvents(created_ped[i], true)
