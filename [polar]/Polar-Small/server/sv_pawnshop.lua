@@ -360,7 +360,7 @@ RegisterNetEvent('Pawnshop:Server:SellItems', function()
     if hasitem then 
         hasitem = false
         Wait(250)
-        TriggerEvent('Pawnshop:Client:Lapa', src)
+        TriggerClientEvent('Pawnshop:Client:Lapa', src)
     end
     
     TriggerClientEvent('QBCore:Notify', src, 'The Dealer Bought what he wanted', 'error')
