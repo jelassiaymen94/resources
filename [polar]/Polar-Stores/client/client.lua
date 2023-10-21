@@ -26,7 +26,18 @@ local voltgame = 'ultra-voltlab' -- https://forum.cfx.re/t/release-voltlab-hacki
 
 --==================================================================================================================================================================
 
-
+local targetpeds = {
+    [1] = { 
+        coords = vector4(14.29, -1333.73, 29.28, 336.35),
+        model = "s_m_o_busker_01",
+        scene = "WORLD_HUMAN_AA_COFFEE",
+        icon = 'fa-solid fa-bolt',
+        label = 'Talk to Namir',
+        name = 'theWildWest',
+        product = {
+            },
+    },
+}
 
 
 
@@ -55,19 +66,19 @@ local hi = Config.Debug
 function peds()
    
     if Config.Debug then print('starting') end
-    for i = 1, #Config.Ped do
+    for i = 1, #targetpeds do
 
-    loadModel(Config.Ped[i].model)
+    loadModel(targetpeds[i].model)
 
-    created_ped[i] = CreatePed(5, Config.Ped[i].model, vec4(Config.Ped[i].coords.x, Config.Ped[i].coords.y, Config.Ped[i].coords.z-1, Config.Ped[i].coords.w), false, true)
+    created_ped[i] = CreatePed(5, targetpeds[i].model, vec4(targetpeds[i].coords.x, targetpeds[i].coords.y, targetpeds[i].coords.z-1, targetpeds[i].coords.w), false, true)
     FreezeEntityPosition(created_ped[i], true)
     SetEntityInvincible(created_ped[i], true)
     SetBlockingOfNonTemporaryEvents(created_ped[i], true)
     TaskStartScenarioInPlace(created_ped[i], 'WORLD_HUMAN_CLIPBOARD', 0, true)
     exports['qb-target']:AddTargetEntity(created_ped[i], {
-    options = {{ event = 'Polar-stores:Client:Menu',  icon = Config.Ped[i].icon, label = Config.Ped[i].label}}, distance = 1.5  })
-  --  exports['qb-target']:AddBoxZone(Config.Ped[i].name, vec3(Config.Ped[i].coords.x, Config.Ped[i].coords.y, Config.Ped[i].coords.z), 0.5, 0.5, { name = Config.Ped[i].name, heading = 28.69, debug = hi, minZ = Config.Ped[i].coords.z - 1.0, maxZ =  Config.Ped[i].coords.z + 1.0,}, 
-  --  { options = {{ event = 'Polar-stores:Client:Menu',  icon = Config.Ped[i].icon, label = Config.Ped[i].label}}, distance = 1.5  })
+    options = {{ event = 'Polar-stores:Client:Menu',  icon = targetpeds[i].icon, label = targetpeds[i].label}}, distance = 1.5  })
+  --  exports['qb-target']:AddBoxZone(targetpeds[i].name, vec3(targetpeds[i].coords.x, targetpeds[i].coords.y, targetpeds[i].coords.z), 0.5, 0.5, { name = targetpeds[i].name, heading = 28.69, debug = hi, minZ = targetpeds[i].coords.z - 1.0, maxZ =  targetpeds[i].coords.z + 1.0,}, 
+  --  { options = {{ event = 'Polar-stores:Client:Menu',  icon = targetpeds[i].icon, label = targetpeds[i].label}}, distance = 1.5  })
 
     end
 end
