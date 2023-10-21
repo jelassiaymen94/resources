@@ -5,7 +5,7 @@ Config.StressChance = 0.05 -- Default: 10% -- Percentage Stress Chance When Shoo
 Config.UseMPH = true -- If true speed math will be done as MPH, if false KPH will be used (YOU HAVE TO CHANGE CONTENT IN STYLES.CSS TO DISPLAY THE CORRECT TEXT)
 Config.MinimumStress = 60 -- Minimum Stress Level For Screen Shaking
 Config.MinimumSpeedUnbuckled = 60 -- Going Over This Speed Will Cause Stress
-Config.MinimumSpeed = 100 -- Going Over This Speed Will Cause Stress
+Config.MinimumSpeed = 110 -- Going Over This Speed Will Cause Stress
 Config.DisablePoliceStress = false -- Default: false, If true will disable stress for people with the police job
 Config.FuelScript = 'LegacyFuel' -- change to lj-fuel if you use lj-fuel or something else if you use any other LegcyFuel compatible script
 
