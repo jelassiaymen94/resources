@@ -197,7 +197,10 @@ RegisterNetEvent("jim-jobgarage:client:SpawnList", function(data)
 				local number = data.list.ornaments - 1
 				SetVehicleMod(veh, 28, number)
 			end
-
+			if data.list.suspension then
+				local number = data.list.suspension - 1
+				SetVehicleMod(veh, 15, number)
+			end
 			
 			if data.list.performance then
 				if type(data.list.performance) ~= "table" then

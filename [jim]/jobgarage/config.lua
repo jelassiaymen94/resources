@@ -169,6 +169,7 @@ Config = {
 						ornaments = 1,
 
 
+						suspension = 4,
 						trunkItems = {
 						
 						},
@@ -200,7 +201,8 @@ Config = {
 						--trunk = 3,
 						ornaments = 1,
 
-
+						
+						suspension = 4,
 						trunkItems = {
 						
 						},
@@ -232,6 +234,7 @@ Config = {
 						ornaments = 1,
 
 
+						suspension = 4,
 						trunkItems = {
 						
 						},
@@ -246,6 +249,7 @@ Config = {
 						colors = {0,0},
 					
 
+						suspension = 4,
 						trunkItems = {
 						
 						},
@@ -277,6 +281,7 @@ Config = {
 						ornaments = 1,
 
 
+						suspension = 4,
 						trunkItems = {
 						
 						},
@@ -308,6 +313,7 @@ Config = {
 						ornaments = 1,
 
 
+						suspension = 4,
 						trunkItems = {
 						
 						},
@@ -339,6 +345,7 @@ Config = {
 						ornaments = 1,
 
 
+						suspension = 4,
 						trunkItems = {
 						
 						},
@@ -362,7 +369,8 @@ Config = {
 						rank = {2, 3, 4, 5 },
 						extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
 						--performance = "max",
-                          frontbump = 1,
+                        
+						suspension = 4,
 						trunkItems = {
 							
 						},
@@ -373,7 +381,7 @@ Config = {
 						rank = { 2,3, 4, 5 },
 						extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
 						--performance = "max",
-                          frontbump = 1,
+                        suspension = 4,
 						trunkItems = {
 							
 						},
@@ -384,7 +392,7 @@ Config = {
 						rank = { 2,3, 4, 5 },
 						extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
 						--performance = "max",
-                          frontbump = 1,
+                        suspension = 4,
 						trunkItems = {
 							
 						},
@@ -395,7 +403,7 @@ Config = {
 						rank = {2, 3, 4, 5 },
 						extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
 						--performance = "max",
-                          frontbump = 1,
+                        suspension = 4,
 						trunkItems = {
 							
 						},2,
@@ -406,7 +414,7 @@ Config = {
 						rank = { 2,3, 4, 5 },
 						extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
 						--performance = "max",
-                          frontbump = 1,
+                        suspension = 4,
 						trunkItems = {
 							
 						},
@@ -417,6 +425,7 @@ Config = {
 						rank = {2, 3,4,5},
 						extras = {2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
 						performance = "max",
+						
 						trunkItems = {
 						
 						},
@@ -427,7 +436,8 @@ Config = {
 						rank = {1, 2,3 ,4 ,5},
 						extras = {2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
 						--performance = "max",
-                          frontbump = 1,
+                      
+						suspension = 4,
 						trunkItems = {
 						
 						},
@@ -501,7 +511,7 @@ Config = {
 					trunk = 3,
 					ornaments = 1,
 
-
+					suspension = 4,
 					trunkItems = {
 					
 					},
@@ -514,7 +524,7 @@ Config = {
 					rank = {2,3,4,5},
 					extras = { 1, 4,5,6,7,8,9,10,11,12,13,14,15 },
 
-					colors = {0,0},
+					
 					--performance = "max",
 					frontbump = 2,
 					spoiler = 3,
@@ -534,7 +544,7 @@ Config = {
 					--trunk = 3,
 					ornaments = 1,
 
-
+					suspension = 4,
 					trunkItems = {
 					
 					},
@@ -566,6 +576,7 @@ Config = {
 						ornaments = 1,
 
 
+						suspension = 4,
 						trunkItems = {
 						
 						},
@@ -597,6 +608,7 @@ Config = {
 						ornaments = 1,
 
 
+						suspension = 4,
 						trunkItems = {
 						
 						},
@@ -641,6 +653,7 @@ Config = {
 						ornaments = 1,
 
 
+						suspension = 4,
 						trunkItems = {
 						
 						},
@@ -671,7 +684,7 @@ Config = {
 					trunk = 3,
 					ornaments = 1,
 
-
+					suspension = 4,
 					trunkItems = {
 					
 					},
@@ -694,7 +707,7 @@ Config = {
 					extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
 					--performance = "max",
                       
-						
+					suspension = 4,
 					trunkItems = {
 							
 					},
@@ -783,7 +796,7 @@ Config = {
 					--trunk = 3,
 					ornaments = 1,
 
-
+					suspension = 4,
 					trunkItems = {
 					
 					},
@@ -815,6 +828,7 @@ Config = {
 						ornaments = 1,
 
 
+						suspension = 4,
 						trunkItems = {
 						
 						},
@@ -846,7 +860,7 @@ Config = {
 					--trunk = 3,
 					ornaments = 1,
 
-
+					suspension = 4,
 					trunkItems = {
 					
 					},
@@ -878,7 +892,7 @@ Config = {
 					trunk = 1,
 					ornaments = 1,
 
-
+					suspension = 4,
 					trunkItems = {
 					
 					},
@@ -909,7 +923,7 @@ Config = {
 					trunk = 3,
 					ornaments = 1,
 
-
+					suspension = 4,
 					trunkItems = {
 					
 					},
@@ -924,7 +938,7 @@ Config = {
 					colors = {50,50},
 					--performance = "max",
                       
-						
+					suspension = 4,
 					trunkItems = {
 							
 					},
@@ -1001,6 +1015,7 @@ Config = {
 						rank = {2,3,4,5},
 						extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
 						performance = "max",
+						
 						trunkItems = {
 						
 						},
@@ -1021,6 +1036,7 @@ Config = {
 						rank = {2,3,4,5},
 						extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
 						performance = "max",
+						
 						trunkItems = {
 						
 						},
@@ -1041,6 +1057,7 @@ Config = {
 						rank = {2,3,4,5},
 						extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
 						performance = "max",
+						
 						trunkItems = {
 						
 						},
@@ -1061,6 +1078,7 @@ Config = {
 						rank = {2,3,4,5},
 						extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
 						performance = "max",
+					
 						trunkItems = {
 						
 						},
@@ -1081,6 +1099,7 @@ Config = {
 						rank = {2,3,4,5},
 						extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
 						performance = "max",
+						
 						trunkItems = {
 						
 						},
