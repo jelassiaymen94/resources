@@ -15,7 +15,7 @@ DecorRegister("fox-wheelfitment_w_kr", 1)
 
 function getjob()
     local PlayerJob = QBCore.Functions.GetPlayerData().job.name
-    print(PlayerJob)
+  
     if PlayerJob.name == 'bennys' then
         return true
     end
@@ -353,7 +353,7 @@ Citizen.CreateThread(function()
                             end
                         end
                     end
-                    Citizen.Wait(0)
+                    Citizen.Wait(10)
                 end
             end)
         else
