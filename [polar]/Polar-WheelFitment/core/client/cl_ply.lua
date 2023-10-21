@@ -69,17 +69,22 @@ function SyncWheelFitment()
             DecorSetFloat(plyVeh, "fox-wheelfitment_w_kf", roundNum(GetVehicleWheelYRotation(plyVeh,0), 2))
             DecorSetFloat(plyVeh, "fox-wheelfitment_w_kr", roundNum(GetVehicleWheelYRotation(plyVeh,2), 2))
            
-
+            print('width' .. roundNum(GetVehicleWheelWidth(plyVeh), 2))
+            print('x offset 0' .. roundNum(GetVehicleWheelXOffset(plyVeh, 0), 2))
+            print('x offset 1' .. roundNum(GetVehicleWheelXOffset(plyVeh, 1), 2))
+            print('x offset 2' .. roundNum(GetVehicleWheelXOffset(plyVeh, 2), 2))
+            print('x offset 3' .. roundNum(GetVehicleWheelXOffset(plyVeh, 3), 2))
+         
           
 
           
-                if cfg_framework == 'qb' then
-                    local plate = QBCore.Functions.GetPlate(plyVeh)
-                    QBCore.Functions.TriggerCallback('fox-wheelfitment_sv:saveWheelfitment', function(result)
-                    end, plate, currentFitmentsToSet)
+                
+                local plate = QBCore.Functions.GetPlate(plyVeh)
+                QBCore.Functions.TriggerCallback('fox-wheelfitment_sv:saveWheelfitment', function(result)
+                end, plate, currentFitmentsToSet)
 
-                    didPlyAdjustFitments = false
-                end
+                didPlyAdjustFitments = false
+           
         
                 currentFitmentsToSet = {width = 0, fl = 0, fr = 0, rl = 0, rr = 0 , kf = 0 ,kr = 0}
         
@@ -96,10 +101,10 @@ function SyncWheelFitment()
                 
                    
               
-                end
+                
         
             
-                
+            end
                    
                     
     end
@@ -191,17 +196,12 @@ end
 Citizen.CreateThread(function()
     
 
-    if cfg_framework == 'qb' then
+   
         QBCore.Functions.TriggerCallback('fox-wheelfitment_sv:getIsWheelFitmentInUse1', function(result) 
         isWheelFitmentInUse = result end)
         QBCore.Functions.TriggerCallback('fox-wheelfitment_sv:checkIfWhitelisted', function(result)
         isPlyWhitelisted = result end)
-    elseif cfg_framework == 'esx' then
-        ESX.TriggerServerCallback('fox-wheelfitment_sv:getIsWheelFitmentInUse1', function(result) 
-        isWheelFitmentInUse = result end)
-        ESX.TriggerServerCallback('fox-wheelfitment_sv:checkIfWhitelisted', function(result)
-        isPlyWhitelisted = result end)
-    end
+  
 
 
     Wait(100)
@@ -446,13 +446,7 @@ AddEventHandler("fox-wheelfitment_cl:applySavedWheelFitment", function(wheelFitm
     DecorSetFloat(plyVeh, "fox-wheelfitment_w_kr", wheelFitments.kr)
 
 
-    print(wheelFitments.width)
-    print(wheelFitments.fl)
-    print(wheelFitments.fr)
-    print(wheelFitments.rl)
-    print(wheelFitments.rr)
-    print(wheelFitments.kf)
-    print(wheelFitments.kr)
+    
 
     performVehicleCheck = true
     checkVehicleFitment()
@@ -478,9 +472,37 @@ AddEventHandler("fox-wheelfitment_cl:forceMenuClose", function()
 end)
 RegisterNetEvent('fox-wheelfitment_cl:WidebodyCharger')
 AddEventHandler("fox-wheelfitment_cl:WidebodyCharger", function()
-    print('charger')
+    currentFitmentsToSet.width = GetVehicleWheelWidth(plyVeh)
+    currentFitmentsToSet.fl = GetVehicleWheelXOffset(plyVeh, 0)
+    currentFitmentsToSet.fr = GetVehicleWheelXOffset(plyVeh, 1)
+    currentFitmentsToSet.rl = GetVehicleWheelXOffset(plyVeh, 2)
+    currentFitmentsToSet.rr = GetVehicleWheelXOffset(plyVeh, 3)
+    currentFitmentsToSet.kf = GetVehicleWheelYRotation(plyVeh,0)
+    currentFitmentsToSet.kr = GetVehicleWheelYRotation(plyVeh,2)
 
 
+    local plyPed = PlayerPedId()
+    local plyVeh = GetVehiclePedIsIn(plyPed, false)
+
+    local plate = QBCore.Functions.GetPlate(plyVeh)
+    QBCore.Functions.TriggerCallback('fox-wheelfitment_sv:saveWheelfitment', function(result)
+    end, plate, currentFitmentsToSet)
+
+    didPlyAdjustFitments = false
+
+
+    currentFitmentsToSet = {width = 0, fl = 0, fr = 0, rl = 0, rr = 0 , kf = 0 ,kr = 0}
+
+    performVehicleCheck = true
+
+    checkVehicleFitment()
+
+    FreezeEntityPosition(plyVeh, false)
+    SetEntityCollision(plyVeh, true, true)
+
+    QBCore.Functions.TriggerCallback('fox-wheelfitment_sv:setIsWheelFitmentInUse', function(result)
+       
+    end, false)
 
 end)
 RegisterCommand("leavefitment", function()

@@ -18,7 +18,7 @@ local wheelInUse = false
 
     QBCore.Functions.CreateCallback('fox-wheelfitment_sv:saveWheelfitment', function(source, cb , plate , data)
         if plate == nil or plate == 0 or plate == "" then return end
-      --  print("31")
+        print("31")
         MySQL.Async.insert("UPDATE player_vehicles SET wheels = @wheels WHERE plate = @plate", { 
             ['@wheels'] = json.encode(data),
             ['@plate'] = plate
