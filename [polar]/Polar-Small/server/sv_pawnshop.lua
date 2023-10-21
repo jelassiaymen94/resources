@@ -347,19 +347,15 @@ RegisterNetEvent('Pawnshop:Server:SellItems', function()
     local hasitem = false
     for k, v in pairs(items) do
         local name = v.itemName
-        local money = math.random(v.MinSellPrice,v.MaxSellPrice)
-         
-
-    
-        if Player.Functions.GetItemByName(name) ~= nil then
+        local money = math.random(v.MinSellPrice, v.MaxSellPrice)
+        local item = Player.Functions.GetItemByName(name)
+        if item ~= nil and item.amount > 0 then
             hasitem = true
-            local amt = Player.Functions.GetItemByName(name).amount
+            local amt = item.amount
             local pay = money * amt
             Player.Functions.AddMoney('cash', pay)
             Player.Functions.RemoveItem(name, amt)
-           
         end
-
     end
     if hasitem then 
         hasitem = false
