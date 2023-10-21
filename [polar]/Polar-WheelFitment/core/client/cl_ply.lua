@@ -251,7 +251,7 @@ Citizen.CreateThread(function()
                                     if getjob() then
                                 Draw3DText(cfg_wheelFitmentPos.x, cfg_wheelFitmentPos.y, cfg_wheelFitmentPos.z, "[Press ~p~E~w~ - Adjust Wheel Fitment]", 255, 255, 255, 255, 4, 0.45, true, true, true, true, 0, 0, 0, 0, 55)
                                 
-                                if IsControlJustReleased(1, 38) then -- Key: E
+                                if IsControlJustReleased(0, 86) then -- Key: E
                                     print('hi')
                                     local slider_wWidth = {}
                                     local slider_wfFL = {}
