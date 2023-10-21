@@ -2,7 +2,7 @@ local QBCore = exports['qb-core']:GetCoreObject()
 
 local PlayerData = {}
 local cfg_wheelFitmentPos = vector3(-194.17, -1327.06, 31.30)
-local cfg_wheelFitmentHeading = -194.04
+local cfg_wheelFitmentHeading = 92.58
 local cfg_framework = 'qb'
 local cfg_scanVehicleTimer = 10000
 DecorRegister("fox-wheelfitment_applied", 2)
