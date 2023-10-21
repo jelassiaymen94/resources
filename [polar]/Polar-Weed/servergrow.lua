@@ -2,14 +2,14 @@ QBCore = exports['qb-core']:GetCoreObject()
 local WeedPlants = {}
 
 --- Functions
-
+local time = math.random(120,360)
 --- Method to calculate the growth percentage for a given WeedPlants index
 --- @param k number - WeedPlants table index
 --- @return retval number - growth index [0-100]
 local calcGrowth = function(k)
     if not WeedPlants[k] then return false end
     local current_time = os.time()
-    local TimeToGrow = Config.TimeToGrow * 60
+    local TimeToGrow = time * 60
     local progress = os.difftime(current_time, WeedPlants[k].time)
     local growth = QBCore.Shared.Round(progress * 100 / TimeToGrow, 2)
     local retval = math.min(growth, 100.00)
@@ -122,7 +122,7 @@ end
 local setupPlants = function()
     local result = MySQL.Sync.fetchAll('SELECT * FROM polar_weedplants')
     local current_time = os.time()
-    local TimeToGrow = Config.TimeToGrow * 60
+    local TimeToGrow = time * 60
 
     for k, v in pairs(result) do
         local progress = os.difftime(current_time, v.time)
