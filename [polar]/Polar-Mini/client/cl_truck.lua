@@ -11,7 +11,7 @@ local onRoute = false
 local text = nil local icon = nil local name = nil local xp = nil
 local random = nil
 local type = nil
-
+local canceled = false
 PickupLocTruck = {
 
     vector4(-985.67, -2941.83, 13.95, 146.56),
@@ -246,9 +246,7 @@ RegisterNetEvent('Polar-Mini:Client:TruckMenu2', function()
     if onRoute then
         TriggerEvent('Polar-Mini:Client:CancelTruckMenu')
     else
-
-    
-    TriggerEvent('Polar-Mini:Client:TruckMenu')
+        TriggerEvent('Polar-Mini:Client:TruckMenu')
     end
 end)
 local exp = nil
@@ -289,8 +287,11 @@ RegisterNetEvent('Polar-Mini:Client:Transfer', function()
     startjob()
 end)
 RegisterNetEvent('Polar-Mini:Client:Cancel', function()
+
+    canceled = true
     if hide then return
     else hide = true onRoute = false end
+
     TriggerServerEvent('Polar-Mini:Server:SetPlayerDown', 1)
     TriggerServerEvent('Polar-Mini:Server:RemoveJob', lastjob)
     DeleteEntity(trailervehicle)
@@ -341,6 +342,7 @@ end)
 
 
 function startjob()
+    if canceled then return end
     getexp()
     math2()
     getmenu()
@@ -366,7 +368,8 @@ function startjob()
    -- pickup(loc, pickloc, amount, xpp, trailermod)
    local success = exports['qb-phone']:PhoneNotification("Los Santos Trucking"," " .. type .. " " .. math.floor(distance) .. " Miles - $ " .. amount .. " " , 'fas fa-file-invoice-dollar', '#b3e0f2', "NONE", 'fas fa-check-circle', 'fas fa-times-circle')
    if success then
-    xpp = math.random(1,100)
+    canceled = false
+    xpp = math.random(1,1)
     pickup()
     Wait(3000)
     TriggerEvent('qb-phone:client:CustomNotification', 'Los Santos Trucking', 'Head to Pickup The Trailer', 'fas fa-file-invoice-dollar', '#b3e0f2', '10000')
