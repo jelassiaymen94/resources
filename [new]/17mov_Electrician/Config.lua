@@ -158,12 +158,12 @@ Config.EnableCloakroom = true                                 -- Set to false if
 Config.Clothes = {
     male = {
         ["mask"] = {clotheId = 0, variation = 0},
-        ["arms"] = {clotheId = 43, variation = 0},
-        ["pants"] = {clotheId = 0, variation = 3},
+        ["arms"] = {clotheId = 52, variation = 0},
+        ["pants"] = {clotheId = 6, variation = 1},
         ["bag"] = {clotheId = 0, variation = 0},
-        ["shoes"] = {clotheId = 22, variation = 0},
-        ["t-shirt"] = {clotheId = 15, variation = 0},
-        ["torso"] = {clotheId = 113, variation = 0},
+        ["shoes"] = {clotheId = 12, variation = 4},
+        ["t-shirt"] = {clotheId = 90, variation = 0},
+        ["torso"] = {clotheId = 415, variation = 0},
         ["decals"] = {clotheId = 0, variation = 0},
         ["kevlar"] = {clotheId = 0, variation = 0},
     },
