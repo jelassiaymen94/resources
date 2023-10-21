@@ -493,9 +493,6 @@ AddEventHandler("fox-wheelfitment_cl:WidebodyCharger", function()
     FreezeEntityPosition(plyVeh, false)
     SetEntityCollision(plyVeh, true, true)
 
-    QBCore.Functions.TriggerCallback('fox-wheelfitment_sv:setIsWheelFitmentInUse', function(result)
-       
-    end, false)
 
     SetVehicleWheelWidth(plyVeh, currentFitmentsToSet.width)
     SetVehicleWheelXOffset(plyVeh, 0, currentFitmentsToSet.fl)
