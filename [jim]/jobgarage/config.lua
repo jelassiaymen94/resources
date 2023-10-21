@@ -544,7 +544,7 @@ Config = {
 					--trunk = 3,
 					ornaments = 1,
 
-					suspension = 3,
+					
 					trunkItems = {
 					
 					},

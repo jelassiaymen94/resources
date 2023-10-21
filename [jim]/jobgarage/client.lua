@@ -199,7 +199,7 @@ RegisterNetEvent("jim-jobgarage:client:SpawnList", function(data)
 			end
 			if data.list.suspension then
 				local number = data.list.suspension - 1
-				SetVehicleMod(veh, 15, number)
+				--SetVehicleMod(veh, 15, number)
 			end
 			
 			if data.list.performance then
@@ -229,6 +229,8 @@ RegisterNetEvent("jim-jobgarage:client:SpawnList", function(data)
 			TriggerServerEvent('Polar-JobGarage:Server:Log')
 			if data.spawnName == 'npolchar' then
 				TriggerEvent('fox-wheelfitment_cl:WidebodyCharger')
+				SetVehicleMod(veh, 15, 3)
+
 			end
 		end, data.coords, true)
 	end
