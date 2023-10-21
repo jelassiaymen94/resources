@@ -226,7 +226,6 @@ RegisterNetEvent("jim-jobgarage:client:SpawnList", function(data)
 			TriggerServerEvent('Polar-JobGarage:Server:Log')
 			print(data.spawnName)
 			if data.spawnName == 'npolchar' then
-				print('hi')
 				TriggerEvent('Polar-Fitment:Client:WidebodyCharger')
 			end
 		end, data.coords, true)
