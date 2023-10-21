@@ -95,27 +95,10 @@ function SyncWheelFitment()
                 end, false)
                 
                    
-                elseif cfg_framework == 'esx' then
-                    -- esx needs getplate
-                    ESX.TriggerServerCallback('fox-wheelfitment_sv:saveWheelfitment', function(result)
-                    end, plate, currentFitmentsToSet)
-
-                    didPlyAdjustFitments = false
+              
                 end
         
-                currentFitmentsToSet = {width = 0, fl = 0, fr = 0, rl = 0, rr = 0 , kf = 0 ,kr = 0}
-        
-                performVehicleCheck = true
-        
-                checkVehicleFitment()
-        
-                FreezeEntityPosition(plyVeh, false)
-                SetEntityCollision(plyVeh, true, true)
-        
-                
-                    ESX.TriggerServerCallback('fox-wheelfitment_sv:setIsWheelFitmentInUse', function(result)
-                   
-                end, false)
+            
                 
                    
                     
@@ -251,9 +234,9 @@ Citizen.CreateThread(function()
                                
                                     if getjob() then
                                 Draw3DText(cfg_wheelFitmentPos.x, cfg_wheelFitmentPos.y, cfg_wheelFitmentPos.z, "[Press ~p~E~w~ - Adjust Wheel Fitment]", 255, 255, 255, 255, 4, 0.45, true, true, true, true, 0, 0, 0, 0, 55)
-                                print('job correct')
+                              
                                 if IsControlJustReleased(0, 86) then -- Key: E
-                                    print('hi')
+                                 
                                     local slider_wWidth = {}
                                     local slider_wfFL = {}
                                     local slider_wfFR = {}
@@ -352,7 +335,7 @@ Citizen.CreateThread(function()
                             end
                         end
                     end
-                    Citizen.Wait(10)
+                    Citizen.Wait(0)
                 end
             end)
         else
