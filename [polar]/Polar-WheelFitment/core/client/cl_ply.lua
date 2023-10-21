@@ -472,21 +472,25 @@ AddEventHandler("fox-wheelfitment_cl:forceMenuClose", function()
 end)
 RegisterNetEvent('fox-wheelfitment_cl:WidebodyCharger')
 AddEventHandler("fox-wheelfitment_cl:WidebodyCharger", function()
-    currentFitmentsToSet.width = GetVehicleWheelWidth(plyVeh)
-    currentFitmentsToSet.fl = GetVehicleWheelXOffset(plyVeh, 0)
-    currentFitmentsToSet.fr = GetVehicleWheelXOffset(plyVeh, 1)
-    currentFitmentsToSet.rl = GetVehicleWheelXOffset(plyVeh, 2)
-    currentFitmentsToSet.rr = GetVehicleWheelXOffset(plyVeh, 3)
-    currentFitmentsToSet.kf = GetVehicleWheelYRotation(plyVeh,0)
-    currentFitmentsToSet.kr = GetVehicleWheelYRotation(plyVeh,2)
-
+    currentFitmentsToSet.width = 1.51
+    currentFitmentsToSet.fl = -0.8
+    currentFitmentsToSet.fr = 0.8
+    currentFitmentsToSet.rl = -0.83
+    currentFitmentsToSet.rr = 0.83
+    currentFitmentsToSet.kf = 0
+    currentFitmentsToSet.kr = 0
 
     local plyPed = PlayerPedId()
     local plyVeh = GetVehiclePedIsIn(plyPed, false)
-
     local plate = QBCore.Functions.GetPlate(plyVeh)
     QBCore.Functions.TriggerCallback('fox-wheelfitment_sv:saveWheelfitment', function(result)
     end, plate, currentFitmentsToSet)
+
+    SetVehicleWheelWidth(plyVeh, currentFitmentsToSet.width)
+    SetVehicleWheelXOffset(plyVeh, 0, currentFitmentsToSet.fl)
+    SetVehicleWheelXOffset(plyVeh, 1, currentFitmentsToSet.fr)
+    SetVehicleWheelXOffset(plyVeh, 2, currentFitmentsToSet.rl)
+    SetVehicleWheelXOffset(plyVeh, 3, currentFitmentsToSet.rr)
 
     didPlyAdjustFitments = false
 
