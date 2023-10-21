@@ -26,7 +26,7 @@ CreateThread(function()
         SetBlipScale(pawnshop, 0.6)
         SetBlipDisplay(pawnshop, 6)
         BeginTextCommandSetBlipName('STRING')
-        AddTextComponentString(Config.BlipTitle)
+        AddTextComponentString('Larrys Pawnshop')
         EndTextCommandSetBlipName(pawnshop)
    
 end)
@@ -35,14 +35,14 @@ end)
 local function shopMenu()
     local shop = {
         {
-            header = Config.BlipTitle,
+            header = 'Larrys Pawnshop',
             isMenuHeader = true,
         },
         {
             header = 'Try To Sell Items',
             icon = 'fas fa-hand-holding',
             params = {
-                event = 'pawnshop-cl-sellItems'
+                event = 'Pawnshop:Client:SellItems'
             }
         },
         {
@@ -75,9 +75,9 @@ end)
 
 
 
-RegisterNetEvent('pawnshop-cl-sellItems', function()
+RegisterNetEvent('Pawnshop:Client:SellItems', function()
     local ped = PlayerPedId()
-    QBCore.Functions.Progressbar('show_items', 'Checking If Items Have Value', Config.ProgBarSpeed, false, true, { 
+    QBCore.Functions.Progressbar('show_items', 'Checking If Items Have Value', 10000, false, true, { 
         disableMovement = true,
         disableCarMovement = true,
         disableMouse = false,
@@ -87,7 +87,7 @@ RegisterNetEvent('pawnshop-cl-sellItems', function()
         anim = 'base',
         flags = 16,
     }, {}, {}, function() 
-        TriggerServerEvent('pawnshop-sv-sellItems')
+        TriggerServerEvent('Pawnshop:Server:SellItems')
         ClearPedTasks(ped)
     end, function() 
         ClearPedTasks(ped)
