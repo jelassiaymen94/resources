@@ -111,7 +111,7 @@ end)
 
 --RegisterKeyMapping("adminconsole", 'Reports Admin Console', 'keyboard', 'h')
 
-RegisterCommand("adminconsole", function()
+RegisterCommand("adminreports", function()
     enableAdminUI = not enableAdminUI
     if enableAdminUI then
         QBCore.Functions.TriggerCallback('CL-Reports:GetInfo', function(result)
