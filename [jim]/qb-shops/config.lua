@@ -137,6 +137,7 @@ Config = {
 			{ name = "phone", price = 500, amount = 10 },
 			{ name = "radio", price = 1000, amount = 20, },
 			{ name = "vpn", price = 1250, amount = 15, },
+			{ name = "laptop", price = 12500, amount = 15, },
 		},
 	
 		["blackmarket"] = {
@@ -154,7 +155,7 @@ Config = {
 		
 			{ name = "thermite", price = 125, amount = 2 },
 			{ name = "hacking_device", price = 16750, amount = 1 },
-			{ name = "laptop_green", price = 12250, amount = 1 },
+			--{ name = "laptop_green", price = 12250, amount = 1 },
 			{ name = "head_bag", price = 5000, amount = 5 },
 			--{ name = "cocainekey", price = 5000, amount = 5 },
 		},

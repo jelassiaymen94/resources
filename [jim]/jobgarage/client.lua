@@ -224,6 +224,9 @@ RegisterNetEvent("jim-jobgarage:client:SpawnList", function(data)
 			SetVehicleDirtLevel(veh, 0.0)
 			triggerNotify(nil, "Retrieved "..name.." ["..GetVehicleNumberPlateText(currentVeh.current).."]", "success")
 			TriggerServerEvent('Polar-JobGarage:Server:Log')
+			if data.spawnName == 'npolchar' then
+				TriggerEvent('Polar-Fitment:Client:WidebodyCharger')
+			end
 		end, data.coords, true)
 	end
 end)
