@@ -1075,18 +1075,4 @@ end)
         `prop_toolchest_05`,
         `prop_toolchest_04`,
     }
-    exports['qb-target']:AddTargetModel(toolBoxModels, {
-            options = {
-                {
-                    event = "inventory:client:WeaponAttachmentCrafting",
-                    icon = "fas fa-wrench",
-                    label = "Weapon Attachment Crafting", 
-                },
-                {
-                    event = "inventory:client:Crafting",
-                    icon = "fas fa-wrench",
-                    label = "Item Crafting", 
-                },
-            },
-        distance = 1.0
-    })
+   
