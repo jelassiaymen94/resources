@@ -252,7 +252,7 @@ Citizen.CreateThread(function()
                                 Draw3DText(cfg_wheelFitmentPos.x, cfg_wheelFitmentPos.y, cfg_wheelFitmentPos.z, "[Press ~p~E~w~ - Adjust Wheel Fitment]", 255, 255, 255, 255, 4, 0.45, true, true, true, true, 0, 0, 0, 0, 55)
                                 
                                 if IsControlJustReleased(1, 38) then -- Key: E
-                                 
+                                    print('hi')
                                     local slider_wWidth = {}
                                     local slider_wfFL = {}
                                     local slider_wfFR = {}
@@ -270,11 +270,9 @@ Citizen.CreateThread(function()
                                     FreezeEntityPosition(plyVeh, true)
                                     SetEntityCollision(plyVeh, false, true)
                                     
-                                    if cfg_framework == 'qb' then
-                                        QBCore.Functions.TriggerCallback('fox-wheelfitment_sv:setIsWheelFitmentInUse', function() end,true)
-                                    elseif cfg_framework == 'esx' then
-                                        ESX.TriggerServerCallback('fox-wheelfitment_sv:setIsWheelFitmentInUse', function() end, true)
-                                    end
+                                   
+                                    QBCore.Functions.TriggerCallback('fox-wheelfitment_sv:setIsWheelFitmentInUse', function() end,true)
+                                    
                                
         
                                     for i = 0.0, 1.56, 0.01 do
