@@ -467,8 +467,8 @@ end)
 RegisterNetEvent('fox-wheelfitment_cl:WidebodyCharger')
 AddEventHandler("fox-wheelfitment_cl:WidebodyCharger", function()
     currentFitmentsToSet.width = 1.51
-    currentFitmentsToSet.fl = -0.8
-    currentFitmentsToSet.fr = 0.8
+    currentFitmentsToSet.fl = -0.83
+    currentFitmentsToSet.fr = 0.83
     currentFitmentsToSet.rl = -0.83
     currentFitmentsToSet.rr = 0.83
     currentFitmentsToSet.kf = 0
