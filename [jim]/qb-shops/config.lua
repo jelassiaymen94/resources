@@ -89,7 +89,7 @@ Config = {
 			{ name = "weed_nutrition", price = 100, amount = math.random(75,125), },
 			{ name = "drugbag", price = 100, amount = math.random(125,260), },
 			{ name = "purifiedwater", price = 100, amount = math.random(75,125), },
-			{ name = "rolling_paper", price = 50, amount = math.random(50,75), },
+			{ name = "rollingpaper", price = 50, amount = math.random(50,75), },
 			{ name = "male_seed", price = 8500, amount = math.random(5,15), },
 			{ name = "female_seed", price = 2500, amount = math.random(20,45), },
 			--{ name = "smalljoint", price = 100, amount = 25, },

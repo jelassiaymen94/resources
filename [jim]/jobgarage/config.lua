@@ -518,7 +518,7 @@ Config = {
 				},
 				
 				["npolchar"] = { -- npolchar
-					CustomName = "LSPD Dodge Charger",
+					CustomName = "Sherrif Dodge Charger",
 					livery = 2,
 					colors = {0,0},
 					rank = {2,3,4,5},
@@ -582,7 +582,7 @@ Config = {
 						},
 				},
 				["npolchal"] = {
-						CustomName = "Dodge Challenger",
+						CustomName = "Sheriff Dodge Challenger",
 						livery = 2,
 						rank = {3,4,5},
 						extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
@@ -771,7 +771,7 @@ Config = {
 				},
 				
 				["npolchar"] = { -- npolchar
-					CustomName = "LSPD Dodge Charger",
+					CustomName = "Ranger Dodge Charger",
 					livery = 5,
 					rank = {2,3,4,5},
 					extras = { 1, 4,5,6,7,8,9,10,11,12,13,14,15 },
@@ -866,7 +866,7 @@ Config = {
 					},
 				},
 				["npolchal"] = {
-					CustomName = "Dodge Challenger",
+					CustomName = "Ranger Dodge Challenger",
 					livery = 5,
 					rank = {3,4,5},
 					extras = { 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15 },
