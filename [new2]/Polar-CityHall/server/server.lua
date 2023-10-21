@@ -2,10 +2,10 @@
 local QBCore = exports['qb-core']:GetCoreObject()
 
 local jobas = {
-    {
+    --[[{
         job = "taxi",
         label = "Taxi Driver",
-    },
+    },]]
 }
 RegisterNetEvent('Polar-CityHall:server:ApplyJob', function(id)
     local Player = QBCore.Functions.GetPlayer(source)

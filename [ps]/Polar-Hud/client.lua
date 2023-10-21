@@ -1103,11 +1103,11 @@ CreateThread(function() -- Speeding
                 local speed = GetEntitySpeed(GetVehiclePedIsIn(ped, false)) * speedMultiplier
                 local stressSpeed = seatbeltOn and config.MinimumSpeed or config.MinimumSpeedUnbuckled
                 if speed >= stressSpeed then
-                    TriggerServerEvent('hud:server:GainStress', math.random(1, 3))
+                    TriggerServerEvent('hud:server:GainStress', math.random(1, 2))
                 end
             end
         end
-        Wait(10000)
+        Wait(20000)
     end
 end)
 
@@ -1130,7 +1130,7 @@ CreateThread(function() -- Shooting
             if weapon ~= `WEAPON_UNARMED` then
                 if IsPedShooting(ped) and not IsWhitelistedWeaponStress(weapon) then
                     if math.random() < config.StressChance then
-                        TriggerServerEvent('hud:server:GainStress', math.random(1, 3))
+                        TriggerServerEvent('hud:server:GainStress', math.random(1, 5))
                     end
                     Wait(100)
                 else

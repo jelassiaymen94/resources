@@ -38,17 +38,6 @@ local QBCore = exports['qb-core']:GetCoreObject()
          AddTextComponentSubstringPlayerName("Abandoned Mineshaft")
          EndTextCommandSetBlipName(mine)
  
-
-         -- pawnshop
-         local pawnshop = AddBlipForCoord(vector3(172.54, -1317.18, 0.38))
-         SetBlipSprite (pawnshop, 431)
-         SetBlipDisplay(pawnshop, 6) 
-         SetBlipScale  (pawnshop, 0.6)
-         SetBlipAsShortRange(pawnshop, true)
-         SetBlipColour(pawnshop, 5)
-         BeginTextCommandSetBlipName("STRING")
-         AddTextComponentSubstringPlayerName("Pawnshop")
-         EndTextCommandSetBlipName(pawnshop)
          --[[
 
          -- weazle news

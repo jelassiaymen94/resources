@@ -35,10 +35,10 @@ function NUI:Close()
     SetNuiFocus(false, false)
 end
 local jobas = {
-    {
+   --[[ {
         job = "taxi",
         label = "Taxi Driver",
-    },
+    },]]
 }
 ---Setup the jobs for the NUI
 function NUI:SetupJobs()
