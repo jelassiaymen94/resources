@@ -366,6 +366,7 @@ function startjob()
    -- pickup(loc, pickloc, amount, xpp, trailermod)
    local success = exports['qb-phone']:PhoneNotification("Los Santos Trucking"," " .. type .. " " .. math.floor(distance) .. " Miles - $ " .. amount .. " " , 'fas fa-file-invoice-dollar', '#b3e0f2', "NONE", 'fas fa-check-circle', 'fas fa-times-circle')
    if success then
+    xpp = math.random(1,100)
     pickup()
     Wait(3000)
     TriggerEvent('qb-phone:client:CustomNotification', 'Los Santos Trucking', 'Head to Pickup The Trailer', 'fas fa-file-invoice-dollar', '#b3e0f2', '10000')
