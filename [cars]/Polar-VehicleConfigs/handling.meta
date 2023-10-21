@@ -1249,7 +1249,7 @@
     <Item type="CHandlingData">
       <handlingName>NPOLCHAR</handlingName>
       <fMass value="2500.000000" />
-      <fInitialDragCoeff value="5.000000" />
+      <fInitialDragCoeff value="3.000000" />
       <fPercentSubmerged value="85.000000" />
       <vecCentreOfMassOffset x="0.000000" y="0.080000" z="-0.330000" />
       <vecInertiaMultiplier x="1.200000" y="1.100000" z="1.750000" />
@@ -1381,7 +1381,7 @@
     <Item type="CHandlingData">
       <handlingName>NPOLVIC</handlingName>
       <fMass value="1750.000000" />
-      <fInitialDragCoeff value="5.000000" />
+      <fInitialDragCoeff value="3.000000" />
       <fPercentSubmerged value="85.000000" />
       <vecCentreOfMassOffset x="0.000000" y="0.080000" z="-0.330000" />
       <vecInertiaMultiplier x="1.200000" y="1.100000" z="1.750000" />
@@ -1439,7 +1439,7 @@
     <Item type="CHandlingData">
       <handlingName>npolvette</handlingName>
       <fMass value="2250.000000" />
-       <fInitialDragCoeff value="5.000000" />
+       <fInitialDragCoeff value="3.000000" />
       <fPercentSubmerged value="85.000000" />
       <vecCentreOfMassOffset x="0.000000" y="0.000000" z="0.225000" />
       <vecInertiaMultiplier x="1.000000" y="1.55000" z="1.60000" />
@@ -1496,7 +1496,7 @@
     <Item type="CHandlingData">
       <handlingName>npolchal</handlingName>
       <fMass value="2750.00000" />
-      <fInitialDragCoeff value="5.000000" />
+      <fInitialDragCoeff value="3.000000" />
       <fPercentSubmerged value="85.000000" />
       <vecCentreOfMassOffset x="0.000000" y="0.000000" z="0.225000" />
       <vecInertiaMultiplier x="1.000000" y="1.55000" z="1.60000" />
@@ -1553,7 +1553,7 @@
     <Item type="CHandlingData">
       <handlingName>npolstang</handlingName>
       <fMass value="2500.000000" />
-       <fInitialDragCoeff value="5.000000" />
+       <fInitialDragCoeff value="3.000000" />
       <fPercentSubmerged value="85.000000" />
       <vecCentreOfMassOffset x="0.000000" y="0.000000" z="0.225000" />
       <vecInertiaMultiplier x="1.000000" y="1.55000" z="1.60000" />
