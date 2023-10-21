@@ -490,15 +490,13 @@ AddEventHandler("fox-wheelfitment_cl:WidebodyCharger", function()
 
     checkVehicleFitment()
 
-    FreezeEntityPosition(plyVeh, false)
-    SetEntityCollision(plyVeh, true, true)
 
 
-    SetVehicleWheelWidth(plyVeh, currentFitmentsToSet.width)
-    SetVehicleWheelXOffset(plyVeh, 0, currentFitmentsToSet.fl)
-    SetVehicleWheelXOffset(plyVeh, 1, currentFitmentsToSet.fr)
-    SetVehicleWheelXOffset(plyVeh, 2, currentFitmentsToSet.rl)
-    SetVehicleWheelXOffset(plyVeh, 3, currentFitmentsToSet.rr)
+ --   SetVehicleWheelWidth(plyVeh, currentFitmentsToSet.width)
+ --   SetVehicleWheelXOffset(plyVeh, 0, currentFitmentsToSet.fl)
+  --  SetVehicleWheelXOffset(plyVeh, 1, currentFitmentsToSet.fr)
+ --   SetVehicleWheelXOffset(plyVeh, 2, currentFitmentsToSet.rl)
+ --   SetVehicleWheelXOffset(plyVeh, 3, currentFitmentsToSet.rr)
     
     currentFitmentsToSet = {width = 0, fl = 0, fr = 0, rl = 0, rr = 0 , kf = 0 ,kr = 0}
 end)
