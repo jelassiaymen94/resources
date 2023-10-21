@@ -486,7 +486,7 @@ AddEventHandler("fox-wheelfitment_cl:WidebodyCharger", function()
 
    
 
-    performVehicleCheck = true
+    
 
 
     TriggerEvent('fox-wheelfitment_cl:applySavedWheelFitment', currentFitmentsToSet, plyVeh)
