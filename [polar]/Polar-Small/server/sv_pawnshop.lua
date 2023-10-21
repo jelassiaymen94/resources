@@ -155,6 +155,11 @@ local items = {
         MinSellPrice = 1500,
         MaxSellPrice = 3000,
     },
+    ['ruby'] = {
+        itemName = 'ruby',
+        MinSellPrice = 1500,
+        MaxSellPrice = 3000,
+    },
     ['captainskull'] = {
         itemName = 'captainskull',
         MinSellPrice = 1500,
