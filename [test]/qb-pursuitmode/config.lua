@@ -80,16 +80,16 @@ Config.VehiclesConfig = {
         ["A"] = {
             ["fDriveInertia"] = 0.6,
             ["fBrakeForce"] = 1.5,
-            ["fInitialDriveMaxFlatVel"] = 110.0,
+            ["fInitialDriveMaxFlatVel"] = 105.0,
             ["fSteeringLock"] = 30.3,
             ["fInitialDriveForce"] = 0.30
         },
         ["A+"] = {
-            ["fDriveInertia"] = 0.8,
+            ["fDriveInertia"] = 0.7,
             ["fBrakeForce"] = 1.8,
-            ["fInitialDriveMaxFlatVel"] = 120.0,
+            ["fInitialDriveMaxFlatVel"] = 110.0,
             ["fSteeringLock"] = 30.3,
-            ["fInitialDriveForce"] = 0.35
+            ["fInitialDriveForce"] = 0.32
         },
         ["S"] = {
             ["fDriveInertia"] = 1.0,
@@ -116,23 +116,23 @@ Config.VehiclesConfig = {
    
     ["npolchar"] = {
         ["A"] = {
-            ["fDriveInertia"] = 0.800000,
+            ["fDriveInertia"] = 0.80,
             ["fBrakeForce"] = 1.2,
-            ["fInitialDriveMaxFlatVel"] = 100.000000,
+            ["fInitialDriveMaxFlatVel"] = 95.0,
             ["fSteeringLock"] = 40.0,
             ["fInitialDriveForce"] = 0.35
         },
         ["A+"] = {
             ["fDriveInertia"] = 0.81000,
             ["fBrakeForce"] = 1.5,
-            ["fInitialDriveMaxFlatVel"] = 100.000000,
+            ["fInitialDriveMaxFlatVel"] = 100.00,
             ["fSteeringLock"] = 42.0,
             ["fInitialDriveForce"] = 0.365
         },
         ["S"] = {
             ["fDriveInertia"] = 0.9100,
             ["fBrakeForce"] = 1.8,
-            ["fInitialDriveMaxFlatVel"] = 110.000000,
+            ["fInitialDriveMaxFlatVel"] = 110.0,
             ["fSteeringLock"] = 40.0,
             ["fInitialDriveForce"] = 0.405
         },
