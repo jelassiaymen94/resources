@@ -19,7 +19,7 @@ DecorRegister("fox-wheelfitment_w_kr", 1)
 function getjob()
     local PlayerJob = QBCore.Functions.GetPlayerData().job.name
   
-    if PlayerJob.name == 'bennys' then
+    if PlayerJob == 'bennys' then
         return true
     end
 end
