@@ -13,7 +13,7 @@ local POIOffsets = {
 local usingAdvanced = false
 local requiredItemsShowed = false
 local requiredItems = {}
-local CurrentCops = 0
+
 local openingDoor = false
 local SucceededAttempts = 0
 local NeededAttempts = 2
@@ -245,9 +245,7 @@ RegisterNetEvent('qb-houserobbery:client:ResetHouseState', function(house)
     end
 end)
 
-RegisterNetEvent('police:SetCopCount', function(amount)
-    CurrentCops = amount
-end)
+
 
 RegisterNetEvent('qb-houserobbery:client:enterHouse', function(house)
     enterRobberyHouse(house)
@@ -271,7 +269,8 @@ RegisterNetEvent('lockpicks:UseLockpick', function(isAdvanced)
         usingAdvanced = isAdvanced
         if usingAdvanced then
             if closestHouse ~= nil then
-                if CurrentCops >= Config.MinimumHouseRobberyPolice then
+                QBCore.Functions.TriggerCallback('Polar-Callbacks:Server:GetCops', function(result)
+                if result >= Config.MinimumHouseRobberyPolice then
                     if not Config.Houses[closestHouse]["opened"] then
                         
                         TriggerEvent('qb-lockpick:client:openLockpick', lockpickFinish)
@@ -285,12 +284,14 @@ RegisterNetEvent('lockpicks:UseLockpick', function(isAdvanced)
                 else
                     QBCore.Functions.Notify(Lang:t("error.not_enough_police"), "error", 3500)
                 end
+                end)
             end
         else
             QBCore.Functions.TriggerCallback('QBCore:HasItem', function(result)
                 if closestHouse ~= nil then
                     if result then
-                        if CurrentCops >= Config.MinimumHouseRobberyPolice then
+                        QBCore.Functions.TriggerCallback('Polar-Callbacks:Server:GetCops', function(result)
+                        if result >= Config.MinimumHouseRobberyPolice then
                             if not Config.Houses[closestHouse]["opened"] then
                                 
                                 TriggerEvent('qb-lockpick:client:openLockpick', lockpickFinish)
@@ -304,6 +305,7 @@ RegisterNetEvent('lockpicks:UseLockpick', function(isAdvanced)
                         else
                             QBCore.Functions.Notify(Lang:t("error.not_enough_police"), "error", 3500)
                         end
+                        end)
                     else
                         QBCore.Functions.Notify(Lang:t("error.missing_something"), "error", 3500)
                     end
@@ -335,7 +337,8 @@ CreateThread(function()
                         if dist <= 1.5 then
                             closestHouse = k
                             inRange = true
-                            if CurrentCops >= Config.MinimumHouseRobberyPolice then
+                            QBCore.Functions.TriggerCallback('Polar-Callbacks:Server:GetCops', function(result)
+                            if result >= Config.MinimumHouseRobberyPolice then
                                 if Config.Houses[k]["opened"] then
                                     DrawText3Ds(Config.Houses[k]["coords"]["x"], Config.Houses[k]["coords"]["y"], Config.Houses[k]["coords"]["z"], '~g~E~w~ - To Enter')
                                     if IsControlJustPressed(0, 38) then
@@ -348,6 +351,7 @@ CreateThread(function()
                                     end
                                 end
                             end
+                        end)
                         end
                     end
                 end

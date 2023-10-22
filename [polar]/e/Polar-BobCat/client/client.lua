@@ -7,7 +7,7 @@ local oxt = Config.OxTarget -- ox target
 local oxdoorname = nil
 local oxd = Config.OxDoorlock
 local ped = PlayerPedId()
-local animDict = nil local model = nil local prop = nil local var = nil local drillpos = nil local drillrot = nil local door = nil local pp = nil local coords = nil local rot = nil local position = nil local item = nil local CurrentCops = 0
+local animDict = nil local model = nil local prop = nil local var = nil local drillpos = nil local drillrot = nil local door = nil local pp = nil local coords = nil local rot = nil local position = nil local item = nil 
 local amount = nil
 
 local specialgrab = 'BobCatgrab'
@@ -65,13 +65,14 @@ local BobCatdoorcard2name = 'Bobcat3'
 AddEventHandler('onResourceStop', function(resource) if resource ~= GetCurrentResourceName() then return end  TriggerEvent('Polar-BobCat:Client:ResetProps') TriggerEvent('Polar-BobCat:Client:ResetDoors') TriggerEvent('Polar-BobCat:Client:ResetPropsKeypads') resetstuff() LocalPlayer.state:set('inv_busy', false, true) end)
 AddEventHandler('onResourceStart', function(resource) if resource == GetCurrentResourceName() then Wait(100) if hi then print('Starting Targets')  end starttarget() blip() resetpeds() end end)
 RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function() Wait(100) if hi then print('Player Loaded Targets Starting') end starttarget() blip()  end)
-RegisterNetEvent('police:SetCopCount', function(amount) CurrentCops = amount end)
+
 RegisterNetEvent("Polar-BobCat:Client:ThermitePtfx", function(coords) if not HasNamedPtfxAssetLoaded("scr_ornate_heist") then  RequestNamedPtfxAsset("scr_ornate_heist") end while not HasNamedPtfxAssetLoaded("scr_ornate_heist") do Wait(0) end SetPtfxAssetNextCall("scr_ornate_heist") local effect = StartParticleFxLoopedAtCoord("scr_heist_ornate_thermal_burn", coords, 0.0, 0.0, 0.0, 1.0, false, false, false, false)  Wait(thermitetime) StopParticleFxLooped(effect, 0) end)
 
 local callback = Config.TrigCallBack -- QBCore.Functions.TriggerCallback ESX.TriggerServerCallback
 
 RegisterNetEvent('Polar-BobCat:client:start', function()  pp = Config.StartThermite door = BobCatstartname coords = Config.StartPfx
-    if CurrentCops >= Config.RequiredCops then
+    QBCore.Functions.TriggerCallback('Polar-Callbacks:Server:GetCops', function(result)
+    if result >= Config.RequiredCops then
     if playeritem(thermiteitem) then
     callback('Polar-BobCat:DoorCheckstart', function(result) if result then
     TriggerServerEvent('Polar-BobCat:Server:StopInteract', door)
@@ -82,6 +83,7 @@ RegisterNetEvent('Polar-BobCat:client:start', function()  pp = Config.StartTherm
     end end)
     else notify(text('nothermite'), "error") end
     else notify(text('nopolice'), "error") end
+    end)
 end)
 
 RegisterNetEvent('Polar-BobCat:client:ThermiteStart', function(pp, door, coords)

@@ -71,7 +71,7 @@ local function InteractPed(ped)
 	SetPedAsNoLongerNeeded(ped)
 end
 local function InitiateSales(entity)
-	QBCore.Functions.TriggerCallback('Polar-Drugsales:server:GetCops', function(result)
+	QBCore.Functions.TriggerCallback('Polar-Callbacks:Server:GetCops', function(result)
 		if result < Config.MinimumCops then
 			TriggerEvent('Polar-Drugsales:notify', 'Buyer is not interested to buy now!')			
 		else

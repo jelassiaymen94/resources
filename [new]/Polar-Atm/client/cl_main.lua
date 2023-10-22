@@ -5,7 +5,7 @@ local atm = false
 local texto = false
 local vehicle = nil
 
-local CurrentCops = 0
+
 
 function starttarget()
     loadExistModel("loq_atm_02_console")
@@ -45,7 +45,7 @@ function starttarget()
     })]]
 end
 
-RegisterNetEvent('police:SetCopCount', function(amount) CurrentCops = amount end)
+
 RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function() Wait(100) starttarget()  end)
 
 CreateThread(function()
@@ -137,9 +137,11 @@ end)
 
 RegisterNetEvent("Polar-Atm:Client:UseRope", function()
     QBCore.Functions.TriggerCallback('Polar-Atm:CooldownCheck', function(result) if result then
-        if CurrentCops >= Config.MinimumPolice then
+        QBCore.Functions.TriggerCallback('Polar-Callbacks:Server:GetCops', function(result)
+        if result >= Config.MinimumPolice then
             if playeritem(Config.RopeItem) then
                 policeAlert(GetEntityCoords(PlayerPedId()))
+
     local veh = QBCore.Functions.GetClosestVehicle(GetEntityCoords(PlayerPedId()))
     vehicle = veh
     if not IsPedInAnyVehicle(PlayerPedId(), false) then
@@ -171,6 +173,7 @@ RegisterNetEvent("Polar-Atm:Client:UseRope", function()
         end
     else notify(text('norope'), "error") end
     else notify(text('nopolice'), "error") end
+    end)
     else
         notify(text('cooldown'), "error")
     end end)

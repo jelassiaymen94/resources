@@ -10,7 +10,7 @@ local dropoffBlip = nil
 
 local inQueue = false
 
-local currentCops = 0
+
 
 RegisterNetEvent('Polar-Laptop:Client:UpdatePhone', function(amount, totalamount)
     local amount2 = amount - 1
@@ -221,10 +221,11 @@ RegisterNetEvent('laptop:client:MissionStarted',
     end)
 
 RegisterNUICallback('boosting/start', function(data, cb)
+    QBCore.Functions.TriggerCallback('Polar-Callbacks:Server:GetCops', function(result)
     QBCore.Functions.TriggerCallback('laptop:server:CanStartBoosting', function(result)
      --   print(result)
         if result == "success" then
-            --TriggerServerEvent('laptop:server:StartBoosting', data.id, currentCops)
+            --TriggerServerEvent('laptop:server:StartBoosting', data.id, result)
             cb({
                 status = 'success',
                 message = Lang:t('boosting.laptop.boosting.success')
@@ -260,7 +261,8 @@ RegisterNUICallback('boosting/start', function(data, cb)
                 message = Lang:t('boosting.laptop.boosting.error')
             })
         end
-    end, currentCops, data.id)
+    end, result, data.id)
+    end)
 end)
 
 

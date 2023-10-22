@@ -14,11 +14,11 @@ RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function()
     
 end)
 
-local cops = 5
+
 local pable = {}
 local table = {}
 local hable = {}
-RegisterNetEvent('police:SetCopCount', function(amount) cops = amount end)
+
 
 function tablecheck(name)
     local p = table[name]
@@ -31,13 +31,15 @@ function tablecheck(name)
     end
 end
 function policecheck(name, amount)
-    if cops >= amount then
+    QBCore.Functions.TriggerCallback('Polar-Callbacks:Server:GetCops', function(result)
+    if result >= amount then
         pable[name] = 'Available'
         hable[name] = false
     else
         pable[name] = 'Not Available'
         hable[name] = true
     end
+    end)
 end
 RegisterNetEvent('Polar-Wade:Client:Banks', function()
     exports['qb-menu']:openMenu({

@@ -1,15 +1,6 @@
 local QBCore = exports['qb-core']:GetCoreObject()
 
-QBCore.Functions.CreateCallback('Polar-Drugsales:server:GetCops', function(source, cb)
-    local amount = 0
-    local players = QBCore.Functions.GetQBPlayers()
-    for k, v in pairs(players) do
-        if (v.PlayerData.job.name == "police" or v.PlayerData.job.name == "bcso") and v.PlayerData.job.onduty then
-            amount = amount + 1
-        end
-    end
-    cb(amount)
-end)
+
 
 RegisterNetEvent('Polar-Drugsales:initiatedrug', function(ZoneDrug)	
 	local luck = math.random(1,100)

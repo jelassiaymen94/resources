@@ -141,8 +141,7 @@ local function Animation()
     end)
 end
 
----- ** Globalized Varaibles if we need them other parts of the client ** ----
-CurrentCops = 0
+
 
 
 local function SetDisplay(bool)
@@ -356,10 +355,7 @@ RegisterNetEvent('QBCore:Player:SetPlayerData', function(val)
     GetPlayerAppPerms()
 end)
 
--- Everytime a cop goes on or off duty the cop count is updated.
-RegisterNetEvent('police:SetCopCount', function(amount)
-    CurrentCops = amount
-end)
+
 
 RegisterNetEvent('QBCore:Client:SetDuty', function(duty)
     onDuty = duty

@@ -28,7 +28,7 @@ local voltgame = 'ultra-voltlab' -- https://forum.cfx.re/t/release-voltlab-hacki
 
 local targetpeds = {
     [1] = { 
-        coords = vector4(705.85, -964.33, 29.41, 222.87),
+        coords = vector4(705.85, -964.33, 30.41, 222.87),
         model = "s_m_o_busker_01",
         scene = "WORLD_HUMAN_AA_COFFEE",
         icon = 'fa-solid fa-bolt',
@@ -54,7 +54,7 @@ local oxt = Config.OxTarget -- ox target
 local oxd = Config.OxDoorlock
 
 local ped = PlayerPedId()
-local animDict = nil local model = nil local prop = nil local var = nil local drillpos = nil local drillrot = nil local door = nil local pp = nil local coords = nil local rot = nil local position = nil local item = nil local CurrentCops = 0
+local animDict = nil local model = nil local prop = nil local var = nil local drillpos = nil local drillrot = nil local door = nil local pp = nil local coords = nil local rot = nil local position = nil local item = nil
 
 
 local doors = {}
@@ -84,7 +84,7 @@ end)
 AddEventHandler('onResourceStop', function(resource) if resource ~= GetCurrentResourceName() then return end TriggerServerEvent('Polar-stores:Server:Restart')  TriggerEvent('Polar-stores:Client:ResetProps') TriggerEvent('Polar-stores:Client:ResetDoors') resetstuff() LocalPlayer.state:set('inv_busy', false, true) end)
 AddEventHandler('onResourceStart', function(resource) if resource == GetCurrentResourceName() then Wait(100) if hi then print('Starting Targets')  end end end)
 --RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function() Wait(100) peds() if hi then print('Player Loaded Targets Starting') end end)
-RegisterNetEvent('police:SetCopCount', function(amount) CurrentCops = amount end)
+
 
 
 
@@ -111,7 +111,8 @@ end
 
 local callback = Config.TrigCallBack -- QBCore.Functions.TriggerCallback ESX.TriggerServerCallback
 RegisterNetEvent('Polar-Stores:Client:StartStore', function()
-    if CurrentCops >= Config.RequiredCops then
+    QBCore.Functions.TriggerCallback('Polar-Callbacks:Server:GetCops', function(result)
+    if result >= Config.RequiredCops then
 
         if playeritem(dooritem) then
 
@@ -136,6 +137,7 @@ RegisterNetEvent('Polar-Stores:Client:StartStore', function()
         else notify(text('nodoor'), "error") end
 
     else notify(text('nopolice'), "error") end
+    end)	
 end)
 
 
