@@ -89,7 +89,6 @@ AddEventHandler('onResourceStart', function(resource) if resource == GetCurrentR
 
 
 function peds()
-   
     if Config.Debug then print('starting') end
     for i = 1, #targetpeds do
 

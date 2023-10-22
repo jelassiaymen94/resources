@@ -31,63 +31,37 @@ end
 
 
 
-RegisterNetEvent("robbery:loot")
-AddEventHandler("robbery:loot", function()
+RegisterNetEvent("Polar-HouseRobbery:Server:FindShit", function(house)
+    if house == nil then return end
     local src = source
+    local Player = QBCore.Functions.GetPlayer(src)
     local winNumber = math.random( 0, 100)
     if winNumber >= 30 then
-      
-        addNormal(src)
+        TriggerClientEvent('QBCore:Notify', src, 'Normal item found!', 'success')
+        local item = Config.Items.normalItems[math.random(#Config.Items.normalItems)]
+        Player.Functions.AddItem(item, 1)
 
     elseif winNumber < 30 and winNumber > 2 then
-      
-        addRare(src)
+        TriggerClientEvent('QBCore:Notify', src, 'Rare item found!', 'success')
+        local item = Config.Items.rareItems[math.random(#Config.Items.rareItems)]
+        Player.Functions.AddItem(item, 1)
     else
-      
-        addVeryRare(src)
+        TriggerClientEvent('QBCore:Notify', src, 'Very Rare item found!', 'success')
+        local item = Config.Items.veryRareItems[math.random(#Config.Items.veryRareItems)]
+        Player.Functions.AddItem(item, 1)
     end
 end)
 
-function addNormal(src)
-    TriggerClientEvent('QBCore:Notify', src, 'Normal item found!', 'success')
-  
-    local item = Config.Items.normalItems[math.random(#Config.Items.normalItems)]
-   
-    local Player = QBCore.Functions.GetPlayer(src)
-    Player.Functions.AddItem(item, 1)
-    TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items[item], "add")
-end
 
-function addRare(src)
-    TriggerClientEvent('QBCore:Notify', src, 'Rare item found!', 'success')
-   
-    local item = Config.Items.rareItems[math.random(#Config.Items.rareItems)]
-   
-    local Player = QBCore.Functions.GetPlayer(src)
-    Player.Functions.AddItem(item, 1)
-    TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items[item], "add")
-end
 
-function addVeryRare(src)
-    TriggerClientEvent('QBCore:Notify', src, 'Very Rare item found!', 'success')
-  
-    local item = Config.Items.veryRareItems[math.random(#Config.Items.veryRareItems)]
-   
-    local Player = QBCore.Functions.GetPlayer(src)
-    Player.Functions.AddItem(item, 1)
-    TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items[item], "add")
-end
 
-RegisterServerEvent('Polar-HouseRobbery:server:takeitem', function(item, amount)
-    local src = source
-    local Player = QBCore.Functions.GetPlayer(src)
-    
-    Player.Functions.RemoveItem(Config.PickItem, 1)
+
+
+RegisterServerEvent('Polar-HouseRobbery:Server:Removeitem', function(item)
+    local src = source local Player = QBCore.Functions.GetPlayer(src)
+    if math.random(1,100) < 50 then Player.Functions.RemoveItem(item, 1)  end
 end)
-
-RegisterServerEvent('Polar-HouseRobbery:server:takeitem2', function(item, amount)
-    local src = source
-    local Player = QBCore.Functions.GetPlayer(src)
-    
-    Player.Functions.RemoveItem(Config.StartItem, 1)
+RegisterServerEvent('Polar-HouseRobbery:Server:RemoveitemF', function(item)
+    local src = source local Player = QBCore.Functions.GetPlayer(src)
+    Player.Functions.RemoveItem(item, 1)
 end)

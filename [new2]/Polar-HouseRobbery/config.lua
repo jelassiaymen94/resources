@@ -1,35 +1,7 @@
 Config = {}
 
-Config.UseTarget = true -- Set false if you dont use qb-target[with target is resmon always 0.00!]
-
 Config.Night = {20, 4} -- Players can rob only from 20:00 to 04:00.
 
-
-
-Config.PedHeading = 357.7963
-Config.PedLocation = vector3(221.25, 769.52, 204.67)
-
-Config.StartItem = "advancedlockpick"
-Config.PickItem = "advancedlockpick"
-
-Config.noise = true -- true/false
-
-Config.NeededAttempts = math.random(4, 7) -- Needed Attempts
-Config.MaxWidth = 30
-Config.MaxDuration = 1000 -- Max Duration
-Config.Duration = math.random(500, 1000) -- Speed of minigame
-Config.Pos = math.random(10, 30)
-Config.Width = math.random(20, 30)
-
---ps-ui
-Config.Circles = 5 -- Number of circles
-Config.MS = 8 -- MS
-
---ox_lib
-Config.SkillDifficulty = 'medium' -- easy, medium, hard
-Config.SkillRepeatTimes = math.random(5, 8) -- How many times the skill check repeats until finish
-
-Config.Cooldown = 600000 -- in ms
 
 Config.Locations = {
     {
@@ -45,18 +17,7 @@ Config.Locations = {
             {"paleto4", vector3(-167.6, 488.73, 134.01)},
         }
     },
-    --[[{
-        name = "Name",
-        location = vector3(0,0,0),
-        insde = vector3(0,0,0),
-        exit = vector3(0,0,0),
-        loot = {
-            vector3(0,0,0),
-            vector3(0,0,0),
-            vector3(0,0,0),
-            vector3(0,0,0),
-        }
-    },]]
+   
 
 }
 
@@ -80,7 +41,9 @@ Config.Items = {
         "moneybag"
     }
 }
+
 local called = false
+
 function callPolice(house)
     if called then return end
     called = true
