@@ -32,7 +32,7 @@ local paleto = PolyZone:Create({
     vector2(111.36, 6634.47),
     vector2(99.24, 6622.35)
   }, {
-	debugPoly=true,
+	debugPoly=false,
     name="paletobenny",
     --minZ = 30.89,
     --maxZ = 31.06,
@@ -69,7 +69,7 @@ local sandybenny = PolyZone:Create({
     vector2(1193.56, 2629.55),
     vector2(1192.42, 2647.35)
   }, {
-	debugPoly=true,
+	debugPoly=false,
     name="sandy",
     --minZ = 30.89,
     --maxZ = 31.06,
