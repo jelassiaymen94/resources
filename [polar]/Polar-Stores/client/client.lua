@@ -35,7 +35,7 @@ local targetpeds = {
         label = 'Talk to Namir',
         name = 'theWildWest2',
         product = {
-            },
+        },
     },
 }
 
@@ -81,7 +81,10 @@ RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function()
     peds() 
 end)
 
+CreateThread(function()
+    peds() 
 
+end)
 AddEventHandler('onResourceStop', function(resource) if resource ~= GetCurrentResourceName() then return end TriggerServerEvent('Polar-stores:Server:Restart')  TriggerEvent('Polar-stores:Client:ResetProps') TriggerEvent('Polar-stores:Client:ResetDoors') resetstuff() LocalPlayer.state:set('inv_busy', false, true) end)
 AddEventHandler('onResourceStart', function(resource) if resource == GetCurrentResourceName() then Wait(100) if hi then print('Starting Targets')  end end end)
 --RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function() Wait(100) peds() if hi then print('Player Loaded Targets Starting') end end)
