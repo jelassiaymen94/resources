@@ -1,7 +1,9 @@
 local QBCore = exports['qb-core']:GetCoreObject()
 
 
-
+CreateThread(function()
+    shops()
+end)
 
 RegisterNetEvent("Polar-Bennys:Client:Repair", function()
     SendNUIMessage({sound = "wrench", volume = 0.5})
@@ -18,8 +20,10 @@ end)
 
 
 
+local pp = nil
+local ppe = nil
 
-
+function shops()
 
 
 local paleto = PolyZone:Create({
@@ -37,7 +41,7 @@ local paleto = PolyZone:Create({
 paleto:onPlayerInOut(function(isPointInside)
     if isPointInside then
        
-        if IsPedInAnyVehicle(PlayerPedId()) then 
+        if IsPedInAnyVehicle(PlayerPedId(), false) then 
             pp = exports['qb-radialmenu']:AddOption( {
                 id = 'paletobenny',
                 title = 'Repair',
@@ -49,7 +53,7 @@ paleto:onPlayerInOut(function(isPointInside)
             }, pp)
         end
     else
-       
+        if pp == nil then return end
         exports['qb-radialmenu']:RemoveOption(pp)
     end
 end)
@@ -74,8 +78,8 @@ local sandybenny = PolyZone:Create({
 sandybenny:onPlayerInOut(function(isPointInside)
     if isPointInside then
        
-        if IsPedInAnyVehicle(PlayerPedId()) then 
-            pp = exports['qb-radialmenu']:AddOption( {
+        if IsPedInAnyVehicle(PlayerPedId(), false) then 
+            ppe = exports['qb-radialmenu']:AddOption( {
                 id = 'sandy',
                 title = 'Repair',
                 icon = 'bolt',
@@ -83,10 +87,13 @@ sandybenny:onPlayerInOut(function(isPointInside)
                 --job = 'police',
                 event = 'Polar-Bennys:Server:Repair',
                 shouldClose = true
-            }, pp)
+            }, ppe)
         end
     else
-       
-        exports['qb-radialmenu']:RemoveOption(pp)
+        if ppe == nil then return end
+        exports['qb-radialmenu']:RemoveOption(ppe)
     end
 end)
+
+
+end
