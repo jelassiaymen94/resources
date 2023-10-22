@@ -448,7 +448,7 @@ RegisterNetEvent('inventory:client:OpenInventory', function(PlayerAmmo, inventor
 
         end)
         else
-            Wait(100)
+           -- Wait(100)
             ToggleHotbar(false)
             if showBlur == true then
                 TriggerScreenblurFadeIn(1000)
