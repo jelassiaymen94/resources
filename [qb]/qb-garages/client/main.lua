@@ -395,6 +395,9 @@ local function CreateGarageZone()
         if isPointInside and IsAuthorizedToAccessGarage(zone.name) then
             CurrentGarage = zone.name
             exports['qb-core']:DrawText(Garages[CurrentGarage]['drawText'], DrawTextPosition)
+            TriggerEvent('Polar-Radial:Client:InGarage', true)
+
+
         else
             CurrentGarage = nil
             if MenuItemId ~= nil then
@@ -403,6 +406,10 @@ local function CreateGarageZone()
                 MenuItemId = nil
             end
             exports['qb-core']:HideText()
+            TriggerEvent('Polar-Radial:Client:InGarage', false)
+
+
+
         end
     end)
 end
