@@ -63,6 +63,32 @@ local created_ped = {}
 
 local hi = Config.Debug
 
+
+local proptable = {
+    'storesprop1', 'storesprop2', 'storesprop3', 'storesprop4', 'storesprop5', 'storesprop6', 'storesprop7', 'storesprop8', 'storesprop9', 'storesprop10', 'storesprop11', 'storesprop12','storesprop13', 'storesprop14', 'storesprop15',
+    'storesprop16', 'storesprop17',  'storesprop18', 'storesprop19', 'storesprop20', 'storesprop21', 'storesprop22', 'storesprop23', 'storesprop24', 'storesprop25', 'storesprop26','storesprop27', 'storesprop28', 'storesprop29',
+    'storesprop30', 'storesprop31', 'storesprop32', 'storesprop33', 'storesprop34', 'storesprop35', 'storesprop36', 'storesprop37', 'storesprop38', 'storesprop39', 'storesprop40', 'storesprop41',
+    'storesprop42', 'storesprop43', 'storesprop44', 'storesprop45', 'storesprop46', 'storesprop47', 'storesprop48', 'storesprop49', 'storesprop50',
+}
+
+
+local store = nil
+
+local doortable = {}
+
+
+RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function()
+    peds() 
+end)
+
+
+AddEventHandler('onResourceStop', function(resource) if resource ~= GetCurrentResourceName() then return end TriggerServerEvent('Polar-stores:Server:Restart')  TriggerEvent('Polar-stores:Client:ResetProps') TriggerEvent('Polar-stores:Client:ResetDoors') resetstuff() LocalPlayer.state:set('inv_busy', false, true) end)
+AddEventHandler('onResourceStart', function(resource) if resource == GetCurrentResourceName() then Wait(100) if hi then print('Starting Targets')  end end end)
+--RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function() Wait(100) peds() if hi then print('Player Loaded Targets Starting') end end)
+RegisterNetEvent('police:SetCopCount', function(amount) CurrentCops = amount end)
+
+
+
 function peds()
    
     if Config.Debug then print('starting') end
@@ -82,27 +108,6 @@ function peds()
 
     end
 end
-
-local proptable = {
-    'storesprop1', 'storesprop2', 'storesprop3', 'storesprop4', 'storesprop5', 'storesprop6', 'storesprop7', 'storesprop8', 'storesprop9', 'storesprop10', 'storesprop11', 'storesprop12','storesprop13', 'storesprop14', 'storesprop15',
-    'storesprop16', 'storesprop17',  'storesprop18', 'storesprop19', 'storesprop20', 'storesprop21', 'storesprop22', 'storesprop23', 'storesprop24', 'storesprop25', 'storesprop26','storesprop27', 'storesprop28', 'storesprop29',
-    'storesprop30', 'storesprop31', 'storesprop32', 'storesprop33', 'storesprop34', 'storesprop35', 'storesprop36', 'storesprop37', 'storesprop38', 'storesprop39', 'storesprop40', 'storesprop41',
-    'storesprop42', 'storesprop43', 'storesprop44', 'storesprop45', 'storesprop46', 'storesprop47', 'storesprop48', 'storesprop49', 'storesprop50',
-}
-
-
-local store = nil
-
-local doortable = {}
-
-
-RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function()
-    peds() 
-end)
-AddEventHandler('onResourceStop', function(resource) if resource ~= GetCurrentResourceName() then return end TriggerServerEvent('Polar-stores:Server:Restart')  TriggerEvent('Polar-stores:Client:ResetProps') TriggerEvent('Polar-stores:Client:ResetDoors') resetstuff() LocalPlayer.state:set('inv_busy', false, true) end)
-AddEventHandler('onResourceStart', function(resource) if resource == GetCurrentResourceName() then Wait(100) if hi then print('Starting Targets')  end end end)
---RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function() Wait(100) peds() if hi then print('Player Loaded Targets Starting') end end)
-RegisterNetEvent('police:SetCopCount', function(amount) CurrentCops = amount end)
 
 
 local callback = Config.TrigCallBack -- QBCore.Functions.TriggerCallback ESX.TriggerServerCallback
