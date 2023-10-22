@@ -2287,6 +2287,7 @@ RegisterNetEvent('Polar-Clothing:client:Refreshskin', function()
         local playerPed = PlayerPedId()
         local health = GetEntityHealth(playerPed)
         reloadSkin(health)
+        LocalPlayer.state:set('inv_busy', false, true)
         exports['Polar-Tattoos']:Refresh()
     
     

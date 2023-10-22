@@ -175,13 +175,14 @@ local function ToggleHotbar(toggle)
 end
 
 
-local function openAnim()
+
+RegisterNetEvent('inventory:Client:OpenAnimation', function()
     local ped = PlayerPedId()
     LoadAnimDict('pickup_object')
     TaskPlayAnim(ped,'pickup_object', 'putdown_low', 5.0, 1.5, 1.0, 48, 0.0, 0, 0, 0)
     Wait(500)
     StopAnimTask(ped, 'pickup_object', 'putdown_low', 1.0)
-end
+end)
 
 local function ItemsToItemInfo()
 	itemInfos = {
@@ -799,7 +800,8 @@ RegisterCommand('inventory', function()
                 ShopItems.slots = #Config.VendingItem
                 TriggerServerEvent("inventory:server:OpenInventory", "shop", "Vendingshop_"..math.random(1, 99), ShopItems)
             else
-                openAnim()
+              --  openAnim()
+              TriggerEvent("inventory:Client:OpenAnimation")
                 TriggerServerEvent("inventory:server:OpenInventory")
             end
         end

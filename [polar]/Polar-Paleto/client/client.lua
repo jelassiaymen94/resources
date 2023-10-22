@@ -1171,9 +1171,9 @@ RegisterNetEvent('Polar-Paleto:Client:StartTargets', function()
     CreateTarget(doorcard1name, vec3(Config.doorcard1Eye.x, Config.doorcard1Eye.y, Config.doorcard1Eye.z + 0.2), "Polar-Paleto:Client:doorcard", "Insert Card", "fas fa-bolt", Config.Debug)
     CreateTarget(doorcard2name, vec3(Config.doorcard2Eye.x, Config.doorcard2Eye.y, Config.doorcard2Eye.z + 0.2), "Polar-Paleto:Client:doorcard", "Insert Card", "fas fa-bolt", Config.Debug)
    
-    CreateTarget(Config.Pc1name, Config.Pc1, "Polar-Paleto:Client:HackComputer", "Hack", "fas fa-bolt", Config.Debug)
-    CreateTarget(Config.Pc2name, Config.Pc2, "Polar-Paleto:Client:HackComputer", "Hack", "fas fa-bolt", Config.Debug)
-    CreateTarget(Config.Pc3name, Config.Pc3, "Polar-Paleto:Client:HackComputer", "Hack", "fas fa-bolt", Config.Debug)
+    --CreateTarget(Config.Pc1name, Config.Pc1, "Polar-Paleto:Client:HackComputer", "Hack", "fas fa-bolt", Config.Debug)
+   -- CreateTarget(Config.Pc2name, Config.Pc2, "Polar-Paleto:Client:HackComputer", "Hack", "fas fa-bolt", Config.Debug)
+   -- CreateTarget(Config.Pc3name, Config.Pc3, "Polar-Paleto:Client:HackComputer", "Hack", "fas fa-bolt", Config.Debug)
     if Config.Lazers then CreateTarget(Config.LazerName, Config.LazerLocation, "Polar-Paleto:Client:StopLazers", "Press", "fas fa-bolt", Config.Debug) end
 
     other()

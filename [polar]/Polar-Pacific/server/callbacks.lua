@@ -24,7 +24,7 @@ RegisterNetEvent('Polar-Pacific:Server:RemoveItem', function(item, amount)
     if oxinv then
         exports.ox_inventory:RemoveItem(src, item, amount)
     elseif Config.Framework == 'qb' then
-        TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[item], "remove", amount)      
+      --  TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[item], "remove", amount)      
     end
 end)
 
