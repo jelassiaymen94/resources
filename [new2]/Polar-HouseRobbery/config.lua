@@ -1,15 +1,12 @@
 Config = {}
 
-Config.BlipName = "Robbery location"
-Config.Dispatch = "ps-dispatch"
 Config.UseTarget = true -- Set false if you dont use qb-target[with target is resmon always 0.00!]
 
 Config.Night = {20, 4} -- Players can rob only from 20:00 to 04:00.
 
 
-Config.Ped = "a_m_y_business_03"
+
 Config.PedHeading = 357.7963
-Config.ModelHash = 0xA1435105
 Config.PedLocation = vector3(221.25, 769.52, 204.67)
 
 Config.StartItem = "advancedlockpick"
@@ -83,3 +80,10 @@ Config.Items = {
         "moneybag"
     }
 }
+local called = false
+function callPolice(house)
+    if called then return end
+    called = true
+    exports['ps-dispatch']:HouseRobbery()
+    QBCore.Functions.Notify(Lang:t('notify.alarm'), 'error')
+end

@@ -1,65 +1,47 @@
 local QBCore = exports['qb-core']:GetCoreObject()
 
-canStart = true
-ongoing = false
-robberyStarted = false
-robberystopped = false
-noise = 0
-NeededAttempts = 0
-SucceededAttempts = 0
-FailedAttemps = 0
 
 
+local noise = 0
+local inside = false
+local blip = nil
+
+local npc = nil
 
 CreateThread(function()
-    hashKey = RequestModel(GetHashKey(Config.Ped))
-
-
-    while not HasModelLoaded(GetHashKey(Config.Ped)) do
-        Wait(1)
+    RequestModel("a_m_y_business_03")
+    while not HasModelLoaded("a_m_y_business_03") do
+        Wait(100)
     end
 
-    local npc = CreatePed(4, Config.ModelHash, Config.PedLocation, false, true)
-    SetEntityHeading(npc, Config.PedHeading)
+    npc = CreatePed(4, "a_m_y_business_03", vector3(221.25, 769.52, 204.67), false, true)
+    SetEntityHeading(npc, 357.7963)
     FreezeEntityPosition(npc, true)
     SetEntityInvincible(npc, true)
     SetBlockingOfNonTemporaryEvents(npc, true)
+
+    exports['qb-target']:AddTargetEntity(npc, {
+    options = {{ event = 'Polar-stores:Client:Menu',  icon = "far fa-clipboard", label = Lang:t("label.asklocation")}}, distance = 1.5  })
 end)
 
-CreateThread(function()
-    exports['qb-target']:AddTargetModel(Config.Ped, {
-    	options = {
-    		{
-    			event = "Polar-HouseRobbery:startrobbery",
-    			icon = "far fa-clipboard",
-    			label = Lang:t("label.asklocation")
-    		}
-    	},
-    	distance = 2.5,
-    })
-end)
 
-AddEventHandler('onResourceStop', function(resourceName)
-    if (GetCurrentResourceName() ~= resourceName) then
-      return
-    end
-    DeleteEntity(npc)
-end)
+AddEventHandler('onResourceStop', function(resourceName) if (GetCurrentResourceName() ~= resourceName) then return end DeleteEntity(npc) end)
 
-RegisterNetEvent("Polar-HouseRobbery:startrobbery")
-AddEventHandler("Polar-HouseRobbery:startrobbery", function()
+
+
+
+RegisterNetEvent("Polar-HouseRobbery:startrobbery", function()
+
+    QBCore.Functions.TriggerCallback('Polar-Crafting:Server:Header', function(canStart)
     if canStart then
         QBCore.Functions.TriggerCallback('QBCore:HasItem', function(result)
             if result then
                 TriggerServerEvent("Polar-HouseRobbery:server:takeitem2")
-                if isNight() then
-                    canStart = false
-                    ongoing = true
                     QBCore.Functions.Notify(Lang:t("notify.starting"), "success")
                     local missionWait = math.random( 1000,  1001)
                     Wait(missionWait)
                     SetTimeout(2000, function()
-                       
+
                             TriggerServerEvent('qb-phone:server:sendNewMail', {
                                 sender =  Lang:t("mail.sender"),
                                 subject = Lang:t("mail.subject"),
@@ -71,42 +53,19 @@ AddEventHandler("Polar-HouseRobbery:startrobbery", function()
                             })
                       
                     end)
-                else
-                    canStart = false
-                    ongoing = true
-                    QBCore.Functions.Notify(Lang:t("notify.starting"), "success")
-                    local missionWait = math.random( 1000,  1001)
-                    Wait(missionWait)
-                    SetTimeout(2000, function()
-                       
-                            TriggerServerEvent('qb-phone:server:sendNewMail', {
-                                sender =  Lang:t("mail.sender"),
-                                subject = Lang:t("mail.subject"),
-                                message = Lang:t("mail.messagenotnight"),
-                                button = {
-                                    enabled = true,
-                                    buttonEvent = "Polar-HouseRobbery:getrandomhouseloc"
-                                }
-                            })
-                       
-                    end)
-                
-                end
             else
                 QBCore.Functions.Notify(Lang:t('notify.donthaveitem'), 'error')
             end
         end, Config.StartItem)
-    elseif ongoing then
-        QBCore.Functions.Notify(Lang:t("notify.robberyinprogress"), "error")
     else
         QBCore.Functions.Notify(Lang:t("notify.needtowait"), "error")
     end
+    end)
 end)
 
-RegisterNetEvent('Polar-HouseRobbery:noise')
-AddEventHandler('Polar-HouseRobbery:noise', function()
+RegisterNetEvent('Polar-HouseRobbery:Client:Noise', function(house)
 	local ped = PlayerPedId()
-	while ongoing do
+	while inside do
 		if IsPedShooting(ped) then
 			noise = noise + 100
             QBCore.Functions.Notify('Noise: '..noise)
@@ -127,44 +86,40 @@ AddEventHandler('Polar-HouseRobbery:noise', function()
                 Wait(1000)
 			end
 			Wait(300)
-		else
-			noise = noise - 10
-            Wait(1000)
-			if noise < 0 then
-				noise = 0
-			end
-			Wait(1000)
 		end
-		if noise > 100 then
-			stopRobbery()
+		if noise > 30 then
+			callPolice(house)
 		end
 	end
 end)
 
-RegisterNetEvent("Polar-HouseRobbery:getrandomhouseloc")
-AddEventHandler("Polar-HouseRobbery:getrandomhouseloc", function()
-    local missionTarget = Config.Locations[math.random(#Config.Locations)]
-    TriggerEvent("Polar-HouseRobbery:createblipandroute", missionTarget)
-    TriggerEvent("Polar-HouseRobbery:createentry", missionTarget)
+RegisterNetEvent("Polar-HouseRobbery:getrandomhouseloc", function()
+    local house = Config.Locations[math.random(#Config.Locations)]
+    TriggerEvent("Polar-HouseRobbery:createblipandroute", house)
+    TriggerEvent("Polar-HouseRobbery:createentry", house)
 end)
 
-RegisterNetEvent("Polar-HouseRobbery:createblipandroute")
-AddEventHandler("Polar-HouseRobbery:createblipandroute", function(missionTarget)
+
+
+RegisterNetEvent("Polar-HouseRobbery:createblipandroute", function(house)
     QBCore.Functions.Notify(Lang:t("notify.recivedlocation"), "success")
-    targetBlip = AddBlipForCoord(missionTarget.location.x, missionTarget.location.y, missionTarget.location.z)
-    SetBlipSprite(targetBlip, 374)
-    SetBlipColour(targetBlip, 1)
-    SetBlipAlpha(targetBlip, 90)
-    SetBlipScale(targetBlip, 0.5)
-    SetBlipRoute(targetBlip, true)
+    blip = AddBlipForCoord(house.location.x, house.location.y, house.location.z)
+    SetBlipSprite(blip, 374)
+    SetBlipColour(blip, 1)
+    SetBlipAlpha(blip, 90)
+    SetBlipScale(blip, 0.5)
+    SetBlipRoute(blip, true)
     BeginTextCommandSetBlipName("STRING")
-    AddTextComponentString(Config.BlipName)
-    EndTextCommandSetBlipName(targetBlip)
+    AddTextComponentString("Robbery location")
+    EndTextCommandSetBlipName(blip)
 end)
 
-RegisterNetEvent("Polar-HouseRobbery:createentry", function(missionTarget)
-  
-            exports['qb-target']:AddCircleZone("hr_entry", vector3(missionTarget.location.x, missionTarget.location.y, missionTarget.location.z), 0.5, {
+
+
+
+
+RegisterNetEvent("Polar-HouseRobbery:createentry", function(house)
+            exports['qb-target']:AddCircleZone("hr_entry", vector3(house.location.x, house.location.y, house.location.z), 0.5, {
                 name = "hr_entry",
                 debugPoly = false,
                 useZ=true
@@ -175,7 +130,7 @@ RegisterNetEvent("Polar-HouseRobbery:createentry", function(missionTarget)
                         if isNight() then
                             QBCore.Functions.TriggerCallback('QBCore:HasItem', function(HasItem)
                                 if HasItem then
-                                    EntryMinigame(missionTarget)
+                                    EntryMinigame(house)
                                 else
                                     QBCore.Functions.Notify(Lang:t("notify.donthaveitem"))
                                 end
@@ -185,9 +140,9 @@ RegisterNetEvent("Polar-HouseRobbery:createentry", function(missionTarget)
                             QBCore.Functions.TriggerCallback('QBCore:HasItem', function(HasItem)
                                 if HasItem then
                                     if c == 1 then
-                                        EntryMinigame(missionTarget)
+                                        EntryMinigame(house)
                                     elseif c == 2 then
-                                        callPolice(missionTarget)
+                                        callPolice(house)
                                         QBCore.Functions.Notify(Lang:t('notify.alarm'), 'error')
                                     end
                                 else
@@ -202,27 +157,25 @@ RegisterNetEvent("Polar-HouseRobbery:createentry", function(missionTarget)
                 },
                 distance = 1.5
             })
-       
-
 	
 end)
 
-RegisterNetEvent("Polar-HouseRobbery:goinside", function(missionTarget)
-    robberyStarted = true
-    SetEntityCoords(PlayerPedId(), missionTarget.inside.x, missionTarget.inside.y, missionTarget.inside.z)
-    TriggerEvent("Polar-HouseRobbery:createexit", missionTarget)
-    TriggerEvent("Polar-HouseRobbery:createloot", missionTarget)
-    if Config.noise then
-        TriggerEvent("Polar-HouseRobbery:noise")
+RegisterNetEvent("Polar-HouseRobbery:goinside", function(house)
+    SetEntityCoords(PlayerPedId(), house.inside.x, house.inside.y, house.inside.z)
+    TriggerEvent("Polar-HouseRobbery:createexit", house)
+    TriggerEvent("Polar-HouseRobbery:createloot", house)
+    if isNight() then 
+        TriggerEvent("Polar-HouseRobbery:Client:Noise", house)
     else
+        callPolice(house)
     end
 end)
 
-RegisterNetEvent("Polar-HouseRobbery:createexit", function(missionTarget)
+RegisterNetEvent("Polar-HouseRobbery:createexit", function(house)
    
        
 
-            exports['qb-target']:AddCircleZone("hr_exit", vector3(missionTarget.exit.x, missionTarget.exit.y, missionTarget.exit.z), 0.5, {
+            exports['qb-target']:AddCircleZone("hr_exit", vector3(house.exit.x, house.exit.y, house.exit.z), 0.5, {
                 name = "hr_exit",
                 debugPoly = false,
                 useZ=true
@@ -231,12 +184,11 @@ RegisterNetEvent("Polar-HouseRobbery:createexit", function(missionTarget)
                     {  
                     action = function()
                         Wait(1000)
-                        robberyStarted = false
-                        ongoing = false
-                        SetEntityCoords(PlayerPedId(), missionTarget.location.x, missionTarget.location.y, missionTarget.location.z)
-                        cooldownNextRobbery()
+                        inside = false
+                        SetEntityCoords(PlayerPedId(), house.location.x, house.location.y, house.location.z)
+                        noise = 0
                         Wait(500)
-                        
+                        RemoveBlip(blip)
                     end,
                     icon = "far fa-clipboard",
                     label = Lang:t('label.exit'),
@@ -248,9 +200,8 @@ RegisterNetEvent("Polar-HouseRobbery:createexit", function(missionTarget)
    
 end)
 
-RegisterNetEvent("Polar-HouseRobbery:createloot", function(missionTarget)
-    for _,v in ipairs(missionTarget.loot) do
-        local looted = false
+RegisterNetEvent("Polar-HouseRobbery:createloot", function(house)
+    for _,v in ipairs(house.loot) do
         local n = v[1]
         local p = v[2] 
         TriggerServerEvent('Polar-HouseRobbery:Server:CreateTarget', n, p)  
@@ -270,88 +221,13 @@ function beginLoot(name)
 	    	anim = "fixing_a_player",
 	    	flags = 16,
         }, {}, {}, function() -- Done
-            StopAnimTask(ped, "mini@repair", "fixing_a_player", 1.0)
+            StopAnimTask(PlayerPedId(), "mini@repair", "fixing_a_player", 1.0)
             TriggerServerEvent("robbery:loot")
             ClearPedTasks(PlayerPedId())
-        end, function() -- Cancel
-            StopAnimTask(ped, "mini@repair", "fixing_a_player", 1.0)
-            openingDoor = false
-            ClearPedTasks(PlayerPedId())
-            QBCore.Functions.Notify(Lang:t("notify.canceled"), "error")
-        end)
+        end, function() end)
 end
 
-function cooldownNextRobbery()
-    RemoveBlip(targetBlip)
-    
-    Wait(3000)
-    if robberystopped == true then
-       
-            TriggerServerEvent('qb-phone:server:sendNewMail', {
-                sender =  Lang:t("mail.sender"),
-                subject = Lang:t("mail.subject2"),
-                message = Lang:t("mail.message2"),
-                button = {
-                    enabled = true,
-                    buttonEvent = "Polar-HouseRobbery:getrandomhouseloc"
-                }
-            })
-       
-        callPolice(missionTarget)
-    elseif robberystopped == false then
-        
-            TriggerServerEvent('qb-phone:server:sendNewMail', {
-                sender =  Lang:t("mail.sender"),
-                subject = Lang:t("mail.subject2"),
-                message = Lang:t("mail.message2"),
-                button = {
-                    enabled = true,
-                    buttonEvent = "Polar-HouseRobbery:getrandomhouseloc"
-                }
-            })
-        
-    end
-    Wait(Config.Cooldown) -- Needs a better option. So that client cant just reconnect and reset timer that way.
-    canStart = true
-    robberyCreated = false
-    ongoing = false
-end
 
-function cooldownNextRobberyFail()
-    RemoveBlip(targetBlip)
-    
-    Wait(3000)
-    if robberystopped == true then
-      
-            TriggerServerEvent('qb-phone:server:sendNewMail', {
-                sender =  Lang:t("mail.sender"),
-                subject = Lang:t("mail.subject3"),
-                message = Lang:t("mail.message3"),
-                button = {
-                    enabled = true,
-                    buttonEvent = "Polar-HouseRobbery:getrandomhouseloc"
-                }
-            })
-     
-        callPolice(missionTarget)
-    elseif robberystopped == false then
-       
-            TriggerServerEvent('qb-phone:server:sendNewMail', {
-                sender =  Lang:t("mail.sender"),
-                subject = Lang:t("mail.subject3"),
-                message = Lang:t("mail.message3"),
-                button = {
-                    enabled = true,
-                    buttonEvent = "Polar-HouseRobbery:getrandomhouseloc"
-                }
-            })
-       
-    end
-    Wait(Config.Cooldown) -- Needs a better option. So that client cant just reconnect and reset timer that way.
-    canStart = true
-    robberyCreated = false
-    ongoing = false
-end
 
 function isNight()
 	local hour = GetClockHours()
@@ -360,51 +236,38 @@ function isNight()
 	end
 	return false
 end
-function stopRobbery() QBCore.Functions.Notify(Lang:t('notify.alarm'), 'error')  robberystopped = true end
+
 function StartAnimation() QBCore.Functions.PlayAnim("mp_arresting", "a_uncuff") end
 
-function EntryMinigame(missionTarget)
+function EntryMinigame(house)
         StartAnimation()
         exports['Polar-UI']:Circle(function(success)
             if success then
+                inside = true
                 if GetPedDrawableVariation(PlayerPedId(), 1) == 0 then
-                    callPolice(missionTarget)
-                    TriggerEvent("Polar-HouseRobbery:goinside", missionTarget)
-                    ongoing = true
+                    callPolice(house)
+                    TriggerEvent("Polar-HouseRobbery:goinside", house)
                     QBCore.Functions.Notify(Lang:t("notify.gotthedoor"), "success")
                     if GetPedDrawableVariation(PlayerPedId(), 1) == 0 then
                         QBCore.Functions.Notify(Lang:t("notify.donthavemask"))
                     end
-                    FailedAttemps = 0
-                    SucceededAttempts = 0
-                    NeededAttempts = 0
                 else
-                    TriggerEvent("Polar-HouseRobbery:goinside", missionTarget)
-                    ongoing = true
+                    TriggerEvent("Polar-HouseRobbery:goinside", house)
                     QBCore.Functions.Notify(Lang:t("notify.gotthedoor"), "success")
-                    FailedAttemps = 0
-                    SucceededAttempts = 0
-                    NeededAttempts = 0
                 end
             else
                 QBCore.Functions.Notify(Lang:t("notify.messedup"), "error")
                 StopAnimTask(ped, "mp_arresting", "a_uncuff", 1.0)
                 ClearPedTasks(PlayerPedId())
                 TriggerServerEvent("Polar-HouseRobbery:server:takeitem")
-                callPolice(missionTarget)
-                robberyStarted = false
-                ongoing = false
-                cooldownNextRobberyFail()
+                callPolice(house)
                 Wait(500)
                 
             end
         end, Config.Circles, Config.MS) -- NumberOfCircles, MS
 end
 
-function callPolice(missionTarget)
-    exports['ps-dispatch']:HouseRobbery()
-    QBCore.Functions.Notify(Lang:t('notify.alarm'), 'error')
-end
+
 
 --[[RegisterCommand('startrob', function()
     TriggerEvent('Polar-HouseRobbery:startrobbery')

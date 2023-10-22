@@ -5,6 +5,27 @@ RegisterNetEvent('Polar-HouseRobbery:Server:RemoveTarget', function(name)   Trig
 RegisterNetEvent('Polar-HouseRobbery:Server:CreateTarget', function(name, loc)   TriggerClientEvent('Polar-HouseRobbery:Client:CreateTarget', -1, name, loc)    end)
 
 
+local cooldown = true
+QBCore.Functions.CreateCallback("Polar-HouseRobbery:Server:Cooldown", function(source, cb)
+    cb('1')
+end)
+
+local time = (Config.CooldownTime * 60000) 
+RegisterNetEvent('Polar-stores:Server:StartCooldown', function()
+    cooldown = false
+    exports["Polar-Wade"]:House(true) 
+    SetTimeout(time, function() 
+        reset() 
+        exports["Polar-Wade"]:House(false) 
+    end) 
+end)
+
+function reset()
+    cooldown = true
+
+    
+end
+
 
 
 
