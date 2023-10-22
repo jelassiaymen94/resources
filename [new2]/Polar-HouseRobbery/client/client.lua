@@ -78,6 +78,7 @@ RegisterNetEvent('Polar-HouseRobbery:Client:Noise', function(house)
 			callPolice(house)
             Wait(1000)
 		end
+        Wait(1)
 	end
 end)
 
@@ -224,7 +225,7 @@ end)]]
 
 RegisterNetEvent('Polar-HouseRobbery:Client:RemoveTarget', function(name) exports['qb-target']:RemoveZone(name) end)
 RegisterNetEvent('Polar-HouseRobbery:Client:CreateTarget', function(name, loc) 
-    exports['qb-target']:AddCircleZone(name, loc, 0.5, { name = name, debugPoly = true, useZ=true  }, {
+    exports['qb-target']:AddCircleZone(name, loc, 0.5, { name = name, debugPoly = false, useZ=true  }, {
     options = { {   action = function() searchloot(name)  end, icon = "far fa-clipboard", label = Lang:t('label.loot'),  }, }, distance = 1.5 })
 end)
 
