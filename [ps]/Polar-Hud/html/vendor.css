@@ -265,7 +265,7 @@ svelte-virtual-list-row.svelte-1drb4jk{
     align-items:stretch
 }
 .multiSelect.svelte-o7a0bj>.svelte-o7a0bj{
-    flex:1 1 50px
+    flex:1 1 40px
 }
 .selectContainer.multiSelect.svelte-o7a0bj input.svelte-o7a0bj{
     padding:var(--multiSelectInputPadding, 0);

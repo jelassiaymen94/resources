@@ -20,7 +20,6 @@ CreateThread(function()
     end
 
     local npc = CreatePed(4, Config.ModelHash, Config.PedLocation, false, true)
-
     SetEntityHeading(npc, Config.PedHeading)
     FreezeEntityPosition(npc, true)
     SetEntityInvincible(npc, true)
