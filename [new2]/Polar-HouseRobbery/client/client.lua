@@ -249,13 +249,14 @@ RegisterNetEvent("Polar-HouseRobbery:createexit", function(missionTarget)
 end)
 
 RegisterNetEvent("Polar-HouseRobbery:createloot", function(missionTarget)
-    for k,v in ipairs(missionTarget.loot) do
+    for _,v in ipairs(missionTarget.loot) do
         local looted = false
-        
+        local n = v[1]
+        local p = v[2] 
       
 
-                exports['qb-target']:AddCircleZone("hr_entry", vector3(v.x, v.y, v.z), 0.5, {
-                    name = "hr_entry",
+                exports['qb-target']:AddCircleZone(n, p, 0.5, {
+                    name = n,
                     debugPoly = true,
                     useZ=true
                 }, {
