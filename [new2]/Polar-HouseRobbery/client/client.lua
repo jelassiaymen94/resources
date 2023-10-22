@@ -32,6 +32,7 @@ RegisterNetEvent("Polar-HouseRobbery:Client:Start", function()
     QBCore.Functions.TriggerCallback('Polar-HouseRobbery:Server:Cooldown', function(result)
     if result then
         if playeritem("advancedlockpick") then
+            TriggerServerEvent('Polar-HouseRobbery:Server:StartCooldown')
             TriggerServerEvent("Polar-HouseRobbery:server:takeitem2")
                 QBCore.Functions.Notify(Lang:t("notify.starting"), "success")
                 Wait(math.random(1000, 1001))
