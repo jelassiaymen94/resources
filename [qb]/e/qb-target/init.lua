@@ -24,7 +24,7 @@ Config.MaxDistance = 7.0
 Config.Debug = false
 
 -- Supported values: true, false
-Config.Standalone = false
+Config.Standalone = true
 
 -- Enable outlines around the entity you're looking at
 Config.EnableOutline = false
@@ -33,10 +33,10 @@ Config.EnableOutline = false
 Config.Toggle = false
 
 -- Draw a Sprite on the center of a PolyZone to hint where it's located
-Config.DrawSprite = false
+Config.DrawSprite = true
 
 -- The default distance to draw the Sprite
-Config.DrawDistance = 10.0
+Config.DrawDistance = 3.0
 
 -- The color of the sprite in rgb, the first value is red, the second value is green, the third value is blue and the last value is alpha (opacity). Here is a link to a color picker to get these values: https://htmlcolorcodes.com/color-picker/
 Config.DrawColor = {255, 255, 255, 255}
@@ -48,7 +48,7 @@ Config.SuccessDrawColor = {30, 144, 255, 255}
 Config.OutlineColor = {255, 255, 255, 255}
 
 -- Enable default options (Toggling vehicle doors)
-Config.EnableDefaultOptions = true
+Config.EnableDefaultOptions = false
 
 -- Disable the target eye whilst being in a vehicle
 Config.DisableInVehicle = false
@@ -71,6 +71,7 @@ Config.CircleZones = {
 
 Config.BoxZones = {
 
+    
 }
 
 Config.PolyZones = {
@@ -83,6 +84,21 @@ Config.TargetBones = {
 
 Config.TargetModels = {
 
+	["beansvending"] = {
+		models = {
+			--"p_ld_coffee_vend_01",
+			"prop_vend_coffe_01"
+		},
+		options = {
+			{
+				type = "client",
+				event = "beansvending:buy",
+				icon = "fas fa-coffee",
+				label = "Beans on the Run",
+			},
+		},
+		distance = 1.0,
+	},
 }
 
 Config.GlobalPedOptions = {
@@ -90,7 +106,62 @@ Config.GlobalPedOptions = {
 }
 
 Config.GlobalVehicleOptions = {
-
+	options = {
+	{
+		type = "client",
+		event = "jim-mechanic:flipvehicle",
+		icon = "fas fa-chevron-circle-left",
+		label = "Flip Vehicle",
+		canInteract = function(Entity)
+			return not IsVehicleOnAllWheels(Entity)
+		end
+	},
+	{
+		type = "Client",
+		event = "Polar-Atm:Client:UseRope",
+		icon = "fas fa-chevron-circle-left",
+		label = "Attach Rope",
+		item = 'rope',
+	},
+	--[[{
+		type = "client",
+		event = "police:client:ImpoundVehicle",
+		icon = "fas fa-car",
+		label = "Impound Vehicle",
+		job = 'police',
+	},
+	{
+		type = "client",
+		event = "police:client:ImpoundVehicle",
+		icon = "fas fa-car",
+		label = "Depot Vehicle",
+		job = 'police',
+	},
+	{
+		type = "client",
+		event = "vehiclekeys:client:GiveKeys",
+		icon = "fas fa-key",
+		label = "Give Vehicle Keys",
+	},]]
+	{
+		type = "client",
+		event = "police:client:SetPlayerOutVehicle",
+		icon = "fas fa-hand-holding",
+		label = "Take Out Of Vehicle",
+	},
+	{
+		type = "client",
+		event = 'qb-trunk:client:GetIn',
+		icon = "fas fa-truck",
+		label = "Hop Inside Trunk",
+	},
+	{
+		type = "client",
+		event = "police:client:PutPlayerInVehicle",
+		icon = "fas fa-chevron-circle-left",
+		label = "Place Inside Vehicle",
+	},
+}
 }
 
 Config.GlobalObjectOptions = {
@@ -98,11 +169,25 @@ Config.GlobalObjectOptions = {
 }
 
 Config.GlobalPlayerOptions = {
-
+	options = {
+	{
+		type = "client",
+		event = "police:client:EscortPlayer",
+		icon = "fas fa-hand-holding",
+		label = "Escort Individual",
+	},
+	{
+		type = "client",
+		event = "police:client:RobPlayer",
+		icon = "fas fa-user-secret",
+		label = "Rob Individual",
+	},
+}
 }
 
 Config.Peds = {
-
+	
+      
 }
 
 -------------------------------------------------------------------------------
@@ -110,7 +195,6 @@ Config.Peds = {
 -------------------------------------------------------------------------------
 local function JobCheck() return true end
 local function GangCheck() return true end
-local function JobTypeCheck() return true end
 local function ItemCheck() return true end
 local function CitizenCheck() return true end
 
@@ -152,18 +236,6 @@ CreateThread(function()
 					return true
 				end
 			elseif job == 'all' or job == PlayerData.job.name then
-				return true
-			end
-			return false
-		end
-
-		JobTypeCheck = function(jobType)
-			if type(jobType) == 'table' then
-				jobType = jobType[PlayerData.job.type]
-				if jobType then
-					return true
-				end
-			elseif jobType == 'all' or jobType == PlayerData.job.type then
 				return true
 			end
 			return false
@@ -212,11 +284,7 @@ end)
 function CheckOptions(data, entity, distance)
 	if distance and data.distance and distance > data.distance then return false end
 	if data.job and not JobCheck(data.job) then return false end
-	if data.excludejob and JobCheck(data.excludejob) then return false end
-	if data.jobType and not JobTypeCheck(data.jobType) then return false end
-	if data.excludejobType and JobTypeCheck(data.excludejobType) then return false end
 	if data.gang and not GangCheck(data.gang) then return false end
-	if data.excludegang and GangCheck(data.excludegang) then return false end
 	if data.item and not ItemCheck(data.item) then return false end
 	if data.citizenid and not CitizenCheck(data.citizenid) then return false end
 	if data.canInteract and not data.canInteract(entity, distance, data) then return false end

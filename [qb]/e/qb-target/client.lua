@@ -101,7 +101,7 @@ local function RaycastCamera(flag, playerCoords)
 
 	local rayPos, rayDir = ScreenPositionToCameraRay()
 	local destination = rayPos + 16 * rayDir
-	local rayHandle = StartShapeTestLosProbe(rayPos.x, rayPos.y, rayPos.z, destination.x, destination.y, destination.z, flag or -1, playerPed, 4)
+	local rayHandle = StartShapeTestLosProbe(rayPos.x, rayPos.y, rayPos.z, destination.x, destination.y, destination.z, flag or -1, playerPed, 7)
 
 	while true do
 		local result, _, endCoords, _, entityHit = GetShapeTestResult(rayHandle)
@@ -394,7 +394,7 @@ local function EnableTarget()
 						success = true
 						SendNUIMessage({response = "foundTarget", data = nuiData[slot].targeticon})
 						if Config.DrawSprite then
-							listSprite[closestZone.name].success = true
+							--listSprite[closestZone.name].success = true
 						end
 						DrawOutlineEntity(entity, true)
 						while targetActive and success do
@@ -1021,11 +1021,11 @@ local function SpawnPed(data)
 				end
 			end
 
-			data.currentpednumber = spawnedped
-			
 			if data.action then
 				data.action(data)
 			end
+
+			data.currentpednumber = spawnedped
 		end
 
 		local nextnumber = #Config.Peds + 1
