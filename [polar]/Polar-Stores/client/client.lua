@@ -28,7 +28,7 @@ local voltgame = 'ultra-voltlab' -- https://forum.cfx.re/t/release-voltlab-hacki
 
 local targetpeds = {
     [1] = { 
-        coords = vector4(14.29, -1333.73, 29.28, 336.35),
+        coords = vector4(705.85, -964.33, 29.41, 222.87),
         model = "s_m_o_busker_01",
         scene = "WORLD_HUMAN_AA_COFFEE",
         icon = 'fa-solid fa-bolt',
@@ -81,10 +81,6 @@ RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function()
     peds() 
 end)
 
-CreateThread(function()
-    peds() 
-
-end)
 AddEventHandler('onResourceStop', function(resource) if resource ~= GetCurrentResourceName() then return end TriggerServerEvent('Polar-stores:Server:Restart')  TriggerEvent('Polar-stores:Client:ResetProps') TriggerEvent('Polar-stores:Client:ResetDoors') resetstuff() LocalPlayer.state:set('inv_busy', false, true) end)
 AddEventHandler('onResourceStart', function(resource) if resource == GetCurrentResourceName() then Wait(100) if hi then print('Starting Targets')  end end end)
 --RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function() Wait(100) peds() if hi then print('Player Loaded Targets Starting') end end)
