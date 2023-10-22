@@ -6,7 +6,7 @@ h1 {
 }
 
 div.info {
-    margin: 10px 0;
+    margin: 5px 0;
 }
 
 div.info * {
@@ -41,7 +41,6 @@ div.menuHolder {
 
 svg.icons {
     display: none;
-    filter:url(#drop-shadow);
 }
 
 svg.menu {
@@ -52,7 +51,7 @@ svg.menu {
 }
 
 svg.menu.inner {
-    transform: scale(1.0) rotate(-10deg);
+    transform: scale(0.99) rotate(-10deg);
     opacity: 0;
     visibility: hidden;
 }
@@ -63,8 +62,8 @@ svg.menu.outer {
 }
 
 svg.menu > g > path {
-    fill: #00000080;
-    transition: 0.3s;
+    fill: #2423235b;
+    transition: 0.1s;
 }
 
 svg.menu > g.sector > path {
@@ -74,9 +73,9 @@ svg.menu > g.sector > path {
 svg.menu > g.sector > text,
 svg.menu > g.sector > use {
     font-family: 'Roboto';
-    font-weight: 520px;
+    font-weight: 500;
     margin-top: 10px;
-    font-size: 3.6px;
+    font-size: 3px;
     text-transform: uppercase;
     cursor: pointer;
     fill: white;
@@ -94,7 +93,7 @@ svg.menu > g.center:hover > circle {
 
 svg.menu > g.center > circle {
     cursor: pointer;
-    fill: #00000080;
+    fill: #2423235b;
     fill-opacity: 0.2s;
 }
 
