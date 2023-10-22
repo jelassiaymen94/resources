@@ -5,23 +5,18 @@ Config.Dispatch = "ps-dispatch"
 Config.UseTarget = true -- Set false if you dont use qb-target[with target is resmon always 0.00!]
 
 Config.Night = {20, 4} -- Players can rob only from 20:00 to 04:00.
-Config.Phone = "qb-phone" -- qb-phone, gks-phone, qs-phone, high_phone
+
 
 Config.Ped = "a_m_y_business_03"
 Config.PedHeading = 357.7963
 Config.ModelHash = 0xA1435105
 Config.PedLocation = vector3(762.0843, -1038.7394, 19.7249)
 
-Config.StartItem = "rolex"
+Config.StartItem = "advancedlockpick"
 Config.PickItem = "advancedlockpick"
 
 Config.noise = true -- true/false
 
-Config.Progressbar = "default" -- You can set it to ox_lib or default
-
-Config.Minigame = "Polar-UI" -- qb-skillbar is default, you can put ps-ui and ox_lib too
-
---qb-skillbar
 Config.NeededAttempts = math.random(4, 7) -- Needed Attempts
 Config.MaxWidth = 30
 Config.MaxDuration = 1000 -- Max Duration
