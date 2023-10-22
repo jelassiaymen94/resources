@@ -27,10 +27,10 @@ function shops()
 
 
 local paleto = PolyZone:Create({
-    vector2(92.05, 6603.03),
-    vector2(104.55, 6591.67),
-    vector2(120.83, 6605.30),
-    vector2(107.20, 6617.42)
+    vector2(105.30, 6607.20),
+    vector2(118.56, 6616.29),
+    vector2(103.79, 6629.17),
+    vector2(88.64, 6617.42)
   }, {
 	debugPoly=true,
     name="paletobenny",
