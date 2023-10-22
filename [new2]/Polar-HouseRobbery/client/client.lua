@@ -21,43 +21,32 @@ CreateThread(function()
     SetBlockingOfNonTemporaryEvents(npc, true)
 
     exports['qb-target']:AddTargetEntity(npc, {
-    options = {{ event = 'Polar-stores:Client:Menu',  icon = "far fa-clipboard", label = Lang:t("label.asklocation")}}, distance = 1.5  })
+    options = {{ event = 'Polar-HouseRobbery:Client:Start',  icon = "far fa-clipboard", label = Lang:t("label.asklocation")}}, distance = 1.5  })
 end)
-
-
 AddEventHandler('onResourceStop', function(resourceName) if (GetCurrentResourceName() ~= resourceName) then return end DeleteEntity(npc) end)
 
 
 
-
-RegisterNetEvent("Polar-HouseRobbery:startrobbery", function()
-
-    QBCore.Functions.TriggerCallback('Polar-Crafting:Server:Header', function(canStart)
-    if canStart then
-            if playeritem("advancedlockpick") then
-                TriggerServerEvent("Polar-HouseRobbery:server:takeitem2")
-                    QBCore.Functions.Notify(Lang:t("notify.starting"), "success")
-                    local missionWait = math.random( 1000,  1001)
-                    Wait(missionWait)
+RegisterNetEvent("Polar-HouseRobbery:Client:Start", function()
+    QBCore.Functions.TriggerCallback('Polar-HouseRobbery:Server:Cooldown', function(result)
+    if result then
+        if playeritem("advancedlockpick") then
+            TriggerServerEvent("Polar-HouseRobbery:server:takeitem2")
+                QBCore.Functions.Notify(Lang:t("notify.starting"), "success")
+                Wait(math.random(1000, 1001))
                     SetTimeout(2000, function()
-
-                            TriggerServerEvent('qb-phone:server:sendNewMail', {
-                                sender =  Lang:t("mail.sender"),
-                                subject = Lang:t("mail.subject"),
-                                message = Lang:t("mail.message"),
-                                button = {
-                                    enabled = true,
-                                    buttonEvent = "Polar-HouseRobbery:getrandomhouseloc"
-                                }
-                            })
-                      
+                        TriggerServerEvent('qb-phone:server:sendNewMail', {
+                            sender =  Lang:t("mail.sender"),
+                            subject = Lang:t("mail.subject"),
+                            message = Lang:t("mail.message"),
+                            button = {
+                                enabled = true,
+                                buttonEvent = "Polar-HouseRobbery:Client:RandomHouse"
+                            }
+                        })
                     end)
-            else
-                QBCore.Functions.Notify(Lang:t('notify.donthaveitem'), 'error')
-            end
-    else
-        QBCore.Functions.Notify(Lang:t("notify.needtowait"), "error")
-    end
+        else QBCore.Functions.Notify(Lang:t('notify.donthaveitem'), 'error') end
+    else QBCore.Functions.Notify(Lang:t("notify.needtowait"), "error") end
     end)
 end)
 
@@ -87,19 +76,19 @@ RegisterNetEvent('Polar-HouseRobbery:Client:Noise', function(house)
 		end
 		if noise > 30 then
 			callPolice(house)
+            Wait(1000)
 		end
 	end
 end)
 
-RegisterNetEvent("Polar-HouseRobbery:getrandomhouseloc", function()
+RegisterNetEvent("Polar-HouseRobbery:Client:RandomHouse", function()
     local house = Config.Locations[math.random(#Config.Locations)]
-    TriggerEvent("Polar-HouseRobbery:createblipandroute", house)
-    TriggerEvent("Polar-HouseRobbery:createentry", house)
+    CreateHouse(house)
 end)
 
 
 
-RegisterNetEvent("Polar-HouseRobbery:createblipandroute", function(house)
+function CreateHouse(house)
     QBCore.Functions.Notify(Lang:t("notify.recivedlocation"), "success")
     blip = AddBlipForCoord(house.location.x, house.location.y, house.location.z)
     SetBlipSprite(blip, 374)
@@ -110,54 +99,40 @@ RegisterNetEvent("Polar-HouseRobbery:createblipandroute", function(house)
     BeginTextCommandSetBlipName("STRING")
     AddTextComponentString("Robbery location")
     EndTextCommandSetBlipName(blip)
-end)
+
+    exports['qb-target']:AddCircleZone("polar_hr_entry", vector3(house.location.x, house.location.y, house.location.z), 0.5, {
+    name = "polar_hr_entry", debugPoly = false, useZ=true }, { options = { {   action = function()
+
+    if isNight() then
+        if playeritem("advancedlockpick") then
+            EntryMinigame(house)
+        else
+            QBCore.Functions.Notify(Lang:t("notify.donthaveitem"))
+        end
+    else
+        local c = math.random(1, 2)
+        if playeritem("advancedlockpick") then
+            if c == 1 then
+                EntryMinigame(house)
+            elseif c == 2 then
+                callPolice(house)
+                QBCore.Functions.Notify(Lang:t('notify.alarm'), 'error')
+            end
+        else
+            QBCore.Functions.Notify(Lang:t("notify.donthaveitem"))
+        end
+    end
+
+    end, icon = "far fa-clipboard", label = Lang:t('label.entry'), }, }, distance = 1.5 })
+end
 
 
 
 
-
-RegisterNetEvent("Polar-HouseRobbery:createentry", function(house)
-            exports['qb-target']:AddCircleZone("hr_entry", vector3(house.location.x, house.location.y, house.location.z), 0.5, {
-                name = "hr_entry",
-                debugPoly = false,
-                useZ=true
-            }, {
-                options = {
-                    {  
-                    action = function()
-                        if isNight() then
-                            if playeritem("advancedlockpick") then
-                                EntryMinigame(house)
-                            else
-                                QBCore.Functions.Notify(Lang:t("notify.donthaveitem"))
-                            end
-                        else
-                            local c = math.random(1, 2)
-                            if playeritem("advancedlockpick") then
-                                    if c == 1 then
-                                        EntryMinigame(house)
-                                    elseif c == 2 then
-                                        callPolice(house)
-                                        QBCore.Functions.Notify(Lang:t('notify.alarm'), 'error')
-                                    end
-                            else
-                                QBCore.Functions.Notify(Lang:t("notify.donthaveitem"))
-                            end
-                        end
-                    end,
-                    icon = "far fa-clipboard",
-                    label = Lang:t('label.entry'),
-                    },
-                },
-                distance = 1.5
-            })
-	
-end)
 
 RegisterNetEvent("Polar-HouseRobbery:goinside", function(house)
     SetEntityCoords(PlayerPedId(), house.inside.x, house.inside.y, house.inside.z)
-    TriggerEvent("Polar-HouseRobbery:createexit", house)
-    TriggerEvent("Polar-HouseRobbery:createloot", house)
+    TriggerEvent("Polar-HouseRobbery:CreateLoot", house)
     if isNight() then 
         TriggerEvent("Polar-HouseRobbery:Client:Noise", house)
     else
@@ -165,41 +140,24 @@ RegisterNetEvent("Polar-HouseRobbery:goinside", function(house)
     end
 end)
 
-RegisterNetEvent("Polar-HouseRobbery:createexit", function(house)
-   
-       
 
-            exports['qb-target']:AddCircleZone("hr_exit", vector3(house.exit.x, house.exit.y, house.exit.z), 0.5, {
-                name = "hr_exit",
-                debugPoly = false,
-                useZ=true
-            }, {
-                options = {
-                    {  
-                    action = function()
-                        Wait(1000)
-                        inside = false
-                        SetEntityCoords(PlayerPedId(), house.location.x, house.location.y, house.location.z)
-                        noise = 0
-                        Wait(500)
-                        RemoveBlip(blip)
-                    end,
-                    icon = "far fa-clipboard",
-                    label = Lang:t('label.exit'),
-                    },
-                },
-                distance = 1.5
-            })
-       
-   
-end)
-
-RegisterNetEvent("Polar-HouseRobbery:createloot", function(house)
+RegisterNetEvent("Polar-HouseRobbery:CreateLoot", function(house)
     for _,v in ipairs(house.loot) do
         local n = v[1]
         local p = v[2] 
         TriggerServerEvent('Polar-HouseRobbery:Server:CreateTarget', n, p)  
     end
+    exports['qb-target']:AddCircleZone("polar_hr_exit", vector3(house.exit.x, house.exit.y, house.exit.z), 0.5, {
+    name = "polar_hr_exit",  debugPoly = false,  useZ=true }, {  options = { {   action = function()
+
+    Wait(1000)
+    inside = false
+    SetEntityCoords(PlayerPedId(), house.location.x, house.location.y, house.location.z)
+    noise = 0
+    Wait(500)
+    RemoveBlip(blip)
+
+    end,  icon = "far fa-clipboard",  label = Lang:t('label.exit'), }, }, distance = 1.5 })
 end)
 
 
