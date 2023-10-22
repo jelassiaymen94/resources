@@ -97,7 +97,7 @@ end)
 CreateThread(function()
 	Wait(1000)
 	local pptable = CreateObject(304964818, vec3(1644.39, 4841.32, 41.03), true, true, true)
-	SetEntityHeading(pptable, 90)
+	SetEntityHeading(pptable, 0)
 	FreezeEntityPosition(pptable, true)
 end)
 
