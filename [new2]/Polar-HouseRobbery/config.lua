@@ -19,7 +19,7 @@ Config.noise = true -- true/false
 
 Config.Progressbar = "default" -- You can set it to ox_lib or default
 
-Config.Minigame = "ps-ui" -- qb-skillbar is default, you can put ps-ui and ox_lib too
+Config.Minigame = "Polar-UI" -- qb-skillbar is default, you can put ps-ui and ox_lib too
 
 --qb-skillbar
 Config.NeededAttempts = math.random(4, 7) -- Needed Attempts
