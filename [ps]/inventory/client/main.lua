@@ -448,7 +448,7 @@ RegisterNetEvent('inventory:client:OpenInventory', function(PlayerAmmo, inventor
 
         end)
         else
-            Wait(500)
+            Wait(100)
             ToggleHotbar(false)
             if showBlur == true then
                 TriggerScreenblurFadeIn(1000)
@@ -801,8 +801,8 @@ RegisterCommand('inventory', function()
                 TriggerServerEvent("inventory:server:OpenInventory", "shop", "Vendingshop_"..math.random(1, 99), ShopItems)
             else
               --  openAnim()
+              TriggerServerEvent("inventory:server:OpenInventory")
               TriggerEvent("inventory:Client:OpenAnimation")
-                TriggerServerEvent("inventory:server:OpenInventory")
             end
         end
     end
