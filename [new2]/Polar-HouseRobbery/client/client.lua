@@ -236,7 +236,7 @@ RegisterNetEvent("Polar-HouseRobbery:createexit", function(missionTarget)
                         SetEntityCoords(PlayerPedId(), missionTarget.location.x, missionTarget.location.y, missionTarget.location.z)
                         cooldownNextRobbery()
                         Wait(500)
-                        exports['qb-core']:HideText()
+                        
                     end,
                     icon = "far fa-clipboard",
                     label = Lang:t('label.exit'),
@@ -253,37 +253,14 @@ RegisterNetEvent("Polar-HouseRobbery:createloot", function(missionTarget)
         local looted = false
         local n = v[1]
         local p = v[2] 
-      
-
-                exports['qb-target']:AddCircleZone(n, p, 0.5, {
-                    name = n,
-                    debugPoly = true,
-                    useZ=true
-                }, {
-                    options = {
-                        {  
-                        action = function()
-                            if not looted then
-                                beginLoot()
-                                looted = true
-                            else
-                                QBCore.Functions.Notify(Lang:t("notify.alreadycheacked"), "error")
-                            end
-                        end,
-                        icon = "far fa-clipboard",
-                        label = Lang:t('label.loot'),
-                        },
-                    },
-                    distance = 1.5
-                })
-         
+        TriggerServerEvent('Polar-HouseRobbery:Server:CreateTarget', n, p)  
     end
 end)
 
 
-function beginLoot()
-  
-        QBCore.Functions.Progressbar("loot_house", Lang:t("progress.lookingforstuff"), math.random(6000,12000), false, true, {
+function beginLoot(name)
+        TriggerServerEvent('Polar-HouseRobbery:Server:RemoveTarget', name)
+        QBCore.Functions.Progressbar("loot_house", Lang:t("progress.lookingforstuff"), math.random(6000,12000), false, false, {
             disableMovement = true,
             disableCarMovement = true,
             disableMouse = false,
@@ -302,12 +279,11 @@ function beginLoot()
             ClearPedTasks(PlayerPedId())
             QBCore.Functions.Notify(Lang:t("notify.canceled"), "error")
         end)
-  
 end
 
 function cooldownNextRobbery()
     RemoveBlip(targetBlip)
-    exports['qb-core']:HideText()
+    
     Wait(3000)
     if robberystopped == true then
        
@@ -343,7 +319,7 @@ end
 
 function cooldownNextRobberyFail()
     RemoveBlip(targetBlip)
-    exports['qb-core']:HideText()
+    
     Wait(3000)
     if robberystopped == true then
       
@@ -420,7 +396,7 @@ function EntryMinigame(missionTarget)
                 ongoing = false
                 cooldownNextRobberyFail()
                 Wait(500)
-                exports['qb-core']:HideText()
+                
             end
         end, Config.Circles, Config.MS) -- NumberOfCircles, MS
 end
@@ -433,3 +409,10 @@ end
 --[[RegisterCommand('startrob', function()
     TriggerEvent('Polar-HouseRobbery:startrobbery')
 end)]]
+
+
+RegisterNetEvent('Polar-HouseRobbery:Client:RemoveTarget', function(name) exports['qb-target']:RemoveZone(name) end)
+RegisterNetEvent('Polar-HouseRobbery:Client:CreateTarget', function(name, loc) 
+    exports['qb-target']:AddCircleZone(name, loc, 0.5, { name = name, debugPoly = true, useZ=true  }, {
+    options = { {   action = function() beginLoot(name)  end, icon = "far fa-clipboard", label = Lang:t('label.loot'),  }, }, distance = 1.5 })
+end)
