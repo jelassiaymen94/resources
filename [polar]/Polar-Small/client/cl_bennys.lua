@@ -40,7 +40,7 @@ local paleto = PolyZone:Create({
 
 paleto:onPlayerInOut(function(isPointInside)
     if isPointInside then
-       print('paleto')
+      
         if IsPedInAnyVehicle(PlayerPedId(), false) then 
             pp = exports['qb-radialmenu']:AddOption( {
                 id = 'paletobenny',
@@ -64,10 +64,10 @@ end)
 
 
 local sandybenny = PolyZone:Create({
-    vector2(1168.56, 2638.26),
-    vector2(1169.70, 2621.97),
-    vector2(1192.42, 2622.35),
-    vector2(1192.05, 2639.77)
+    vector2(1168.56, 2647.73),
+    vector2(1168.94, 2627.65),
+    vector2(1193.56, 2629.55),
+    vector2(1192.42, 2647.35)
   }, {
 	debugPoly=true,
     name="sandy",
@@ -77,7 +77,7 @@ local sandybenny = PolyZone:Create({
 
 sandybenny:onPlayerInOut(function(isPointInside)
     if isPointInside then
-       print('sandy')
+      
         if IsPedInAnyVehicle(PlayerPedId(), false) then 
             ppe = exports['qb-radialmenu']:AddOption( {
                 id = 'sandy',
