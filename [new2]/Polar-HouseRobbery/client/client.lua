@@ -9,6 +9,7 @@ local blip = nil
 local npc = nil
 
 CreateThread(function()
+    TriggerServerEvent('Polar-HouseRobbery:Server:Reset')
     RequestModel("a_m_y_business_03")
     while not HasModelLoaded("a_m_y_business_03") do
         Wait(100)
@@ -23,7 +24,7 @@ CreateThread(function()
     exports['qb-target']:AddTargetEntity(npc, {
     options = {{ event = 'Polar-HouseRobbery:Client:Start',  icon = "far fa-clipboard", label = Lang:t("label.asklocation")}}, distance = 1.5  })
 end)
-AddEventHandler('onResourceStop', function(resourceName) if (GetCurrentResourceName() ~= resourceName) then return end DeleteEntity(npc) end)
+AddEventHandler('onResourceStop', function(resourceName) if (GetCurrentResourceName() ~= resourceName) then return end TriggerServerEvent('Polar-HouseRobbery:Server:Reset') DeleteEntity(npc) end)
 
 
 

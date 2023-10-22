@@ -4,6 +4,7 @@ local QBCore = exports['qb-core']:GetCoreObject()
 RegisterNetEvent('Polar-HouseRobbery:Server:RemoveTarget', function(name)   TriggerClientEvent('Polar-HouseRobbery:Client:RemoveTarget', -1, name)    end)
 RegisterNetEvent('Polar-HouseRobbery:Server:CreateTarget', function(name, loc)   TriggerClientEvent('Polar-HouseRobbery:Client:CreateTarget', -1, name, loc)    end)
 
+RegisterNetEvent('Polar-HouseRobbery:Server:Reset', function() reset() end)
 
 local cooldown = true
 QBCore.Functions.CreateCallback("Polar-HouseRobbery:Server:Cooldown", function(source, cb)
@@ -23,7 +24,15 @@ end)
 function reset()
     cooldown = true
 
+    TriggerEvent('Polar-HouseRobbery:Client:RemoveTarget', -1, 'polar_hr_entry')
+    TriggerEvent('Polar-HouseRobbery:Client:RemoveTarget', -1, 'polar_hr_exit')
+
+    TriggerEvent('Polar-HouseRobbery:Client:RemoveTarget', -1, 'polar_hr_1')
+    TriggerEvent('Polar-HouseRobbery:Client:RemoveTarget', -1, 'polar_hr_2')
+    TriggerEvent('Polar-HouseRobbery:Client:RemoveTarget', -1, 'polar_hr_3')
+    TriggerEvent('Polar-HouseRobbery:Client:RemoveTarget', -1, 'polar_hr_4')
     
+
 end
 
 
@@ -37,16 +46,12 @@ RegisterNetEvent("Polar-HouseRobbery:Server:FindShit", function(house)
     local Player = QBCore.Functions.GetPlayer(src)
     local winNumber = math.random( 0, 100)
     if winNumber >= 30 then
-        TriggerClientEvent('QBCore:Notify', src, 'Normal item found!', 'success')
         local item = Config.Items.normalItems[math.random(#Config.Items.normalItems)]
         Player.Functions.AddItem(item, 1)
-
     elseif winNumber < 30 and winNumber > 2 then
-        TriggerClientEvent('QBCore:Notify', src, 'Rare item found!', 'success')
         local item = Config.Items.rareItems[math.random(#Config.Items.rareItems)]
         Player.Functions.AddItem(item, 1)
     else
-        TriggerClientEvent('QBCore:Notify', src, 'Very Rare item found!', 'success')
         local item = Config.Items.veryRareItems[math.random(#Config.Items.veryRareItems)]
         Player.Functions.AddItem(item, 1)
     end
