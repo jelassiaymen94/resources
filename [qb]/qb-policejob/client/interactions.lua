@@ -403,7 +403,7 @@ RegisterNetEvent('police:client:GetCuffed', function(playerId, isSoftcuff)
             if success then
                 QBCore.Functions.Notify("You managed to break free", "success")
                 TriggerServerEvent('police:server:cuffstruggle')    
-                print("success")
+                
             else
                 isHandcuffed = true
                 TriggerServerEvent("police:server:SetHandcuffStatus", true)
@@ -424,7 +424,7 @@ RegisterNetEvent('police:client:GetCuffed', function(playerId, isSoftcuff)
                     GetCuffedAnimation(playerId)
                     QBCore.Functions.Notify(Lang:t("info.cuffed_walk"), 'primary')
                 end  ]] 
-                print("fail")
+              
             end
         end, 1, seconds) -- NumberOfCircles, MS        
     else

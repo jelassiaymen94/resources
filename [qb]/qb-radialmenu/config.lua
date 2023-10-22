@@ -56,7 +56,7 @@ rootMenuConfig =  {
 
             return not inlaststand and not isdead
         end,
-        subMenus = {"general:givenum", "drug:sell", "general:unseatnearest", "set:extra"}
+        subMenus = {"general:givenum", "refresh:skin", "general:unseatnearest", "housing:menu"}
     },
     {
         id = "Interaction",
@@ -507,10 +507,10 @@ newSubMenus = { -- NOTE basicly, what will be happen after clicking these button
         icon = "#general-put-in-veh",
         functionName = "police:client:SetPlayerOutVehicle" -- must be client event, work same as TriggerEvent('emotes:OpenMenu')
     }, 
-    ['drug:sell'] = {
-        title = "Cornersell",
-        icon = "#general-drug",
-        functionName = "qb-drugs:client:cornerselling"
+    ['refresh:skin'] = {
+        title = "Refresh",
+        icon = "#general-mask",
+        functionName = "Polar-Clothing:client:Refreshskin"
     },
     ['general:cuff'] = {
         title = "Cuff",
@@ -630,10 +630,10 @@ newSubMenus = { -- NOTE basicly, what will be happen after clicking these button
         icon = "#tow-tow",
         functionName = "qb-taxi:client:enableMeter"
     },
-    ['set:extra'] = {
-        title = "Exra",
-        icon = "#tow-tow",
-        functionName = "qb-radialmenu:client:setExtra"
+    ['housing:menu'] = {
+        title = "Housing Menu",
+        icon = "#house",
+        functionName = "Polar-Sub:Client:OpenHousingMenu"
     },
 
     ['k9:spawn'] = {
