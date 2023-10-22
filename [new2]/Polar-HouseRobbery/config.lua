@@ -42,7 +42,11 @@ Config.Items = {
     }
 }
 
+
+
+local QBCore = exports['qb-core']:GetCoreObject()
 local called = false
+
 
 function callPolice(house)
     if called then return end
