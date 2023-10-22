@@ -18,7 +18,8 @@ AddEventHandler("robbery:loot", function()
 end)
 
 function addNormal(src)
-    TriggerClientEvent('mythic_notify:client:SendAlert', src, { type = 'inform', text = 'Normal', })
+    TriggerClientEvent('QBCore:Notify', src, 'Normal item found!', 'success')
+  
     local item = Config.Items.normalItems[math.random(#Config.Items.normalItems)]
     print(item)
     local Player = QBCore.Functions.GetPlayer(src)
@@ -27,7 +28,8 @@ function addNormal(src)
 end
 
 function addRare(src)
-    TriggerClientEvent('mythic_notify:client:SendAlert', src, { type = 'inform', text = 'Rare', })
+    TriggerClientEvent('QBCore:Notify', src, 'Rare item found!', 'success')
+   
     local item = Config.Items.rareItems[math.random(#Config.Items.rareItems)]
     print(item)
     local Player = QBCore.Functions.GetPlayer(src)
@@ -36,7 +38,8 @@ function addRare(src)
 end
 
 function addVeryRare(src)
-    TriggerClientEvent('mythic_notify:client:SendAlert', src, { type = 'inform', text = 'Very Rare', })
+    TriggerClientEvent('QBCore:Notify', src, 'Very Rare item found!', 'success')
+  
     local item = Config.Items.veryRareItems[math.random(#Config.Items.veryRareItems)]
     print(item)
     local Player = QBCore.Functions.GetPlayer(src)

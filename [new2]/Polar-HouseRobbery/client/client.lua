@@ -384,15 +384,8 @@ function isNight()
 	end
 	return false
 end
-
-function stopRobbery()
-    QBCore.Functions.Notify(Lang:t('notify.alarm'), 'error')
-    robberystopped = true
-end
-
-function StartAnimation()
-    QBCore.Functions.PlayAnim("mp_arresting", "a_uncuff")
-end
+function stopRobbery() QBCore.Functions.Notify(Lang:t('notify.alarm'), 'error')  robberystopped = true end
+function StartAnimation() QBCore.Functions.PlayAnim("mp_arresting", "a_uncuff") end
 
 function EntryMinigame(missionTarget)
         StartAnimation()
