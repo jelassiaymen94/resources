@@ -11,8 +11,7 @@ local isHandcuffed = false
 local hasOxygenTankOn = false
 local bennyscivpoly = false
 local onDuty = false
-local inGarage = false
-local inDepots = false
+
 
 rootMenuConfig =  {
     {
@@ -108,9 +107,9 @@ rootMenuConfig =  {
 
             return (isPolice and not isDead)
         end,
-        subMenus = {"police:mdt", "general:cuff", "police:seizecash", "police:checkvehicle", "police:takedriverlicense", "police:statuscheck", "police:searchplayer", "police:jail", "police:takeoffmask" }
+        subMenus = {"police:mdt", "general:cuff", "police:seizecash", "police:checkvehicle", "police:statuscheck", "police:searchplayer", "police:jail", "police:bill", "police:callsign"}--, "police:takeoffmask" }
     },
-    {    
+    --[[{    
         id = "PoliceObjects",
         displayName = "Police Objects",
         icon = "#police-action",
@@ -123,7 +122,7 @@ rootMenuConfig =  {
             return isPolice and not isDead and onduty
         end,
         subMenus = {"police:spawn1", "police:spawn2", "police:spawn3", "police:del"}
-        },
+        },]]
     {
     id = "Ambulance",
     displayName = "Ambulance",
@@ -133,34 +132,8 @@ rootMenuConfig =  {
     end,
     subMenus = {"medic:status", "medic:revive", "medic:treat"}
 },
-{
-    id = "Tow",
-    displayName = "Tow",
-    icon = "#tow-job",
-    enableMenu = function()
-        local src = source
-        local Player = QBCore.Functions.GetPlayerData(src)
-        local inlaststand = Player.metadata["inlaststand"]
-        local isdead = Player.metadata["isdead"]
 
-        return isTow and not isDead and onduty
-    end,
-    subMenus = {"tow:togglenpc", "tow:vehicle"}
-},
-{
-    id = "Taxi",
-    displayName = "Taxi",
-    icon = "#tow-job",
-    enableMenu = function()
-        local src = source
-        local Player = QBCore.Functions.GetPlayerData(src)
-        local inlaststand = Player.metadata["inlaststand"]
-        local isdead = Player.metadata["isdead"]
 
-        return isTaxi and not isDead and onduty
-    end,
-    subMenus = {"taxi:npc", "taxi-meter", "taxi:startmeter"}
-},
     {    
     id = "Escort",
     displayName = "Escort",
@@ -175,7 +148,7 @@ rootMenuConfig =  {
         return not isdead and not inlaststand
     end
     },
-    {   
+    --[[{   
         id = "Vehicle",
         displayName = "Vehicle",
         icon = "#general-car",
@@ -183,7 +156,7 @@ rootMenuConfig =  {
         enableMenu = function()
             return (not isDead and IsPedInAnyVehicle(PlayerPedId(), true))
         end
-    },
+    },]]
     {    
         id = "Emotes",
         displayName = "Emotes",
@@ -202,28 +175,28 @@ rootMenuConfig =  {
         id = "general:parkvehicle",
         displayName = "Park Vehicle",
         icon = "#general-parking",
-        functionName = "qb-garages:putingarage",
+        functionName = "qb-garages:client:ParkVehicle",
         enableMenu = function()
-            return (not isDead and inGarage and isCloseVeh() and not IsPedInAnyVehicle(PlayerPedId(), false))
+            return (not isDead and inGarage() and not IsPedInAnyVehicle(PlayerPedId(), false))
         end
     },
     {
         id = "general:garage",
         displayName = "Garage",
         icon = "#general-garage",
-        functionName = "qb-garages:takeout",
+        functionName = "qb-garages:client:OpenMenu",
         enableMenu = function()
-            return (not isDead and inGarage and not isCloseVeh() and not IsPedInAnyVehicle(PlayerPedId(), false))
+            return (not isDead and not inGarage() and not IsPedInAnyVehicle(PlayerPedId(), false))
         end
     },
    {
     
         id = "general:depots",
-        displayName = "Depots",
+        displayName = "Open Impound Lot",
         icon = "#general-keys-give",
-        functionName = "qb-garages:takeoutveh:depot",
+        functionName = "qb-garages:client:OpenMenu",
         enableMenu = function()
-            return (not isDead and inDepots and not IsPedInAnyVehicle(PlayerPedId(), false))
+            return (not isDead and inImpound() and not IsPedInAnyVehicle(PlayerPedId(), false))
         end
     } -- add `,` after `}` if you gonna add new button but last button should ended w/o `,`
 
@@ -509,7 +482,7 @@ newSubMenus = { -- NOTE basicly, what will be happen after clicking these button
     }, 
     ['refresh:skin'] = {
         title = "Refresh",
-        icon = "#general-mask",
+        icon = "#cuffs-remove-mask",
         functionName = "Polar-Clothing:client:Refreshskin"
     },
     ['general:cuff'] = {
@@ -533,20 +506,25 @@ newSubMenus = { -- NOTE basicly, what will be happen after clicking these button
         icon = "#police-jail",
         functionName = "police:client:JailPlayer"
     },
+    ['police:callsign'] = {
+        title = "Set Call Sign",
+        icon = "#police-revokelicense",
+        functionName = "Polar-Police:client:CallSign"
+    },
     ['police:seizecash'] = {
         title = "Seize Cash",
         icon = "#police-seize",
         functionName = "police:client:SeizeCash"
     },
     ['police:bill'] = {
-        title = "Bill",
+        title = "Give Ticket",
         icon = "#general-cuff",
-        functionName = "police:client:BillPlayer"
+        functionName = "jim-payments:client:PolCharge"
     },  
     ['police:mdt'] = {
         title = "MDT",
         icon = "#mdt",
-        functionName = "mdt:toggleVisibilty"    
+        functionName = "mdt:server:openMDT"    
     },
     ['police:takeoffmask'] = {
         title = "Mask",
@@ -632,7 +610,7 @@ newSubMenus = { -- NOTE basicly, what will be happen after clicking these button
     },
     ['housing:menu'] = {
         title = "Housing Menu",
-        icon = "#house",
+        icon = "#judge-licenses-grant-house",
         functionName = "Polar-Sub:Client:OpenHousingMenu"
     },
 

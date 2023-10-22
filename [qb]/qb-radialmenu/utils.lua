@@ -2,6 +2,7 @@ local QBCore = exports['qb-core']:GetCoreObject()
 
 
 function isCloseVeh()
+	
     local ped = PlayerPedId()
     coordA = GetEntityCoords(ped, 1)
     coordB = GetOffsetFromEntityInWorldCoords(ped, 0.0, 100.0, 0.0)
@@ -10,6 +11,7 @@ function isCloseVeh()
         return true
     end
     return false
+
 end
 
 function getVehicleInDirection(coordFrom, coordTo)
@@ -35,4 +37,31 @@ function hasEnoughOfItem(item)
 		end
 		return retval
 	end, item)
+end
+
+local ingar = false
+local inpound = false
+local inbennys = false
+RegisterNetEvent('Polar-Radial:Client:InImpound', function(bool) inpound = bool end)
+RegisterNetEvent('Polar-Radial:Client:InGarage', function(bool) ingar = bool end)
+RegisterNetEvent('Polar-Radial:Client:InBennys', function(bool) inbennys = bool end)
+function inGarage()
+	return ingar
+
+
+
+
+end
+function inImpound()
+	return inpound
+
+
+
+
+end
+function bennys()
+	return inbennys
+
+
+
 end

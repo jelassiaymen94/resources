@@ -125,7 +125,7 @@ end
 
 function openRadial(bool)    
     setupSubItems()
-
+    
     SetNuiFocus(bool, bool)
     SendNUIMessage({
         action = "ui",

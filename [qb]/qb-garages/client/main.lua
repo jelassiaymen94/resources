@@ -366,22 +366,24 @@ local function UpdateRadialMenu()
     if CurrentGarage ~= nil and garage ~= nil then
         if garage.type == 'job' and not IsStringNilOrEmpty(garage.job) then
             if PlayerJob.name == garage.job then
-                AddRadialParkingOption()
+                TriggerEvent('Polar-Radial:Client:InGarage', true)
             end
         elseif garage.type == 'gang' and not IsStringNilOrEmpty(garage.gang) then
             if PlayerGang.name == garage.gang then
-                AddRadialParkingOption()
+                TriggerEvent('Polar-Radial:Client:InGarage', true)
             end
         elseif garage.type == 'depot' then
-            AddRadialImpoundOption()
+            TriggerEvent('Polar-Radial:Client:InImpound', true)
+            
         else
-           AddRadialParkingOption()
+           TriggerEvent('Polar-Radial:Client:InGarage', true)
         end
     elseif CurrentHouseGarage ~= nil then
-       AddRadialParkingOption()
+        TriggerEvent('Polar-Radial:Client:InGarage', true)
     else
         if MenuItemId ~= nil then
-            exports['qb-radialmenu']:RemoveOption(MenuItemId)
+            TriggerEvent('Polar-Radial:Client:InImpound', false)
+           
             MenuItemId = nil
         end
     end
@@ -396,7 +398,8 @@ local function CreateGarageZone()
         else
             CurrentGarage = nil
             if MenuItemId ~= nil then
-                exports['qb-radialmenu']:RemoveOption(MenuItemId)
+                TriggerEvent('Polar-Radial:Client:InGarage', false)
+                TriggerEvent('Polar-Radial:Client:InImpound', false)
                 MenuItemId = nil
             end
             exports['qb-core']:HideText()
@@ -443,7 +446,7 @@ local function RegisterHousePoly(house)
         else
             exports['qb-core']:HideText()
             if MenuItemId ~= nil then
-                exports['qb-radialmenu']:RemoveOption(MenuItemId)
+                TriggerEvent('Polar-Radial:Client:InGarage', false)
                 MenuItemId = nil
             end
             CurrentHouseGarage = nil
