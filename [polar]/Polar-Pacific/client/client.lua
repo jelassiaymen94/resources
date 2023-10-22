@@ -1267,14 +1267,14 @@ RegisterNetEvent('Polar-Pacific:Client:PacificProp', function(door, prop, var, v
     loadModel(prop) 
     if value then
         if number == 1 then
-            itemstand[door] =  CreateObject(prop, var.x, var.y, var.z,  true,  true, true) 
+            itemstand[door] =  CreateObject(prop, var.x, var.y, var.z,  false,  true, false) 
             SetEntityHeading(itemstand[door], var.w) 
         elseif number == 2 then
-            displaycase[door] =  CreateObject(prop, var.x, var.y, var.z,  true,  true, true) 
+            displaycase[door] =  CreateObject(prop, var.x, var.y, var.z,  false,  true, false) 
             SetEntityHeading(displaycase[door], var.w) 
         end
     else
-    doors[door] =  CreateObject(prop, var.x, var.y, var.z,  true,  true, true) 
+    doors[door] =  CreateObject(prop, var.x, var.y, var.z,  false,  true, false) 
     SetEntityHeading(doors[door], var.w) 
     --print(doors[door])
     end
