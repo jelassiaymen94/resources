@@ -15,7 +15,11 @@ local items = {
         MaxSellPrice = 2500,
     },
 
-
+    ['coin'] = {
+        itemName = 'coin',
+        MinSellPrice = 125,
+        MaxSellPrice = 750,
+    },
 
 
 
