@@ -10,7 +10,7 @@ Config.Night = {20, 4} -- Players can rob only from 20:00 to 04:00.
 Config.Ped = "a_m_y_business_03"
 Config.PedHeading = 357.7963
 Config.ModelHash = 0xA1435105
-Config.PedLocation = vector3(762.0843, -1038.7394, 19.7249)
+Config.PedLocation = vector3(221.25, 769.52, 204.67)
 
 Config.StartItem = "advancedlockpick"
 Config.PickItem = "advancedlockpick"
