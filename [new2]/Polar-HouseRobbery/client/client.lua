@@ -78,7 +78,7 @@ RegisterNetEvent('Polar-HouseRobbery:Client:Noise', function(house)
 			callPolice(house)
             Wait(1000)
 		end
-        Wait(1)
+        Wait(10)
 	end
 end)
 
