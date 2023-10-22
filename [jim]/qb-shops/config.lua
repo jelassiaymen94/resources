@@ -142,21 +142,20 @@ Config = {
 	
 		["blackmarket"] = {
 			--{ name = "laptop", price = 10000, amount = 15 },
-			{ name = "drill", price = 15000, amount = math.random(2,4) },
+			{ name = "drill", price = 12500, amount = math.random(2,4) },
 			{ name = "aluminumoxide", price = 1250, amount = 5 },
 		--	{ name = "scissors", price = 2500, amount = 1 },
 			{ name = "metalscratchy", price = 2500, amount = 2 },
-			{ name = "thermite", price = 125, amount = math.random(2,8) },
+			{ name = "thermite", price = 9500, amount = math.random(2,8) },
 			{ name = "hacking_device", price = 16750, amount = math.random(2,5) },
-			{ name = "laptop_green", price = 12250, amount = math.random(2,5) },
 			{ name = "head_bag", price = 5000, amount = 5 },
 		},
 		["bm2"] = {
 		
-			{ name = "thermite", price = 125, amount = 2 },
-			{ name = "hacking_device", price = 16750, amount = 1 },
+		--	{ name = "thermite", price = 125, amount = 2 },
+		--	{ name = "hacking_device", price = 16750, amount = 1 },
 			--{ name = "laptop_green", price = 12250, amount = 1 },
-			{ name = "head_bag", price = 5000, amount = 5 },
+		--	{ name = "head_bag", price = 5000, amount = 5 },
 			--{ name = "cocainekey", price = 5000, amount = 5 },
 		},
 		["bm3"] = {

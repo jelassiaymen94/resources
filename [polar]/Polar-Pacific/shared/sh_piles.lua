@@ -24,6 +24,11 @@ Config.Pacificprop12 = {
 }
 Config.Pacificprop13 = {
     vector4(264.78, 215.18, 101.68, 152.95),
+   
+
+}
+Config.Pacificprop14 = {
+
     vector4(253.77, 216.15, 101.68, 156.57),
 
 }
@@ -90,7 +95,7 @@ function Pacificprop13()
     local pileprop = cashprops[math.random(1, #cashprops)]
     local goldprop = goldprops[math.random(1, #goldprops)]
  
-    local location = Config.Pacificprop13[math.random(1, #Config.Pacificprop12)]
+    local location = Config.Pacificprop13[math.random(1, #Config.Pacificprop13)]
    
     local chance = math.random(1,100) 
     if chance<=74 then   prop = pileprop 
@@ -100,7 +105,28 @@ function Pacificprop13()
    
     ppbruh(door, prop, location)
 end
+function Pacificprop14()
+    local door = 'Pacificprop13'
 
+    local cashprops = {
+        'ex_cash_pile_005',
+    }
+    local goldprops = {
+        'h4_prop_h4_gold_stack_01a'
+    }
+    local pileprop = cashprops[math.random(1, #cashprops)]
+    local goldprop = goldprops[math.random(1, #goldprops)]
+ 
+    local location = Config.Pacificprop14[math.random(1, #Config.Pacificprop14)]
+   
+    local chance = math.random(1,100) 
+    if chance<=74 then   prop = pileprop 
+    elseif chance<=100 then  prop = goldprop
+    end 
+    
+   
+    ppbruh(door, prop, location)
+end
 
 
 

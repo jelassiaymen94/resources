@@ -19,7 +19,7 @@ function paletoprop16()
 
    
     local location = Config.paletoprop16[math.random(1, #Config.paletoprop16)]
-    local chance = math.random(1,100) if chance<=40 then   prop = cash  elseif chance<=90 then  prop = gold  elseif chance<=100 then   prop = diamonds end 
+    local chance = math.random(1,100) if chance<=75 then   prop = cash  elseif chance<=90 then  prop = gold  elseif chance<=100 then   prop = diamonds end 
 
     tbruh(door, prop, location)
 end 
@@ -32,7 +32,7 @@ function paletoprop17()
     local door = 'paletoprop17'
 
     local location = Config.paletoprop17[math.random(1, #Config.paletoprop17)]
-    local chance = math.random(1,100) if chance<=40 then   prop = cash  elseif chance<=90 then  prop = gold  elseif chance<=100 then   prop = diamonds end 
+    local chance = math.random(1,100) if chance<=75 then   prop = cash  elseif chance<=90 then  prop = gold  elseif chance<=100 then   prop = diamonds end 
 
     tbruh(door, prop, location)
 end 
@@ -46,7 +46,7 @@ function paletoprop18()
     local door = 'paletoprop18'
 
     local location = Config.paletoprop18[math.random(1, #Config.paletoprop18)]
-    local chance = math.random(1,100) if chance<=40 then   prop = cash  elseif chance<=90 then  prop = gold  elseif chance<=100 then   prop = diamonds end 
+    local chance = math.random(1,100) if chance<=75 then   prop = cash  elseif chance<=90 then  prop = gold  elseif chance<=100 then   prop = diamonds end 
 
     tbruh(door, prop, location)
 end 
@@ -60,7 +60,7 @@ function paletoprop19()
     local door = 'paletoprop19'
 
     local location = Config.paletoprop19[math.random(1, #Config.paletoprop19)]
-    local chance = math.random(1,100) if chance<=40 then   prop = cash  elseif chance<=90 then  prop = gold  elseif chance<=100 then   prop = diamonds end 
+    local chance = math.random(1,100) if chance<=75 then   prop = cash  elseif chance<=90 then  prop = gold  elseif chance<=100 then   prop = diamonds end 
 
     tbruh(door, prop, location)
 end 

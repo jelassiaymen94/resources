@@ -82,7 +82,7 @@ function Pacificprop9()
     local location = Config.Pacificprop9[math.random(1, #Config.Pacificprop9)]
    
     local chance = math.random(1,100) 
-    if chance<=50 then   prop = cash 
+    if chance<=75 then   prop = cash 
     elseif chance<=95 then  prop = gold
     else   prop = special
     end 
@@ -113,9 +113,9 @@ function Pacificprop10()
     local location = Config.Pacificprop10[math.random(1, #Config.Pacificprop10)]
    
     local chance = math.random(1,100) 
-    if chance<=10 then   prop = cash 
-    elseif chance<=25 then  prop = gold
-    else  prop = special
+    if chance<=75 then   prop = cash 
+    elseif chance<=95 then  prop = gold
+    else   prop = special
     end 
    
     pbruh(door, prop, location)
@@ -136,10 +136,10 @@ function Pacificprop21()
     local special = Config.ShelfSpecial[math.random(1, #Config.ShelfSpecial)]
     local location = Config.Pacificprop21[math.random(1, #Config.Pacificprop21)]
    
-    local chance = math.random(1,210) 
-    if chance<=10 then   prop = cash 
-    elseif chance<=25 then  prop = gold
-    else  prop = special
+    local chance = math.random(1,100) 
+    if chance<=75 then   prop = cash 
+    elseif chance<=95 then  prop = gold
+    else   prop = special
     end 
    
     pbruh(door, prop, location) 
@@ -158,10 +158,10 @@ function Pacificprop22()
     local special = Config.ShelfSpecial[math.random(1, #Config.ShelfSpecial)]
     local location = Config.Pacificprop22[math.random(1, #Config.Pacificprop22)]
    
-    local chance = math.random(1,220) 
-    if chance<=10 then   prop = cash 
-    elseif chance<=25 then  prop = gold
-    else  prop = special
+    local chance = math.random(1,100) 
+    if chance<=75 then   prop = cash 
+    elseif chance<=95 then  prop = gold
+    else   prop = special
     end 
     
     pbruh(door, prop, location)

@@ -19,7 +19,7 @@ function Pacificprop16()
 
    
     local location = Config.Pacificprop16[math.random(1, #Config.Pacificprop16)]
-    local chance = math.random(1,100) if chance<=40 then   prop = cash  elseif chance<=90 then  prop = gold  elseif chance<=100 then   prop = diamonds end 
+    local chance = math.random(1,100) if chance<=75 then   prop = cash  elseif chance<=90 then  prop = gold  elseif chance<=100 then   prop = diamonds end 
 
     tbruh(door, prop, location)
 end 
@@ -32,13 +32,13 @@ function Pacificprop17()
     local door = 'Pacificprop17'
 
     local location = Config.Pacificprop17[math.random(1, #Config.Pacificprop17)]
-    local chance = math.random(1,100) if chance<=40 then   prop = cash  elseif chance<=90 then  prop = gold  elseif chance<=100 then   prop = diamonds end 
+    local chance = math.random(1,100) if chance<=75 then   prop = cash  elseif chance<=90 then  prop = gold  elseif chance<=100 then   prop = diamonds end 
 
     tbruh(door, prop, location)
 end 
 
 Config.Pacificprop18 = {
-    vector4(262.56, 225.72, 101.68, 156.4),
+   
     vector4(251.53, 222.87, 101.68, 240.61),
    
 }
@@ -46,30 +46,39 @@ function Pacificprop18()
     local door = 'Pacificprop18'
 
     local location = Config.Pacificprop18[math.random(1, #Config.Pacificprop18)]
-    local chance = math.random(1,100) if chance<=40 then   prop = cash  elseif chance<=90 then  prop = gold  elseif chance<=100 then   prop = diamonds end 
+    local chance = math.random(1,100) if chance<=75 then   prop = cash  elseif chance<=90 then  prop = gold  elseif chance<=100 then   prop = diamonds end 
 
     tbruh(door, prop, location)
 end 
 
 Config.Pacificprop19 = {
     vector4(249.35, 218.29, 101.68, 291.23),
-    vector4(251.13, 223.05, 101.68, 246.81),
+   
 
 }
 function Pacificprop19()
     local door = 'Pacificprop19'
 
     local location = Config.Pacificprop19[math.random(1, #Config.Pacificprop19)]
-    local chance = math.random(1,100) if chance<=40 then   prop = cash  elseif chance<=90 then  prop = gold  elseif chance<=100 then   prop = diamonds end 
+    local chance = math.random(1,100) if chance<=75 then   prop = cash  elseif chance<=90 then  prop = gold  elseif chance<=100 then   prop = diamonds end 
 
     tbruh(door, prop, location)
 end 
 
 
+Config.Pacificprop20 = {
+    vector4(262.56, 225.72, 101.68, 156.4),
+    vector4(251.13, 223.05, 101.68, 246.81),
 
+}
+function Pacificprop20()
+    local door = 'Pacificprop20'
 
+    local location = Config.Pacificprop20[math.random(1, #Config.Pacificprop20)]
+    local chance = math.random(1,100) if chance<=75 then   prop = cash  elseif chance<=90 then  prop = gold  elseif chance<=100 then   prop = diamonds end 
 
-
+    tbruh(door, prop, location)
+end 
 
 
 

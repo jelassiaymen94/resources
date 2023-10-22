@@ -19,7 +19,7 @@ local thermiteitem = "thermite" -- item for doors
 local computeritem = 'hacking_device' -- item to hack computers
 local pcitem = 'btc' -- comes from pc completion
 
-local vaultitem = 'laptop_blue' -- item for vault
+local vaultitem = 'laptop_green' -- item for vault
 local vaultitemchance = 50 -- chance for item to be removed
 
 local laserdrillitem = 'drill' -- laser drill to cutout glass

@@ -44,7 +44,7 @@ local items = {
     ['valuablegoods'] = {
         itemName = 'valuablegoods',
         MinSellPrice = 4500,
-        MaxSellPrice = 7500,
+        MaxSellPrice = 11500,
     },
 
 
@@ -54,32 +54,32 @@ local items = {
     ['tequillabottle2'] = {
         itemName = 'tequillabottle2',
         MinSellPrice = 7500,
-        MaxSellPrice = 12500,
+        MaxSellPrice = 15000,
     },
     ['tequillabottle3'] = {
         itemName = 'tequillabottle3',
         MinSellPrice = 7500,
-        MaxSellPrice = 12500,
+        MaxSellPrice = 15000,
     },
     ['tequillabottle1'] = {
         itemName = 'tequillabottle1',
         MinSellPrice = 7500,
-        MaxSellPrice = 12500,
+        MaxSellPrice = 15000,
     },
     ['rubynecklace1'] = {
         itemName = 'rubynecklace1',
         MinSellPrice = 7500,
-        MaxSellPrice = 12500,
+        MaxSellPrice = 15000,
     },
     ['pinkdiamond'] = {
         itemName = 'pinkdiamond',
         MinSellPrice = 7500,
-        MaxSellPrice = 12500,
+        MaxSellPrice = 15000,
     },
     ['bluepanther'] = {
         itemName = 'bluepanther',
         MinSellPrice = 7500,
-        MaxSellPrice = 12500,
+        MaxSellPrice = 15000,
     },
 
 
@@ -88,33 +88,33 @@ local items = {
 
     ['alienegg'] = {
         itemName = 'alienegg',
-        MinSellPrice = 1500,
-        MaxSellPrice = 3000,
+        MinSellPrice = 2500,
+        MaxSellPrice = 7500,
     },
     ['goldtower'] = {
         itemName = 'goldtower',
-        MinSellPrice = 1500,
-        MaxSellPrice = 3000,
+        MinSellPrice = 2500,
+        MaxSellPrice = 7500,
     },
     ['exoticbird'] = {
         itemName = 'exoticbird',
-        MinSellPrice = 1500,
-        MaxSellPrice = 3000,
+        MinSellPrice = 2500,
+        MaxSellPrice = 7500,
     },
     ['goldgrenade'] = {
         itemName = 'goldgrenade',
-        MinSellPrice = 1500,
-        MaxSellPrice = 3000,
+        MinSellPrice = 2500,
+        MaxSellPrice = 7500,
     },
     ['goldbasketball'] = {
         itemName = 'goldbasketball',
-        MinSellPrice = 1500,
-        MaxSellPrice = 3000,
+        MinSellPrice = 2500,
+        MaxSellPrice = 7500,
     },
     ['exoticdog'] = {
         itemName = 'exoticdog',
-        MinSellPrice = 1500,
-        MaxSellPrice = 3000,
+        MinSellPrice = 2500,
+        MaxSellPrice = 7500,
     },
 
 
@@ -123,58 +123,62 @@ local items = {
 
     ['exoticyacht'] = {
         itemName = 'exoticyacht',
-        MinSellPrice = 1500,
-        MaxSellPrice = 3000,
+        MinSellPrice = 2500,
+        MaxSellPrice = 7500,
     },
     ['exotichorse'] = {
         itemName = 'exotichorse',
-        MinSellPrice = 1500,
-        MaxSellPrice = 3000,
+        MinSellPrice = 2500,
+        MaxSellPrice = 7500,
     },
     ['exoticcat'] = {
         itemName = 'exoticcat',
-        MinSellPrice = 1500,
-        MaxSellPrice = 3000,
+        MinSellPrice = 2500,
+        MaxSellPrice = 7500,
     },
     ['exoticskull'] = {
         itemName = 'exoticskull',
-        MinSellPrice = 1500,
-        MaxSellPrice = 3000,
+        MinSellPrice = 2500,
+        MaxSellPrice = 7500,
     },
 
     ['exoticchips'] = {
         itemName = 'exoticchips',
-        MinSellPrice = 1500,
-        MaxSellPrice = 3000,
+        MinSellPrice = 2500,
+        MaxSellPrice = 7500,
     },
    
 
 
     ['diamond'] = {
         itemName = 'diamond',
-        MinSellPrice = 1500,
-        MaxSellPrice = 3000,
+        MinSellPrice = 2500,
+        MaxSellPrice = 7500,
     },
     ['captainskull'] = {
         itemName = 'captainskull',
-        MinSellPrice = 1500,
-        MaxSellPrice = 3000,
+        MinSellPrice = 2500,
+        MaxSellPrice = 7500,
     },
     ['saphire'] = {
         itemName = 'saphire',
-        MinSellPrice = 1500,
-        MaxSellPrice = 3000,
+        MinSellPrice = 2500,
+        MaxSellPrice = 7500,
     },
     ['bluediamond'] = {
         itemName = 'bluediamond',
-        MinSellPrice = 1500,
-        MaxSellPrice = 3000,
+        MinSellPrice = 2500,
+        MaxSellPrice = 7500,
     },
-
+    ['redruby'] = {
+        itemName = 'redruby',
+        MinSellPrice = 2500,
+        MaxSellPrice = 7500,
+    },
     ['yellow-diamond'] = {
         itemName = 'yellow-diamond',
-        MinSellPrice = 1500,
-        MaxSellPrice = 3000,
+        MinSellPrice = 2500,
+        MaxSellPrice = 7500,
     },
 
 
@@ -346,7 +350,6 @@ RegisterNetEvent('Pawnshop:Server:SellItems', function()
     
     local hasitem = false
     for k, v in pairs(items) do
-        Wait(250)
         local name = v.itemName
         local money = math.random(v.MinSellPrice, v.MaxSellPrice)
         local item = Player.Functions.GetItemByName(name)
@@ -360,7 +363,7 @@ RegisterNetEvent('Pawnshop:Server:SellItems', function()
     end
     if hasitem then 
         hasitem = false
-        Wait(250)
+        Wait(150)
         TriggerClientEvent('Pawnshop:Client:Lapa', src)
     end
 end)

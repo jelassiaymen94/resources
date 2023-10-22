@@ -21,7 +21,7 @@ local cashtable = {
 local goldtable = {
     'goldbar',
     'valuablegoods',
-    'goldchip',
+    'coin',
 }
 
 local diamondtable = {
@@ -41,7 +41,7 @@ local drilltable = {
     'yellow-diamond',
     'goldbar',  'goldbar', 'goldbar', 'goldbar',
     'valuablegoods', 'valuablegoods', 'valuablegoods',
-    'goldchip',
+    'coin',
     'markedbills',
     'dirtyband', 'dirtyband', 'dirtyband', 'dirtyband', 'dirtyband', 'dirtyband', 'dirtyband', 'dirtyband',
     --'',

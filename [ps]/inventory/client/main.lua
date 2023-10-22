@@ -179,7 +179,7 @@ local function openAnim()
     local ped = PlayerPedId()
     LoadAnimDict('pickup_object')
     TaskPlayAnim(ped,'pickup_object', 'putdown_low', 5.0, 1.5, 1.0, 48, 0.0, 0, 0, 0)
-    --Wait(500)
+    Wait(500)
     StopAnimTask(ped, 'pickup_object', 'putdown_low', 1.0)
 end
 

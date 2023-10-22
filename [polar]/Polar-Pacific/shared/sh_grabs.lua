@@ -11,7 +11,7 @@ local special = nil
 
 
 Config.Pacificprop1 = {
-    vector4(253.36, 216.38, 107.28, 212.16),
+    
     vector4(264.73, 220.54, 102.58, 315.79),
     vector4(264.2, 213.73, 102.53, 249.38), --- locations, can be multiple but chooses 1 at random
 
@@ -80,7 +80,7 @@ end
 Config.Pacificprop3 = {
     vector4(249.31, 216.53, 107.28, 343.13),
     vector4(243.36, 225.66, 107.28, 177.23),
-    vector4(264.41, 213.47, 102.53, 20.64),
+   
 }
 function Pacificprop3()
     
@@ -251,7 +251,24 @@ function Pacificprop35()
     bruh(door, prop, location)
 end
 
+Config.Pacificprop36 = {
+    vector4(264.41, 213.47, 102.53, 20.64),
+    vector4(253.36, 216.38, 107.28, 212.16),
+}
+function Pacificprop36()
+    
+    local location = Config.Pacificprop36[math.random(1, #Config.Pacificprop36)]
+   
+    local chance = math.random(1,100) 
+    if chance<=35 then   prop = cash 
+    elseif chance<= 75 then  prop = gold
+    else   prop = special
+    end 
 
+    local door = 'Pacificprop36'
+  
+    bruh(door, prop, location)
+end
 
 
 
