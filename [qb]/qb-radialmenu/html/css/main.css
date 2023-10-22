@@ -6,7 +6,7 @@ h1 {
 }
 
 div.info {
-    margin: 10px 0;
+    margin: 5px 0;
 }
 
 div.info * {
@@ -62,7 +62,7 @@ svg.menu.outer {
 }
 
 svg.menu > g > path {
-    fill: #00000080;
+    fill: #4646465b;
     transition: 0.1s;
 }
 
@@ -93,7 +93,7 @@ svg.menu > g.center:hover > circle {
 
 svg.menu > g.center > circle {
     cursor: pointer;
-    fill: #00000080;
+    fill: #4646465b;
     fill-opacity: 0.2s;
 }
 

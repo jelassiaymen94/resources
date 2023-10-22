@@ -131,10 +131,10 @@ end
 
 
 
-
+local insidec = vector3(-173.72, 495.69, 137.57)
 
 RegisterNetEvent("Polar-HouseRobbery:goinside", function(house)
-    SetEntityCoords(PlayerPedId(), house.inside.x, house.inside.y, house.inside.z)
+    SetEntityCoords(PlayerPedId(), insidec.x, insidec.y, insidec.z)
     TriggerEvent("Polar-HouseRobbery:CreateLoot", house)
     if isNight() then 
         TriggerEvent("Polar-HouseRobbery:Client:Noise", house)
@@ -143,19 +143,20 @@ RegisterNetEvent("Polar-HouseRobbery:goinside", function(house)
     end
 end)
 
+local houseexit = vector3(-174.34, 497.89, 137.67)
 
 RegisterNetEvent("Polar-HouseRobbery:CreateLoot", function(house)
-    for _,v in ipairs(house.loot) do
+    for _,v in ipairs(Config.LootSpots) do
         local n = v[1]
         local p = v[2] 
         TriggerServerEvent('Polar-HouseRobbery:Server:CreateTarget', n, p)  
     end
-    exports['qb-target']:AddCircleZone("polar_hr_exit", vector3(house.exit.x, house.exit.y, house.exit.z), 0.5, {
+    exports['qb-target']:AddCircleZone("polar_hr_exit", houseexit, 0.5, {
     name = "polar_hr_exit",  debugPoly = false,  useZ=true }, {  options = { {   action = function()
 
     Wait(1000)
     inside = false
-    SetEntityCoords(PlayerPedId(), house.location.x, house.location.y, house.location.z)
+    SetEntityCoords(PlayerPedId(), house.outside.x, house.outside.y, house.outside.z)
     noise = 0
     Wait(500)
     RemoveBlip(blip)
