@@ -249,8 +249,7 @@ RegisterNetEvent("Polar-HouseRobbery:createexit", function(missionTarget)
 end)
 
 RegisterNetEvent("Polar-HouseRobbery:createloot", function(missionTarget)
-
-    for i,v in ipairs(missionTarget.loot) do
+    for k,v in ipairs(missionTarget.loot) do
         local looted = false
         
       
@@ -426,7 +425,7 @@ function EntryMinigame(missionTarget)
 end
 
 function callPolice(missionTarget)
-    exports[Config.Dispatch]:HouseRobbery()
+    exports['ps-dispatch']:HouseRobbery()
     QBCore.Functions.Notify(Lang:t('notify.alarm'), 'error')
 end
 
