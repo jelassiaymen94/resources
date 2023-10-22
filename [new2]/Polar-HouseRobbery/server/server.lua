@@ -10,7 +10,7 @@ QBCore.Functions.CreateCallback("Polar-HouseRobbery:Server:Cooldown", function(s
     cb('1')
 end)
 
-local time = (Config.CooldownTime * 60000) 
+local time = (15 * 60000) 
 RegisterNetEvent('Polar-stores:Server:StartCooldown', function()
     cooldown = false
     exports["Polar-Wade"]:House(true) 
