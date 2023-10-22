@@ -284,6 +284,7 @@ end
 
 
 function bruh(door, prop, location)
+    print(source)
     TriggerEvent('Polar-Pacific:Server:SetPacificProp', door, prop)
     TriggerClientEvent('Polar-Pacific:Client:AddTarget', -1, door,  prop, vec4(location.x, location.y, location.z-1, location.w))
     TriggerClientEvent('Polar-Pacific:Client:PacificProp', -1, door, prop, vec4(location.x, location.y, location.z-1, location.w))
