@@ -883,6 +883,7 @@ Config.Commands = {
 
 local bags = {[40] = true, [41] = true, [44] = true, [45] = true}
 
+Config.ExtrasEnabled = true
 Config.ExtraCommands = {
     ["pants"] = {
         Func = function() ToggleClothing("Pants", true) end,
