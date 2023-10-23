@@ -1,6 +1,5 @@
-
-Config = {
-	DJLocations = {
+Config = {}
+Config.DJLocations = {
 		{ -- Vanilla Unicorn DJ Booth
 			job = "vu", -- Set this to required job role
 			enableBooth = true, -- option to disable rather than deleting code
@@ -414,6 +413,5 @@ coords = vector3(-770.2414, -17.2734, 45.0152),
 
 
 
-	},
+	}
 
-}
