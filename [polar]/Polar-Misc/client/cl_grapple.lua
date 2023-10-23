@@ -1,4 +1,4 @@
--- https://discord.gg/EcBmTs9734
+
 CreateThread(function()
   local sin, cos, atan2, abs, rad, deg = math.sin, math.cos, math.atan2, math.abs, math.rad, math.deg
   local EARLY_STOP_MULTIPLIER = 0.5
@@ -218,12 +218,13 @@ end)
       GiveWeaponToPed(PlayerPedId(), grappleGunHash, 0, 0, 1)
       GiveWeaponComponentToPed(PlayerPedId(), grappleGunHash, grappleGunSuppressor)
       SetPedWeaponTintIndex(PlayerPedId(), grappleGunHash, 2)
-      SetAmmoInClip(PlayerPedId(), grappleGunHash, 1)
+      SetAmmoInClip(PlayerPedId(), grappleGunHash, 5)
     else
       RemoveWeaponFromPed(PlayerPedId(), grappleGunHash)
     end
     local ply = PlayerId()
     CreateThread(function()
+      exports['qb-core']:DrawText("[E] Grapple!", "left")
       while grappleGunEquipped do
         local veh = GetVehiclePedIsIn(PlayerPedId(), false)
         if (veh and veh ~= 0) or GetSelectedPedWeapon(PlayerPedId()) ~= grappleGunHash then
@@ -236,7 +237,7 @@ end)
         if not shownGrappleButton and freeAiming and hit == 1 then
           shownGrappleButton = true
           Wait(250)
-          exports['qb-core']:DrawText("[E] Grapple!", "left")
+          
   
         elseif shownGrappleButton and (not freeAiming or hit ~= 1) then
           shownGrappleButton = false
