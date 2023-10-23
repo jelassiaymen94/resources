@@ -1,7 +1,5 @@
-
-Config = {
-	Debug = false, -- Set to true to show target locations
-	Locations = {
+Config = {}
+Config.DJLocations = {
 		{ -- Vanilla Unicorn DJ Booth
 			job = "vu", -- Set this to required job role
 			enableBooth = true, -- option to disable rather than deleting code

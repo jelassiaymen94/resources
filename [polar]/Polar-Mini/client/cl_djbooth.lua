@@ -10,23 +10,23 @@ RegisterNetEvent('QBCore:Client:OnJobUpdate', function(JobInfo) PlayerData.job =
 RegisterNetEvent('QBCore:Client:OnPlayerUnload', function() PlayerData = {} end)
 
 CreateThread(function()
-	for i = 1, #Config.Locations do
-		if Config.Locations[i].enableBooth then
+	for i = 1, #Config.DJLocations do
+		if Config.DJLocations[i].enableBooth then
 			local RequireJob = nil
 			local RequireGang = nil
-			if Config.Locations[i].job then
-				RequireJob = Config.Locations[i].job
+			if Config.DJLocations[i].job then
+				RequireJob = Config.DJLocations[i].job
 				if RequireJob == "public" then RequireJob = nil end
 			end
-			if Config.Locations[i].gang then
-				RequireGang = Config.Locations[i].RequireGang
+			if Config.DJLocations[i].gang then
+				RequireGang = Config.DJLocations[i].RequireGang
 			end
 			Targets["Booth"..i] =
-			exports['qb-target']:AddCircleZone("Booth"..i, Config.Locations[i].coords, 0.6, {name="Booth"..i, debugPoly=Config.Debug, useZ=true, },
+			exports['qb-target']:AddCircleZone("Booth"..i, Config.DJLocations[i].coords, 0.6, {name="Booth"..i, debugPoly=false, useZ=true, },
 				{ options = { { event = "qb-djbooth:client:playMusic", icon = "fab fa-youtube", label = "DJ Booth", job = RequireJob, gang = RequireGang, zone = i, }, }, distance = 2.0 })
-			if Config.Locations[i].prop then
-				RequestModel(Config.Locations[i].prop) while not HasModelLoaded(Config.Locations[i].prop) do Citizen.Wait(1) end
-				Props[#Props+1] = CreateObject(Config.Locations[i].prop, Config.Locations[i].coords,false,false,false)
+			if Config.DJLocations[i].prop then
+				RequestModel(Config.DJLocations[i].prop) while not HasModelLoaded(Config.DJLocations[i].prop) do Citizen.Wait(1) end
+				Props[#Props+1] = CreateObject(Config.DJLocations[i].prop, Config.DJLocations[i].coords,false,false,false)
 				SetEntityHeading(Props[#Props], math.random(1,359)+0.0)
 				FreezeEntityPosition(Props[#Props], true)
 			end
@@ -36,7 +36,7 @@ end)
 
 RegisterNetEvent("qb-djbooth:client:playMusic", function(data)
 	local booth = ""
-	for k, v in pairs(Config.Locations) do
+	for k, v in pairs(Config.DJLocations) do
 		if #(GetEntityCoords(PlayerPedId()) - v["coords"]) <= v["radius"] then
 			if v["job"] then booth = v["job"]..k elseif v["gang"] then booth = v["gang"]..k end
 		end
