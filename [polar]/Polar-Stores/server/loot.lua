@@ -44,7 +44,7 @@ RegisterNetEvent('Polar-stores:Server:Finish', function(item2, amount)
         Wait(150) 
     if amount == 'safes' then 
         -- register
-        for i = 1, math.random(2,5) do
+        for i = 1, math.random(1,3) do
             Wait(500)
             local item = regitems[math.random(1, #regitems)]
             if item == 'wetbills' then 
@@ -63,7 +63,7 @@ RegisterNetEvent('Polar-stores:Server:Finish', function(item2, amount)
         end
     elseif amount == 'dildo' then
         -- safe
-        for i = 1, math.random(2,5) do
+        for i = 1, math.random(1,3) do
             local item = safeitems[math.random(1, #safeitems)]
             if item == 'wetbills' then 
                 local info = {
