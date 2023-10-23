@@ -15,14 +15,16 @@ CreateThread(function()
 end)
 CreateThread(function()
     while true do
-        Wait(10)
+        Wait(1)
         if IsControlJustReleased(0, control) then
+            DisableControlAction(0, control, true)
             local currentMode = GetFollowPedCamViewMode()
             print(currentMode)
             if currentMode ~= 4 then 
                 SetFollowPedCamViewMode(4)
                 Wait(100)
                 print(GetFollowPedCamViewMode())
+                DisableControlAction(0, control, false)
             end
         end
     end
