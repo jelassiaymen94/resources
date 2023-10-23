@@ -145,7 +145,7 @@ local what = false
 local loops = false
 RegisterNetEvent('Polar-stores:Client:GrabLoc', function(store)
     TriggerEvent('qb-phone:client:CustomNotification', 'Dave', 'New Location Marked on your GPS', 'fas fa-file-invoice-dollar', '#b3e0f2', '10000')
-    blip(Config.Names[store]["ComputerEye"])
+    blip(Config.Names[store]["SafeLocation"])
     
 
 
@@ -220,8 +220,15 @@ RegisterNetEvent('Polar-stores:Client:AddTarget', function(door, prop, var, hand
         { options = {{ event = handle, type = door, piles = pile, icon = "fas fa-bolt", label = "Grab"}}, distance = 1.5  }) 
     end
 end)
-
-
+RegisterNetEvent('Polar-stores:Client:AddPickupTarget', function(door, prop, var, handle, pile) 
+    if oxt then 
+        targets[door] = exports.ox_target:addBoxZone({ coords = vec3(var.x, var.y, var.z), size = vec3(1, 1, 1), rotation = 1, debug = hi,
+        options = {{  event = handle, type = door, piles = pile,  icon = "fas fa-bolt", label = "Grab", canInteract = function(_, distance) return distance <= Config.OxTargetDistance end }, } })
+    else
+        exports['qb-target']:AddBoxZone(door, vec3(var.x, var.y, var.z), 0.5, 0.5, { name = door, heading = 28.69, debug = hi, minZ = var.z - 1.5, maxZ =  var.z + 1.5,}, 
+        { options = {{ event = handle, type = door, piles = pile, icon = "fas fa-bolt", label = "Grab"}}, distance = 2.5  }) 
+    end
+end)
 
 
 
@@ -357,8 +364,8 @@ RegisterNetEvent('Polar-stores:Client:Safe', function(data)
     gloves()
     local name = data.id
     callback('Polar-stores:Safe', function(result) if result then 
-    TriggerServerEvent('Polar-stores:Server:StopInteract', name)
     if playeritem(safeitem) then
+        TriggerServerEvent('Polar-stores:Server:StopInteract', name)
     exports[circleexport]:Circle(function(success)
         if success then
 
@@ -452,11 +459,11 @@ RegisterNetEvent('Polar-stores:Client:Door', function(data)
     gloves()
     local name = data.id
     local store = data.whote
-    loop(false)
+
     callback('Polar-stores:Door1', function(result) if result then 
         if playeritem(dooritem) then
-
         TriggerServerEvent('Polar-stores:Server:StopInteract', name)
+        loop(false)
         exports[circleexport]:Circle(function(success)
             if success then
                 CallPolice(GetEntityCoords(PlayerPedId()))
@@ -506,10 +513,11 @@ RegisterNetEvent('Polar-stores:Client:Door2', function(data)
     gloves()
     local name = data.id
     local store = data.whote
-    loop(false)
+    
     callback('Polar-stores:Door2', function(result) if result then 
-        TriggerServerEvent('Polar-stores:Server:StopInteract', name)
         if playeritem(dooritem) then
+            TriggerServerEvent('Polar-stores:Server:StopInteract', name)
+            loop(false)
         exports[circleexport]:Circle(function(success)
             if success then
 

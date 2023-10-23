@@ -61,7 +61,7 @@ Config.CallBack('Polar-stores:Door' .. Config.ComputerName, function(source, cb)
 Config.CallBack('Polar-stores:Door' .. Config.RegisterName, function(source, cb)  cb(register) end) 
 Config.CallBack('Polar-stores:Door1', function(source, cb) cb(door1) end) 
 Config.CallBack('Polar-stores:Door2', function(source, cb)  cb(door2) end) 
-Config.CallBack('Polar-stores:Safe', function(source, cb)  cb(door2) end) 
+Config.CallBack('Polar-stores:Safe', function(source, cb)  cb(safe) end) 
 
 local time = (Config.CooldownTime * 60000) 
 RegisterNetEvent('Polar-stores:Server:StartCooldown', function()

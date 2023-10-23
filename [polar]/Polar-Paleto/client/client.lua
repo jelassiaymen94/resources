@@ -643,7 +643,7 @@ RegisterNetEvent('Polar-Paleto:Client:AddPickupTarget', function(door, prop, var
         if hi then print('grab id: ' .. targets[door] .. ' propdoor: ' .. door .. ' proplabel: ' .. prop .. ' ispile: ') end
     else
         exports['qb-target']:AddBoxZone(door, vec3(var.x, var.y, var.z), 0.5, 0.5, { name = door, heading = 28.69, debug = hi, minZ = var.z  - 0.5, maxZ =  var.z + 0.5,}, 
-        { options = {{ event = "Polar-Paleto:Client:PickupTarget", type = door, piles = pile, icon = "fas fa-bolt", label = "Grab"}}, distance = 2.0 }) 
+        { options = {{ event = "Polar-Paleto:Client:PickupTarget", type = door, piles = pile, icon = "fas fa-bolt", label = "Grab"}}, distance = 2.5 }) 
     end
 end)
 RegisterNetEvent('Polar-Paleto:Client:AddPaintTarget', function(door, prop, var, cases) 

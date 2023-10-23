@@ -149,6 +149,6 @@ end
 
 function pbruh(door, prop, location)
     TriggerEvent('Polar-stores:Server:SetstoresProp', door, prop)
-    TriggerClientEvent('Polar-stores:Client:AddTarget', -1, door, prop, vec4(location.x, location.y,  location.z-1, location.w), "Polar-stores:Client:PickupTarget", false)
+    TriggerClientEvent('Polar-stores:Client:AddPickupTarget', -1, door, prop, vec4(location.x, location.y,  location.z-1, location.w), "Polar-stores:Client:PickupTarget", false)
     TriggerClientEvent('Polar-stores:Client:storesProp', -1, door, prop, vec4(location.x, location.y,  location.z-1, location.w)) 
 end
