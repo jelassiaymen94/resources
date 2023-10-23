@@ -213,7 +213,7 @@ rootMenuConfig =  {
         id = "car:bigmenu",
         displayName = "Vehicle Menu",
         icon =  "#general-car",
-        functionName = "vehcontrol:openExternal",
+        functionName = "veh:options",
         enableMenu = function()
             return (not isDead and IsPedInAnyVehicle(PlayerPedId(), false))
         end
