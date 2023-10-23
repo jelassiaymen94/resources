@@ -19,6 +19,11 @@ CreateThread(function()
                 end
             end
         end
+        for i = 0, 457 do
+            if GetPedConfigFlag(player, i) then
+                print('player flag true = ' .. i)
+            end
+        end
     end 
 end)
 
