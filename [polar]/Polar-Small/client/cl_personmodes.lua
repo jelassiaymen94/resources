@@ -14,6 +14,7 @@ CreateThread(function()
     end
 end)
 CreateThread(function()
+    SetFollowPedCamViewMode(4)
     while true do
         if IsControlJustReleased(0, control) then
             local modes = GetFollowPedCamViewMode()
