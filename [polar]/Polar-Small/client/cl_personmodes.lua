@@ -24,7 +24,7 @@ CreateThread(function()
         Wait(10)
     end
 end)
-local switch = false
+local switch = true
 
 function mode()
     if switch then
