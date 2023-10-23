@@ -1,21 +1,21 @@
 window.addEventListener('message', function (event) {
     switch(event.data.action) {
         default:
-            Notify(event.data);
+            DrawCrosshair(event.data);
             break;  
     }
 });
 
-function Notify(data) {
-    var $notification = $('.notification.template').clone();
-    $notification.removeClass('template');
-    $notification.addClass(data.type);
-    $notification.html(data.text);
-    $notification.fadeIn();
-    $('.notif-container').append($notification);
+function DrawCrosshair(data) {
+    var $drawstuffre = $('.drawstuffre.template').clone();
+    $drawstuffre.removeClass('template');
+    $drawstuffre.addClass(data.type);
+    $drawstuffre.html(data.text);
+    $drawstuffre.fadeIn();
+    $('.notif-container').append($drawstuffre);
     setTimeout(function() {
-        $.when($notification.fadeOut()).done(function() {
-            $notification.remove()
+        $.when($drawstuffre.fadeOut()).done(function() {
+            $drawstuffre.remove()
         });
     }, data.length === undefined ? data.length : 2500);
 }

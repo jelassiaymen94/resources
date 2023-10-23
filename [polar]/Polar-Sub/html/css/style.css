@@ -2,7 +2,7 @@ body {
     background-color: transparent !important;
 }
 
-.template, .notification {
+.template, .drawstuffre {
     display: none;
 }
 
@@ -15,7 +15,7 @@ body {
     flex-wrap: wrap;
 }
 
-.notification {
+.drawstuffre {
     margin:6px;
     /* text-align:center; */
     font: caption;
