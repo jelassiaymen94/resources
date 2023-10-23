@@ -14,7 +14,6 @@ CreateThread(function()
     end
 end)
 CreateThread(function()
-    SetFollowPedCamViewMode(4)
     while true do
         Wait(1)
         if IsControlJustPressed(0, control) then
