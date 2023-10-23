@@ -32,13 +32,13 @@ CreateThread(function()
         local control = 0 -- Default control if not found
 
         for i = 0, 358 do
-            if DoesControlExist(0, i) then
+          
                 if GetLabelText(GetControlInstructionalButton(0, i, 0)) == "CYCLE_CAMERA" then
                     keyName = GetControlInstructionalButton(0, i, 0)
                     control = i
                     break
                 end
-            end
+            
         end
 
         if IsControlJustReleased(0, control) then
