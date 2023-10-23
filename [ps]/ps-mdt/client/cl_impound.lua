@@ -61,7 +61,7 @@ local function TakeOutImpound(vehicle)
     end
 end
 
-RegisterNetEvent('ps-mdt:client:TakeOutImpound', function(data)
+RegisterNetEvent('mdt:client:TakeOutImpound', function(data)
     local pos = GetEntityCoords(PlayerPedId())
     currentGarage = data.currentSelection
     local takeDist = Config.ImpoundLocations[data.currentSelection]
