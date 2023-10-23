@@ -1,5 +1,5 @@
 local QBCore = exports['qb-core']:GetCoreObject()
-
+Config = {}
 local isJudge = false
 local isPolice = false
 local isTow = false
