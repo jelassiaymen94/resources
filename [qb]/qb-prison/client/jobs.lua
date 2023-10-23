@@ -163,17 +163,5 @@ CreateThread(function()
             Config.Locations.jobs[k][i].done = false
         end
     end
-    if not Config.UseTarget then
-        while true do
-            local sleep = 1000
-            if isInside then
-                sleep = 0
-                if IsControlJustReleased(0, 38) then
-                    StartWork()
-                    sleep = 1000
-                end
-            end
-            Wait(sleep)
-        end
-    end
+   
 end)

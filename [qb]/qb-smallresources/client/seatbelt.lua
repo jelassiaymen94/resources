@@ -123,7 +123,7 @@ end)
 
 CreateThread(function()
     while true do
-        Wait(5)
+        Wait(10)
         local playerPed = PlayerPedId()
         local currentVehicle = GetVehiclePedIsIn(playerPed, false)
         if currentVehicle ~= nil and currentVehicle ~= false and currentVehicle ~= 0 then
