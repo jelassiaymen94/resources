@@ -24,6 +24,7 @@ QBShared.Items = {
 	["cigbox"] 					 	 	 = {["name"] = "cigbox",  	    						["label"] = "Box Of Cigs",	 				["weight"] = 1250, 		["type"] = "item", 		["image"] = "np_69-brand-pack.png", 						["unique"] = false, 	["useable"] = true, 	["shouldClose"] = false,   	["combinable"] = nil,   	 ["description"] = "A box of them good old redwoods", ["decay"] = 30.0, ["delete"] = false },
 	["donut"] 					= {["name"] = "donut",					["label"] = "Donut",					["weight"] = 500,		["type"] = "item",		["image"] = "tbdonut.png",					["unique"] = false, 	["useable"] = true,		["shouldClose"] = true,		["combinable"] = nil,	["description"] = "", ['hunger'] = math.random(90, 150) , ["decay"] = 30.0, ["delete"] = false },
 
+	["laserdrill"] 				 = {["name"] = "laserdrill", 			  	  	["label"] = "Laser Drill", 			["weight"] = 10000, 		["type"] = "item", 		["image"] = "mininglaser.png", 			["unique"] = true, 	["useable"] = false, 	["shouldClose"] = false, ["combinable"] = nil,   ["description"] = "This bitch can cut through anything" , ["decay"] = 15.0, ["delete"] = false },
 
 	
 
