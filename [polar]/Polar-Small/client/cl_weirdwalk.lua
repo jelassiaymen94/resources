@@ -1,29 +1,27 @@
-
-
-
-local walkStyle = "default"  -- The default walk style to set after firing a gun
+local playerFlags = {}
 
 CreateThread(function()
-    while true do
-        Wait(100)
-        local player = PlayerPedId()
-        
-        if DoesEntityExist(player) and not IsEntityDead(player) then
-            if IsPedShooting(player) then  -- Check if the player shoots
-                if GetPedConfigFlag(player, 59) then
-                    print('was shooting')
-                    --SetPedConfigFlag(player, 36, true)  -- Reset the walk style
-                end
-                if GetPedConfigFlag(player, 183) then
-                    print('is agitated')
-                end
-            end
-        end
-        for i = 0, 457 do
-            if GetPedConfigFlag(player, i) then
-                print('player flag true = ' .. i)
-            end
-        end
-    end 
-end)
+    local player = PlayerId()
 
+    for i = 0, 457 do
+        if GetPedConfigFlag(player, i) then
+            playerFlags[i] = true
+        end
+    end
+
+    while true do
+        Wait(100)  -- Adjust the check interval as needed
+
+        for i = 0, 457 do
+            local flagValue = GetPedConfigFlag(player, i)
+
+            if flagValue and not playerFlags[i] then
+                playerFlags[i] = true
+                print('Flag ' .. i .. ' changed to true')
+            elseif not flagValue and playerFlags[i] then
+                playerFlags[i] = false
+                print('Flag ' .. i .. ' changed to false')
+            end
+        end
+    end
+end)
