@@ -2,10 +2,9 @@
 local on = true
 
 
-local screenX, screenY = 0.5, 0.5 -- Middle of the screen
-local crosshairWidth, crosshairHeight = 32, 32 -- Adjust the size as needed
-local crosshairTextureDict = "commonmenu"
-local crosshairTextureName = "shop_box_blank"
+local centerX, centerY = 0.5, 0.5 -- Middle of the screen
+local circleRadius = 25.0 -- Adjust the radius as needed
+local circleColor = {255, 255, 255, 255} -- RGBA color values
 
 
 
@@ -41,5 +40,5 @@ end)
 
 
 function drawCrosshair()
-	local sprite = DrawSprite(crosshairTextureDict, crosshairTextureName, screenX, screenY, crosshairWidth / 1920.0, crosshairHeight / 1080.0, 0.0, 255, 255, 255, 255)
+	local sprite = DrawCircle(centerX, centerY, 0, 5, circleColor[1], circleColor[2], circleColor[3], circleColor[4])
 end
