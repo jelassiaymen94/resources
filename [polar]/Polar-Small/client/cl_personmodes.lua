@@ -26,7 +26,7 @@ end)
 
 CreateThread(function()
     while true do
-        Wait(1000)
+        Wait(1)
 
         local keyName = "UNKNOWN"  -- Default key name if not found
         local control = 0 -- Default control if not found
