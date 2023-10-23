@@ -937,13 +937,13 @@ for k,v in pairs(Config.Commands) do
 	TriggerEvent("chat:addSuggestion", "/"..k, v.Desc)
 end
 
-if Config.ExtrasEnabled then
-	for k,v in pairs(Config.ExtraCommands) do
-		RegisterCommand(k, v.Func)
+
+for k,v in pairs(Config.ExtraCommands) do
+	RegisterCommand(k, v.Func)
 		--log("Created /"..k.." ("..v.Desc..")") -- Useful for translation checking.
-		TriggerEvent("chat:addSuggestion", "/"..k, v.Desc)
-	end
+	TriggerEvent("chat:addSuggestion", "/"..k, v.Desc)
 end
+
 
 AddEventHandler('onResourceStop', function(resource) -- Mostly for development, restart the resource and it will put all the clothes back on.
 	if resource == GetCurrentResourceName() then

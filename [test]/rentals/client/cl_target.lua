@@ -1,5 +1,5 @@
 CreateThread(function(data)
-    exports['qb-target']:AddCircleZone("VehiclePed", vector3(-295.67, -996.3, 30.25), 0.4, { 
+    exports['qb-target']:AddCircleZone("vehicleped", vector3(-295.67, -996.3, 30.25), 0.4, { 
         name = "vehicleped", 
         debugPoly = false,
       }, {
@@ -16,7 +16,7 @@ CreateThread(function(data)
         distance = 3.0
       })
 
-      exports['qb-target']:AddCircleZone("VehiclePed2", vector3(2009.4813, 3050.4080, 48.2136), 0.4, { 
+      exports['qb-target']:AddCircleZone("vehicleped2", vector3(2009.4813, 3050.4080, 48.2136), 0.4, { 
         name = "vehicleped2", 
         debugPoly = false,
       }, {
@@ -33,7 +33,7 @@ CreateThread(function(data)
         distance = 3.0
       })
 
-      exports['qb-target']:AddCircleZone("VehiclePed3", vector3(-131.8657, 6332.7012, 32.4905), 0.4, { 
+      exports['qb-target']:AddCircleZone("vehicleped3", vector3(-131.8657, 6332.7012, 32.4905), 0.4, { 
         name = "vehicleped3", 
         debugPoly = false,
       }, {
@@ -50,7 +50,7 @@ CreateThread(function(data)
         distance = 3.0
       })
     
-    exports['qb-target']:AddCircleZone("AircraftPed", vector3(-1686.57, -3149.22, 13.99), 0.4, { 
+    exports['qb-target']:AddCircleZone("aircraftped", vector3(-1686.57, -3149.22, 13.99), 0.4, { 
         name = "aircraftped", 
         debugPoly = false,
       }, {
@@ -67,7 +67,7 @@ CreateThread(function(data)
         distance = 3.0
         })
 
-    exports['qb-target']:AddCircleZone("BoatPed", vector3(-753.5, -1512.27, 5.02), 0.4, { 
+    exports['qb-target']:AddCircleZone("boatped", vector3(-753.5, -1512.27, 5.02), 0.4, { 
         name = "boatped", 
         debugPoly = false,
         }, {
@@ -83,7 +83,7 @@ CreateThread(function(data)
         distance = 3.0
         })
 
-        exports['qb-target']:AddCircleZone("BoatPed2", vector3(-1604.2683, 5256.1191, 2.0711), 0.4, { 
+        exports['qb-target']:AddCircleZone("boatped2", vector3(-1604.2683, 5256.1191, 2.0711), 0.4, { 
             name = "boatped2", 
             debugPoly = false,
             }, {
@@ -99,7 +99,7 @@ CreateThread(function(data)
             distance = 3.0
             })
 
-            exports['qb-target']:AddCircleZone("BoatPed3", vector3(-308.6725, -2447.0972, 2.8159), 0.4, { 
+            exports['qb-target']:AddCircleZone("boatped3", vector3(-308.6725, -2447.0972, 2.8159), 0.4, { 
                 name = "boatped3", 
                 debugPoly = false,
                 }, {
