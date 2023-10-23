@@ -991,6 +991,7 @@ QBShared.Items = {
 ["tblongjohn"] 					= {["name"] = "tblongjohn",					["label"] = "Long John",				["weight"] = 500,		["type"] = "item",		["image"] = "tblongjohn.png",				["unique"] = false, 	["useable"] = true,		["shouldClose"] = true,		["combinable"] = nil,	["description"] = "", ['hunger'] = math.random(90, 150) , ["decay"] = 30.0, ["delete"] = false },
 ["tbcakebase"] 					= {["name"] = "tbcakebase",					["label"] = "Cake Base",				["weight"] = 500,		["type"] = "item",		["image"] = "tbcakebase.png",				["unique"] = true, 		["useable"] = true,		["shouldClose"] = true,		["combinable"] = nil,	["description"] = "", ['hunger'] = math.random(90, 150) , ["decay"] = 30.0, ["delete"] = false },
 
+['racingdevice'] 			 	 		 = {['name'] = 'racingdevice', 					['label'] = 'Racing Device', 					['weight'] = 1000, 		['type'] = 'item', 		['image'] = 'np_unknown-usb-device.png', 				['unique'] = false,    ['useable'] = true, 	   ['shouldClose'] = true,	   ['combinable'] = nil,   ['description'] = 'It allows you to play YouTube videos or race them mfs', ["decay"] = 30.0, ["delete"] = false },	
 ['vpn'] 			 	 		 = {['name'] = 'vpn', 					['label'] = 'Uknown Device', 					['weight'] = 3000, 		['type'] = 'item', 		['image'] = 'np_unknown-usb-device.png', 				['unique'] = false,    ['useable'] = true, 	   ['shouldClose'] = true,	   ['combinable'] = nil,   ['description'] = 'It allows you to play YouTube videos or race them mfs', ["decay"] = 30.0, ["delete"] = false },	
 
 -- GUIDES

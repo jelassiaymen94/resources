@@ -253,7 +253,7 @@ RegisterNetEvent("Pug:server:GetRacingRewards", function(src, TotalLaps, AmountO
     print "rewards given"
 end)
 
-QBCore.Functions.CreateUseableItem("vpn", function(source, item)
+QBCore.Functions.CreateUseableItem("racingdevice", function(source, item)
     local Player = QBCore.Functions.GetPlayer(source)
     TriggerClientEvent("Pug:client:CreateRacerAlias", source)
    -- TriggerEvent("qb-log:server:CreateLog", "useable", "USED VPN", "green", "**" .. Player .. "**")

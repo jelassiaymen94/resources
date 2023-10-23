@@ -136,7 +136,7 @@ Config = {
 		["electronics"] = {
 			{ name = "phone", price = 500, amount = 10 },
 			{ name = "radio", price = 1000, amount = 20, },
-			{ name = "vpn", price = 1250, amount = 15, },
+			{ name = "racingdevice", price = 1250, amount = 15, },
 			{ name = "laptop", price = 12500, amount = 15, },
 		},
 	
@@ -144,7 +144,7 @@ Config = {
 			--{ name = "laptop", price = 10000, amount = 15 },
 			{ name = "drill", price = 12500, amount = math.random(2,4) },
 			{ name = "aluminumoxide", price = 1250, amount = 5 },
-		--	{ name = "scissors", price = 2500, amount = 1 },
+			{ name = "vpn", price = 2500, amount = math.random(2,8) },
 			{ name = "metalscratchy", price = 2500, amount = 2 },
 			{ name = "thermite", price = 9500, amount = math.random(2,8) },
 			{ name = "hacking_device", price = 16750, amount = math.random(2,5) },
