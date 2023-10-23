@@ -107,7 +107,7 @@ $(function () {
     $('.door').on('click', function() {
         if ($(this).parent().hasClass('disabled')) return;
         var doorIndex = $(this).attr('value');
-        $.post('http://raid_carmenu/openDoor', JSON.stringify({
+        $.post('http://carmenu/openDoor', JSON.stringify({
                 doorIndex: doorIndex
             })
         );
@@ -115,7 +115,7 @@ $(function () {
 
     $('.seat').on('click', function() {
         var seatIndex = $(this).attr('value');
-        $.post('http://raid_carmenu/switchSeat', JSON.stringify({
+        $.post('http://carmenu/switchSeat', JSON.stringify({
                 seatIndex: seatIndex
             })
         );
@@ -123,7 +123,7 @@ $(function () {
 
     $('.window').on('click', function() {
         var windowIndex = $(this).attr('value');
-        $.post('http://raid_carmenu/togglewindow', JSON.stringify({
+        $.post('http://carmenu/togglewindow', JSON.stringify({
                 windowIndex: windowIndex
             })
         );
@@ -131,7 +131,7 @@ $(function () {
 
     $('.engine').on('click', function() {
         if ($(this).parent().hasClass('disabled')) return;
-        $.post('http://raid_carmenu/toggleengine', JSON.stringify({}));
+        $.post('http://carmenu/toggleengine', JSON.stringify({}));
     });
 
     document.onkeyup = function (data) {
@@ -142,7 +142,7 @@ $(function () {
                 data.which == 27
             ) {
                 // Z or Esc
-                $.post('http://raid_carmenu/escape', JSON.stringify({}));
+                $.post('http://carmenu/escape', JSON.stringify({}));
             }
         }
     };

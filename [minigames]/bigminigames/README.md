@@ -11,10 +11,10 @@
 --[[
     return: boolean
 ]]
-exports['ran-minigames']:MemoryCard(time)
+exports['bigminigames']:MemoryCard(time)
 
 -- Example
-local success = exports['ran-minigames']:MemoryCard(360)
+local success = exports['bigminigames']:MemoryCard(360)
 if success then
     --your logic here
 end
@@ -34,10 +34,10 @@ Usually use it in a robbery script like my [store robbery](https://github.com/Ra
     bombfail: number; (How much bomb limit we get to force cash out)
     position?: "left" | "right" | "center"
 ]]
-exports['ran-minigames']:MineSweep(money, bomb, bombfail, position)
+exports['bigminigames']:MineSweep(money, bomb, bombfail, position)
 
 -- EXAMPLE
-local success = exports['ran-minigames']:MineSweep(12000, 12, 3, "center")
+local success = exports['bigminigames']:MineSweep(12000, 12, 3, "center")
 -- Will return amount of money we get from minigame
 print(success)
 ```
@@ -52,10 +52,10 @@ I don't really know what to name this one 🥲, but the way it work is you need 
 --[[
     WILL RETURN A BOOLEAN
 ]]
- exports['ran-minigames']:OpenTerminal()
+ exports['bigminigames']:OpenTerminal()
 
  -- EXAMPLE
- local success = exports['ran-minigames']:OpenTerminal()
+ local success = exports['bigminigames']:OpenTerminal()
 ```
 
 ### Support

@@ -23,16 +23,6 @@ function numberCounterResult(success)
     toggleNuiFrame(false)
 end
 
-RegisterCommand('numberCounter', function()
-    local gameData = {
-        totalNumbers = 15,
-        seconds = 20,
-        timesToChangeNumbers = 4,
-        amountOfGames = 2,
-        incrementByAmount = 5,
-    }
-    local result = exports['pure-minigames']:numberCounter(gameData)
-    print('Result - Command', result)
-end)
+
 
 exports('numberCounter', numberCounter)
