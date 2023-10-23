@@ -1,0 +1,18 @@
+CreateThread(function()
+    local currentViewMode = 0  -- Initial view mode (0 for third-person)
+    while true do
+        Wait(10)
+        local player = PlayerPedId()
+        
+        if DoesEntityExist(player) and not IsEntityDead(player) then
+            local newViewMode = GetFollowPedCamViewMode()
+            
+
+                if newViewMode ~= currentViewMode then
+                    -- Force the view mode to be either 0 (third-person) or 4 (first-person)
+                    SetFollowPedCamViewMode(currentViewMode)
+                end
+         
+        end
+    end
+end)
