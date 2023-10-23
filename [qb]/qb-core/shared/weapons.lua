@@ -187,7 +187,7 @@ QBShared.Weapons = {
 	
 	[GetHashKey('weapon_gepard')] 		 		 = {['name'] = 'weapon_gepard', 	 		['label'] = 'GEPARD', 						['weapontype'] = 'Assault Rifle',	['maxammo'] = 120, ['ammotype'] = 'AMMO_RIFLE',	['damagereason'] = 'Ended / Rifled / Shot down / Floored'},
 	[GetHashKey('weapon_g18c')] 				 = {['name'] = 'weapon_g18c', 			['label'] = 'GLOCK-18C', 				['weapontype'] = 'Pistol',	['maxammo'] = 50, ['ammotype'] = 'AMMO_PISTOL',	['damagereason'] = 'Pistoled / Blasted / Plugged / Bust a cap in'},
-	[GetHashKey('weapon_mp5')] 			 		 = {['name'] = 'weapon_mp5', 			['label'] = 'MP5', 					['weapontype'] = 'Submachine Gun',	['maxammo'] = 80, ['ammotype'] = 'AMMO_SMG',		['damagereason'] = 'Riddled / Drilled / Finished / Submachine Gunned'},
+	[GetHashKey('weapon_mp5')] 			 		 = {['name'] = 'weapon_mp5', 			['label'] = 'MP5', 					['weapontype'] = 'Submachine Gun',	['maxammo'] = 90, ['ammotype'] = 'AMMO_SMG',		['damagereason'] = 'Riddled / Drilled / Finished / Submachine Gunned'},
 	[GetHashKey('weapon_dp9')] 				 	 = {['name'] = 'weapon_dp9', 			['label'] = 'DP9', 				   	['weapontype'] = 'Pistol',			['maxammo'] = 50, ['ammotype'] = 'AMMO_PISTOL',	['damagereason'] = 'Pistoled / Blasted / Plugged / Bust a cap in'},
 	[GetHashKey('weapon_m67')] 		        	= {['name'] = 'weapon_m67', 			['label'] = 'M67', 				['weapontype'] = 'Throwable',	['maxammo'] = 50, ['ammotype'] = nil,				['damagereason'] = 'Bombed / Exploded / Detonated / Blew up'},
 	[GetHashKey('weapon_groza')] 		 		 = {['name'] = 'weapon_groza', 	 		['label'] = 'GROZA', 				['weapontype'] = 'Assault Rifle',	['maxammo'] = 120, ['ammotype'] = 'AMMO_RIFLE',	['damagereason'] = 'Ended / Rifled / Shot down / Floored'},
