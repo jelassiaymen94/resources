@@ -36,11 +36,13 @@ CreateThread(function()
             sleep = 0
             if IsDisabledControlJustReleased(2, 36) then
                 if isCrouching then
+                    TriggerEvent('Polar-Misc:Client:PauseWalks', false)
                     ClearPedTasks(ped)
                     resetAnimSet()
                     SetPedStealthMovement(ped, false, 'DEFAULT_ACTION')
                     isCrouching = false
                 else
+                    TriggerEvent('Polar-Misc:Client:PauseWalks', true)
                     ClearPedTasks(ped)
                     loadAnimSet('move_ped_crouched')
                     SetPedMovementClipset(ped, 'move_ped_crouched', 1.0)

@@ -73,14 +73,16 @@ RegisterCommand('walks', function()
     TriggerEvent('Polar-Misc:client:Menu')
 end, false)
 
-
+local paused = false
+RegisterNetEvent('Polar-Misc:Client:PauseWalks', function(bool) paused = bool end)
 CreateThread(function()
     while true do
         Wait(1000)
         local walking = GetPedMovementClipset(PlayerPedId())
         if walking ~= joaat(currentWalk) or currentWalk == "default" then -- Gets integer value of currentWalk, compares it to current clipset
+            if not paused then 
             GetWalkStyle()
-            
+            else end
         end
     end
 end)
