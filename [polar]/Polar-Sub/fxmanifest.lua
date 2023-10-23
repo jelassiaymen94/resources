@@ -30,7 +30,7 @@ server_scripts {
 }
 ui_page {
     'html/ui.html',
-	'html/crosshair.html',
+	
 }
 
 files {
@@ -38,9 +38,7 @@ files {
 	'html/js/app.js', 
 	'html/css/style.css',
 
-	'html/crosshair.html',
-    'html/style/style.css',
-    'html/app/app.js',
+	
 }
 
 lua54 'yes'
