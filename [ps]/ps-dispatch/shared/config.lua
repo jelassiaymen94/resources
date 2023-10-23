@@ -3,19 +3,20 @@ Config = Config or {}
 Config.Debug = false -- Enables debug and send alerts when leo break the law.
 
 Config.RespondKeybind = 'E'
+Config.OpenDispatchMenu = 'O'
 Config.AlertTime = 5     -- How many seconds you want the alert to stay on screen
 
 Config.OnDutyOnly = true -- Set true if only on duty players can see the alert
 Config.Jobs = { -- Job Types that can access the dispatch menu
-    "leo",
+    "police",
     "ems"
 }
 
 Config.DefaultAlertsDelay = 5 -- Delay between each default alert, prevent spamming
 Config.DefaultAlerts = {
-    Speeding = false,
+    Speeding = true,
     Shooting = true,
-    Autotheft = false,
+    Autotheft = true,
     Melee = true,
     PlayerDowned = true
 }
@@ -23,16 +24,21 @@ Config.DefaultAlerts = {
 Config.MinOffset = 1
 Config.MaxOffset = 120
 
+Config.PhoneRequired = true -- Set true if only can use 911/311 command when got a phone on inventory.
+Config.PhoneItems = { -- Add the entire list of your phone items.
+    "phone",
+}
+
 -- Locations for the Hunting Zones and No Dispatch Zones( Label: Name of Blip // Radius: Radius of the Alert and Blip)
 Config.EnableHuntingBlip = false
 
 Config.Locations = {
     ["HuntingZones"] = {
-        [1] = {label = "Hunting Zone", radius = 650.0, coords = vector3(-938.61, 4823.99, 313.92)},
+       -- [1] = {label = "Hunting Zone", radius = 650.0, coords = vector3(-938.61, 4823.99, 313.92)},
     },
     ["NoDispatchZones"] = {
-        [1] = {label = "Ammunation 1", coords = vector3(13.53, -1097.92, 29.8), length = 14.0, width = 5.0, heading = 70, minZ = 28.8, maxZ = 32.8},
-        [2] = {label = "Ammunation 2", coords = vector3(821.96, -2163.09, 29.62), length = 14.0, width = 5.0, heading = 270, minZ = 28.62, maxZ = 32.62},
+       -- [1] = {label = "Ammunation 1", coords = vector3(13.53, -1097.92, 29.8), length = 14.0, width = 5.0, heading = 70, minZ = 28.8, maxZ = 32.8},
+       -- [2] = {label = "Ammunation 2", coords = vector3(821.96, -2163.09, 29.62), length = 14.0, width = 5.0, heading = 270, minZ = 28.62, maxZ = 32.62},
     },
 }
 
