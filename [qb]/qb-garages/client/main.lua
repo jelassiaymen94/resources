@@ -350,44 +350,6 @@ local function AddRadialParkingOption()
     end
 end
 
-local function AddRadialImpoundOption()
-    MenuItemId = exports['qb-radialmenu']:AddOption({
-        id = 'open_garage_menu',
-        title = 'Open Impound Lot',
-        icon = 'warehouse',
-        type = 'client',
-        event = 'qb-garages:client:OpenMenu',
-        shouldClose = true
-    }, MenuItemId)
-end
-
-local function UpdateRadialMenu()
-    local garage = Garages[CurrentGarage]
-    if CurrentGarage ~= nil and garage ~= nil then
-        if garage.type == 'job' and not IsStringNilOrEmpty(garage.job) then
-            if PlayerJob.name == garage.job then
-                TriggerEvent('Polar-Radial:Client:InGarage', true)
-            end
-        elseif garage.type == 'gang' and not IsStringNilOrEmpty(garage.gang) then
-            if PlayerGang.name == garage.gang then
-                TriggerEvent('Polar-Radial:Client:InGarage', true)
-            end
-        elseif garage.type == 'depot' then
-            TriggerEvent('Polar-Radial:Client:InImpound', true)
-            
-        else
-           TriggerEvent('Polar-Radial:Client:InGarage', true)
-        end
-    elseif CurrentHouseGarage ~= nil then
-        TriggerEvent('Polar-Radial:Client:InGarage', true)
-    else
-        if MenuItemId ~= nil then
-            TriggerEvent('Polar-Radial:Client:InImpound', false)
-           
-            MenuItemId = nil
-        end
-    end
-end
 
 local function CreateGarageZone()
     local combo = ComboZone:Create(GarageZones, {name = 'garages', debugPoly=false}) 
@@ -396,6 +358,7 @@ local function CreateGarageZone()
         local type = garage.type
         if isPointInside and IsAuthorizedToAccessGarage(zone.name) then
             CurrentGarage = zone.name
+            print(type)
             exports['qb-core']:DrawText(Garages[CurrentGarage]['drawText'], DrawTextPosition)
             if type == 'depot' then
                 TriggerEvent('Polar-Radial:Client:InImpound', true)
@@ -706,9 +669,6 @@ RegisterNetEvent('qb-garages:client:TakeOutGarage', function(data, cb)
     end, location, true)
 end)
 
-RegisterNetEvent('qb-radialmenu:client:onRadialmenuOpen', function()
-    UpdateRadialMenu()
-end)
 
 RegisterNetEvent('qb-garages:client:OpenMenu', function()
     if CurrentGarage then
