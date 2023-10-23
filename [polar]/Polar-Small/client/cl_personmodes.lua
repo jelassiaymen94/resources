@@ -21,6 +21,7 @@ CreateThread(function()
             print(modes)
             if modes == 0 then
                 SetFollowPedCamViewMode(4)
+                Wait(100)
             end
         end
         Wait(10)
