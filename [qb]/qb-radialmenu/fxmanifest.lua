@@ -4,7 +4,7 @@ client_script {
     "config.lua",
     "client_menu.lua",
 	"utils.lua",
-	"clothing.lua",
+	'client/clothing.lua',
 }
 
 ui_page "html/ui.html"
