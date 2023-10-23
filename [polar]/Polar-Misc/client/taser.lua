@@ -1,7 +1,4 @@
---[[
-Taser cardridge
-by L1 & ItssJxstn
-]]
+
 local QBCore = exports['qb-core']:GetCoreObject()
     RegisterKeyMapping("taserreload", "Reload", 'keyboard', "R")
 
@@ -13,7 +10,6 @@ local longerTazeSecTime = 20
 taserModel = GetHashKey("WEAPON_STUNGUN")
 local taserCartsLeft = maxTaserCarts
 
---- Code ---
 
 InNotify = false
 
@@ -35,25 +31,25 @@ RegisterCommand(refillCommand, function(source, args, rawCommand)
     if(GetSelectedPedWeapon(PlayerPedId()) == taserModel) then
         if QBCore.Functions.HasItem('taser_cardridge') then
             ShowNotification("Reloading...", 3000)
-            Citizen.Wait(3000)
+            Wait(3000)
             taserCartsLeft = maxTaserCarts
             ShowNotification("Taser Reloaded.")
-            TriggerServerEvent('DD-taser:server:jhkjkl')
+            TriggerServerEvent('taser:server:remove')
         else
             ShowNotification("You need a Cardridge")
         end
     end
 end)
 
-Citizen.CreateThread(function()
+CreateThread(function()
     while true do
-        Citizen.Wait(0)
+        Wait(0)
         local ped = PlayerPedId()
 
         if GetSelectedPedWeapon(ped) == taserModel then
             if IsPedShooting(ped) then
                 taserCartsLeft = taserCartsLeft - 1
-                -- print("[Taser Cartridge] Taser Cartridges over = " .. taserCartsLeft)
+                
             end
         end
 

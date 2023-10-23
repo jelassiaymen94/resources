@@ -83,8 +83,8 @@ end)
 
 RegisterNetEvent('polar:client:judgeGavel', function()
     TriggerServerEvent("InteractSound_SV:PlayWithinDistance", 10, "gavel_hits", 0.5)
-   end)
-   RegisterNetEvent('polar:client:burgershotding', function()
+end)
+RegisterNetEvent('polar:client:burgershotding', function()
     TriggerServerEvent("InteractSound_SV:PlayWithinDistance", 10, "bell-sound", 0.5)
-   end)
+end)
  
