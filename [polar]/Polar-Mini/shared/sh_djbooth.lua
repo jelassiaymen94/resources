@@ -1,5 +1,6 @@
 Config = {}
-Config.DJLocations = {
+Config = {
+	DJLocations = {
 		{ -- Vanilla Unicorn DJ Booth
 			job = "vu", -- Set this to required job role
 			enableBooth = true, -- option to disable rather than deleting code
@@ -14,7 +15,7 @@ Config.DJLocations = {
 		radius = 7,
 		coords = vector3(111.3007, -1304.3901, 28.6876),
 		--soundLoc = vector3(113.4731, -1303.0309, 29.8930), -- Add sound origin location if you don't want the music to play from the dj booth
-		prop = `prop_radio_01`
+		prop = 'prop_radio_01'
 	},
 		{ -- Sisyphus Theater
 			job = "public", -- "public" makes it so anyone can add music.
@@ -46,7 +47,7 @@ Config.DJLocations = {
 			DefaultVolume = 0.1,
 			radius = 30,
 			coords = vector3(127.04, -3030.65, 6.80),
-			prop = `prop_radio_01` -- Prop to spawn at location, if the location doesn't have one already
+			prop = 'prop_radio_01' -- Prop to spawn at location, if the location doesn't have one already
 								   -- (can be changed to any prop, coords determine wether its placed correctly)
 		},
 		{ -- Gabz Popsdiner Radio Prop
@@ -55,7 +56,7 @@ Config.DJLocations = {
 			DefaultVolume = 0.1,
 			radius = 30,
 			coords = vector3(1595.53, 6453.02, 26.165),
-			prop = `prop_boombox_01`
+			prop = 'prop_boombox_01'
 		},
 		{ -- LostMC compound next to Casino
 			gang = "lostmc",
@@ -131,7 +132,7 @@ DefaultVolume = 0.2,
 radius = 15,
 coords = vector3(796.0356, -748.2004, 26.8438),
 soundLoc = vector3(804.4647, -749.1584, 26.7808), -- Add sound origin location if you don't want the music to play from the dj booth
-prop = `prop_radio_01`
+prop = 'prop_radio_01'
 
 },
 
@@ -142,7 +143,7 @@ DefaultVolume = 0.2,
 radius = 20,
 coords = vector3(827.0007, -808.6041, 33.5819),
 --soundLoc = vector3(804.4647, -749.1584, 26.7808), -- Add sound origin location if you don't want the music to play from the dj booth
-prop = `prop_radio_01`
+prop = 'prop_radio_01'
 
 },
 
@@ -153,7 +154,7 @@ DefaultVolume = 0.2,
 radius = 15,
 coords = vector3(-763.5918, 316.5329, 174.8565),
 --soundLoc = vector3(804.4647, -749.1584, 26.7808), -- Add sound origin location if you don't want the music to play from the dj booth
-prop = `prop_radio_01`
+prop = 'prop_radio_01'
 
 },
 
@@ -164,7 +165,7 @@ DefaultVolume = 0.2,
 radius = 15,
 coords = vector3(-763.9574, 316.5620, 221.3105),
 --soundLoc = vector3(804.4647, -749.1584, 26.7808), -- Add sound origin location if you don't want the music to play from the dj booth
-prop = `prop_radio_01`
+prop = 'prop_radio_01'
 
 },
 
@@ -175,7 +176,7 @@ DefaultVolume = 0.2,
 radius = 15,
 coords = vector3(14.5372, -1609.0043, 29.1865),
 soundLoc = vector3(14.5372, -1609.0043, 29.1865), -- Add sound origin location if you don't want the music to play from the dj booth
-prop = `prop_radio_01`
+prop = 'prop_radio_01'
 
 },
 
@@ -185,7 +186,7 @@ DefaultVolume = 0.2,
 radius = 15,
 coords = vector3(19.9091, -1107.2761, 29.9082),
 soundLoc = vector3(19.9091, -1107.2761, 30.9082), -- Add sound origin location if you don't want the music to play from the dj booth
-prop = `prop_radio_01`
+prop = 'prop_radio_01'
 
 },
 
@@ -195,7 +196,7 @@ DefaultVolume = 0.2,
 radius = 15,
 coords = vector3(-1551.9783, -1010.9634, 12.0179),
 soundLoc = vector3(-1551.9783, -1010.9634, 12.0179), -- Add sound origin location if you don't want the music to play from the dj booth
-prop = `prop_radio_01`
+prop = 'prop_radio_01'
 
 },
 { --Reese 
@@ -204,7 +205,7 @@ DefaultVolume = 0.1,
 radius = 35,
 coords = vector3(943.4400, -1808.0016, 1.3817),
 soundLoc = vector3(943.4400, -1808.0016, 1.3817), -- Add sound origin location if you don't want the music to play from the dj booth
-prop = `prop_radio_01`
+prop = 'prop_radio_01'
 
 },
 
@@ -215,7 +216,7 @@ DefaultVolume = 0.2,
 radius = 15,
 coords = vector3(-787.6706, 179.5905, 71.9202),
 soundLoc = vector3(-787.6706, 179.5905, 72.9202), -- Add sound origin location if you don't want the music to play from the dj booth
-prop = `prop_radio_01`
+prop = 'prop_radio_01'
 
 },
 
@@ -225,7 +226,7 @@ DefaultVolume = 0.2,
 radius = 50,
 coords = vector3(1212.81631, -3275.9954, 5.5035),
 soundLoc = vector3(1212.3658, -3277.3535, 5.5334), -- Add sound origin location if you don't want the music to play from the dj booth
---prop = `prop_50s_jukebox`
+--prop = 'prop_50s_jukebox'
 
 },
 
@@ -235,7 +236,7 @@ DefaultVolume = 0.2,
 radius = 15,
 coords = vector3(-153.70127, -1612.7387, 33.094),
 soundLoc = vector3(-154.1127, -1612.3887, 33.6494), -- Add sound origin location if you don't want the music to play from the dj booth
-prop = `prop_radio_01`
+prop = 'prop_radio_01'
 
 },
 
@@ -246,7 +247,7 @@ DefaultVolume = 0.2,
 radius = 15,
 coords = vector3(1258.2873, -1563.3812, 58.3516),
 soundLoc = vector3(1258.2873, -1563.3812, 58.3516), -- Add sound origin location if you don't want the music to play from the dj booth
---prop = `prop_radio_01`
+--prop = 'prop_radio_01'
 
 },
 
@@ -258,7 +259,7 @@ DefaultVolume = 0.2,
 radius = 15,
 coords = vector3(-838.6557, -719.6387, 28.2849),
 soundLoc = vector3(-838.6557, -719.6387, 28.2849), -- Add sound origin location if you don't want the music to play from the dj booth
---prop = `prop_radio_01`
+--prop = 'prop_radio_01'
 
 },]]
 
@@ -270,7 +271,7 @@ DefaultVolume = 0.2,
 radius = 15,
 coords = vector3(-700.3314, 268.1309, 83.1073),
 soundLoc = vector3(-700.3314, 268.8309, 83.1473), -- Add sound origin location if you don't want the music to play from the dj booth
-prop = `prop_radio_01`
+prop = 'prop_radio_01'
 
 },
 
@@ -282,7 +283,7 @@ DefaultVolume = 0.2,
 radius = 15,
 coords = vector3(-586.7386, -1058.1617, 22.2442),
 soundLoc = vector3(-586.5386, -1058.1617, 22.3442), -- Add sound origin location if you don't want the music to play from the dj booth
-prop = `prop_radio_01`
+prop = 'prop_radio_01'
 
 },
 
@@ -293,7 +294,7 @@ DefaultVolume = 0.2,
 radius = 15,
 coords = vector3(-324.4760, -2440.1594, 2.5265),
 soundLoc = vector3(-324.4760, -2440.1594, 3.0265), -- Add sound origin location if you don't want the music to play from the dj booth
-prop = `prop_radio_01`
+prop = 'prop_radio_01'
 
 },
 
@@ -305,7 +306,7 @@ DefaultVolume = 0.2,
 radius = 15,
 coords = vector3(495.5525, -1530.9779, 33.88502),
 soundLoc = vector3(495.5525, -1530.9779, 35.1502), -- Add sound origin location if you don't want the music to play from the dj booth
-prop = `prop_radio_01`
+prop = 'prop_radio_01'
 
 },
 
@@ -317,7 +318,7 @@ DefaultVolume = 0.2,
 radius = 15,
 coords = vector3(-344.9845, 51.7271, 53.7918),
 soundLoc = vector3(-344.9845, 51.7271, 53.7918), -- Add sound origin location if you don't want the music to play from the dj booth
-prop = `prop_radio_01`
+prop = 'prop_radio_01'
 
 },
 
@@ -329,7 +330,7 @@ DefaultVolume = 0.2,
 radius = 15,
 coords = vector3(-654.2123, -1220.9775, 17.4427),
 soundLoc = vector3(-654.2123, -1220.9775, 18.4427), -- Add sound origin location if you don't want the music to play from the dj booth
-prop = `prop_radio_01`
+prop = 'prop_radio_01'
 
 },
 
@@ -414,4 +415,5 @@ coords = vector3(-770.2414, -17.2734, 45.0152),
 
 
 	},
+
 }
