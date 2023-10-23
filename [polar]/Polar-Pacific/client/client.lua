@@ -885,7 +885,41 @@ function next(door, loc)
         return true
 
     else
-               
+        if door == fingerprintdoor then
+            local success = exports['bigminigames']:OpenTerminal()
+            if success then
+                TriggerServerEvent('Polar-Pacific:Server:TargetRemove', door)
+                local chance = math.random(1,100)
+                if chance <= vaultitemchance then TriggerServerEvent('Polar-Pacific:Server:RemoveItem', vaultitem, 1) end
+                Wait(4000)
+                NetworkStartSynchronisedScene(netScene3)
+                Wait(4500)
+                NetworkStopSynchronisedScene(netScene3)
+                DeleteObject(bag)
+                SetPedComponentVariation(ped, 5, Config.BagUseID, 0, 1)
+                DeleteObject(laptop)
+                FreezeEntityPosition(ped, false)
+                LocalPlayer.state:set('inv_busy', false, true) 
+                RemoveAnimDict(animDict)
+                PlaySoundFrontend(-1, "HACKING_SUCCESS", "", true)
+                return true
+            else
+                local chance = math.random(1,100)
+                if chance <= vaultitemchance then TriggerServerEvent('Polar-Pacific:Server:RemoveItem', vaultitem, 1) end
+                Wait(4000)
+                NetworkStartSynchronisedScene(netScene3)
+                Wait(4500)
+                NetworkStopSynchronisedScene(netScene3)
+                DeleteObject(bag)
+                SetPedComponentVariation(ped, 5, Config.BagUseID, 0, 1)
+                DeleteObject(laptop)
+                FreezeEntityPosition(ped, false)
+                LocalPlayer.state:set('inv_busy', false, true) 
+                RemoveAnimDict(animDict)
+                PlaySoundFrontend(-1, "HACKING_FAILURE", "", false)
+                return false
+            end
+        else
         LocalPlayer.state:set('inv_busy', true, true) 
     exports[hackname]:OpenHackingGame(10, 5, 3, function(Success) 
         if Success then
@@ -920,9 +954,9 @@ function next(door, loc)
             PlaySoundFrontend(-1, "HACKING_FAILURE", "", false)
             return false
         end
-
+            
     end)
-
+    end
     end
 
   --[[ elseif door == fingerprintdoor then

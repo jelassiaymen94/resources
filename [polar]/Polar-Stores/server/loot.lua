@@ -24,7 +24,7 @@ RegisterNetEvent('Polar-stores:Server:RemoveItems', function(item, amount)
        
 end)
 local regitems = {
-    'wetbills', 'wetbills', 'wetbills', 'wetbills', 'wetbills',
+    'markedbills', 'markedbills', 'markedbills', 'markedbills', 'markedbills',
     'dirtyband',   'dirtyband',   'dirtyband',   'dirtyband',   'dirtyband',
     'cash', 'cash', 'cash', 'cash', 
 }
@@ -32,7 +32,7 @@ local safeitems = {
     'laptop_blue',
     'specialpick',
     'rope',
-    'wetbills', 'wetbills', 'wetbills', 'wetbills', 'wetbills',
+    'markedbills', 'markedbills', 'markedbills', 'markedbills', 'markedbills',
     'dirtyband',   'dirtyband',   'dirtyband',   'dirtyband',   'dirtyband',
     'goldbar',
 }
@@ -47,7 +47,7 @@ RegisterNetEvent('Polar-stores:Server:Finish', function(item2, amount)
         for i = 1, math.random(1,3) do
             Wait(500)
             local item = regitems[math.random(1, #regitems)]
-            if item == 'wetbills' then 
+            if item == 'markedbills' then 
                 local info = {
                     worth = math.random(1250,2500)
                 }
@@ -65,7 +65,7 @@ RegisterNetEvent('Polar-stores:Server:Finish', function(item2, amount)
         -- safe
         for i = 1, math.random(1,3) do
             local item = safeitems[math.random(1, #safeitems)]
-            if item == 'wetbills' then 
+            if item == 'markedbills' then 
                 local info = {
                     worth = math.random(5000,7500)
                 }

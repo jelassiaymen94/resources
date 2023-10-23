@@ -379,7 +379,7 @@ RegisterNetEvent('Polar-stores:Client:Safe', function(data)
     local result = exports['clickminigame']:numberCounter(gameData)
         if result then
 
-            QBCore.Functions.Progressbar("door", "Stealing Money ..", math.random(22000, 27500), false, true, {
+            QBCore.Functions.Progressbar("door", "Stealing Money ..", math.random(15000, 22500), false, true, {
                 disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true,
                 }, { animDict = "anim@gangops@facility@servers@", anim = "hotwire", flags = 16,
                 }, {}, {}, function() 
@@ -434,7 +434,8 @@ RegisterNetEvent('Polar-stores:Client:Register', function(data)
     if playeritem(registeritem) then
         TriggerServerEvent('Polar-stores:Server:StopInteract', name)
         loop(false)
-    exports[circleexport]:Circle(function(success)
+
+        local success = exports['bigminigames']:MineSweep(2500, 12, 3, "center")
         if success then
             QBCore.Functions.Progressbar("door", "Stealing Money ..", math.random(17000, 27500), false, true, {
                 disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true,
@@ -443,17 +444,44 @@ RegisterNetEvent('Polar-stores:Client:Register', function(data)
                     ClearPedTasks(PlayerPedId())
                     TriggerServerEvent('Polar-stores:Server:TargetRemove', name)
                     TriggerServerEvent('Polar-stores:Server:Finish', 56, 'safes')
-
+    
                 end, function() 
                     TriggerServerEvent('Polar-stores:Server:StartInteract', name)
                     loop(true)
                     ClearPedTasks(PlayerPedId())
-
+    
                 end, registeritem)
+        else
+            QBCore.Functions.Progressbar("door", "Stealing Money ..", math.random(17000, 27500), false, true, {
+                disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true,
+                }, {}, {}, {}, function() 
+                    loop(true)
+                    ClearPedTasks(PlayerPedId())
+                    TriggerServerEvent('Polar-stores:Server:TargetRemove', name)
+                    TriggerServerEvent('Polar-stores:Server:Finish', 56, 'safes')
+    
+                end, function() 
+                    TriggerServerEvent('Polar-stores:Server:StartInteract', name)
+                    loop(true)
+                    ClearPedTasks(PlayerPedId())
+    
+                end, registeritem)
+        end
 
+        
+
+    --[[exports[circleexport]:Circle(function(success)
+        if success then
+
+
+
+            
 
            
         else
+
+
+
             loop(true)
             ClearPedTasks(PlayerPedId())
             TriggerServerEvent('Polar-stores:Server:StartInteract', name)
@@ -463,7 +491,8 @@ RegisterNetEvent('Polar-stores:Client:Register', function(data)
 
 
         end
-    end, 4, 20)
+        
+    end, 4, 20)]]
     else notify(text('noregister'), "error") end
     else  notify(text('sometingelse'), "error") end end)
 end)
