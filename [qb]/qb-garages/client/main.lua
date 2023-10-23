@@ -359,7 +359,7 @@ local function CreateGarageZone()
             CurrentGarage = zone.name
             local garage = Garages[CurrentGarage]
             local type = garage.type
-            print(type)
+            
             exports['qb-core']:DrawText(Garages[CurrentGarage]['drawText'], DrawTextPosition)
             if type == 'depot' then
                 TriggerEvent('Polar-Radial:Client:InImpound', true)
