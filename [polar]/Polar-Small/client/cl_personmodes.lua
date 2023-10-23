@@ -18,16 +18,15 @@ end)
 CreateThread(function()
     while true do
         if IsControlJustReleased(0, control) then
-            print("Player pressed 'Cycle Camera' keybind (Control: " .. control .. ")")
             mode()
         end
         Wait(10)
     end
 end)
-local switch = false
+
 
 function mode()
-    if GetFollowPedCamViewMode() == 0 then
+    if GetFollowPedCamViewMode() ~= 4 then
         SetFollowPedCamViewMode(4)
     end
 end
