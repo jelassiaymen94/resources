@@ -684,7 +684,7 @@ QBShared.Items = {
 --['markedcash'] 					= {['name'] = 'markedcash', 				['label'] = 'Marked Money', 				['weight'] = 1, ['type'] = 'item', ['image'] = 'np_cash-stack.png', ['unique'] = false, ['useable'] = false, ['shouldClose'] = true, ['combinable'] = nil, ['description'] = 'Highly Illegal Band of Dirty, Possibly Counterfeit Cash', ["decay"] = 30.0, ["delete"] = false },
 
 --------- Blake 
-["recyclablematerial"]  = {["name"] = "recyclablematerial",   ["label"] = "Recycle Box",      ["weight"] = 500, ["type"] = "item", 		["image"] = "recyclablematerial.png",   ["unique"] = false, 	["useable"] = false, 	["shouldClose"] = false, ["combinable"] = nil,   ["description"] = "A box of Recyclable Materials", ["decay"] = 30.0, ["delete"] = false },
+	["recyclablematerial"]  = {["name"] = "recyclablematerial",   ["label"] = "Recycle Box",      ["weight"] = 500, ["type"] = "item", 		["image"] = "recyclablematerial.png",   ["unique"] = false, 	["useable"] = false, 	["shouldClose"] = false, ["combinable"] = nil,   ["description"] = "A box of Recyclable Materials", ["decay"] = 30.0, ["delete"] = false },
 
 
 

@@ -169,8 +169,8 @@ Config = {
 		"can",
 	},
 	RecycleAmounts = {
-		recycleMin = 5,
-		recycleMax = 25,
+		recycleMin = 1,
+		recycleMax = 2,
 
 		tenMin = 2,
 		tenMax = 8,

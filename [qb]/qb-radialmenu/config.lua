@@ -177,7 +177,7 @@ rootMenuConfig =  {
         icon = "#general-parking",
         functionName = "qb-garages:client:ParkVehicle",
         enableMenu = function()
-            return (not isDead and inGarage() and not IsPedInAnyVehicle(PlayerPedId(), false))
+            return (not isDead and inGarage() and IsPedInAnyVehicle(PlayerPedId(), false))
         end
     },
     {
@@ -186,7 +186,7 @@ rootMenuConfig =  {
         icon = "#general-garage",
         functionName = "qb-garages:client:OpenMenu",
         enableMenu = function()
-            return (not isDead and not inGarage() and not IsPedInAnyVehicle(PlayerPedId(), false))
+            return (not isDead and inGarage() and not IsPedInAnyVehicle(PlayerPedId(), false))
         end
     },
    {
