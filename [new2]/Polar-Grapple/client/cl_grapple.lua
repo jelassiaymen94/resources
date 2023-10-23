@@ -200,12 +200,11 @@ CreateThread(function()
   --   end
   -- end)
 
-  local grappleGunHash = -270015777
-  local grappleGunTintIndex = 3
+  local grappleGunHash = 177293209
+  local grappleGunTintIndex = 2
   local grappleGunSuppressor = "COMPONENT_AT_AR_SUPP_02"
   local grappleGunEquipped = false
   local shownGrappleButton = false
-
 
 
   RegisterNetEvent('grapple:useGrapple')
