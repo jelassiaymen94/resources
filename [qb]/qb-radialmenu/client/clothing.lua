@@ -1093,14 +1093,14 @@ CreateThread(function()
 
 for k,v in pairs(cCommands) do
 	RegisterCommand(k, v.Func)
-	print(v.Desc)
+	
 	--log("Created /"..k.." ("..v.Desc..")") -- Useful for translation checking.
 	TriggerEvent("chat:addSuggestion", "/"..k, v.Desc)
 end
 
 
 	for k,v in pairs(ExtracCommands) do
-		print(v.Desc)
+		
 		RegisterCommand(k, v.Func)
 		--log("Created /"..k.." ("..v.Desc..")") -- Useful for translation checking.
 		TriggerEvent("chat:addSuggestion", "/"..k, v.Desc)

@@ -3,7 +3,8 @@ games { 'gta5' }
 client_script {
     "config.lua",
     "client_menu.lua",
-	"utils.lua"
+	"utils.lua",
+	"clothing.lua",
 }
 
 ui_page "html/ui.html"
