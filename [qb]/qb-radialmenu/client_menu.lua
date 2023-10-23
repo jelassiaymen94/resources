@@ -146,202 +146,7 @@ end)
 
 
 
-
-RegisterNetEvent("ygx:togglegas")
-AddEventHandler("ygx:togglegas", function()
-   -- DeleteWaypoint()
-
-    local currentGasBlip = 0
-
-	local coords = GetEntityCoords(PlayerPedId())
-	local closest = 1000
-	local closestCoords
-
-	for k,v in pairs(GasStations) do
-		local dstcheck = GetDistanceBetweenCoords(coords, v)
-
-		if dstcheck < closest then
-			closest = dstcheck
-            closestCoords = v
-        end
-    end
-
-    SetNewWaypoint(closestCoords)
-
-end)
-
-RegisterNetEvent("ygx:togglebarber")
-AddEventHandler("ygx:togglebarber", function()
-   -- DeleteWaypoint()
-	local currentGasBlip = 0
-	local coords = GetEntityCoords(PlayerPedId())
-	local closest = 1000
-	local closestCoords1
-
-	for k,v in pairs(BarberShops) do
-		local dstcheck = GetDistanceBetweenCoords(coords, v)
-
-		if dstcheck < closest then
-			closest = dstcheck
-			closestCoords1 = v
-		end
-    end
-    
-    SetNewWaypoint(closestCoords1)
-end)
-
-
-RegisterNetEvent("ygx:toggletattos")
-AddEventHandler("ygx:toggletattos", function()
-   -- DeleteWaypoint()
-	local currentGasBlip = 0
-	local coords = GetEntityCoords(PlayerPedId())
-	local closest = 1000
-	local closestCoords2
-
-	for k,v in pairs(TattoShops) do
-		local dstcheck = GetDistanceBetweenCoords(coords, v)
-
-		if dstcheck < closest then
-			closest = dstcheck
-			closestCoords2 = v
-		end
-    end
-    
-    SetNewWaypoint(closestCoords2)
-end)
-
-
-RegisterNetEvent("fk:karakol")
-AddEventHandler("fk:karakol", function()
-   -- DeleteWaypoint()
-	local currentGasBlip = 0
-	local coords = GetEntityCoords(PlayerPedId())
-	local closest = 1000
-	local closestCoords2
-
-	for k,v in pairs(Karakol) do
-		local dstcheck = GetDistanceBetweenCoords(coords, v)
-
-		if dstcheck < closest then
-			closest = dstcheck
-			closestCoords2 = v
-		end
-    end
-    
-    SetNewWaypoint(closestCoords2)
-end)
-
-
-RegisterNetEvent("fk:hastane")
-AddEventHandler("fk:hastane", function()
-   -- DeleteWaypoint()
-	local currentGasBlip = 0
-	local coords = GetEntityCoords(PlayerPedId())
-	local closest = 1000
-	local closestCoords2
-
-	for k,v in pairs(Hastane) do
-		local dstcheck = GetDistanceBetweenCoords(coords, v)
-
-		if dstcheck < closest then
-			closest = dstcheck
-			closestCoords2 = v
-		end
-    end
-    
-    SetNewWaypoint(closestCoords2)
-end)
-
-
-
-RegisterNetEvent("fk:galeri")
-AddEventHandler("fk:galeri", function()
-   -- DeleteWaypoint()
-	local currentGasBlip = 0
-	local coords = GetEntityCoords(PlayerPedId())
-	local closest = 1000
-	local closestCoords2
-
-	for k,v in pairs(Galeri) do
-		local dstcheck = GetDistanceBetweenCoords(coords, v)
-
-		if dstcheck < closest then
-			closest = dstcheck
-			closestCoords2 = v
-		end
-    end
-    
-    SetNewWaypoint(closestCoords2)
-end)
-
-
-
-RegisterNetEvent("fk:motel")
-AddEventHandler("fk:motel", function()
-   -- DeleteWaypoint()
-	local currentGasBlip = 0
-	local coords = GetEntityCoords(PlayerPedId())
-	local closest = 1000
-	local closestCoords2
-
-	for k,v in pairs(Motel) do
-		local dstcheck = GetDistanceBetweenCoords(coords, v)
-
-		if dstcheck < closest then
-			closest = dstcheck
-			closestCoords2 = v
-		end
-    end
-    
-    SetNewWaypoint(closestCoords2)
-end)
-
-
-
-RegisterNetEvent("ygx:togglegarage")
-AddEventHandler("ygx:togglegarage", function()
-   -- DeleteWaypoint()
-	local currentGasBlip = 0
-	local coords = GetEntityCoords(PlayerPedId())
-	local closest = 1000
-	local closestCoords2
-
-	for k,v in pairs(Garage) do
-		local dstcheck = GetDistanceBetweenCoords(coords, v)
-
-		if dstcheck < closest then
-			closest = dstcheck
-			closestCoords2 = v
-		end
-    end
-    
-    SetNewWaypoint(closestCoords2)
-end)
-
-RegisterNetEvent("ygx:togglepd")
-AddEventHandler("ygx:togglepd", function()
-   -- DeleteWaypoint()
-	local currentGasBlip = 0
-	local coords = GetEntityCoords(PlayerPedId())
-	local closest = 1000
-	local closestCoords2
-
-	for k,v in pairs(Garage) do
-		local dstcheck = GetDistanceBetweenCoords(coords, v)
-
-		if dstcheck < closest then
-			closest = dstcheck
-			closestCoords2 = v
-		end
-    end
-    
-    SetNewWaypoint(closestCoords2)
-end)
-
-
-
-TattoShops = {
+local TattoShops = {
 	vector3(1322.6, -1651.9, 51.2),
 	vector3(-1153.6, -1425.6, 4.9),
 	vector3(322.1, 180.4, 103.5),
@@ -350,23 +155,7 @@ TattoShops = {
 	vector3(-293.7, 6200.0, 31.4)
 }
 
-Karakol = {
-	vector3(431.91, -981.62, 30.71),
-}
-
-Galeri = {
-	vector3(-45.24, -1098.05, 26.42),
-}
-
-Hastane = {
-	vector3(292.1, -583.5, 43.19),
-}
-
-Motel = {
-	vector3(326.51, -213.28, 54.07),
-}
-
-BarberShops = {
+local BarberShops = {
 	vector3(-814.308, -183.823, 36.568),
 	vector3(136.826, -1708.373, 28.291),
 	vector3(-1282.604, -1116.757, 5.990),
@@ -376,7 +165,7 @@ BarberShops = {
 	vector3(-278.077, 6228.463, 30.695),
 }
 
-GasStations = {
+local GasStations = {
 	vector3(49.4187, 2778.793, 58.043),
 	vector3(263.894, 2606.463, 44.983),
 	vector3(1039.958, 2671.134, 39.550),
@@ -406,3 +195,95 @@ GasStations = {
 	vector3(-319.292, -1471.715, 30.549),
 	vector3(1784.324, 3330.55, 41.253)
 }
+
+local ClothingStores = {
+    vector3(-1448.72, -238.91, 49.81),
+    vector3(1693.54, 4830.79, 42.07),
+    vector3(-1199.32, -769.85, 17.31),
+    vector3(426.22, -798.37, 29.49),
+    vector3(-165.53, -302.4, 39.73),
+    vector3(74.64, -1400.79, 29.38),
+    vector3(-829.6, -1076.86, 11.33),
+    vector3(-1450.711, -236.83, 48.809),
+    vector3(11.15, 6517.19, 31.88),
+    vector3(612.51, 2756.6, 42.09),
+    vector3(1188.79, 2710.86, 38.22),
+    vector3(-3166.18, 1048.37, 20.86),
+    vector3(-1107.81, 2705.86, 19.11),
+    vector3(129.91, -218.86, 54.56), 
+}
+
+local Banks = {
+    vector3(149.46, -1042.09, 29.37),
+    vector3(313.84, -280.58, 54.16),
+    vector3(241.44, 227.19, 106.29),
+    vector3(-351.23, -51.28, 49.04),
+    vector3(-1211.9, -331.9, 37.78),
+    vector3(-2961.14, 483.09, 15.7),
+    vector3(1174.8, 2708.2, 38.09),
+    vector3(-110.77, 6469.91, 31.63),
+}
+
+local HardwareStores = {
+    vector3(46.52, -1749.55, 29.64),
+    vector3(2747.76, 3472.9, 55.6),
+    vector3(-421.65, 6135.97, 31.88),
+
+}
+
+RegisterNetEvent("blips:gasstations", function()
+    local currentGasBlip = 0
+	local coords = GetEntityCoords(PlayerPedId())
+	local closest = 1000
+	local closestCoords
+	for k,v in pairs(GasStations) do
+		local dstcheck = GetDistanceBetweenCoords(coords, v)
+		if dstcheck < closest then
+			closest = dstcheck
+            closestCoords = v
+        end
+    end
+    SetNewWaypoint(closestCoords)
+end)
+RegisterNetEvent("blips:clothings", function()
+    local currentGasBlip = 0
+	local coords = GetEntityCoords(PlayerPedId())
+	local closest = 1000
+	local closestCoords
+	for k,v in pairs(ClothingStores) do
+		local dstcheck = GetDistanceBetweenCoords(coords, v)
+		if dstcheck < closest then
+			closest = dstcheck
+            closestCoords = v
+        end
+    end
+    SetNewWaypoint(closestCoords)
+end)
+RegisterNetEvent("blips:hardware", function()
+    local currentGasBlip = 0
+	local coords = GetEntityCoords(PlayerPedId())
+	local closest = 1000
+	local closestCoords
+	for k,v in pairs(HardwareStores) do
+		local dstcheck = GetDistanceBetweenCoords(coords, v)
+		if dstcheck < closest then
+			closest = dstcheck
+            closestCoords = v
+        end
+    end
+    SetNewWaypoint(closestCoords)
+end)
+RegisterNetEvent("blips:banks", function()
+    local currentGasBlip = 0
+	local coords = GetEntityCoords(PlayerPedId())
+	local closest = 1000
+	local closestCoords
+	for k,v in pairs(Banks) do
+		local dstcheck = GetDistanceBetweenCoords(coords, v)
+		if dstcheck < closest then
+			closest = dstcheck
+            closestCoords = v
+        end
+    end
+    SetNewWaypoint(closestCoords)
+end)

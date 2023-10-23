@@ -41,7 +41,7 @@ rootMenuConfig =  {
 
             return not isdead and not inlaststand
         end,
-        subMenus = { "blips:gasstations", --[["blips:trainstations",]] "blips:barbershop", "blips:tattooshop", "fk:karakol", "fk:hastane", "fk:galeri", "fk:motel"}
+        subMenus = { "blips:gasstations", "blips:banks", "blips:clothings", "blips:hardware"}
     },
     {
         id = "General",
@@ -384,30 +384,27 @@ newSubMenus = { -- NOTE basicly, what will be happen after clicking these button
         functionName = "expressions",
         functionParameters = { "effort_3" }
     },
+
+
     ['blips:gasstations'] = {
         title = "Gas Station",
         icon = "#blips-gasstations",
-        functionName = "ygx:togglegas"
+        functionName = "blips:gasstations"
     },
-   --[[ ['blips:trainstations'] = {
-        title = "Tren istasyonları",
-        icon = "#blips-trainstations",
-        functionName = "Trains:ToggleTainsBlip"
-    },--]]
-    ['blips:garages'] = {
-        title = "Garages",
-        icon = "#blips-garages",
-        functionName = "Garages:ToggleGarageBlip"
+    ['blips:banks'] = {
+        title = "Bank",
+        icon = "#blips-bank",
+        functionName = "blips:banks"
     },
-    ['blips:barbershop'] = {
-        title = "Barber",
+    ['blips:clothings'] = {
+        title = "Clothes Store",
         icon = "#blips-barbershop",
-        functionName = "ygx:togglebarber"
+        functionName = "blips:clothings"
     },
-    ['fk:galeri'] = {
-        title = "PDM",
-        icon = "#blips-garages",
-        functionName = "fk:galeri"
+    ['blips:hardware'] = {
+        title = "Hardware Store",
+        icon = "#blips-hardware",
+        functionName = "blips:hardware"
     },
     ['animations:brave'] = {
         title = "Brave",
