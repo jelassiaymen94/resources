@@ -15,7 +15,7 @@ CreateThread(function()
 end)
 CreateThread(function()
     while true do
-        Wait(100)
+        Wait(10)
         if IsControlJustReleased(0, control) then
             local currentMode = GetFollowPedCamViewMode()
             print(currentMode)
