@@ -921,19 +921,25 @@ end
 
 RegisterNetEvent('qb-radialmenu:ToggleProps', ToggleProps)
 
+CreateThread(function()
+
+
 for k,v in pairs(Config.Commands) do
 	RegisterCommand(k, v.Func)
 	--log("Created /"..k.." ("..v.Desc..")") -- Useful for translation checking.
 	TriggerEvent("chat:addSuggestion", "/"..k, v.Desc)
 end
 
-if Config.ExtrasEnabled then
+
 	for k,v in pairs(Config.ExtraCommands) do
 		RegisterCommand(k, v.Func)
 		--log("Created /"..k.." ("..v.Desc..")") -- Useful for translation checking.
 		TriggerEvent("chat:addSuggestion", "/"..k, v.Desc)
 	end
-end
+
+
+
+end)
 
 AddEventHandler('onResourceStop', function(resource) -- Mostly for development, restart the resource and it will put all the clothes back on.
 	if resource == GetCurrentResourceName() then
