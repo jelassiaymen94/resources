@@ -12,7 +12,7 @@ AddEventHandler('grapple:destroyRope', function(grappleid)
 end)
 
 
-QBCore.Functions.CreateUseableItem("GrappleGun", function(source)
+QBCore.Functions.CreateUseableItem("wgrapplegun", function(source)
     TriggerClientEvent('grapple:useGrapple', source)
 end)
 

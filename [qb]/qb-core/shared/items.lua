@@ -40,7 +40,7 @@ QBShared.Items = {
 
 	["coin"]					= {["name"] = "coin",					["label"] = "Diamond Casino Chip",		["weight"] = 500, 		["type"] = "item", 		["image"] = "casinochips.png", 			["useable"] = false, 	["unique"] = false, 	     ["description"] = "Highly Valuable Coin", ["decay"] = 30.0, ["delete"] = false },
 	
-	["wgrapplegun"]					= {["name"] = "wgrapplegun",					["label"] = "Specialty Grapple Gun",		["weight"] = 15000, 		["type"] = "item", 		["image"] = "weapon_assaultsmg.png", 			["useable"] = true, 	["unique"] = true, 	     ["description"] = "ohhh what is this toy?", ["decay"] = 15.0, ["delete"] = false },
+	["wgrapplegun"]					= {["name"] = "wgrapplegun",					["label"] = "Specialty Grapple Gun",		["weight"] = 15000, 		["type"] = "item", 		["image"] = "weapon_assaultsmg.png", 	["unique"] = true, 	 		["useable"] = true, 	    ["description"] = "ohhh what is this toy?", ["decay"] = 15.0, ["delete"] = false },
 	
 	
 
