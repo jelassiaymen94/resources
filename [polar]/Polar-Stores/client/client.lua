@@ -366,8 +366,18 @@ RegisterNetEvent('Polar-stores:Client:Safe', function(data)
     callback('Polar-stores:Safe', function(result) if result then 
     if playeritem(safeitem) then
         TriggerServerEvent('Polar-stores:Server:StopInteract', name)
-    exports[circleexport]:Circle(function(success)
-        if success then
+   -- exports[circleexport]:Circle(function(success)
+
+
+    local gameData = {
+        totalNumbers = 15,
+        seconds = 20,
+        timesToChangeNumbers = 4,
+        amountOfGames = 2,
+        incrementByAmount = 5,
+    }
+    local result = exports['clickminigame']:numberCounter(gameData)
+        if result then
 
             QBCore.Functions.Progressbar("door", "Stealing Money ..", math.random(22000, 27500), false, true, {
                 disableMovement = true, disableCarMovement = true, disableMouse = false, disableCombat = true,
@@ -396,7 +406,11 @@ RegisterNetEvent('Polar-stores:Client:Safe', function(data)
 
 
         end
-    end, 6, 20)
+
+
+   -- end, 6, 20)
+
+
     else notify(text('nosafe'), "error") end
     else  notify(text('sometingelse'), "error") end end)
 end)
