@@ -80,5 +80,6 @@ function inside() TriggerEvent('Polar-Radial:Client:InBennys', true) end
 function outside()  TriggerEvent('Polar-Radial:Client:InBennys', false) end
 
 RegisterNetEvent('Polar-Bennys:Client:Repair', function()
+    print('triggering')
     TriggerServerEvent('Polar-Bennys:Server:Repair')
 end)
