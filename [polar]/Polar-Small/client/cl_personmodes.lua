@@ -24,14 +24,10 @@ CreateThread(function()
         Wait(10)
     end
 end)
-local switch = true
+local switch = false
 
 function mode()
-    if switch then
-        SetFollowPedCamViewMode(0)
-        switch = false
-    else
+    if GetFollowPedCamViewMode() == 0 then
         SetFollowPedCamViewMode(4)
-        switch = true
     end
 end
