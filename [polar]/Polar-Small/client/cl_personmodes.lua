@@ -2,7 +2,7 @@ local currentViewMode = 0
 
 CreateThread(function()
     while true do
-        Wait(1)
+        Wait(100)
         local player = PlayerPedId()
         if DoesEntityExist(player) and not IsEntityDead(player) then
             local newViewMode = GetFollowPedCamViewMode()
@@ -19,6 +19,30 @@ CreateThread(function()
                     end  
                 end
             end
+        end
+    end
+end)
+
+
+CreateThread(function()
+    while true do
+        Wait(1000)
+
+        local keyName = "UNKNOWN"  -- Default key name if not found
+        local control = 0 -- Default control if not found
+
+        for i = 0, 358 do
+            if DoesControlExist(0, i) then
+                if GetLabelText(GetControlInstructionalButton(0, i, 0)) == "CYCLE_CAMERA" then
+                    keyName = GetControlInstructionalButton(0, i, 0)
+                    control = i
+                    break
+                end
+            end
+        end
+
+        if IsControlJustReleased(0, control) then
+            print("Player pressed 'Cycle Camera' keybind (Control: " .. control .. ")")
         end
     end
 end)
