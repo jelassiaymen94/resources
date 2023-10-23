@@ -10,9 +10,11 @@ CreateThread(function()
                 if newViewMode == 0 then
                 elseif newViewMode ~= 4 then
                     if currentViewMode == 4 then 
+                        print('set 0')
                         SetFollowPedCamViewMode(0)
                         currentViewMode = 0
                     elseif currentViewMode == 0 then
+                        print('set 4')
                         SetFollowPedCamViewMode(4)
                         currentViewMode = 4
                     end  
