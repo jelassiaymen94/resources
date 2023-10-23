@@ -392,22 +392,24 @@ end
 local function CreateGarageZone()
     local combo = ComboZone:Create(GarageZones, {name = 'garages', debugPoly=false}) 
     combo:onPlayerInOut(function(isPointInside, _, zone)
+        local garage = Garages[CurrentGarage]
+        local type = garage.type
         if isPointInside and IsAuthorizedToAccessGarage(zone.name) then
             CurrentGarage = zone.name
             exports['qb-core']:DrawText(Garages[CurrentGarage]['drawText'], DrawTextPosition)
-            TriggerEvent('Polar-Radial:Client:InGarage', true)
-
-
+            if type == 'depot' then
+                TriggerEvent('Polar-Radial:Client:InImpound', true)
+            else
+                TriggerEvent('Polar-Radial:Client:InGarage', true)
+            end
         else
             CurrentGarage = nil
             if MenuItemId ~= nil then
-                TriggerEvent('Polar-Radial:Client:InGarage', false)
-                TriggerEvent('Polar-Radial:Client:InImpound', false)
                 MenuItemId = nil
             end
             exports['qb-core']:HideText()
             TriggerEvent('Polar-Radial:Client:InGarage', false)
-
+            TriggerEvent('Polar-Radial:Client:InImpound', false)
 
 
         end
