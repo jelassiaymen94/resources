@@ -1099,6 +1099,7 @@ end
 
 
 	for k,v in pairs(ExtracCommands) do
+		print(k)
 		RegisterCommand(k, v.Func)
 		--log("Created /"..k.." ("..v.Desc..")") -- Useful for translation checking.
 		TriggerEvent("chat:addSuggestion", "/"..k, v.Desc)
