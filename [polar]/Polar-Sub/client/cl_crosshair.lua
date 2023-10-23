@@ -2,7 +2,10 @@
 local on = true
 
 
-
+local screenX, screenY = 0.5, 0.5 -- Middle of the screen
+local crosshairWidth, crosshairHeight = 32, 32 -- Adjust the size as needed
+local crosshairTextureDict = "commonmenu"
+local crosshairTextureName = "shop_box_blank"
 
 
 
@@ -38,5 +41,5 @@ end)
 
 
 function drawCrosshair()
-	local sprite = DrawRect(0.5, 0.5, 0.001, 0.001, 255, 255, 255, 255)
+	local sprite = DrawSprite(crosshairTextureDict, crosshairTextureName, screenX, screenY, crosshairWidth / 1920.0, crosshairHeight / 1080.0, 0.0, 255, 255, 255, 255)
 end
