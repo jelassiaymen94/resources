@@ -1,27 +1,26 @@
-local playerFlags = {}
+local lastFlags = {} -- Table to store the last known flag values
 
 CreateThread(function()
-    local player = PlayerId()
-
-    for i = 0, 457 do
-        if GetPedConfigFlag(player, i) then
-            playerFlags[i] = true
-        end
-    end
-
     while true do
-        Wait(100)  -- Adjust the check interval as needed
+        Wait(1000)  -- Adjust the check interval as needed
+
+        local player = PlayerId()
+        local flagChanged = false
 
         for i = 0, 457 do
             local flagValue = GetPedConfigFlag(player, i)
 
-            if flagValue and not playerFlags[i] then
-                playerFlags[i] = true
-                print('Flag ' .. i .. ' changed to true')
-            elseif not flagValue and playerFlags[i] then
-                playerFlags[i] = false
-                print('Flag ' .. i .. ' changed to false')
+            if lastFlags[i] == nil then
+                lastFlags[i] = flagValue
+            elseif lastFlags[i] ~= flagValue then
+                print('Flag ' .. i .. ' changed to ' .. tostring(flagValue))
+                lastFlags[i] = flagValue
+                flagChanged = true
             end
+        end
+
+        if flagChanged then
+            -- Handle the case where any flag changed
         end
     end
 end)
