@@ -24,7 +24,7 @@ CreateThread(function()
                 SetFollowPedCamViewMode(4)
                 Wait(100)
                 print(GetFollowPedCamViewMode())
-                DisableControlAction(0, control, false)
+                EnableControlAction(0, control, true)
             end
         end
     end
