@@ -382,7 +382,7 @@ RegisterNetEvent('Polar-stores:Client:Safe', function(data)
                     TriggerServerEvent('Polar-stores:Server:StartInteract', name)
 
 
-                end)
+                end, safeitem)
 
 
            
@@ -435,7 +435,7 @@ RegisterNetEvent('Polar-stores:Client:Register', function(data)
                     loop(true)
                     ClearPedTasks(PlayerPedId())
 
-                end)
+                end, registeritem)
 
 
            
@@ -487,7 +487,7 @@ RegisterNetEvent('Polar-stores:Client:Door', function(data)
                         ClearPedTasks(PlayerPedId())
                         TriggerServerEvent('Polar-stores:Server:StartInteract', name)
 
-                    end)
+                    end, dooritem)
 
 
                
@@ -538,7 +538,7 @@ RegisterNetEvent('Polar-stores:Client:Door2', function(data)
                         loop(true)
                         TriggerServerEvent('Polar-stores:Server:StartInteract', name)
 
-                    end)
+                    end, dooritem)
 
 
                
