@@ -5,7 +5,7 @@ local walkStyle = "default"  -- The default walk style to set after firing a gun
 
 CreateThread(function()
     while true do
-        Wait(1)
+        Wait(100)
         local player = PlayerPedId()
         
         if DoesEntityExist(player) and not IsEntityDead(player) then
