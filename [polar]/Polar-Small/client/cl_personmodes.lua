@@ -21,6 +21,7 @@ CreateThread(function()
             print(currentMode)
             if currentMode ~= 4 then 
                 SetFollowPedCamViewMode(4)
+                Wait(100)
                 print(GetFollowPedCamViewMode())
             end
         end
