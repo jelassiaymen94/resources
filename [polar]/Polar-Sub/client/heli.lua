@@ -251,16 +251,6 @@ function isSwat()
 	end
 end
 
-job = "None"
-
---local myJob = exports["isPed"]:isPed("myJob")
-RegisterNetEvent("np-jobmanager:playerBecameJob")
-AddEventHandler("np-jobmanager:playerBecameJob", function(jobpassed, name, notify)
-	job = jobpassed
-    if not job then
-        job = "None"
-    end
-end)
 
 
 local dashcam = false
