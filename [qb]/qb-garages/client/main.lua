@@ -327,28 +327,6 @@ local function ParkVehicle(veh, garageName, vehLocation)
     end, plate, type, garageName, gang, hasHouseKey)
 end
 
-local function AddRadialParkingOption()
-    local Player = PlayerPedId()
-    if IsPedInAnyVehicle(Player) then
-        MenuItemId = exports['qb-radialmenu']:AddOption({
-            id = 'put_up_vehicle',
-            title = 'Park Vehicle',
-            icon = 'square-parking',
-            type = 'client',
-            event = 'qb-garages:client:ParkVehicle',
-            shouldClose = true
-        }, MenuItemId)
-    else
-        MenuItemId = exports['qb-radialmenu']:AddOption({
-            id = 'open_garage_menu',
-            title = 'Open Garage',
-            icon = 'warehouse',
-            type = 'client',
-            event = 'qb-garages:client:OpenMenu',
-            shouldClose = true
-        }, MenuItemId)
-    end
-end
 
 
 local function CreateGarageZone()

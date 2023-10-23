@@ -1,5 +1,5 @@
 -- https://discord.gg/EcBmTs9734
-Citizen.CreateThread(function()
+CreateThread(function()
   local sin, cos, atan2, abs, rad, deg = math.sin, math.cos, math.atan2, math.abs, math.rad, math.deg
   local EARLY_STOP_MULTIPLIER = 0.5
   local DEFAULT_GTA_FALL_DISTANCE = 8.3
@@ -101,7 +101,7 @@ Citizen.CreateThread(function()
 
     local function _setupDestroyEventHandler()
       local event = nil
-      local eventName = 'mka-grapple:ropeDestroyed:' .. tostring(grappleId)
+      local eventName = 'grapple:ropeDestroyed:' .. tostring(grappleId)
       RegisterNetEvent(eventName)
       event = AddEventHandler(eventName, function()
         self.destroy(false)
@@ -110,7 +110,7 @@ Citizen.CreateThread(function()
     end
 
     function self._handleRope(rope, ped, boneIndex, dest)
-      Citizen.CreateThread(function ()
+      CreateThread(function ()
         while not finished do
           PinRope(rope, ped, boneIndex, dest)
           Wait(0)
@@ -167,7 +167,7 @@ Citizen.CreateThread(function()
       end
       if shouldTriggerDestroyEvent or shouldTriggerDestroyEvent == nil then
         -- Should trigger if shouldTriggerDestroyEvent is true or nil (not passed)
-        TriggerServerEvent('mka-grapple:destroyRope', grappleId)
+        TriggerServerEvent('grapple:destroyRope', grappleId)
       end
     end
 
@@ -178,7 +178,7 @@ Citizen.CreateThread(function()
       end
     end
     if options.plyServerId == nil then
-      TriggerServerEvent('mka-grapple:createRope', grappleId, dest)
+      TriggerServerEvent('grapple:createRope', grappleId, dest)
     else
       _setupDestroyEventHandler()
     end
@@ -186,7 +186,7 @@ Citizen.CreateThread(function()
   end
 
   --[[ Test Stuff ]]
-  -- Citizen.CreateThread(function ()
+  -- CreateThread(function ()
   --   while true do
   --     local hit, pos, _, _ = RayCastGamePlayCamera(40)
   --     if hit == 1 then
@@ -208,11 +208,11 @@ Citizen.CreateThread(function()
 
 
 RegisterCommand("grapple", function () -- i create this command cuz i have to test
-  TriggerEvent("mka-grapple:useGrapple")
+  TriggerEvent("grapple:useGrapple")
 end)
 
-  RegisterNetEvent('mka-grapple:useGrapple')
-  AddEventHandler('mka-grapple:useGrapple', function(item)
+  RegisterNetEvent('grapple:useGrapple')
+  AddEventHandler('grapple:useGrapple', function(item)
     grappleGunEquipped = not grappleGunEquipped
     if grappleGunEquipped then
       GiveWeaponToPed(PlayerPedId(), grappleGunHash, 0, 0, 1)
@@ -223,7 +223,7 @@ end)
       RemoveWeaponFromPed(PlayerPedId(), grappleGunHash)
     end
     local ply = PlayerId()
-    Citizen.CreateThread(function()
+    CreateThread(function()
       while grappleGunEquipped do
         local veh = GetVehiclePedIsIn(PlayerPedId(), false)
         if (veh and veh ~= 0) or GetSelectedPedWeapon(PlayerPedId()) ~= grappleGunHash then
@@ -235,40 +235,44 @@ end)
         local hit, pos, _, _ = GrappleCurrentAimPoint(4000)
         if not shownGrappleButton and freeAiming and hit == 1 then
           shownGrappleButton = true
-          Citizen.Wait(250)
-          exports["np-ui"]:showInteraction('[E] Grapple!', 'inform')
+          Wait(250)
+          exports['qb-core']:DrawText("[E] Grapple!", "left")
+  
         elseif shownGrappleButton and (not freeAiming or hit ~= 1) then
           shownGrappleButton = false
-          exports["np-ui"]:hideInteraction()
+          exports['qb-core']:HideText()
+         
         end
         if IsControlJustReleased(0, 51) and freeAiming and grappleGunEquipped then
           hit, pos, _, _ = GrappleCurrentAimPoint(4000)
-          exports["np-ui"]:hideInteraction()
+          exports['qb-core']:HideText()
+          
           if hit == 1 then
-            exports["np-ui"]:hideInteraction()
+            exports['qb-core']:HideText()
+           
             grappleGunEquipped = false
             -- mCore.functions.playSound('grapple', 0.5)
-            Citizen.Wait(50)
+            Wait(50)
             local grapple = Grapple.new(pos, { waitTime = 1.5 })
             grapple.activate()
-            Citizen.Wait(50)
-            -- TriggerServerEvent('mka-grapple:updateAmmo', item)
+            Wait(50)
+            -- TriggerServerEvent('grapple:updateAmmo', item)
             RemoveWeaponFromPed(PlayerPedId(), grappleGunHash)
             shownGrappleButton = false
           end
         end
-        Citizen.Wait(0)
+        Wait(0)
       end
     end)
   end)
 
-  RegisterNetEvent('mka-grapple:ropeCreated')
-  AddEventHandler('mka-grapple:ropeCreated', function(grappleId, dest)
+  RegisterNetEvent('grapple:ropeCreated')
+  AddEventHandler('grapple:ropeCreated', function(grappleId, dest)
     if plyServerId == GetPlayerServerId(PlayerId()) then
       return
     end
     TriggerServerEvent("InteractSound:PlayOnSource", "grapple-shot", 0.5)
     Grapple.new(dest, {plyServerId=GetPlayerServerId(PlayerId()), grappleId=grappleId})
-    -- TriggerServerEvent('mka-grapple:sil')
+    -- TriggerServerEvent('grapple:sil')
   end)
 end)
