@@ -354,10 +354,11 @@ end
 local function CreateGarageZone()
     local combo = ComboZone:Create(GarageZones, {name = 'garages', debugPoly=false}) 
     combo:onPlayerInOut(function(isPointInside, _, zone)
-        local garage = Garages[CurrentGarage]
-        local type = garage.type
+       
         if isPointInside and IsAuthorizedToAccessGarage(zone.name) then
             CurrentGarage = zone.name
+            local garage = Garages[CurrentGarage]
+            local type = garage.type
             print(type)
             exports['qb-core']:DrawText(Garages[CurrentGarage]['drawText'], DrawTextPosition)
             if type == 'depot' then
