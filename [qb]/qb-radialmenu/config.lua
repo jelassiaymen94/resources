@@ -393,7 +393,7 @@ newSubMenus = { -- NOTE basicly, what will be happen after clicking these button
     },
     ['blips:banks'] = {
         title = "Bank",
-        icon = "#banks-bank",
+        icon = "#banksb-bank",
         functionName = "blips:banks"
     },
     ['blips:clothings'] = {
