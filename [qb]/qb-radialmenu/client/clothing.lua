@@ -578,6 +578,21 @@ local function addNewVariation(which, gender, one, two, single)
 end
 
 CreateThread(function()
+	print('started')
+for k,v in pairs(cCommands) do
+	RegisterCommand(k, v.Func)
+	
+	--log("Created /"..k.." ("..v.Desc..")") -- Useful for translation checking.
+	TriggerEvent("chat:addSuggestion", "/"..k, v.Desc)
+end
+
+
+	for k,v in pairs(ExtracCommands) do
+		
+		RegisterCommand(k, v.Func)
+		--log("Created /"..k.." ("..v.Desc..")") -- Useful for translation checking.
+		TriggerEvent("chat:addSuggestion", "/"..k, v.Desc)
+	end
 	-- male visor/Hat variations
 	addNewVariation("visor", "male", 9, 10)
 	addNewVariation("visor", "male", 18, 67)
@@ -1088,27 +1103,6 @@ end
 
 RegisterNetEvent('qb-radialmenu:ToggleProps', ToggleProps)
 
-CreateThread(function()
-
-
-for k,v in pairs(cCommands) do
-	RegisterCommand(k, v.Func)
-	
-	--log("Created /"..k.." ("..v.Desc..")") -- Useful for translation checking.
-	TriggerEvent("chat:addSuggestion", "/"..k, v.Desc)
-end
-
-
-	for k,v in pairs(ExtracCommands) do
-		
-		RegisterCommand(k, v.Func)
-		--log("Created /"..k.." ("..v.Desc..")") -- Useful for translation checking.
-		TriggerEvent("chat:addSuggestion", "/"..k, v.Desc)
-	end
-
-
-	print('commands added')
-end)
 
 AddEventHandler('onResourceStop', function(resource) -- Mostly for development, restart the resource and it will put all the clothes back on.
 	if resource == GetCurrentResourceName() then
