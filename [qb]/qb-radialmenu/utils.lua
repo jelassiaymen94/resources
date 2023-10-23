@@ -45,26 +45,6 @@ local inbennys = false
 RegisterNetEvent('Polar-Radial:Client:InImpound', function(bool) inpound = bool end)
 RegisterNetEvent('Polar-Radial:Client:InGarage', function(bool) ingar = bool end)
 RegisterNetEvent('Polar-Radial:Client:InBennys', function(bool) inbennys = bool end)
-function inGarage()
-	print(ingar)
-	return ingar
-
-
-
-
-end
-function inImpound()
-	print(inpound)
-	return inpound
-
-
-
-
-end
-function bennys()
-	print(inbennys)
-	return inbennys
-
-
-
-end
+function inGarage() return ingar end
+function inImpound() return inpound end
+function bennys() return inbennys end

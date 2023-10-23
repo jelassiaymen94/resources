@@ -189,7 +189,7 @@ rootMenuConfig =  {
             return (not isDead and inGarage() and not IsPedInAnyVehicle(PlayerPedId(), false))
         end
     },
-   {
+    {
     
         id = "general:depots",
         displayName = "Open Impound Lot",
@@ -198,7 +198,17 @@ rootMenuConfig =  {
         enableMenu = function()
             return (not isDead and inImpound() and not IsPedInAnyVehicle(PlayerPedId(), false))
         end
-    } -- add `,` after `}` if you gonna add new button but last button should ended w/o `,`
+    },
+    {
+    
+        id = "car:repair",
+        displayName = "Repair Vehicle",
+        icon =  "#general-car",
+        functionName = "Polar-Bennys:Server:Repair",
+        enableMenu = function()
+            return (not isDead and bennys() and IsPedInAnyVehicle(PlayerPedId(), false))
+        end
+    },-- add `,` after `}` if you gonna add new button but last button should ended w/o `,`
 
     -- NOTE
     -- for add a new function button to menu:

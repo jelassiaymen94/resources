@@ -40,21 +40,9 @@ local paleto = PolyZone:Create({
 
 paleto:onPlayerInOut(function(isPointInside)
     if isPointInside then
-      
-        if IsPedInAnyVehicle(PlayerPedId(), false) then 
-            pp = exports['qb-radialmenu']:AddOption( {
-                id = 'paletobenny',
-                title = 'Repair',
-                icon = 'bolt',
-                type = 'server',
-                --job = 'police',
-                event = 'Polar-Bennys:Server:Repair',
-                shouldClose = true
-            }, pp)
-        end
+        inside()
     else
-        if pp == nil then return end
-        exports['qb-radialmenu']:RemoveOption(pp)
+        outside()
     end
 end)
 
@@ -77,23 +65,16 @@ local sandybenny = PolyZone:Create({
 
 sandybenny:onPlayerInOut(function(isPointInside)
     if isPointInside then
-      
-        if IsPedInAnyVehicle(PlayerPedId(), false) then 
-            ppe = exports['qb-radialmenu']:AddOption( {
-                id = 'sandy',
-                title = 'Repair',
-                icon = 'bolt',
-                type = 'server',
-                --job = 'police',
-                event = 'Polar-Bennys:Server:Repair',
-                shouldClose = true
-            }, ppe)
-        end
+        inside()
     else
-        if ppe == nil then return end
-        exports['qb-radialmenu']:RemoveOption(ppe)
+        outside()
     end
 end)
 
 
 end
+
+
+
+function inside() TriggerEvent('Polar-Radial:Client:InBennys', true) end
+function outside()  TriggerEvent('Polar-Radial:Client:InBennys', false) end
