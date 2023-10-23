@@ -1,4 +1,4 @@
-Config = {}
+
 Config = {
 	DJLocations = {
 		{ -- Vanilla Unicorn DJ Booth
