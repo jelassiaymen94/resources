@@ -194,7 +194,7 @@ RegisterNetEvent('weapons:server:UpdateWeaponQuality', function(data, RepeatAmou
     local Player = QBCore.Functions.GetPlayer(src)
     local WeaponData = QBCore.Shared.Weapons[GetHashKey(data.name)]
     local WeaponSlot = Player.PlayerData.items[data.slot]
-    local DecreaseAmount = Config.DurabilityMultiplier[data.name]
+    local DecreaseAmount = 0.15
     if WeaponSlot then
         if not IsWeaponBlocked(WeaponData.name) then
             if WeaponSlot.info.quality then
