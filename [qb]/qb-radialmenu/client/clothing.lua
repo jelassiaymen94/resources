@@ -1107,7 +1107,7 @@ end
 	end
 
 
-
+	print('commands added')
 end)
 
 AddEventHandler('onResourceStop', function(resource) -- Mostly for development, restart the resource and it will put all the clothes back on.
