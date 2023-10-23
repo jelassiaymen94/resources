@@ -16,14 +16,13 @@ end)
 CreateThread(function()
     SetFollowPedCamViewMode(4)
     while true do
+        Wait(10)
         if IsControlJustReleased(0, control) then
-            local modes = GetFollowPedCamViewMode()
-            print(modes)
-            if modes == 0 then
+            local currentMode = GetFollowPedCamViewMode()
+            if currentMode == 0 then 
                 SetFollowPedCamViewMode(4)
                 Wait(100)
             end
         end
-        Wait(10)
     end
 end)
