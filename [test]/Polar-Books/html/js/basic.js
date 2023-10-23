@@ -1,7 +1,7 @@
 let timeout;
 
  function closeMenu() {
-   $.post('https://freecity_books/close', JSON.stringify({}));
+   $.post('https://Polar-Books/close', JSON.stringify({}));
    $(".flipbook-viewport").fadeOut(400);
    timeout = setTimeout(function () {
      $('.flipbook').turn('destroy');
