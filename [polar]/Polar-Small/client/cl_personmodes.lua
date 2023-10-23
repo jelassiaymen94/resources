@@ -7,9 +7,9 @@ CreateThread(function()
         if DoesEntityExist(player) and not IsEntityDead(player) then
             local newViewMode = GetFollowPedCamViewMode()
             print(newViewMode)
-            if newViewMode ~= 0 then
+            if newViewMode ~= 4 then
                 if newViewMode == 0 then
-                elseif newViewMode ~= 4 then
+                elseif newViewMode ~= 0 then
                     if currentViewMode == 4 then 
                         print('set 0')
                         SetFollowPedCamViewMode(0)
