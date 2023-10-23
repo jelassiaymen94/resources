@@ -26,7 +26,9 @@ end)
 
 
 function mode()
-    if GetFollowPedCamViewMode() ~= 4 then
+    local modes = GetFollowPedCamViewMode()
+    print(modes)
+    if modes ~= 4 then
         SetFollowPedCamViewMode(4)
     end
 end
