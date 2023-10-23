@@ -200,21 +200,19 @@ CreateThread(function()
   --   end
   -- end)
 
-  local grappleGunHash = 177293209
-  local grappleGunTintIndex = 2
+  local grappleGunHash = -270015777
+  local grappleGunTintIndex = 3
   local grappleGunSuppressor = "COMPONENT_AT_AR_SUPP_02"
   local grappleGunEquipped = false
   local shownGrappleButton = false
 
 
-RegisterCommand("grapple", function () -- i create this command cuz i have to test
-  TriggerEvent("grapple:useGrapple")
-end)
 
   RegisterNetEvent('grapple:useGrapple')
   AddEventHandler('grapple:useGrapple', function(item)
     grappleGunEquipped = not grappleGunEquipped
     if grappleGunEquipped then
+      exports['qb-core']:DrawText("[E] Grapple!")
       GiveWeaponToPed(PlayerPedId(), grappleGunHash, 0, 0, 1)
       GiveWeaponComponentToPed(PlayerPedId(), grappleGunHash, grappleGunSuppressor)
       SetPedWeaponTintIndex(PlayerPedId(), grappleGunHash, 2)
@@ -224,7 +222,7 @@ end)
     end
     local ply = PlayerId()
     CreateThread(function()
-      exports['qb-core']:DrawText("[E] Grapple!", "left")
+      
       while grappleGunEquipped do
         local veh = GetVehiclePedIsIn(PlayerPedId(), false)
         if (veh and veh ~= 0) or GetSelectedPedWeapon(PlayerPedId()) ~= grappleGunHash then

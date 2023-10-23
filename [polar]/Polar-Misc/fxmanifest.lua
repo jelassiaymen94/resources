@@ -22,7 +22,7 @@ client_scripts {
 
 }
 ui_page 'ui/index.html'
-ui_page 'grappleui/index.html'
+
 files {
     'ui/crosshair.png',
     'ui/index.html',

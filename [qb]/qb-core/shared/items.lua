@@ -35,10 +35,11 @@ QBShared.Items = {
 	["orange"] 				 			 = {["name"] = "orange",  	     						["label"] = "Orange",	 				["weight"] = 500, 		["type"] = "item", 		["image"] = "orange.png", 						["unique"] = false, 	["useable"] = false, 	["shouldClose"] = false,   	["combinable"] = nil,   ["description"] = "An Orange." , ["decay"] = 30.0, ["delete"] = false },
 	["apple"] 				 	 	     = {["name"] = "apple",								["label"] = "Apple",					["weight"] = 500,		["type"] = "item",		["image"] = "apples.png",						["unique"] = false,		["useable"] = true,		["shouldClose"] = true,	   ["combinable"] = nil,   ["description"] = "An Apple", ["decay"] = 30.0, ["delete"] = false },
 	["pineapple"] 					 	 = {["name"] = "pineapple",								["label"] = "Pineapple",				["weight"] = 500,		["type"] = "item",		["image"] = "pineapple.png",					["unique"] = false,		["useable"] = true,		["shouldClose"] = true,	   ["combinable"] = nil,   ["description"] = "A Pineapple", ["decay"] = 30.0, ["delete"] = false },
-	["ingredients"] 					 	 = {["name"] = "ingredients",								["label"] = "Food Ingredients",				["weight"] = 1000,		["type"] = "item",		["image"] = "np_ingredients.png",					["unique"] = false,		["useable"] = true,		["shouldClose"] = true,	   ["combinable"] = nil,   ["description"] = "Food Ingredients", ["decay"] = 30.0, ["delete"] = false },
+	["ingredients"] 					 	 = {["name"] = "ingredients",								["label"] = "Food Ingredients",				["weight"] = 1000,		["type"] = "item",		["image"] = "np_ingredients.png",					["unique"] = false,		["useable"] = true,		["shouldClose"] = true,	   ["combinable"] = nil,   ["description"] = "Food Ingredients", ["decay"] = 5.0, ["delete"] = false },
 
-	["coin"]					= {["name"] = "coin",					["label"] = "Diamond Casino Chip",		["weight"] = 500, 		["type"] = "item", 		["image"] = "casinochips.png", 			["useable"] = false, 	 	     ["description"] = "Highly Valuable Coin", ["decay"] = 30.0, ["delete"] = false },
+	["coin"]					= {["name"] = "coin",					["label"] = "Diamond Casino Chip",		["weight"] = 500, 		["type"] = "item", 		["image"] = "casinochips.png", 			["useable"] = false, 	["unique"] = false, 	     ["description"] = "Highly Valuable Coin", ["decay"] = 30.0, ["delete"] = false },
 	
+	["GrappleGun"]					= {["name"] = "GrappleGun",					["label"] = "Specialty Grapple Gun",		["weight"] = 15000, 		["type"] = "item", 		["image"] = "weapon_assaultsmg.png", 			["useable"] = true, 	["unique"] = true, 	     ["description"] = "ohhh what is this toy?", ["decay"] = 15.0, ["delete"] = false },
 	
 	
 

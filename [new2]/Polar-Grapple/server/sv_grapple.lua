@@ -1,3 +1,6 @@
+local QBCore = exports['qb-core']:GetCoreObject()
+
+
 RegisterServerEvent('grapple:createRope')
 AddEventHandler('grapple:createRope', function(grappleid, dest)
     TriggerClientEvent('grapple:ropeCreated', source, grappleid, dest)
@@ -9,4 +12,7 @@ AddEventHandler('grapple:destroyRope', function(grappleid)
 end)
 
 
+QBCore.Functions.CreateUseableItem("GrappleGun", function(source)
+    TriggerClientEvent('grapple:useGrapple', source)
+end)
 

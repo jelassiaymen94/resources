@@ -208,7 +208,26 @@ rootMenuConfig =  {
         enableMenu = function()
             return (not isDead and bennys() and IsPedInAnyVehicle(PlayerPedId(), false))
         end
-    },-- add `,` after `}` if you gonna add new button but last button should ended w/o `,`
+    },
+    {
+        id = "car:bigmenu",
+        displayName = "Vehicle Menu",
+        icon =  "#general-car",
+        functionName = "vehcontrol:openExternal",
+        enableMenu = function()
+            return (not isDead and IsPedInAnyVehicle(PlayerPedId(), false))
+        end
+    },
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    -- add `,` after `}` if you gonna add new button but last button should ended w/o `,`
 
     -- NOTE
     -- for add a new function button to menu:
