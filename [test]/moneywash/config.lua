@@ -34,7 +34,7 @@ Config.Machines_QBTARGET = {
     ['Dryers'] = {
        -- { location = vector3(1138.91, -991.87, 46.11), heading = 8.0, width = 0.73, depth = 0.73, minZ=45.2, maxZ=46.4, distance = 8.0 },
        -- vector3(1141.94, -993.92, 46.1),
-        { location = vector3(-581.99, -1613.12, 27.10), heading = 8.0, width = 1.22, depth = 1.22, minZ=27.10  - 1.0, maxZ=27.10  + 1.0, distance = 8.0 },
+        { location = vector3(-581.99, -1613.12, 27.10), heading = 270.0, width = 1.22, depth = 1.22, minZ=27.10  - 1.0, maxZ=27.10  + 1.0, distance = 8.0 },
         { location = vector3(-586.5, -1599.03, 27.10), heading = 8.0, width = 1.22, depth = 1.22, minZ= 27.10  - 1.0, maxZ= 27.10  + 1.0, distance = 8.0 },
         { location = vector3(-583.7, -1599.03, 27.10), heading = 8.0, width = 1.4, depth = 1.42, minZ= 27.10  - 1.0, maxZ= 27.10  + 1.0, distance = 8.0 },
          --[[ { location = vector3(1138.62, -988.78, 46.11), heading = 8.0, width = 0.72, depth = 0.72, minZ= 27.10  - 1.0, maxZ= 27.10  + 1.0, distance = 8.0 },

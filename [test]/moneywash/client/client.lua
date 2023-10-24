@@ -45,7 +45,7 @@ local QBCore = exports['qb-core']:GetCoreObject()
 						end,
 					}
 				},
-				distance = 2.0,
+				distance = 2.5,
 			})
 
 
