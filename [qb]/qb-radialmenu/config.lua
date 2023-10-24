@@ -644,7 +644,7 @@ newSubMenus = { -- NOTE basicly, what will be happen after clicking these button
     ['housing:menu'] = {
         title = "Housing Menu",
         icon = "#judge-licenses-grant-house",
-        functionName = "Polar-Sub:Client:OpenHousingMenu"
+        functionName = "bl-realtor:client:toggleUI"
     },
 
     ['k9:spawn'] = {
