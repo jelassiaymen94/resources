@@ -7,9 +7,11 @@ exports('GetApartments', function() return ApartmentsTable end)
 Config = {}
 
 -- If you're not utilizing ox_lib, it's time to question your approach.
-Config.Target = "qb" -- "ox" or "qb"
-Config.Notify = "qb" -- "ox" or "qb"
-Config.Radial = "qb" -- "ox" or "qb"
+Config.Target = "ox" -- "ox" or "qb"
+Config.Notify = "ox" -- "ox" or "qb"
+Config.Radial = "ox" -- "ox" or "qb"
+Config.Inventory = "qb" -- "ox" or "qb"
+Config.Logs = "qb" -- "qb"
 
 -- Anyone provided with keys to a property has the ability to modify its furnishings.
 Config.AccessCanEditFurniture = true
@@ -17,18 +19,39 @@ Config.AccessCanEditFurniture = true
 -- Draw the poly for the property
 Config.DebugMode = false
 
-
 function Debug(...)
     if Config.DebugMode then
         print(...)
     end
 end
 
-Config.PoliceJobName = "police"
+-- Log System
+Config.EnableLogs = true
 
-Config.MinGradeToRaid = 3 -- Minimum grade to raid a property
+-- Enables Dynamic Doors
+Config.DynamicDoors = false
 
-Config.RaidTimer = 5-- 5 minutes
+Config.PoliceJobNames = {  -- add multiple police jobs that are allowed to raid properties!
+    "police",
+    -- "police2",
+    -- "police3",
+}
+
+Config.MinGradeToRaid = 3  -- Minimum grade to raid a property
+
+Config.RaidTimer = 5  -- 5 minutes
+
+Config.RaidItem = "police_stormram"  -- The item required to raid a property
+
+-- If you are using ox_inventory, it is encouraged to use the consume property within data/items.lua and keeping this config option false
+Config.ConsumeRaidItem = false          -- Whether or not to consume the raid item upon successful entry.
+
+Config.RealtorJobName = "realestate" -- Set your Real Estate job here
+
+-- Set this value to true if ur using qb-management
+-- and want the Money go straight into the Realestate Bank Account.
+-- Using different Boss Menu? -> replace the qb-management export
+Config.QBManagement = false
 
 -- Realtor Commisions based on job grade, the rest goes to the owner, if any.
 Config.Commissions = {
@@ -36,29 +59,79 @@ Config.Commissions = {
     [1] = 0.10,
     [2] = 0.15,
     [3] = 0.20,
+    [4] = 0.25,
 }
 
+-- Set this value to false if you don't want to assign a starting apartment.
+Config.StartingApartment = true
+
+Config.Apartments = {
+    ["Integrity Way"] = {
+        label = "Integrity Way",
+        door = { x = 269.73, y = -640.75, z = 42.02, h = 249.07, length = 1, width = 2 },
+        imgs = {
+            {
+                url = "https://cdn.discordapp.com/attachments/1143566042153631784/1143566754983972954/986BKLz.jpg",
+                label = "Outside",
+            },
+        },
+        shell = "Apartment Furnished",
+    },
+    
+    ["South Rockford Drive"] = {
+        label = "South Rockford Drive",
+        door = { x = -667.02, y = -1105.24, z = 14.63, h = 242.32, length = 1, width = 2 },
+        imgs = {
+            {
+                url = "https://cdn.discordapp.com/attachments/1143566042153631784/1143566767864684665/FKTQq4b.jpg",
+                label = "Outside",
+            },
+        },
+        shell = "Apartment Furnished",
+    },
+
+    ['Morningwood Blvd'] = {
+        label = 'Morningwood Blvd',
+        door = { x = -1288.52, y = -430.51, z = 35.15, h = 124.81, length = 1, width = 2 },
+        imgs = {
+            {
+                url = "https://cdn.discordapp.com/attachments/1143566042153631784/1143566730363412582/amZDmz7.jpg",
+                label = "Outside",
+            },
+        },
+        shell = "Apartment Furnished",
+    },
+
+    ['Tinsel Towers'] = {
+        label = 'Tinsel Towers',
+        door = { x = -619.29, y = 37.69, z = 43.59, h = 181.03, length = 1, width = 2 },
+        imgs = {
+            {
+                url = "https://cdn.discordapp.com/attachments/1108364246342963322/1140163262315495494/tinsel.webp",
+                label = "Outside",
+            },
+        },
+        shell = "Apartment Furnished",
+    },
+
+    ['Fantastic Plaza'] = {
+        label = 'Fantastic Plaza',
+        door = { x = 291.517, y = -1078.674, z = 29.405, h = 270.75, length = 1, width = 2 },
+        imgs = {
+            {
+                url = "https://cdn.discordapp.com/attachments/1143566042153631784/1143566742589800629/SgK60IR.jpg",
+                label = "Outside",
+            },
+        },
+        shell = "Apartment Furnished",
+    }
+}
 
 -- Shells provided by K4MB1 https://www.k4mb1maps.com/
 Config.Shells = {
     ["Standard Motel"] = {
         label = "Standard Motel",
-        hash = 'standardmotel_shell',
-        doorOffset = { x = -0.5, y = -2.3, z = 0.0, h = 90.0, width = 1.5 },
-        stash = {
-            maxweight = 100000, 
-            slots = 12,
-        },
-        imgs = {
-            {
-                url = "https://cdn.discordapp.com/attachments/1101313033684394084/1101712181017460736/motel.webp",
-                label = "Motel",
-            },
-        }
-    },
-     ["Gabz Motel"] = {
-        label = "Gabz Motel",
-        hash = 'gabz_mp_house_08_1_int',
+        hash = `standardmotel_shell`,
         doorOffset = { x = -0.5, y = -2.3, z = 0.0, h = 90.0, width = 1.5 },
         stash = {
             maxweight = 100000, 
@@ -74,7 +147,7 @@ Config.Shells = {
 
     ["Modern Hotel"] = {
         label = "Modern Hotel",
-        hash = 'modernhotel_shell',
+        hash = `modernhotel_shell`,
         doorOffset = { x = 4.98, y = 4.35, z = 0.0, h = 179.79, width = 2.0  },
         stash = {
             maxweight = 150000, 
@@ -94,7 +167,7 @@ Config.Shells = {
 
     ["Apartment Furnished"] = {
         label = "Apartment Furnished",
-        hash = 'furnitured_midapart',
+        hash = `furnitured_midapart`,
         doorOffset = { x = 1.44, y = -10.25, z = 0.0, h = 0.0, width = 1.5  },
         stash = {
             maxweight = 200000, 
@@ -130,7 +203,7 @@ Config.Shells = {
 
     ["Apartment Unfurnished"] = {
         label = "Apartment Unfurnished",
-        hash = 'shell_v16mid',
+        hash = `shell_v16mid`,
         doorOffset = { x = 1.34, y = -14.36, z = -0.5, h = 354.08, width = 1.5  },
         stash = {
             maxweight = 200000, 
@@ -162,7 +235,7 @@ Config.Shells = {
 
     ["Apartment 2 Unfurnished"] = {
         label = "Apartment 2 Unfurnished",
-        hash = 'shell_v16low',
+        hash = `shell_v16low`,
         doorOffset = { x = 4.69, y = -6.5, z = -1.0, h = 358.50, width = 1.5  },
         stash = {
             maxweight = 200000, 
@@ -186,7 +259,7 @@ Config.Shells = {
 
     ["Garage"] = {
         label = "Garage",
-        hash = 'shell_garagem',
+        hash = `shell_garagem`,
         doorOffset = { x = 14.0, y = 1.7, z = -0.76, h = 88.49, width = 2.0  },
         stash = {
             maxweight = 500000, 
@@ -206,7 +279,7 @@ Config.Shells = {
 
     ["Office"] = {
         label = "Office",
-        hash = 'shell_office1',
+        hash = `shell_office1`,
         doorOffset = { x = 1.2, y = 4.90, z = -0.73, h = 180.0, width = 2.0  },
         stash = {
             maxweight = 250000, 
@@ -226,7 +299,7 @@ Config.Shells = {
 
     ["Store"] = {
         label = "Store",
-        hash = 'shell_store1',
+        hash = `shell_store1`,
         doorOffset = { x = -2.69, y = -4.56, z = -0.62, h = 1.91, width = 2.0  },
         stash = {
             maxweight = 500000, 
@@ -246,7 +319,7 @@ Config.Shells = {
 
     ["Warehouse"] = {
         label = "Warehouse",
-        hash = 'shell_warehouse1',
+        hash = `shell_warehouse1`,
         doorOffset = { x = -8.96, y = 0.11, z = -0.95, h = 270.64, width = 2.0  },
         stash = {
             maxweight = 1000000, 
@@ -266,7 +339,7 @@ Config.Shells = {
 
     ["Container"] = {
         label = "Container",
-        hash = 'container_shell',
+        hash = `container_shell`,
         doorOffset = { x = 0.05, y = -5.7, z = -0.22, h = 1.7, width = 2.2  },
         stash = {
             maxweight = 500000, 
@@ -282,7 +355,7 @@ Config.Shells = {
 
     ["2 Floor House"] = {
         label = "2 Floor House",
-        hash = 'shell_michael',
+        hash = `shell_michael`,
         doorOffset = { x = -9.6, y = 5.63, z = -4.07, h = 268.55, width = 2.0  },
         stash = {
             maxweight = 300000, 
@@ -330,7 +403,7 @@ Config.Shells = {
 
     ["House 1"] = {
         label = "House 1",
-        hash = 'shell_frankaunt',
+        hash = `shell_frankaunt`,
         doorOffset = { x = -0.34, y = -5.97, z = -0.57, h = 357.23, width = 2.0  },
         stash = {
             maxweight = 200000, 
@@ -370,7 +443,7 @@ Config.Shells = {
 
     ["House 2"] = {
         label = "House 2",
-        hash = 'shell_ranch',
+        hash = `shell_ranch`,
         doorOffset = { x = -1.23, y = -5.54, z = -1.1, h = 272.21, width = 2.0  },
         stash = {
             maxweight = 500000, 
@@ -402,7 +475,7 @@ Config.Shells = {
 
     ["House 3"] = {
         label = "House 3",
-        hash = 'shell_lester',
+        hash = `shell_lester`,
         doorOffset = { x = -1.61, y = -6.02, z = -0.37, h = 357.7, width = 2.0  },
         stash = {
             maxweight = 15000, 
@@ -410,15 +483,15 @@ Config.Shells = {
         },
         imgs = {
             {
-                url = "https://i.postimgs.cc/HLbdwtRd/angle1.webp",
+                url = "https://i.imgur.com/ddg9zHU.jpeg",
                 label = "Angle 1",
             },
             {
-                url = "https://i.postimgs.cc/C1YYmqpD/angle2.webp",
+                url = "https://i.imgur.com/4rvkeme.jpeg",
                 label = "Angle 2",
             },
             {
-                url = "https://i.postimgs.cc/26wYJSCt/entry.webp",
+                url = "https://i.imgur.com/4QAcZBp.jpeg",
                 label = "Entrance",
             },
         },
@@ -426,7 +499,7 @@ Config.Shells = {
 
     ["House 4"] = {
         label = "House 4",
-        hash = 'shell_trevor',
+        hash = `shell_trevor`,
         doorOffset = { x = 0.2, y = -3.82, z = -0.41, h = 358.4, width = 2.0  },
         stash = {
             maxweight = 10000, 
@@ -462,7 +535,7 @@ Config.Shells = {
 
     ["Trailer"] = {
         label = "Trailer",
-        hash = 'shell_trailer',
+        hash = `shell_trailer`,
         doorOffset = { x = -1.27, y = -2.08, z = -0.48, h = 358.84, width = 2.0  },
         stash = {
             maxweight = 10000, 
@@ -490,10 +563,9 @@ Config.FurnitureTypes = {
     ["storage"] = function(entity, property_id, shell, furniture, count)
         local stash = string.format("property_%s", property_id) -- if you changed this you will fuck things up
 
-        Framework[Config.Target].AddTargetEntity(entity, "Storage", function()
+        Framework[Config.Target].AddTargetEntity(entity, "Storage", "fas fa-box-open", function()
             local stashConfig = Config.Shells[shell].stash
-            TriggerServerEvent("inventory:server:OpenInventory", "stash", stash, stashConfig)
-            TriggerEvent("inventory:client:SetCurrentStash", stash)
+            Framework[Config.Inventory].OpenInventory(stash, stashConfig)
         end)
 
         local property = Property.Get(property_id)
@@ -501,10 +573,10 @@ Config.FurnitureTypes = {
     end,
 
     ["clothing"] = function(entity, property_id, shell, furniture, count)
-        Framework[Config.Target].AddTargetEntity(entity, "Clothing", function()
+        Framework[Config.Target].AddTargetEntity(entity, "Clothing", "fas fa-shirt", function()
             local heading = GetEntityHeading(cache.ped)
             SetEntityHeading(cache.ped, heading - 180.0)
-            TriggerEvent("Polar-Clothing:client:openOutfitMenu")
+            TriggerEvent("qb-clothing:client:openOutfitMenu")
         end)
 
         local property = Property.Get(property_id)
@@ -1164,6 +1236,57 @@ Config.Furnitures = {
 			{ ["object"] = "apa_mp_h_acc_vase_02", ["price"] = 300, ["label"] = "vase red" },
 			{ ["object"] = "apa_mp_h_acc_vase_05", ["price"] = 300, ["label"] = "vase" },
 			{ ["object"] = "apa_mp_h_acc_vase_06", ["price"] = 300, ["label"] = "vase black and white 2" },
+        }
+    },
+
+    {
+        category = "Doors", -- All from Base Game.
+        items = {
+            { ["object"] = "v_ilev_fa_frontdoor", ["price"] = 300, ["type"] = "door", ["label"] = "White Door" },
+            { ["object"] = "v_ilev_247_offdorr", ["price"] = 300, ["type"] = "door", ["label"] = "24/7 Wooden Door" },
+            { ["object"] = "v_ilev_arm_secdoor", ["price"] = 300, ["type"] = "door", ["label"] = "Security Door" },
+            { ["object"] = "v_ilev_bank4door01", ["price"] = 300, ["type"] = "door", ["label"] = "Bank Glass Door" },
+            { ["object"] = "v_ilev_bk_gate", ["price"] = 300, ["type"] = "door", ["label"] = "Fancy Metal Gate" },
+            { ["object"] = "v_ilev_cbankcountdoor01", ["price"] = 300, ["type"] = "door",  ["label"] = "Bank Office Door" },
+            { ["object"] = "v_ilev_cd_door", ["price"] = 300, ["type"] = "door", ["label"] = "Wooden Door with Glass" },
+            { ["object"] = "v_ilev_cm_door1", ["price"] = 300, ["type"] = "door", ["label"] = "Light Blue Door" },
+            { ["object"] = "v_ilev_dev_door", ["price"] = 300, ["type"] = "door", ["label"] = "Black House Door" },
+            { ["object"] = "v_ilev_door_orangesolid", ["price"] = 300, ["type"] = "door", ["label"] = "Orange Solid Door" },
+            { ["object"] = "v_ilev_fa_backdoor", ["price"] = 300, ["type"] = "door", ["label"] = "Dirty Glass Door" },
+            { ["object"] = "v_ilev_gangsafedoor", ["price"] = 300, ["type"] = "door", ["label"] = "Gang Safe Door" },
+            { ["object"] = "v_ilev_gc_door02", ["price"] = 300, ["type"] = "door", ["label"] = "Office Door" },
+            { ["object"] = "v_ilev_janitor_frontdoor", ["price"] = 300, ["type"] = "door",  ["label"] = "White Mesh Door" },
+            { ["object"] = "v_ilev_rc_door1", ["price"] = 300, ["type"] = "door", ["label"] = "Yellow Fire Door" },
+            { ["object"] = "v_ilev_roc_door2", ["price"] = 300, ["type"] = "door", ["label"] = "Solid Red Door" },
+            { ["object"] = "v_ilev_sol_off_door01", ["price"] = 300, ["type"] = "door", ["label"] = "Solid Wooden Door" },
+            { ["object"] = "v_ilev_stad_fdoor", ["price"] = 300, ["type"] = "door", ["label"] = "Glass Door with Rails" },
+            { ["object"] = "v_ilev_tort_door", ["price"] = 300, ["type"] = "door", ["label"] = "Door with Danger Sign" },
+            { ["object"] = "v_ilev_trevtraildr", ["price"] = 300, ["type"] = "door", ["label"] = "Trailer Door" },
+            { ["object"] = "prop_cs_fridge_door", ["price"] = 300, ["type"] = "door", ["label"] = "Fridge Door" },
+            { ["object"] = "prop_artgallery_dl", ["price"] = 300, ["type"] = "door", ["label"] = "White Art Gallery Door" },
+            { ["object"] = "prop_bh1_09_mp_l", ["price"] = 300, ["type"] = "door",  ["label"] = "Weazel Plaza Door" },
+            { ["object"] = "prop_bh1_48_backdoor_l", ["price"] = 300, ["type"] = "door", ["label"] = "Black Glass Door" },
+            { ["object"] = "prop_casino_door_01r", ["price"] = 300, ["type"] = "door", ["label"] = "Casino Glass Door" },
+            { ["object"] = "prop_cs4_11_door", ["price"] = 300, ["type"] = "door", ["label"] = "White Door with Small Window" },
+            { ["object"] = "prop_cs6_03_door_r", ["price"] = 300, ["type"] = "door", ["label"] = "Antique Wooden Door" },
+            { ["object"] = "prop_grumandoor_r", ["price"] = 300, ["type"] = "door", ["label"] = "Golden Snake Door" },
+            { ["object"] = "prop_motel_door_09", ["price"] = 300, ["type"] = "door", ["label"] = "Motel Door" },
+            { ["object"] = "prop_fnclink_03gate5", ["price"] = 300, ["type"] = "door", ["label"] = "Chainlink Fence" },
+        }
+    },
+
+    {
+        category = "Walls",
+        items = {
+            { ["object"] = "ps_wall_aqua", ["price"] = 1000, ["label"] = "Aqua Wall" },
+            { ["object"] = "ps_wall_black", ["price"] = 1000, ["label"] = "Black Wall" },
+            { ["object"] = "ps_wall_green", ["price"] = 1000, ["label"] = "Green Wall" },
+            { ["object"] = "ps_wall_grey", ["price"] = 1000, ["label"] = "Grey Wall" },
+            { ["object"] = "ps_wall_purple", ["price"] = 1000, ["label"] = "Purple Wall" },
+            { ["object"] = "ps_wall_red", ["price"] = 1000, ["label"] = "Red Wall" },
+            { ["object"] = "ps_wall_white", ["price"] = 1000, ["label"] = "White Wall" },
+            { ["object"] = "ps_wall_yellow", ["price"] = 1000, ["label"] = "Yellow Wall" },
+            { ["object"] = "ps_wall_wall", ["price"] = 1000, ["label"] = "Brick Wall" },
         }
     },
 

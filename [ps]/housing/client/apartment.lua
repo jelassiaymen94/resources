@@ -8,11 +8,7 @@ Apartment = {
     blip = nil,
 }
 Apartment.__index = Apartment
-RegisterNetEvent("qb-multicharacter:client:destroyCam", function ()
-    SetCamActive(cam, false)
-    DestroyCam(cam, true)
-    RenderScriptCams(false, false, 1, true, true)
-end)
+
 function Apartment:new(apartmentData)
     local self = setmetatable({}, Apartment)
     self.apartmentData = apartmentData

@@ -1,5 +1,5 @@
 QBCore = exports['qb-core']:GetCoreObject()
--- PSCore = exports['ps-core']:GetCoreObject()
+-- PSCore = exports['core']:GetCoreObject()
 
 local dbloaded = false
 MySQL.ready(function()
@@ -38,13 +38,7 @@ lib.callback.register("housing:server:requestProperties", function(source)
         Wait(100)
     end
 
-    local propertiesData = {}
-
-    for k, v in pairs(PropertiesTable) do
-        propertiesData[k] = v.propertyData
-    end
-
-    return propertiesData
+    return PropertiesTable
 end)
 
 AddEventHandler("housing:server:registerProperty", function (propertyData) -- triggered by realtor job
@@ -90,7 +84,15 @@ AddEventHandler("housing:server:registerProperty", function (propertyData) -- tr
 
         Wait(1000)
 
-        TriggerClientEvent("qb-clothes:client:CreateFirstCharacter", src)
+        local query = "SELECT skin FROM playerskins WHERE citizenid = ?"
+        local result = MySQL.Sync.fetchAll(query, {propertyData.owner})
+
+        if result and result[1] then
+            Debug("Player: " .. propertyData.owner .. " skin already exists!")
+        else
+            TriggerClientEvent("qb-clothes:client:CreateFirstCharacter", src)
+            Debug("Player: " .. propertyData.owner .. " is creating a new character!")
+        end
 
         Framework[Config.Notify].Notify(src, "Open radial menu for furniture menu and place down your stash and clothing locker.", "info")
 
@@ -110,7 +112,7 @@ lib.callback.register("housing:cb:GetOwnedApartment", function(source, cid)
     else
         local src = source
         local Player = QBCore.Functions.GetPlayer(src)
-        local result = MySQL.query.await('SELECT * FROM apartments WHERE owner_citizenid = ? AND apartment IS NOT NULL AND apartment <> ""', { Player.PlayerData.citizenid })
+        local result = MySQL.query.await('SELECT * FROM properties WHERE owner_citizenid = ? AND apartment IS NOT NULL AND apartment <> ""', { Player.PlayerData.citizenid })
         if result[1] ~= nil then
             return result[1]
         end
@@ -123,6 +125,15 @@ AddEventHandler("housing:server:updateProperty", function(type, property_id, dat
     if not property then return end
 
     property[type](property, data)
+end)
+
+AddEventHandler("onResourceStart", function(resourceName) -- Used for when the resource is restarted while in game
+	if (GetCurrentResourceName() == resourceName) then
+        while not dbloaded do
+            Wait(100)
+        end
+        TriggerClientEvent('housing:client:initialiseProperties', -1, PropertiesTable)
+	end 
 end)
 
 RegisterNetEvent("housing:server:createNewApartment", function(aptLabel)
@@ -143,6 +154,9 @@ RegisterNetEvent("housing:server:createNewApartment", function(aptLabel)
     }
 
     Debug("Creating new apartment for " .. GetPlayerName(src) .. " in " .. apartment.label)
+
+    Framework[Config.Logs].SendLog("Creating new apartment for " .. GetPlayerName(src) .. " in " .. apartment.label)
+
     TriggerEvent("housing:server:registerProperty", propertyData)
 end)
 
@@ -163,7 +177,7 @@ RegisterNetEvent("housing:server:createApartmentStash", function(citizenId, prop
     end
 
     -- This will create the stash for the apartment (without requiring player to have first opened and placed item in it)
-    TriggerEvent('inventory:server:SaveStashItems', stashId, items)
+    TriggerEvent('qb-inventory:server:SaveStashItems', stashId, items)
 end)
 
 RegisterNetEvent('qb-apartments:returnBucket', function()
