@@ -17,7 +17,9 @@ if IsDuplicityVersion() then
         TriggerClientEvent('QBCore:Notify', src, message, type)
     end
 
- 
+    function Framework.qb.RegisterInventory(stash, label, stashConfig)
+        -- Used for ox_inventory compat
+    end
 
     
     function Framework.qb.SendLog(message)

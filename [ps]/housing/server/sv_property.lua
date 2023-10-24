@@ -547,7 +547,7 @@ RegisterNetEvent('housing:server:raidProperty', function(property_id)
     local raidItem = Config.RaidItem
 
     -- Check if the police officer has the "stormram" item
-    local hasStormRam = (Config.Inventory == "ox" and exports.ox_inventory:Search(src, "count", raidItem) > 0) or Player.Functions.GetItemByName(raidItem)
+    local hasStormRam = Player.Functions.GetItemByName(raidItem)
 
     local isAllowedToRaid = PoliceJobs[jobName] and onDuty and gradeAllowed
     if isAllowedToRaid then
@@ -561,13 +561,11 @@ RegisterNetEvent('housing:server:raidProperty', function(property_id)
 
                     if Config.ConsumeRaidItem then
                         -- Remove the "stormram" item from the officer's inventory
-                        if Config.Inventory == 'ox' then
-                            exports.ox_inventory:RemoveItem(src, raidItem, 1)
-                        else
+                     
                             Player.Functions.RemoveItem(raidItem, 1)
                             TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items[raidItem], "remove")
                             TriggerEvent("inventory:server:RemoveItem", src, raidItem, 1)
-                        end
+                        
                     end
                 end
             else

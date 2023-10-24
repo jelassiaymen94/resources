@@ -24,13 +24,14 @@ type img = {
 
 export interface IProperty {
     property_id: number;
+    label?: string;
     owner?: string;
     street?: string;
     region?: string;
     description: string;
     shell: string;
     extra_imgs: img[];
-    for_sale: number;
+    for_sale: number | boolean;
     price: number;
     door_data: door;
     garage_data: coords | null;

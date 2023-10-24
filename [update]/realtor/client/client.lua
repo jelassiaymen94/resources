@@ -10,6 +10,46 @@ local blipsOwned = {}
 
 local UIOpen = false
 
+local tabletObj = nil
+local tabletDict = "amb@code_human_in_bus_passenger_idles@female@tablet@base"
+local tabletAnim = "base"
+local tabletProp = Config.AnimationProp
+local tabletBone = 60309
+local tabletOffset = vector3(0.03, 0.002, -0.0)
+local tabletRot = vector3(10.0, 160.0, 0.0)
+
+local function doAnimation()
+    if not UIOpen then return end
+    -- Animation
+    RequestAnimDict(tabletDict)
+    while not HasAnimDictLoaded(tabletDict) do Citizen.Wait(100) end
+    -- Model
+    RequestModel(tabletProp)
+    while not HasModelLoaded(tabletProp) do Citizen.Wait(100) end
+
+    local plyPed = PlayerPedId()
+    tabletObj = CreateObject(tabletProp, 0.0, 0.0, 0.0, true, true, false)
+    local tabletBoneIndex = GetPedBoneIndex(plyPed, tabletBone)
+
+    AttachEntityToEntity(tabletObj, plyPed, tabletBoneIndex, tabletOffset.x, tabletOffset.y, tabletOffset.z, tabletRot.x, tabletRot.y, tabletRot.z, true, false, false, false, 2, true)
+    SetModelAsNoLongerNeeded(tabletProp)
+
+    CreateThread(function()
+        while UIOpen do
+            Wait(0)
+            if not IsEntityPlayingAnim(plyPed, tabletDict, tabletAnim, 3) then
+                TaskPlayAnim(plyPed, tabletDict, tabletAnim, 3.0, 3.0, -1, 49, 0, 0, 0, 0)
+            end
+        end
+
+
+        ClearPedSecondaryTask(plyPed)
+        Citizen.Wait(250)
+        DetachEntity(tabletObj, true, false)
+        DeleteEntity(tabletObj)
+    end)
+end
+
 RegisterNetEvent('QBCore:Server:UpdateObject', function()
 	if source ~= '' then return false end
 	QBCore = exports['qb-core']:GetCoreObject()
@@ -22,6 +62,10 @@ local function toggleUI(bool)
 		action = "setVisible",
 		data = bool
 	})
+
+	if Config.PlayAnimation then
+		doAnimation()
+	end
 end
 
 RegisterNUICallback("hideUI", function()
@@ -29,7 +73,7 @@ RegisterNUICallback("hideUI", function()
 end)
 
 local function setRealtor(jobInfo)
-	if jobInfo.name == "realtor" then
+	if jobInfo.name == Config.RealtorJobName then
 		SendNUIMessage({
 			action = "setRealtorGrade",
 			data = jobInfo.grade.level
@@ -44,6 +88,10 @@ end
 RegisterNetEvent("QBCore:Client:OnJobUpdate", setRealtor)
 
 AddEventHandler('QBCore:Client:OnPlayerLoaded', function()
+	SendNUIMessage({
+		action = "setConfig",
+		data = Config.RealtorPerms
+	})
     local PlayerData = QBCore.Functions.GetPlayerData()
 	setRealtor(PlayerData.job)
 end)
@@ -62,12 +110,25 @@ AddEventHandler("onResourceStart", function(resName)
 	end
 end)
 
+if Config.UseCommand then
+	RegisterCommand("housing", function()
+		local PlayerData = QBCore.Functions.GetPlayerData()
+		if not PlayerData.metadata["isdead"] and not PlayerData.metadata["inlaststand"] and not PlayerData.metadata["ishandcuffed"] and not IsPauseMenuActive() then
+			toggleUI(not UIOpen)
+		end
+	end, false)
+end
 
-RegisterNetEvent('Polar-Sub:Client:OpenHousingMenu', function()
-	toggleUI(not UIOpen)
+RegisterNetEvent('bl-realtor:client:toggleUI', function()
+	local PlayerData = QBCore.Functions.GetPlayerData()
+    if not PlayerData.metadata["isdead"] and not PlayerData.metadata["inlaststand"] and not PlayerData.metadata["ishandcuffed"] and not IsPauseMenuActive() then
+		toggleUI(not UIOpen)
+	end
 end)
+
 -- Callbacks
 RegisterNUICallback("setWaypoint", function (data, cb)
+	lib.notify({ description = 'Waypoint was set!' , type = 'success'})
 	SetNewWaypoint(data.x, data.y)
 	cb("ok")
 end)
@@ -77,18 +138,28 @@ RegisterNUICallback("updatePropertyData", function(data, cb)
 	local newData = data.data
 	local changeType = data.type
 
-	TriggerServerEvent("realtor:server:updateProperty", changeType, property_id, newData)
+	if changeType == 'UpdateShell' then
+		local currentShells = exports['housing']:GetShells()
+		local shellName = currentShells[newData.shell].hash
+
+		if not IsModelInCdimage(shellName) then
+			lib.notify({ description = 'The Interior '..newData.shell..' does not exist!', type = 'error'})
+			return
+		end
+	end
+
+	TriggerServerEvent("bl-realtor:server:updateProperty", changeType, property_id, newData)
 	cb("ok")
 end)
 
 RegisterNUICallback("addTenantToApartment", function(data, cb)
-	TriggerServerEvent("realtor:server:addTenantToApartment", data)
+	TriggerServerEvent("bl-realtor:server:addTenantToApartment", data)
 	cb("ok")
 end)
 
 RegisterNUICallback("getNames", function(data, cb)
 	if not data then return end
-	local names = lib.callback.await("realtor:server:getNames",source, data)
+	local names = lib.callback.await("bl-realtor:server:getNames",source, data)
 	cb(names)
 end)
 
@@ -127,12 +198,21 @@ RegisterNUICallback("startZonePlacement", function (data, cb)
 	local regionHash = GetNameOfZone(newData.x, newData.y, newData.z)
 	local region = GetLabelText(regionHash)
 
-	local data = {
-		door = newData,
-		street = street,
-		region = region,
-	}
-	TriggerServerEvent("realtor:server:updateProperty", type, property_id, data)
+	if type == "UpdateGarage" then
+    local data = {
+        garage = newData,
+        street = street,
+        region = region,
+    }
+    TriggerServerEvent("bl-realtor:server:updateProperty", type, property_id, data)
+	else
+    local data = {
+        door = newData,
+        street = street,
+        region = region,
+    }
+    TriggerServerEvent("bl-realtor:server:updateProperty", type, property_id, data)
+	end
 end)
 
 
@@ -155,8 +235,8 @@ function ZoneThread(type, promise)
     local height = 2.5
 
 	if type == "garage" then
-		lib.notify({text="Best to get in a vehicle to see how the zone would look.", type="error"})
-		
+		lib.notify({description="Best to get in a vehicle to see how the zone would look.", type="error"})
+
 		length = 3.0
 		width = 5.0
 	end

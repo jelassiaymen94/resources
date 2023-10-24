@@ -5,49 +5,47 @@ RegisterNetEvent('QBCore:Server:UpdateObject', function()
 	QBCore = exports['qb-core']:GetCoreObject() 
 end)
 
-
-
-RegisterNetEvent("realtor:server:updateProperty", function(type, property_id, data)
+RegisterNetEvent("bl-realtor:server:updateProperty", function(type, property_id, data)
     -- Job check
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
     local PlayerData = Player.PlayerData
-    if not PlayerData.job.name == "realtor" then return false end
+    if not PlayerData.job.name == Config.RealtorJobName then return false end
 
     data.realtorSrc = src
     -- Update property
     TriggerEvent("housing:server:updateProperty", type, property_id, data)
 end)
 
-RegisterNetEvent("realtor:server:registerProperty", function(data)
+RegisterNetEvent("bl-realtor:server:registerProperty", function(data)
     -- Job check
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
     local PlayerData = Player.PlayerData
-    if not PlayerData.job.name == "realtor" then return false end
+    if not PlayerData.job.name == Config.RealtorJobName then return false end
 
     data.realtorSrc = src
     -- Register property
     TriggerEvent("housing:server:registerProperty", data)
 end)
 
-RegisterNetEvent("realtor:server:addTenantToApartment", function(data)
+RegisterNetEvent("bl-realtor:server:addTenantToApartment", function(data)
     -- Job check
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
     local PlayerData = Player.PlayerData
-    if not PlayerData.job.name == "realtor" then return false end
+    if not PlayerData.job.name == Config.RealtorJobName then return false end
 
     data.realtorSrc = src
     -- Add tenant
     TriggerEvent("housing:server:addTenantToApartment", data)
 end)
 
-lib.callback.register("realtor:server:getNames", function (source, data)
+lib.callback.register("bl-realtor:server:getNames", function (source, data)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
     local PlayerData = Player.PlayerData
-    if not PlayerData.job.name == "realtor" then return false end
+    if not PlayerData.job.name == Config.RealtorJobName then return false end
     
     local names = {}
     for i = 1, #data do
@@ -61,3 +59,13 @@ lib.callback.register("realtor:server:getNames", function (source, data)
     
     return names
 end)
+
+if Config.UseItem then
+    QBCore.Functions.CreateUseableItem(Config.ItemName, function(source, item)
+        local src = source
+        local Player = QBCore.Functions.GetPlayer(src)
+        if Player.Functions.GetItemByName(item.name) ~= nil then
+            TriggerClientEvent("bl-realtor:client:toggleUI", src)
+        end
+    end)
+end
