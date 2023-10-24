@@ -158,7 +158,7 @@ function Property:UpdateDescription(data)
 
     TriggerClientEvent("housing:client:updateProperty", -1, "UpdateDescription", self.property_id, description)
 
-    Debug("Changed Description of property with id: " .. self.property_id, "by: " .. GetPlayerName(realtorSrc))
+    --Debug("Changed Description of property with id: " .. self.property_id, "by: " .. GetPlayerName(realtorSrc))
 end
 
 function Property:UpdatePrice(data)
@@ -176,7 +176,7 @@ function Property:UpdatePrice(data)
 
     TriggerClientEvent("housing:client:updateProperty", -1, "UpdatePrice", self.property_id, price)
 
-    Debug("Changed Price of property with id: " .. self.property_id, "by: " .. GetPlayerName(realtorSrc))
+    --Debug("Changed Price of property with id: " .. self.property_id, "by: " .. GetPlayerName(realtorSrc))
 end
 
 function Property:UpdateForSale(data)
@@ -192,7 +192,7 @@ function Property:UpdateForSale(data)
 
     TriggerClientEvent("housing:client:updateProperty", -1, "UpdateForSale", self.property_id, forsale)
 
-    Debug("Changed For Sale of property with id: " .. self.property_id, "by: " .. GetPlayerName(realtorSrc))
+    --Debug("Changed For Sale of property with id: " .. self.property_id, "by: " .. GetPlayerName(realtorSrc))
 end
 
 function Property:UpdateShell(data)
@@ -210,7 +210,7 @@ function Property:UpdateShell(data)
 
     TriggerClientEvent("housing:client:updateProperty", -1, "UpdateShell", self.property_id, shell)
 
-    Debug("Changed Shell of property with id: " .. self.property_id, "by: " .. GetPlayerName(realtorSrc))
+    --Debug("Changed Shell of property with id: " .. self.property_id, "by: " .. GetPlayerName(realtorSrc))
 end
 
 function Property:UpdateOwner(data)
@@ -297,7 +297,7 @@ function Property:UpdateImgs(data)
 
     TriggerClientEvent("housing:client:updateProperty", -1, "UpdateImgs", self.property_id, imgs)
 
-    Debug("Changed Imgs of property with id: " .. self.property_id, "by: " .. GetPlayerName(realtorSrc))
+    --Debug("Changed Imgs of property with id: " .. self.property_id, "by: " .. GetPlayerName(realtorSrc))
 end
 
 
@@ -332,7 +332,7 @@ function Property:UpdateDoor(data)
 
     TriggerClientEvent("housing:client:updateProperty", -1, "UpdateDoor", self.property_id, newDoor, data.street, data.region)
 
-    Debug("Changed Door of property with id: " .. self.property_id, "by: " .. GetPlayerName(realtorSrc))
+    --Debug("Changed Door of property with id: " .. self.property_id, "by: " .. GetPlayerName(realtorSrc))
 end
 
 function Property:UpdateHas_access(data)
@@ -347,7 +347,7 @@ function Property:UpdateHas_access(data)
 
     TriggerClientEvent("housing:client:updateProperty", -1, "UpdateHas_access", self.property_id, has_access)
 
-    Debug("Changed Has Access of property with id: " .. self.property_id)
+    --Debug("Changed Has Access of property with id: " .. self.property_id)
 end
 
 function Property:UpdateGarage(data)
@@ -376,7 +376,7 @@ function Property:UpdateGarage(data)
     
     TriggerClientEvent("housing:client:updateProperty", -1, "UpdateGarage", self.property_id, garage)
 
-    Debug("Changed Garage of property with id: " .. self.property_id, "by: " .. GetPlayerName(realtorSrc))
+    --Debug("Changed Garage of property with id: " .. self.property_id, "by: " .. GetPlayerName(realtorSrc))
 end
 
 function Property:UpdateApartment(data)
@@ -397,7 +397,7 @@ function Property:UpdateApartment(data)
 
     TriggerClientEvent("housing:client:updateProperty", -1, "UpdateApartment", self.property_id, apartment)
 
-    Debug("Changed Apartment of property with id: " .. self.property_id, "by: " .. GetPlayerName(realtorSrc))
+    --Debug("Changed Apartment of property with id: " .. self.property_id, "by: " .. GetPlayerName(realtorSrc))
 end
 
 function Property:DeleteProperty(data)
@@ -407,7 +407,7 @@ function Property:DeleteProperty(data)
         ["@property_id"] = self.property_id
     }, function (rowsChanged)
         if rowsChanged > 0 then
-            Debug("Deleted property with id: " .. self.property_id, "by: " .. GetPlayerName(data.realtorSrc))
+            --Debug("Deleted property with id: " .. self.property_id, "by: " .. GetPlayerName(data.realtorSrc))
         end
     end)
 
@@ -416,7 +416,7 @@ function Property:DeleteProperty(data)
     Framework[Config.Notify].Notify(realtorSrc, "Property with id: " .. self.property_id .." has been removed.", "info")
     
     self = nil
-    Debug("Deleted property with id: " .. self.property_id, "by: " .. GetPlayerName(realtorSrc))
+  
 end
 
 function Property.Get(property_id)
@@ -425,28 +425,28 @@ end
 
 RegisterNetEvent('housing:server:enterProperty', function (property_id)
     local src = source
-    Debug("Player is trying to enter property", property_id)
+    --Debug("Player is trying to enter property", property_id)
 
     local property = Property.Get(property_id)
 
     if not property then 
-        Debug("Properties returned", json.encode(PropertiesTable, {indent = true}))
+        --Debug("Properties returned", json.encode(PropertiesTable, {indent = true}))
         return 
     end
 
     local citizenid = GetCitizenid(src)
 
     if property:CheckForAccess(citizenid) then
-        Debug("Player has access to property")
+        --Debug("Player has access to property")
         property:PlayerEnter(src)
-        Debug("Player entered property")
+        --Debug("Player entered property")
         return
     end
 
     local ringDoorbellConfirmation = lib.callback.await('housing:cb:ringDoorbell', src)
     if ringDoorbellConfirmation == "confirm" then
         property:AddToDoorbellPoolTemp(src)
-        Debug("Ringing doorbell") 
+        --Debug("Ringing doorbell") 
         return
     end
 end)
@@ -457,7 +457,7 @@ RegisterNetEvent("housing:server:showcaseProperty", function(property_id)
     local property = Property.Get(property_id)
 
     if not property then 
-        Debug("Properties returned", json.encode(PropertiesTable, {indent = true}))
+        --Debug("Properties returned", json.encode(PropertiesTable, {indent = true}))
         return 
     end
 
@@ -478,12 +478,12 @@ end)
 
 RegisterNetEvent('housing:server:raidProperty', function (property_id)
     local src = source
-    Debug("Player is trying to raid property", property_id)
+    --Debug("Player is trying to raid property", property_id)
 
     local property = Property.Get(property_id)
 
     if not property then 
-        Debug("Properties returned", json.encode(PropertiesTable, {indent = true}))
+        --Debug("Properties returned", json.encode(PropertiesTable, {indent = true}))
         return 
     end
 
@@ -599,7 +599,7 @@ RegisterNetEvent("housing:server:buyFurniture", function(property_id, items, pri
     property:UpdateFurnitures(property.propertyData.furnitures)
 
     Framework[Config.Notify].Notify(src, "You bought furniture for $" .. price, "success")
-    Debug("Player bought furniture for $" .. price, "by: " .. GetPlayerName(src))
+    --Debug("Player bought furniture for $" .. price, "by: " .. GetPlayerName(src))
 end)
 
 RegisterNetEvent("housing:server:removeFurniture", function(property_id, itemid)
@@ -639,7 +639,7 @@ RegisterNetEvent("housing:server:updateFurniture", function(property_id, item)
     for k, v in pairs(currentFurnitures) do
         if v.id == item.id then
             currentFurnitures[k] = item
-            Debug("Updated furniture", json.encode(item))
+            --Debug("Updated furniture", json.encode(item))
             break
         end
     end
