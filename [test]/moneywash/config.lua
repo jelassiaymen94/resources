@@ -26,17 +26,17 @@ Config.Wash_Time = 3 -- 15% Example: $1000 would take 150 seconds to wash
 -- Machine Locations For Target Users --
 Config.Machines_QBTARGET = {
     ['Washing Machines'] = {
-        { location = vector3(-591.13, -1626.86, 33.00), heading = 96.63, width = 0.8, depth = 0.5, minZ=33.06 - 1.0, maxZ=33.06  + 1.0, distance = 4.7 }, -- done
-        { location = vector3(-585.37, -1623.1, 33.00), heading = 343.46, width = 1.0, depth = 0.2, minZ=32.51  - 1.0, maxZ=32.51  + 1.0, distance = 4.7 }, -- done
-        { location = vector3(-576.15, -1623.9, 33.00), heading = 38.19, width = 0.8, depth = 0.2, minZ=32.95  - 1.0, maxZ=32.95  + 1.0, distance = 4.7 }, -- done
-        { location = vector3(-572.51, -1624.71, 33.00), heading = 324.38, width = 1.0, depth = 0.3, minZ=32.52  - 1.0, maxZ=32.52 + 1.0, distance = 4.7 },
+        { location = vector3(-591.13, -1626.86, 33.00), heading = 96.63, width = 0.8, depth = 0.5}, -- done
+        { location = vector3(-585.37, -1623.1, 33.00), heading = 343.46, width = 1.0, depth = 0.2}, -- done
+        { location = vector3(-576.15, -1623.9, 33.00), heading = 38.19, width = 0.8, depth = 0.2}, -- done
+        { location = vector3(-572.51, -1624.71, 33.00), heading = 324.38, width = 1.0, depth = 0.3},
     },
     ['Dryers'] = {
        -- { location = vector3(1138.91, -991.87, 46.11), heading = 8.0, width = 0.73, depth = 0.73, minZ=45.2, maxZ=46.4, distance = 8.0 },
        -- vector3(1141.94, -993.92, 46.1),
-        { location = vector3(-581.99, -1613.12, 27.10), heading = 270.0, width = 1.22, depth = 1.22, minZ=27.10  - 1.0, maxZ=27.10  + 1.0, distance = 8.0 },
-        { location = vector3(-586.5, -1599.03, 27.10), heading = 8.0, width = 1.22, depth = 1.22, minZ= 27.10  - 1.0, maxZ= 27.10  + 1.0, distance = 8.0 },
-        { location = vector3(-583.7, -1599.03, 27.10), heading = 8.0, width = 1.4, depth = 1.42, minZ= 27.10  - 1.0, maxZ= 27.10  + 1.0, distance = 8.0 },
+        { location = vector3(-581.99, -1613.12, 27.10), heading = 270.0, width = 1.22, depth = 1.22},
+        { location = vector3(-586.5, -1599.03, 27.10), heading = 8.0, width = 1.22, depth = 1.22},
+        { location = vector3(-583.7, -1599.03, 27.10), heading = 8.0, width = 1.4, depth = 1.42},
          --[[ { location = vector3(1138.62, -988.78, 46.11), heading = 8.0, width = 0.72, depth = 0.72, minZ= 27.10  - 1.0, maxZ= 27.10  + 1.0, distance = 8.0 },
        { location = vector3(1139.66, -991.77, 46.11), heading = 8.0, width = 0.72, depth = 0.72, minZ=45.2  - 1.0, maxZ=46.4  + 1.0, distance = 8.0 },
         { location = vector3(1139.56, -991.08, 46.11), heading = 8.0, width = 0.72, depth = 0.72, minZ=45.2  - 1.0, maxZ=46.4  + 1.0, distance = 8.0 },

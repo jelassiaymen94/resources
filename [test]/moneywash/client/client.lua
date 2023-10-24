@@ -7,8 +7,8 @@ local QBCore = exports['qb-core']:GetCoreObject()
 				name = "Washer #"..k,
 				heading = v.heading,
 				debugPoly = false,
-				minZ = v.minZ,
-				maxZ = v.maxZ,
+				minZ = v.location.z-1,
+				maxZ = v.location.z+1,
 				}, {
 					options = { 
 					{
@@ -33,8 +33,8 @@ local QBCore = exports['qb-core']:GetCoreObject()
 				name = "Dryer #"..k,
 				heading = v.heading,
 				debugPoly = false,
-				minZ = v.minZ,
-				maxZ = v.maxZ,
+				minZ = v.location.z-1,
+				maxZ = v.location.z+1,
 				}, {
 					options = { 
 					{
