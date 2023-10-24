@@ -62,5 +62,5 @@ RegisterNetEvent('Polar-Radial:Client:propertyaccess', function(bool, house) pro
 RegisterNetEvent('Polar-Radial:Client:furnitureaccesss', function(bool, house) furnitureaccesss = bool hhouse = house end)
 function inpropertyaccess() return propertyaccess end
 function furnitureaccess() return furnitureaccesss end
-RegisterNetEvent('Polar-Radial:Client:GetHouseProperty', function()	TriggerEvent('housing:client:openManagePropertyAccessMenu', ghouse) end)
-RegisterNetEvent('Polar-Radial:Client:GetHouseFurniture', function() TriggerEvent('housing:client:openFurnitureMenu', hhouse) end)
+RegisterNetEvent('Polar-Radial:Client:GetHouseProperty', function()	print(ghouse) TriggerEvent('housing:client:openManagePropertyAccessMenu', ghouse) end)
+RegisterNetEvent('Polar-Radial:Client:GetHouseFurniture', function() print(hhouse) TriggerEvent('housing:client:openFurnitureMenu', hhouse) end)
