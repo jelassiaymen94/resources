@@ -215,7 +215,7 @@ rootMenuConfig =  {
         icon =  "#judge-licenses-grant-house",
         functionName = "Polar-Radial:Client:GetHouseProperty",
         enableMenu = function()
-            return (not isDead and propertyaccess())
+            return (not isDead and inpropertyaccess())
         end
     },
     {
