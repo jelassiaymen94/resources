@@ -14,8 +14,7 @@ Config = {
 	CloseHour = 21, -- From what hour should the pawnshop be closed?
 	PayAtDoor = nil, -- Set to nil stop turn this off, set to a number to enable
 
-	Minigame = "qb-skillbar", -- Enable minigame when searching. qb-skillbar/qb-lock/ps-ui
-
+	
 	OutsideTele = vector4(55.91, 6472.03, 31.43, 226.26),
 	InsideTele = vector4(736.95355224609, -1374.2559814453, 12.635090827942, 266.58343505859),
 

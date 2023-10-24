@@ -633,7 +633,6 @@ RegisterNetEvent('Polar-stores:Client:storesProp', function(door, prop, var)
     loadModel(prop) 
     doors[door] =  CreateObject(prop, var.x, var.y, var.z,  false,  true, true) 
     SetEntityHeading(doors[door], var.w) 
-
 end)
 
 
@@ -664,7 +663,7 @@ RegisterNetEvent('Polar-stores:Client:Target', function(data)
     local door = doors[p]
     Wait(50)
     Animation(p, door)  
-    end)
+end)
 
 RegisterNetEvent('Polar-stores:Client:ResetProps', function()
     for _, v in ipairs(proptable) do

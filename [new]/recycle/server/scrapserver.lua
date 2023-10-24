@@ -5,7 +5,7 @@ AddEventHandler('onResourceStart', function(resource) if GetCurrentResourceName(
 	for _, v in pairs(Config.ScrapItems) do if not QBCore.Shared.Items[v] then print("^5Debug^7: ^6ScrapItems^7: ^2Missing Item from ^4QBCore^7.^4Shared^7.^4Items^7: '^6"..v.."^7'") end end
 end)
 
-RegisterServerEvent('jim-recycle:Scrap:Reward', function()
+RegisterServerEvent('recycle:Scrap:Reward', function()
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
 	for i = 1, math.random(1, 2) do

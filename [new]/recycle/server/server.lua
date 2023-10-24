@@ -6,16 +6,16 @@ AddEventHandler('onResourceStart', function(resource) if GetCurrentResourceName(
 	if not QBCore.Shared.Items["recyclablematerial"] then print("^5Debug^7: ^2Missing Item from ^4QBCore^7.^4Shared^7.^4Items^7: '^6recyclablematerial^7'") end
 end)
 
-QBCore.Functions.CreateCallback('jim-recycle:GetRecyclable', function(source, cb)
+QBCore.Functions.CreateCallback('recycle:GetRecyclable', function(source, cb)
 	if QBCore.Functions.GetPlayer(source).Functions.GetItemByName("recyclablematerial") then cb(QBCore.Functions.GetPlayer(source).Functions.GetItemByName("recyclablematerial").amount)
 	else cb(0) end
 end)
 
-QBCore.Functions.CreateCallback('jim-recycle:GetCash', function(source, cb)	cb(QBCore.Functions.GetPlayer(source).Functions.GetMoney("cash")) end)
-RegisterServerEvent("jim-recycle:DoorCharge", function() QBCore.Functions.GetPlayer(source).Functions.RemoveMoney("cash", Config.PayAtDoor) end)
+QBCore.Functions.CreateCallback('recycle:GetCash', function(source, cb)	cb(QBCore.Functions.GetPlayer(source).Functions.GetMoney("cash")) end)
+RegisterServerEvent("recycle:DoorCharge", function() QBCore.Functions.GetPlayer(source).Functions.RemoveMoney("cash", Config.PayAtDoor) end)
 
 --- Event For Getting Recyclable Material----
-RegisterServerEvent("jim-recycle:getrecyclablematerial", function()
+RegisterServerEvent("recycle:getrecyclablematerial", function()
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
     local amount = math.random(Config.RecycleAmounts.recycleMin, Config.RecycleAmounts.recycleMax)
@@ -24,7 +24,7 @@ RegisterServerEvent("jim-recycle:getrecyclablematerial", function()
     Wait(500)
 end)
 
-RegisterServerEvent("jim-recycle:TradeItems", function(data)
+RegisterServerEvent("recycle:TradeItems", function(data)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
 	local remAmount, min, max
@@ -60,7 +60,7 @@ RegisterServerEvent("jim-recycle:TradeItems", function(data)
 	end
 end)
 
-RegisterNetEvent("jim-recycle:Selling:Mat", function(item)
+RegisterNetEvent("recycle:Selling:Mat", function(item)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
     if Player.Functions.GetItemByName(item) ~= nil then

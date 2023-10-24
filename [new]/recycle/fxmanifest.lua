@@ -1,10 +1,5 @@
-
-version "v2.5"
-description ""
 fx_version "cerulean"
 game "gta5"
-
-dependencies { 'qb-menu', 'qb-target', }
 
 client_scripts {
     '@PolyZone/client.lua',

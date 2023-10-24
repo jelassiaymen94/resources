@@ -19,7 +19,7 @@ function unloadAnimDict(dict) if Config.Debug then print("^5Debug^7: ^2Removing 
 
 CreateThread(function()
 	--Dumpster Third Eye
-	exports['qb-target']:AddTargetModel(dumpsters, { options = { { event = "jim-recycle:Dumpsters:Search", icon = "fas fa-dumpster", label = Loc[Config.Lan].target["search_trash"], }, }, distance = 1.5 })
+	exports['qb-target']:AddTargetModel(dumpsters, { options = { { event = "recycle:Dumpsters:Search", icon = "fas fa-dumpster", label = Loc[Config.Lan].target["search_trash"], }, }, distance = 1.5 })
 end)
 
 --Search animations
@@ -43,10 +43,10 @@ local function startSearching(coords)
     canSearch = true
     unloadAnimDict(dict)
     --Give rewards
-    TriggerServerEvent("jim-recycle:Dumpsters:Reward")
+    TriggerServerEvent("recycle:Dumpsters:Reward")
 end
 
-RegisterNetEvent('jim-recycle:Dumpsters:Search', function()
+RegisterNetEvent('recycle:Dumpsters:Search', function()
     if canSearch then
         local dumpsterFound = false
         for i = 1, #dumpsters do
@@ -61,18 +61,8 @@ RegisterNetEvent('jim-recycle:Dumpsters:Search', function()
                         local anim = "look_around_left_02_amy_skater_01"
                         loadAnimDict(dict)
                         TaskPlayAnim(PlayerPedId(), dict, anim, 1.0, 1.0, 3500, 1.5, 5, 0, 0, 0)
-                        if Config.Minigame == "qb-lock" then
-                            local success = exports['qb-lock']:StartLockPickCircle(math.random(2,4), math.random(10,15), success)
-                            if success then
-                                TriggerEvent("QBCore:Notify", Loc[Config.Lan].success["get_trash"], "success")
-                                startSearching(GetEntityCoords(dumpster))
-                                searched[i+1] = dumpster
-                            else
-                                TriggerEvent("QBCore:Notify", Loc[Config.Lan].error["nothing"], "error")
-                                searched[i+1] = dumpster
-                                ClearPedTasks(PlayerPedId())
-                            end
-                        elseif Config.Minigame == "qb-skillbar" then
+                       
+                     
                             local Skillbar = exports['qb-skillbar']:GetSkillbarObject()
                             Skillbar.Start({
                                 duration = math.random(2500,5000),
@@ -94,19 +84,7 @@ RegisterNetEvent('jim-recycle:Dumpsters:Search', function()
                                 ClearPedTasks(PlayerPedId())
                                 Citizen.Wait(1000)
                             end)
-                        elseif Config.Minigame == "ps-ui" then
-                            exports['ps-ui']:Circle(function(success)
-                                if success then
-                                    TriggerEvent("QBCore:Notify", Loc[Config.Lan].success["get_trash"], "success")
-                                    startSearching(GetEntityCoords(dumpster))
-                                    searched[i+1] = dumpster
-                                else
-                                    TriggerEvent("QBCore:Notify", Loc[Config.Lan].error["nothing"], "error")
-                                    searched[i+1] = dumpster
-                                    ClearPedTasks(PlayerPedId())
-                                end
-                            end, 2, 15) -- NumberOfCircles, MS
-                        end
+                       
                         break
                     end
                 end

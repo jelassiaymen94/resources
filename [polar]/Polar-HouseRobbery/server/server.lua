@@ -4,6 +4,9 @@ local QBCore = exports['qb-core']:GetCoreObject()
 RegisterNetEvent('Polar-HouseRobbery:Server:RemoveTarget', function(name)   TriggerClientEvent('Polar-HouseRobbery:Client:RemoveTarget', -1, name)    end)
 RegisterNetEvent('Polar-HouseRobbery:Server:CreateTarget', function(name, loc)   TriggerClientEvent('Polar-HouseRobbery:Client:CreateTarget', -1, name, loc)    end)
 
+RegisterNetEvent('Polar-HouseRobbery:Server:RemoveProp', function(door) TriggerClientEvent('Polar-HouseRobbery:Client:RemoveProp', -1, door)   end)
+RegisterNetEvent('Polar-HouseRobbery:Server:StartTargets', function()   TriggerClientEvent('Polar-HouseRobbery:Client:StartTargets', -1)  TriggerClientEvent('Polar-HouseRobbery:Client:StartLoot', source)      end)
+
 RegisterNetEvent('Polar-HouseRobbery:Server:Reset', function() reset() end)
 
 local cooldown = true
@@ -44,11 +47,11 @@ RegisterNetEvent("Polar-HouseRobbery:Server:FindShit", function(house)
     if house == nil then return end
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
-    local winNumber = math.random( 0, 100)
-    if winNumber >= 30 then
+    local winNumber = math.random(1, 100)
+    if winNumber <= 75 then
         local item = Config.Items.normalItems[math.random(#Config.Items.normalItems)]
         Player.Functions.AddItem(item, 1)
-    elseif winNumber < 30 and winNumber > 2 then
+    elseif winNumber <= 20 then
         local item = Config.Items.rareItems[math.random(#Config.Items.rareItems)]
         Player.Functions.AddItem(item, 1)
     else

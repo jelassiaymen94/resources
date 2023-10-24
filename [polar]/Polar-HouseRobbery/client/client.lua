@@ -8,6 +8,18 @@ local blip = nil
 
 local npc = nil
 
+local hi = false
+
+local props = {}
+
+local proptable = {
+    'houseprop1', 'houseprop2', 'houseprop3', 'houseprop4', 'houseprop5', 'houseprop6', 'houseprop7', 'houseprop8', 'houseprop9', 'houseprop10', 'houseprop11', 'houseprop12','houseprop13', 'houseprop14', 'houseprop15',
+    'houseprop16', 'houseprop17',  'houseprop18', 'houseprop19', 'houseprop20', 'houseprop21', 'houseprop22', 'houseprop23', 'houseprop24', 'houseprop25', 'houseprop26','houseprop27', 'houseprop28', 'houseprop29',
+    'houseprop30', 'houseprop31', 'houseprop32', 'houseprop33', 'houseprop34', 'houseprop35', 'houseprop36', 'houseprop37', 'houseprop38', 'houseprop39', 'houseprop40', 'houseprop41',
+    'houseprop42', 'houseprop43', 'houseprop44', 'houseprop45', 'houseprop46', 'houseprop47', 'houseprop48', 'houseprop49', 'houseprop50',
+}
+
+
 CreateThread(function()
     TriggerServerEvent('Polar-HouseRobbery:Server:Reset')
     RequestModel("a_m_y_business_03")
@@ -27,6 +39,15 @@ end)
 AddEventHandler('onResourceStop', function(resourceName) if (GetCurrentResourceName() ~= resourceName) then return end TriggerServerEvent('Polar-HouseRobbery:Server:Reset') DeleteEntity(npc) end)
 
 
+RegisterNetEvent('Polar-HouseRobbery:Client:StartLoot', function(house)
+    
+     TriggerServerEvent('Polar-stores:Server:SetStore', house)
+ 
+     TriggerServerEvent('Polar-stores:Server:SetupGrab1', house)
+ 
+     TriggerServerEvent('Polar-stores:Server:SetupPickup1', house)
+
+ end)
 
 RegisterNetEvent("Polar-HouseRobbery:Client:Start", function()
     QBCore.Functions.TriggerCallback('Polar-HouseRobbery:Server:Cooldown', function(result)
@@ -136,6 +157,7 @@ local insidec = vector3(-173.72, 495.69, 137.57)
 RegisterNetEvent("Polar-HouseRobbery:goinside", function(house)
     SetEntityCoords(PlayerPedId(), insidec.x, insidec.y, insidec.z)
     TriggerEvent("Polar-HouseRobbery:CreateLoot", house)
+    TriggerServerEvent('Polar-HouseRobbery:Server:StartTargets')
     if isNight() then 
         TriggerEvent("Polar-HouseRobbery:Client:Noise", house)
     else
@@ -219,11 +241,53 @@ function EntryMinigame(house)
         end, 5, 10) 
 end
 
+function Animation(door, prop)
+    gloves()
+    local props = GetClosestObjectOfType(GetEntityCoords(PlayerPedId()), 2.0, GetEntityModel(prop), false, false, false)
+    local propCoords = GetEntityCoords(prop)
+    
+  --  Wait(300)
+        model = bagcolor animDict = 'anim@scripted@heist@ig1_table_grab@cash@male@' 
+        
+            local playerCoords = GetEntityCoords(PlayerPedId())
+            local propCoords = GetEntityCoords(props)
+            local direction = vector3(propCoords.x - playerCoords.x, propCoords.y - playerCoords.y, propCoords.z - playerCoords.z)
+            local heading = -math.atan2(direction.x, direction.y) * 180.0 / math.pi
+            local pitch = math.asin(direction.z / #(direction)) * 180.0 / math.pi
 
-
---[[RegisterCommand('startrob', function()
-    TriggerEvent('Polar-HouseRobbery:startrobbery')
-end)]]
+        local dotProduct = Citizen.InvokeNative(0xBFE95ABAF46CD9B8, direction.x, direction.y, direction.z, 0.0, 0.0, 1.0)
+        if dotProduct then else 
+   
+        SetEntityHeading(PlayerPedId(), heading)
+     --   SetEntityRotation(PlayerPedId(), pitch, 0.0, heading, 2, true)
+    
+    
+    TriggerServerEvent('Polar-HouseRobbery:Server:TargetRemove', door)
+    SetPedComponentVariation(PlayerPedId(), 5, Config.HideBagID, 1, 1)
+    LocalPlayer.state:set('inv_busy', true, true) -- Busy
+    loadAnimDict(animDict) loadModel(model) local bag = CreateObject(GetHashKey(model), playerCoords, 1, 1, 0)
+    local scene1 = NetworkCreateSynchronisedScene(propCoords, GetEntityRotation(PlayerPedId()), 2, true, false, 1065353216, 0, 1.3)  NetworkAddPedToSynchronisedScene(PlayerPedId(), scene1, animDict, 'enter', 4.0, -4.0, 1033, 0, 1000.0, 0)  NetworkAddEntityToSynchronisedScene(bag, scene1, animDict,'enter_bag', 1.0, -1.0, 1148846080)
+    local scene2 = NetworkCreateSynchronisedScene(propCoords, GetEntityRotation(PlayerPedId()), 2, true, false, 1065353216, 0, 1.3)  NetworkAddPedToSynchronisedScene(PlayerPedId(), scene2, animDict, 'grab', 4.0, -4.0, 1033, 0, 1000.0, 0) NetworkAddEntityToSynchronisedScene(bag, scene2, animDict, 'grab_bag', 1.0, -1.0, 1148846080)
+    local scene3 = NetworkCreateSynchronisedScene(propCoords, GetEntityRotation(PlayerPedId()), 2, true, false, 1065353216, 0, 1.3)  NetworkAddPedToSynchronisedScene(PlayerPedId(), scene3, animDict, 'exit', 4.0, -4.0, 1033, 0, 1000.0, 0)  NetworkAddEntityToSynchronisedScene(bag, scene3, animDict, 'exit_bag', 1.0, -1.0, 1148846080)
+    SetPedComponentVariation(PlayerPedId(), 5, Config.HideBagID, 0, 1) NetworkStartSynchronisedScene(scene1) Wait(1000)
+    NetworkStartSynchronisedScene(scene2)
+    FreezeEntityPosition(props, true)
+    SetEntityInvincible(props, true)
+    SetEntityNoCollisionEntity(props, PlayerPedId())
+    Wait(100)
+    Wait(100)
+    Wait(100)
+    AttachEntityToEntity(props, PlayerPedId(), GetPedBoneIndex(PlayerPedId(), 0xFA60), 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, false, false, false, true, 0, true)
+    Wait(300) SetEntityVisible(props, false, false)
+    TriggerServerEvent('Polar-HouseRobbery:Server:RemoveProp', door)
+    NetworkStartSynchronisedScene(scene3) Wait(900) ClearPedTasks(PlayerPedId()) DeleteObject(bag) SetPedComponentVariation(PlayerPedId(), 5, Config.BagUseID, 0, 1)
+    LocalPlayer.state:set('inv_busy', false, true)  
+    TriggerServerEvent('Polar-HouseRobbery:Server:Synapse', door, sped)  
+    
+    RemoveAnimDict(animDict)
+    end
+   
+end 
 
 
 RegisterNetEvent('Polar-HouseRobbery:Client:RemoveTarget', function(name) exports['qb-target']:RemoveZone(name) end)
@@ -280,3 +344,82 @@ function playeritem(items, amount)
         end
         return false
 end
+
+
+
+
+RegisterNetEvent('Polar-HouseRobbery:Client:HouseProp', function(name, prop, var) 
+    loadModel(prop) 
+    props[name] =  CreateObject(prop, var.x, var.y, var.z,  false,  true, true) 
+    SetEntityHeading(props[name], var.w) 
+end)
+RegisterNetEvent('Polar-HouseRobbery:Client:RemoveProp', function(name)  DeleteEntity(props[name]) end)
+
+
+
+
+RegisterNetEvent('Polar-HouseRobbery:Client:Target', function(data)  
+    local p = data.type 
+    local door = doors[p]
+    Wait(50)
+    Animation(p, door)  
+end)
+
+RegisterNetEvent('Polar-HouseRobbery:Client:ResetProps', function()
+    for _, v in ipairs(proptable) do
+        if oxt then exports.ox_target:removeZone(targets[v])  else exports['qb-target']:RemoveZone(v) end
+        if DoesEntityExist(doors[v]) then DeleteEntity(doors[v]) end
+    end
+    for _, v in ipairs(doortable) do 
+        if oxt then exports.ox_target:removeZone(targets[v])  else exports['qb-target']:RemoveZone(v) end
+    end
+end)
+
+
+RegisterNetEvent('Polar-HouseRobbery:Client:PickupTarget', function(data) 
+    gloves()
+    LocalPlayer.state:set('inv_busy', true, true) -- Busy
+    local animDict = 'random@domestic'
+    local pile = data.piles
+    local door = data.type
+    local numba = data.number
+    if pile then  
+        TriggerServerEvent('Polar-HouseRobbery:Server:TargetRemove', door) 
+        loadAnimDict('amb@medic@standing@kneel@base')
+        loadAnimDict('anim@gangops@facility@servers@bodysearch@')
+        TaskPlayAnim(PlayerPedId(), 'amb@medic@standing@kneel@base', 'base', 8.0, 8.0, -1, 1, 0, false, false, false)
+        TaskPlayAnim(PlayerPedId(), 'anim@gangops@facility@servers@bodysearch@', 'player_search', 8.0, 8.0, -1, 48, 0, false, false, false)
+        Wait(5000)
+        ClearPedTasks(PlayerPedId())
+        TriggerServerEvent('Polar-HouseRobbery:Server:RemoveProp', door)
+        RemoveAnimDict(animDict)
+    else
+        animDict = 'random@domestic'
+        loadAnimDict(animDict) TaskPlayAnim(PlayerPedId(), animDict, 'pickup_low', 3.0, 3.0, -1, 0, 0, 0, 0, 0) 
+        TriggerServerEvent('Polar-HouseRobbery:Server:TargetRemove', door) 
+       
+        Wait(500)
+        
+        AttachEntityToEntity(doors[door], PlayerPedId(), GetPedBoneIndex(PlayerPedId(), 58867), 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, false, false, false, true, 0, true)
+        Wait(1000) SetEntityVisible(doors[door], false, false)
+
+        TriggerServerEvent('Polar-HouseRobbery:Server:RemoveProp', door)
+        RemoveAnimDict(animDict)
+    end
+        TriggerServerEvent('Polar-HouseRobbery:Server:Synapse', door)    
+        LocalPlayer.state:set('inv_busy', false, true)
+       
+end)
+
+
+function gloves()
+    local armIndex = GetPedDrawableVariation(PlayerPedId(), 3) local model = GetEntityModel(PlayerPedId()) local retval = true if model == 'mp_m_freemode_01' then if Config.MaleGloves[armIndex] ~= nil 
+    and Config.MaleGloves[armIndex] then retval = false end else if Config.FemaleGloves[armIndex] ~= nil and Config.FemaleGloves[armIndex] then retval = false end end return retval
+end
+
+
+
+RegisterNetEvent('Polar-HouseRobbery:Client:AddTarget', function(door, prop, var, handle, pile, d) 
+    exports['qb-target']:AddBoxZone(door, vec3(var.x, var.y, var.z), 0.5, 0.5, { name = door, heading = 28.69, debug = hi, minZ = var.z - 1.5, maxZ =  var.z + 1.5,}, 
+    { options = {{ event = handle, type = door, piles = pile, icon = "fas fa-bolt", label = "Grab"}}, distance = d }) 
+end)
