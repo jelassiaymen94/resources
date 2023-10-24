@@ -112,70 +112,6 @@ function makeJob()
 		end
 	else Config.K4MB1 = true end
 
-	if Config.K4MB1 then
-		for k, v in pairs(K4MB1["MineStore"]) do
-			Targets["K4MB1Mine"..k] =
-			exports['qb-target']:AddCircleZone("K4MB1Mine"..k, v.coords.xyz, 1.0, { name="K4MB1Mine"..k, debugPoly=Config.Debug, useZ=true, },
-			{ options = { { event = "jim-mining:openShop", icon = "fas fa-store", label = Loc[Config.Lan].info["browse_store"], job = Config.Job }, },
-			distance = 2.0 })
-			if Config.Blips and v.blipTrue then Blip[#Blip+1] = makeBlip(v) end
-			Peds[#Peds+1] = makePed(v.model, v.coords, 1, 1, v.scenario)
-		end
-		--Smelter to turn stone into ore
-		for k, v in pairs(K4MB1["Smelter"]) do
-			Targets["K4MB1Smelter"..k] =
-			exports['qb-target']:AddCircleZone("K4MB1Smelter"..k, v.coords.xyz, 1.5, { name="K4MB1Smelter"..k, debugPoly=Config.Debug, useZ=true, },
-			{ options = { { event = "jim-mining:CraftMenu", icon = "fas fa-fire-burner", label = Loc[Config.Lan].info["use_smelter"], craftable = Crafting.SmeltMenu, job = Config.Job }, },
-					distance = 10.0
-				})
-			if Config.Blips and v.blipTrue then Blip[#Blip+1] = makeBlip(v) end
-		end
-		--Ore Buying Ped
-		for k, v in pairs(K4MB1["OreBuyer"]) do
-			if Config.Blips and v.blipTrue then Blip[#Blip+1] = makeBlip(v) end
-			Peds[#Peds+1] = makePed(v.model, v.coords, 1, 1, v.scenario)
-			Targets["K4MB1OreBuyer"..k] =
-			exports['qb-target']:AddCircleZone("K4MB1OreBuyer"..k, v.coords.xyz, 0.9, { name="K4MB1OreBuyer"..k, debugPoly=Config.Debug, useZ=true, },
-			{ options = { { event = "jim-mining:SellOre", icon = "fas fa-sack-dollar", label = Loc[Config.Lan].info["sell_ores"], ped = Peds[#Peds], job = Config.Job }, },
-					distance = 2.0
-				})
-		end
-
-		--Jewel Cutting Bench
-		for k, v in pairs(K4MB1["JewelCut"]) do
-			Props[#Props+1] = makeProp(v, 1, false)
-			Targets["K4MB1JewelCut"..k] =
-			exports['qb-target']:AddCircleZone("K4MB1JewelCut"..k, v.coords.xyz, 2.0,{ name="K4MB1JewelCut"..k, debugPoly=Config.Debug, useZ=true, },
-			{ options = { { event = "jim-mining:JewelCut", icon = "fas fa-gem", label = Loc[Config.Lan].info["jewelcut"], job = Config.Job, bench = Props[#Props]}, },
-				distance = 2.0
-			})
-			if Config.Blips and v.blipTrue then Blip[#Blip+1] = makeBlip(v) end
-		end
-		--Cracking Bench
-		for k, v in pairs(K4MB1["Cracking"]) do
-			if Config.Blips and v.blipTrue then Blip[#Blip+1] = makeBlip(v) end
-			Props[#Props+1] = makeProp(v, 1, false)
-			Targets["K4MB1Cracking"..k] =
-				exports['qb-target']:AddCircleZone("K4MB1Cracking"..k, v.coords.xyz, 1.2, {name="K4MB1Cracking"..k, debugPoly=Config.Debug, useZ=true, },
-				{ options = { { event = "jim-mining:CrackStart", icon = "fas fa-compact-disc", item = "stone", label = Loc[Config.Lan].info["crackingbench"], bench = Props[#Props] }, },
-				distance = 2.0
-			})
-		end
-		--Ore Spawning
-		for k, v in pairs(K4MB1["OrePositions"]) do
-			Props[#Props+1] = makeProp({coords = v, prop = `cs_x_rubweec`}, 1, false)
-			Targets["K4MB1Ore"..k] =
-			exports['qb-target']:AddCircleZone("K4MB1Ore"..k, vector3(v.x, v.y, v.z-1.03), 1.2, { name="K4MB1Ore"..k, debugPoly=Config.Debug, useZ=true, },
-			{ options = {
-				{ event = "jim-mining:MineOre:Pick", icon = "fas fa-hammer", item = "pickaxe", label = Loc[Config.Lan].info["mine_ore"].." ("..QBCore.Shared.Items["pickaxe"].label..")", job = Config.Job, name = "K4MB1Ore"..k, stone = Props[#Props] },
-				{ event = "jim-mining:MineOre:Drill", icon = "fas fa-screwdriver", item = "miningdrill", label = Loc[Config.Lan].info["mine_ore"].." ("..QBCore.Shared.Items["miningdrill"].label..")", job = Config.Job, name = "K4MB1Ore"..k, stone = Props[#Props] },
-				{ event = "jim-mining:MineOre:Laser", icon = "fas fa-screwdriver-wrench", item = "mininglaser", label = Loc[Config.Lan].info["mine_ore"].." ("..QBCore.Shared.Items["mininglaser"].label..")", job = Config.Job, name = "K4MB1Ore"..k, stone = Props[#Props] },
-				},
-				distance = 1.3
-			})
-			Props[#Props+1] = makeProp({coords = vector4(v.x, v.y, v.z+0.25, v[4]), prop = `prop_rock_5_a`}, 1, false)
-		end
-	end
 	for k, v in pairs(Config.Locations["Washing"]) do
 		Targets["Washing"..k] =
 			exports['qb-target']:AddCircleZone("Washing"..k, v.coords.xyz, 9.0, {name="Washing"..k, debugPoly=Config.Debug, useZ=true, },
@@ -193,15 +129,7 @@ function makeJob()
 			})
 		if Config.Blips and v.blipTrue then Blip[#Blip+1] = makeBlip(v) end
 	end
-	--Jewel Buyer
-	for k, v in pairs(Config.Locations["JewelBuyer"]) do
-		Peds[#Peds+1] = makePed(v.model, v.coords, 1, 1, v.scenario)
-		Targets["JewelBuyer"..k] =
-			exports['qb-target']:AddCircleZone("JewelBuyer"..k, v.coords.xyz, 1.2, { name="JewelBuyer"..k, debugPoly=Config.Debug, useZ=true, },
-			{ options = { { event = "jim-mining:JewelSell", icon = "fas fa-gem", label = Loc[Config.Lan].info["jewelbuyer"], ped = Peds[#Peds], job = Config.Job }, },
-				distance = 2.0
-			})
-	end
+	
 end
 
 RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function()

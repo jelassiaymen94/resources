@@ -40,42 +40,23 @@ Config = {
 		},
 		["Washing"] = {
 			{ name = "Los Santos Wash", coords = vector3(1840.18, 412.42, 160.49), sprite = 467, col = 3, disp = 6, blipTrue = true }, -- Mountains
-			{ name = "Stone Washing", coords = vector3(1870.91, 395.1, 160.16), sprite = 467, col = 3, disp = 6, blipTrue = false },
 
-			{ name = "River Wash", coords = vector3(-432.59, 2936.84, 13.87), sprite = 467, col = 3, disp = 6, blipTrue = false }, -- Stream Blip
-			{ name = "Stone Washing", coords = vector3(-422.37, 2946.18, 13.77), sprite = 467, col = 3, blipTrue = false },
-			{ name = "Stone Washing", coords = vector3(-443.21, 2926.5, 13.62), sprite = 467, col = 3, blipTrue = false },
-			{ name = "Stone Washing", coords = vector3(-455.48, 2917.16, 13.52), sprite = 467, col = 3, blipTrue = false },
-
-			{ name = "Mount Gordo Wash", coords = vector3(2500.64, 6129.4, 162.46), sprite = 467, col = 3, disp = 6, blipTrue = false }, -- Gordo
-
-			{ name = "Alamo Sea Wash", coords = vector3(907.06, 4377.66, 30.28), sprite = 467, col = 3, disp = 6, blipTrue = false }, -- Alamo Sea
-			{ name = "Stone Washing", coords = vector3(894.14, 4386.56, 30.24), sprite = 467, col = 3, blipTrue = false },
-			{ name = "Stone Washing", coords = vector3(893.12, 4370.74, 30.35), sprite = 467, col = 3, blipTrue = false },
-			{ name = "Stone Washing", coords = vector3(912.88, 4365.7, 30.39), sprite = 467, col = 3, blipTrue = false },
+			
+			
 		},
 		["Panning"] = {
-			{ name = "River", coords = vector3(-1656.67, 2074.85, 87.37), sprite = 467, col = 5, disp = 6, blipTrue = false }, -- Vineyard
-			{ name = "River", coords = vector3(-1672.06, 2070.89, 91.68), sprite = 467, col = 5, blipTrue = false },
-
-			{ name = "River", coords = vector3(-1273.16, 1898.19, 100.82), sprite = 467, col = 5, disp = 6, blipTrue = false }, -- Tongva
-
-			{ name = "River", coords = vector3(-1551.31, 1444.15, 116.44), sprite = 467, col = 5, disp = 6, blipTrue = false }, -- Tongva
-			{ name = "River", coords = vector3(-1565.47, 1431.46, 117.1), sprite = 467, col = 5, blipTrue = false },
-			{ name = "River", coords = vector3(-1578.39, 1419.59, 118.13), sprite = 467, col = 5, blipTrue = false },
-
 			{ name = "River", coords = vector3(-850.78, 4433.95, 14.21), sprite = 467, col = 5, disp = 6, blipTrue = true }, -- Wilderness
 		},
 		['Cracking'] = { -- The location of the smelter
-			{ name = "Stone Cracking", coords = vector4(1109.19, -1992.8, 30.98, 146.88), sprite = 566, col = 81, blipTrue = false, prop = `prop_vertdrill_01` }, -- Foundary
-			{ name = "Stone Cracking", coords = vector4(1105.56, -1992.53, 30.94, 238.19), sprite = 566, col = 81, blipTrue = false, prop = `prop_vertdrill_01` }, -- Foundary
+			{ name = "StoneCracking1", coords = vector4(1109.19, -1992.8, 30.98, 146.88), sprite = 566, col = 81, blipTrue = false, prop = `prop_vertdrill_01` }, -- Foundary
+			
 		},
 		['OreBuyer'] = { -- The Locations of the ore buyers
 			--{ name = "Ore Buyer", coords = vector4(1090.18, -1999.51, 30.93, 146.24), sprite = 568, col = 81, blipTrue = false, model = `G_M_M_ChemWork_01`, scenario = "WORLD_HUMAN_CLIPBOARD", },
 		},
 		['JewelCut'] = { -- The Location of the jewel cutting bench. Couldn't decide so left in smeltery
-			{ name = "Jewel Cutting", coords = vector4(1077.11, -1984.22, 31.02, 235.8), sprite = 566, col = 81, blipTrue = false, prop = `gr_prop_gr_speeddrill_01c` },
-			{ name = "Jewel Cutting", coords = vector4(1075.19, -1985.45, 30.92, 144.89), sprite = 566, col = 81, blipTrue = false, prop = `gr_prop_gr_speeddrill_01c` },
+			{ name = "JewelCutting", coords = vector4(1077.11, -1984.22, 31.02, 235.8), sprite = 566, col = 81, blipTrue = false, prop = `gr_prop_gr_speeddrill_01c` },
+		
 		},
 		['JewelBuyer'] = { -- The Location of the jewel buyer, I left this as Vangelico, others will proabably change to pawn shops
 			--{ name = "Jewel Buyer", coords = vector4(-629.86, -240.35, 38.16, 110.05), sprite = 527, col = 617, blipTrue = false, model = `S_M_M_HighSec_03`, scenario = "WORLD_HUMAN_CLIPBOARD", },

@@ -61,7 +61,7 @@ Config = {
 		["hardware"] = {
 			{ name = "lockpick", price = 500, amount = math.random(30,45), },
 			{ name = "ducttape", price = 100, amount = math.random(15,30), },
-			--{ name = "powersaw", price = 2500, amount = 10,} ,
+			{ name = "powersaw", price = 2500, amount = 10,} ,
 			{ name = "goldpan", price = 750, amount = 10, },
 			{ name = "pickaxe", price = 1500, amount = math.random(15,20), },
 			{ name = "miningdrill", price = 22000, amount = math.random(5,10), },
