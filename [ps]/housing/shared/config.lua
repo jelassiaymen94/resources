@@ -7,9 +7,9 @@ exports('GetApartments', function() return ApartmentsTable end)
 Config = {}
 
 -- If you're not utilizing ox_lib, it's time to question your approach.
-Config.Target = "ox" -- "ox" or "qb"
-Config.Notify = "ox" -- "ox" or "qb"
-Config.Radial = "ox" -- "ox" or "qb"
+Config.Target = "qb" -- "ox" or "qb"
+Config.Notify = "qb" -- "ox" or "qb"
+Config.Radial = "qb" -- "ox" or "qb"
 Config.Inventory = "qb" -- "ox" or "qb"
 Config.Logs = "qb" -- "qb"
 
@@ -29,7 +29,7 @@ end
 Config.EnableLogs = true
 
 -- Enables Dynamic Doors
-Config.DynamicDoors = false
+Config.DynamicDoors = true
 
 Config.PoliceJobNames = {  -- add multiple police jobs that are allowed to raid properties!
     "police",
@@ -46,7 +46,7 @@ Config.RaidItem = "police_stormram"  -- The item required to raid a property
 -- If you are using ox_inventory, it is encouraged to use the consume property within data/items.lua and keeping this config option false
 Config.ConsumeRaidItem = false          -- Whether or not to consume the raid item upon successful entry.
 
-Config.RealtorJobName = "realestate" -- Set your Real Estate job here
+Config.RealtorJobName = "realtor" -- Set your Real Estate job here
 
 -- Set this value to true if ur using qb-management
 -- and want the Money go straight into the Realestate Bank Account.
@@ -63,7 +63,7 @@ Config.Commissions = {
 }
 
 -- Set this value to false if you don't want to assign a starting apartment.
-Config.StartingApartment = true
+Config.StartingApartment = false
 
 Config.Apartments = {
     ["Integrity Way"] = {
