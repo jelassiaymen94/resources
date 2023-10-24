@@ -1,6 +1,6 @@
 local QBCore = exports['qb-core']:GetCoreObject()
 
-if Config.UseTarget then
+
 	CreateThread(function()
 		for k, v in pairs(Config.Machines_QBTARGET['Washing Machines']) do
 			exports['qb-target']:AddBoxZone("Washer #"..k, v.location, v.depth, v.width, {
@@ -23,7 +23,7 @@ if Config.UseTarget then
 			})
 
 
-			local prop =  CreateObject(GetHashKey("prop_washer_01"), vec3(v.location.x, v.location.y, v.location.z), false, false, false) 
+			local prop =  CreateObject(GetHashKey("prop_washer_01"), vec3(v.location.x, v.location.y, v.location.z-1), false, false, false) 
 			Wait(50) FreezeEntityPosition(prop, true) 
 		end
 		
@@ -48,81 +48,11 @@ if Config.UseTarget then
 			})
 
 
-			local prop =  CreateObject(GetHashKey("bkr_prop_prtmachine_dryer_spin"), vec3(v.location.x, v.location.y, v.location.z), false, false, false) 
+			local prop =  CreateObject(GetHashKey("bkr_prop_prtmachine_dryer_spin"), vec3(v.location.x, v.location.y, v.location.z-1), false, false, false) 
 			Wait(50) FreezeEntityPosition(prop, true) 
 		end
 	end)
-else
-	local closest_machine = nil
-	local closest_type = nil
 
-	CreateThread(function()
-		while true do
-			local close = false
-			local PlayerCoords = GetEntityCoords(PlayerPedId())
-
-			for k, v in pairs(Config.Machines['Washing Machines']) do
-				if #(PlayerCoords - v) <= 0.4 then
-					close = true
-					closest_machine = "Washer #"..k
-					closest_type = "Washer"
-				end
-			end
-
-			for k, v in pairs(Config.Machines['Dryers']) do
-				if #(PlayerCoords - v) <= 0.3 then
-					close = true
-					closest_machine = "Dryer #"..k
-					closest_type = "Dryer"
-				end
-			end
-
-			if not close then
-				closest_machine = nil
-				closest_type = nil
-			end
-
-			Wait(400)
-		end
-	end)
-
-	CreateThread(function()
-		local HasShownText
-		while true do
-			local WaitTime = 400
-
-			if closest_machine then
-				WaitTime = 0
-				if not HasShownText then 
-					HasShownText = true 
-					if Config.DrawText == "qb" then
-						exports['qb-core']:DrawText("[E] - Open") 
-					else
-						lib.showTextUI('[E] - Open')
-					end
-				end
-				if IsControlJustPressed(0, 38) then
-					if closest_type == "Washer" then
-						TriggerEvent('moneywash:client:openMoneyWashMenu', closest_machine)
-					else
-						TriggerEvent('moneywash:client:openDryMoneyMenu', closest_machine)
-					end
-				end
-			else
-				if HasShownText then 
-					HasShownText = false 
-					if Config.DrawText == "qb" then
-						exports['qb-core']:HideText() 
-					else
-						lib.hideTextUI()
-					end
-				end
-			end
-
-			Wait(WaitTime)
-		end
-	end)
-end
 
 RegisterNetEvent('moneywash:client:openMoneyWashMenu', function(args)
     local Player = QBCore.Functions.GetPlayerData()
@@ -155,14 +85,9 @@ RegisterNetEvent('moneywash:client:openMoneyWashMenu', function(args)
 					cangrabmoney = true
 					Currently_Washing = true
 				else
-					if Config.Menu == "qb-menu" then
+				
 						AvailableMoneyText = "Currently Washing $"..result.amount.."<br><br>Time left: "..result.time_left.." seconds"
-					else
-						AvailableMoneyText = "Currently Washing $"..result.amount
-						metadata = {
-							["Time Left"] = result.time_left.." seconds"
-						}
-					end
+					
 					AvailableMoney = 0
 					cangrabmoney = false
 					Currently_Washing = true
@@ -220,7 +145,7 @@ RegisterNetEvent('moneywash:client:openMoneyWashMenu', function(args)
 		end
 	end
 
-	if Config.Menu == "qb-menu" then
+	
 		exports['qb-menu']:openMenu({
 			{
 				header = args,
@@ -257,71 +182,7 @@ RegisterNetEvent('moneywash:client:openMoneyWashMenu', function(args)
 				}
 			}
 		})
-	else
-		local moneywashmenu = {}
-        
-		moneywashmenu[#moneywashmenu + 1] = {
-			title = "Experience level: "..level.level,
-		}
-
-		if not WashMoneyLocked then
-			moneywashmenu[#moneywashmenu + 1] = {
-				title = 'Wash',
-				description = WashMoneyText,
-				arrow = true,
-				event = 'moneywash:client:openWashableItemsMenu',
-				args = {
-					machine = args
-				}
-			}
-		else
-			moneywashmenu[#moneywashmenu + 1] = {
-				title = 'Wash',
-				description = WashMoneyText
-			}
-		end
-
-		if not GrabMoneyLocked then
-			moneywashmenu[#moneywashmenu + 1] = {
-				title = 'Grab',
-				description = AvailableMoneyText,
-				metadata = metadata,
-				arrow = true,
-				event = "moneywash:client:GrabWetMoney",
-				args = {
-					machine = args,
-					wetmoney = AvailableMoney
-				}
-			}
-		else
-			moneywashmenu[#moneywashmenu + 1] = {
-				title = 'Grab',
-				description = AvailableMoneyText,
-				metadata = metadata,
-			}
-
-			if Currently_Washing then
-				moneywashmenu[#moneywashmenu + 1] = {
-					title = 'Refresh',
-					description = "Refresh Timer...",
-					arrow = false,
-					event = "moneywash:client:openMoneyWashMenu",
-					args = args
-				}
-			end
-		end
-
-		lib.registerContext({
-			id = 'moneywashmenu1',
-			title = args,
-			onExit = function()
-				
-			end,
-			options = moneywashmenu
-		})
-
-		lib.showContext('moneywashmenu1')	
-	end
+	
 end)
 
 RegisterNetEvent('moneywash:client:openWashableItemsMenu', function(args)
@@ -351,23 +212,7 @@ RegisterNetEvent('moneywash:client:openWashableItemsMenu', function(args)
 	end)
 
 	repeat Wait(10) until washable_items ~= nil
-
-	--local a, b = nil, nil
-
-	--function compare(a,b)
-		--a = a.info[Config.Washable_Items[a.name]]
-		--b = b.info[Config.Washable_Items[b.name]]
-
-		--repeat
-			
-		--until (a ~= nil) and (b ~= nil)
-
-		--return a > b
-	--end
-
-	--table.sort(washable_items, compare)
-
-	if Config.Menu == "qb-menu" then
+	
 		local WashableItemsMenu = {}
 
 		table.insert(WashableItemsMenu, {
@@ -411,48 +256,7 @@ RegisterNetEvent('moneywash:client:openWashableItemsMenu', function(args)
 		})
 
 		exports['qb-menu']:openMenu(WashableItemsMenu) 
-	else
-		local moneywashmenu = {}
-        
-		moneywashmenu[#moneywashmenu + 1] = {
-			title = "Select an item that you want to wash, About "..level.mdr.."% of the money will be destroyed in the process",
-		}
-
-		for k,v in ipairs(washable_items) do
-			local amount = nil
-
-			if Config.Washable_Items[v.name].worth_type == "metadata" then
-				amount = "Amount: $"..v.info[Config.Washable_Items[v.name].worth_identifier]
-			else
-				amount = "Amount: $"..v.amount
-			end
-
-			repeat Wait(0) until amount
-
-			moneywashmenu[#moneywashmenu + 1] = {
-				title = QBCore.Shared.Items[v.name]['label'],
-				description = amount,
-				arrow = false,
-				event = "moneywash:client:openWashMoneyMenu",
-				args = {
-					oldargs = args,
-					item = v
-				}
-			}
-		end
-
-		lib.registerContext({
-			id = 'moneywashmenu2',
-			menu = 'moneywashmenu1',
-			title = "Items",
-			onExit = function()
-				
-			end,
-			options = moneywashmenu
-		})
-
-		lib.showContext('moneywashmenu2')
-	end
+	
 end)
 
 RegisterNetEvent('moneywash:client:openWashMoneyMenu', function(args)
@@ -481,7 +285,7 @@ RegisterNetEvent('moneywash:client:openWashMoneyMenu', function(args)
 		end
 	end
 
-	if Config.Menu == "qb-menu" then
+
 		exports['qb-menu']:openMenu({
 			{
 				header = "Wash $"..value,
@@ -508,37 +312,7 @@ RegisterNetEvent('moneywash:client:openWashMoneyMenu', function(args)
 				}
 			}
 		})
-	else
-		local moneywashmenu = {}
-        
-		moneywashmenu[#moneywashmenu + 1] = {
-			title = "Wash $"..value,
-			description = "Hover to see information...",
-			metadata = {
-				["Wash Time"] = (value/100 * Config.Wash_Time).." Seconds",
-				["Estimated Clean Cash"] = "$"..(value/100)*(100 - level.mdr)
-			},
-			event = "moneywash:client:startMoneyWash",
-			args = {
-				item = args.item,
-				item_worth = (value/100)*(100 - level.mdr),
-				washtime = (value/100 * Config.Wash_Time),
-				args = args
-			}
-		}
 
-		lib.registerContext({
-			id = 'moneywashmenu3',
-			menu = 'moneywashmenu2',
-			title = "Wash $"..value,
-			onExit = function()
-				
-			end,
-			options = moneywashmenu
-		})
-
-		lib.showContext('moneywashmenu3')
-	end
 end)
 
 RegisterNetEvent('moneywash:client:startMoneyWash', function(args)
@@ -597,14 +371,9 @@ RegisterNetEvent('moneywash:client:openDryMoneyMenu', function(args)
 					cangrabmoney = true
 					Currently_Drying = true
 				else
-					if Config.Menu == "qb-menu" then
+				
 						AvailableMoneyText = "Currently Drying $"..result.amount.."<br><br>Time left: "..result.time_left.." seconds"
-					else
-						AvailableMoneyText = "Currently Drying $"..result.amount
-						metadata = {
-							["Time Left"] = result.time_left.." seconds"
-						}
-					end
+					
 					AvailableMoney = 0
 					cangrabmoney = false
 					Currently_Drying = true
@@ -668,7 +437,7 @@ RegisterNetEvent('moneywash:client:openDryMoneyMenu', function(args)
 		end
 	end
 
-	if Config.Menu == "qb-menu" then
+	
 		exports['qb-menu']:openMenu({
 			{
 				header = "Dry",
@@ -700,70 +469,7 @@ RegisterNetEvent('moneywash:client:openDryMoneyMenu', function(args)
 				}
 			}
 		})
-	else
-		local moneywashmenu = {}
-        
-		moneywashmenu[#moneywashmenu + 1] = {
-			title = "Experience level: "..level.level
-		}
-
-		if not DryMoneyLocked then
-			moneywashmenu[#moneywashmenu + 1] = {
-				title = "Dry Money",
-				description = DryMoneyText,
-				event = "moneywash:client:openDryableItemsMenu",
-				args = {
-					machine = args
-				}
-			}
-		else
-			moneywashmenu[#moneywashmenu + 1] = {
-				title = "Dry Money",
-				description = DryMoneyText
-			}
-		end
-
-		if not GrabMoneyLocked then
-			moneywashmenu[#moneywashmenu + 1] = {
-				title = 'Grab',
-				description = AvailableMoneyText,
-				metadata = metadata,
-				arrow = true,
-				event = "moneywash:client:GrabDryMoney",
-				args = {
-					machine = args,
-					drymoney = AvailableMoney
-				}
-			}
-		else
-			moneywashmenu[#moneywashmenu + 1] = {
-				title = 'Grab',
-				description = AvailableMoneyText,
-				metadata = metadata,
-			}
-
-			if Currently_Drying then
-				moneywashmenu[#moneywashmenu + 1] = {
-					title = 'Refresh',
-					description = "Refresh Timer...",
-					arrow = false,
-					event = "moneywash:client:openDryMoneyMenu",
-					args = args
-				}
-			end
-		end
-
-		lib.registerContext({
-			id = 'moneydrymenu1',
-			title = args,
-			onExit = function()
-				
-			end,
-			options = moneywashmenu
-		})
-
-		lib.showContext('moneydrymenu1')	
-	end
+	
 end)
 
 RegisterNetEvent('moneywash:client:openDryableItemsMenu', function(args)
@@ -809,7 +515,7 @@ RegisterNetEvent('moneywash:client:openDryableItemsMenu', function(args)
 
 	table.sort(dryable_items, compare)
 
-	if Config.Menu == "qb-menu" then
+
 		local DryableItemsMenu = {}
 
 		table.insert(DryableItemsMenu, {
@@ -842,41 +548,11 @@ RegisterNetEvent('moneywash:client:openDryableItemsMenu', function(args)
 		})
 
 		exports['qb-menu']:openMenu(DryableItemsMenu) 
-	else
-		local moneywashmenu = {}
-        
-		moneywashmenu[#moneywashmenu + 1] = {
-			title = "Select an item that you want to dry..."
-		}
 
-		for k,v in ipairs(dryable_items) do
-			moneywashmenu[#moneywashmenu + 1] = {
-				title = QBCore.Shared.Items[v.name]['label'],
-				description = "Amount: $"..v.info.worth,
-				event = "moneywash:client:openDryMoneyMenu2",
-				args = {
-					oldargs = args,
-					item = v
-				}
-			}
-		end
-
-		lib.registerContext({
-			id = 'moneydrymenu2',
-			menu = "moneydrymenu1",
-			title = "Items",
-			onExit = function()
-				
-			end,
-			options = moneywashmenu
-		})
-
-		lib.showContext('moneydrymenu2')	
-	end
 end)
 
 RegisterNetEvent('moneywash:client:openDryMoneyMenu2', function(args)
-	if Config.Menu == "qb-menu" then
+
 		exports['qb-menu']:openMenu({
 			{
 				header = "Dry $"..args.item.info.worth,
@@ -903,33 +579,7 @@ RegisterNetEvent('moneywash:client:openDryMoneyMenu2', function(args)
 				}
 			}
 		})
-	else
-		local moneywashmenu = {}
 
-		moneywashmenu[#moneywashmenu + 1] = {
-			title = "Dry $"..args.item.info.worth,
-			description = "Estimated Time: "..(args.item.info.worth/100 * Config.Wash_Time).." seconds",
-			event = "moneywash:client:startDryMoney",
-			args = {
-				item = args.item,
-				item_worth = args.item.info.worth,
-				drytime = (args.item.info.worth/100 * Config.Wash_Time),
-				args = args
-			}
-		}
-
-		lib.registerContext({
-			id = 'moneydrymenu3',
-			menu = "moneydrymenu2",
-			title = "Dry $"..args.item.info.worth,
-			onExit = function()
-				
-			end,
-			options = moneywashmenu
-		})
-
-		lib.showContext('moneydrymenu3')	
-	end
 end)
 
 RegisterNetEvent('moneywash:client:startDryMoney', function(args)

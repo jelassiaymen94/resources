@@ -1,11 +1,5 @@
 Config = {}
 
--- Framework Options
-
-Config.UseTarget = true
-
-Config.Menu = "qb-menu" -- Can be either ox_lib or qb-menu
-Config.DrawText = "qb" -- Can be either ox_lib or qb
 
 Config.DiscordWebhooks = {
     Washing_Logs = "https://discord.com/api/webhooks/1079720657044131880/9_VKGuorflQasSVHO-a4ygk6xfPc6rns8-wNqtxfKBUfIN96ytTzKvzM8ns1NpsStWKu",
@@ -26,33 +20,16 @@ Config.Washable_Items = {
 Config.Wash_Time = 3 -- 15% Example: $1000 would take 150 seconds to wash
 
 -- Machine Locations For Drawtext Users --
-Config.Machines = {
-    ['Washing Machines'] = {
-        vector3(1136.36, -992.15, 46.11),
-        vector3(1136.09, -990.82, 46.11),
-        vector3(1135.93, -989.49, 46.11),
-        vector3(1135.84, -988.11, 46.11)
-    },
-    ['Dryers'] = {
-        vector3(1138.01, -989.86, 46.11),
-        vector3(1138.12, -990.59, 46.11),
-        vector3(1138.22, -991.31, 46.11),
-        vector3(1138.3, -992.02, 46.11),
-        vector3(1140.25, -991.71, 46.11),
-        vector3(1140.21, -990.95, 46.11),
-        vector3(1140.06, -990.26, 46.11),
-        vector3(1139.98, -989.51, 46.11)
-    }
-}
+
 -- Machine Locations For Drawtext Users --
 
 -- Machine Locations For Target Users --
 Config.Machines_QBTARGET = {
     ['Washing Machines'] = {
         { location = vector3(-591.13, -1626.86, 33.00), heading = 96.63, width = 0.8, depth = 0.5, minZ=33.06 - 1.0, maxZ=33.06  + 1.0, distance = 4.7 }, -- done
-        { location = vector3(-585.37, -1623.1, 32.51), heading = 343.46, width = 1.0, depth = 0.2, minZ=32.51  - 1.0, maxZ=32.51  + 1.0, distance = 4.7 }, -- done
-        { location = vector3(-576.15, -1623.9, 32.95), heading = 38.19, width = 0.8, depth = 0.2, minZ=32.95  - 1.0, maxZ=32.95  + 1.0, distance = 4.7 }, -- done
-        { location = vector3(-572.51, -1624.71, 32.52), heading = 324.38, width = 1.0, depth = 0.3, minZ=32.52  - 1.0, maxZ=32.52 + 1.0, distance = 4.7 },
+        { location = vector3(-585.37, -1623.1, 33.00), heading = 343.46, width = 1.0, depth = 0.2, minZ=32.51  - 1.0, maxZ=32.51  + 1.0, distance = 4.7 }, -- done
+        { location = vector3(-576.15, -1623.9, 33.00), heading = 38.19, width = 0.8, depth = 0.2, minZ=32.95  - 1.0, maxZ=32.95  + 1.0, distance = 4.7 }, -- done
+        { location = vector3(-572.51, -1624.71, 33.00), heading = 324.38, width = 1.0, depth = 0.3, minZ=32.52  - 1.0, maxZ=32.52 + 1.0, distance = 4.7 },
     },
     ['Dryers'] = {
        -- { location = vector3(1138.91, -991.87, 46.11), heading = 8.0, width = 0.73, depth = 0.73, minZ=45.2, maxZ=46.4, distance = 8.0 },
