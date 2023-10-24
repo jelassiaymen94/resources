@@ -248,7 +248,7 @@ function Property:LeaveShell()
 
     self:RemoveBlip()
 
-    self:RemoveMenus()
+   -- self:RemoveMenus()
 
     self.doorbellPool = {}
 
@@ -630,7 +630,7 @@ function Property:UpdateOwner(newOwner)
 
     if not self.inProperty then return end
 
-    self:RemoveMenus()
+   -- self:RemoveMenus()
     self:GiveMenus()
 end
 
@@ -655,7 +655,7 @@ function Property:UpdateHas_access(newHas_access)
 
     if not self.inProperty then return end
 
-    self:RemoveMenus()
+  --  self:RemoveMenus()
     self:GiveMenus()
 end
 
