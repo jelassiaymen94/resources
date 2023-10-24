@@ -29,7 +29,7 @@ local regitems = {
     'cash', 'cash', 'cash', 'cash', 
 }
 local safeitems = {
-    'laptop_blue',
+    'laptop_green',
     'specialpick',
     'rope',
     'markedbills', 'markedbills', 'markedbills', 'markedbills', 'markedbills',

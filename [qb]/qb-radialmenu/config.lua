@@ -204,7 +204,7 @@ rootMenuConfig =  {
         id = "car:repair",
         displayName = "Repair Vehicle",
         icon =  "#general-car",
-        functionName = "Polar-Bennys:Server:Repair",
+        functionName = "Polar-Bennys:Client:Transfer",
         enableMenu = function()
             return (not isDead and bennys() and IsPedInAnyVehicle(PlayerPedId(), false))
         end

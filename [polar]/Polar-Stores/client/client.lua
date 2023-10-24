@@ -287,8 +287,8 @@ RegisterNetEvent('Polar-stores:Client:HackComputer', function(data)
     if playeritem(computeritem) then
         local door = data.id
         callback('Polar-stores:Door' .. door, function(result) if result then 
-       
-    
+            TriggerServerEvent('Polar-stores:Server:RemoveItem', computeritem, 1)
+            
     TriggerServerEvent('Polar-stores:Server:StopInteract', door) 
     local chance=math.random(1,100) 
 
@@ -367,7 +367,7 @@ RegisterNetEvent('Polar-stores:Client:Safe', function(data)
     if playeritem(safeitem) then
         TriggerServerEvent('Polar-stores:Server:StopInteract', name)
    -- exports[circleexport]:Circle(function(success)
-
+    TriggerServerEvent('Polar-stores:Server:RemoveItem', safeitem, 1)
 
     local gameData = {
         totalNumbers = 15,
@@ -432,6 +432,7 @@ RegisterNetEvent('Polar-stores:Client:Register', function(data)
     local name = data.id
     callback('Polar-stores:Door' .. name, function(result) if result then 
     if playeritem(registeritem) then
+        TriggerServerEvent('Polar-stores:Server:RemoveItem', registeritem, 1)
         TriggerServerEvent('Polar-stores:Server:StopInteract', name)
         loop(false)
 
@@ -507,6 +508,7 @@ RegisterNetEvent('Polar-stores:Client:Door', function(data)
         if playeritem(dooritem) then
         TriggerServerEvent('Polar-stores:Server:StopInteract', name)
         loop(false)
+        local lll = math.random(1,100) if lll < 50 then TriggerServerEvent('Polar-stores:Server:RemoveItem', dooritem, 1) end
         exports[circleexport]:Circle(function(success)
             if success then
                 CallPolice(GetEntityCoords(PlayerPedId()))
@@ -559,6 +561,7 @@ RegisterNetEvent('Polar-stores:Client:Door2', function(data)
     
     callback('Polar-stores:Door2', function(result) if result then 
         if playeritem(dooritem) then
+            local lll = math.random(1,100) if lll < 50 then TriggerServerEvent('Polar-stores:Server:RemoveItem', dooritem, 1) end
             TriggerServerEvent('Polar-stores:Server:StopInteract', name)
             loop(false)
         exports[circleexport]:Circle(function(success)
