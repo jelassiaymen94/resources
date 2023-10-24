@@ -24,6 +24,7 @@ local QBCore = exports['qb-core']:GetCoreObject()
 
 
 			local prop =  CreateObject(GetHashKey("prop_washer_02"), vec3(v.location.x, v.location.y, v.location.z-1), false, false, false) 
+			SetEntityHeading(prop, v.heading)
 			Wait(50) FreezeEntityPosition(prop, true) 
 		end
 		
@@ -44,11 +45,12 @@ local QBCore = exports['qb-core']:GetCoreObject()
 						end,
 					}
 				},
-				distance = 1.5,
+				distance = 2.0,
 			})
 
 
 			local prop =  CreateObject(GetHashKey("bkr_prop_prtmachine_dryer_spin"), vec3(v.location.x, v.location.y, v.location.z-1), false, false, false) 
+			SetEntityHeading(prop, v.heading)
 			Wait(50) FreezeEntityPosition(prop, true) 
 		end
 	end)
