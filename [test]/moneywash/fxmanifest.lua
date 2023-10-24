@@ -2,12 +2,8 @@ fx_version 'cerulean'
 game 'gta5'
 
 
-description 'wash'
-version '1.5'
-
 shared_scripts {
 	'config.lua',
-    '@ox_lib/init.lua'
 }
 
 client_scripts {
@@ -33,6 +29,5 @@ escrow_ignore {
 lua54 'yes'
 
 dependencys {
-	'/assetpacks',
-	'ox_lib'
+	'/assetpacks'
 } 

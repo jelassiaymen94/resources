@@ -23,7 +23,7 @@ local QBCore = exports['qb-core']:GetCoreObject()
 			})
 
 
-			local prop =  CreateObject(GetHashKey("prop_washer_01"), vec3(v.location.x, v.location.y, v.location.z-1), false, false, false) 
+			local prop =  CreateObject(GetHashKey("prop_washer_02"), vec3(v.location.x, v.location.y, v.location.z-1), false, false, false) 
 			Wait(50) FreezeEntityPosition(prop, true) 
 		end
 		
