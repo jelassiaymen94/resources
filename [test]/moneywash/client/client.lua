@@ -21,6 +21,10 @@ if Config.UseTarget then
 				},
 				distance = 1.5,
 			})
+
+
+			local prop =  CreateObject(GetHashKey("prop_washer_01"), vec3(v.location.x, v.location.y, v.location.z), false, false, false) 
+			Wait(50) FreezeEntityPosition(prop, true) 
 		end
 		
 		for k, v in pairs(Config.Machines_QBTARGET['Dryers']) do
@@ -42,6 +46,10 @@ if Config.UseTarget then
 				},
 				distance = 1.5,
 			})
+
+
+			local prop =  CreateObject(GetHashKey("bkr_prop_prtmachine_dryer_spin"), vec3(v.location.x, v.location.y, v.location.z), false, false, false) 
+			Wait(50) FreezeEntityPosition(prop, true) 
 		end
 	end)
 else
