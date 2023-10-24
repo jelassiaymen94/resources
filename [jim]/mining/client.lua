@@ -122,9 +122,9 @@ function makeJob()
 	end
 	--Panning
 	for k, v in pairs(Config.Locations["Panning"]) do
-		Targets["Panning"..k] =
-			exports['qb-target']:AddCircleZone("Panning"..k, v.coords.xyz, 9.0, {name="Panning"..k, debugPoly=Config.Debug, useZ=true, },
-			{ options = { { event = "jim-mining:PanStart", icon = "fas fa-ring", item = "goldpan", label = Loc[Config.Lan].info["goldpan"], coords = v.coords }, },
+		Targets["PanningRiver"] =
+			exports['qb-target']:AddCircleZone("PanningRiver", vector3(-850.78, 4433.95, 14.21), 9.0, {name="PanningRiver", debugPoly=false, useZ=true, },
+			{ options = { { event = "jim-mining:PanStart", icon = "fas fa-ring", item = "goldpan", label = "Pan", coords = vector3(-850.78, 4433.95, 14.21) }, },
 				distance = 2.0
 			})
 		if Config.Blips and v.blipTrue then Blip[#Blip+1] = makeBlip(v) end
