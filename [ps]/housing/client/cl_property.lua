@@ -248,7 +248,7 @@ function Property:LeaveShell()
 
     self:RemoveBlip()
 
-   -- self:RemoveMenus()
+    self:RemoveMenus()
 
     self.doorbellPool = {}
 
@@ -259,28 +259,20 @@ end
 
 function Property:GiveMenus()
     if not self.inProperty then return end
-
     local accessAndConfig = self.has_access and Config.AccessCanEditFurniture
-    print(self.property_id)
     if self.owner or accessAndConfig then
-        TriggerEvent('Polar-Radial:Client:furnitureaccesss', self.property_id)
-           -- { propertyId = self.property_id }
+        TriggerEvent('Polar-Radial:Client:furnitureaccesss', true, self.property_id)
     end
-
     if self.owner then
-        TriggerEvent('Polar-Radial:Client:propertyaccess', self.property_id)
-           -- { propertyId = self.property_id }
-        
+        TriggerEvent('Polar-Radial:Client:propertyaccess', true, self.property_id)    
     end
 end
 
 function Property:RemoveMenus()
     if not self.inProperty then return end
-
-    Framework[Config.Radial].RemoveRadialOption("furniture_menu")
-
+    TriggerEvent('Polar-Radial:Client:furnitureaccesss', false, nil)
     if self.owner then
-        Framework[Config.Radial].RemoveRadialOption("access_menu")
+        TriggerEvent('Polar-Radial:Client:propertyaccess', false, nil)    
     end
 end
 
@@ -630,7 +622,7 @@ function Property:UpdateOwner(newOwner)
 
     if not self.inProperty then return end
 
-   -- self:RemoveMenus()
+    self:RemoveMenus()
     self:GiveMenus()
 end
 
@@ -655,7 +647,7 @@ function Property:UpdateHas_access(newHas_access)
 
     if not self.inProperty then return end
 
-  --  self:RemoveMenus()
+    self:RemoveMenus()
     self:GiveMenus()
 end
 
