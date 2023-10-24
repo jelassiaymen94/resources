@@ -261,7 +261,7 @@ function Property:GiveMenus()
     if not self.inProperty then return end
 
     local accessAndConfig = self.has_access and Config.AccessCanEditFurniture
-
+    print(self.property_id)
     if self.owner or accessAndConfig then
         TriggerEvent('Polar-Radial:Client:furnitureaccesss', self.property_id)
            -- { propertyId = self.property_id }
