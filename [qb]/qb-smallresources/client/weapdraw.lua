@@ -1,3 +1,6 @@
+local QBCore = exports['qb-core']:GetCoreObject()
+
+
 local weapons = {
 	--Custom Weapon
 	
@@ -187,43 +190,7 @@ CreateThread(function()
 
 				local HolsterVariant = GetPedDrawableVariation(ped, 7)
 				if QBCore.Functions.GetPlayerData().job and QBCore.Functions.GetPlayerData().job.name == 'police' then
-				if HolsterVariant == 8 then
 					WearingHolster = true
-				elseif HolsterVariant == 1 then
-					WearingHolster = true
-				elseif HolsterVariant == 6 then
-					WearingHolster = true
-				elseif HolsterVariant == 2 then
-					WearingHolster = true
-				elseif HolsterVariant == 3 then
-					WearingHolster = true
-				elseif HolsterVariant == 5 then
-					WearingHolster = false
-				elseif HolsterVariant == 130 then --Replace to match config
-					WearingHolster = true
-				elseif HolsterVariant == 21 then --Replace to match config
-					WearingHolster = true
-				elseif HolsterVariant == 73 then --Replace to match config
-					WearingHolster = true
-				elseif HolsterVariant == 93 then --Replace to match config
-					WearingHolster = true
-				elseif HolsterVariant == 94 then --Replace to match config
-					WearingHolster = true
-				elseif HolsterVariant == 100 then --Replace to match config
-					WearingHolster = true
-				elseif HolsterVariant == 108 then --Replace to match config
-					WearingHolster = true
-				elseif HolsterVariant == 110 then --Replace to match config
-					WearingHolster = true
-				elseif HolsterVariant == 150 then --Replace to match config
-					WearingHolster = true
-				elseif HolsterVariant == 160 then --Replace to match config
-					WearingHolster = true
-				elseif HolsterVariant == 161 then --Replace to match config
-					WearingHolster = true
-				elseif HolsterVariant == 162 then --Replace to match config
-					WearingHolster = true
-				end
 				end
 				if CheckWeapon(newWeap) then
 					if holstered then
