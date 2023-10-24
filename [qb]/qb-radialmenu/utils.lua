@@ -39,6 +39,8 @@ function hasEnoughOfItem(item)
 	end, item)
 end
 
+
+
 local ingar = false
 local inpound = false
 local inbennys = false
@@ -48,3 +50,17 @@ RegisterNetEvent('Polar-Radial:Client:InBennys', function(bool) inbennys = bool 
 function inGarage() return ingar end
 function inImpound() return inpound end
 function bennys() return inbennys end
+
+
+
+
+local propertyaccess = false
+local furnitureaccesss = false
+local ghouse = nil
+local hhouse = nil
+RegisterNetEvent('Polar-Radial:Client:propertyaccess', function(bool, house) propertyaccess = bool ghouse = house end)
+RegisterNetEvent('Polar-Radial:Client:furnitureaccesss', function(bool, house) furnitureaccesss = bool hhouse = house end)
+function inpropertyaccess() return propertyaccess end
+function furnitureaccess() return furnitureaccesss end
+RegisterNetEvent('Polar-Radial:Client:GetHouseProperty', function()	TriggerEvent('housing:client:openManagePropertyAccessMenu', ghouse) end)
+RegisterNetEvent('Polar-Radial:Client:GetHouseFurniture', function() TriggerEvent('housing:client:openFurnitureMenu', hhouse) end)

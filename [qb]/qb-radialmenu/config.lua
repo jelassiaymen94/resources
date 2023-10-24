@@ -210,16 +210,23 @@ rootMenuConfig =  {
         end
     },
     {
-        id = "car:bigmenu",
-        displayName = "Vehicle Menu",
-        icon =  "#general-car",
-        functionName = "veh:options",
+        id = "housing:client:openManagePropertyAccessMenu",
+        displayName = "Manage Property",
+        icon =  "#judge-licenses-grant-house",
+        functionName = "Polar-Radial:Client:GetHouseProperty",
         enableMenu = function()
-            return (not isDead and IsPedInAnyVehicle(PlayerPedId(), false))
+            return (not isDead and propertyaccess())
         end
     },
-    
-    
+    {
+        id = "housing:client:openFurnitureMenu",
+        displayName = "Furniture Menu",
+        icon =  "#judge-licenses-grant-house",
+        functionName = "Polar-Radial:Client:GetHouseFurniture",
+        enableMenu = function()
+            return (not isDead and furnitureaccess())
+        end
+    },
     
     
     
