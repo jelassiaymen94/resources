@@ -66,7 +66,7 @@ Config.Commissions = {
 Config.StartingApartment = false
 
 Config.Apartments = {
-   --[[["Integrity Way"] = {
+   ["Integrity Way"] = {
         label = "Integrity Way",
         door = { x = 269.73, y = -640.75, z = 42.02, h = 249.07, length = 1, width = 2 },
         imgs = {
@@ -124,7 +124,7 @@ Config.Apartments = {
             },
         },
         shell = "Apartment Furnished",
-    }]]
+    }
 }
 
 -- Shells provided by K4MB1 https://www.k4mb1maps.com/
