@@ -353,6 +353,79 @@ Config.Shells = {
         },
     },
 
+
+
+
+
+
+
+
+
+
+
+
+    ["Fastro_highendmotel_shell"] = {
+        label = "Fastro_highendmotel_shell",
+        hash = `highendmotel_shell`,
+        doorOffset = { x = 0.05, y = -5.7, z = -0.22, h = 1.7, width = 2.2  },
+        stash = {
+            maxweight = 500000, 
+            slots = 100,
+        },
+        imgs = {
+            {
+                url = "https://cdn.discordapp.com/attachments/1101313033684394084/1101713526319497267/container.webp",
+                label = "Container",
+            },
+        },
+    },
+    ["Fastro_standardmotel_shell"] = {
+        label = "Fastro_standardmotel_shell",
+        hash = `standardmotel_shell`,
+        doorOffset = { x = 0.05, y = -5.7, z = -0.22, h = 1.7, width = 2.2  },
+        stash = {
+            maxweight = 500000, 
+            slots = 100,
+        },
+        imgs = {
+            {
+                url = "https://cdn.discordapp.com/attachments/1101313033684394084/1101713526319497267/container.webp",
+                label = "Container",
+            },
+        },
+    },
+    ["Fastro_classicmotel_shell"] = {
+        label = "Fastro_classicmotel_shell",
+        hash = `classicmotel_shell`,
+        doorOffset = { x = 0.05, y = -5.7, z = -0.22, h = 1.7, width = 2.2  },
+        stash = {
+            maxweight = 500000, 
+            slots = 100,
+        },
+        imgs = {
+            {
+                url = "https://cdn.discordapp.com/attachments/1101313033684394084/1101713526319497267/container.webp",
+                label = "Container",
+            },
+        },
+    },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     ["2 Floor House"] = {
         label = "2 Floor House",
         hash = `shell_michael`,
