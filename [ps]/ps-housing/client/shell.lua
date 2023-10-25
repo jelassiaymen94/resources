@@ -55,7 +55,7 @@ end
 
 
 -- example of how to use
--- exports["housing"]:CreateTempShell("Modern Hotel", GetEntityCoords(PlayerPedId()), GetEntityRotation(PlayerPedId()), function()
+-- exports["ps-housing"]:CreateTempShell("Modern Hotel", GetEntityCoords(PlayerPedId()), GetEntityRotation(PlayerPedId()), function()
 --     Framework[Config.Notify].Notify("You left the shell", "error")
 --     local coords = GetEntityCoords(PlayerPedId())
 --     SetEntityCoordsNoOffset(PlayerPedId(), coords.x, coords.y, coords.z + 50.0, false, false, true)

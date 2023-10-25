@@ -1,5 +1,5 @@
 QBCore = exports['qb-core']:GetCoreObject()
--- PSCore = exports['core']:GetCoreObject()
+-- PSCore = exports['ps-core']:GetCoreObject()
 
 local dbloaded = false
 MySQL.ready(function()
