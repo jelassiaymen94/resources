@@ -551,7 +551,7 @@ input, select, textarea {
 
 		#header h1 {
 			font-size: 4.35em;
-			color:#1ac6ff;
+			color:#ffd51a;
 			font-weight: 900;
 			letter-spacing: -0.035em;
 			line-height: 1em;
@@ -679,7 +679,7 @@ input, select, textarea {
 					-ms-transition: all 0.2s ease-in-out;
 					transition: all 0.2s ease-in-out;
 					border-radius: 100%;
-					border: solid 1px #1ac6ff;
+					border: solid 1px #ffd51a;
 					display: block;
 					font-size: 1.75em;
 					height: 2.5em;
