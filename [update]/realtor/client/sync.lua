@@ -33,11 +33,11 @@ function InitialiseData()
 	})
 end
 
-AddEventHandler('housing:client:initialisedProperties', function()
+AddEventHandler('ps-housing:client:initialisedProperties', function()
 	InitialiseData()
 end)
 
-AddEventHandler('housing:client:updatedProperty', function(property_id)
+AddEventHandler('ps-housing:client:updatedProperty', function(property_id)
 	local property = exports['ps-housing']:GetProperty(property_id)
 
 	for i = 1, #PropertiesTable do
@@ -55,7 +55,7 @@ end)
 
 --old is the old player apartment location, new is the new location
 -- both have to be updated
-AddEventHandler("housing:client:updateApartment", function(old, new)
+AddEventHandler("ps-housing:client:updateApartment", function(old, new)
 
 	local oldApt = PSHousing:GetApartment(old)
 
@@ -72,7 +72,7 @@ AddEventHandler("housing:client:updateApartment", function(old, new)
 	})
 end)
 
-RegisterNetEvent('housing:client:addProperty', function(propertyData)
+RegisterNetEvent('ps-housing:client:addProperty', function(propertyData)
 	PropertiesTable[#PropertiesTable+1] = propertyData
 
 	SendNUIMessage({

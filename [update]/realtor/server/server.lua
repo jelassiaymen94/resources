@@ -14,7 +14,7 @@ RegisterNetEvent("bl-realtor:server:updateProperty", function(type, property_id,
 
     data.realtorSrc = src
     -- Update property
-    TriggerEvent("housing:server:updateProperty", type, property_id, data)
+    TriggerEvent("ps-housing:server:updateProperty", type, property_id, data)
 end)
 
 RegisterNetEvent("bl-realtor:server:registerProperty", function(data)
@@ -26,7 +26,7 @@ RegisterNetEvent("bl-realtor:server:registerProperty", function(data)
 
     data.realtorSrc = src
     -- Register property
-    TriggerEvent("housing:server:registerProperty", data)
+    TriggerEvent("ps-housing:server:registerProperty", data)
 end)
 
 RegisterNetEvent("bl-realtor:server:addTenantToApartment", function(data)
@@ -38,7 +38,7 @@ RegisterNetEvent("bl-realtor:server:addTenantToApartment", function(data)
 
     data.realtorSrc = src
     -- Add tenant
-    TriggerEvent("housing:server:addTenantToApartment", data)
+    TriggerEvent("ps-housing:server:addTenantToApartment", data)
 end)
 
 lib.callback.register("bl-realtor:server:getNames", function (source, data)
