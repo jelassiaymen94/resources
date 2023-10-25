@@ -285,7 +285,7 @@ RegisterNetEvent('Renewed-Deliveries:client:TakePackage', function()
         if result then
             prop = randomTable[math.random(1, #randomTable)]
             Wait(50)
-            exports['weaponcarry']:carryProp(prop)
+            exports['Polar-Sub']:carryProp(prop)
         end
     end, CachedNet)
 end)
@@ -304,7 +304,7 @@ RegisterNetEvent('Renewed-Deliveries:client:DeliverPackage', function()
     local shop = --GetShop()
     QBCore.Functions.TriggerCallback('Renewed-Deliveries:server:DeliverPackage', function(result)
         if result then
-            exports['weaponcarry']:removeProp(prop)
+            exports['Polar-Sub']:removeProp(prop)
             prop = nil
         end
     end,shop) -- shop)
