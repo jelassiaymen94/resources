@@ -366,7 +366,7 @@ Config.Shells = {
     ["Fastro_highendmotel_shell"] = {
         label = "Fastro_highendmotel_shell",
         hash = `highendmotel_shell`,
-        doorOffset = { x = 0.00, y = 0.0, z = -25.34, h = 1.7, width = 2.2  },
+        doorOffset = { x = 0.00, y = 0.0, z = 0.0, h = 1.7, width = 2.2  },
         stash = {
             maxweight = 500000, 
             slots = 100,
@@ -381,7 +381,7 @@ Config.Shells = {
     ["Fastro_standardmotel_shell"] = {
         label = "Fastro_standardmotel_shell",
         hash = `standardmotel_shell`,
-        doorOffset = { x = 0.00, y = 0.0, z = -25.34, h = 1.7, width = 2.2  },
+        doorOffset = { x = 0.00, y = 0.0, z = 0.0, h = 1.7, width = 2.2  },
         stash = {
             maxweight = 500000, 
             slots = 100,
@@ -396,7 +396,7 @@ Config.Shells = {
     ["Fastro_classicmotel_shell"] = {
         label = "Fastro_classicmotel_shell",
         hash = `classicmotel_shell`,
-        doorOffset = { x = 0.00, y = 0.0, z = -25.34, h = 1.7, width = 2.2  },
+        doorOffset = { x = 0.00, y = 0.0, z = 0.0, h = 1.7, width = 2.2  },
         stash = {
             maxweight = 500000, 
             slots = 100,
@@ -413,7 +413,7 @@ Config.Shells = {
     ["Fastro_lev_apartment_shell"] = {
         label = "Fastro_lev_apartment_shell",
         hash = `lev_apartment_shell`,
-        doorOffset = { x = 0.8, y = 2.95, z = -0.56, h = 1.7, width = 2.2  },
+        doorOffset = { x = 0.00, y = 0.0, z = 0.0, h = 1.7, width = 2.2  },
         stash = { 
             maxweight = 100000, 
             slots = 20,
