@@ -1241,7 +1241,7 @@ input, select, textarea {
 			width: 0%;
 			position: relative;
 			border-radius: inherit;
-			background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(241, 234, 17) 35%, rgba(245, 233, 12) 55%, rgba(255, 255, 0) 100%);
+			background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(17, 17, 241, 1) 35%, rgba(12, 77, 245, 1) 55%, rgba(0, 212, 255, 1) 100%);
 		  }
 		  
 		  .progress-bar::before {
@@ -1281,7 +1281,7 @@ input, select, textarea {
 		  .controls i {
 			font-size: 28px;
 			user-select: none;
-			background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(241, 234, 17) 35%, rgba(245, 233, 12) 55%, rgba(255, 255, 0) 100%);
+			background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(17, 17, 241, 1) 35%, rgba(12, 77, 245, 1) 55%, rgba(0, 212, 255, 1) 100%);
 			background-clip: text;
 			-webkit-background-clip: text;
 			-webkit-text-fill-color: transparent;
@@ -1309,7 +1309,7 @@ input, select, textarea {
 			justify-content: center;
 			border-radius: 50%;
 			background: linear-gradient(var(--white) 0%, var(--darkwhite) 100%);
-			box-shadow: 0px 0px 5px 90deg, rgba(2, 0, 36, 1) 0%, rgba(241, 234, 17) 35%, rgb(245, 233, 12) 55%, rgba(255, 255, 0) 100%;
+			box-shadow: 0px 0px 5px 90deg, rgba(2, 0, 36, 1) 0%, rgba(17, 17, 241, 1) 35%, rgba(12, 77, 245, 1) 55%, rgba(0, 212, 255, 1) 100%;
 		  }
 		  
 		  .play-pause::before {
@@ -1318,7 +1318,7 @@ input, select, textarea {
 			height: 43px;
 			width: 43px;
 			border-radius: inherit;
-			background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgb(241, 234, 17) 35%, rgba(245, 233, 12) 55%, rgba(255, 255, 0) 100%);
+			background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(17, 17, 241, 1) 35%, rgba(12, 77, 245, 1) 55%, rgba(0, 212, 255, 1) 100%);
 		  }
 		  
 		  .play-pause i {
@@ -1422,7 +1422,7 @@ input, select, textarea {
 		  
 		  ul li.playing {
 			pointer-events: none;
-			color: (90deg, rgba(2, 0, 36, 1) 0%, rgba(241, 234, 17) 35%, rgba(245, 233, 12) 55%, rgb(255, 255, 0) 100%);
+			color: (90deg, rgba(2, 0, 36, 1) 0%, rgba(17, 17, 241, 1) 35%, rgba(12, 77, 245, 1) 55%, rgba(0, 212, 255, 1) 100%);
 		  }
 		  
 		  .wrapper_player .volume-box {
