@@ -2,7 +2,7 @@ PropertiesTable = {}
 ApartmentsTable = {}
 
 exports('GetProperties', function() return PropertiesTable end)
-exports('GetApartments', function() return nil end)
+exports('GetApartments', function() return ApartmentsTable end)
 
 Config = {}
 

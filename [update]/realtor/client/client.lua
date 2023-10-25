@@ -139,7 +139,7 @@ RegisterNUICallback("updatePropertyData", function(data, cb)
 	local changeType = data.type
 
 	if changeType == 'UpdateShell' then
-		local currentShells = exports['housing']:GetShells()
+		local currentShells = exports['ps-housing']:GetShells()
 		local shellName = currentShells[newData.shell].hash
 
 		if not IsModelInCdimage(shellName) then

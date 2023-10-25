@@ -1,4 +1,4 @@
-local PSHousing = exports['housing']
+local PSHousing = exports['ps-housing']
 
 function InitialiseData()
 	-- Get properties
@@ -14,12 +14,12 @@ function InitialiseData()
 	local ApartmentsTable = {}
 
 	for _, apartment in pairs(apartments) do
-		ApartmentsTable[#ApartmentsTable+1] = apartment
+	--	ApartmentsTable[#ApartmentsTable+1] = apartment
 	end
 
 	SendNUIMessage({
 		action = "setShells",
-		data = exports['housing']:GetShells()
+		data = exports['ps-housing']:GetShells()
 	})
 
 	SendNUIMessage({
@@ -38,7 +38,7 @@ AddEventHandler('housing:client:initialisedProperties', function()
 end)
 
 AddEventHandler('housing:client:updatedProperty', function(property_id)
-	local property = exports['housing']:GetProperty(property_id)
+	local property = exports['ps-housing']:GetProperty(property_id)
 
 	for i = 1, #PropertiesTable do
 		if PropertiesTable[i].property_id == property_id then
