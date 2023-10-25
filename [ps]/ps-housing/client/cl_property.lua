@@ -110,19 +110,19 @@ function Property:RegisterPropertyEntrance()
     local heading = door.h
     --Can be anon functions but I like to keep them named its more readable
     local function enter()
-        TriggerServerEvent("housing:server:enterProperty", self.property_id)
+        TriggerServerEvent("ps-housing:server:enterProperty", self.property_id)
     end
 
     local function raid()
-        TriggerServerEvent("housing:server:raidProperty", self.property_id)
+        TriggerServerEvent("ps-housing:server:raidProperty", self.property_id)
     end
 
     local function showcase()
-        TriggerServerEvent("housing:server:showcaseProperty", self.property_id)
+        TriggerServerEvent("ps-housing:server:showcaseProperty", self.property_id)
     end
 
     local function showData()
-        local data = lib.callback.await("housing:cb:getPropertyInfo", source, self.property_id)
+        local data = lib.callback.await("ps-housing:cb:getPropertyInfo", source, self.property_id)
         if not data then return end
 
         local content = "**Owner:** " .. data.owner .. "  \n" .. "**Description:** " .. data.description .. "  \n" .. "**Street:** " .. data.street .. "  \n" .. "**Region:** " .. data.region .. "  \n" .. "**Shell:** " .. data.shell .. "  \n" .. "**For Sale:** " .. (data.for_sale and "Yes" or "No")
@@ -225,7 +225,7 @@ function Property:LeaveShell()
     local coords = self:GetDoorCoords()
     SetEntityCoordsNoOffset(cache.ped, coords.x, coords.y, coords.z, false, false, true)
 
-    TriggerServerEvent("housing:server:leaveProperty", self.property_id)
+    TriggerServerEvent("ps-housing:server:leaveProperty", self.property_id)
 
     self:UnloadFurnitures()
     self.propertyData.furnitures = {}
@@ -313,7 +313,7 @@ function Property:GiveAccessMenu()
         options = {},
     }
 
-    local players = lib.callback.await("housing:cb:getPlayersInProperty", source, self.property_id) or {}
+    local players = lib.callback.await("ps-housing:cb:getPlayersInProperty", source, self.property_id) or {}
 
     if #players > 0 then
         for i = 1, #players do
@@ -322,7 +322,7 @@ function Property:GiveAccessMenu()
                 title = v.name,
                 description = "Give Access",
                 onSelect = function()
-                    TriggerServerEvent("housing:server:addAccess", self.property_id, v.src)
+                    TriggerServerEvent("ps-housing:server:addAccess", self.property_id, v.src)
                 end,
             }
         end
@@ -346,7 +346,7 @@ function Property:RevokeAccessMenu()
         options = {},
     }
 
-    local playersWithAccess = lib.callback.await("housing:cb:getPlayersWithAccess", source, self.property_id) or {}
+    local playersWithAccess = lib.callback.await("ps-housing:cb:getPlayersWithAccess", source, self.property_id) or {}
 
     -- only stores names and citizenids in a table so if their offline you can still remove them
     if #playersWithAccess > 0 then
@@ -356,7 +356,7 @@ function Property:RevokeAccessMenu()
                 title = v.name,
                 description = "Remove Access",
                 onSelect = function()
-                    TriggerServerEvent("housing:server:removeAccess", self.property_id, v.citizenid)
+                    TriggerServerEvent("ps-housing:server:removeAccess", self.property_id, v.citizenid)
                 end,
             }
         end
@@ -388,7 +388,7 @@ function Property:OpenDoorbellMenu()
             title = v.name,
             onSelect = function()
                 TriggerServerEvent(
-                    "housing:server:doorbellAnswer",
+                    "ps-housing:server:doorbellAnswer",
                     { targetSrc = v.src, property_id = self.property_id }
                 )
             end,
@@ -434,7 +434,7 @@ function Property:LoadFurniture(furniture)
 end
 
 function Property:LoadFurnitures()
-    self.propertyData.furnitures = lib.callback.await('housing:cb:getFurnitures', source, self.property_id) or {}
+    self.propertyData.furnitures = lib.callback.await('ps-housing:cb:getFurnitures', source, self.property_id) or {}
     
     for i = 1, #self.propertyData.furnitures do
         local furniture = self.propertyData.furnitures[i]
@@ -694,44 +694,44 @@ function Property:UpdateApartment(newApartment)
         newApt:AddProperty(self.property_id)
     end
 
-    TriggerEvent("housing:client:updateApartment", oldAptName, newApartment)
+    TriggerEvent("ps-housing:client:updateApartment", oldAptName, newApartment)
 end
 
 function Property.Get(property_id)
     return PropertiesTable[tostring(property_id)]
 end
 
-RegisterNetEvent("housing:client:enterProperty", function(property_id)
+RegisterNetEvent("ps-housing:client:enterProperty", function(property_id)
     local property = Property.Get(property_id)
     property:EnterShell()
 end)
 
-RegisterNetEvent("housing:client:updateDoorbellPool", function(property_id, data)
+RegisterNetEvent("ps-housing:client:updateDoorbellPool", function(property_id, data)
     local property = Property.Get(property_id)
     property.doorbellPool = data
 end)
 
-RegisterNetEvent("housing:client:updateFurniture", function(property_id, furnitures)
+RegisterNetEvent("ps-housing:client:updateFurniture", function(property_id, furnitures)
     local property = Property.Get(property_id)
     if not property then return end
     property:UpdateFurnitures(furnitures)
 end)
 
-RegisterNetEvent("housing:client:updateProperty", function(type, property_id, data)
+RegisterNetEvent("ps-housing:client:updateProperty", function(type, property_id, data)
     local property = Property.Get(property_id)
 
     if not property then return end
 
     property[type](property, data)
 
-    TriggerEvent("housing:client:updatedProperty", property_id)
+    TriggerEvent("ps-housing:client:updatedProperty", property_id)
 end)
 
-RegisterNetEvent("housing:client:openFurnitureMenu", function(name)
+RegisterNetEvent("ps-housing:client:openFurnitureMenu", function(name)
     if name == nil then return end
     Modeler:OpenMenu(name)
 end)
-RegisterNetEvent("housing:client:openManagePropertyAccessMenu", function(name)
+RegisterNetEvent("ps-housing:client:openManagePropertyAccessMenu", function(name)
     local property = Property.Get(name)
     if not property then return end
 

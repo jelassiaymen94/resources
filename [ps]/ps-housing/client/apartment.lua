@@ -46,7 +46,7 @@ function Apartment:EnterApartment()
     for propertyId, _  in pairs(self.apartments) do
         local property = PropertiesTable[propertyId]
         if property.owner then
-            TriggerServerEvent('housing:server:enterProperty', propertyId)
+            TriggerServerEvent('ps-housing:server:enterProperty', propertyId)
             return
         end
     end
@@ -71,7 +71,7 @@ function Apartment:GetMenuForAll()
         table.insert(menu.options,{
             title = self.apartmentData.label .. " " .. propertyId,
             onSelect = function()
-                TriggerServerEvent('housing:server:enterProperty', propertyId) 
+                TriggerServerEvent('ps-housing:server:enterProperty', propertyId) 
             end,
         })
     end 
@@ -97,7 +97,7 @@ function Apartment:GetMenuForAllToRaid()
         table.insert(menu.options,{
             title = "Raid " .. self.apartmentData.label .. " " .. propertyId,
             onSelect = function()
-                TriggerServerEvent("housing:server:raidProperty", propertyId)
+                TriggerServerEvent("ps-housing:server:raidProperty", propertyId)
             end,
         })
     end 

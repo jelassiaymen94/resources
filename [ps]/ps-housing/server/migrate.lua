@@ -44,13 +44,13 @@ RegisterCommand("migrateapartments", function()
                 apartment = aptName,
             }
 
-            TriggerEvent("housing:server:registerProperty", propertyData)
+            TriggerEvent("ps-housing:server:registerProperty", propertyData)
         end
         print("Finished migrating apartments")
     end)
 end, true)
 
-RegisterNetEvent('housing:server:migratehouses', function()
+RegisterNetEvent('ps-housing:server:migratehouses', function()
     if not source or source == 0 then return end
     local src = source
     local qbHouses = MySQL.Sync.fetchAll("SELECT * FROM player_houses")
@@ -73,7 +73,7 @@ RegisterNetEvent('housing:server:migratehouses', function()
             end
 
             local houseCoords = json.decode(house.coords)
-            local clientData = lib.callback.await("housing:client:getclientdata", src, {coords = houseCoords.enter})
+            local clientData = lib.callback.await("ps-housing:client:getclientdata", src, {coords = houseCoords.enter})
 
             local door = {
                 x = math.floor(houseCoords.enter.x * 10000) / 10000,
@@ -118,7 +118,7 @@ RegisterNetEvent('housing:server:migratehouses', function()
                 garage_data = garage
             }
 
-            TriggerEvent("housing:server:registerProperty", propertyData)
+            TriggerEvent("ps-housing:server:registerProperty", propertyData)
         end
         print("Finished migrating houses")
     end)

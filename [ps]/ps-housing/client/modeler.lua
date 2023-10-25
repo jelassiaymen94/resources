@@ -345,7 +345,7 @@ Modeler = {
             movedObject = true
         }
 
-        TriggerServerEvent("housing:server:updateFurniture", self.property_id, newFurniture)
+        TriggerServerEvent("ps-housing:server:updateFurniture", self.property_id, newFurniture)
     end,
 
     SetObjectAlpha = function (self, data)
@@ -466,7 +466,7 @@ Modeler = {
             }
         end
 
-        TriggerServerEvent("housing:server:buyFurniture", self.property_id, items, totalPrice)
+        TriggerServerEvent("ps-housing:server:buyFurniture", self.property_id, items, totalPrice)
 
         self:ClearCart()
     end,
@@ -547,7 +547,7 @@ Modeler = {
                 data = item
             })
 
-            TriggerServerEvent("housing:server:removeFurniture", self.property_id, item.id)
+            TriggerServerEvent("ps-housing:server:removeFurniture", self.property_id, item.id)
         end
     end,
 }

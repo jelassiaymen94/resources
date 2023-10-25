@@ -4,9 +4,9 @@ PlayerData = {}
 local function createProperty(property)
 	PropertiesTable[property.property_id] = Property:new(property)
 end
-RegisterNetEvent('housing:client:addProperty', createProperty)
+RegisterNetEvent('ps-housing:client:addProperty', createProperty)
 
-RegisterNetEvent('housing:client:removeProperty', function (property_id)
+RegisterNetEvent('ps-housing:client:removeProperty', function (property_id)
 	local property = Property.Get(property_id)
 
 	if property then
@@ -25,19 +25,19 @@ function InitialiseProperties(properties)
     end
 
 	if not properties then
-    	properties = lib.callback.await('housing:server:requestProperties')
+    	properties = lib.callback.await('ps-housing:server:requestProperties')
 	end
 	
     for k, v in pairs(properties) do
         createProperty(v.propertyData)
     end
 
-    TriggerEvent("housing:client:initialisedProperties")
+    TriggerEvent("ps-housing:client:initialisedProperties")
 
     Debug("Initialised properties")
 end
 AddEventHandler("QBCore:Client:OnPlayerLoaded", InitialiseProperties)
-RegisterNetEvent('housing:client:initialiseProperties', InitialiseProperties)
+RegisterNetEvent('ps-housing:client:initialiseProperties', InitialiseProperties)
 
 AddEventHandler("onResourceStart", function(resourceName) -- Used for when the resource is restarted while in game
 	if (GetCurrentResourceName() == resourceName) then
@@ -49,9 +49,9 @@ RegisterNetEvent('QBCore:Client:OnJobUpdate', function(job)
     PlayerData.job = job
 end)
 
-RegisterNetEvent('housing:client:setupSpawnUI', function(cData)
+RegisterNetEvent('ps-housing:client:setupSpawnUI', function(cData)
     DoScreenFadeOut(1000)
-    local result = lib.callback.await('housing:cb:GetOwnedApartment', source, cData.citizenid)
+    local result = lib.callback.await('ps-housing:cb:GetOwnedApartment', source, cData.citizenid)
     if result then
         TriggerEvent('qb-spawn:client:setupSpawns', cData, false, nil)
         TriggerEvent('qb-spawn:client:openUI', true)
@@ -104,7 +104,7 @@ exports('GetShells', function()
 end)
 
 
-lib.callback.register('housing:cb:confirmPurchase', function(amount, street, id)
+lib.callback.register('ps-housing:cb:confirmPurchase', function(amount, street, id)
     return lib.alertDialog({
         header = 'Purchase Confirmation',
         content = 'Are you sure you want to purchase '..street..' ' .. id .. ' for $' .. amount .. '?',
@@ -117,7 +117,7 @@ lib.callback.register('housing:cb:confirmPurchase', function(amount, street, id)
     })
 end)
 
-lib.callback.register('housing:cb:confirmRaid', function(street, id)
+lib.callback.register('ps-housing:cb:confirmRaid', function(street, id)
     return lib.alertDialog({
         header = 'Raid',
         content = 'Do you want to raid '..street..' ' .. id .. '?',
@@ -130,7 +130,7 @@ lib.callback.register('housing:cb:confirmRaid', function(street, id)
     })
 end)
 
-lib.callback.register('housing:cb:ringDoorbell', function()
+lib.callback.register('ps-housing:cb:ringDoorbell', function()
     return lib.alertDialog({
         header = 'Ring Doorbell',
         content = 'You dont have a key for this property, would you like to ring the doorbell?',
@@ -143,7 +143,7 @@ lib.callback.register('housing:cb:ringDoorbell', function()
     })
 end)
 
-lib.callback.register('housing:cb:showcase', function()
+lib.callback.register('ps-housing:cb:showcase', function()
     return lib.alertDialog({
         header = 'Showcase Property',
         content = 'Do you want to showcase this property?',

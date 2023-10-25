@@ -33,7 +33,7 @@ MySQL.ready(function()
     end)
 end)
 
-lib.callback.register("housing:server:requestProperties", function(source)
+lib.callback.register("ps-housing:server:requestProperties", function(source)
     while not dbloaded do
         Wait(100)
     end
@@ -41,7 +41,7 @@ lib.callback.register("housing:server:requestProperties", function(source)
     return PropertiesTable
 end)
 
-AddEventHandler("housing:server:registerProperty", function (propertyData) -- triggered by realtor job
+AddEventHandler("ps-housing:server:registerProperty", function (propertyData) -- triggered by realtor job
     local propertyData = propertyData
 
     propertyData.owner = propertyData.owner or nil
@@ -73,7 +73,7 @@ AddEventHandler("housing:server:registerProperty", function (propertyData) -- tr
     propertyData.property_id = id
     PropertiesTable[id] = Property:new(propertyData)
     
-    TriggerClientEvent("housing:client:addProperty", -1, propertyData)
+    TriggerClientEvent("ps-housing:client:addProperty", -1, propertyData)
 
     if propertyData.apartment then
         local player = QBCore.Functions.GetPlayerByCitizenId(propertyData.owner)
@@ -97,12 +97,12 @@ AddEventHandler("housing:server:registerProperty", function (propertyData) -- tr
         Framework[Config.Notify].Notify(src, "Open radial menu for furniture menu and place down your stash and clothing locker.", "info")
 
         -- This will create the stash for the apartment and migrate the items from the old apartment stash if applicable
-        TriggerEvent("housing:server:createApartmentStash", propertyData.owner, id)
+        TriggerEvent("ps-housing:server:createApartmentStash", propertyData.owner, id)
     end
 end)
 
-lib.callback.register("housing:cb:GetOwnedApartment", function(source, cid)
-    Debug("housing:cb:GetOwnedApartment", source, cid)
+lib.callback.register("ps-housing:cb:GetOwnedApartment", function(source, cid)
+    Debug("ps-housing:cb:GetOwnedApartment", source, cid)
     if cid ~= nil then
         local result = MySQL.query.await('SELECT * FROM properties WHERE owner_citizenid = ? AND apartment IS NOT NULL AND apartment <> ""', { cid })
         if result[1] ~= nil then
@@ -120,7 +120,7 @@ lib.callback.register("housing:cb:GetOwnedApartment", function(source, cid)
     end
 end)
 
-AddEventHandler("housing:server:updateProperty", function(type, property_id, data)
+AddEventHandler("ps-housing:server:updateProperty", function(type, property_id, data)
     local property = Property.Get(property_id)
     if not property then return end
 
@@ -132,11 +132,11 @@ AddEventHandler("onResourceStart", function(resourceName) -- Used for when the r
         while not dbloaded do
             Wait(100)
         end
-        TriggerClientEvent('housing:client:initialiseProperties', -1, PropertiesTable)
+        TriggerClientEvent('ps-housing:client:initialiseProperties', -1, PropertiesTable)
 	end 
 end)
 
-RegisterNetEvent("housing:server:createNewApartment", function(aptLabel)
+RegisterNetEvent("ps-housing:server:createNewApartment", function(aptLabel)
     local src = source
     if not Config.StartingApartment then return end
     local citizenid = GetCitizenid(src)
@@ -157,12 +157,12 @@ RegisterNetEvent("housing:server:createNewApartment", function(aptLabel)
 
     Framework[Config.Logs].SendLog("Creating new apartment for " .. GetPlayerName(src) .. " in " .. apartment.label)
 
-    TriggerEvent("housing:server:registerProperty", propertyData)
+    TriggerEvent("ps-housing:server:registerProperty", propertyData)
 end)
 
 -- Creates apartment stash
 -- If player has an existing apartment from qb-apartments, it will transfer the items over to the new apartment stash
-RegisterNetEvent("housing:server:createApartmentStash", function(citizenId, propertyId)
+RegisterNetEvent("ps-housing:server:createApartmentStash", function(citizenId, propertyId)
     local stashId = string.format("property_%s", propertyId)
 
     -- Check for existing apartment and corresponding stash
@@ -185,7 +185,7 @@ RegisterNetEvent('qb-apartments:returnBucket', function()
     SetPlayerRoutingBucket(src, 0)
 end)
 
-AddEventHandler("housing:server:addTenantToApartment", function (data)
+AddEventHandler("ps-housing:server:addTenantToApartment", function (data)
     local apartment = data.apartment
     local targetSrc = tonumber(data.targetSrc)
     local realtorSrc = data.realtorSrc

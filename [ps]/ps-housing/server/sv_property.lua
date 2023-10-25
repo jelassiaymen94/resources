@@ -27,10 +27,10 @@ function Property:PlayerEnter(src)
     self.playersInside[_src] = true
 
     TriggerClientEvent('qb-weathersync:client:DisableSync', src)
-    TriggerClientEvent('housing:client:enterProperty', src, self.property_id)
+    TriggerClientEvent('ps-housing:client:enterProperty', src, self.property_id)
 
     if next(self.playersDoorbell) then
-        TriggerClientEvent("housing:client:updateDoorbellPool", src, self.property_id, self.playersDoorbell)
+        TriggerClientEvent("ps-housing:client:updateDoorbellPool", src, self.property_id, self.playersDoorbell)
         if self.playersDoorbell[_src] then
             self.playersDoorbell[_src] = nil
         end
@@ -88,7 +88,7 @@ function Property:AddToDoorbellPoolTemp(src)
         local targetSrc = tonumber(src)
 
         Framework[Config.Notify].Notify(targetSrc, "Someone is at the door.", "info")
-        TriggerClientEvent("housing:client:updateDoorbellPool", targetSrc, self.property_id, self.playersDoorbell)
+        TriggerClientEvent("ps-housing:client:updateDoorbellPool", targetSrc, self.property_id, self.playersDoorbell)
     end
 
     Framework[Config.Notify].Notify(src, "You rang the doorbell. Just wait...", "info")
@@ -102,7 +102,7 @@ function Property:AddToDoorbellPoolTemp(src)
         for src, _ in pairs(self.playersInside) do
             local targetSrc = tonumber(src)
 
-            TriggerClientEvent("housing:client:updateDoorbellPool", targetSrc, self.property_id, self.playersDoorbell)
+            TriggerClientEvent("ps-housing:client:updateDoorbellPool", targetSrc, self.property_id, self.playersDoorbell)
         end
     end)
 end
@@ -117,7 +117,7 @@ function Property:RemoveFromDoorbellPool(src)
     for src, _ in pairs(self.playersInside) do
         local targetSrc = tonumber(src)
 
-        TriggerClientEvent("housing:client:updateDoorbellPool", targetSrc, self.property_id, self.playersDoorbell)
+        TriggerClientEvent("ps-housing:client:updateDoorbellPool", targetSrc, self.property_id, self.playersDoorbell)
     end
 end
 
@@ -157,7 +157,7 @@ function Property:UpdateFurnitures(furnitures)
 
     for src, _ in pairs(self.playersInside) do
         local targetSrc = tonumber(src)
-        TriggerClientEvent("housing:client:updateFurniture", targetSrc, self.property_id, furnitures)
+        TriggerClientEvent("ps-housing:client:updateFurniture", targetSrc, self.property_id, furnitures)
     end
 end
 
@@ -174,7 +174,7 @@ function Property:UpdateDescription(data)
         ["@property_id"] = self.property_id
     })
 
-    TriggerClientEvent("housing:client:updateProperty", -1, "UpdateDescription", self.property_id, description)
+    TriggerClientEvent("ps-housing:client:updateProperty", -1, "UpdateDescription", self.property_id, description)
 
     Framework[Config.Logs].SendLog("**Changed Description** of property with id: " .. self.property_id .. " by: " .. GetPlayerName(realtorSrc))
 
@@ -194,7 +194,7 @@ function Property:UpdatePrice(data)
         ["@property_id"] = self.property_id
     })
 
-    TriggerClientEvent("housing:client:updateProperty", -1, "UpdatePrice", self.property_id, price)
+    TriggerClientEvent("ps-housing:client:updateProperty", -1, "UpdatePrice", self.property_id, price)
 
     Framework[Config.Logs].SendLog("**Changed Price** of property with id: " .. self.property_id .. " by: " .. GetPlayerName(realtorSrc))
 
@@ -212,7 +212,7 @@ function Property:UpdateForSale(data)
         ["@property_id"] = self.property_id
     })
 
-    TriggerClientEvent("housing:client:updateProperty", -1, "UpdateForSale", self.property_id, forsale)
+    TriggerClientEvent("ps-housing:client:updateProperty", -1, "UpdateForSale", self.property_id, forsale)
 
     Framework[Config.Logs].SendLog("**Changed For Sale** of property with id: " .. self.property_id .. " by: " .. GetPlayerName(realtorSrc))
 
@@ -232,7 +232,7 @@ function Property:UpdateShell(data)
         ["@property_id"] = self.property_id
     })
 
-    TriggerClientEvent("housing:client:updateProperty", -1, "UpdateShell", self.property_id, shell)
+    TriggerClientEvent("ps-housing:client:updateProperty", -1, "UpdateShell", self.property_id, shell)
 
     Framework[Config.Logs].SendLog("**Changed Shell** of property with id: " .. self.property_id .. " by: " .. GetPlayerName(realtorSrc))
 
@@ -261,7 +261,7 @@ function Property:UpdateOwner(data)
     end
 
     --add callback 
-    local targetAllow = lib.callback.await("housing:cb:confirmPurchase", targetSrc, self.propertyData.price, self.propertyData.street, self.propertyData.property_id)
+    local targetAllow = lib.callback.await("ps-housing:cb:confirmPurchase", targetSrc, self.propertyData.price, self.propertyData.street, self.propertyData.property_id)
 
     if targetAllow ~= "confirm" then
         Framework[Config.Notify].Notify(targetSrc, "You did not confirm the purchase", "info")
@@ -311,8 +311,8 @@ function Property:UpdateOwner(data)
 
     self.propertyData.furnitures = {} -- to be fetched on enter
 
-    TriggerClientEvent("housing:client:updateProperty", -1, "UpdateOwner", self.property_id, citizenid)
-    TriggerClientEvent("housing:client:updateProperty", -1, "UpdateForSale", self.property_id, 0)
+    TriggerClientEvent("ps-housing:client:updateProperty", -1, "UpdateOwner", self.property_id, citizenid)
+    TriggerClientEvent("ps-housing:client:updateProperty", -1, "UpdateForSale", self.property_id, 0)
     
     Framework[Config.Logs].SendLog("**House Bought** by: **"..PlayerData.charinfo.firstname.." "..PlayerData.charinfo.lastname.."** for $"..self.propertyData.price.." from **"..realtor.PlayerData.charinfo.firstname.." "..realtor.PlayerData.charinfo.lastname.."** !")
 
@@ -331,7 +331,7 @@ function Property:UpdateImgs(data)
         ["@property_id"] = self.property_id
     })
 
-    TriggerClientEvent("housing:client:updateProperty", -1, "UpdateImgs", self.property_id, imgs)
+    TriggerClientEvent("ps-housing:client:updateProperty", -1, "UpdateImgs", self.property_id, imgs)
 
     Framework[Config.Logs].SendLog("**Changed Images** of property with id: " .. self.property_id .. " by: " .. GetPlayerName(realtorSrc))
 
@@ -368,7 +368,7 @@ function Property:UpdateDoor(data)
         ["@region"] = data.region
     })
 
-    TriggerClientEvent("housing:client:updateProperty", -1, "UpdateDoor", self.property_id, newDoor, data.street, data.region)
+    TriggerClientEvent("ps-housing:client:updateProperty", -1, "UpdateDoor", self.property_id, newDoor, data.street, data.region)
 
     Framework[Config.Logs].SendLog("**Changed Door** of property with id: " .. self.property_id .. " by: " .. GetPlayerName(realtorSrc))
 
@@ -385,7 +385,7 @@ function Property:UpdateHas_access(data)
         ["@property_id"] = self.property_id
     })
 
-    TriggerClientEvent("housing:client:updateProperty", -1, "UpdateHas_access", self.property_id, has_access)
+    TriggerClientEvent("ps-housing:client:updateProperty", -1, "UpdateHas_access", self.property_id, has_access)
 
     Debug("Changed Has Access of property with id: " .. self.property_id)
 end
@@ -414,7 +414,7 @@ function Property:UpdateGarage(data)
         ["@property_id"] = self.property_id
     })
     
-    TriggerClientEvent("housing:client:updateProperty", -1, "UpdateGarage", self.property_id, garage)
+    TriggerClientEvent("ps-housing:client:updateProperty", -1, "UpdateGarage", self.property_id, garage)
 
     Framework[Config.Logs].SendLog("**Changed Garage** of property with id: " .. self.property_id .. " by: " .. GetPlayerName(realtorSrc))
 
@@ -439,7 +439,7 @@ function Property:UpdateApartment(data)
 
     Framework[Config.Logs].SendLog("**Changed Apartment** with id: " .. self.property_id .. " by: **" .. GetPlayerName(realtorSrc) .. "** for **" .. GetPlayerName(targetSrc) .."**")
 
-    TriggerClientEvent("housing:client:updateProperty", -1, "UpdateApartment", self.property_id, apartment)
+    TriggerClientEvent("ps-housing:client:updateProperty", -1, "UpdateApartment", self.property_id, apartment)
 
     Debug("Changed Apartment of property with id: " .. self.property_id, "by: " .. GetPlayerName(realtorSrc))
 end
@@ -457,7 +457,7 @@ function Property:DeleteProperty(data)
         end
     end)
 
-    TriggerClientEvent("housing:client:removeProperty", -1, propertyid)
+    TriggerClientEvent("ps-housing:client:removeProperty", -1, propertyid)
 
     Framework[Config.Notify].Notify(realtorSrc, "Property with id: " .. propertyid .." has been removed.", "info")
 
@@ -473,7 +473,7 @@ function Property.Get(property_id)
     return PropertiesTable[tostring(property_id)]
 end
 
-RegisterNetEvent('housing:server:enterProperty', function (property_id)
+RegisterNetEvent('ps-housing:server:enterProperty', function (property_id)
     local src = source
     Debug("Player is trying to enter property", property_id)
 
@@ -493,7 +493,7 @@ RegisterNetEvent('housing:server:enterProperty', function (property_id)
         return
     end
 
-    local ringDoorbellConfirmation = lib.callback.await('housing:cb:ringDoorbell', src)
+    local ringDoorbellConfirmation = lib.callback.await('ps-housing:cb:ringDoorbell', src)
     if ringDoorbellConfirmation == "confirm" then
         property:AddToDoorbellPoolTemp(src)
         Debug("Ringing doorbell") 
@@ -501,7 +501,7 @@ RegisterNetEvent('housing:server:enterProperty', function (property_id)
     end
 end)
 
-RegisterNetEvent("housing:server:showcaseProperty", function(property_id)
+RegisterNetEvent("ps-housing:server:showcaseProperty", function(property_id)
     local src = source
 
     local property = Property.Get(property_id)
@@ -518,7 +518,7 @@ RegisterNetEvent("housing:server:showcaseProperty", function(property_id)
     local onDuty = job.onduty
 
     if jobName == Config.RealtorJobName and onDuty then
-        local showcase = lib.callback.await('housing:cb:showcase', src)
+        local showcase = lib.callback.await('ps-housing:cb:showcase', src)
         if showcase == "confirm" then
             property:PlayerEnter(src)
             return
@@ -526,7 +526,7 @@ RegisterNetEvent("housing:server:showcaseProperty", function(property_id)
     end
 end)
 
-RegisterNetEvent('housing:server:raidProperty', function(property_id)
+RegisterNetEvent('ps-housing:server:raidProperty', function(property_id)
     local src = source
     Debug("Player is trying to raid property", property_id)
 
@@ -553,7 +553,7 @@ RegisterNetEvent('housing:server:raidProperty', function(property_id)
     if isAllowedToRaid then
         if hasStormRam then
             if not property.raiding then
-                local confirmRaid = lib.callback.await('housing:cb:confirmRaid', src, (property.propertyData.street or property.propertyData.apartment) .. " " .. property.property_id, property_id)
+                local confirmRaid = lib.callback.await('ps-housing:cb:confirmRaid', src, (property.propertyData.street or property.propertyData.apartment) .. " " .. property.property_id, property_id)
                 if confirmRaid == "confirm" then
                     property:StartRaid(src)
                     property:PlayerEnter(src)
@@ -588,14 +588,14 @@ end)
 
 
 
-lib.callback.register('housing:cb:getFurnitures', function(source, property_id)
+lib.callback.register('ps-housing:cb:getFurnitures', function(source, property_id)
     local property = Property.Get(property_id)
     if not property then return end
     return property.propertyData.furnitures or {}
 end)
 
 
-lib.callback.register('housing:cb:getPlayersInProperty', function(source, property_id)
+lib.callback.register('ps-housing:cb:getPlayersInProperty', function(source, property_id)
 
     local property = Property.Get(property_id)
     if not property then return end
@@ -617,7 +617,7 @@ lib.callback.register('housing:cb:getPlayersInProperty', function(source, proper
     return players or {}
 end)
 
-RegisterNetEvent('housing:server:leaveProperty', function (property_id)
+RegisterNetEvent('ps-housing:server:leaveProperty', function (property_id)
     local src = source
     local property = Property.Get(property_id)
 
@@ -627,7 +627,7 @@ RegisterNetEvent('housing:server:leaveProperty', function (property_id)
 end)
 
 -- When player presses doorbell, owner can let them in and this is what is triggered
-RegisterNetEvent("housing:server:doorbellAnswer", function (data) 
+RegisterNetEvent("ps-housing:server:doorbellAnswer", function (data) 
     local src = source
     local targetSrc = data.targetSrc
 
@@ -642,7 +642,7 @@ end)
 
 --@@ NEED TO REDO THIS DOG SHIT
 -- I think its not bad anymore but if u got a better idea lmk
-RegisterNetEvent("housing:server:buyFurniture", function(property_id, items, price)
+RegisterNetEvent("ps-housing:server:buyFurniture", function(property_id, items, price)
     local src = source
 
     local citizenid = GetCitizenid(src)
@@ -684,7 +684,7 @@ RegisterNetEvent("housing:server:buyFurniture", function(property_id, items, pri
     Debug("Player bought furniture for $" .. price, "by: " .. GetPlayerName(src))
 end)
 
-RegisterNetEvent("housing:server:removeFurniture", function(property_id, itemid)
+RegisterNetEvent("ps-housing:server:removeFurniture", function(property_id, itemid)
     local src = source
     
     local property = Property.Get(property_id)
@@ -707,7 +707,7 @@ end)
 
 -- @@ VERY BAD 
 -- I think its not bad anymore but if u got a better idea lmk
-RegisterNetEvent("housing:server:updateFurniture", function(property_id, item)
+RegisterNetEvent("ps-housing:server:updateFurniture", function(property_id, item)
     local src = source
 
     local property = Property.Get(property_id)
@@ -729,7 +729,7 @@ RegisterNetEvent("housing:server:updateFurniture", function(property_id, item)
     property:UpdateFurnitures(currentFurnitures)
 end)
 
-RegisterNetEvent("housing:server:addAccess", function(property_id, srcToAdd)
+RegisterNetEvent("ps-housing:server:addAccess", function(property_id, srcToAdd)
     local src = source
 
     local citizenid = GetCitizenid(src)
@@ -758,7 +758,7 @@ RegisterNetEvent("housing:server:addAccess", function(property_id, srcToAdd)
     end
 end)
 
-RegisterNetEvent("housing:server:removeAccess", function(property_id, citizenidToRemove)
+RegisterNetEvent("ps-housing:server:removeAccess", function(property_id, citizenidToRemove)
     local src = source
 
     local citizenid = GetCitizenid(src)
@@ -798,7 +798,7 @@ RegisterNetEvent("housing:server:removeAccess", function(property_id, citizenidT
     end
 end)
 
-lib.callback.register("housing:cb:getPlayersWithAccess", function (source, property_id)
+lib.callback.register("ps-housing:cb:getPlayersWithAccess", function (source, property_id)
     local src = source
     local citizenidSrc = GetCitizenid(src)
     local property = Property.Get(property_id)
@@ -823,7 +823,7 @@ lib.callback.register("housing:cb:getPlayersWithAccess", function (source, prope
     return withAccess
 end)
 
-lib.callback.register('housing:cb:getPropertyInfo', function (source, property_id)
+lib.callback.register('ps-housing:cb:getPropertyInfo', function (source, property_id)
     local src = source
     local property = Property.Get(property_id)
 
@@ -861,7 +861,7 @@ lib.callback.register('housing:cb:getPropertyInfo', function (source, property_i
     return data
 end)
 
-RegisterNetEvent('housing:server:resetMetaData', function()
+RegisterNetEvent('ps-housing:server:resetMetaData', function()
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
     local insideMeta = Player.PlayerData.metadata["inside"]
