@@ -361,7 +361,7 @@ Config.Shells = {
 
 
 
-
+--[[
 
 
     ["Fastro_highendmotel_shell"] = {
@@ -408,7 +408,7 @@ Config.Shells = {
                 label = "Container",
             },
         },
-    },
+    },]]
 
 
 
