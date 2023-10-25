@@ -566,6 +566,8 @@ end)
 
 RegisterNetEvent('apartments:client:ChangeOutfit', function()
     TriggerServerEvent("InteractSound_SV:PlayOnSource", "Clothes1", 0.4)
+    local heading = GetEntityHeading(PlayerPedId())
+    SetEntityHeading(PlayerPedId(), heading - 180.0)
     TriggerEvent('Polar-Clothing:client:openOutfitMenu')
 end)
 
