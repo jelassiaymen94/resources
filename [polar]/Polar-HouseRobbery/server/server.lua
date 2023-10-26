@@ -5,7 +5,7 @@ RegisterNetEvent('Polar-HouseRobbery:Server:RemoveTarget', function(name)   Trig
 RegisterNetEvent('Polar-HouseRobbery:Server:CreateTarget', function(name, loc)   TriggerClientEvent('Polar-HouseRobbery:Client:CreateTarget', -1, name, loc)    end)
 
 RegisterNetEvent('Polar-HouseRobbery:Server:RemoveProp', function(door) TriggerClientEvent('Polar-HouseRobbery:Client:RemoveProp', -1, door)   end)
-RegisterNetEvent('Polar-HouseRobbery:Server:StartTargets', function()   TriggerClientEvent('Polar-HouseRobbery:Client:StartTargets', -1)  TriggerClientEvent('Polar-HouseRobbery:Client:StartLoot', source)      end)
+RegisterNetEvent('Polar-HouseRobbery:Server:StartTargets', function(house)   TriggerClientEvent('Polar-HouseRobbery:Client:StartTargets', -1, house)  TriggerClientEvent('Polar-HouseRobbery:Client:StartLoot', source, house)      end)
 
 RegisterNetEvent('Polar-HouseRobbery:Server:Reset', function() reset() end)
 

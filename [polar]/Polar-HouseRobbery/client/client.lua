@@ -47,7 +47,7 @@ RegisterNetEvent('Polar-HouseRobbery:Client:StartLoot', function(house)
  
      TriggerServerEvent('Polar-HouseRobbery:Server:SetupPickup1', house)
 
- end)
+end)
 
 RegisterNetEvent("Polar-HouseRobbery:Client:Start", function()
     QBCore.Functions.TriggerCallback('Polar-HouseRobbery:Server:Cooldown', function(result)
@@ -157,8 +157,7 @@ local insidec = vector3(-173.72, 495.69, 137.57)
 
 RegisterNetEvent("Polar-HouseRobbery:goinside", function(house)
     SetEntityCoords(PlayerPedId(), insidec.x, insidec.y, insidec.z)
-    TriggerEvent("Polar-HouseRobbery:CreateLoot", house)
-    TriggerServerEvent('Polar-HouseRobbery:Server:StartTargets')
+    TriggerServerEvent('Polar-HouseRobbery:Server:StartTargets', house)
     if isNight() then 
         TriggerEvent("Polar-HouseRobbery:Client:Noise", house)
     else
@@ -168,7 +167,7 @@ end)
 
 local houseexit = vector3(-174.34, 497.89, 137.67)
 
-RegisterNetEvent("Polar-HouseRobbery:CreateLoot", function(house)
+RegisterNetEvent("Polar-HouseRobbery:Client:StartTargets", function(house)
     for _,v in ipairs(Config.LootSpots) do
         local n = v[1]
         local p = v[2] 
