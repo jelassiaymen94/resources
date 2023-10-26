@@ -41,11 +41,11 @@ AddEventHandler('onResourceStop', function(resourceName) if (GetCurrentResourceN
 
 RegisterNetEvent('Polar-HouseRobbery:Client:StartLoot', function(house)
     
-     TriggerServerEvent('Polar-stores:Server:SetStore', house)
+     TriggerServerEvent('Polar-HouseRobbery:Server:SetStore', house)
  
-     TriggerServerEvent('Polar-stores:Server:SetupGrab1', house)
+     TriggerServerEvent('Polar-HouseRobbery:Server:SetupGrab1', house)
  
-     TriggerServerEvent('Polar-stores:Server:SetupPickup1', house)
+     TriggerServerEvent('Polar-HouseRobbery:Server:SetupPickup1', house)
 
  end)
 
