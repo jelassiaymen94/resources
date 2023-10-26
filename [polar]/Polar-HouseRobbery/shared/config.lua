@@ -61,3 +61,5 @@ function callPolice(house)
     })         
     QBCore.Functions.Notify(Lang:t('notify.alarm'), 'error')
 end
+
+

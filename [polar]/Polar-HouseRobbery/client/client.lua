@@ -100,6 +100,7 @@ RegisterNetEvent('Polar-HouseRobbery:Client:Noise', function(house)
 		if noise > 30 then
 			callPolice(house)
             Wait(1000)
+            break
 		end
         Wait(10)
 	end

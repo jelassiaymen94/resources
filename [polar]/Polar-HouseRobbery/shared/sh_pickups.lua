@@ -6,15 +6,20 @@ local special = nil
 
 
 
--- back room
-function HouseRobberyprop6(store)
-    local door = 'HouseRobberyprop6'
+
+
+Config.houseprop6 = {
+    vector4(-99.41, 6471.49, 32.08, 95.21),
+    
+}
+function houseprop6(store)
+    local door = 'houseprop6'
 
     cash = Config.Cash[math.random(1, #Config.Cash)]
     gold = Config.Gold[math.random(1, #Config.Gold)]
     special = Config.Special[math.random(1, #Config.Special)]
 
-    local location = Config.Names[store]["PickupLocations1"][math.random(1, #Config.Names[store]["PickupLocations1"])]
+    local location = Config.houseprop6[math.random(1, #Config.houseprop6)]
    
    -- chances calculation for probability
    local chance = math.random(1,100) 
@@ -30,15 +35,18 @@ function HouseRobberyprop6(store)
     pbruh(door, prop, location)  
 
 end
-
+Config.houseprop7 = {
+    vector4(-99.41, 6471.49, 32.08, 95.21),
+    
+}
 -- back room
-function HouseRobberyprop7(store)
-    local door = 'HouseRobberyprop7'
+function houseprop7(store)
+    local door = 'houseprop7'
     cash = Config.Cash[math.random(1, #Config.Cash)]
     gold = Config.Gold[math.random(1, #Config.Gold)]
     special = Config.Special[math.random(1, #Config.Special)]
  
-    local location = Config.Names[store]["PickupLocations2"][math.random(1, #Config.Names[store]["PickupLocations2"])]
+    local location = Config.houseprop7[math.random(1, #Config.houseprop7)]
    
     -- chances calculation for probability
     local chance = math.random(1,100) 
@@ -55,15 +63,18 @@ function HouseRobberyprop7(store)
 
 end
 
+Config.houseprop8 = {
+    vector4(-99.41, 6471.49, 32.08, 95.21),
+    
+}
 
-
-function HouseRobberyprop8(store)
-    local door = 'HouseRobberyprop8'
+function houseprop8(store)
+    local door = 'houseprop8'
     cash = Config.Cash[math.random(1, #Config.Cash)]
     gold = Config.Gold[math.random(1, #Config.Gold)]
     special = Config.Special[math.random(1, #Config.Special)]
  
-    local location = Config.Names[store]["PickupLocations3"][math.random(1, #Config.Names[store]["PickupLocations3"])]
+    local location = Config.houseprop8[math.random(1, #Config.houseprop8)]
 
     -- chances calculation for probability
     local chance = math.random(1,100) 
@@ -83,14 +94,19 @@ end
 
 
 
-function HouseRobberyprop9(store)
-    local door = 'HouseRobberyprop9'
+Config.houseprop9 = {
+    vector4(-99.41, 6471.49, 32.08, 95.21),
+    
+}
+
+function houseprop9(store)
+    local door = 'houseprop9'
     
     cash = Config.Cash[math.random(1, #Config.Cash)]
     gold = Config.Gold[math.random(1, #Config.Gold)]
     special = Config.Special[math.random(1, #Config.Special)]
  
-    local location = Config.Names[store]["PickupLocations4"][math.random(1, #Config.Names[store]["PickupLocations4"])]
+    local location = Config.houseprop9[math.random(1, #Config.houseprop9)]
 
    -- chances calculation for probability
    local chance = math.random(1,100) 
@@ -109,18 +125,21 @@ end
 
 
 
+Config.houseprop10 = {
+    vector4(-99.41, 6471.49, 32.08, 95.21),
+    
+}
 
 
-
-function HouseRobberyprop10(store)
-    local door = 'HouseRobberyprop10'
+function houseprop10(store)
+    local door = 'houseprop10'
     cash = Config.Cash[math.random(1, #Config.Cash)]
     gold = Config.Gold[math.random(1, #Config.Gold)]
     special = Config.Special[math.random(1, #Config.Special)]
  
    
 
-    local location = Config.Names[store]["PickupLocations5"][math.random(1, #Config.Names[store]["PickupLocations5"])] 
+    local location = Config.houseprop10[math.random(1, #Config.houseprop10)]
 
    -- chances calculation for probability
    local chance = math.random(1,100) 
