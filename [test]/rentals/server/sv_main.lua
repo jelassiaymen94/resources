@@ -40,7 +40,7 @@ QBCore.Functions.CreateCallback('qb-rentals:server:getPilotLicenseStatus', funct
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
     local licenseTable = Player.PlayerData.metadata["licences"]
-    print(json.encode(licenseTable))
+   -- print(json.encode(licenseTable))
 
     if licenseTable.pilot then
         cb(true)
