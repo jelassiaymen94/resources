@@ -8,7 +8,7 @@ local special = nil
 
 
 Config.houseprop1 = {
-    vector4(-99.41, 6471.49, 32.08, 95.21),
+    vector4(-169.52, 493.38, 138.59, 95.21),
     
 }
 function houseprop1(store) -- should be same as door = 
@@ -38,7 +38,7 @@ end
 
 
 Config.houseprop2 = {
-    vector4(-99.41, 6471.49, 32.08, 95.21),
+    vector4(-166.19, 493.73, 138.33, 294.78),
     
 }
 function houseprop2(store)
@@ -67,7 +67,7 @@ end
 
 
 Config.houseprop3 = {
-    vector4(-99.41, 6471.49, 32.08, 95.21),
+    vector4(-164.61, 495.53, 138.59, 271.54),
     
 }
 function houseprop3(store)
@@ -98,7 +98,7 @@ end
 
 -- back room
 Config.houseprop4 = {
-    vector4(-99.41, 6471.49, 32.08, 95.21),
+    vector4(-167.28, 488.55, 138.24, 318.01),
     
 }
 function houseprop4(store)
@@ -126,7 +126,7 @@ function houseprop4(store)
 end
 
 Config.houseprop5 = {
-    vector4(-99.41, 6471.49, 32.08, 95.21),
+    vector4(-172.03, 487.29, 138.23, 24.24),
     
 }
 function houseprop5(store)

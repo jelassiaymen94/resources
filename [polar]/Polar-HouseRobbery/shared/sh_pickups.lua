@@ -9,7 +9,7 @@ local special = nil
 
 
 Config.houseprop6 = {
-    vector4(-99.41, 6471.49, 32.08, 95.21),
+    vector4(-164.51, 483.62, 134.52, 217.12),
     
 }
 function houseprop6(store)
@@ -36,7 +36,7 @@ function houseprop6(store)
 
 end
 Config.houseprop7 = {
-    vector4(-99.41, 6471.49, 32.08, 95.21),
+    vector4(-163.20, 485.08, 133.87, 243.52),
     
 }
 -- back room
@@ -64,7 +64,7 @@ function houseprop7(store)
 end
 
 Config.houseprop8 = {
-    vector4(-99.41, 6471.49, 32.08, 95.21),
+    vector4(-168.74, 479.01, 134.32, 170.68),
     
 }
 
@@ -95,7 +95,7 @@ end
 
 
 Config.houseprop9 = {
-    vector4(-99.41, 6471.49, 32.08, 95.21),
+    vector4(-163.15, 480.04, 134.32, 248.87),
     
 }
 
@@ -126,7 +126,7 @@ end
 
 
 Config.houseprop10 = {
-    vector4(-99.41, 6471.49, 32.08, 95.21),
+    vector4(-167.25, 487.82, 133.84, 0.75),
     
 }
 
