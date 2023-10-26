@@ -26,7 +26,6 @@ Config.LootSpots = {
 }
 Config.Items = {
     normalItems = {
-        "cryptostick",
         "vodka",
         "iphone",
        
