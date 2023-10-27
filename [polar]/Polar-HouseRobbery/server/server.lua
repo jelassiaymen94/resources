@@ -31,15 +31,15 @@ function reset()
     cooldown = true
     open = false
 
-    TriggerEvent('Polar-HouseRobbery:Client:RemoveTarget', -1, 'polar_hr_entry')
-    TriggerEvent('Polar-HouseRobbery:Client:RemoveTarget', -1, 'polar_hr_exit')
+    TriggerClientEvent('Polar-HouseRobbery:Client:RemoveTarget', -1, 'polar_hr_entry')
+    TriggerClientEvent('Polar-HouseRobbery:Client:RemoveTarget', -1, 'polar_hr_exit')
 
-    TriggerEvent('Polar-HouseRobbery:Client:RemoveTarget', -1, 'polar_hr_1')
-    TriggerEvent('Polar-HouseRobbery:Client:RemoveTarget', -1, 'polar_hr_2')
-    TriggerEvent('Polar-HouseRobbery:Client:RemoveTarget', -1, 'polar_hr_3')
-    TriggerEvent('Polar-HouseRobbery:Client:RemoveTarget', -1, 'polar_hr_4')
+    TriggerClientEvent('Polar-HouseRobbery:Client:RemoveTarget', -1, 'polar_hr_1')
+    TriggerClientEvent('Polar-HouseRobbery:Client:RemoveTarget', -1, 'polar_hr_2')
+    TriggerClientEvent('Polar-HouseRobbery:Client:RemoveTarget', -1, 'polar_hr_3')
+    TriggerClientEvent('Polar-HouseRobbery:Client:RemoveTarget', -1, 'polar_hr_4')
     
-
+    TriggerClientEvent('Polar-HouseRobbery:Client:ResetProps', -1)
 end
 
 
