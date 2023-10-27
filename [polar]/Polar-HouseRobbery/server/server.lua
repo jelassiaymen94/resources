@@ -55,19 +55,29 @@ RegisterNetEvent("Polar-HouseRobbery:Server:FindShit", function(house, times)
         local winNumber = math.random(1, 100)
         if winNumber <= 80 then
             local item = Config.Cash[math.random(1, #Config.Cash)]
-            Player.Functions.AddItem(item, 1)
+            local it = findItemForProp(item)
+            if it then Player.Functions.AddItem(it, 1) end
         elseif winNumber <= 95 then
             local item = Config.Gold[math.random(1, #Config.Gold)]
-            Player.Functions.AddItem(item, 1)
+            local it = findItemForProp(item)
+            if it then Player.Functions.AddItem(it, 1) end
         else
             local item = Config.Special[math.random(1, #Config.Special)]
-            Player.Functions.AddItem(item, 1)
+            local it = findItemForProp(item)
+            if it then Player.Functions.AddItem(it, 1) end
         end
     Wait(250)
     end
 end)
 
-
+function findItemForProp(propToFind)
+    for _, entry in ipairs(Config.LootProps) do
+        if entry.prop == propToFind then
+            return entry.item
+        end
+    end
+    return nil
+end
 
 
 
