@@ -141,7 +141,7 @@ RegisterNetEvent('Renewed-Garbage:server:CollectCheck', function()
 
                 local payBonus = Config.Buffs and exports[Config.BuffExport]:HasBuff(CID, Config.BuffType) and Config.BuffPay or 1.0
                 local final = pay * payBonus
-
+                
                 Player.Functions.SetMetaData('garbage', deliverData + MetaData)
                 Player.Functions.AddMoney("cash", final, "Sanitation")
                 TriggerEvent("qb-log:server:CreateLog", "jobmoneyadded", "RENEWED GARBAGE", "red", "**" .. src .. "** ADDED " .. final .. "CASH")

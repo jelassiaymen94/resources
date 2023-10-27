@@ -225,8 +225,12 @@ function PaycheckInterval()
                             
                         end
                     else
-                         Player.Functions.AddMoney('bank', payment, "paycheck")
+                        Player.Functions.AddMoney('bank', payment, "paycheck")
                         TriggerClientEvent('QBCore:Notify', Player.PlayerData.source, Lang:t('info.received_paycheck', {value = payment}))
+                        local CID = Player.PlayerData.citizenid
+                        local name = ("%s %s"):format(Player.PlayerData.charinfo.firstname, Player.PlayerData.charinfo.lastname)
+                        local bigname = Player.PlayerData.job.name
+                        exports['Renewed-Banking']:handleTransaction(CID, bigname, payment, "Hourly Paycheck", "Paycheck", name, "deposit")
                        -- TriggerEvent("qb-log:server:CreateLog", "paycheck", "PAYCHECK", "orange", "**" .. Player .. "** Got $" .. payment .. " from a Paycheck")
                     end
                 end
