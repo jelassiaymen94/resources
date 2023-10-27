@@ -39,7 +39,7 @@ local function SpawnVehicle(carType, location, group, coords)
         Wait(25)
     end
 
-    if Config.RenewedFuel then exports['Renewed-Fuel']:SetFuel(car, 100.0) end
+    exports['LegacyFuel']:SetFuel(car, 100.0)
     local NetID = NetworkGetNetworkIdFromEntity(car)
     local plate = RandomPlate()
 
@@ -152,6 +152,11 @@ RegisterNetEvent('Renewed-Deliveries:server:CollectCheck', function()
                 Player.Functions.AddMoney("cash", final, "PostOP Delivery")
                 TriggerEvent("qb-log:server:CreateLog", "jobmoneyadded", "RENEWED DELIVERIES", "red", "**" .. src .. "** ADDED " .. final .. "CASH")
                 DeleteEntity(NetworkGetEntityFromNetworkId(CurrentRuns[group].car))
+                if Config.RenewedBanking then
+                    local name = ("%s %s"):format(Player.PlayerData.charinfo.firstname, Player.PlayerData.charinfo.lastname)
+                    local text = "PostOP PaySlip for delivering "..CurrentRuns[group].Delivered.." Packages"
+                    exports['Renewed-Banking']:handleTransaction(CID, "PostOP Delivery", final, text, "PostOP", name, "deposit")
+                end
                 usedPlates[CurrentRuns[group].plate] = nil
                 CurrentRuns[group] = nil
 
@@ -164,9 +169,9 @@ RegisterNetEvent('Renewed-Deliveries:server:CollectCheck', function()
                 TriggerClientEvent('Renewed-Deliveries:client:ResetClient', m[i])
                 local chance = math.random(1, 500)
                 if chance < 26 then
-                    Player.Functions.AddItem("safecracker", 1, false)
-                    TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items["safecracker"], "add")-- 50%
-                    TriggerEvent("qb-log:server:CreateLog", "jobitemadded", "RENEWED DELIVERIES", "yellow", "**" .. src .. "** ADDED 1 SAFE CRACKER")
+                   -- Player.Functions.AddItem("safecracker", 1, false)
+                  --  TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items["safecracker"], "add")-- 50%
+                  --  TriggerEvent("qb-log:server:CreateLog", "jobitemadded", "RENEWED DELIVERIES", "yellow", "**" .. src .. "** ADDED 1 SAFE CRACKER")
                 --[[elseif chance >=27 and chance <75 then 
                     Player.Functions.AddItem("cryptostick", 1, false)
                     TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items["cryptostick"], "add")-- 50%
@@ -189,11 +194,7 @@ RegisterNetEvent('Renewed-Deliveries:server:CollectCheck', function()
                     Player.Functions.AddItem("cryptostick", math.random(1,5), false) -- 50%
                     TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items["cryptostick"], "add") -- 50%]]
                 end
-                if Config.RenewedBanking then
-                    local name = ("%s %s"):format(Player.PlayerData.charinfo.firstname, Player.PlayerData.charinfo.lastname)
-                    local text = "PostOP PaySlip for delivering "..CurrentRuns[group].Delivered.." Packages"
-                    exports['Renewed-Banking']:handleTransaction(CID, "PostOP Delivery", final, text, "PostOP", name, "deposit")
-                end
+              
 
                 TriggerClientEvent('Renewed-Deliveries:client:ResetClient', m[i])
             end

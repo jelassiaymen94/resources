@@ -39,7 +39,7 @@ local function SpawnVehicle(carType, location, group, coords)
         Wait(25)
     end
 
-    if Config.RenewedFuel then exports['Renewed-Fuel']:SetFuel(car, 100.0) end
+    exports['LegacyFuel']:SetFuel(car, 100.0)
     local NetID = NetworkGetNetworkIdFromEntity(car)
     local plate = RandomPlate()
 
@@ -146,6 +146,11 @@ RegisterNetEvent('Renewed-Garbage:server:CollectCheck', function()
                 Player.Functions.AddMoney("cash", final, "Sanitation")
                 TriggerEvent("qb-log:server:CreateLog", "jobmoneyadded", "RENEWED GARBAGE", "red", "**" .. src .. "** ADDED " .. final .. "CASH")
                 DeleteEntity(NetworkGetEntityFromNetworkId(CurrentRuns[group].car))
+                if Config.RenewedBanking then
+                    local name = ("%s %s"):format(Player.PlayerData.charinfo.firstname, Player.PlayerData.charinfo.lastname)
+                    local text = "Sanitation PaySlip for turning in "..CurrentRuns[group].Delivered.." Trash Bags"
+                    exports['Renewed-Banking']:handleTransaction(CID, "Sanitation", final, text, "Los Santos Sanitation", name, "deposit")
+                end
                 usedPlates[CurrentRuns[group].plate] = nil
                 CurrentRuns[group] = nil
             
@@ -183,11 +188,7 @@ RegisterNetEvent('Renewed-Garbage:server:CollectCheck', function()
                      end
                 end
 
-                if Config.RenewedBanking then
-                    local name = ("%s %s"):format(Player.PlayerData.charinfo.firstname, Player.PlayerData.charinfo.lastname)
-                    local text = "Sanitation PaySlip for turning in "..CurrentRuns[group].Delivered.." Trash Bags"
-                    exports['Renewed-Banking']:handleTransaction(CID, "Sanitation", final, text, "Los Santos Sanitation", name, "deposit")
-                end
+               
 
                 TriggerClientEvent('Renewed-Garbage:client:ResetClient', m[i])
             end

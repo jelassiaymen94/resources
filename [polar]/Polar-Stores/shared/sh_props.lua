@@ -63,7 +63,7 @@ Config.LootProps = {
     {prop = 'h4_prop_h4_gold_coin_01a', item = 'valuablegoods', amountmin = 1, amountmax = 1},
     {prop = 'vw_prop_casino_art_egg_01a', item = 'alienegg', amountmin = 1, amountmax = 1},
 
-
+    {prop = 'prop_cuff_keys_01', item = 'safecracker', amountmin = 1, amountmax = 1},
 }
 Config.Cash = {
     'prop_cash_pile_01',
@@ -121,6 +121,7 @@ Config.Gold = {
     'vw_prop_plaq_1kdollar_x1',
     'vw_prop_chip_1kdollar_st',
     'vw_prop_chip_100dollar_st',
+    'prop_cuff_keys_01',
 }
 Config.Special = {
     'ex_prop_exec_award_gold',
