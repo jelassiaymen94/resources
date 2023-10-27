@@ -18,6 +18,9 @@ RegisterNetEvent('Polar-HouseRobbery:Server:SetupPickup1', function(house)
     houseprop8(house)
     houseprop9(house)
     houseprop10(house)
+
+    houseprop16(house)
+    houseprop17(house)
 end)
 
 
@@ -26,7 +29,8 @@ RegisterNetEvent('Polar-HouseRobbery:Server:SetupPiles1', function(house)
     houseprop11(house)
     houseprop12(house)
     houseprop13(house)
-   
+    houseprop14(house)
+    houseprop15(house)
 end)
 
 
