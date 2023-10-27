@@ -392,9 +392,7 @@ end)
 RegisterNetEvent('Polar-HouseRobbery:Client:PickupTarget', function(data) 
     gloves()
     LocalPlayer.state:set('inv_busy', true, true) -- Busy
-    local animDict = 'random@domestic'
-    local p = data.type 
-    local door = props[p]
+    local door = data.type 
     local pile = data.piles
     Wait(50)
     if pile then  
@@ -406,19 +404,19 @@ RegisterNetEvent('Polar-HouseRobbery:Client:PickupTarget', function(data)
         Wait(5000)
         ClearPedTasks(PlayerPedId())
         TriggerServerEvent('Polar-HouseRobbery:Server:RemoveProp', door)
-        RemoveAnimDict(animDict)
+        RemoveAnimDict('amb@medic@standing@kneel@base')
+        RemoveAnimDict('anim@gangops@facility@servers@bodysearch@')
     else
-        animDict = 'random@domestic'
-        loadAnimDict(animDict) TaskPlayAnim(PlayerPedId(), animDict, 'pickup_low', 3.0, 3.0, -1, 0, 0, 0, 0, 0) 
+        loadAnimDict('random@domestic') TaskPlayAnim(PlayerPedId(), 'random@domestic', 'pickup_low', 3.0, 3.0, -1, 0, 0, 0, 0, 0) 
         TriggerServerEvent('Polar-HouseRobbery:Server:RemoveTarget', door) 
        
         Wait(500)
         
-        AttachEntityToEntity(props[door], PlayerPedId(), GetPedBoneIndex(PlayerPedId(), 58867), 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, false, false, false, true, 0, true)
-        Wait(1000) SetEntityVisible(props[door], false, false)
+        AttachEntityToEntity(props[p], PlayerPedId(), GetPedBoneIndex(PlayerPedId(), 58867), 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, false, false, false, true, 0, true)
+        Wait(1000) SetEntityVisible(props[p], false, false)
 
         TriggerServerEvent('Polar-HouseRobbery:Server:RemoveProp', door)
-        RemoveAnimDict(animDict)
+        RemoveAnimDict('random@domestic')
     end
         TriggerServerEvent('Polar-HouseRobbery:Server:Synapse', door)    
         LocalPlayer.state:set('inv_busy', false, true)
