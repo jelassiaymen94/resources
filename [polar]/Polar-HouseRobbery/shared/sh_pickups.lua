@@ -168,6 +168,6 @@ end
 
 function pbruh(door, prop, location)
     TriggerEvent('Polar-HouseRobbery:Server:SetHouseProp', door, prop)
-    TriggerClientEvent('Polar-HouseRobbery:Client:AddTarget', -1, door, prop, vec4(location.x, location.y,  location.z-1, location.w), "Polar-HouseRobbery:Client:Target", false, 2.5)
+    TriggerClientEvent('Polar-HouseRobbery:Client:AddTarget', -1, door, prop, vec4(location.x, location.y,  location.z-1, location.w), "Polar-HouseRobbery:Client:PickupTarget", false, 2.5)
     TriggerClientEvent('Polar-HouseRobbery:Client:HouseProp', -1, door, prop, vec4(location.x, location.y,  location.z-1, location.w)) 
 end

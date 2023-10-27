@@ -61,7 +61,9 @@ RegisterNetEvent('Polar-HouseRobbery:Client:StartLoot', function(house)
      TriggerServerEvent('Polar-HouseRobbery:Server:SetupGrab1', house)
  
      TriggerServerEvent('Polar-HouseRobbery:Server:SetupPickup1', house)
-
+     
+     TriggerServerEvent('Polar-HouseRobbery:Server:SetupPiles1', house)
+     
 end)
 
 RegisterNetEvent("Polar-HouseRobbery:Client:Start", function()
@@ -391,9 +393,10 @@ RegisterNetEvent('Polar-HouseRobbery:Client:PickupTarget', function(data)
     gloves()
     LocalPlayer.state:set('inv_busy', true, true) -- Busy
     local animDict = 'random@domestic'
+    local p = data.type 
+    local door = props[p]
     local pile = data.piles
-    local door = data.type
-    local numba = data.number
+    Wait(50)
     if pile then  
         TriggerServerEvent('Polar-HouseRobbery:Server:RemoveTarget', door) 
         loadAnimDict('amb@medic@standing@kneel@base')

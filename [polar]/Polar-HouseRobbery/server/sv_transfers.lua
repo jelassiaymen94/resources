@@ -22,6 +22,10 @@ end)
 
 
 
+RegisterNetEvent('Polar-HouseRobbery:Server:SetupPiles1', function(house)
+    houseprop11(house)
+   
+end)
 
 
 
