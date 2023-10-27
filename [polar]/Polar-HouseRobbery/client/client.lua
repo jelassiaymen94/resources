@@ -10,6 +10,8 @@ local npc = nil
 
 local hi = false
 
+local bagcolor = 'ch_p_m_bag_var03_arm_s'
+
 local props = {}
 local thirdtable = {
     'polar_hr_entry',
@@ -253,7 +255,7 @@ function Animation(door, prop)
     local propCoords = GetEntityCoords(prop)
     
   --  Wait(300)
-        model = bagcolor animDict = 'anim@scripted@heist@ig1_table_grab@cash@male@' 
+        local model = bagcolor local animDict = 'anim@scripted@heist@ig1_table_grab@cash@male@' 
         
             local playerCoords = GetEntityCoords(PlayerPedId())
             local propCoords = GetEntityCoords(props)
