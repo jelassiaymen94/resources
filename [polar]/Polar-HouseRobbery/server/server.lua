@@ -56,15 +56,21 @@ RegisterNetEvent("Polar-HouseRobbery:Server:FindShit", function(house, times)
         if winNumber <= 80 then
             local item = Config.Cash[math.random(1, #Config.Cash)]
             local it = findItemForProp(item)
-            if it then Player.Functions.AddItem(it, 1) end
+            if it then Player.Functions.AddItem(it, 1)
+                TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[it], "add", 1)  
+            end
         elseif winNumber <= 95 then
             local item = Config.Gold[math.random(1, #Config.Gold)]
             local it = findItemForProp(item)
-            if it then Player.Functions.AddItem(it, 1) end
+            if it then Player.Functions.AddItem(it, 1)
+                TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[it], "add", 1)  
+            end
         else
             local item = Config.Special[math.random(1, #Config.Special)]
             local it = findItemForProp(item)
-            if it then Player.Functions.AddItem(it, 1) end
+            if it then Player.Functions.AddItem(it, 1)
+                TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[it], "add", 1)  
+            end
         end
     Wait(250)
     end

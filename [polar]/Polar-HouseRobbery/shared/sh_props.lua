@@ -98,7 +98,7 @@ Config.LootProps = {
 
     {prop = 'bkr_prop_weed_bigbag_03a', item = 'weedpound', amountmin = 1, amountmax = 1}, --
     {prop = 'bkr_prop_weed_lrg_01b', item = 'wetbud', amountmin = 1, amountmax = 1}, --
-    {prop = 'bkr_prop_weed_smallbag_01a', item = '1ozlow', amountmin = 1, amountmax = 1}, 
+    {prop = 'prop_paper_bag_small', item = '1ozlow', amountmin = 1, amountmax = 1}, 
     {prop = 'p_cs_joint_02', item = 'smalljoint', amountmin = 1, amountmax = 1},
     {prop = 'p_cs_papers_03', item = 'rollingpaper', amountmin = 1, amountmax = 1},
     {prop = 'bkr_prop_coke_scale_01', item = 'scale', amountmin = 1, amountmax = 1}, 
