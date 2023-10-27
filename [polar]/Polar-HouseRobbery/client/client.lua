@@ -185,8 +185,6 @@ RegisterNetEvent("Polar-HouseRobbery:Client:StartTargets", function(house)
     end
     exports['qb-target']:AddCircleZone("polar_hr_exit", houseexit, 0.5, {
     name = "polar_hr_exit",  debugPoly = false,  useZ=true }, {  options = { {   action = function()
-
-    Wait(1000)
     inside = false
     SetEntityCoords(PlayerPedId(), house.outside.x, house.outside.y, house.outside.z)
     noise = 0
@@ -233,14 +231,12 @@ function EntryMinigame(house)
         exports['Polar-UI']:Circle(function(success)
             if success then
                 inside = true
+                TriggerEvent("Polar-HouseRobbery:goinside", house)
                 TriggerServerEvent("Polar-HouseRobbery:Server:Removeitem", 'advancedlockpick')
-                TriggerServerEvent("Polar-HouseRobbery:Server:RemoveitemF", 'map')
                 if GetPedDrawableVariation(ped, 1) == 0 then
                     QBCore.Functions.Notify(Lang:t("notify.donthavemask"))
                     callPolice(house)
-                    TriggerEvent("Polar-HouseRobbery:goinside", house)
                 else
-                    TriggerEvent("Polar-HouseRobbery:goinside", house)
                 end
             else
                 QBCore.Functions.Notify(Lang:t("notify.messedup"), "error")
