@@ -33,7 +33,7 @@ local proptable = {
 
 local insidec = vector4(-174.28, 497.68, 137.66, 199.38)
 
-local houseexit = vector3(-174.64, 497.89, 137.67)
+local houseexit = vector3(-174.94, 497.89, 137.67)
 
 CreateThread(function()
     TriggerServerEvent('Polar-HouseRobbery:Server:Reset')
