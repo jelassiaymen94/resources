@@ -412,8 +412,8 @@ RegisterNetEvent('Polar-HouseRobbery:Client:PickupTarget', function(data)
        
         Wait(500)
         
-        AttachEntityToEntity(props[p], PlayerPedId(), GetPedBoneIndex(PlayerPedId(), 58867), 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, false, false, false, true, 0, true)
-        Wait(1000) SetEntityVisible(props[p], false, false)
+        AttachEntityToEntity(props[door], PlayerPedId(), GetPedBoneIndex(PlayerPedId(), 58867), 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, false, false, false, true, 0, true)
+        Wait(1000) SetEntityVisible(props[door], false, false)
 
         TriggerServerEvent('Polar-HouseRobbery:Server:RemoveProp', door)
         RemoveAnimDict('random@domestic')
