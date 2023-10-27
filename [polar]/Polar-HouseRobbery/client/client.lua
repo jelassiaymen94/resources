@@ -172,6 +172,7 @@ end
 
 RegisterNetEvent("Polar-HouseRobbery:goinside", function(house)
     SetEntityCoords(PlayerPedId(), insidec.x, insidec.y, insidec.z)
+    TriggerServerEvent('Polar-HouseRobbery:Server:StartHouseOpen', house)
     TriggerServerEvent('Polar-HouseRobbery:Server:StartTargets', house)
     if isNight() then 
         TriggerEvent("Polar-HouseRobbery:Client:Noise", house)
