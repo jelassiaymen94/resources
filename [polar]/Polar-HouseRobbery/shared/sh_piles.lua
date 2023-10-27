@@ -51,9 +51,9 @@ local location = Config.houseprop7[math.random(1, #Config.houseprop7)]
 
 -- chances calculation for probability
 local chance = math.random(1,100) 
-if chance<=85 then   
+if chance<=90 then   
     prop = cash -- 70%
-elseif chance<=95 then  
+elseif chance<=99 then  
     prop = gold -- 9%
 else   
     prop = special -- 1%
@@ -83,9 +83,9 @@ local location = Config.houseprop7[math.random(1, #Config.houseprop7)]
 
 -- chances calculation for probability
 local chance = math.random(1,100) 
-if chance<=85 then   
+if chance<=90 then   
     prop = cash -- 70%
-elseif chance<=95 then  
+elseif chance<=99 then  
     prop = gold -- 9%
 else   
     prop = special -- 1%
@@ -119,9 +119,9 @@ local location = Config.houseprop7[math.random(1, #Config.houseprop7)]
 
 -- chances calculation for probability
 local chance = math.random(1,100) 
-if chance<=85 then   
+if chance<=90 then   
     prop = cash -- 70%
-elseif chance<=95 then  
+elseif chance<=99 then  
     prop = gold -- 9%
 else   
     prop = special -- 1%
@@ -150,9 +150,9 @@ local location = Config.houseprop7[math.random(1, #Config.houseprop7)]
 
 -- chances calculation for probability
 local chance = math.random(1,100) 
-if chance<=85 then   
+if chance<=90 then   
     prop = cash -- 70%
-elseif chance<=95 then  
+elseif chance<=99 then  
     prop = gold -- 9%
 else   
     prop = special -- 1%
@@ -182,9 +182,9 @@ local location = Config.houseprop7[math.random(1, #Config.houseprop7)]
 
 -- chances calculation for probability
 local chance = math.random(1,100) 
-if chance<=85 then   
+if chance<=90 then   
     prop = cash -- 70%
-elseif chance<=95 then  
+elseif chance<=99 then  
     prop = gold -- 9%
 else   
     prop = special -- 1%

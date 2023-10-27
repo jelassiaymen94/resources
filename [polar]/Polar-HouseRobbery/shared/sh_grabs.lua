@@ -130,9 +130,9 @@ function houseprop4(house)
    
   -- chances calculation for probability
   local chance = math.random(1,100) 
-  if chance<=70 then   
+  if chance<=90 then   
       prop = cash -- 70%
-  elseif chance<=95 then  
+  elseif chance<=99 then  
       prop = gold -- 9%
   else   
       prop = special -- 1%
