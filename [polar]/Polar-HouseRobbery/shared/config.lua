@@ -6,7 +6,7 @@ Config.Night = {20, 4} -- Players can rob only from 20:00 to 04:00.
 Config.Locations = {
     {
         name = "Wild Oats Drive",
-        location = vector3(228.9230, 765.4281, 204.9766),
+        location = vector3(229.18, 765.06, 204.98),
         outside = vector4(228.63, 765.84, 204.98, 59.21),
         
         
