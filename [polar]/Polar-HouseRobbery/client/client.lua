@@ -214,9 +214,15 @@ function searchloot(name)
 	    	anim = "fixing_a_player",
 	    	flags = 16,
         }, {}, {}, function() -- Done
-            StopAnimTask(PlayerPedId(), "mini@repair", "fixing_a_player", 1.0)
-            TriggerServerEvent("Polar-HouseRobbery:Server:FindShit", name)
-            ClearPedTasks(PlayerPedId())
+            local chance = math.random(1,100)
+            if chance <= 35 then
+                local amount = math.random(1,3)
+                StopAnimTask(PlayerPedId(), "mini@repair", "fixing_a_player", 1.0)
+                TriggerServerEvent("Polar-HouseRobbery:Server:FindShit", name, amount)
+                ClearPedTasks(PlayerPedId())
+            else
+                QBCore.Functions.Notify('You didnt find anything', 'error')
+            end
         end, function() end)
 end
 
@@ -304,9 +310,9 @@ end
 
 
 RegisterNetEvent('Polar-HouseRobbery:Client:RemoveTarget', function(name) exports['qb-target']:RemoveZone(name) end)
-RegisterNetEvent('Polar-HouseRobbery:Client:CreateTarget', function(name, loc) 
-    exports['qb-target']:AddCircleZone(name, loc, 0.5, { name = name, debugPoly = false, useZ=true  }, {
-    options = { {   action = function() searchloot(name)  end, icon = "far fa-clipboard", label = Lang:t('label.loot'),  }, }, distance = 1.5 })
+RegisterNetEvent('Polar-HouseRobbery:Client:CreateTarget', function(names, loc) 
+    exports['qb-target']:AddCircleZone(names, loc, 0.5, { name = names, debugPoly = false, useZ=true  }, {
+    options = { {   action = function() searchloot(names)  end, icon = "far fa-clipboard", label = Lang:t('label.loot'),  }, }, distance = 1.5 })
 end)
 
 

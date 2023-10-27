@@ -27,25 +27,7 @@ Config.LootSpots = {
     {"polar_hr_3", vector3(-167.5186, 488.1292, 132.8436)},
     {"polar_hr_4", vector3(-167.6, 488.73, 134.01)},
 }
-Config.Items = {
-    normalItems = {
-        "vodka",
-        "iphone",
-       
-    },
-    rareItems = {
-        "tablet",
-        "laptop",
-        "rolex",
-        "goldchain",
-        "diamond_ring",
-       
-    },
-    veryRareItems = {
-        "drill",
-       
-    }
-}
+
 
 
 

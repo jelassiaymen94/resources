@@ -126,7 +126,7 @@ Config.LootProps = {
     {prop = 'prop_food_bs_bag_01', item = 'bonepowder', amountmin = 1, amountmax = 1},
     {prop = 'prop_food_cb_bag_01', item = 'huntingbait', amountmin = 1, amountmax = 1},
 
-    {prop = 'prop_money_bag_01', item = 'band', amountmin = 2, amountmax = 6},
+    {prop = 'prop_money_bag_01', item = 'dirtyband', amountmin = 2, amountmax = 6},
     {prop = 'ng_proc_binbag_02a', item = 'valuablegoods', amountmin = 1, amountmax = 1},
     {prop = 'ng_proc_food_bag02a', item = 'specialpick', amountmin = 1, amountmax = 1},
 
@@ -140,7 +140,7 @@ Config.LootProps = {
 
 
     {prop = 'prop_ing_camera_01', item = 'polaroid_camera', amountmin = 1, amountmax = 1},
-    {prop = 'bkr_prop_prtmachine_paperream', item = 'polaroid_paper', amountmin = 1, amountmax = 1},
+    {prop = 'ng_proc_food_bag02a', item = 'polaroid_paper', amountmin = 1, amountmax = 1},
 
     {prop = 'w_me_knuckle_pc', item = 'weapon_knuckle', amountmin = 1, amountmax = 1},
     {prop = 'w_me_switchblade_g', item = 'weapon_switchblade', amountmin = 1, amountmax = 1},

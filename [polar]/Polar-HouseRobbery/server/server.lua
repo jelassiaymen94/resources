@@ -47,20 +47,23 @@ end
 
 
 
-RegisterNetEvent("Polar-HouseRobbery:Server:FindShit", function(house)
+RegisterNetEvent("Polar-HouseRobbery:Server:FindShit", function(house, times)
     if house == nil then return end
-    local src = source
-    local Player = QBCore.Functions.GetPlayer(src)
-    local winNumber = math.random(1, 100)
-    if winNumber <= 75 then
-        local item = Config.Items.normalItems[math.random(#Config.Items.normalItems)]
-        Player.Functions.AddItem(item, 1)
-    elseif winNumber <= 20 then
-        local item = Config.Items.rareItems[math.random(#Config.Items.rareItems)]
-        Player.Functions.AddItem(item, 1)
-    else
-        local item = Config.Items.veryRareItems[math.random(#Config.Items.veryRareItems)]
-        Player.Functions.AddItem(item, 1)
+    for i = 1, times do
+        local src = source
+        local Player = QBCore.Functions.GetPlayer(src)
+        local winNumber = math.random(1, 100)
+        if winNumber <= 80 then
+            local item = Config.Cash[math.random(1, #Config.Cash)]
+            Player.Functions.AddItem(item, 1)
+        elseif winNumber <= 95 then
+            local item = Config.Gold[math.random(1, #Config.Gold)]
+            Player.Functions.AddItem(item, 1)
+        else
+            local item = Config.Special[math.random(1, #Config.Special)]
+            Player.Functions.AddItem(item, 1)
+        end
+    Wait(250)
     end
 end)
 

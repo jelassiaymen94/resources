@@ -50,7 +50,7 @@ function houseprop1(house) -- should be same as door =
 
     -- chances calculation for probability
     local chance = math.random(1,100) 
-    if chance<=90 then   
+    if chance<=88 then   
         prop = cash -- 70%
     elseif chance<=99 then  
         prop = gold -- 9%
@@ -75,7 +75,7 @@ function houseprop2(house)
     local location = Config.houseprop2[math.random(1, #Config.houseprop2)]
  -- chances calculation for probability
  local chance = math.random(1,100) 
- if chance<=90 then   
+ if chance<=88 then   
      prop = cash -- 70%
  elseif chance<=99 then  
      prop = gold -- 9%
@@ -101,7 +101,7 @@ function houseprop3(house)
    
    -- chances calculation for probability
    local chance = math.random(1,100) 
-   if chance<=90 then   
+   if chance<=88 then   
        prop = cash -- 70%
    elseif chance<=99 then  
        prop = gold -- 9%
@@ -130,7 +130,7 @@ function houseprop4(house)
    
   -- chances calculation for probability
   local chance = math.random(1,100) 
-  if chance<=90 then   
+  if chance<=88 then   
       prop = cash -- 70%
   elseif chance<=99 then  
       prop = gold -- 9%
@@ -151,7 +151,7 @@ function houseprop5(house)
     special = Config.Special[math.random(1, #Config.Special)]
     local location = Config.houseprop5[math.random(1, #Config.houseprop5)]
     local chance = math.random(1,100) 
-    if chance<=90 then   prop = cash
+    if chance<=88 then   prop = cash
     elseif chance<=99 then   prop = gold
     else      prop = special  end 
     local door = 'houseprop5'
@@ -164,7 +164,7 @@ function houseprop21(house)
     special = Config.Special[math.random(1, #Config.Special)]
     local location = Config.houseprop21[math.random(1, #Config.houseprop21)]
     local chance = math.random(1,100) 
-    if chance<=90 then   prop = cash
+    if chance<=88 then   prop = cash
     elseif chance<=99 then   prop = gold
     else      prop = special  end 
     local door = 'houseprop21'
@@ -176,7 +176,7 @@ function houseprop22(house)
     special = Config.Special[math.random(1, #Config.Special)]
     local location = Config.houseprop22[math.random(1, #Config.houseprop22)]
     local chance = math.random(1,100) 
-    if chance<=90 then   prop = cash
+    if chance<=88 then   prop = cash
     elseif chance<=99 then   prop = gold
     else      prop = special  end 
     local door = 'houseprop22'
@@ -188,7 +188,7 @@ function houseprop23(house)
     special = Config.Special[math.random(1, #Config.Special)]
     local location = Config.houseprop23[math.random(1, #Config.houseprop23)]
     local chance = math.random(1,100) 
-    if chance<=90 then   prop = cash
+    if chance<=88 then   prop = cash
     elseif chance<=99 then   prop = gold
     else      prop = special  end 
     local door = 'houseprop23'
@@ -200,7 +200,7 @@ function houseprop24(house)
     special = Config.Special[math.random(1, #Config.Special)]
     local location = Config.houseprop24[math.random(1, #Config.houseprop24)]
     local chance = math.random(1,100) 
-    if chance<=90 then   prop = cash
+    if chance<=88 then   prop = cash
     elseif chance<=99 then   prop = gold
     else      prop = special  end 
     local door = 'houseprop24'
@@ -212,7 +212,7 @@ function houseprop25(house)
     special = Config.Special[math.random(1, #Config.Special)]
     local location = Config.houseprop25[math.random(1, #Config.houseprop25)]
     local chance = math.random(1,100) 
-    if chance<=90 then   prop = cash
+    if chance<=88 then   prop = cash
     elseif chance<=99 then   prop = gold
     else      prop = special  end 
     local door = 'houseprop25'
