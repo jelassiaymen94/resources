@@ -10,6 +10,12 @@ RegisterNetEvent('Polar-HouseRobbery:Server:SetupGrab1', function(house)
     houseprop3(house)
     houseprop4(house)
     houseprop5(house)
+
+    houseprop21(house)
+    houseprop22(house)
+    houseprop23(house)
+    houseprop24(house)
+    houseprop25(house)
 end)
 
 RegisterNetEvent('Polar-HouseRobbery:Server:SetupPickup1', function(house)
@@ -21,6 +27,9 @@ RegisterNetEvent('Polar-HouseRobbery:Server:SetupPickup1', function(house)
 
     houseprop16(house)
     houseprop17(house)
+   -- houseprop18(house)
+    --houseprop19(house)
+   -- houseprop20(house)
 end)
 
 
@@ -31,6 +40,12 @@ RegisterNetEvent('Polar-HouseRobbery:Server:SetupPiles1', function(house)
     houseprop13(house)
     houseprop14(house)
     houseprop15(house)
+
+ --   houseprop26(house)
+ --   houseprop27(house)
+ --   houseprop28(house)
+ --   houseprop29(house)
+ --   houseprop30(house)
 end)
 
 
