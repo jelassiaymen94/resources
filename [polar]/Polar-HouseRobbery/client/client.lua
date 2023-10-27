@@ -31,6 +31,9 @@ local proptable = {
     'houseprop42', 'houseprop43', 'houseprop44', 'houseprop45', 'houseprop46', 'houseprop47', 'houseprop48', 'houseprop49', 'houseprop50',
 }
 
+local insidec = vector3(-173.72, 495.69, 137.57)
+
+local houseexit = vector3(-174.34, 497.89, 137.67)
 
 CreateThread(function()
     TriggerServerEvent('Polar-HouseRobbery:Server:Reset')
@@ -139,7 +142,15 @@ function CreateHouse(house)
 
     exports['qb-target']:AddCircleZone("polar_hr_entry", vector3(house.location.x, house.location.y, house.location.z), 0.5, {
     name = "polar_hr_entry", debugPoly = false, useZ=true }, { options = { {   action = function()
-
+    QBCore.Functions.TriggerCallback('Polar-HouseRobbery:Server:HouseOpen', function(result)
+    if result then
+        SetEntityCoords(PlayerPedId(), insidec.x, insidec.y, insidec.z)
+        if GetPedDrawableVariation(ped, 1) == 0 then
+            QBCore.Functions.Notify(Lang:t("notify.donthavemask"))
+            callPolice(house)
+        else
+        end
+    else
     if isNight() then
         if playeritem("advancedlockpick") then
             EntryMinigame(house)
@@ -147,25 +158,17 @@ function CreateHouse(house)
             QBCore.Functions.Notify(Lang:t("notify.donthaveitem"))
         end
     else
-        local c = math.random(1, 2)
         if playeritem("advancedlockpick") then
-            if c == 1 then
-                EntryMinigame(house)
-            elseif c == 2 then
-                callPolice(house)
-                QBCore.Functions.Notify(Lang:t('notify.alarm'), 'error')
-            end
+            EntryMinigame(house)
         else
             QBCore.Functions.Notify(Lang:t("notify.donthaveitem"))
         end
     end
+    end end)
 
     end, icon = "far fa-clipboard", label = Lang:t('label.entry'), }, }, distance = 1.5 })
 end
 
-
-
-local insidec = vector3(-173.72, 495.69, 137.57)
 
 RegisterNetEvent("Polar-HouseRobbery:goinside", function(house)
     SetEntityCoords(PlayerPedId(), insidec.x, insidec.y, insidec.z)
@@ -177,7 +180,6 @@ RegisterNetEvent("Polar-HouseRobbery:goinside", function(house)
     end
 end)
 
-local houseexit = vector3(-174.34, 497.89, 137.67)
 
 RegisterNetEvent("Polar-HouseRobbery:Client:StartTargets", function(house)
     for _,v in ipairs(Config.LootSpots) do

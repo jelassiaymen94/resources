@@ -11,8 +11,13 @@ RegisterNetEvent('Polar-HouseRobbery:Server:Reset', function() reset() end)
 
 local cooldown = true
 QBCore.Functions.CreateCallback("Polar-HouseRobbery:Server:Cooldown", function(source, cb)
-    cb('1')
+    cb(cooldown)
 end)
+local open = false
+QBCore.Functions.CreateCallback("Polar-HouseRobbery:Server:HouseOpen", function(source, cb)
+    cb(open)
+end)
+
 
 local time = (15 * 60000) 
 RegisterNetEvent('Polar-HouseRobbery:Server:StartCooldown', function()
