@@ -40,7 +40,7 @@ AddEventHandler('onResourceStop', function(resourceName) if (GetCurrentResourceN
 
 
 RegisterNetEvent('Polar-HouseRobbery:Client:StartLoot', function(house)
- 
+    print('start loot')
      TriggerServerEvent('Polar-HouseRobbery:Server:SetupGrab1', house)
  
      TriggerServerEvent('Polar-HouseRobbery:Server:SetupPickup1', house)
@@ -350,6 +350,7 @@ RegisterNetEvent('Polar-HouseRobbery:Client:HouseProp', function(name, prop, var
     loadModel(prop) 
     props[name] =  CreateObject(prop, var.x, var.y, var.z,  false,  true, true) 
     SetEntityHeading(props[name], var.w) 
+    print(props[name])
 end)
 RegisterNetEvent('Polar-HouseRobbery:Client:RemoveProp', function(name)  DeleteEntity(props[name]) end)
 
@@ -420,4 +421,5 @@ end
 RegisterNetEvent('Polar-HouseRobbery:Client:AddTarget', function(door, prop, var, handle, pile, d) 
     exports['qb-target']:AddBoxZone(door, vec3(var.x, var.y, var.z), 0.5, 0.5, { name = door, heading = 28.69, debug = hi, minZ = var.z - 1.5, maxZ =  var.z + 1.5,}, 
     { options = {{ event = handle, type = door, piles = pile, icon = "fas fa-bolt", label = "Grab"}}, distance = d }) 
+    print('target added')
 end)
