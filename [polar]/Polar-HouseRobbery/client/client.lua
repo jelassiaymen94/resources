@@ -31,9 +31,9 @@ local proptable = {
     'houseprop42', 'houseprop43', 'houseprop44', 'houseprop45', 'houseprop46', 'houseprop47', 'houseprop48', 'houseprop49', 'houseprop50',
 }
 
-local insidec = vector3(-173.72, 495.69, 137.57)
+local insidec = vector4(-174.28, 497.68, 137.66, 199.38)
 
-local houseexit = vector3(-174.34, 497.89, 137.67)
+local houseexit = vector3(-174.64, 497.89, 137.67)
 
 CreateThread(function()
     TriggerServerEvent('Polar-HouseRobbery:Server:Reset')
@@ -147,6 +147,7 @@ function CreateHouse(house)
     QBCore.Functions.TriggerCallback('Polar-HouseRobbery:Server:HouseOpen', function(result)
     if result then
         SetEntityCoords(PlayerPedId(), insidec.x, insidec.y, insidec.z)
+        SetEntityHeading(PlayerPedId(), insidec.w)
         if GetPedDrawableVariation(ped, 1) == 0 then
             QBCore.Functions.Notify(Lang:t("notify.donthavemask"))
             callPolice(house)
@@ -174,6 +175,7 @@ end
 
 RegisterNetEvent("Polar-HouseRobbery:goinside", function(house)
     SetEntityCoords(PlayerPedId(), insidec.x, insidec.y, insidec.z)
+    SetEntityHeading(PlayerPedId(), insidec.w)
     TriggerServerEvent('Polar-HouseRobbery:Server:StartHouseOpen', house)
     TriggerServerEvent('Polar-HouseRobbery:Server:StartTargets', house)
     if isNight() then 
@@ -194,6 +196,7 @@ RegisterNetEvent("Polar-HouseRobbery:Client:StartTargets", function(house)
     name = "polar_hr_exit",  debugPoly = false,  useZ=true }, {  options = { {   action = function()
     inside = false
     SetEntityCoords(PlayerPedId(), house.outside.x, house.outside.y, house.outside.z)
+    SetEntityHeading(PlayerPedId(), house.outside.w)
     noise = 0
     Wait(500)
     RemoveBlip(blip)
