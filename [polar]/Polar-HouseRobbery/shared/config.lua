@@ -22,10 +22,21 @@ Config.BagUseID = 82
 Config.HideBagID = 0
 
 Config.LootSpots = {
-    {"polar_hr_1", vector3(-166.54, 497.74, 137.76)},
-    {"polar_hr_2", vector3(-171.44, 482.59, 137.33)},
-    {"polar_hr_3", vector3(-167.5186, 488.1292, 132.8436)},
-    {"polar_hr_4", vector3(-167.6, 488.73, 134.01)},
+
+    {"polar_hr_1", vector3(-171.09, 481.76, 134.95)},
+    {"polar_hr_2", vector3(-168.13, 488.68, 133.84)},
+
+    {"polar_hr_3", vector3(-166.68, 497.42, 138.59)},
+    {"polar_hr_4", vector3(-167.51, 493.14, 138.33)},
+
+    {"polar_hr_5", vector3(-171.91, 486.41, 138.23)},
+    {"polar_hr_6", vector3(-171.20, 482.22, 138.19)},
+
+    {"polar_hr_7", vector3(-163.26, 482.80, 134.56)},
+    {"polar_hr_8", vector3(-166.74, 496.07, 134.73)},
+
+    {"polar_hr_9", vector3(-172.94, 501.01, 131.22)},
+    {"polar_hr_10", vector3(-175.33, 494.32, 130.56)},
 }
 
 

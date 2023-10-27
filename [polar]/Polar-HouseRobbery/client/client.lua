@@ -17,11 +17,17 @@ local thirdtable = {
     'polar_hr_entry',
     'polar_hr_exit',
     
-
     'polar_hr_1',
     'polar_hr_2',
     'polar_hr_3',
     'polar_hr_4',
+    'polar_hr_5',
+
+    'polar_hr_6',
+    'polar_hr_7',
+    'polar_hr_8',
+    'polar_hr_9',
+    'polar_hr_10',
 }
 
 local proptable = {
@@ -314,7 +320,7 @@ end
 
 RegisterNetEvent('Polar-HouseRobbery:Client:RemoveTarget', function(name) exports['qb-target']:RemoveZone(name) end)
 RegisterNetEvent('Polar-HouseRobbery:Client:CreateTarget', function(names, loc) 
-    exports['qb-target']:AddCircleZone(names, loc, 0.5, { name = names, debugPoly = false, useZ=true  }, {
+    exports['qb-target']:AddCircleZone(names, vec3(loc.x, loc.y, loc.z-1), 0.5, { name = names, debugPoly = false, useZ=true  }, {
     options = { {   action = function() searchloot(names)  end, icon = "far fa-clipboard", label = Lang:t('label.loot'),  }, }, distance = 1.5 })
 end)
 
