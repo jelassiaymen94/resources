@@ -49,9 +49,9 @@ end
 
 RegisterNetEvent("Polar-HouseRobbery:Server:FindShit", function(house, times)
     if house == nil then return end
+    local src = source
+    local Player = QBCore.Functions.GetPlayer(src)
     for i = 1, times do
-        local src = source
-        local Player = QBCore.Functions.GetPlayer(src)
         local winNumber = math.random(1, 100)
         if winNumber <= 80 then
             local item = Config.Cash[math.random(1, #Config.Cash)]
