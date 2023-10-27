@@ -11,6 +11,16 @@ local npc = nil
 local hi = false
 
 local props = {}
+local thirdtable = {
+    'polar_hr_entry',
+    'polar_hr_exit',
+    
+
+    'polar_hr_1',
+    'polar_hr_2',
+    'polar_hr_3',
+    'polar_hr_4',
+}
 
 local proptable = {
     'houseprop1', 'houseprop2', 'houseprop3', 'houseprop4', 'houseprop5', 'houseprop6', 'houseprop7', 'houseprop8', 'houseprop9', 'houseprop10', 'houseprop11', 'houseprop12','houseprop13', 'houseprop14', 'houseprop15',
@@ -38,6 +48,8 @@ CreateThread(function()
 end)
 AddEventHandler('onResourceStop', function(resourceName) if (GetCurrentResourceName() ~= resourceName) then return end TriggerServerEvent('Polar-HouseRobbery:Server:Reset') DeleteEntity(npc) end)
 
+function loadAnimDict(dict) while not HasAnimDictLoaded(dict) do RequestAnimDict(dict) Wait(50) end end
+function loadModel(model) if type(model) == 'number' then model = model else model = GetHashKey(model) end while not HasModelLoaded(model) do RequestModel(model) Wait(0) end end
 
 RegisterNetEvent('Polar-HouseRobbery:Client:StartLoot', function(house)
  
@@ -358,18 +370,18 @@ RegisterNetEvent('Polar-HouseRobbery:Client:RemoveProp', function(name)  DeleteE
 
 RegisterNetEvent('Polar-HouseRobbery:Client:Target', function(data)  
     local p = data.type 
-    local door = doors[p]
+    local door = props[p]
     Wait(50)
     Animation(p, door)  
 end)
 
 RegisterNetEvent('Polar-HouseRobbery:Client:ResetProps', function()
     for _, v in ipairs(proptable) do
-        if oxt then exports.ox_target:removeZone(targets[v])  else exports['qb-target']:RemoveZone(v) end
-        if DoesEntityExist(doors[v]) then DeleteEntity(doors[v]) end
+        exports['qb-target']:RemoveZone(v)
+        if DoesEntityExist(props[v]) then DeleteEntity(props[v]) end
     end
-    for _, v in ipairs(doortable) do 
-        if oxt then exports.ox_target:removeZone(targets[v])  else exports['qb-target']:RemoveZone(v) end
+    for _, v in ipairs(thirdtable) do 
+       exports['qb-target']:RemoveZone(v)
     end
 end)
 
@@ -398,8 +410,8 @@ RegisterNetEvent('Polar-HouseRobbery:Client:PickupTarget', function(data)
        
         Wait(500)
         
-        AttachEntityToEntity(doors[door], PlayerPedId(), GetPedBoneIndex(PlayerPedId(), 58867), 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, false, false, false, true, 0, true)
-        Wait(1000) SetEntityVisible(doors[door], false, false)
+        AttachEntityToEntity(props[door], PlayerPedId(), GetPedBoneIndex(PlayerPedId(), 58867), 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, false, false, false, true, 0, true)
+        Wait(1000) SetEntityVisible(props[door], false, false)
 
         TriggerServerEvent('Polar-HouseRobbery:Server:RemoveProp', door)
         RemoveAnimDict(animDict)
