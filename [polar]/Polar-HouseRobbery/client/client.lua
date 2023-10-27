@@ -273,7 +273,7 @@ function Animation(door, prop)
      --   SetEntityRotation(PlayerPedId(), pitch, 0.0, heading, 2, true)
     
     
-    TriggerServerEvent('Polar-HouseRobbery:Server:TargetRemove', door)
+    TriggerServerEvent('Polar-HouseRobbery:Server:RemoveTarget', door)
     SetPedComponentVariation(PlayerPedId(), 5, Config.HideBagID, 1, 1)
     LocalPlayer.state:set('inv_busy', true, true) -- Busy
     loadAnimDict(animDict) loadModel(model) local bag = CreateObject(GetHashKey(model), playerCoords, 1, 1, 0)
@@ -395,7 +395,7 @@ RegisterNetEvent('Polar-HouseRobbery:Client:PickupTarget', function(data)
     local door = data.type
     local numba = data.number
     if pile then  
-        TriggerServerEvent('Polar-HouseRobbery:Server:TargetRemove', door) 
+        TriggerServerEvent('Polar-HouseRobbery:Server:RemoveTarget', door) 
         loadAnimDict('amb@medic@standing@kneel@base')
         loadAnimDict('anim@gangops@facility@servers@bodysearch@')
         TaskPlayAnim(PlayerPedId(), 'amb@medic@standing@kneel@base', 'base', 8.0, 8.0, -1, 1, 0, false, false, false)
@@ -407,7 +407,7 @@ RegisterNetEvent('Polar-HouseRobbery:Client:PickupTarget', function(data)
     else
         animDict = 'random@domestic'
         loadAnimDict(animDict) TaskPlayAnim(PlayerPedId(), animDict, 'pickup_low', 3.0, 3.0, -1, 0, 0, 0, 0, 0) 
-        TriggerServerEvent('Polar-HouseRobbery:Server:TargetRemove', door) 
+        TriggerServerEvent('Polar-HouseRobbery:Server:RemoveTarget', door) 
        
         Wait(500)
         
