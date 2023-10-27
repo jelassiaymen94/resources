@@ -1,4 +1,4 @@
-
+local prop = nil
 
 
 
@@ -22,7 +22,7 @@ Config.houseprop13 = {
 
 
 function houseprop11()
-    local door = 'houseprop11'
+    local name = 'houseprop11'
 
     local cashprops = {
         'ex_cash_pile_005',
@@ -43,7 +43,7 @@ function houseprop11()
    
     local location = Config.houseprop11[math.random(1, #Config.houseprop11)]
     
-    ppbruh(door, prop, location)
+    ppbruh(name, prop, location)
 end
 
 
@@ -53,7 +53,7 @@ end
 
 
 function houseprop12()
-    local door = 'houseprop12'
+    local name = 'houseprop12'
 
  
     local cashprops = {
@@ -75,7 +75,7 @@ function houseprop12()
    
     local location = Config.houseprop12[math.random(1, #Config.houseprop12)]
     
-    ppbruh(door, prop, location)
+    ppbruh(name, prop, location)
 end
 
 
@@ -86,7 +86,7 @@ end
 
 
 function houseprop13()
-    local door = 'houseprop13'
+    local name = 'houseprop13'
 
 
     local cashprops = {
@@ -108,7 +108,7 @@ function houseprop13()
    
     local location = Config.houseprop13[math.random(1, #Config.houseprop13)]
     
-    ppbruh(door, prop, location)
+    ppbruh(name, prop, location)
 end
 
 
@@ -122,8 +122,8 @@ end
 
 
 
-function ppbruh(door, prop, location)
-    TriggerEvent('Polar-HouseRobbery:Server:SetHouseProp', door, prop)
-    TriggerClientEvent('Polar-HouseRobbery:Client:AddTarget', -1, door, prop, vec4(location.x, location.y,  location.z-1, location.w), "Polar-HouseRobbery:Client:PickupTarget", true, 2.5)
-    TriggerClientEvent('Polar-HouseRobbery:Client:HouseProp', -1, door, prop, vec4(location.x, location.y,  location.z-1, location.w)) 
+function ppbruh(name, prop, location)
+    TriggerEvent('Polar-HouseRobbery:Server:SetHouseProp', name, prop)
+    TriggerClientEvent('Polar-HouseRobbery:Client:AddTarget', -1, name, prop, vec4(location.x, location.y,  location.z-1, location.w), "Polar-HouseRobbery:Client:PickupTarget", true, 2.5)
+    TriggerClientEvent('Polar-HouseRobbery:Client:HouseProp', -1, name, prop, vec4(location.x, location.y,  location.z-1, location.w)) 
 end

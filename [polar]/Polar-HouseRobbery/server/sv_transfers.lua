@@ -24,6 +24,8 @@ end)
 
 RegisterNetEvent('Polar-HouseRobbery:Server:SetupPiles1', function(house)
     houseprop11(house)
+    houseprop12(house)
+    houseprop13(house)
    
 end)
 
@@ -34,10 +36,10 @@ end)
 
 local props = {}
 
-RegisterNetEvent('Polar-HouseRobbery:Server:SetHouseProp', function(door, prop) props[door] = prop end)
-RegisterNetEvent('Polar-HouseRobbery:Server:Synapse', function(door)  local src = source local Player = QBCore.Functions.GetPlayer(src)
-   if Config.Debug then print(door) print(props[door]) end
-    hiya(props[door])
+RegisterNetEvent('Polar-HouseRobbery:Server:SetHouseProp', function(name, prop) props[name] = prop end)
+RegisterNetEvent('Polar-HouseRobbery:Server:Synapse', function(name)  local src = source local Player = QBCore.Functions.GetPlayer(src)
+   if Config.Debug then print(name) print(props[name]) end
+    hiya(props[name])
 end)
 
 
