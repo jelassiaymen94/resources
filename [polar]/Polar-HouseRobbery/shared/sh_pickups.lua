@@ -12,7 +12,45 @@ Config.houseprop6 = {
     vector4(-164.51, 483.62, 134.52, 217.12),
     
 }
-function houseprop6(store)
+Config.houseprop7 = {
+    vector4(-163.20, 485.08, 133.87, 243.52),
+    
+}
+
+Config.houseprop8 = {
+    vector4(-168.74, 479.01, 134.32, 170.68),
+    
+}
+
+Config.houseprop9 = {
+    vector4(-163.15, 480.04, 134.32, 248.87),
+    
+}
+
+Config.houseprop10 = {
+    vector4(-167.25, 487.82, 133.84, 0.75),
+    vector4(-164.57, 480.73, 137.72, 187.32),
+    
+}
+Config.houseprop16 = {
+    vector4(-167.25, 487.82, 133.84, 0.75),
+    vector4(-164.57, 480.73, 137.72, 187.32),
+    
+}
+
+
+Config.houseprop17 = {
+    vector4(-167.25, 487.82, 133.84, 0.75),
+    vector4(-164.57, 480.73, 137.72, 187.32),
+    
+}
+
+
+
+
+
+
+function houseprop6(house)
     local door = 'houseprop6'
 
     cash = Config.Cash[math.random(1, #Config.Cash)]
@@ -35,12 +73,9 @@ function houseprop6(store)
     pbruh(door, prop, location)  
 
 end
-Config.houseprop7 = {
-    vector4(-163.20, 485.08, 133.87, 243.52),
-    
-}
+
 -- back room
-function houseprop7(store)
+function houseprop7(house)
     local door = 'houseprop7'
     cash = Config.Cash[math.random(1, #Config.Cash)]
     gold = Config.Gold[math.random(1, #Config.Gold)]
@@ -63,12 +98,7 @@ function houseprop7(store)
 
 end
 
-Config.houseprop8 = {
-    vector4(-168.74, 479.01, 134.32, 170.68),
-    
-}
-
-function houseprop8(store)
+function houseprop8(house)
     local door = 'houseprop8'
     cash = Config.Cash[math.random(1, #Config.Cash)]
     gold = Config.Gold[math.random(1, #Config.Gold)]
@@ -94,12 +124,7 @@ end
 
 
 
-Config.houseprop9 = {
-    vector4(-163.15, 480.04, 134.32, 248.87),
-    
-}
-
-function houseprop9(store)
+function houseprop9(house)
     local door = 'houseprop9'
     
     cash = Config.Cash[math.random(1, #Config.Cash)]
@@ -125,13 +150,9 @@ end
 
 
 
-Config.houseprop10 = {
-    vector4(-167.25, 487.82, 133.84, 0.75),
-    
-}
 
 
-function houseprop10(store)
+function houseprop10(house)
     local door = 'houseprop10'
     cash = Config.Cash[math.random(1, #Config.Cash)]
     gold = Config.Gold[math.random(1, #Config.Gold)]
@@ -157,6 +178,60 @@ function houseprop10(store)
 end
 
 
+
+
+
+function houseprop16(house)
+    local door = 'houseprop16'
+    cash = Config.Cash[math.random(1, #Config.Cash)]
+    gold = Config.Gold[math.random(1, #Config.Gold)]
+    special = Config.Special[math.random(1, #Config.Special)]
+ 
+   
+
+    local location = Config.houseprop16[math.random(1, #Config.houseprop16)]
+
+   -- chances calculation for probability
+   local chance = math.random(1,100) 
+   if chance<=90 then   
+       prop = cash -- 70%
+   elseif chance<=99 then  
+       prop = gold -- 9%
+   else   
+       prop = special -- 1%
+   end 
+  
+   
+    pbruh(door, prop, location)
+
+end
+
+
+
+function houseprop17(house)
+    local door = 'houseprop17'
+    cash = Config.Cash[math.random(1, #Config.Cash)]
+    gold = Config.Gold[math.random(1, #Config.Gold)]
+    special = Config.Special[math.random(1, #Config.Special)]
+ 
+   
+
+    local location = Config.houseprop17[math.random(1, #Config.houseprop17)]
+
+   -- chances calculation for probability
+   local chance = math.random(1,100) 
+   if chance<=90 then   
+       prop = cash -- 70%
+   elseif chance<=99 then  
+       prop = gold -- 9%
+   else   
+       prop = special -- 1%
+   end 
+  
+   
+    pbruh(door, prop, location)
+
+end
 
 
 

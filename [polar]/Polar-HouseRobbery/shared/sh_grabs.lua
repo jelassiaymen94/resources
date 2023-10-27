@@ -11,7 +11,27 @@ Config.houseprop1 = {
     vector4(-169.52, 493.38, 138.59, 95.21),
     
 }
-function houseprop1(store) -- should be same as door = 
+Config.houseprop2 = {
+    vector4(-166.19, 493.73, 138.59, 294.78),
+    
+}
+Config.houseprop3 = {
+    vector4(-164.61, 495.53, 138.59, 271.54),
+    
+}
+Config.houseprop4 = {
+    vector4(-167.28, 488.55, 138.23, 318.01),
+    
+}
+Config.houseprop5 = {
+    vector4(-172.03, 487.29, 138.23, 24.24),
+    
+}
+
+
+
+
+function houseprop1(house) -- should be same as door = 
     local door = 'houseprop1' -- name 
 
     cash = Config.Cash[math.random(1, #Config.Cash)]
@@ -37,11 +57,8 @@ end
 
 
 
-Config.houseprop2 = {
-    vector4(-166.19, 493.73, 138.33, 294.78),
-    
-}
-function houseprop2(store)
+
+function houseprop2(house)
     local door = 'houseprop2'
     cash = Config.Cash[math.random(1, #Config.Cash)]
     gold = Config.Gold[math.random(1, #Config.Gold)]
@@ -66,11 +83,8 @@ end
 
 
 
-Config.houseprop3 = {
-    vector4(-164.61, 495.53, 138.59, 271.54),
-    
-}
-function houseprop3(store)
+
+function houseprop3(house)
     cash = Config.Cash[math.random(1, #Config.Cash)]
     gold = Config.Gold[math.random(1, #Config.Gold)]
     special = Config.Special[math.random(1, #Config.Special)]
@@ -97,11 +111,8 @@ end
 
 
 -- back room
-Config.houseprop4 = {
-    vector4(-167.28, 488.55, 138.24, 318.01),
-    
-}
-function houseprop4(store)
+
+function houseprop4(house)
     cash = Config.Cash[math.random(1, #Config.Cash)]
     gold = Config.Gold[math.random(1, #Config.Gold)]
     special = Config.Special[math.random(1, #Config.Special)]
@@ -125,11 +136,8 @@ function houseprop4(store)
     bruh(door, prop, location) 
 end
 
-Config.houseprop5 = {
-    vector4(-172.03, 487.29, 138.23, 24.24),
-    
-}
-function houseprop5(store)
+
+function houseprop5(house)
     cash = Config.Cash[math.random(1, #Config.Cash)]
     gold = Config.Gold[math.random(1, #Config.Gold)]
     special = Config.Special[math.random(1, #Config.Special)]
