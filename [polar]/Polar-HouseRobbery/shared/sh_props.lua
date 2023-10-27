@@ -19,6 +19,13 @@ Config.LootProps = {
     {prop = 'v_ret_247_vegsoup1', item = 'ingredients', amountmin = 1, amountmax = 1},
     {prop = 'v_ret_247_tomsoup1', item = 'ingredients', amountmin = 1, amountmax = 1},
 
+    {prop = 'prop_cash_pile_01', item = 'dirtyband', amountmin = 1, amountmax = 1},
+    {prop = 'prop_cash_pile_02', item = 'dirtyband', amountmin = 1, amountmax = 1},
+    {prop = 'prop_anim_cash_pile_01', item = 'dirtyband', amountmin = 1, amountmax = 1},
+    {prop = 'prop_anim_cash_pile_02', item = 'dirtyband', amountmin = 1, amountmax = 1},
+    {prop = 'bkr_prop_bkr_cash_roll_01', item = 'dirtyband', amountmin = 3, amountmax = 4},
+
+    
     {prop = 'ng_proc_sodacan_01a', item = 'sprunk', amountmin = 1, amountmax = 1},
     {prop = 'ng_proc_sodacan_01b', item = 'sprunklight', amountmin = 1, amountmax = 1},
     {prop = 'ng_proc_sodabot_01a', item = 'ecola', amountmin = 1, amountmax = 1},
