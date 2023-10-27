@@ -140,7 +140,7 @@ Config.LootProps = {
 
 
     {prop = 'prop_ing_camera_01', item = 'polaroid_camera', amountmin = 1, amountmax = 1},
-    {prop = 'bkr_prop_prtmachine_paperream', item = 'polaroid_paper', amountmin = 1, amountmax = 1},
+    {prop = 'ng_proc_paper_01a', item = 'polaroid_paper', amountmin = 1, amountmax = 1},
 
     {prop = 'w_me_knuckle_pc', item = 'weapon_knuckle', amountmin = 1, amountmax = 1},
     {prop = 'w_me_switchblade_g', item = 'weapon_switchblade', amountmin = 1, amountmax = 1},
@@ -150,7 +150,7 @@ Config.LootProps = {
     
 }
 Config.Cash = {
-    'bkr_prop_prtmachine_paperream',
+    'ng_proc_paper_01a',
 
     'prop_cash_pile_01',
     'prop_cash_pile_02',
