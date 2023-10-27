@@ -52,7 +52,14 @@ local props = {
   ["exotichorse"]                 = { carry = true,   model = "vw_prop_casino_art_horse_01a",       bone = 24817, x = -0.20,  y = 0.43, z = 0.05, xr = 91.0,  yr = 0.0,    zr = -265.0, blockAttack = true, blockCar = true, blockRun = true},
   ["exoticbird"]                 = { carry = true,   model = "vw_prop_casino_art_bird_01a",       bone = 24817, x = -0.20,  y = 0.43, z = 0.05, xr = 91.0,  yr = 0.0,    zr = -265.0, blockAttack = true, blockCar = true, blockRun = true},
   ["exoticcat"]                 = { carry = true,   model = "vw_prop_casino_art_panther_01c",       bone = 24817, x = -0.20,  y = 0.43, z = 0.05, xr = 91.0,  yr = 0.0,    zr = -265.0, blockAttack = true, blockCar = true, blockRun = true},
+
+
+  ["methtray"]                 = { carry = true,   model = "bkr_prop_meth_tray_02a",       bone = 24817, x = -0.20,  y = 0.43, z = 0.05, xr = 91.0,  yr = 0.0,    zr = -265.0, blockAttack = true, blockCar = true, blockRun = true},
+  ["carbattery"]                 = { carry = true,   model = "bkr_prop_meth_lithium",       bone = 24817, x = -0.20,  y = 0.43, z = 0.05, xr = 91.0,  yr = 0.0,    zr = -265.0, blockAttack = true, blockCar = true, blockRun = true},
  
+  
+  
+  
   -- meth
   ["meth"]                      = { model = "hei_prop_pill_bag_01", hash = joaat("hei_prop_pill_bag_01"), tier = 3},
 

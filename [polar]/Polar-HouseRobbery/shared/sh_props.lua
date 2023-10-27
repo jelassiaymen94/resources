@@ -2,7 +2,7 @@ Config.LootProps = {
 
 
     {prop = 'sf_prop_sf_apple_01a', item = 'apple', amountmin = 1, amountmax = 3},
-    {prop = 'xm3_prop_xm3_pineapple_01a', item = 'pineapple', amountmin = 1, amountmax = 3},
+    
 
     {prop = 'v_res_fa_shoebox3', item = 'weapon_shoe', amountmin = 1, amountmax = 1},
 
@@ -71,14 +71,92 @@ Config.LootProps = {
     {prop = 'vw_prop_casino_art_egg_01a', item = 'alienegg', amountmin = 1, amountmax = 1},
 
 
+
+
+
+    {prop = 'prop_microwave_1', item = 'microwave', amountmin = 1, amountmax = 1},
+    {prop = 'prop_trev_tv_01', item = 'television', amountmin = 1, amountmax = 1},
+    {prop = 'p_v_43_safe_s', item = 'safe', amountmin = 1, amountmax = 1},
+    
+    {prop = 'bkr_prop_meth_smallbag_01a', item = 'meth', amountmin = 1, amountmax = 1},
+    {prop = 'bkr_prop_meth_sodium', item = 'sodium_hydroxide', amountmin = 1, amountmax = 1},
+    {prop = 'bkr_prop_meth_hcacid', item = 'hydrochloric_acid', amountmin = 1, amountmax = 1},
+    {prop = 'ba_dlc_ba_int2_meth_eqp', item = 'methylamine', amountmin = 1, amountmax = 1},
+    {prop = 'prop_paper_bag_small', item = 'methkey', amountmin = 1, amountmax = 1},
+
+
+    {prop = 'bkr_prop_meth_lithium', item = 'carbattery', amountmin = 1, amountmax = 1},
+    
+
+    {prop = 'bkr_prop_weed_01_small_01c', item = 'female_seed', amountmin = 1, amountmax = 1}, --
+
+    {prop = 'bkr_prop_weed_bag_pile_01a', item = 'drugbag', amountmin = 1, amountmax = 4}, 
+    {prop = 'bkr_prop_weed_bucket_01a', item = 'weed_nutrition', amountmin = 1, amountmax = 1},  
+
+
+    {prop = 'prop_weed_bottle', item = 'male_seed', amountmin = 1, amountmax = 1}, --
+
+    {prop = 'bkr_prop_weed_bigbag_03a', item = 'weedpound', amountmin = 1, amountmax = 1}, --
+    {prop = 'bkr_prop_weed_lrg_01b', item = 'wetbud', amountmin = 1, amountmax = 1}, --
+    {prop = 'bkr_prop_weed_smallbag_01a', item = '1ozlow', amountmin = 1, amountmax = 1}, 
+    {prop = 'p_cs_joint_02', item = 'smalljoint', amountmin = 1, amountmax = 1},
+    {prop = 'p_cs_papers_03', item = 'rollingpaper', amountmin = 1, amountmax = 1},
+    {prop = 'bkr_prop_coke_scale_01', item = 'scale', amountmin = 1, amountmax = 1}, 
+    {prop = 'prop_paper_bag_01', item = 'weedkey', amountmin = 1, amountmax = 1}, -- --
+  
+    {prop = 'w_am_baseball', item = 'weapon_ball', amountmin = 1, amountmax = 1}, 
+    {prop = 'w_me_bottle', item = 'weapon_bottle', amountmin = 1, amountmax = 1},
+    {prop = 'xm3_prop_xm3_pistol_xm3', item = 'weapon_m9', amountmin = 1, amountmax = 1}, --
+    {prop = 'prop_knife', item = 'weapon_knife', amountmin = 1, amountmax = 1},
+    {prop = 'prop_cs_dildo_01', item = 'weapon_dildo', amountmin = 1, amountmax = 1}, -- --
+
+    {prop = 'xm_prop_x17_laptop_lester_01', item = 'laptop', amountmin = 1, amountmax = 1}, --
+    {prop = 'reh_prop_reh_tablet_01a', item = 'tablet', amountmin = 1, amountmax = 1},
+    {prop = 'p_watch_02', item = 'fitbit', amountmin = 1, amountmax = 1},
+    {prop = 'p_cs_cam_phone', item = 'samsungphone', amountmin = 1, amountmax = 1},
+    {prop = 'reh_prop_reh_tablet_01a', item = 'tablet', amountmin = 1, amountmax = 1},
+
+    {prop = 'v_club_vu_pills', item = 'painkillers', amountmin = 1, amountmax = 1},
+    {prop = 'tr_prop_tr_usb_drive_01a', item = 'vpn', amountmin = 1, amountmax = 1}, --
+    {prop = 'hei_prop_hst_usb_drive', item = 'racing_device', amountmin = 1, amountmax = 1}, 
+    {prop = 'v_ret_ta_firstaid', item = 'bandage', amountmin = 1, amountmax = 1},
+    {prop = 'prop_food_bag1', item = 'lockpick', amountmin = 1, amountmax = 1},
+
+    {prop = 'prop_food_cb_bag_02', item = 'bones', amountmin = 1, amountmax = 1},
+    {prop = 'prop_food_bs_bag_01', item = 'bonepowder', amountmin = 1, amountmax = 1},
+    {prop = 'prop_food_cb_bag_01', item = 'huntingbait', amountmin = 1, amountmax = 1},
+
+    {prop = 'prop_money_bag_01', item = 'band', amountmin = 2, amountmax = 6},
+    {prop = 'ng_proc_binbag_02a', item = 'valuablegoods', amountmin = 1, amountmax = 1},
+    {prop = 'ng_proc_food_bag02a', item = 'specialpick', amountmin = 1, amountmax = 1},
+
+    {prop = 'p_trev_rope_01_s', item = 'rope', amountmin = 1, amountmax = 1},
+
+    
+
+    {prop = 'hei_prop_heist_drill', item = 'drill', amountmin = 1, amountmax = 1},
+    {prop = 'ch_prop_ch_heist_drill', item = 'laserdrill', amountmin = 1, amountmax = 1},
+    {prop = 'hei_prop_heist_thermite_case', item = 'thermite', amountmin = 1, amountmax = 1},
+
+
+    {prop = 'prop_ing_camera_01', item = 'polaroid_camera', amountmin = 1, amountmax = 1},
+    {prop = 'bkr_prop_prtmachine_paperream', item = 'polaroid_paper', amountmin = 1, amountmax = 1},
+
+    {prop = 'w_me_knuckle_pc', item = 'weapon_knuckle', amountmin = 1, amountmax = 1},
+    {prop = 'w_me_switchblade_g', item = 'weapon_switchblade', amountmin = 1, amountmax = 1},
+    {prop = 'prop_ld_rub_binbag_01', item = 'randombag', amountmin = 1, amountmax = 1},
+   
+
+    
 }
 Config.Cash = {
+    'bkr_prop_prtmachine_paperream',
+
     'prop_cash_pile_01',
     'prop_cash_pile_02',
     'prop_anim_cash_pile_01',
     'prop_anim_cash_pile_02', 
     'bkr_prop_bkr_cash_roll_01',
-
 
     'prop_amb_donut',
     'prop_donut_02',
@@ -119,7 +197,6 @@ Config.Cash = {
     'v_res_fa_tintomsoup',
     'ng_proc_food_chips01a',
     'v_res_fa_shoebox3',
-    'xm3_prop_xm3_pineapple_01a',
     'sf_prop_sf_apple_01a',
  
 
@@ -129,8 +206,42 @@ Config.Gold = {
     'vw_prop_plaq_1kdollar_x1',
     'vw_prop_chip_1kdollar_st',
     'vw_prop_chip_100dollar_st',
+    'w_me_switchblade_g',
+    'prop_ing_camera_01',
+    'prop_ld_rub_binbag_01',
+    'bkr_prop_weed_01_small_01c',
+    'prop_weed_bottle',
+
+    'xm3_prop_xm3_pistol_xm3',
+    'prop_cs_dildo_01',
+    'xm_prop_x17_laptop_lester_01',
+    'tr_prop_tr_usb_drive_01a',
+    'v_club_vu_pills',
+
+    'prop_knife',
+    'w_am_baseball',
+
+    'bkr_prop_coke_scale_01',
+    'bkr_prop_weed_smallbag_01a',
+    'bkr_prop_meth_smallbag_01a',
+    'bkr_prop_meth_sodium',
+    'bkr_prop_meth_hcacid',
+    'ba_dlc_ba_int2_meth_eqp',
+
+    'prop_paper_bag_small',
+
+    'p_v_43_safe_s',
+    'prop_trev_tv_01',
+    'prop_microwave_1',
+    'w_me_knuckle_pc',
+    'hei_prop_hst_usb_drive',
+
+    'p_cs_joint_02',
+
+
 }
 Config.Special = {
+    'prop_money_bag_01',
     'ex_prop_exec_award_gold',
     'prop_peyote_gold_01',
     'xs_prop_trophy_goldbag_01a',
@@ -138,4 +249,15 @@ Config.Special = {
     'h4_prop_h4_gold_coin_01a',
     'vw_prop_casino_art_egg_01a',
 
+    'hei_prop_heist_drill',
+    'ch_prop_ch_heist_drill',
+    'hei_prop_heist_thermite_case',
+    'ng_proc_food_bag02a',
+    'p_trev_rope_01_s',
+
+    'ng_proc_binbag_02a',
+    'prop_food_cb_bag_02',
+    'prop_food_bs_bag_01',
+    'prop_food_cb_bag_01',
+    
 }

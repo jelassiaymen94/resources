@@ -2,7 +2,7 @@ Config.LootProps = {
 
 
     {prop = 'sf_prop_sf_apple_01a', item = 'apple', amountmin = 1, amountmax = 3},
-    {prop = 'xm3_prop_xm3_pineapple_01a', item = 'pineapple', amountmin = 1, amountmax = 3},
+  
 
     {prop = 'v_res_fa_shoebox3', item = 'weapon_shoe', amountmin = 1, amountmax = 1},
 
@@ -112,7 +112,6 @@ Config.Cash = {
     'v_res_fa_tintomsoup',
     'ng_proc_food_chips01a',
     'v_res_fa_shoebox3',
-    'xm3_prop_xm3_pineapple_01a',
     'sf_prop_sf_apple_01a',
  
 

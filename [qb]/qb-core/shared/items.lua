@@ -693,10 +693,10 @@ QBShared.Items = {
 	
 	["rentalpapers"]				 = {["name"] = "rentalpapers", 					["label"] = "Rental Papers", 			["weight"] = 0, 		["type"] = "item", 		["image"] = "rentalpapers.png", 		["unique"] = true, 		["useable"] = false, 	["shouldClose"] = false, 	["combinable"] = nil, 	["description"] = "Yea, this is my car i can prove it!", ["decay"] = 30.0, ["delete"] = false },
 
-	["television"]   	= {["name"] = "television", 		["label"] = "Television", 	["weight"] = 15000, 		["type"] = "item", 		["image"] = "television.png", 			["unique"] = false,   	["useable"] = true,    ["shouldClose"] = false,    ["combinable"] = nil,   ["description"] = "", ["decay"] = 30.0, ["delete"] = false },
-	["microwave"]   	= {["name"] = "microwave", 			["label"] = "Microwave", 	["weight"] = 1500, 		["type"] = "item", 		["image"] = "microwave.png", 			["unique"] = false,   	["useable"] = true,    ["shouldClose"] = false,    ["combinable"] = nil,   ["description"] = "", ["decay"] = 30.0, ["delete"] = false },
+	["television"]   	= {["name"] = "television", 		["label"] = "Television", 	["weight"] = 10000, 		["type"] = "item", 		["image"] = "television.png", 			["unique"] = false,   	["useable"] = true,    ["shouldClose"] = false,    ["combinable"] = nil,   ["description"] = "", ["decay"] = 30.0, ["delete"] = false },
+	["microwave"]   	= {["name"] = "microwave", 			["label"] = "Microwave", 	["weight"] = 8000, 		["type"] = "item", 		["image"] = "microwave.png", 			["unique"] = false,   	["useable"] = true,    ["shouldClose"] = false,    ["combinable"] = nil,   ["description"] = "", ["decay"] = 30.0, ["delete"] = false },
 	["painting"]   		= {["name"] = "painting", 			["label"] = "Painting", 	["weight"] = 1500, 		["type"] = "item", 		["image"] = "painting.png", 			["unique"] = false,   	["useable"] = true,    ["shouldClose"] = false,    ["combinable"] = nil,   ["description"] = "", ["decay"] = 30.0, ["delete"] = false },
-	["safe"]   			= {["name"] = "safe", 				["label"] = "Safe", 		["weight"] = 15000, 		["type"] = "item", 		["image"] = "safe.png", 				["unique"] = false,   	["useable"] = true,    ["shouldClose"] = false,    ["combinable"] = nil,   ["description"] = "", ["decay"] = 30.0, ["delete"] = false },
+	["safe"]   			= {["name"] = "safe", 				["label"] = "Safe", 		["weight"] = 25000, 		["type"] = "item", 		["image"] = "safe.png", 				["unique"] = false,   	["useable"] = true,    ["shouldClose"] = false,    ["combinable"] = nil,   ["description"] = "", ["decay"] = 30.0, ["delete"] = false },
 	['safecracker'] 			 = {['name'] = 'safecracker', 							['label'] = 'Safe Keys', 		['weight'] = 1000, 		['type'] = 'item', 		['image'] = 'key.png', 			['unique'] = true, 		['useable'] = true, 	['shouldClose'] = false,   ['combinable'] = nil,   ['description'] = 'keys for a safe', ["decay"] = 30.0, ["delete"] = false },
 	
 	["stopsign"] = {["name"] = "stopsign", ["label"] = "Stop Sign", ["weight"] = 1, ["type"] = "item", ["image"] = "stopsign.png", ["unique"] = false, ["useable"] = true, ["shouldClose"] = true, ["combinable"] = nil, ["description"] = "Stop Sign", ["decay"] = 30.0, ["delete"] = false },
@@ -1410,8 +1410,7 @@ QBShared.Items = {
 
 	
 
-		['crophigh'] 		 	 = {['name'] = 'crophigh', 				['label'] = 'Harvested Crop', 			['weight'] = 5500, 		['type'] = 'item', 		['image'] = 'crophigh.png', 				['unique'] = false,    	['useable'] = false,    ['shouldClose'] = false,	   	['combinable'] = nil,   ['description'] = 'Good Quality Crop', ["decay"] = 30.0, ["delete"] = false },	
-
+		
 ------------------------------ POLAR WEED ----------------------------
 ['1ozlow'] 			 	 = {['name'] = '1ozlow', 				['label'] = '1oz Weed', 			['weight'] = 500, 		['type'] = 'item', 		['image'] = '1ozlow.png', 				['unique'] = false,    	['useable'] = false,    ['shouldClose'] = false,	   	['combinable'] = nil,   ['description'] = 'Low Quality Weed Ounce ', ["decay"] = 30.0, ["delete"] = false },	
 ['1ozmid'] 		 	 	 = {['name'] = '1ozmid', 				['label'] = '1oz Weed', 			['weight'] = 500, 		['type'] = 'item', 		['image'] = '1ozmid.png', 				['unique'] = false,    	['useable'] = false,    ['shouldClose'] = false,	   	['combinable'] = nil,   ['description'] = 'Medium Quality Weed Ounce', ["decay"] = 30.0, ["delete"] = false },	
