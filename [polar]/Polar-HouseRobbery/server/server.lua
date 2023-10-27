@@ -10,14 +10,12 @@ RegisterNetEvent('Polar-HouseRobbery:Server:StartTargets', function(house)   Tri
 RegisterNetEvent('Polar-HouseRobbery:Server:Reset', function() reset() end)
 
 local cooldown = true
-QBCore.Functions.CreateCallback("Polar-HouseRobbery:Server:Cooldown", function(source, cb)
-    cb(cooldown)
-end)
 local open = false
-QBCore.Functions.CreateCallback("Polar-HouseRobbery:Server:HouseOpen", function(source, cb)
-    cb(open)
-end)
+QBCore.Functions.CreateCallback("Polar-HouseRobbery:Server:Cooldown", function(source, cb)  cb(cooldown) end)
+QBCore.Functions.CreateCallback("Polar-HouseRobbery:Server:HouseOpen", function(source, cb) cb(open) end)
 
+
+RegisterNetEvent('Polar-HouseRobbery:Server:StartHouseOpen', function() open = true end)
 
 local time = (15 * 60000) 
 RegisterNetEvent('Polar-HouseRobbery:Server:StartCooldown', function()
@@ -31,7 +29,8 @@ end)
 
 function reset()
     cooldown = true
-
+    open = false
+    
     TriggerEvent('Polar-HouseRobbery:Client:RemoveTarget', -1, 'polar_hr_entry')
     TriggerEvent('Polar-HouseRobbery:Client:RemoveTarget', -1, 'polar_hr_exit')
 
