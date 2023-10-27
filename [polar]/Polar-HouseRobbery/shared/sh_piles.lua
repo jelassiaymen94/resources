@@ -1,13 +1,4 @@
-local prop = nil
-local item = nil
-local amount = nil
 
-local special = nil
-
-
-
-
-local z = 30.63
 
 
 
@@ -18,11 +9,20 @@ Config.houseprop11 = {
    
 
 }
+Config.houseprop12 = {
+    vector4(-114.04, 6470.48, 31.63, 100.76),
+   
+
+}
+Config.houseprop13 = {
+    vector4(-114.04, 6470.48, 31.63, 100.76),
+   
+
+}
+
 
 function houseprop11()
     local door = 'houseprop11'
-
-    special = Config.Special[math.random(1, #Config.Special)]
 
     local cashprops = {
         'ex_cash_pile_005',
@@ -45,6 +45,73 @@ function houseprop11()
     
     ppbruh(door, prop, location)
 end
+
+
+
+
+
+
+
+function houseprop12()
+    local door = 'houseprop12'
+
+ 
+    local cashprops = {
+        'ex_cash_pile_005',
+    }
+    local goldprops = {
+        'h4_prop_h4_gold_stack_01a'
+    }
+    local pileprop = cashprops[math.random(1, #cashprops)]
+    local goldprop = goldprops[math.random(1, #goldprops)]
+ 
+    
+   
+    local chance = math.random(1,100) 
+    if chance<=74 then   prop = pileprop 
+    elseif chance<=100 then  prop = goldprop
+    end 
+   
+   
+    local location = Config.houseprop12[math.random(1, #Config.houseprop12)]
+    
+    ppbruh(door, prop, location)
+end
+
+
+
+
+
+
+
+
+function houseprop13()
+    local door = 'houseprop13'
+
+
+    local cashprops = {
+        'ex_cash_pile_005',
+    }
+    local goldprops = {
+        'h4_prop_h4_gold_stack_01a'
+    }
+    local pileprop = cashprops[math.random(1, #cashprops)]
+    local goldprop = goldprops[math.random(1, #goldprops)]
+ 
+    
+   
+    local chance = math.random(1,100) 
+    if chance<=74 then   prop = pileprop 
+    elseif chance<=100 then  prop = goldprop
+    end 
+   
+   
+    local location = Config.houseprop13[math.random(1, #Config.houseprop13)]
+    
+    ppbruh(door, prop, location)
+end
+
+
 
 
 

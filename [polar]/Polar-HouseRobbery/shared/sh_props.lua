@@ -71,6 +71,9 @@ Config.LootProps = {
     {prop = 'vw_prop_casino_art_egg_01a', item = 'alienegg', amountmin = 1, amountmax = 1},
 
 
+    {prop = 'ex_cash_pile_005', item = 'dirtyband', amountmin = 3, amountmax = 10},
+    {prop = 'h4_prop_h4_gold_stack_01a', item = 'goldbar', amountmin = 3, amountmax = 6},
+
 }
 Config.Cash = {
     'prop_cash_pile_01',
